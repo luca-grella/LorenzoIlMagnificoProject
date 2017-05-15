@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>13</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>481</x>
+      <y>923</y>
+      <w>533</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>Board
+--
+-Towers: Tower[4][4]
+-Council: FMember[]
+-Harvest: FMember[4]
+-Production: FMember[4]
+-Excommunications: Excommunication[3]
+-Dices:int[4]
+--
++Board(numplay:int)
++Board(nplay:int,age:int)
++famToTower(fam:FMember,tower:int,floor:int,IDplayer:PBoard)
++famToHarv(fam:FMember)
++famToProd(fam:FMember)
++famToMarket(fam:FMember,position: int)
++famToCouncil(fam:FMember)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1235</x>
+      <y>1092</y>
+      <w>351</w>
+      <h>273</h>
+    </coordinates>
+    <panel_attributes>Cell
+--
+-card: Card
+-familymember: FMember
+-bonus??
+-value: int
+--
++Tower()
++Tower(age:int)
++insFam(fam:FMember,IDPlayer:PBoard)
++setCard()
++getFam():FMember
++setFam(fam:FMember)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1859</x>
+      <y>1144</y>
+      <w>273</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>FMember
+--
+-IDPlayer: PBoard
+-value: int
+--
++FMember(value:int)
++getIDPlayer():PBoard
++getValue():int
++setIDPlayer(IDPlayer:PBoard)
++setvalue(value:int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2535</x>
+      <y>897</y>
+      <w>455</w>
+      <h>923</h>
+    </coordinates>
+    <panel_attributes>PBoard
+--
+-GreenCards: GreenC[6]
+-BlueCards: BlueC[6]
+-YellowCards: YellowC[6]
+-PurpleCards: PurpleC[6]
+-LeaderCards: LeaderC[4]
+-Wood: int = 0
+-Rock: int = 0
+-Coin: int = 0
+-Servant: int = 0
+-VP: int = 0
+-FP: int = 0
+-MP: int = 0
+-modR: ModRes
+-modB: ModBoard
+-sales: Sales
+--
++PBoard(plusCoins: int) !crea la plancia bonus
++insCard(card: Card,IDPlayer: PBoard)
++actHarv(value: int,IDPlayer: PBoard)
++actProd(value: int,IDPlayer: PBoard)
++bonusMarket(position: int,IDPlayer: PBoard)
++privilege(IDPlayer: PBoard)
++activatelc(position: int,IDPlayer: PBoard)
++discardLC(position: int,IDPlayer: PBoard)
++CopyLC(IDPlayeer: PBoard)
++NullyfyMPRequestGreenC()
++VPcalc()
++getCard(pos: int, array: Card[])
++getWood(): int
++getRock(): int
++getCoin(): int
++getServant(): int
++getVP(): int
++getFP(): int
++getMP(): int
++addWood(value: int)
++addRock(value: int)
++addCoin(value: int)
++addServant(value: int)
++addVP(value: int)
++addFP(value: int)
++setFP(value: int)
++addMP(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2769</x>
+      <y>1092</y>
+      <w>182</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>meglio cercare 
+di dividere
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2405</x>
+      <y>1976</y>
+      <w>286</w>
+      <h>611</h>
+    </coordinates>
+    <panel_attributes>ModRes
+--
+-modMP: int = 0
+-modCoin: int = 0
+-modServants: int = 0
+-modWR: int = 0
+-modHarv: int = 0
+-modProd: int = 0
+-modSerVal: double = 1.0
+-modVP: int = 0
+-moltBonus: int = 0
+--
++getModMP(): int
++getModVP(): int
++getModCoin(): int
++getModServants(): int
++getModWR(): int
++getModHarv(): int
++getModProd(): int
++getModSerVal(): double
++getMoltBonus(): int
++addModMP(value: int)
++addModCoin(value: int)
++addModServants(value: int)
++addModWR(value: int)
++addModHarv(value: int)
++addModProd(value: int)
++setModSerVal(value: double)
++addModPV(value: int)
++setMoltBonus(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2795</x>
+      <y>1976</y>
+      <w>312</w>
+      <h>676</h>
+    </coordinates>
+    <panel_attributes>ModBoard
+--
+-ModFMember: int = 0
+-ModGreenC: int = 0
+-ModBlueC: int = 0
+-ModPurpleC: int = 0
+-ModYellowC: int = 0
+-ModMarket: int = 0
+-ModTowerBonus: int = 0
+-ModPosition: int = 0
+-ModValFamN: int = 0
+-ModFamInit: int = 0
+--
++getModFMember(): int
++getModGreenC(): int
++getModBlueC(): int
++getModPurpleC(): int
++getModYellowC(): int
++getModMarket(): int
++getModTowerBonus(): int
++getModPosition(): int
++getValFamN(): int
++getFamInit(): int
++addModFMember(value: int)
++addModGreenC(value: int)
++addModBlueC(value: int)
++addModPurpleC(value: int)
++addModYellowC(value: int)
++setModMarket(value: int)
++setModTowerBonus(value: int)
++setModPosition(value: int)
++setModFamN(value: int)
++setModFamInit(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3237</x>
+      <y>1976</y>
+      <w>286</w>
+      <h>481</h>
+    </coordinates>
+    <panel_attributes>Sales
+--
+-CoinBlueC: int = 0
+-CoinYellowC: int = 0
+-CoinPurpleC: int = 0
+-WRYellowC: int = 0
+-WRPurpleC; int = 0
+-MPPurpleC: int = 0
+-PlacementCoin: int = 0
+--
++getCoinBlueC(): int
++getCoinYellowC(): int
++getCoinPurpleC(): int
++getWRYellowC(): int
++getWRPurpleC(): int
++getMPPurpleC(): int
++getPlacementCoin(): int
++setCointBlueC(value: int)
++setCointYellowC(value: int)
++setCointPurpleC(value: int)
++setWRYellowC(value: int)
++setWRPurpleC(value: int)
++setMPPurpleC(value: int)
++setPlacementCoin(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1235</x>
+      <y>1430</y>
+      <w>338</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>/Card/
+--
+-name: String
+-period: int
+--
++actInstEff(card: Card,IDplayer: PBoard)
++getName(): String
++getPeriod(): int
++setName(name: String)
++setPeriod(period: int)
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>481</x>
+      <y>1846</y>
+      <w>429</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>GreenC
+--
+-instEff: int[4]
+-harvEff: int[4]
+--
++actHarvEff(card: Card,value: int,IDPlayer: PBoard)
++getInstEff(): int[4]
++getHarvEff(): int[4]
++setInstEff(values: int[4])
++setHarvEff(values: int[4])
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1430</x>
+      <y>1846</y>
+      <w>364</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>BlueC
+--
+-coinCost: int
+-instEff: int[4]
+-PermEff: int[4]
+--
++actPermEff(card: Card,IDPlayer: PBoard)
++getInstEff(): int[4]
++getPermEff(): int[4]
++getCoinCost(): int
++setInstEff(values: int[4])
++setPermEff(values: int[4])
++setCoinCost(value: int)
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1001</x>
+      <y>1846</y>
+      <w>351</w>
+      <h>572</h>
+    </coordinates>
+    <panel_attributes>YellowC
+--
+-coinCost: int
+-woodCost: int
+-rockCost: int
+-effectCoinCost: int
+-effectWoodCost: int
+-effectRockCost: int
+-instEff: int[4]
+-ProdEff: int[4]
+--
++actProdEff(card: Card,IDPlayer: PBoard)
++getInstEff(): int[4]
++getProdEff(): int[4]
++getCoinCost(): int
++getWoodCost(): int
++getRockCost(): int
++getEffectCoinCost(): int
++getEffectWoodCost(): int
++getEffectRockCost(): int
++setInstEff(values: int[4])
++setProdEff(values: int[4])
++setCoinCost(value: int)
++setWoodCost(value: int)
++setRockCost(value: int)
++setEffectCoinCost(value: int)
++setEffectWoodCost(value: int)
++setEffectRockCost(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1885</x>
+      <y>1846</y>
+      <w>429</w>
+      <h>507</h>
+    </coordinates>
+    <panel_attributes>PurpleC
+--
+-coinCost: int
+-woodCost: int
+-rockCost: int
+-minMP: int
+-costMP: int
+-instEff: int[4]
+-FinalEff: int[4]
+--
++actFinalEff(card: Card,value: int,IDPlayer: PBoard)
++getInstEff(): int[4]
++getFinalEff(): int[4]
++getCoinCost(): int
++getWoodCost(): int
++getRockCost(): int
++getMinMP(): int
++getCostMP(): int
++setInstEff(values: int[4])
++setFinalEff(values: int[4])
++setCoinCost(value: int)
++setWoodCost(value: int)
++setRockCost(value: int)
++setMinMP(value: int)
++setCostMP(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1313</x>
+      <y>2522</y>
+      <w>130</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>CardsEffect
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1625</y>
+      <w>338</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>Excommunication
+--
+-name: String
+-period: int
+-effect: int
+--
++activateEffect(IDPlayer: PBoard)
++getName(): String
++getPeriod(): int
++getEffect(): int
++setName(name: String)
++setPeriod(period: int)
++setEffect(value: int)
+bg=white
+-[lista di effetti chiamati da
+  /activateEffect/ che vanno a modificare
+  i valori delle classi di malus]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>182</y>
+      <w>286</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Logic
+--
+-turn: int
+--
+_+boardSetup()_
+_+PBoardSetup()_
+_+gameFlow()_
+_+playerTurn(IDPlayer: PBoard)_
+_+checkFP(IDPlayer: PBoard)_
+_+actExcomm(IDPlayer: PBoard)_
+_+winnercalc()_
++getTurn(): int
++setTurn(value: int)
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3562</x>
+      <y>871</y>
+      <w>364</w>
+      <h>962</h>
+    </coordinates>
+    <panel_attributes>LeaderC
+--
+-name: String
+-active: int
+-effect: int
+-minPurpleC: int
+-minGreenC: int
+-minYellowC: int
+-minBlueC: int
+-minMP: int
+-minFP: int
+-minVP: int
+-minCoin: int
+-minRock: int
+-minWood: int
+-minServant: int
+--
++activateCard()
++activateEffect(codEff: int)
++getName(): String
++getActive(): int
++getEff(): int
++getMinPC(): int
++genMinGC(): int
++getMinYC(): int
++getMinBC(): int
++getMinMP(): int
++getMinFP(): int
++getMinVP(): int
++getMinCoin(): int
++getMinRock(): int
++getMinWood(): int
++getMinServant(): int
++setName(name: String)
++setActive(value: int)
++setEffect(value: int)
++setMinPC(value: int)
++senMinGC(value: int)
++setMinYC(value: int)
++setMinBC(value: int)
++setMinMP(value: int)
++setMinFP(value: int)
++setMinVP(value: int)
++setMinCoin(value: int)
++setMinRock(value: int)
++setMinWood(value: int)
++setMinServant(value: int)
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>338</x>
+      <y>0</y>
+      <w>884</w>
+      <h>637</h>
+    </coordinates>
+    <panel_attributes>CONTROLLER
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1729</x>
+      <y>78</y>
+      <w>806</w>
+      <h>533</h>
+    </coordinates>
+    <panel_attributes>VIEW
+--
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1573</x>
+      <y>1222</y>
+      <w>312</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1781</x>
+      <y>1222</y>
+      <w>39</w>
+      <h>338</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1508</y>
+      <w>260</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1001</x>
+      <y>1014</y>
+      <w>1014</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>760.0;100.0;760.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>169</x>
+      <y>1235</y>
+      <w>585</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;300.0;10.0;120.0;430.0;120.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1001</x>
+      <y>1144</y>
+      <w>260</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2730</x>
+      <y>1807</y>
+      <w>39</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2548</x>
+      <y>1859</y>
+      <w>845</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;630.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2938</x>
+      <y>1872</y>
+      <w>39</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3354</x>
+      <y>1872</y>
+      <w>39</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2548</x>
+      <y>1872</y>
+      <w>39</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1001</x>
+      <y>949</y>
+      <w>1560</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>1180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1677</x>
+      <y>936</y>
+      <w>351</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>chiama per harv, prod, market e council
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1573</x>
+      <y>1053</y>
+      <w>988</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>740.0;40.0;370.0;40.0;370.0;10.0;260.0;10.0;260.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>1716</y>
+      <w>2249</w>
+      <h>1066</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;800.0;1710.0;800.0;1710.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>1937</y>
+      <w>39</w>
+      <h>845</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2366</x>
+      <y>1716</y>
+      <w>195</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>689</x>
+      <y>429</y>
+      <w>39</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;380.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>806</x>
+      <y>429</y>
+      <w>1911</w>
+      <h>494</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>1450.0;360.0;1450.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1391</x>
+      <y>1612</y>
+      <w>39</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>689</x>
+      <y>1703</y>
+      <w>1443</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0;1090.0;10.0;1090.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>1703</y>
+      <w>39</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1599</x>
+      <y>1703</y>
+      <w>39</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1014</x>
+      <y>1001</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>16
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2002</x>
+      <y>1105</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1417</x>
+      <y>1001</y>
+      <w>91</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>gestisce
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1014</x>
+      <y>1131</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>16
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1196</x>
+      <y>1131</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>728</x>
+      <y>1248</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>3
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>195</x>
+      <y>1586</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2977</x>
+      <y>1131</y>
+      <w>611</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2990</x>
+      <y>1131</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>4
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>3536</x>
+      <y>1131</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>702</x>
+      <y>442</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>702</x>
+      <y>884</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2691</x>
+      <y>845</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>1
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>819</x>
+      <y>442</y>
+      <w>52</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>4
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
