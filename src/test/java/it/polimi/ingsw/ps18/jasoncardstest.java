@@ -15,7 +15,7 @@ public class jasoncardstest {
 
     try {
 
-        Object obj = parser.parse(new FileReader("ps18/src/test/java/it/polimi/ingsw/ps18/cards.json"));
+        Object obj = parser.parse(new FileReader("cards.json"));
 
         JSONObject jsonObject = (JSONObject) obj;
         System.out.println(jsonObject);
