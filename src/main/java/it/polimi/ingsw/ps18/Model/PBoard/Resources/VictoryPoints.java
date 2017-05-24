@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps18.Model.PBoard.Resources;
 class VictoryPoints implements Points{
 	private int quantity;
 	
-	protected VictoryPoints(int value){
+	public VictoryPoints(int value){
 		this.quantity=value;
 	}
 	

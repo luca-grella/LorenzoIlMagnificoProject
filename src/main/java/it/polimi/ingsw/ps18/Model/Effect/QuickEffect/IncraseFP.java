@@ -7,7 +7,7 @@ public class IncraseFP implements QuickEffect {
 
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getResources();
+		Stats stat = player.getStats();
 		stat.addFP(1);
 		
 	}

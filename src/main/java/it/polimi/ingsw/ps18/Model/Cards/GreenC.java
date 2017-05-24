@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.Model.Effect.QuickEffect.HashMapQE;
 
-public class GreenC extends Cards {
+public class GreenC implements Cards {
 	Scanner input = new Scanner(System.in);
 	
 	public GreenC(){

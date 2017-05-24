@@ -7,6 +7,6 @@ import it.polimi.ingsw.ps18.Model.PBoard.FMember;
 
 public class MarketCell {
 	private ArrayList<FMember> fam = new ArrayList<FMember>();
-	
+	public ExcommEffects bonus; //prova
 
 }

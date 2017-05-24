@@ -7,7 +7,7 @@ public class IncraseWood implements QuickEffect {
 
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getResources();
+		Stats stat = player.getStats();
 		stat.addWood(1);
 		
 	}

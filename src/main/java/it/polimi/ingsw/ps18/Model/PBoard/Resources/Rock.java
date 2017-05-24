@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps18.Model.PBoard.Resources;
 class Rock implements Resources {
 	private int quantity;
 	
-	protected Rock(int value){
+	public Rock(int value){
 		this.quantity=value;
 	}
 	

@@ -15,6 +15,15 @@ public class Board {
 	private ArrayList<CouncilCell> council = new ArrayList<CouncilCell>();
 	private ArrayList<ProdCell> production = new ArrayList<ProdCell>();
 	private ArrayList<HarvCell> harvest = new ArrayList<HarvCell>();
-	private ArrayList<Excommunications> excomm = new ArrayList<Excommunications>();
+	private ArrayList<Excommunications> excomm = new ArrayList<>(); 
+	
+	public Board (){
+		this.excomm.add(new Excommunications());
+		this.excomm.add(new Excommunications());
+		this.excomm.add(new Excommunications());
+	}
+	
+	
+	
 
 }
