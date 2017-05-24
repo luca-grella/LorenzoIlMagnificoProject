@@ -19,6 +19,21 @@ public class Stats {
 		this.vp = new VictoryPoints(vp);
 	}
 	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("------------------\n");
+		builder.append("Wood: " + this.wood.getQuantity() + "\n");
+		builder.append("Rock: " + this.rock.getQuantity() + "\n");
+		builder.append("Coin: " + this.coin.getQuantity() + "\n");
+		builder.append("Servant: " + this.servant.getQuantity() + "\n");
+		builder.append("FP: " + this.fp.getQuantity() + "\n");
+		builder.append("MP:  " + this.mp.getQuantity() + "\n");
+		builder.append("VP: " + this.vp.getQuantity() + "\n");
+		builder.append("------------------\n");
+		return builder.toString();
+	}
+
+	
     public void addWood(int value){
 		this.wood.addQuantity(value);
 	}
