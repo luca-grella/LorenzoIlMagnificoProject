@@ -11,9 +11,9 @@ public class GreenC implements Cards {
 		System.out.println("Immetti codice primo effetto");
 		String a = input.nextLine();
 		effects.add(HashMapQE.geteffect(a));
-		System.out.println("Immetti codice secondo effetto");
-	    a = input.nextLine();
-		effects.add(HashMapQE.geteffect(a));
+//		System.out.println("Immetti codice secondo effetto");
+//	    a = input.nextLine();
+//		effects.add(HashMapQE.geteffect(a));
 	}
 
 }

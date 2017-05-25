@@ -1,11 +1,14 @@
-package it.polimi.ingsw.ps18.Model;
+package it.polimi.ingsw.ps18.Model.GameLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.Model.Board.Board;
+import it.polimi.ingsw.ps18.Model.Board.BoardCells.Tower;
 import it.polimi.ingsw.ps18.Model.Cards.Cards;
+import it.polimi.ingsw.ps18.Model.Cards.GreenC;
+import it.polimi.ingsw.ps18.Model.PBoard.FMember;
 import it.polimi.ingsw.ps18.Model.PBoard.PBoard;
 
 public class GameLogic {
@@ -17,7 +20,7 @@ public class GameLogic {
 	private int[] order = new int[nplayer];
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
-	private List<Cards> turncards = new ArrayList<>();
+	private List<Cards> turncards = new ArrayList<>(2); //size da rivedere
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.nfamperplayer-1);
 	
 	
@@ -37,11 +40,16 @@ public class GameLogic {
 		                                           //stored in the arraylist, so they are easily identificable
 		}
 		genDeck();
+		ArrayList<Tower> towers = board.getTowers();
+		Tower tower = towers.get(0);
+		tower.insertCards(turncards);
 		//randomizza l'ordine iniziale
 	}
 	
 	public void genDeck(){
-		//genera 4 carte per colore relativamente all'age
+		//per ora generiamo solo due carte
+		turncards.add(new GreenC());
+		turncards.add(new GreenC());
 	}
 	
 	public boolean gameFlow(){
@@ -50,7 +58,7 @@ public class GameLogic {
 			//riordina giocatori
 			for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 				for(int j=0; j<nplayer; j++){
-					playerTurn(players.get(j));
+					this.playerTurn(players.get(j));
 				}
 			}
 			if(TURN%2==0){
@@ -66,7 +74,19 @@ public class GameLogic {
 		return false;
 	}
 	
-	private void playerTurn(PBoard pBoard) {
+	private void playerTurn(PBoard player) {
+		ActionChoice action;
+		System.out.println("Scegli qualle familiare muovere.");
+		FMember fam =  player.chooseFam(input);
+		System.out.println("Sposterai il familiare sulla torre.");
+		System.out.println("Scegli la Torre dove vuoi inserire il familiare.");
+		int torre = input.nextInt();
+		System.out.println("Scegli il piano dove vuoi inserire il familiare.");
+		int piano = input.nextInt();
+		action = new FamtoTower(torre,piano);
+		action.act(fam,this.board, player);
+		
+		
 		
 		
 	}

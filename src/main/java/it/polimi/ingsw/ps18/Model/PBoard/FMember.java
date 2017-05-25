@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.Model.PBoard;
 
-import it.polimi.ingsw.ps18.Model.Dice;
+import it.polimi.ingsw.ps18.Model.GameLogic.Dice;
 
 public class FMember {
 	private int playercol;
