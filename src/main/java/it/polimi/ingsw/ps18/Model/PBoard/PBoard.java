@@ -14,7 +14,7 @@ public class PBoard {
 	private int playercol;
 	private Stats resources;
 	private List<Cards> cards = new ArrayList<>();
-	private List<FMember> fams = new ArrayList<>();
+	private List<FMember> fams = new ArrayList<>(4);
 	
 	
 	public PBoard(int playercol, List<Dice> dices){
@@ -34,19 +34,19 @@ public class PBoard {
 	
 	public void addCard(Cards card){
 		System.out.println("Risorse pre attivazione carta.");
-		this.toString(this.resources);
+		System.out.println(this.toString(this.getStats()));
 		cards.add(card);
 		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
-		for(int i = 0 ; i < 1 ; i++){
+		for(int i = 0 ; i < card.effects.size() ; i++){
 			QuickEffect qeffect = card.effects.get(i);
 			qeffect.activate(this);
 		}
-		this.toString(this.resources);
+		System.out.println(this.toString(this.getStats()));
 	}
 	
 	public FMember chooseFam(Scanner input){
 		System.out.println("I familiari a tua disposizione sono:");
-		this.toString(this.fams);
+		System.out.println(this.toString(this.fams));
 		System.out.println("Scegli il familiare.");
 		int choice = input.nextInt();
 		return this.fams.get(choice);
@@ -57,7 +57,7 @@ public class PBoard {
 		builder.append("-----------------\n");
 		for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 			FMember fam = fams.get(i);
-			builder.append(i + ". Color: " + fam.getColor() + "Value: " + fam.getValue());
+			builder.append(i + ". Color: " + fam.getColor() + "Value: " + fam.getValue() + "\n");
 		} builder.append("-----------------\n");
 		return builder.toString();
 	}

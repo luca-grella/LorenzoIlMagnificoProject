@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.Model.Board.Board;
 import it.polimi.ingsw.ps18.Model.Board.BoardCells.Tower;
 import it.polimi.ingsw.ps18.Model.Cards.Cards;
 import it.polimi.ingsw.ps18.Model.Cards.GreenC;
+import it.polimi.ingsw.ps18.Model.Effect.QuickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.Model.PBoard.FMember;
 import it.polimi.ingsw.ps18.Model.PBoard.PBoard;
 
@@ -21,7 +22,7 @@ public class GameLogic {
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
 	private List<Cards> turncards = new ArrayList<>(2); //size da rivedere
-	private List<Dice> dices = new ArrayList<>(GeneralParameters.nfamperplayer-1);
+	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
 	
 	
@@ -32,7 +33,7 @@ public class GameLogic {
 	
 	public void setup(){
 		this.board = new Board();
-		for(int i=0; i<dices.size(); i++){
+		for(int i=0; i<GeneralParameters.numberofDices; i++){
 			this.dices.add(new Dice(i));
 		}
 		for(int i=0; i<nplayer; i++){
@@ -48,8 +49,9 @@ public class GameLogic {
 	
 	public void genDeck(){
 		//per ora generiamo solo due carte
-		turncards.add(new GreenC());
-		turncards.add(new GreenC());
+		HashMapQE.init();
+		this.turncards.add(new GreenC());
+		this.turncards.add(new GreenC());
 	}
 	
 	public boolean gameFlow(){
