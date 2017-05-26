@@ -1,18 +1,38 @@
 {
-  "name": "Woods",
-  "number": 2,
-  "color": "green",
-  "HarvestValue": 2,
-  "QuickEffects": [
-    "AddWood"
-  ],
-  "QuickEffectsValues": [
-    1
-  ],
-  "HarvestEffects": [
-    "AddWood"
-  ],
-  "HarvestEffectsValues": [
-    1
-  ]
+  "1": {
+    "name": "Commercial Hub",
+    "number": 1,
+    "color": "green",
+    "HarvestValue": 1,
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "HarvestEffects": [
+      "AddCoins"
+    ],
+    "HarvestEffectsValues": [
+      1
+    ]
+  },
+  "2": {
+    "name": "Woods",
+    "number": 2,
+    "color": "green",
+    "HarvestValue": 2,
+    "QuickEffects": [
+      "AddWood"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "HarvestEffects": [
+      "AddWood"
+    ],
+    "HarvestEffectsValues": [
+      1
+    ]
+  }
 }
