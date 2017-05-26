@@ -1,1 +1,8 @@
 AddWood: aggiunge legno
+AddCoin: aggiunge monete
+AddStone: aggiunge pietra
+AddServant: aggiunge servitore
+AddPF: aggiunge punto fede
+AddPM: aggiunge punto militare
+AddPC: aggiunge privilegio del consiglio
+AddPV: aggiunge punto vittoria
