@@ -1,10 +1,11 @@
-package it.polimi.ingsw.ps18.Model.Effect.QuickEffect;
+package it.polimi.ingsw.ps18.model.effect.quickEffect;
 
-import it.polimi.ingsw.ps18.Model.PBoard.PBoard;
-import it.polimi.ingsw.ps18.Model.PBoard.Resources.Stats;
+import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 public interface QuickEffect {
 	
 	public void activate(PBoard player);
+	
+	public void setQuantity(int quantity);
 
 }

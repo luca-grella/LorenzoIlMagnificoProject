@@ -1,10 +1,10 @@
-package it.polimi.ingsw.ps18.Model.Board.BoardCells;
+package it.polimi.ingsw.ps18.model.board.boardcells;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import it.polimi.ingsw.ps18.Model.Cards.Cards;
-import it.polimi.ingsw.ps18.Model.PBoard.FMember;
+import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public interface Tower {
 	

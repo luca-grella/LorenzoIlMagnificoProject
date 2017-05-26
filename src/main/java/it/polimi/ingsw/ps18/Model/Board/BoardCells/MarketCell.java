@@ -1,9 +1,9 @@
-package it.polimi.ingsw.ps18.Model.Board.BoardCells;
+package it.polimi.ingsw.ps18.model.board.boardcells;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps18.Model.Effect.ExcommEffects.ExcommEffects;
-import it.polimi.ingsw.ps18.Model.PBoard.FMember;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class MarketCell {
 	private ArrayList<FMember> fam = new ArrayList<FMember>();

@@ -1,8 +1,8 @@
-package it.polimi.ingsw.ps18.Model.GameLogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
-import it.polimi.ingsw.ps18.Model.Board.Board;
-import it.polimi.ingsw.ps18.Model.PBoard.FMember;
-import it.polimi.ingsw.ps18.Model.PBoard.PBoard;
+import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.personalBoard.FMember;
+import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 public interface ActionChoice {
 	

@@ -1,4 +1,5 @@
-package it.polimi.ingsw.ps18.Model.Effect.ExcommEffects;
+
+package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
 public interface ExcommEffects {
 	

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.Model.GameLogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
 public class Dice {
 	private int color;

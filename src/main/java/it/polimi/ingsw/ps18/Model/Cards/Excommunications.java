@@ -1,8 +1,8 @@
-package it.polimi.ingsw.ps18.Model.Cards;
+package it.polimi.ingsw.ps18.model.cards;
 
 import java.util.ArrayList;
 
-import it.polimi.ingsw.ps18.Model.Effect.ExcommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 
 public class Excommunications {
 	//public ExcommEffects effect;

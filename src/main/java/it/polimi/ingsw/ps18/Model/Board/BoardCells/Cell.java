@@ -1,7 +1,7 @@
-package it.polimi.ingsw.ps18.Model.Board.BoardCells;
+package it.polimi.ingsw.ps18.model.board.boardcells;
 
-import it.polimi.ingsw.ps18.Model.Cards.Cards;
-import it.polimi.ingsw.ps18.Model.PBoard.FMember;
+import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
  * Definition of tower cells
@@ -12,21 +12,14 @@ import it.polimi.ingsw.ps18.Model.PBoard.FMember;
 class Cell { //piano indicato come posizione nell'arraylist
 	private Cards cellCard;
 	private FMember cellFM;
-	private int actionValue = 1; // Il valore che serve ai FMember per posizionarsi in una cella
+//	private int actionValue = 1; // Il valore che serve ai FMember per posizionarsi in una cella
 	
 	
 	// Method called by PBoard class (OR MAYBE BY Tower class). N.B: Controls are private
 	
 	public Cards insertFM(FMember pBoardFM){  /*int fMemberValue ? Qui oppure nei controlli della torre? */
-		//Cards transferCard;
 		if(this.spaceCheck()){
 			this.cellFM = pBoardFM; //Adds FM
-			 //The transfer of the card from the cell to the PBoard has to happen here or elsewhere?
-//			
-//			transferCard = cellCard;
-//			this.cellCard = null;
-			 
-			 
 		}
 		return this.cellCard;
 		

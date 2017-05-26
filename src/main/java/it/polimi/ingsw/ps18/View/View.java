@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.View;
+package it.polimi.ingsw.ps18.view;
 
 public class View {
 
