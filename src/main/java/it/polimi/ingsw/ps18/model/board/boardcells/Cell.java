@@ -15,10 +15,10 @@ class Cell { //piano indicato come posizione nell'arraylist
 //	private int actionValue = 1; // Il valore che serve ai FMember per posizionarsi in una cella
 	
 	
-	// Method called by PBoard class (OR MAYBE BY Tower class). N.B: Controls are private
+	// Method called by PBoard class (OR MAYBE BY Tower class).
 	
 	public Cards insertFM(FMember pBoardFM){  /*int fMemberValue ? Qui oppure nei controlli della torre? */
-		if(this.spaceCheck()){
+		if(this.isEmpty()){
 			this.cellFM = pBoardFM; //Adds FM
 		}
 		return this.cellCard;
@@ -35,7 +35,7 @@ class Cell { //piano indicato come posizione nell'arraylist
 	 * 
 	 */
 	
-	private boolean spaceCheck(){ //REMINDER: MAYBE PRIVATE IS NOT THE BEST CHOICE
+	private boolean isEmpty(){
 		if(this.cellFM==null){ 
 			System.out.println("\nCell is clear!");
 			return true;

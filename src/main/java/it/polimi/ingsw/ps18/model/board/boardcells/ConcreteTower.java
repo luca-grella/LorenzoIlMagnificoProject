@@ -9,14 +9,14 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class ConcreteTower implements Tower {
 	
-	private ArrayList<Cell> towerCells = new ArrayList<>();
+	private List<Cell> towerCells = new ArrayList<>();
 	
 	
 	public ConcreteTower (){
 		for(int count=0; count<GeneralParameters.numberofCells; count++){
-		      this.towerCells.add(count, new Cell()); //TowerObj.CellObj.method (TowerObj will be created by Board)
+		      this.towerCells.add(count, new Cell());
 			
-		      //this.tempCell= insertFM(); // inteso insertFM della cella, non della torre
+		      //this.tempCell= insertFM();
 		}
 		
 	}
