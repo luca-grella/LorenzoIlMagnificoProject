@@ -7,7 +7,6 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 
 public class GreenC extends Cards {
 	private int color = 0;

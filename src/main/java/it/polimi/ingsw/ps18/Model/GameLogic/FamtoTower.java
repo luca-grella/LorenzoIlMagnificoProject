@@ -19,7 +19,7 @@ public class FamtoTower implements ActionChoice {
 
 	@Override
 	public void act(FMember fam, Board board, PBoard player) {
-		ArrayList<Tower> towers = board.getTowers();
+		ArrayList<Tower> towers = (ArrayList<Tower>) board.getTowers();
 		Tower tower = towers.get(towerchoice);
 		Cards newcard = tower.insertFM(fam, floorchoice);
 		player.addCard(newcard);

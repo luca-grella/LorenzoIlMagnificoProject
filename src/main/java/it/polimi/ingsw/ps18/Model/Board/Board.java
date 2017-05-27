@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 
 public class Board {
-	private ArrayList<Tower> towers = new ArrayList<>(1);
+	private ArrayList<Tower> towers = new ArrayList<>();
 //	private ArrayList<MarketCell> market = new ArrayList<>();
 //	private ArrayList<CouncilCell> council = new ArrayList<>();
 //	private ArrayList<ProdCell> production = new ArrayList<>();

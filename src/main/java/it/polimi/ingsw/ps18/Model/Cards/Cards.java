@@ -91,6 +91,20 @@ public abstract class Cards {
 	public void setEffects(List<QuickEffect> effects) {
 		this.effects = effects;
 	}
+
+	/**
+	 * @return the cardCost
+	 */
+	public Stats getCardCost() {
+		return cardCost;
+	}
+
+	/**
+	 * @param cardCost the cardCost to set
+	 */
+	public void setCardCost(Stats cardCost) {
+		this.cardCost = cardCost;
+	}
 	
 	
 

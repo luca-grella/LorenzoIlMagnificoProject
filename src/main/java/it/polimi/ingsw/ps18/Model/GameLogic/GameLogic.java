@@ -43,7 +43,7 @@ public class GameLogic {
 		                                           //stored in the arraylist, so they are easily identificable
 		}
 		genDeck();
-		ArrayList<Tower> towers = board.getTowers();
+		ArrayList<Tower> towers = (ArrayList<Tower>) board.getTowers();
 		Tower tower = towers.get(0);
 		tower.insertCards(turncards);
 		//randomizza l'ordine iniziale
@@ -69,7 +69,7 @@ public class GameLogic {
 				VaticanReport(TURN/2);
 			}
 		} while (TURN!=GeneralParameters.totalTurns);
-		PBoard winner = winnerCalc(players);
+		//PBoard winner = winnerCalc(players);
 		System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
 		if(answer.equalsIgnoreCase("Y")){
