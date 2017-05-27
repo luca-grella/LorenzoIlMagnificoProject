@@ -8,8 +8,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 
 public class YellowC extends Cards {
 	private Stats effectCosts = new Stats(0,0,0,0,0,0,0);
-	private int color = 2;
-	private int value;
+	private int productionValue;
 	private List<ProductionEffect> prodEffect = new ArrayList<>();
 	/**
 	 * @return the effectCosts
@@ -24,28 +23,16 @@ public class YellowC extends Cards {
 		this.effectCosts = effectCosts;
 	}
 	/**
-	 * @return the color
-	 */
-	public int getColor() {
-		return color;
-	}
-	/**
-	 * @param color the color to set
-	 */
-	public void setColor(int color) {
-		this.color = color;
-	}
-	/**
 	 * @return the value
 	 */
-	public int getValue() {
-		return value;
+	public int getProductionValue() {
+		return productionValue;
 	}
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(int value) {
-		this.value = value;
+	public void setProductionValue(int value) {
+		this.productionValue = value;
 	}
 	/**
 	 * @return the prodEffect
