@@ -1,8 +1,15 @@
 package it.polimi.ingsw.ps18.model.cards;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
@@ -15,16 +22,39 @@ public class GreenC extends Cards {
 	Scanner input = new Scanner(System.in);
 	
 	public GreenC(){
-		System.out.println("Immetti codice primo effetto");
-		String a = input.nextLine();
-//		System.out.println("Immetti il moltiplicatore del primo effetto");
-//		int b = input.nextInt();
-//		this.add(HashMapQE.geteffect(a), b);
-		this.effects.add(HashMapQE.geteffect(a));
-		System.out.println("Immetti codice secondo effetto");
-	    a = input.nextLine();
-		this.harveffect.add(HashMapHE.geteffect(a));
+		JSONParser parser = new JSONParser();
+		
+		System.out.println(new File(".").getAbsoluteFile());
+
+	    try {
+	    	
+	    	
+	        Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json"));
+
+
+	        JSONObject jsonObject = (JSONObject) obj;
+	        //System.out.println(jsonObject);
+
+	        this.setID((int) jsonObject.get("number"));
+	        this.setName((String) jsonObject.get("name"));
+	        this.setID((int) jsonObject.get("period"));
+	        this.setID((int) jsonObject.get("color"));
+	        
+	   
+
+	       
+	    }catch (FileNotFoundException e) {
+	        e.printStackTrace();
+
+	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (org.json.simple.parser.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
 	
 //	private boolean add(QuickEffect e, int quantity){
 //	boolean ris = this.effects.add(e);
