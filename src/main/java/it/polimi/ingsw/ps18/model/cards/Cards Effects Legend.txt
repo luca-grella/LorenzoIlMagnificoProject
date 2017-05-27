@@ -7,5 +7,9 @@ AddPM: aggiunge punto militare
 AddPC: aggiunge privilegio del consiglio
 AddPV: aggiunge punto vittoria
 
-funzione costi?
-colori con codici !
+Colors Codes:
+green: 0
+blue: 1
+yellow: 2
+purple: 3
+

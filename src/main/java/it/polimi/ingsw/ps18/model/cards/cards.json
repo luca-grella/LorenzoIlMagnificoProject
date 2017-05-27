@@ -2,7 +2,8 @@
   "1": {
     "name": "Commercial Hub",
     "number": 1,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 1,
     "QuickEffects": [
       null
@@ -20,7 +21,8 @@
   "2": {
     "name": "Woods",
     "number": 2,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 2,
     "QuickEffects": [
       "AddWood"
@@ -38,7 +40,8 @@
   "3": {
     "name": "Village",
     "number": 3,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 3,
     "QuickEffects": [
       null
@@ -58,7 +61,8 @@
   "4": {
     "name": "Gravel Pit",
     "number": 4,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 4,
     "QuickEffects": [
       "AddStone"
@@ -76,7 +80,8 @@
   "5": {
     "name": "Forest",
     "number": 5,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 5,
     "QuickEffects": [
       "AddWood"
@@ -94,7 +99,8 @@
   "6": {
     "name": "Monastery",
     "number": 6,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 6,
     "QuickEffects": [
       "AddPM",
@@ -116,7 +122,8 @@
   "7": {
     "name": "Citadel",
     "number": 7,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 5,
     "QuickEffects": [
       null
@@ -136,7 +143,8 @@
   "8": {
     "name": "City",
     "number": 8,
-    "color": "green",
+    "color": 0,
+    "period": 1,
     "HarvestValue": 6,
     "QuickEffects": [
       "AddCoin"
@@ -154,7 +162,8 @@
   "9": {
     "name": "Gold Mine",
     "number": 9,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 1,
     "QuickEffects": [
       "AddCoin"
@@ -172,7 +181,8 @@
   "10": {
     "name": "Mountain Town",
     "number": 10,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 3,
     "QuickEffects": [
       "AddServant"
@@ -192,7 +202,8 @@
   "11": {
     "name": "Mining Town",
     "number": 11,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 4,
     "QuickEffects": [
       "AddServant",
@@ -214,7 +225,8 @@
   "12": {
     "name": "Rock Pit",
     "number": 12,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 3,
     "QuickEffects": [
       "AddWood"
@@ -232,7 +244,8 @@
   "13": {
     "name": "Estate",
     "number": 13,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 4,
     "QuickEffects": [
       "AddServant",
@@ -254,7 +267,8 @@
   "14": {
     "name": "Hermitage",
     "number": 14,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 2,
     "QuickEffects": [
       "AddPF"
@@ -272,7 +286,8 @@
   "15": {
     "name": "Manor House",
     "number": 15,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 5,
     "QuickEffects": [
       null
@@ -292,7 +307,8 @@
   "16": {
     "name": "Dukedom",
     "number": 16,
-    "color": "green",
+    "color": 0,
+    "period": 2,
     "HarvestValue": 6,
     "QuickEffects": [
       "AddCoin"
@@ -314,7 +330,8 @@
   "17": {
     "name": "Trading Town",
     "number": 17,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 1,
     "QuickEffects": [
       "AddCoin",
@@ -334,7 +351,8 @@
   "18": {
     "name": "Farm",
     "number": 18,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 3,
     "QuickEffects": [
       "AddPV",
@@ -356,7 +374,8 @@
   "19": {
     "name": "Colony",
     "number": 19,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 5,
     "QuickEffects": [
       "AddPM"
@@ -376,7 +395,8 @@
   "20": {
     "name": "Marble Pit",
     "number": 20,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 2,
     "QuickEffects": [
       "AddPV"
@@ -396,7 +416,8 @@
   "21": {
     "name": "Province",
     "number": 21,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 6,
     "QuickEffects": [
       "AddPC",
@@ -418,7 +439,8 @@
   "22": {
     "name": "Sanctuary",
     "number": 22,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 1,
     "QuickEffects": [
       "AddPF"
@@ -438,7 +460,8 @@
   "23": {
     "name": "Castle",
     "number": 23,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 4,
     "QuickEffects": [
       "AddPV",
@@ -460,7 +483,8 @@
   "24": {
     "name": "Fortified Town",
     "number": 24,
-    "color": "green",
+    "color": 0,
+    "period": 3,
     "HarvestValue": 2,
     "QuickEffects": [
       "AddPM",
@@ -479,10 +503,6 @@
       2
     ]
   },
-
-//Da rivedere
-
-
   "25": {
     "name": "Mint",
     "number": 25,
