@@ -1,12 +1,11 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
-import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 
 public class MarketCell {
 	private FMember marketCellFM;
-	//public ExcommEffects bonus; //prova
+	//public MarketEffect bonus;
 	
 	public FMember getMarketCellFM() {
 		return marketCellFM;
