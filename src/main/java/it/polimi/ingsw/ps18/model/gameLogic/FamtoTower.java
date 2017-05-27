@@ -12,11 +12,6 @@ public class FamtoTower implements ActionChoice {
 	private int towerchoice;
 	private int floorchoice;
 
-	public FamtoTower(int torre, int floor) {
-		this.towerchoice = torre;
-		this.floorchoice = floor;
-	}
-
 	@Override
 	public void act(FMember fam, Board board, PBoard player) {
 		ArrayList<Tower> towers = (ArrayList<Tower>) board.getTowers();

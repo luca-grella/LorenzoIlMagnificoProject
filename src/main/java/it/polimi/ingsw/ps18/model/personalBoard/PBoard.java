@@ -53,6 +53,11 @@ public class PBoard {
 		
 	}
 	
+	public int vPCalc(){
+		return playercol;
+		
+	}
+	
 	public String toString(List<FMember> fams){
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");

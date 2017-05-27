@@ -27,12 +27,23 @@ public class GameLogic {
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
 	
-	
-	
+	/**
+	 * Initialize the game
+	 * @param nplayer set the number of players this game has
+	 */
 	public GameLogic(int nplayer){
 		this.nplayer = nplayer;
 	}
 	
+	/**
+	 * Initial Setup that create:
+	 * {@link it.polimi.ingsw.ps18.model.board.Board#Board}
+	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.Dice#Dice} 
+	 * - {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#PBoard(int, List)}
+	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.GameLogic#genDeck()}
+	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.Dice#Dice}
+	 * - insert the cards in the Tower Cells {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower#insertCards(List)} 
+	 */
 	public void setup(){
 		this.board = new Board();
 		for(int i=0; i<GeneralParameters.numberofDices; i++){
@@ -49,13 +60,17 @@ public class GameLogic {
 		//randomizza l'ordine iniziale
 	}
 	
+	/**
+	 * TODO
+	 */
 	public void genDeck(){
-		//per ora generiamo solo due carte
 		HashMapQE.init();
-		this.turncards.add(new GreenC());
-		this.turncards.add(new GreenC());
 	}
 	
+	/**
+	 * Handle the flow of the game, but without th einteraction with the players
+	 * @return true if every player want play again
+	 */
 	public boolean gameFlow(){
 		do{
 			this.TURN++;
@@ -72,35 +87,48 @@ public class GameLogic {
 		//PBoard winner = winnerCalc(players);
 		System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
-		if(answer.equalsIgnoreCase("Y")){
+		if("Y".equalsIgnoreCase(answer)){
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Handle the player's turn
+	 * @param player the player that play in this turn
+	 */
 	private void playerTurn(PBoard player) {
-		ActionChoice action;
-		System.out.println("Scegli qualle familiare muovere.");
-		FMember fam =  player.chooseFam(input);
-		System.out.println("Sposterai il familiare sulla torre.");
-		System.out.println("Scegli la Torre dove vuoi inserire il familiare.");
-		int torre = input.nextInt();
-		System.out.println("Scegli il piano dove vuoi inserire il familiare.");
-		int piano = input.nextInt();
-		action = new FamtoTower(torre,piano);
-		action.act(fam,this.board, player);
+//		ActionChoice action;
+//		System.out.println("Scegli qualle familiare muovere.");
+//		FMember fam =  player.chooseFam(input);
+//		System.out.println("Sposterai il familiare sulla torre.");
+//		System.out.println("Scegli la Torre dove vuoi inserire il familiare.");
+//		int torre = input.nextInt();
+//		System.out.println("Scegli il piano dove vuoi inserire il familiare.");
+//		int piano = input.nextInt();
+//		action = new FamtoTower();
+//		action.act(fam,this.board, player);
 		
 		
 		
 		
 	}
 
-	private PBoard winnerCalc(List<PBoard> players2) {
+	/**
+	 * Calls {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#vPCalc()}
+	 * @param players
+	 * @return the player who has won
+	 */
+	private PBoard winnerCalc(List<PBoard> players) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private void VaticanReport(int i) {
+	/**
+	 * Handle the vatican report phase
+	 * @param age 
+	 */
+	private void VaticanReport(int age) {
 		// TODO Auto-generated method stub
 		
 	}

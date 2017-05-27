@@ -1,12 +1,20 @@
 package it.polimi.ingsw.ps18.model.gameLogic;
 
+import java.util.Random;
+
 public class Dice {
 	private int color;
 	private int value;
 	
+	
+	/**
+	 * Constructor. Generate the value and assign it to the dice
+	 * @param color value the indicates color. Assigned to the dice
+	 */
 	public Dice(int color){
+		Random rand = new Random();
 		this.color = color;
-		//gen. random value
+		this.value = rand.nextInt(6) + 1;
 	}
 	
 	

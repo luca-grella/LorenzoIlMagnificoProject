@@ -17,7 +17,7 @@ public class addCoinsTest {
 	Random rand  = new Random();
 	int a = rand.nextInt(1000);
 	int b = rand.nextInt(1000);
-
+	
 	@Test
 	public void testActivate() {
 		addCoins tester = new addCoins();

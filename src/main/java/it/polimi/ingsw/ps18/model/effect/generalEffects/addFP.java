@@ -10,6 +10,10 @@ import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 public class addFP implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
 	private int quantity;
 
+	/**
+	 * Add a quantity of Faith Points to the player's resources
+	 * @see QuickEffect,HarvestEffect,ProductionEffect,FinalEffect
+	 */
 	@Override
 	public void activate(PBoard player) {
 		Stats stat = player.getStats();
