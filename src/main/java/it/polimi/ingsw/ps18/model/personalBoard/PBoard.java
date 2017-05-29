@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps18.model.gameLogic.Dice;
 import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 
+//TODO: dividere le carte in array, chiamare produzione, harveste e altro. calcolo dei pv
 public class PBoard {
 	private int playercol;
 	private Stats resources;

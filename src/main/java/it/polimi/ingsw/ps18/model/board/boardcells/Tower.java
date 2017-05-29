@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;

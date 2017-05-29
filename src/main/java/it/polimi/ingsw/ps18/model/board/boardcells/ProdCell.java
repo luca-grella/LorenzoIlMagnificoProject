@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
@@ -18,34 +19,18 @@ public class ProdCell {
 
 	public ProdCell() {
 		prodCellFM = null;
-		prodCellValue = 0;
-	}
-	
-	public FMember getProdCellFM() {
-		return prodCellFM;
-	}
-
-	public void setProdCellFM(FMember prodCellFM) {
-		this.prodCellFM = prodCellFM;
-	}
-	
-	
-	public int getProdCellValue() {
-		return prodCellValue;
-	}
-
-	public void setProdCellValue(int prodCellValue) {
-		this.prodCellValue = prodCellValue;
+		prodCellValue = GeneralParameters.valueProdCells;
 	}
 
 	
-	public void insertFM(FMember pBoardFM, int valueFM) {
+	public boolean insertFM(FMember pBoardFM, int valueFM) {
 		if(this.isEmpty()){
 			if(valueFM >= prodCellValue){
 				this.prodCellFM = pBoardFM;
-				//Production Effects
-			}		
-		}
+				return true;
+				//Production Effects gestiti dal chiamante
+			}return false;
+		}return false;
 	}
 	
 	private boolean isEmpty() {
@@ -57,5 +42,39 @@ public class ProdCell {
 			System.out.println("\nError: Production cell occupied!");
 			return false;
 		}
-	}	
+	}
+
+
+	/**
+	 * @return the prodCellFM
+	 */
+	public FMember getProdCellFM() {
+		return prodCellFM;
+	}
+
+
+	/**
+	 * @param prodCellFM the prodCellFM to set
+	 */
+	public void setProdCellFM(FMember prodCellFM) {
+		this.prodCellFM = prodCellFM;
+	}
+
+
+	/**
+	 * @return the prodCellValue
+	 */
+	public int getProdCellValue() {
+		return prodCellValue;
+	}
+
+
+	/**
+	 * @param prodCellValue the prodCellValue to set
+	 */
+	public void setProdCellValue(int prodCellValue) {
+		this.prodCellValue = prodCellValue;
+	}
+	
+	
 }

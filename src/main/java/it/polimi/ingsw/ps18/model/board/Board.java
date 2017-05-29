@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 
 public class Board {
-	private List<ConcreteTower> towers = new ArrayList<>();
+	private List<Tower> towers = new ArrayList<>();
 	private List<MarketCell> marketCells = new ArrayList<>();
 	private List<CouncilCell> councilCells = new ArrayList<>();
 	private List<HarvCell> harvestCells = new ArrayList<>();
@@ -42,63 +42,90 @@ public class Board {
 		}
 	}
 
-	
-	
-	
-	public List<ConcreteTower> getTowers() {
+	/**
+	 * @return the towers
+	 */
+	public List<Tower> getTowers() {
 		return towers;
 	}
 
-	public void setTowers(List<ConcreteTower> towers) {
+	/**
+	 * @param towers the towers to set
+	 */
+	public void setTowers(List<Tower> towers) {
 		this.towers = towers;
 	}
 
+	/**
+	 * @return the marketCells
+	 */
 	public List<MarketCell> getMarketCells() {
 		return marketCells;
 	}
 
+	/**
+	 * @param marketCells the marketCells to set
+	 */
 	public void setMarketCells(List<MarketCell> marketCells) {
 		this.marketCells = marketCells;
 	}
 
+	/**
+	 * @return the councilCells
+	 */
 	public List<CouncilCell> getCouncilCells() {
 		return councilCells;
 	}
 
+	/**
+	 * @param councilCells the councilCells to set
+	 */
 	public void setCouncilCells(List<CouncilCell> councilCells) {
 		this.councilCells = councilCells;
 	}
 
-	public List<ProdCell> getProductionCells() {
-		return productionCells;
-	}
-
-	public void setProductionCells(List<ProdCell> productionCells) {
-		this.productionCells = productionCells;
-	}
-
+	/**
+	 * @return the harvestCells
+	 */
 	public List<HarvCell> getHarvestCells() {
 		return harvestCells;
 	}
 
+	/**
+	 * @param harvestCells the harvestCells to set
+	 */
 	public void setHarvestCells(List<HarvCell> harvestCells) {
 		this.harvestCells = harvestCells;
 	}
 
+	/**
+	 * @return the productionCells
+	 */
+	public List<ProdCell> getProductionCells() {
+		return productionCells;
+	}
+
+	/**
+	 * @param productionCells the productionCells to set
+	 */
+	public void setProductionCells(List<ProdCell> productionCells) {
+		this.productionCells = productionCells;
+	}
+
+	/**
+	 * @return the excommCells
+	 */
 	public List<Excommunications> getExcommCells() {
 		return excommCells;
 	}
 
+	/**
+	 * @param excommCells the excommCells to set
+	 */
 	public void setExcommCells(List<Excommunications> excommCells) {
 		this.excommCells = excommCells;
 	}
-	
-	
-	
-	
-	//Controlli
-	
-	
-	
 
+	
+	//RefreshBoard
 }

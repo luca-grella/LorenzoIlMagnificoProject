@@ -18,8 +18,9 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
  */
 
 public class ConcreteTower implements Tower {
+	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
 	
-	private List<Cell> towerCells = new ArrayList<>();
+	
 	
 	public ConcreteTower () {
 		for(int count=0; count<GeneralParameters.numberofCells; count++){
@@ -27,40 +28,47 @@ public class ConcreteTower implements Tower {
 		}
 	}
 	
-	
-	
-	public List<Cell> getTowerCells() {
-		return towerCells;
-	}
-
-	public void setTowerCells(List<Cell> towerCells) {
-		this.towerCells = towerCells;
-	}
-	
-	
-	/**
-	 * Uses the Cell method insertFM, that places a FMember in a cell
-	 * after selecting the cell floor in a tower
-	 */
-	
-	public Cards insertFM(FMember pBoardFM, int floor) {
-		
-		Cell towerCell = this.towerCells.get(floor);
-		Cards  cellCard = towerCell.insertFM(pBoardFM);
-		return cellCard;
-		
-	}
 	/**
 	 * Uses the Cell method insertCard, that places a card in a cell
 	 * and iterates it for all the cells in a tower
 	 */
 	public void insertCards (List<Cards> turnCards) {
 		
-		for(int i=0; i<2; i++){ //Change number of iterations
+		for(int i=0; i<GeneralParameters.numberofCells; i++){
 			Cell towerCell = this.towerCells.get(i);
 			Cards cellCard = turnCards.get(i);
 			towerCell.insertCard(cellCard);
 		}
 	}
+	
+	
+	/**
+	 * Uses the Cell method insertFM, that places a FMember in a cell
+	 * after selecting the cell floor in a tower
+	 * @param pBoardFM indicates the FM that is going to be used in the action
+	 */
+	
+	public Cards insertFM(FMember pBoardFM, int floor) {
+		
+		Cell towerCell = this.towerCells.get(floor);
+		return towerCell.insertFM(pBoardFM);
+		
+	}
+
+	/**
+	 * @return the towerCells
+	 */
+	public List<Cell> getTowerCells() {
+		return towerCells;
+	}
+
+	/**
+	 * @param towerCells the towerCells to set
+	 */
+	public void setTowerCells(List<Cell> towerCells) {
+		this.towerCells = towerCells;
+	}
+	
+	//controlli
 
 }

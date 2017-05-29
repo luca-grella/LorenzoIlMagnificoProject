@@ -5,11 +5,7 @@ public abstract interface GeneralParameters {
 	public static int numberofCells = 2;
 	public static int numberofDices = 3;
 	public static int nfamperplayer = 4;
-
-	
-	
-	
-	
-	
+	public static int valueProdCells = 1;
+	public static int valueHarvCells = 1;
 
 }

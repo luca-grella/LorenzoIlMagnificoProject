@@ -54,7 +54,7 @@ public class GameLogic {
 		                                           //stored in the arraylist, so they are easily identificable
 		}
 		genDeck();
-		ArrayList<Tower> towers = (ArrayList<Tower>) board.getTowers();
+		List<Tower> towers = board.getTowers();
 		Tower tower = towers.get(0);
 		//tower.insertCards(turncards);
 		//randomizza l'ordine iniziale

@@ -11,30 +11,24 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class MarketCell {
 	private FMember marketCellFM;
+	//effetto market cell
 	
 	
 	public MarketCell() {
 		marketCellFM = null;
-	}
-	
-	public FMember getMarketCellFM() {
-		return marketCellFM;
-	}
-
-	public void setMarketCellFM(FMember marketCellFM) {
-		this.marketCellFM = marketCellFM;
 	}
 
 	/**
 	 * Places a FMember from PBoard to the cell
 	 * @param pBoardFM
 	 */
-	public void insertFM (FMember pBoardFM) {
+	public boolean insertFM (FMember pBoardFM) {
 		
-		if(this.isEmpty())
+		if(this.isEmpty()){
 			this.marketCellFM = pBoardFM;
-		
-		//QuickEff activation
+			return true;
+		} return false;
+		//QuickEff activation gestita dal chiamante
 	}
 	
 	/**
@@ -52,4 +46,20 @@ public class MarketCell {
 			return false;
 		}	
 	}
+
+	/**
+	 * @return the marketCellFM
+	 */
+	public FMember getMarketCellFM() {
+		return marketCellFM;
+	}
+
+	/**
+	 * @param marketCellFM the marketCellFM to set
+	 */
+	public void setMarketCellFM(FMember marketCellFM) {
+		this.marketCellFM = marketCellFM;
+	}
+	
+	
 }

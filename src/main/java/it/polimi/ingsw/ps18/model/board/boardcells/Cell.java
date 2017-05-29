@@ -19,24 +19,14 @@ class Cell {
 		cellFM = null;
 	}
 	
+	/**
+	 * Places a card in Cell
+	 * @param card
+	 */
 	
-	public Cards getCellCard() {
-		return cellCard;
+	public void insertCard(Cards card) {
+		this.cellCard = card;
 	}
-
-	public void setCellCard(Cards cellCard) {
-		this.cellCard = cellCard;
-	}
-
-	public FMember getCellFM() {
-		return cellFM;
-	}
-
-	public void setCellFM(FMember cellFM) {
-		this.cellFM = cellFM;
-	}
-
-
 
 	/**
 	 * Places a FMember from PBoard to Cell
@@ -66,14 +56,37 @@ class Cell {
 			return false;
 		}
 	}
-	
+
 	/**
-	 * Places a card in Cell
-	 * @param card
+	 * @return the cellCard
 	 */
-	
-	public void insertCard(Cards card) {
-		this.cellCard = card;
+	public Cards getCellCard() {
+		return cellCard;
 	}
+
+	/**
+	 * @param cellCard the cellCard to set
+	 */
+	public void setCellCard(Cards cellCard) {
+		this.cellCard = cellCard;
+	}
+
+	/**
+	 * @return the cellFM
+	 */
+	public FMember getCellFM() {
+		return cellFM;
+	}
+
+	/**
+	 * @param cellFM the cellFM to set
+	 */
+	public void setCellFM(FMember cellFM) {
+		this.cellFM = cellFM;
+	}
+	
+	
+	
+	
 	
 }

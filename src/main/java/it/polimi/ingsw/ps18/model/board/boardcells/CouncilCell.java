@@ -10,26 +10,18 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 public class CouncilCell { 
 	private FMember councilCellFM;
 	
+	
+	
 	public CouncilCell() {
 		councilCellFM = null;
 	}
 	
-	
-	public FMember getCouncilCellFM() {
-		return councilCellFM;
-	}
-
-	public void setCouncilCellFM(FMember councilCellFM) {
-		this.councilCellFM = councilCellFM;
-	}
-
-	
-	public void insertFM(FMember pBoardFM) {
-		
-		if(this.isEmpty())
+	public boolean insertFM(FMember pBoardFM) {
+		if(this.isEmpty()){
 			this.councilCellFM = pBoardFM;
-		
-		//Chosen quickEff activation
+			return true;
+		} return false;
+		//privilegio gestito dal chiamante
 	}
 	
 	/**
@@ -47,4 +39,20 @@ public class CouncilCell {
 			return false;
 		}	
 	}
+
+	/**
+	 * @return the councilCellFM
+	 */
+	public FMember getCouncilCellFM() {
+		return councilCellFM;
+	}
+
+	/**
+	 * @param councilCellFM the councilCellFM to set
+	 */
+	public void setCouncilCellFM(FMember councilCellFM) {
+		this.councilCellFM = councilCellFM;
+	}
+	
+	
 }

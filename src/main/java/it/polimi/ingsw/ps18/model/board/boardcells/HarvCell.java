@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
@@ -12,41 +13,25 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
  */
 
 public class HarvCell {
-	
 	private FMember harvCellFM;
 	private int harvCellValue;
 
+	
+	
 	public HarvCell() {
 		harvCellFM = null;
-		harvCellValue = 0;
-	}
-	
-	
-	public FMember getHarvCellFM() {
-		return harvCellFM;
-	}
-
-	public void setHarvCellFM(FMember harvCellFM) {
-		this.harvCellFM = harvCellFM;
-	}
-
-	public int getHarvCellValue() {
-		return harvCellValue;
-	}
-
-	public void setHarvCellValue(int harvCellValue) {
-		this.harvCellValue = harvCellValue;
+		harvCellValue = GeneralParameters.valueHarvCells;
 	}
 
 
-
-	public void insertFM(FMember pBoardFM, int valueFM) {
+	public boolean insertFM(FMember pBoardFM, int valueFM) {
 		if(this.isEmpty()){	
 			if(valueFM >= harvCellValue){
 				this.harvCellFM = pBoardFM;
-				// Harvest Effects
-			}		
-		}
+				return true;
+				// Harvest Effects gestiti dal chaimante
+			}return false;
+		}return false;
 	}
 	
 	private boolean isEmpty() {
@@ -59,4 +44,38 @@ public class HarvCell {
 			return false;
 		}
 	}
+
+
+	/**
+	 * @return the harvCellFM
+	 */
+	public FMember getHarvCellFM() {
+		return harvCellFM;
+	}
+
+
+	/**
+	 * @param harvCellFM the harvCellFM to set
+	 */
+	public void setHarvCellFM(FMember harvCellFM) {
+		this.harvCellFM = harvCellFM;
+	}
+
+
+	/**
+	 * @return the harvCellValue
+	 */
+	public int getHarvCellValue() {
+		return harvCellValue;
+	}
+
+
+	/**
+	 * @param harvCellValue the harvCellValue to set
+	 */
+	public void setHarvCellValue(int harvCellValue) {
+		this.harvCellValue = harvCellValue;
+	}
+	
+	
 }
