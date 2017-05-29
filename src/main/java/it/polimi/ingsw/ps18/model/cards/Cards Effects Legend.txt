@@ -11,7 +11,10 @@ AddPVforGreenCard: aggiunge punto vittoria per ogni carta verde posseduta
 AddPVforYellowCard: aggiunge punto vittoria per ogni carta gialla posseduta
 AddPVforBlueCard: aggiunge punto vittoria per ogni carta blu posseduta
 AddPVforPurpleCard: aggiunge punto vittoria per ogni carta viola posseduta
+AddCoinforYellowCard: aggiunge moneta per ogni carta gialla posseduta
+ConvertResourceInPV: converte risorsa j in x punti vittoria (vettore con prima casella int, che indica numero di punti vittoria; seconda casella array [wood, rock, coin, servant, PM, PF])
 ActivateHarvest: attiva effetto raccolta di valore x
+ActivateProduction: attiva effetto produzione di valore x
 IncreaseFMvalueOnGreenTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre verde)
 IncreaseFMvalueOnYellowTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre gialla)
 SalesWoodorRockYellow: sconta legno o roccia sull'acquisto di carte gialle
@@ -38,3 +41,10 @@ Periods:
 1, 2, 3
 
 "CardCost": [wood, rock, coin, servant, PV, PM, PF]  -> vettore che racchiude interi (ogni intero è la quantità di risorsa corrispondente alla cella dell'array)
+
+
+
+
+////////
+- RAGIONARE SU SCELTA COSTI CARTE VIOLA
+- RAGIONARE SU EFFETTI SCELTA PRODUZIONE CARTE GIALLE
