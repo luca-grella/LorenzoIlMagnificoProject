@@ -4,54 +4,76 @@ import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
- * Definition of tower cells
- * @author yaz
- *
+ * Defines a Tower cell, which contains a Cards object. <br>
+ * 
+ * @see
+ * {@link it.polimi.ingsw.ps18.model.cards.Cards}
  */
 
-class Cell { //piano indicato come posizione nell'arraylist
+class Cell { 
 	private Cards cellCard;
 	private FMember cellFM;
-//	private int actionValue = 1; // Il valore che serve ai FMember per posizionarsi in una cella
+	
+	public Cell() {
+		cellCard = null;
+		cellFM = null;
+	}
 	
 	
-	// Method called by PBoard class (OR MAYBE BY Tower class).
+	public Cards getCellCard() {
+		return cellCard;
+	}
+
+	public void setCellCard(Cards cellCard) {
+		this.cellCard = cellCard;
+	}
+
+	public FMember getCellFM() {
+		return cellFM;
+	}
+
+	public void setCellFM(FMember cellFM) {
+		this.cellFM = cellFM;
+	}
+
+
+
+	/**
+	 * Places a FMember from PBoard to Cell
+	 * @param pBoardFM
+	 * @return card from Cell to PBoard
+	 */
 	
-	public Cards insertFM(FMember pBoardFM){  /*int fMemberValue ? Qui oppure nei controlli della torre? */
+	public Cards insertFM(FMember pBoardFM) { 
 		if(this.isEmpty()){
 			this.cellFM = pBoardFM; //Adds FM
 		}
 		return this.cellCard;
-		
-		
 	}
 	
-	
-	
-	/*
-	 * Controls about addictional payments (e.g 3 coins fee)
-	 * bonuses (derived from the floor value)
-	 * or family members values are made by the Tower class
-	 * 
+	/**
+	 * Checks Cell state (Empty/Full)
+	 * @return a boolean state
 	 */
 	
-	private boolean isEmpty(){
+	private boolean isEmpty() {
 		if(this.cellFM==null){ 
 			System.out.println("\nCell is clear!");
-			return true;
-			
+			return true;	
 		}
 		else {
 			System.out.println("\nError: Cell occupied!");
 			return false;
 		}
-		
 	}
 	
-	public void insertCard(Cards card){
+	/**
+	 * Places a card in Cell
+	 * @param card
+	 */
+	
+	public void insertCard(Cards card) {
 		this.cellCard = card;
 	}
 	
-	
-
 }
