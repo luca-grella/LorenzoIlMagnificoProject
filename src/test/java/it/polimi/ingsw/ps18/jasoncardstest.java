@@ -25,9 +25,13 @@ public class jasoncardstest {
 
         JSONObject jsonObject = (JSONObject) obj;
         //System.out.println(jsonObject);
-
-        String name = (String) jsonObject.get("name");
+        
+        Integer i=1;
+        JSONObject a = (JSONObject) jsonObject.get(i.toString());
+        String name = (String) a.get("name");
         System.out.println(name);
+        long harvValue = (long) a.get("HarvestValue");
+        System.out.println(harvValue);
 
        
     }catch (FileNotFoundException e) {

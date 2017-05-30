@@ -23,7 +23,7 @@ public class GameLogic {
 	private int[] order = new int[nplayer];
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
-	private List<GreenC> turncards = new ArrayList<>(2); //size da rivedere
+	private List<Cards> turncards = new ArrayList<>(1); //size da rivedere
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
 	
@@ -56,7 +56,7 @@ public class GameLogic {
 		genDeck();
 		List<Tower> towers = board.getTowers();
 		Tower tower = towers.get(0);
-		//tower.insertCards(turncards);
+		tower.insertCards(turncards);
 		//randomizza l'ordine iniziale
 	}
 	
@@ -66,12 +66,10 @@ public class GameLogic {
 	public void genDeck(){
 		HashMapQE.init();
 		this.turncards.add(new GreenC());
-		GreenC card = turncards.get(0);
-		System.out.println(card.getID() + card.getName() + card.getPeriod() + card.getColor());
 	}
 	
 	/**
-	 * Handle the flow of the game, but without th einteraction with the players
+	 * Handle the flow of the game, but without the interaction with the players
 	 * @return true if every player want play again
 	 */
 	public boolean gameFlow(){

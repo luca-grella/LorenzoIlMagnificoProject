@@ -8,10 +8,10 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 
 public abstract class Cards {
-	private int ID;
+	private long ID;
 	private String name;
-	private int period;
-	private int color;
+	private long period;
+	private long color;
 	private Stats cardCost = new Stats(0,0,0,0,0,0,0);
 	protected List<QuickEffect> effects = new ArrayList<>(); 
 	
@@ -25,14 +25,14 @@ public abstract class Cards {
 	/**
 	 * @return the iD
 	 */
-	public int getID() {
+	public long getID() {
 		return ID;
 	}
 
 	/**
 	 * @param iD the iD to set
 	 */
-	public void setID(int iD) {
+	public void setID(long iD) {
 		ID = iD;
 	}
 
@@ -53,28 +53,28 @@ public abstract class Cards {
 	/**
 	 * @return the period
 	 */
-	public int getPeriod() {
+	public long getPeriod() {
 		return period;
 	}
 
 	/**
 	 * @param period the period to set
 	 */
-	public void setPeriod(int period) {
+	public void setPeriod(long period) {
 		this.period = period;
 	}
 
 	/**
 	 * @return the color
 	 */
-	public int getColor() {
+	public long getColor() {
 		return color;
 	}
 
 	/**
 	 * @param color the color to set
 	 */
-	public void setColor(int color) {
+	public void setColor(long color) {
 		this.color = color;
 	}
 

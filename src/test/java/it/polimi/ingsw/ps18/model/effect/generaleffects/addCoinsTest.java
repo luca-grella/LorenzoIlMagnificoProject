@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins;
@@ -37,9 +40,7 @@ public class addCoinsTest {
 		int ris = stats.getCoin();
 		tester.activate(player);
 		int ris2 = stats.getCoin();
-		if(ris2!=ris + tester.getQuantity()){
-			fail("Activate non funziona");
-		}
+		assertEquals(ris + tester.getQuantity(), ris2);
 	}
 
 	/*
