@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -44,14 +45,12 @@ public class GreenC extends Cards {
 
 	       
 	    }catch (FileNotFoundException e) {
-	        e.printStackTrace();
+	        System.out.println("File non trovato.");
 
-	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	    } catch (IOException e) {
+		    System.out.println("IOException");
 		} catch (org.json.simple.parser.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Problema nel parser");
 		}
 	}
 	
