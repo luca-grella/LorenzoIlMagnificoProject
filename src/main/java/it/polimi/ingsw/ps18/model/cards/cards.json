@@ -531,6 +531,454 @@
       1
     ]
   },
+  "26": {
+    "name": "Tax Office",
+    "number": 26,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 5,
+    "CardCost": [
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      "AddCoinforGreenCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "27": {
+    "name": "Triumphal Arch",
+    "number": 27,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 6,
+    "CardCost": [
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "ProductionEffects": [
+      "AddPVforPurpleCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "28": {
+    "name": "Theater",
+    "number": 28,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 6,
+    "CardCost": [
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "ProductionEffects": [
+      "AddPVforBlueCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "29": {
+    "name": "Carpenter's Shop",
+    "number": 29,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 4,
+    "CardCost": [
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "30": {
+    "name": "Stonemason's Shop",
+    "number": 30,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 3,
+    "CardCost": [
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "31": {
+    "name": "Chapel",
+    "number": 31,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 2,
+    "CardCost": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    ]
+  },
+  "32": {
+    "name": "Residence",
+    "number": 32,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 1,
+    "CardCost": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    ]
+  },
+  "33": {
+    "name": "Marketplace",
+    "number": 33,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 3,
+    "CardCost": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "34": {
+    "name": "Treasury",
+    "number": 34,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 3,
+    "CardCost": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "41": 41,
   "49": {
     "name": "Warlord",
     "number": 49,
@@ -1160,17 +1608,28 @@
       0
     ],
     "QuickEffects": [
-      "ConvertResourceInPV"
+      "ConvertResourcesInResources"
     ],
     "QuickEffectsValues": [
-      1,
       [
-        0,
-        0,
-        0,
-        0,
-        2,
-        0
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ]
       ]
     ],
     "PermanentEffects": [

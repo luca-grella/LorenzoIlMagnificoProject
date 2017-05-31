@@ -12,7 +12,8 @@ AddPVforYellowCard: aggiunge punto vittoria per ogni carta gialla posseduta
 AddPVforBlueCard: aggiunge punto vittoria per ogni carta blu posseduta
 AddPVforPurpleCard: aggiunge punto vittoria per ogni carta viola posseduta
 AddCoinforYellowCard: aggiunge moneta per ogni carta gialla posseduta
-ConvertResourceInPV: converte risorsa j in x punti vittoria (vettore con prima casella int, che indica numero di punti vittoria; seconda casella array [wood, rock, coin, servant, PM, PF])
+AddCoinforGreenCard: aggiunge moneta per ogni carta verde posseduta
+ConvertResourcesInResources: converte risorsa x in risorsa y (vettore con due array [wood, rock, coin, servant, PV, PM, PF, PC] il primo indica risorsa (o punti) dati, secondo indica risorsa (o punti) ricevuti)
 ActivateHarvest: attiva effetto raccolta di valore x
 ActivateProduction: attiva effetto produzione di valore x
 IncreaseFMvalueOnGreenTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre verde)
@@ -41,7 +42,7 @@ Periods:
 1, 2, 3
 
 "CardCost": [wood, rock, coin, servant, PV, PM, PF]  -> vettore che racchiude interi (ogni intero è la quantità di risorsa corrispondente alla cella dell'array)
-
+"PurpleCardCost": [wood, rock, coin, servant, PV, RequiredPM, PM, PF]  -> vettore che racchiude interi (ogni intero è la quantità di risorsa corrispondente alla cella dell'array), RequiredPM sono i punti militari che il giocatore deve possedere per poter pagare la carta in punti militari
 
 
 
