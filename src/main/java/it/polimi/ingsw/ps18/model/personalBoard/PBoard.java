@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.gameLogic.Dice;
 import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
@@ -23,18 +24,18 @@ public class PBoard extends Observable {
 	public PBoard(int playercol, List<Dice> dices, MainController mcontroller){
 		pBoardView = new PBoardView(mcontroller);
 		addObserver(pBoardView);
-		notifyPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
 		this.playercol = playercol;
 		this.resources = new Stats(2,2,5,2,0,0,0);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
 		} this.fams.add(new FMember(0,playercol));
-		notifyPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 	}
 	
-	private void notifyPBoardView(String msg){
+	private void notifyLogPBoardView(String msg){
 		setChanged();
-		notifyObservers(msg);
+		notifyObservers(new LogMessage(msg));
 	}
 	
 	
@@ -91,6 +92,69 @@ public class PBoard extends Observable {
 		builder.append("VP: " + resources.getVP() + "\n");
 		builder.append("-----------------\n");
 		return builder.toString();
+	}
+
+	/**
+	 * @return the pBoardView
+	 */
+	public PBoardView getpBoardView() {
+		return pBoardView;
+	}
+
+	/**
+	 * @return the playercol
+	 */
+	public int getPlayercol() {
+		return playercol;
+	}
+
+	/**
+	 * @param playercol the playercol to set
+	 */
+	public void setPlayercol(int playercol) {
+		this.playercol = playercol;
+	}
+
+	/**
+	 * @return the resources
+	 */
+	public Stats getResources() {
+		return resources;
+	}
+
+	/**
+	 * @param resources the resources to set
+	 */
+	public void setResources(Stats resources) {
+		this.resources = resources;
+	}
+
+	/**
+	 * @return the cards
+	 */
+	public List<Cards> getCards() {
+		return cards;
+	}
+
+	/**
+	 * @param cards the cards to set
+	 */
+	public void setCards(List<Cards> cards) {
+		this.cards = cards;
+	}
+
+	/**
+	 * @return the fams
+	 */
+	public List<FMember> getFams() {
+		return fams;
+	}
+
+	/**
+	 * @param fams the fams to set
+	 */
+	public void setFams(List<FMember> fams) {
+		this.fams = fams;
 	}
 	
 	

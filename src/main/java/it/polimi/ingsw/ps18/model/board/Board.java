@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.view.BoardView;
 
 public class Board extends Observable {
@@ -27,7 +28,7 @@ public class Board extends Observable {
 	public Board (MainController mcontroller){ //Change for iterations
 		boardview = new BoardView(mcontroller);
 		addObserver(boardview);
-		notifyBoardView("Setup Board Initiated.");
+		notifyLogBoardView("Setup Board Initiated.");
 		int count;
 		
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
@@ -39,12 +40,12 @@ public class Board extends Observable {
 		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
 			this.excommCells.add(new Excommunications());
 		}
-		notifyBoardView("Setup Board Terminated.");
+		notifyLogBoardView("Setup Board Terminated.");
 	}
 	
-	private void notifyBoardView(String msg){
+	private void notifyLogBoardView(String msg){
 		setChanged();
-		notifyObservers(msg);
+		notifyObservers(new LogMessage(msg));
 	}
 
 	/**

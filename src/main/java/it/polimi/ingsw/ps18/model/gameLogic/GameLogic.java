@@ -20,6 +20,8 @@ import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
+import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
@@ -64,7 +66,7 @@ public class GameLogic extends Observable {
 	 * @param mainController 
 	 */
 	public void setup(MainController mainController){
-		notifyMainView("Setup Initiated.");
+		notifyLogMainView("Setup Initiated.");
 		this.board = new Board(mainController);
 		for(int i=0; i<dices.size(); i++){
 			this.dices.add(new Dice(i));
@@ -73,17 +75,12 @@ public class GameLogic extends Observable {
 			this.players.add(new PBoard(i, this.dices, mainController));
 		}
 		genDeck();
-		notifyMainView("Deck Initialized.");
-		insertCardsinTowers();
-		notifyMainView("Cards Inserted in Towers.");
+		notifyLogMainView("Deck Initialized.");
+		//insertCardsinTowers();
+		//notifyLogMainView("Cards Inserted in Towers.");
 		Collections.shuffle(players); //initial order
-		notifyMainView("Player Order Shuffled.");
-		notifyMainView("Setup Terminated.");
-	}
-	
-	private void notifyMainView(String msg){
-		setChanged();
-		notifyObservers(msg);
+		notifyLogMainView("Player Order Shuffled.");
+		notifyLogMainView("Setup Terminated.");
 	}
 	
 	public void genDeck(){
@@ -93,17 +90,17 @@ public class GameLogic extends Observable {
 		HashMapFE.init();
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
 			Integer index = new Integer(i);
-			greencards.add(new GreenC(index));
-		}
+			//greencards.add(new GreenC(index));	
+		} notifyLogMainView("Green Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
-			yellowcards.add(new YellowC(i.toString()));
-		}
+			//yellowcards.add(new YellowC(i.toString()));
+		} notifyLogMainView("Yellow Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberBlueC; i++){
-			bluecards.add(new BlueC(i.toString()));
-		}
+			//bluecards.add(new BlueC(i.toString()));
+		} notifyLogMainView("Blue Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberPurpleC; i++){
-			purplecards.add(new PurpleC(i.toString()));
-		}
+			//purplecards.add(new PurpleC(i.toString()));
+		} notifyLogMainView("Purple Deck Created.");
 	}
 	
 	private void insertCardsinTowers() {
@@ -139,7 +136,7 @@ public class GameLogic extends Observable {
 			for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 				for(int j=0; j<nplayer; j++){
 					this.turnplayer = players.get(j);
-					playerTurn();
+					notifyActionMainView("Turn Handle Init");	
 				}
 			}
 			if(TURN%2==0){
@@ -147,21 +144,12 @@ public class GameLogic extends Observable {
 			}
 		} while (TURN!=GeneralParameters.totalTurns);
 		//PBoard winner = winnerCalc(players);
-		System.out.println("Do you want to play again? Y|N");
+//		System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
 		if("Y".equalsIgnoreCase(answer)){
 			return true;
 		}
 		return false;
-	}
-	
-	/**
-	 * Handle the player's turn
-	 * @param player the player that play in this turn
-	 */
-	private void playerTurn() {
-		setChanged();
-		notifyObservers("ActionChoice");
 	}
 
 	/**
@@ -202,6 +190,16 @@ public class GameLogic extends Observable {
 
 	
 	
+	
+	private void notifyLogMainView(String msg){
+		setChanged();
+		notifyObservers(new LogMessage(msg));
+	}
+	
+	private void notifyActionMainView(String msg){
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
+	}
 	
 	
 
