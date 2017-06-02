@@ -2,29 +2,39 @@ package it.polimi.ingsw.ps18.model.personalBoard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Scanner;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gameLogic.Dice;
 import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
+import it.polimi.ingsw.ps18.view.PBoardView;
 
-//TODO: dividere le carte in array, chiamare produzione, harveste e altro. calcolo dei pv
-public class PBoard {
+public class PBoard extends Observable {
+	PBoardView pBoardView;
 	private int playercol;
 	private Stats resources;
 	private List<Cards> cards = new ArrayList<>();
 	private List<FMember> fams = new ArrayList<>(4);
 	
 	
-	public PBoard(int playercol, List<Dice> dices){
+	public PBoard(int playercol, List<Dice> dices, MainController mcontroller){
+		pBoardView = new PBoardView(mcontroller);
+		addObserver(pBoardView);
+		notifyPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
 		this.playercol = playercol;
 		this.resources = new Stats(2,2,5,2,0,0,0);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
 		} this.fams.add(new FMember(0,playercol));
-		
+		notifyPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
+	}
+	
+	private void notifyPBoardView(String msg){
+		setChanged();
+		notifyObservers(msg);
 	}
 	
 	

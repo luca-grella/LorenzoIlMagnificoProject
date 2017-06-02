@@ -21,6 +21,7 @@ public class privilege implements QuickEffect, HarvestEffect, ProductionEffect, 
 	
 	@Override
 	public void setQuantity(int quantity){
+		this.quantity = quantity;
 		
 	}
 	

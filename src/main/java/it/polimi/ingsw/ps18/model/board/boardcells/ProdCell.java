@@ -19,7 +19,7 @@ public class ProdCell {
 
 	public ProdCell() {
 		prodCellFM = null;
-		prodCellValue = GeneralParameters.valueProdCells;
+		prodCellValue = GeneralParameters.baseValueProdCells;
 	}
 
 	

@@ -20,7 +20,7 @@ public class HarvCell {
 	
 	public HarvCell() {
 		harvCellFM = null;
-		harvCellValue = GeneralParameters.valueHarvCells;
+		harvCellValue = GeneralParameters.baseValueHarvCells;
 	}
 
 

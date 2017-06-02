@@ -28,7 +28,7 @@ public class addServantsTest {
 		tester.setQuantity(b);
 		List<Dice> dices = new ArrayList<>(1);
 		dices.add(new Dice(0));
-		PBoard player = new PBoard(a, dices);
+		PBoard player = new PBoard(a, dices, null);
 		Stats stats = player.getStats();
 		int ris = stats.getServants();
 		tester.activate(player);

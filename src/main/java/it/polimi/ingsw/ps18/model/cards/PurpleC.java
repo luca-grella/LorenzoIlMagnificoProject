@@ -10,6 +10,11 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 public class PurpleC extends Cards {
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
+	public PurpleC(String string) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	/**
 	 * @return the fineffect
 	 */

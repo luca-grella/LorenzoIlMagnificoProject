@@ -2,16 +2,21 @@ package it.polimi.ingsw.ps18.model.board;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.view.BoardView;
 
-public class Board {
+public class Board extends Observable {
+	private BoardView boardview;
 	private List<Tower> towers = new ArrayList<>();
 	private List<MarketCell> marketCells = new ArrayList<>();
 	private List<CouncilCell> councilCells = new ArrayList<>();
@@ -19,27 +24,27 @@ public class Board {
 	private List<ProdCell> productionCells = new ArrayList<>();
 	private List<Excommunications> excommCells = new ArrayList<>(); 
 	
-	public Board (){ //Change for iterations
+	public Board (MainController mcontroller){ //Change for iterations
+		boardview = new BoardView(mcontroller);
+		addObserver(boardview);
+		notifyBoardView("Setup Board Initiated.");
 		int count;
 		
-		for(count=0; count<4; count++){ 
+		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
 			this.towers.add(new ConcreteTower());
 		}
-		for(count=0; count<4; count++){ 
+		for(count=0; count<GeneralParameters.numberofMarketCells; count++){ 
 			this.marketCells.add(new MarketCell());
 		}
-		for(count=0; count<16; count++){ 
-			this.councilCells.add(new CouncilCell());
-		}
-		for(count=0; count<4; count++){ 
-			this.harvestCells.add(new HarvCell());
-		}
-		for(count=0; count<4; count++){ 
-			this.productionCells.add(new ProdCell());
-		}
-		for(count=0; count<3; count++){ 
+		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
 			this.excommCells.add(new Excommunications());
 		}
+		notifyBoardView("Setup Board Terminated.");
+	}
+	
+	private void notifyBoardView(String msg){
+		setChanged();
+		notifyObservers(msg);
 	}
 
 	/**

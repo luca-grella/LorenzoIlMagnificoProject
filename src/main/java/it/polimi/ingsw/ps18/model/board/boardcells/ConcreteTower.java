@@ -32,11 +32,11 @@ public class ConcreteTower implements Tower {
 	 * Uses the Cell method insertCard, that places a card in a cell
 	 * and iterates it for all the cells in a tower
 	 */
-	public void insertCards (List<Cards> turnCards) {
-		
-		for(int i=0; i<GeneralParameters.numberofCells; i++){
+	public void insertCards (List<Cards> Cards) {
+		//TODO: riscrivere insertCards. deve togliere dalla lista quelle usate e posizionare solo quelle dell'era giusta
+    	for(int i=0; i<GeneralParameters.numberofCells; i++){
 			Cell towerCell = this.towerCells.get(i);
-			Cards cellCard = turnCards.get(i);
+			Cards cellCard = Cards.get(i);
 			towerCell.insertCard(cellCard);
 		}
 	}

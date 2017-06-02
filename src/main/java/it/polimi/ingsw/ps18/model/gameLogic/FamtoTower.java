@@ -11,6 +11,10 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 public class FamtoTower implements ActionChoice {
 	private int towerchoice;
 	private int floorchoice;
+	
+	public FamtoTower(){
+		
+	}
 
 	@Override
 	public void act(FMember fam, Board board, PBoard player) {

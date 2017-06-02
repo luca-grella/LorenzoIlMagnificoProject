@@ -1,38 +1,56 @@
 package it.polimi.ingsw.ps18.model.gameLogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.cards.PurpleC;
+import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
+import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
-import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.view.MainView;
 
 
 
-public class GameLogic {
+public class GameLogic extends Observable {
+	MainView mView;
 	Scanner input = new Scanner(System.in);
 	
 	private int TURN = 0;
 	private int AGE = 1;
 	private int nplayer;
-	private int[] order = new int[nplayer];
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
-	private List<Cards> turncards = new ArrayList<>(1); //size da rivedere
+	private PBoard turnplayer;
+	private List<Cards> greencards = new ArrayList<>(GeneralParameters.numberGreenC);
+	private List<Cards> bluecards = new ArrayList<>(GeneralParameters.numberBlueC);
+	private List<Cards> yellowcards = new ArrayList<>(GeneralParameters.numberYellowC);
+	private List<Cards> purplecards = new ArrayList<>(GeneralParameters.numberPurpleC);
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
 	
 	/**
 	 * Initialize the game
 	 * @param nplayer set the number of players this game has
+	 * @param controller 
 	 */
-	public GameLogic(int nplayer){
+	public GameLogic(int nplayer,MainController mController){
 		this.nplayer = nplayer;
+		mView = new MainView(mController);
+		addObserver(mView);
 	}
 	
 	/**
@@ -43,29 +61,71 @@ public class GameLogic {
 	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.GameLogic#genDeck()}
 	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.Dice#Dice}
 	 * - insert the cards in the Tower Cells {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower#insertCards(List)} 
+	 * @param mainController 
 	 */
-	public void setup(){
-		this.board = new Board();
-		for(int i=0; i<GeneralParameters.numberofDices; i++){
+	public void setup(MainController mainController){
+		notifyMainView("Setup Initiated.");
+		this.board = new Board(mainController);
+		for(int i=0; i<dices.size(); i++){
 			this.dices.add(new Dice(i));
 		}
 		for(int i=0; i<nplayer; i++){
-		    this.players.add(new PBoard(i,dices)); //the color represent the order in which they are
-		                                           //stored in the arraylist, so they are easily identificable
+			this.players.add(new PBoard(i, this.dices, mainController));
 		}
 		genDeck();
-		List<Tower> towers = board.getTowers();
-		Tower tower = towers.get(0);
-		tower.insertCards(turncards);
-		//randomizza l'ordine iniziale
+		notifyMainView("Deck Initialized.");
+		insertCardsinTowers();
+		notifyMainView("Cards Inserted in Towers.");
+		Collections.shuffle(players); //initial order
+		notifyMainView("Player Order Shuffled.");
+		notifyMainView("Setup Terminated.");
 	}
 	
-	/**
-	 * TODO
-	 */
+	private void notifyMainView(String msg){
+		setChanged();
+		notifyObservers(msg);
+	}
+	
 	public void genDeck(){
 		HashMapQE.init();
-		this.turncards.add(new GreenC());
+		HashMapHE.init();
+		HashMapPE.init();
+		HashMapFE.init();
+		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
+			Integer index = new Integer(i);
+			greencards.add(new GreenC(index));
+		}
+		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
+			yellowcards.add(new YellowC(i.toString()));
+		}
+		for(Integer i=1; i<=GeneralParameters.numberBlueC; i++){
+			bluecards.add(new BlueC(i.toString()));
+		}
+		for(Integer i=1; i<=GeneralParameters.numberPurpleC; i++){
+			purplecards.add(new PurpleC(i.toString()));
+		}
+	}
+	
+	private void insertCardsinTowers() {
+		List<Tower> towers = board.getTowers();
+		for(int i=0; i<GeneralParameters.numberofBaseTowers; i++){
+			Tower singletower = towers.get(i);
+			switch(i){
+			case 0:
+				singletower.insertCards(greencards);
+				break;
+			case 1:
+				singletower.insertCards(bluecards);
+				break;
+			case 2:
+				singletower.insertCards(yellowcards);
+				break;
+			case 3:
+				singletower.insertCards(purplecards);
+			}
+					
+		}
+		
 	}
 	
 	/**
@@ -78,7 +138,8 @@ public class GameLogic {
 			//riordina giocatori
 			for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 				for(int j=0; j<nplayer; j++){
-					this.playerTurn(players.get(j));
+					this.turnplayer = players.get(j);
+					playerTurn();
 				}
 			}
 			if(TURN%2==0){
@@ -98,21 +159,9 @@ public class GameLogic {
 	 * Handle the player's turn
 	 * @param player the player that play in this turn
 	 */
-	private void playerTurn(PBoard player) {
-//		ActionChoice action;
-//		System.out.println("Scegli qualle familiare muovere.");
-//		FMember fam =  player.chooseFam(input);
-//		System.out.println("Sposterai il familiare sulla torre.");
-//		System.out.println("Scegli la Torre dove vuoi inserire il familiare.");
-//		int torre = input.nextInt();
-//		System.out.println("Scegli il piano dove vuoi inserire il familiare.");
-//		int piano = input.nextInt();
-//		action = new FamtoTower();
-//		action.act(fam,this.board, player);
-		
-		
-		
-		
+	private void playerTurn() {
+		setChanged();
+		notifyObservers("ActionChoice");
 	}
 
 	/**
@@ -121,7 +170,6 @@ public class GameLogic {
 	 * @return the player who has won
 	 */
 	private PBoard winnerCalc(List<PBoard> players) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -130,8 +178,26 @@ public class GameLogic {
 	 * @param age 
 	 */
 	private void VaticanReport(int age) {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	private String toString(Integer i){
+		StringBuilder builder = new StringBuilder();
+		builder.append(i);
+		return builder.toString();
+	}
+
+	/**
+	 * @return the turnplayer
+	 */
+	public PBoard getTurnplayer() {
+		return turnplayer;
+	}
+
+	/**
+	 * @param turnplayer the turnplayer to set
+	 */
+	public void setTurnplayer(PBoard turnplayer) {
+		this.turnplayer = turnplayer;
 	}
 
 	

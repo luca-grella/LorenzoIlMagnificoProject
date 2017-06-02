@@ -10,6 +10,14 @@ public class YellowC extends Cards {
 	private Stats effectCosts = new Stats(0,0,0,0,0,0,0);
 	private int productionValue;
 	private List<ProductionEffect> prodEffect = new ArrayList<>();
+	
+	
+	public YellowC(String string) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 	/**
 	 * @return the effectCosts
 	 */
