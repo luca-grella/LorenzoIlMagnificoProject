@@ -38,13 +38,21 @@ public class MarketCell {
 	
 	private boolean isEmpty() {
 		if(this.marketCellFM==null){ 
-			System.out.println("\nMarket cell is clear!");
 			return true;		
 		}
 		else {
-			System.out.println("\nError: Market cell occupied!");
 			return false;
 		}	
+	}
+	
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		if(isEmpty()){
+			builder.append("Free Space");
+		} else {
+			builder.append("No free");
+		}
+		return builder.toString();
 	}
 
 	/**

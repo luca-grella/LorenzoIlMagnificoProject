@@ -18,7 +18,7 @@ public class PBoard extends Observable {
 	private int playercol;
 	private Stats resources;
 	private List<Cards> cards = new ArrayList<>();
-	private List<FMember> fams = new ArrayList<>(4);
+	private List<FMember> fams = new ArrayList<>(GeneralParameters.nfamperplayer);
 	
 	
 	public PBoard(int playercol, List<Dice> dices, MainController mcontroller){
@@ -53,14 +53,6 @@ public class PBoard extends Observable {
 		System.out.println(this.toString(this.getStats()));
 	}
 	
-	public FMember chooseFam(Scanner input){
-		System.out.println("I familiari a tua disposizione sono:");
-		System.out.println(this.toString(this.fams));
-		System.out.println("Scegli il familiare.");
-		int choice = input.nextInt();
-		return this.fams.get(choice);
-	}
-	
 	public void privilege(){
 		
 	}
@@ -70,14 +62,14 @@ public class PBoard extends Observable {
 		
 	}
 	
-	public String toString(List<FMember> fams){
+	public void toString(List<FMember> fams){
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
 		for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 			FMember fam = fams.get(i);
 			builder.append(i + ". Color: " + fam.getColor() + "Value: " + fam.getValue() + "\n");
 		} builder.append("-----------------\n");
-		return builder.toString();
+		notifyLogPBoardView(builder.toString());
 	}
 	
 	public String toString(Stats resources){
@@ -156,8 +148,6 @@ public class PBoard extends Observable {
 	public void setFams(List<FMember> fams) {
 		this.fams = fams;
 	}
-	
-	
 	
 
 }

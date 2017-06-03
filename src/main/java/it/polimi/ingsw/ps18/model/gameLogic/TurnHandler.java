@@ -21,6 +21,7 @@ public class TurnHandler extends Observable{
 	}
 	
 	public void init(){
+		notifyLogMainView("Player color " + currentPlayer.getPlayercol() + " turn");
 		notifyActionMainView("Init Player Turn");
 	}
 	

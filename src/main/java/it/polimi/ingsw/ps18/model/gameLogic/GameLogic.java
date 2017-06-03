@@ -68,7 +68,7 @@ public class GameLogic extends Observable {
 	public void setup(MainController mainController){
 		notifyLogMainView("Setup Initiated.");
 		this.board = new Board(mainController);
-		for(int i=0; i<dices.size(); i++){
+		for(int i=0; i<GeneralParameters.numberofDices; i++){
 			this.dices.add(new Dice(i));
 		}
 		for(int i=0; i<nplayer; i++){
@@ -83,7 +83,7 @@ public class GameLogic extends Observable {
 		notifyLogMainView("Setup Terminated.");
 	}
 	
-	public void genDeck(){
+	private void genDeck(){
 		HashMapQE.init();
 		HashMapHE.init();
 		HashMapPE.init();
@@ -182,15 +182,12 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * @param turnplayer the turnplayer to set
+	 * @return the board
 	 */
-	public void setTurnplayer(PBoard turnplayer) {
-		this.turnplayer = turnplayer;
+	public Board getBoard() {
+		return board;
 	}
 
-	
-	
-	
 	private void notifyLogMainView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));

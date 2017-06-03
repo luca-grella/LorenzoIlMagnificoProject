@@ -13,9 +13,12 @@ import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 
 public class PBoardView extends Observable implements Observer {
 	Scanner input = new Scanner(System.in);
+	MainController controller;
 	
 	public PBoardView(MainController mcontroller){
-		addObserver(mcontroller);
+		this.controller = mcontroller;
+		addObserver(controller);
+		HashMapPBVA.init();
 	}
 
 	@Override
@@ -28,11 +31,11 @@ public class PBoardView extends Observable implements Observer {
 			break;
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;
-//			PBViewAction action = HashMapPBVA.geteffect(aMessage.getMessage());
-			if("Init Player Turn".equals(aMessage.getMessage())){
-				System.out.println("Ciao");
-				String ris = input.nextLine();
-			}
+			PBViewAction action = HashMapPBVA.geteffect(aMessage.getMessage());
+			action.setObserver(controller);
+			action.act();
+			break;
+		
 			
 		}
 	}

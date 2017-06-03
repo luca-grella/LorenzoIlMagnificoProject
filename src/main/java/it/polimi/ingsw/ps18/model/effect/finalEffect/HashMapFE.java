@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 
 
 public class HashMapFE {
-private static Map<String,FinalEffect> genFEffects = new HashMap<>();
+    private static Map<String,FinalEffect> genFEffects = new HashMap<>();
 	
 	public static void init(){
 		genFEffects.put("addVP", new addVP());

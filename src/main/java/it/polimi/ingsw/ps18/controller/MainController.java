@@ -3,14 +3,22 @@ package it.polimi.ingsw.ps18.controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.controller.controlleractions.HashMapActions;
+import it.polimi.ingsw.ps18.controller.controllerstatus.HashMapStatus;
+import it.polimi.ingsw.ps18.controller.controllerstatus.Status;
+import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.gameLogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gameLogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.gameLogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 public class MainController implements Observer {
 	GameLogic game;
-	TurnHandler tHandler;
+	Board board;
 	
 	public MainController(){
 		
@@ -19,6 +27,9 @@ public class MainController implements Observer {
 	public MainController(int nplayer){
 		game = new GameLogic(nplayer,this);
 		game.setup(this);
+		board = game.getBoard();
+		HashMapActions.init();
+		HashMapStatus.init();
 		game.gameFlow();
 	}
 
@@ -28,10 +39,13 @@ public class MainController implements Observer {
 		switch(msg.getID()){
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;
-			if("Turn Handle Init".equals(aMessage.getMessage())){
-				tHandler = new TurnHandler(game.getTurnplayer());
-				tHandler.init();
-			}
+			ActionChoice action = HashMapActions.geteffect(aMessage.getMessage());
+			action.act(game);
+			break;
+		case 3:
+			StatusMessage sMessage = (StatusMessage) msg;
+			Status show = HashMapStatus.geteffect(sMessage.getMessage());
+			show.act(game);
 		}
 		
 	}

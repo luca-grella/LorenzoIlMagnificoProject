@@ -7,12 +7,12 @@ package it.polimi.ingsw.ps18.model.messages;
  *
  */
 public class StatusMessage extends Message {
-	private final int ID = 3;
 	private String message;
 	
 	
 	public StatusMessage(String msg) {
 		this.message = msg;
+		this.ID = 3;
 	}
 	
 	/**
@@ -20,12 +20,6 @@ public class StatusMessage extends Message {
 	 */
 	public String getMessage() {
 		return message;
-	}
-	/**
-	 * @param message the message to set
-	 */
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 }
