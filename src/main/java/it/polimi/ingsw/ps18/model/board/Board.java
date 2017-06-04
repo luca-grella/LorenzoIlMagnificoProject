@@ -130,9 +130,9 @@ public class Board extends Observable {
 		 * list.clear() Non so se elimina tutti gli elementi dell' ArrayList o se li setta a null (cosa che non voglio)
 		 */
 		
-		councilCells.removeAll(councilCells);
-		harvestCells.removeAll(harvestCells); 
-		productionCells.removeAll(productionCells); 
+		councilCells.clear();
+		harvestCells.clear();
+		productionCells.clear();
 		
 	}
 	
