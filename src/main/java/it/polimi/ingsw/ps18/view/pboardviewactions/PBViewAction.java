@@ -8,4 +8,6 @@ public interface PBViewAction {
 	
 	public void act();
 
+	public void setIndex(int number);
+
 }

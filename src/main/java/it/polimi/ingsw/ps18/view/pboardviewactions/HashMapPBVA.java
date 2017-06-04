@@ -14,6 +14,7 @@ public class HashMapPBVA {
 	public static void init(){
 		genPBVAction.put("Init Player Turn", new PBVAInit());
 		genPBVAction.put("Fam Choice", new ShowChoiceFam());
+		genPBVAction.put("Tower Choice", new ShowChoiceTower());
 	}
 	
 	public static PBViewAction geteffect(String a){

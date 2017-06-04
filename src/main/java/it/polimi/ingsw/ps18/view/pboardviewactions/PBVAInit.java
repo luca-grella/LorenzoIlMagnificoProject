@@ -98,4 +98,10 @@ public class PBVAInit extends Observable implements PBViewAction {
 		notifyObservers(new StatusMessage(msg));
 	}
 
+	@Override
+	public void setIndex(int number) {
+		return;
+		
+	}
+
 }

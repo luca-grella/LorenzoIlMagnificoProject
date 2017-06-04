@@ -12,5 +12,11 @@ public class TurnHandleInit implements ActionChoice{
 		tHandler.init();
 		
 	}
+	
+	@Override
+	public void setIndex(int i) {
+		return;
+	}
+
 
 }

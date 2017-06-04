@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
  * @author Francesco-Musio
  *
  */
-public class TurnHandler extends Observable{
+public class TurnHandler extends Observable {
 	PBoard currentPlayer;
 	
 	public TurnHandler(PBoard currentplayer){

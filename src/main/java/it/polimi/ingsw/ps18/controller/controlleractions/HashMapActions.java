@@ -9,6 +9,9 @@ public class HashMapActions {
 	public static void init(){
 		genActions.put("Turn Handle Init", new TurnHandleInit());
 		genActions.put("FamtoTower", new FamtoTowerTrigger());
+		genActions.put("RecieveFamtoTower", new RecieveFamtoTower());
+		genActions.put("RecieveTower", new RecieveTowertoTower());
+		genActions.put("RecieveFloor", new RecieveFloortoTower());
 	}
 	
 	public static ActionChoice geteffect(String a){

@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
-
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
-import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
-import it.polimi.ingsw.ps18.model.cards.PurpleC;
-import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
@@ -42,6 +36,7 @@ public class GameLogic extends Observable {
 	private List<Cards> yellowcards = new ArrayList<>(GeneralParameters.numberYellowC);
 	private List<Cards> purplecards = new ArrayList<>(GeneralParameters.numberPurpleC);
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
+	private Action ongoingAction;
 	
 	
 	/**
@@ -76,7 +71,7 @@ public class GameLogic extends Observable {
 		}
 		genDeck();
 		notifyLogMainView("Deck Initialized.");
-		//insertCardsinTowers();
+//		insertCardsinTowers();
 		//notifyLogMainView("Cards Inserted in Towers.");
 		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
@@ -90,7 +85,7 @@ public class GameLogic extends Observable {
 		HashMapFE.init();
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
 			Integer index = new Integer(i);
-			//greencards.add(new GreenC(index));	
+//			greencards.add(new GreenC(index));	
 		} notifyLogMainView("Green Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
 			//yellowcards.add(new YellowC(i.toString()));
@@ -174,6 +169,16 @@ public class GameLogic extends Observable {
 		builder.append(i);
 		return builder.toString();
 	}
+	
+	private void notifyLogMainView(String msg){
+		setChanged();
+		notifyObservers(new LogMessage(msg));
+	}
+	
+	private void notifyActionMainView(String msg){
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
+	}
 
 	/**
 	 * @return the turnplayer
@@ -189,15 +194,21 @@ public class GameLogic extends Observable {
 		return board;
 	}
 
-	private void notifyLogMainView(String msg){
-		setChanged();
-		notifyObservers(new LogMessage(msg));
+	/**
+	 * @return the ongoingAction
+	 */
+	public Action getOngoingAction() {
+		return ongoingAction;
 	}
+
+	/**
+	 * @param ongoingAction the ongoingAction to set
+	 */
+	public void setOngoingAction(Action ongoingAction) {
+		this.ongoingAction = ongoingAction;
+	}
+
 	
-	private void notifyActionMainView(String msg){
-		setChanged();
-		notifyObservers(new ActionMessage(msg));
-	}
 	
 	
 
