@@ -1,7 +1,8 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
@@ -19,7 +20,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class ConcreteTower implements Tower {
 	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
-	
+	private int cellIndex; //Used for toString(index) method
 	
 	
 	public ConcreteTower () {
@@ -32,12 +33,21 @@ public class ConcreteTower implements Tower {
 	 * Uses the Cell method insertCard, that places a card in a cell
 	 * and iterates it for all the cells in a tower
 	 */
-	public void insertCards (List<Cards> Cards) {
+	public void insertCards (List<Cards> towerCards, int period) {
 		//TODO: riscrivere insertCards. deve togliere dalla lista quelle usate e posizionare solo quelle dell'era giusta
-    	for(int i=0; i<GeneralParameters.numberofCells; i++){
+    	
+		Collections.shuffle(towerCards);
+		
+		for(int i=0; i<GeneralParameters.numberofCells; i++){
 			Cell towerCell = this.towerCells.get(i);
-			Cards cellCard = Cards.get(i);
+			Cards cellCard = towerCards.get(i);
+			Iterator<Cards> itr = towerCards.iterator();
+			while(itr.hasNext() && cellCard.getPeriod() != period){
+				cellCard = itr.next();
+			}
 			towerCell.insertCard(cellCard);
+			/*boolean isRemoved = */towerCards.remove(cellCard);
+
 		}
 	}
 	
@@ -54,6 +64,35 @@ public class ConcreteTower implements Tower {
 		return towerCell.insertFM(pBoardFM);
 		
 	}
+	
+	public List<String> toString(int index){
+		StringBuilder builder = new StringBuilder();
+		List<String> towerStrings = new ArrayList<>(GeneralParameters.numberofCells);
+		
+		for(int count=0; count<GeneralParameters.numberofCells; count++){
+		      towerStrings.add(count, new String());
+		}
+		builder.append("-----------------\n");
+	
+		builder.append("Cells in tower number" + index + ":\n");
+		
+		for(cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
+			Cell towerCell = towerCells.get(cellIndex);
+			String towerString = towerStrings.get(cellIndex); 
+			towerString = towerCell.toString(cellIndex);	//Ora devo fare in modo che il contenuto di towerString venga stampato
+			towerStrings.set(cellIndex, towerString);
+		}
+		
+		return towerStrings;//Dubbio sul tipo di ritorno e sulle modalità di ritorno del metodo
+							//(e.g. builder.toString() cosa fa? ritornando towerStrings, è la View a stamparlo in modo iterato?)
+		
+		
+	}
+	
+	/*
+	 * Controlli vari
+	 */
+	
 
 	/**
 	 * @return the towerCells
@@ -69,6 +108,5 @@ public class ConcreteTower implements Tower {
 		this.towerCells = towerCells;
 	}
 	
-	//controlli
 
 }

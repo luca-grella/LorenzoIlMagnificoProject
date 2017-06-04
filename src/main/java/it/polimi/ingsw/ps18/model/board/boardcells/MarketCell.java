@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
  * Defines a market cell. <br>
- * When a FMember is placed, MarketCell activates a set of quick effects.
+ * When a family member is placed, MarketCell activates a set of quick effects.
  * 
  */
 
@@ -45,13 +45,22 @@ public class MarketCell {
 		}	
 	}
 	
-	public String toString(){
+	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
-		if(isEmpty()){
-			builder.append("Free Space");
-		} else {
-			builder.append("No free");
+		builder.append("-----------------\n");
+		builder.append("Market cell number " + index + ":\n");
+		
+		if(marketCellFM != null){
+			builder.append("Family Member in market cell number " + index + ":\n"
+					+ "Player color: " + marketCellFM.getPlayercol() + "\n"
+					+ "Family Member color: " + marketCellFM.getColor() + "\n"
+					+ "Family Member value: " + marketCellFM.getValue() + "\n"
+					);
 		}
+		else{
+			builder.append("\nMarket cell is empty!");
+		}
+		builder.append("-----------------\n");
 		return builder.toString();
 	}
 

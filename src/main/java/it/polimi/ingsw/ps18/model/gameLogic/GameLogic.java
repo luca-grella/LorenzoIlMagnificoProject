@@ -109,16 +109,16 @@ public class GameLogic extends Observable {
 			Tower singletower = towers.get(i);
 			switch(i){
 			case 0:
-				singletower.insertCards(greencards);
+				singletower.insertCards(greencards, AGE);
 				break;
 			case 1:
-				singletower.insertCards(bluecards);
+				singletower.insertCards(bluecards, AGE);
 				break;
 			case 2:
-				singletower.insertCards(yellowcards);
+				singletower.insertCards(yellowcards, AGE);
 				break;
 			case 3:
-				singletower.insertCards(purplecards);
+				singletower.insertCards(purplecards, AGE);
 			}
 					
 		}
@@ -140,11 +140,12 @@ public class GameLogic extends Observable {
 				}
 			}
 			if(TURN%2==0){
+				board.refreshBoard(); //Added board cleaning after every period
 				VaticanReport(TURN/2);
 			}
 		} while (TURN!=GeneralParameters.totalTurns);
 		//PBoard winner = winnerCalc(players);
-//		System.out.println("Do you want to play again? Y|N");
+		//System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
 		if("Y".equalsIgnoreCase(answer)){
 			return true;

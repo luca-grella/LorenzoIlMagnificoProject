@@ -8,6 +8,8 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
  * 
  * @see
  * {@link it.polimi.ingsw.ps18.model.cards.Cards}
+ * 
+ * @author yazan-matar
  */
 
 class Cell { 
@@ -56,6 +58,38 @@ class Cell {
 			return false;
 		}
 	}
+	
+	public String toString(int index){
+		StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		builder.append("Tower cell number " + index + ":\n");
+		
+		if(cellCard != null){
+			builder.append("Cards in tower cell number " + index + ":\n"
+					+ "Name: " + cellCard.getName() + "\n"
+					+ "ID: " + cellCard.getID() + "\n"
+					+ "Color: " + cellCard.getColor() + "\n"
+					+ "Period: " + cellCard.getPeriod() + "\n"
+					);
+		}
+		else{
+			builder.append("Card already taken!");
+		}
+		if(cellFM != null){
+			builder.append("Family Member in tower cell number " + index + ":\n"
+					+ "Player color: " + cellFM.getPlayercol() + "\n"
+					+ "Family Member color: " + cellFM.getColor() + "\n"
+					+ "Family Member value: " + cellFM.getValue() + "\n"
+					);
+		}
+		else{
+			builder.append("\nTower cell is empty!");
+		}
+		builder.append("-----------------\n");
+		return builder.toString();
+		
+	}
+	
 
 	/**
 	 * @return the cellCard

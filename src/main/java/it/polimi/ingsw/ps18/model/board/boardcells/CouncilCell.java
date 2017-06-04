@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
  * Defines a council cell.
  * When a FMember is placed, the player can choose a quick effect.
  * 
+ * @author yazan-matar
  */
 public class CouncilCell { 
 	private FMember councilCellFM;
@@ -39,6 +40,30 @@ public class CouncilCell {
 			return false;
 		}	
 	}
+	
+	
+	
+	
+	public String toString(int index) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		builder.append("Council cell number " + index + ":\n");
+		
+		if(councilCellFM != null){
+			builder.append("Family Member in council cell number " + index + ":\n"
+					+ "Player color: " + councilCellFM.getPlayercol() + "\n"
+					+ "Family Member color: " + councilCellFM.getColor() + "\n"
+					+ "Family Member value: " + councilCellFM.getValue() + "\n"
+					);
+		}
+		else{
+			builder.append("\nCouncil cell is empty!");
+		}
+		builder.append("-----------------\n");
+		return builder.toString();
+	}
+	
+	
 
 	/**
 	 * @return the councilCellFM

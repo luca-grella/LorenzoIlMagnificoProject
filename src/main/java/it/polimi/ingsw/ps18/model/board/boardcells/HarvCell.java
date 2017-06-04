@@ -5,11 +5,13 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
  * Defines a harvest cell. <br>
- * When a FMember is placed, this cell activates 
+ * When a family member is placed, this cell activates 
  * a set of permanent effects if conditions are fulfilled.
  * 
  * @see
  * {@link it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE}
+ * 
+ * @author yazan-matar
  */
 
 public class HarvCell {
@@ -43,6 +45,29 @@ public class HarvCell {
 			System.out.println("\nError: Harvest cell occupied!");
 			return false;
 		}
+	}
+	
+	
+	
+	public String toString(int index) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		builder.append("Harvest cell number " + index + ":\n");
+		builder.append("Malus value in position " + index + ": " + harvCellValue); //Must be -3 malus if position > 0
+		
+		if(harvCellFM != null){
+			builder.append("Family Member in harvest cell number " + index + ":\n"
+					+ "Player color: " + harvCellFM.getPlayercol() + "\n"
+					+ "Family Member color: " + harvCellFM.getColor() + "\n"
+					+ "Family Member value: " + harvCellFM.getValue() + "\n"
+					);
+		}
+		else{
+			builder.append("\nHarvest cell is empty!");
+		}
+		
+		builder.append("-----------------\n");
+		return builder.toString();
 	}
 
 

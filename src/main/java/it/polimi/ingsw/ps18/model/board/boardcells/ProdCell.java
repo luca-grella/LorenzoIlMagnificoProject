@@ -10,6 +10,8 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
  * 
  * @see
  * {@link it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE}
+ * 
+ * @author yazan-matar
  */
 
 public class ProdCell {
@@ -42,6 +44,30 @@ public class ProdCell {
 			System.out.println("\nError: Production cell occupied!");
 			return false;
 		}
+	}
+	
+	
+	
+	public String toString(int index) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		builder.append("Production cell number " + index + ":\n");
+		builder.append("Malus value in position " + index + ": " + prodCellValue); //Must be -3 malus if position > 0
+
+		
+		if(prodCellFM != null){
+			builder.append("Family Member in production cell number " + index + ":\n"
+					+ "Player color: " + prodCellFM.getPlayercol() + "\n"
+					+ "Family Member color: " + prodCellFM.getColor() + "\n"
+					+ "Family Member value: " + prodCellFM.getValue() + "\n"
+					);
+			// Add cell value
+		}
+		else{
+			builder.append("\nProduction cell is empty!");
+		}
+		builder.append("-----------------\n");
+		return builder.toString();
 	}
 
 
