@@ -1,0 +1,1126 @@
+{
+  "1": {
+    "name": "Mint",
+    "number": 25,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 5,
+    "CardCost": [
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      "AddCoinforYellowCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "2": {
+    "name": "Tax Office",
+    "number": 26,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 5,
+    "CardCost": [
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      "AddCoinforGreenCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "3": {
+    "name": "Triumphal Arch",
+    "number": 27,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 6,
+    "CardCost": [
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "ProductionEffects": [
+      "AddPVforPurpleCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "4": {
+    "name": "Theater",
+    "number": 28,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 6,
+    "CardCost": [
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "ProductionEffects": [
+      "AddPVforBlueCard"
+    ],
+    "ProductionEffectsValues": [
+      1
+    ]
+  },
+  "5": {
+    "name": "Carpenter's Shop",
+    "number": 29,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 4,
+    "CardCost": [
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "6": {
+    "name": "Stonemason's Shop",
+    "number": 30,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 3,
+    "CardCost": [
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "7": {
+    "name": "Chapel",
+    "number": 31,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 2,
+    "CardCost": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    ]
+  },
+  "8": {
+    "name": "Residence",
+    "number": 32,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 1,
+    "CardCost": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    ]
+  },
+  "9": {
+    "name": "Marketplace",
+    "number": 33,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 3,
+    "CardCost": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "10": {
+    "name": "Treasury",
+    "number": 34,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 3,
+    "CardCost": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "11": {
+    "name": "Painters' Guild",
+    "number": 35,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 4,
+    "CardCost": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "12": {
+    "name": "Sculptors' Guild",
+    "number": 36,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 5,
+    "CardCost": [
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources",
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "13": {
+    "name": "Stonemasons' Guild",
+    "number": 37,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 4,
+    "CardCost": [
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "14": {
+    "name": "Baptistery",
+    "number": 38,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 2,
+    "CardCost": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      2,
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "15": {
+    "name": "Barracks",
+    "number": 39,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 1,
+    "CardCost": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "16": {
+    "name": "Stronghold",
+    "number": 40,
+    "color": 2,
+    "period": 2,
+    "ProductionValue": 6,
+    "CardCost": [
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      8
+    ],
+    "ProductionEffects": [
+      "AddPM",
+      "AddPV"
+    ],
+    "ProductionEffectsValues": [
+      "2",
+      "2"
+    ]
+  },
+  "17": {
+    "name": "Bank",
+    "number": 41,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 2,
+    "CardCost": [
+      1,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      7
+    ],
+    "ProductionEffects": [
+      "AddCoin"
+    ],
+    "ProductionEffectsValues": [
+      "5"
+    ]
+  },
+  "18": {
+    "name": "Fair",
+    "number": 42,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 4,
+    "CardCost": [
+      3,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      8
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "19": {
+    "name": "Garden",
+    "number": 43,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 1,
+    "CardCost": [
+      4,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      10
+    ],
+    "ProductionEffects": [
+      "AddPV"
+    ],
+    "ProductionEffectsValues": [
+      "3"
+    ]
+  },
+  "20": {
+    "name": "Fortress",
+    "number": 44,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 5,
+    "CardCost": [
+      2,
+      4,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      9
+    ],
+    "ProductionEffects": [
+      "AddPV",
+      "AddPC"
+    ],
+    "ProductionEffectsValues": [
+      "2",
+      "1"
+    ]
+  },
+  "21": {
+    "name": "Palace",
+    "number": 45,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 6,
+    "CardCost": [
+      3,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      9
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          4,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "22": {
+    "name": "Church",
+    "number": 46,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 1,
+    "CardCost": [
+      1,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      5,
+      1
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesOrResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ]
+      ]
+    ]
+  },
+  "23": {
+    "name": "Military Academy",
+    "number": 47,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 3,
+    "CardCost": [
+      2,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      7
+    ],
+    "ProductionEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "ProductionEffectsValues": [
+      [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "24": {
+    "name": "Cathedral",
+    "number": 48,
+    "color": 2,
+    "period": 3,
+    "ProductionValue": 2,
+    "CardCost": [
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      7,
+      3
+    ],
+    "ProductionEffects": [
+      "AddPV"
+    ],
+    "ProductionEffectsValues": [
+      "1"
+    ]
+  }
+}

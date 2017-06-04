@@ -1,0 +1,690 @@
+{
+  "1": {
+    "name": "Hiring Recruits ",
+    "number": 73,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "2": {
+    "name": "Repairing the Church",
+    "number": 74,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "3": {
+    "name": "Building the Walls",
+    "number": 75,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      2,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      3
+    ]
+  },
+  "4": {
+    "name": "Raising a Statue",
+    "number": 76,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddDifferentPC"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "5": {
+    "name": "Military Campaign",
+    "number": 77,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      0
+    ],
+    "QuickEffects": [
+      "AddCoin"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "6": {
+    "name": "Hosting Panhandlers",
+    "number": 78,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddServant"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "7": {
+    "name": "Fighting Heresies",
+    "number": 79,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      3,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "8": {
+    "name": "Support to the Bishop",
+    "number": 80,
+    "color": 3,
+    "period": 1,
+    "PurpleCardCost": [
+      1,
+      1,
+      2,
+      0,
+      0,
+      4,
+      2,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      1
+    ]
+  },
+  "9": {
+    "name": "Hiring Soldiers",
+    "number": 81,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      6
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "10": {
+    "name": "Repairing the Abbey",
+    "number": 82,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      6
+    ]
+  },
+  "11": {
+    "name": "Building the Bastions",
+    "number": 83,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      3,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      2
+    ]
+  },
+  "12": {
+    "name": "Support to the King",
+    "number": 84,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      3,
+      0
+    ],
+    "QuickEffects": [
+      "AddCoin",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      5,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      3
+    ]
+  },
+  "13": {
+    "name": "Improving the Canals",
+    "number": 85,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      0,
+      0,
+      3,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "ActivateHarvest"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "14": {
+    "name": "Hosting Foreigners",
+    "number": 86,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddServant"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "15": {
+    "name": "Crusade",
+    "number": 87,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      4,
+      0
+    ],
+    "QuickEffects": [
+      "AddCoin",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      5,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "16": {
+    "name": "Support to the Cardinal",
+    "number": 88,
+    "color": 3,
+    "period": 2,
+    "PurpleCardCost": [
+      2,
+      2,
+      3,
+      0,
+      0,
+      7,
+      4,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "17": {
+    "name": "Hiring Mercenaries",
+    "number": 89,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      7
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      6
+    ]
+  },
+  "18": {
+    "name": "Repairing the Cathedral",
+    "number": 90,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "TakeAnyCard",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      7,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "19": {
+    "name": "Building the Towers",
+    "number": 91,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      4,
+      1
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+  "20": {
+    "name": "Promoting Sacred Art",
+    "number": 92,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      3
+    ]
+  },
+  "21": {
+    "name": "Military Conquest",
+    "number": 93,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      6,
+      0
+    ],
+    "QuickEffects": [
+      "AddWood",
+      "AddStone",
+      "AddCoin"
+    ],
+    "QuickEffectsValues": [
+      3,
+      3,
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      7
+    ]
+  },
+  "22": {
+    "name": "Improving the Roads",
+    "number": 94,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      0,
+      0,
+      4,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "ActivateProduction"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      5
+    ]
+  },
+  "23": {
+    "name": "Sacred War",
+    "number": 95,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      15,
+      8,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      8
+    ]
+  },
+  "24": {
+    "name": "Support to the Pope",
+    "number": 96,
+    "color": 3,
+    "period": 3,
+    "PurpleCardCost": [
+      3,
+      3,
+      4,
+      0,
+      0,
+      10,
+      5,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      10
+    ]
+  }
+}
