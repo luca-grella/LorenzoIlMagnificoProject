@@ -68,9 +68,9 @@ public class ConcreteTower implements Tower {
 	public List<String> toString(int index){
 		StringBuilder builder = new StringBuilder();
 		List<String> towerStrings = new ArrayList<>(GeneralParameters.numberofCells);
-		
+		String towerString = null;
 		for(int count=0; count<GeneralParameters.numberofCells; count++){
-		      towerStrings.add(count, new String());
+		      towerStrings.add(count, towerString);
 		}
 		builder.append("-----------------\n");
 	
@@ -78,7 +78,7 @@ public class ConcreteTower implements Tower {
 		
 		for(cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
 			Cell towerCell = towerCells.get(cellIndex);
-			String towerString = towerStrings.get(cellIndex); 
+			//towerString = towerStrings.get(cellIndex);  Sonar says it's a useless assignment	
 			towerString = towerCell.toString(cellIndex);	//Ora devo fare in modo che il contenuto di towerString venga stampato
 			towerStrings.set(cellIndex, towerString);
 		}

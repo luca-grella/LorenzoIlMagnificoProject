@@ -84,7 +84,10 @@ public class GameLogic extends Observable {
 		HashMapPE.init();
 		HashMapFE.init();
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
-			Integer index = new Integer(i);
+			//Integer index = new Integer(i);
+			//SONAR ISSUES
+			
+			Integer index; //Modifica temporanea
 //			greencards.add(new GreenC(index));	
 		} notifyLogMainView("Green Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){

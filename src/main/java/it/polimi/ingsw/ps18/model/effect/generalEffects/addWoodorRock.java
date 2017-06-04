@@ -16,7 +16,9 @@ public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffe
 	 */
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getStats();
+		//Stats stat = player.getStats();
+		//SONAR ISSUES
+		
 		//TODO: scelta fra wood o rock
 //		stat.addWood(quantity);
 //		stat.addRock(quantity);
