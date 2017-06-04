@@ -33,6 +33,14 @@ public class PBoard extends Observable {
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 	}
 	
+	public PBoard(int playercol, List<Dice> dices){
+		this.playercol = playercol;
+		this.resources = new Stats(2,2,5,2,0,0,0);
+		for(int i=0; i<dices.size(); i++){
+			this.fams.add(new FMember(dices.get(i), playercol));
+		} this.fams.add(new FMember(0,playercol));
+	}
+	
 	private void notifyLogPBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));

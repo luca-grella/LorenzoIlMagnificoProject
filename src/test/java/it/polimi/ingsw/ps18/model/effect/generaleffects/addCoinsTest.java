@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins;
 import it.polimi.ingsw.ps18.model.gameLogic.Dice;
 import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
@@ -35,7 +36,7 @@ public class addCoinsTest {
 		tester.setQuantity(b);
 		List<Dice> dices = new ArrayList<>(1);
 		dices.add(new Dice(0));
-		PBoard player = new PBoard(a, dices, null);
+		PBoard player = new PBoard(a, dices);
 		Stats stats = player.getStats();
 		int ris = stats.getCoin();
 		tester.activate(player);

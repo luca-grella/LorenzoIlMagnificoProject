@@ -27,7 +27,7 @@ public class addMPTest {
 		tester.setQuantity(b);
 		List<Dice> dices = new ArrayList<>(1);
 		dices.add(new Dice(0));
-		PBoard player = new PBoard(a, dices, null);
+		PBoard player = new PBoard(a, dices);
 		Stats stats = player.getStats();
 		int ris = stats.getMP();
 		tester.activate(player);
