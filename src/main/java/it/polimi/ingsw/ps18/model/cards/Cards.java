@@ -15,6 +15,7 @@ public abstract class Cards {
 	private Stats cardCost = new Stats(0,0,0,0,0,0,0);
 	protected List<QuickEffect> effects = new ArrayList<>(); 
 	
+	
 	public void activateQEffects(PBoard player){
 		for(int i = 0 ; i < this.effects.size() ; i++){
 			QuickEffect qeffect = this.effects.get(i);

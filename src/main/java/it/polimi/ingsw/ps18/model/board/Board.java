@@ -12,6 +12,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.view.BoardView;
@@ -62,9 +63,10 @@ public class Board extends Observable {
 		addObserver(boardview);
 		notifyLogBoardView("Setup Board Initiated.");
 		int count;
-		
+		HashMapQE.init();
+
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
-			this.towers.add(new ConcreteTower());
+			this.towers.add(new ConcreteTower(count));
 		}
 		for(count=0; count<GeneralParameters.numberofMarketCells; count++){ 
 			this.marketCells.add(new MarketCell());
@@ -85,6 +87,7 @@ public class Board extends Observable {
 		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
 			this.excommCells.add(new Excommunications());
 		}
+		
 		notifyLogBoardView("Setup Board Terminated.");
 	}
 	
@@ -101,39 +104,37 @@ public class Board extends Observable {
 	 */
 	public void refreshBoard(){
 		
-		Tower boardTower = new ConcreteTower(); //Tower or ConcreteTower?
-		MarketCell marketCell = new MarketCell();
-		/*
-		 * Queste celle diventano inutili se bisogna eliminarle ad ogni refresh.
-		 * Le tengo come reminder di ciò che non deve accadere in questo metodo.
-		 * 
-		 * CouncilCell councilCell = new CouncilCell();
-		 * HarvCell harvestCell = new HarvCell();
-		 * ProdCell productionCell = new ProdCell();
-		 * 
-		*/
 		int count;
 		
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){
-			towers.set(count, boardTower);
+			towers.set(count, new ConcreteTower(count));
 		}
 		for(count=0; count<GeneralParameters.numberofMarketCells; count++){
-			marketCells.set(count, marketCell);
+			marketCells.set(count, new MarketCell());
 		}
-		/*
-		 * ATTENZIONE: Se implemento queste celle come ho scritto sopra, al refresh della Board
-		 * devo proprio ELIMINARE tutte le celle dell'ArrayList, e NON iterare settando le celle inizializzate
-		 * 
-		 * Posso usare RemoveAll su uno stesso ArrayList? solitamente si usano due liste:
-		 * listA.removeAll(listB) Elimina tutte le occorrenze di listB in listA
-		 * list.removeAll(list) Non so se si può fare
-		 * list.clear() Non so se elimina tutti gli elementi dell' ArrayList o se li setta a null (cosa che non voglio)
-		 */
 		
 		councilCells.clear();
 		harvestCells.clear();
 		productionCells.clear();
 		
+	}
+	
+	/*
+	 * DEFINE LATER
+	 */
+	public String toStringTowers(){
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("\n-----------------\n");
+		builder.append("Details of board towers\n");
+		
+		for(int towerIndex=0; towerIndex<GeneralParameters.numberofBaseTowers; towerIndex++){
+			Tower boardTower = towers.get(towerIndex);
+			builder.append(boardTower.toString());
+			builder.append("\n-----------------\n");
+		}
+		
+		return builder.toString();
 	}
 	
 

@@ -20,10 +20,11 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class ConcreteTower implements Tower {
 	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
-	private int cellIndex; //Used for toString(index) method
+	//private int cellIndex; //Used for toString(index) method
+	private int color;
 	
-	
-	public ConcreteTower () {
+	public ConcreteTower (int towerIndex) {
+		this.color = towerIndex;
 		for(int count=0; count<GeneralParameters.numberofCells; count++){
 		      this.towerCells.add(count, new Cell());
 		}
@@ -41,7 +42,7 @@ public class ConcreteTower implements Tower {
 		for(int i=0; i<GeneralParameters.numberofCells; i++){
 			Cell towerCell = this.towerCells.get(i);
 			Cards cellCard = towerCards.get(i);
-			Iterator<Cards> itr = towerCards.iterator();
+			Iterator<Cards> itr = towerCards.iterator(); //INDEX OUT OF BOUNDS
 			while(itr.hasNext() && cellCard.getPeriod() != period){
 				cellCard = itr.next();
 			}
@@ -65,30 +66,34 @@ public class ConcreteTower implements Tower {
 		
 	}
 	
-	public List<String> toString(int index){
+	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
-		List<String> towerStrings = new ArrayList<>(GeneralParameters.numberofCells);
-		String towerString = null;
-		for(int count=0; count<GeneralParameters.numberofCells; count++){
-		      towerStrings.add(count, towerString);
-		}
+
 		builder.append("-----------------\n");
-	
 		builder.append("Cells in tower number" + index + ":\n");
 		
-		for(cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
+		for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
 			Cell towerCell = towerCells.get(cellIndex);
-			//towerString = towerStrings.get(cellIndex);  Sonar says it's a useless assignment	
-			towerString = towerCell.toString(cellIndex);	//Ora devo fare in modo che il contenuto di towerString venga stampato
-			towerStrings.set(cellIndex, towerString);
+			builder.append(towerCell.toString(cellIndex));
+			builder.append("\n-----------------\n");
 		}
 		
-		return towerStrings;//Dubbio sul tipo di ritorno e sulle modalità di ritorno del metodo
-							//(e.g. builder.toString() cosa fa? ritornando towerStrings, è la View a stamparlo in modo iterato?)
-		
-		
+		return builder.toString();
 	}
 	
+	/*
+	 * Info generali di una torre
+	 * DEFINE LATER
+	 */
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("-----------------\n");
+		builder.append("Details of tower: \n");
+		builder.append("Tower color: " + this.color); //Qui l'ho chiamato Tower color, da altre parti il colore l'ho chiamato numero
+		builder.append("Number of cells in tower: " + this.towerCells.size());
+		return builder.toString();
+	}
 	/*
 	 * Controlli vari
 	 */

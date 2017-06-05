@@ -1,6 +1,20 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
+import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 
 /**
@@ -11,21 +25,52 @@ import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 public class MarketCell {
 	private FMember marketCellFM;
-	//effetto market cell
+	private List<QuickEffect> effects = new ArrayList<>();
 	
 	
 	public MarketCell() {
+		
 		marketCellFM = null;
+		JSONParser parser = new JSONParser();
+
+	    try {
+	    	//Edit PATH (JSON cards file is now splitted in four different files)
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json")); 
+	    	JSONObject jsonObject = (JSONObject) obj;
+	        JSONObject a = (JSONObject) jsonObject.get(1); //get(i.toString())
+	        
+	        
+	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+	        for(int count=0; count<qeffects.size(); count++){
+	        	if(qeffects.get(count)!=null){
+	        		if(qeffectvalues.get(count)!=null){
+	        			this.add(HashMapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+	        		} else {
+	        			this.effects.add(HashMapQE.geteffect((String) qeffects.get(count)));
+	        		}
+	        	}
+	        }
+	    }catch (FileNotFoundException e) {
+	        System.out.println("File not found.");
+
+	    } catch (IOException e) {
+		    System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problem in parser");
+		}
+		
 	}
 
 	/**
 	 * Places a FMember from PBoard to the cell
 	 * @param pBoardFM
 	 */
-	public boolean insertFM (FMember pBoardFM) {
+	public boolean insertFM (FMember pBoardFM, PBoard player) {
 		
 		if(this.isEmpty()){
 			this.marketCellFM = pBoardFM;
+			activateQEffects(player); 			//attivo effetti sul giocatore
 			return true;
 		} return false;
 		//QuickEff activation gestita dal chiamante
@@ -45,6 +90,24 @@ public class MarketCell {
 		}	
 	}
 	
+	
+	private boolean add(QuickEffect marketQuickEffect, long quantity){
+	    boolean isAdded = this.effects.add(marketQuickEffect);
+	    if(isAdded){
+		    marketQuickEffect.setQuantity(Math.toIntExact(quantity));
+		    return true;
+	    }
+	    else
+	    	return false;		
+    }
+	
+	private void activateQEffects(PBoard player){
+		for(int count=0; count<this.effects.size(); count++){
+			QuickEffect marketQuickEffect = this.effects.get(count); //Sicuro mi da errore su Sonar
+			marketQuickEffect.activate(player);
+		}
+	}
+	
 	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -60,7 +123,7 @@ public class MarketCell {
 		else{
 			builder.append("\nMarket cell is empty!");
 		}
-		builder.append("-----------------\n");
+		builder.append("\n-----------------\n");
 		return builder.toString();
 	}
 
