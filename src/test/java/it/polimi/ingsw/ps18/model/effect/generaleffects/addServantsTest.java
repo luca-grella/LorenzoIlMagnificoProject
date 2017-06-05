@@ -10,7 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
-import it.polimi.ingsw.ps18.model.gameLogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 

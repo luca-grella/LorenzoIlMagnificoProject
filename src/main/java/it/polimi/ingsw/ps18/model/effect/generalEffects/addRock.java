@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 
 public class addRock implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
+	private String name = "Rock";
 	private int quantity;
 
 	/**
@@ -33,5 +34,23 @@ public class addRock implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString(){
+		if(quantity>=0){
+			if(quantity == 1){
+				return "add " + quantity + " " + name;
+			} else if(quantity==0 || quantity>1){
+				return "add " + quantity + " " + name + "s";
+			}
+		} else {
+			if(quantity == -1){
+				return "detract " + quantity + " " + name;
+			} else {
+				return "detract " + quantity + " " + name + "s";
+			}
+		}
+		return "Error";
 	}
 }

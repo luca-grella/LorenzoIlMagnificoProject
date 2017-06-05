@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
-import it.polimi.ingsw.ps18.model.gameLogic.Dice;
-import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
@@ -75,7 +75,8 @@ public class PBoard extends Observable {
 		builder.append("-----------------\n");
 		for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 			FMember fam = fams.get(i);
-			builder.append(i + ". Color: " + fam.getColor() + "Value: " + fam.getValue() + "\n");
+			builder.append("Family Member " + i + ":\n");
+			builder.append(fam.toString());
 		} builder.append("-----------------\n");
 		notifyLogPBoardView(builder.toString());
 	}

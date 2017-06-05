@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
-public class ShowChoiceFam extends Observable implements PBViewAction{
+public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	Scanner input = new Scanner(System.in);
 
 	@Override

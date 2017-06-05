@@ -1,8 +1,9 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.List;
 import java.util.Observable;
 
+import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.*;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
@@ -18,17 +19,25 @@ public class ShowBoard extends Observable {
 		StringBuilder builder = new StringBuilder();
 		for(int i=0; i<market.size(); i++){
 			MarketCell cell = market.get(i);
-			builder.append("Market Cell number " + i + ":\n");
-			builder.append(cell.toString());
+			builder.append(cell.toString(i));
 			builder.append("\n");
 		}
 		notifyLogView(builder.toString());
 		
 	}
 	
+	public void showAllTowers(Board board){
+		//notifyActionView(board.toStringTowers());
+	}
+	
 	private void notifyLogView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
+	}
+	
+	private void notifyActionView(String msg){
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
 	}
 
 }

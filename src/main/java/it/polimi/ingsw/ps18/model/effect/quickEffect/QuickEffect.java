@@ -17,5 +17,7 @@ public interface QuickEffect {
 	 *        that inplement this interface
 	 */
 	public void setQuantity(int quantity);
+	
+	public String toString();
 
 }

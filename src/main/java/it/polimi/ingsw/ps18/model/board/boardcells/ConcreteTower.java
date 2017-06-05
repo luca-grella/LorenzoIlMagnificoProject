@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
-import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalBoard.FMember;
 
 /**
@@ -35,14 +35,12 @@ public class ConcreteTower implements Tower {
 	 * and iterates it for all the cells in a tower
 	 */
 	public void insertCards (List<Cards> towerCards, int period) {
-		//TODO: riscrivere insertCards. deve togliere dalla lista quelle usate e posizionare solo quelle dell'era giusta
-    	
 		Collections.shuffle(towerCards);
 		
 		for(int i=0; i<GeneralParameters.numberofCells; i++){
 			Cell towerCell = this.towerCells.get(i);
-			Cards cellCard = towerCards.get(i);
-			Iterator<Cards> itr = towerCards.iterator(); //INDEX OUT OF BOUNDS
+			Iterator<Cards> itr = towerCards.iterator();
+			Cards cellCard = itr.next();
 			while(itr.hasNext() && cellCard.getPeriod() != period){
 				cellCard = itr.next();
 			}

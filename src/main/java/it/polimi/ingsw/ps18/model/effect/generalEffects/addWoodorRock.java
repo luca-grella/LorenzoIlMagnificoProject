@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
 
 public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
+	private String name = "Wood or Rock";
 	private int quantity;
 
 	/**
@@ -17,7 +18,6 @@ public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffe
 	@Override
 	public void activate(PBoard player) {
 		//Stats stat = player.getStats();
-		//SONAR ISSUES
 		
 		//TODO: scelta fra wood o rock
 //		stat.addWood(quantity);
@@ -37,5 +37,10 @@ public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffe
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString(){
+		return "Da scrivere";
 	}
 }

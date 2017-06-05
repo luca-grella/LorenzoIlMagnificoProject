@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -21,7 +21,7 @@ public class FamtoTower extends Observable implements Action {
 	}
 	
 	public void famchoice(){
-		notifyActionPBoardView("Fam Choice");
+		notifyActionPBoardView("Fam Choice Tower");
 	}
 	
 	public void towerChoice(){
@@ -29,9 +29,10 @@ public class FamtoTower extends Observable implements Action {
 	}
 	
 	public void floorChoice(){
-		notifyActionPBoardView("FloorChoice");
+		notifyActionPBoardView("Floor Choice");
 	}
 
+	@Override
 	public void act(GameLogic game) {
 		Board board = game.getBoard();
 		ArrayList<Tower> towers = (ArrayList<Tower>) board.getTowers();
@@ -49,6 +50,7 @@ public class FamtoTower extends Observable implements Action {
 	/**
 	 * @param chosenFam the chosenFam to set
 	 */
+	@Override
 	public void setChosenFam(FMember chosenFam) {
 		this.chosenFam = chosenFam;
 	}

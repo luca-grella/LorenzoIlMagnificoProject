@@ -13,8 +13,11 @@ public class HashMapPBVA {
 	
 	public static void init(){
 		genPBVAction.put("Init Player Turn", new PBVAInit());
-		genPBVAction.put("Fam Choice", new ShowChoiceFam());
+		genPBVAction.put("Fam Choice Tower", new ShowChoiceFamtoTower());
 		genPBVAction.put("Tower Choice", new ShowChoiceTower());
+		genPBVAction.put("Floor Choice", new ShowChoiceFloor());
+		genPBVAction.put("Fam Choice Market", new ShowChoiceFamtoMarket());
+		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell());
 	}
 	
 	public static PBViewAction geteffect(String a){

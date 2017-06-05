@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 public class privilege implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect   {
+	private String name = "privilege";
 	private Map<String,QuickEffect> privileges = new HashMap<>();
 	private int quantity;
 
@@ -32,6 +33,11 @@ public class privilege implements QuickEffect, HarvestEffect, ProductionEffect, 
 		privileges.put("addServant", new addServants());
 		privileges.put("addMP", new addMP());
 		privileges.put("addFP", new addFP());
+	}
+	
+	@Override
+	public String toString(){
+		return "Da scrivere";
 	}
      
 }

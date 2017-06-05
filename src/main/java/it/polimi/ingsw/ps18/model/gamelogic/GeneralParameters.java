@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 public abstract interface GeneralParameters {
 	public final static int totalTurns = 6;

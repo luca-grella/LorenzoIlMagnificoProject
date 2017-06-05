@@ -65,9 +65,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 			case 9:
 				notifyActionMainController("FamtoTower");
 			    break;
-//			case 10:
-//				
-//				break;
+			case 10:
+				notifyActionMainController("FamtoMarket");
+				break;
 //			case 11:
 //				
 //				break;
@@ -80,6 +80,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 			}
 		}while(ans<9);
 		
+		input.close();
 	}
 	
 	

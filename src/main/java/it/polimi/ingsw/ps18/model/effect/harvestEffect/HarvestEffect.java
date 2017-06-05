@@ -17,5 +17,7 @@ public interface HarvestEffect {
 	 *        that inplement this interface
 	 */
     public void setQuantity(int quantity);
+    
+    public String toString();
 
 }

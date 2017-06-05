@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.personalBoard;
 
-import it.polimi.ingsw.ps18.model.gameLogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 
 public class FMember {
 	private int playercol;
@@ -17,6 +17,14 @@ public class FMember {
 		this.value = value;
 		this.color = -1;
 		this.playercol = playercol;
+	}
+	
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Owner's Color: " + this.playercol);
+		builder.append("\nMember's color: " + this.color);
+		builder.append("\nMember's value: " + this.value);
+		return builder.toString();
 	}
 
 	/**

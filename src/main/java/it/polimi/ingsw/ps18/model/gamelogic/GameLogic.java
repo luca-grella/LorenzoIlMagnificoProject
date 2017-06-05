@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,10 +53,10 @@ public class GameLogic extends Observable {
 	/**
 	 * Initial Setup that create:
 	 * {@link it.polimi.ingsw.ps18.model.board.Board#Board}
-	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.Dice#Dice} 
+	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice} 
 	 * - {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#PBoard(int, List)}
-	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.GameLogic#genDeck()}
-	 * - {@link it.polimi.ingsw.ps18.model.gameLogic.Dice#Dice}
+	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.GameLogic#genDeck()}
+	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice}
 	 * - insert the cards in the Tower Cells {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower#insertCards(List)} 
 	 * @param mainController 
 	 */
@@ -71,8 +71,8 @@ public class GameLogic extends Observable {
 		}
 		genDeck();
 		notifyLogMainView("Deck Initialized.");
-//		insertCardsinTowers();
-		//notifyLogMainView("Cards Inserted in Towers.");
+		insertCardsinTowers();
+		notifyLogMainView("Cards Inserted in Towers.");
 		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
@@ -84,11 +84,8 @@ public class GameLogic extends Observable {
 		HashMapPE.init();
 		HashMapFE.init();
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
-			//Integer index = new Integer(i);
-			//SONAR ISSUES
-			
-			Integer index; //Modifica temporanea
-//			greencards.add(new GreenC(index));	
+			Integer index = new Integer(i);
+			greencards.add(new GreenC(index));	
 		} notifyLogMainView("Green Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
 			//yellowcards.add(new YellowC(i.toString()));
@@ -109,14 +106,14 @@ public class GameLogic extends Observable {
 			case 0:
 				singletower.insertCards(greencards, AGE);
 				break;
-			case 1:
-				singletower.insertCards(bluecards, AGE);
-				break;
-			case 2:
-				singletower.insertCards(yellowcards, AGE);
-				break;
-			case 3:
-				singletower.insertCards(purplecards, AGE);
+//			case 1:
+//				singletower.insertCards(bluecards, AGE);
+//				break;
+//			case 2:
+//				singletower.insertCards(yellowcards, AGE);
+//				break;
+//			case 3:
+//				singletower.insertCards(purplecards, AGE);
 			}
 					
 		}

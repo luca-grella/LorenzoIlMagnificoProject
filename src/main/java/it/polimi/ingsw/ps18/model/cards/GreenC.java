@@ -24,7 +24,7 @@ public class GreenC extends Cards {
 		JSONParser parser = new JSONParser();
 
 	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json"));
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/GreenC.json"));
 	    	JSONObject jsonObject = (JSONObject) obj;
 	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
 	        
@@ -35,27 +35,10 @@ public class GreenC extends Cards {
 	        this.harvValue = (long) a.get("HarvestValue");
 	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
 	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        for(int count=0; count<qeffects.size(); count++){
-	        	if(qeffects.get(count)!=null){
-	        		if(qeffectvalues.get(count)!=null){
-	        			this.add(HashMapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
-	        		} else {
-	        			this.effects.add(HashMapQE.geteffect((String) qeffects.get(count)));
-	        		}
-	        	}
-	        }
+	        addQEffects(qeffects,qeffectvalues);
 	        JSONArray heffects = (JSONArray) a.get("HarvestEffects");
 	        JSONArray heffectvalues = (JSONArray) a.get("HarvestEffectsValues");
-	        for(int count=0; count<heffects.size(); count++){
-	        	if(heffects.get(count)!=null){
-	        		if(heffectvalues.get(count)!=null){
-	        			this.add(HashMapHE.geteffect((String) heffects.get(count)), (long) heffectvalues.get(count));
-	        		} else {
-	        			this.harveffect.add(HashMapHE.geteffect((String) heffects.get(count)));
-	        		}
-	        	}
-	        }
-	        
+	        addHEffects(heffects,heffectvalues);
 	        
 	    }catch (FileNotFoundException e) {
 	        System.out.println("File non trovato.");
@@ -68,6 +51,34 @@ public class GreenC extends Cards {
 	}
 	
 	
+	private void addHEffects(JSONArray heffects, JSONArray heffectvalues) {
+		for(int count=0; count<heffects.size(); count++){
+        	if(heffects.get(count)!=null){
+        		if(heffectvalues.get(count)!=null){
+        			this.add(HashMapHE.geteffect((String) heffects.get(count)), (long) heffectvalues.get(count));
+        		} else {
+        			this.harveffect.add(HashMapHE.geteffect((String) heffects.get(count)));
+        		}
+        	}
+        }
+		
+	}
+
+
+	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues) {
+		for(int count=0; count<qeffects.size(); count++){
+        	if(qeffects.get(count)!=null){
+        		if(qeffectvalues.get(count)!=null){
+        			this.add(HashMapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+        		} else {
+        			this.effects.add(HashMapQE.geteffect((String) qeffects.get(count)));
+        		}
+        	}
+        }
+		
+	}
+
+
 	private boolean add(QuickEffect e, long quantity){
 	    boolean ris = this.effects.add(e);
 	    if(ris){

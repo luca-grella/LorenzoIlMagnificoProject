@@ -1,8 +1,9 @@
-package it.polimi.ingsw.ps18.controller.controlleractions;
+package it.polimi.ingsw.ps18.controller.controlleractions.famtotower;
 
-import it.polimi.ingsw.ps18.model.gameLogic.Action;
-import it.polimi.ingsw.ps18.model.gameLogic.FamtoTower;
-import it.polimi.ingsw.ps18.model.gameLogic.GameLogic;
+import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.model.gamelogic.Action;
+import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
 public class RecieveFloortoTower implements ActionChoice {
 	private int index;
@@ -11,7 +12,7 @@ public class RecieveFloortoTower implements ActionChoice {
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
 		((FamtoTower) currentaction).setChosenFloor(index);
-		((FamtoTower) currentaction).act(game);
+		currentaction.act(game);
 
 	}
 
