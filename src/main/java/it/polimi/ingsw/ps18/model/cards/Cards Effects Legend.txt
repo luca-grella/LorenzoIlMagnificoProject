@@ -44,9 +44,3 @@ Periods:
 
 "CardCost": [wood, rock, coin, servant, PV, PM, PF]  -> vettore che racchiude interi (ogni intero è la quantità di risorsa corrispondente alla cella dell'array)
 "PurpleCardCost": [wood, rock, coin, servant, PV, RequiredPM, PM, PF]  -> vettore che racchiude interi (ogni intero è la quantità di risorsa corrispondente alla cella dell'array), RequiredPM sono i punti militari che il giocatore deve possedere per poter pagare la carta in punti militari
-
-
-
-////////
-- RAGIONARE SU SCELTA COSTI CARTE VIOLA
-- RAGIONARE SU EFFETTI SCELTA PRODUZIONE CARTE GIALLE
