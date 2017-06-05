@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.Random;
 

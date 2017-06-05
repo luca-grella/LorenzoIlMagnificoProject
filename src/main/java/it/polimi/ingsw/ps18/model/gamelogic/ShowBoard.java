@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gameLogic;
+package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.List;
 import java.util.Observable;

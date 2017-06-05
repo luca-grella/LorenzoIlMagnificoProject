@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
-import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
+import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
+import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
-import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.view.BoardView;
 

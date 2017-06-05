@@ -3,9 +3,9 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtotower;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
-import it.polimi.ingsw.ps18.model.gameLogic.Action;
-import it.polimi.ingsw.ps18.model.gameLogic.FamtoTower;
-import it.polimi.ingsw.ps18.model.gameLogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gamelogic.Action;
+import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 

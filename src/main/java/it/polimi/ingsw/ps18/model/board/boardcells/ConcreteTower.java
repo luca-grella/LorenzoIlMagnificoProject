@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
-import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
