@@ -1,0 +1,691 @@
+{
+  "1": {
+    "name": "Warlord",
+    "number": 49,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnGreenTower"
+    ],
+    "PermanentEffectsValues": [
+      2
+    ]
+  },
+  "2": {
+    "name": "Stonemason",
+    "number": 50,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnYellowTower",
+      "SalesWoodorRockYellow"
+    ],
+    "PermanentEffectsValues": [
+      2,
+      1
+    ]
+  },
+  "3": {
+    "name": "Dame",
+    "number": 51,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnBlueTower",
+      "SalesCoinBlue"
+    ],
+    "PermanentEffectsValues": [
+      2,
+      1
+    ]
+  },
+  "4": {
+    "name": "Knight",
+    "number": 52,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnPurpleTower"
+    ],
+    "PermanentEffectsValues": [
+      2
+    ]
+  },
+  "5": {
+    "name": "Farmer",
+    "number": 53,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnHarvest"
+    ],
+    "PermanentEffectsValues": [
+      2
+    ]
+  },
+  "6": {
+    "name": "Artisan",
+    "number": 54,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnProduction"
+    ],
+    "PermanentEffectsValues": [
+      2
+    ]
+  },
+  "7": {
+    "name": "Preacher",
+    "number": 55,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      4
+    ],
+    "PermanentEffects": [
+      "BlockFloorBonus",
+      "BlockFloorBonus"
+    ],
+    "PermanentEffectsValues": [
+      2,
+      3
+    ]
+  },
+  "8": {
+    "name": "Abbess",
+    "number": 56,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "TakeAnyCard",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      4,
+      1
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "9": {
+    "name": "Captain",
+    "number": 57,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "IncreaseFMvalueOnGreenTower",
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      6,
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "10": {
+    "name": "Architect",
+    "number": 58,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "IncreaseFMvalueOnYellowTower",
+      "SalesWoodandRockYellow"
+    ],
+    "QuickEffectsValues": [
+      6,
+      1
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "11": {
+    "name": "Patron",
+    "number": 59,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "IncreaseFMvalueOnBlueTower",
+      "SalesCoinBlue"
+    ],
+    "QuickEffectsValues": [
+      6,
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "12": {
+    "name": "Hero",
+    "number": 60,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "IncreaseFMvalueOnPurpleTower",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      6,
+      1
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "13": {
+    "name": "Peasant",
+    "number": 61,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnHarvest"
+    ],
+    "PermanentEffectsValues": [
+      3
+    ]
+  },
+  "14": {
+    "name": "Scholar",
+    "number": 62,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "PermanentEffects": [
+      "IncreaseFMvalueOnProduction"
+    ],
+    "PermanentEffectsValues": [
+      3
+    ]
+  },
+  "15": {
+    "name": "Papal Messenger",
+    "number": 63,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "16": {
+    "name": "Royal Messenger",
+    "number": 64,
+    "color": 1,
+    "period": 2,
+    "CardCost": [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddDifferentPC"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "17": {
+    "name": "Noble",
+    "number": 65,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPVforGreenCard"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "18": {
+    "name": "Governor",
+    "number": 66,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPVforYellowCard"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "19": {
+    "name": "Paramour",
+    "number": 67,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPVforBlueCard"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "20": {
+    "name": "Herald",
+    "number": 68,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPVforPurpleCard"
+    ],
+    "QuickEffectsValues": [
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "21": {
+    "name": "Cardinal",
+    "number": 69,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "ActivateHarvest",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      4,
+      2
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "22": {
+    "name": "Bishop",
+    "number": 70,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "ActivateProduction",
+      "AddPF"
+    ],
+    "QuickEffectsValues": [
+      4,
+      1
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "23": {
+    "name": "General",
+    "number": 71,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "ConvertResourcesInResources"
+    ],
+    "QuickEffectsValues": [
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ]
+      ]
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  },
+  "24": {
+    "name": "Ambassador",
+    "number": 72,
+    "color": 1,
+    "period": 3,
+    "CardCost": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "TakeAnyCard",
+      "AddPC"
+    ],
+    "QuickEffectsValues": [
+      7,
+      1
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      null
+    ]
+  }
+}
