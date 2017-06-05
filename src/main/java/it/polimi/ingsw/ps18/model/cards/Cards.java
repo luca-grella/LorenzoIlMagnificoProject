@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
-import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public abstract class Cards {
 	private long ID;

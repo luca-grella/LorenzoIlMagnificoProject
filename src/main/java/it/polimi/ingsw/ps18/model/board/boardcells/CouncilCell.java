@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
-import it.polimi.ingsw.ps18.model.personalBoard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
  * Defines a council cell.

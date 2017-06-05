@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class privilege implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect   {
 	private String name = "privilege";

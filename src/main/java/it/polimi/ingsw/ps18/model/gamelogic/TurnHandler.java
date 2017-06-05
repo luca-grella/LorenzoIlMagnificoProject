@@ -1,10 +1,10 @@
-package it.polimi.ingsw.ps18.model.gamelogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
  * Support Class that handle the player's turn. It has a specific View and Controller to

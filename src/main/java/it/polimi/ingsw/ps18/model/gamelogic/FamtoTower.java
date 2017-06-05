@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.gamelogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -7,8 +7,8 @@ import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.personalBoard.FMember;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class FamtoTower extends Observable implements Action {

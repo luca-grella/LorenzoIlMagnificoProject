@@ -1,18 +1,17 @@
 package it.polimi.ingsw.ps18.model.effect.generaleffects;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.AfterClass;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
-import it.polimi.ingsw.ps18.model.gamelogic.Dice;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
-import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
+import it.polimi.ingsw.ps18.model.gameLogic.Dice;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class addServantsTest {
 	Random rand  = new Random();

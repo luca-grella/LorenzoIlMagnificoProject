@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps18.controller.controlleractions.famtomarket;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
-import it.polimi.ingsw.ps18.model.gamelogic.Action;
-import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
-import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gameLogic.Action;
+import it.polimi.ingsw.ps18.model.gameLogic.FamtoMarket;
+import it.polimi.ingsw.ps18.model.gameLogic.GameLogic;
 
 public class RecieveMarketCell implements ActionChoice{
 	private int index;

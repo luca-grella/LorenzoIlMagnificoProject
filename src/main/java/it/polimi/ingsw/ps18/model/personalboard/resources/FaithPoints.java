@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.personalBoard.resources;
+package it.polimi.ingsw.ps18.model.personalboard.resources;
 
 class FaithPoints implements Points{
     private int quantity;

@@ -1,10 +1,11 @@
-package it.polimi.ingsw.ps18.model.gamelogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 import java.util.Scanner;
+
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
@@ -16,7 +17,7 @@ import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
 

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
-import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
-import it.polimi.ingsw.ps18.model.personalBoard.FMember;
+import it.polimi.ingsw.ps18.model.gameLogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
  * Defines a production cell. <br>

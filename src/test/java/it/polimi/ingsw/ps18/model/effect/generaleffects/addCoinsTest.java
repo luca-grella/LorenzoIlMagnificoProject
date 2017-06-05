@@ -1,21 +1,18 @@
 package it.polimi.ingsw.ps18.model.effect.generaleffects;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins;
-import it.polimi.ingsw.ps18.model.gamelogic.Dice;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
-import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
+import it.polimi.ingsw.ps18.model.gameLogic.Dice;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
  * 

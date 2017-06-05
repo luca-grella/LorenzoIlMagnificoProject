@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps18.model.gamelogic;
+package it.polimi.ingsw.ps18.model.gameLogic;
 
-import it.polimi.ingsw.ps18.model.personalBoard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 public interface Action {
 	

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
-import it.polimi.ingsw.ps18.model.personalBoard.resources.Stats;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class YellowC extends Cards {
 	private Stats effectCosts = new Stats(0,0,0,0,0,0,0);

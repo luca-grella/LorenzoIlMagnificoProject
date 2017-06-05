@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.effect.quickEffect;
 
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public interface QuickEffect {
 	

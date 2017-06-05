@@ -8,10 +8,10 @@ import it.polimi.ingsw.ps18.controller.controlleractions.HashMapActions;
 import it.polimi.ingsw.ps18.controller.controllerstatus.HashMapStatus;
 import it.polimi.ingsw.ps18.controller.controllerstatus.Status;
 import it.polimi.ingsw.ps18.model.board.Board;
-import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gameLogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
+import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
 public class MainController implements Observer {

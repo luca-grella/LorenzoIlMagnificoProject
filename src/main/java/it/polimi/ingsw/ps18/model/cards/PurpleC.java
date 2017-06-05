@@ -6,12 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
-import it.polimi.ingsw.ps18.model.personalBoard.PBoard;
 
 
 public class PurpleC extends Cards {
