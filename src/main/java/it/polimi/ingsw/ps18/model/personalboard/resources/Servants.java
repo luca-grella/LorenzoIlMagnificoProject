@@ -7,6 +7,10 @@ class Servants implements Resources{
 		this.quantity=value;
 	}
 	
+	public Servants(long value) {
+		this.quantity = (int) value;
+	}
+
 	public int getQuantity(){
 		return this.quantity;
 	}

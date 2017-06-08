@@ -76,6 +76,7 @@ public class PBoard extends Observable {
 			FMember fam = fams.get(i);
 			builder.append("Family Member " + i + ":\n");
 			builder.append(fam.toString());
+			builder.append("\n\n");
 		} builder.append("-----------------\n");
 		notifyLogPBoardView(builder.toString());
 	}

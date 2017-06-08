@@ -18,6 +18,7 @@ public class HashMapPBVA {
 		genPBVAction.put("Floor Choice", new ShowChoiceFloor());
 		genPBVAction.put("Fam Choice Market", new ShowChoiceFamtoMarket());
 		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell());
+		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil());
 	}
 	
 	public static PBViewAction geteffect(String a){

@@ -11,7 +11,10 @@ import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.cards.PurpleC;
+import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
@@ -38,6 +41,7 @@ public class GameLogic extends Observable {
 	private List<Cards> purplecards = new ArrayList<>(GeneralParameters.numberPurpleC);
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	private Action ongoingAction;
+	private GeneralEffect ongoingEffect;
 	
 	
 	/**
@@ -80,13 +84,10 @@ public class GameLogic extends Observable {
 	}
 	
 	private void genDeck(){
-		HashMapQE.init();
-		HashMapHE.init();
-		HashMapPE.init();
-		HashMapFE.init();
+//	    trasformare tutti gli hashmap in non statici.
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
 			Integer index = new Integer(i);
-			greencards.add(new GreenC(index));	
+			this.greencards.add(new GreenC(index));	
 		} notifyLogMainView("Green Deck Created.");
 		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
 			//yellowcards.add(new YellowC(i.toString()));
@@ -94,8 +95,9 @@ public class GameLogic extends Observable {
 		for(Integer i=1; i<=GeneralParameters.numberBlueC; i++){
 			//bluecards.add(new BlueC(i.toString()));
 		} notifyLogMainView("Blue Deck Created.");
-		for(Integer i=1; i<=GeneralParameters.numberPurpleC; i++){
-			//purplecards.add(new PurpleC(i.toString()));
+		for(int i=1; i<=GeneralParameters.numberPurpleC; i++){
+			Integer index = new Integer(i);
+			purplecards.add(new PurpleC(index));
 		} notifyLogMainView("Purple Deck Created.");
 	}
 	

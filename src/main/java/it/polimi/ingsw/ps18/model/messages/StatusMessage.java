@@ -21,5 +21,6 @@ public class StatusMessage extends Message {
 	public String getMessage() {
 		return message;
 	}
+	
 
 }

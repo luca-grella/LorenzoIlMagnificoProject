@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
 public class ShowChoiceTower extends Observable implements PBViewAction {
 	Scanner input = new Scanner(System.in);
@@ -18,7 +19,7 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	@Override
 	public void act() {
 		System.out.println("Chose the Tower in which you want to move in:\n");
-//		notifyStatusMainController("Show Towers");
+		notifyStatusMainController("Show Towers");
 		int choiceTower = input.nextInt();
 		notifyParamMainController("RecieveTower",choiceTower);
 
@@ -27,6 +28,11 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	private void notifyParamMainController(String msg,int i){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,i));
+	}
+	
+	private void notifyStatusMainController(String msg){
+		setChanged();
+		notifyObservers(new StatusMessage(msg));
 	}
 
 	@Override

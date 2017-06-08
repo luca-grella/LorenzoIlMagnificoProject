@@ -11,17 +11,20 @@ import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.HashMapPBVA;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
 public class PBoardView extends Observable implements Observer {
-	Scanner input = new Scanner(System.in);
 	MainController controller;
 	
 	public PBoardView(MainController mcontroller){
 		this.controller = mcontroller;
 		addObserver(controller);
 		HashMapPBVA.init();
+		HashMapPBVS.init();
 	}
 
 	@Override
@@ -38,9 +41,16 @@ public class PBoardView extends Observable implements Observer {
 			action.setObserver(controller);
 			action.act();
 			break;
+		case 3:
+			StatusMessage sMessage = (StatusMessage) msg;
+			PBViewStatus statusAction = HashMapPBVS.geteffect(sMessage.getMessage());
+			statusAction.setObserver(controller);
+			statusAction.act();
+			break;
 		case 4:
 			ParamMessage pMessage = (ParamMessage) msg;
 			PBViewAction ParamAction = HashMapPBVA.geteffect(pMessage.getMessage());
+			ParamAction.setObserver(controller);
 			ParamAction.setIndex(pMessage.getNumber());
 			ParamAction.act();
 			

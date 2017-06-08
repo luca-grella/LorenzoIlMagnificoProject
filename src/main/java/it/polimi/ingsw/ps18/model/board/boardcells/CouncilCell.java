@@ -12,16 +12,10 @@ public class CouncilCell {
 	private FMember councilCellFM;
 	
 	
-	
-	public CouncilCell() {
-		councilCellFM = null;
-	}
-	
-	public boolean insertFM(FMember pBoardFM) {
+	public CouncilCell(FMember pBoardFM) {
 		if(this.isEmpty()){
 			this.councilCellFM = pBoardFM;
-			return true;
-		} return false;
+		}
 		//privilegio gestito dal chiamante
 	}
 	
@@ -51,9 +45,9 @@ public class CouncilCell {
 		
 		if(councilCellFM != null){
 			builder.append("Family Member in council cell number " + index + ":\n"
-					+ "Player color: " + councilCellFM.getPlayercol() + "\n"
-					+ "Family Member color: " + councilCellFM.getColor() + "\n"
-					+ "Family Member value: " + councilCellFM.getValue() + "\n"
+					+ "    Player color: " + councilCellFM.getPlayercol() + "\n"
+					+ "    Family Member color: " + councilCellFM.getColor() + "\n"
+					+ "    Family Member value: " + councilCellFM.getValue() + "\n"
 					);
 		}
 		else{

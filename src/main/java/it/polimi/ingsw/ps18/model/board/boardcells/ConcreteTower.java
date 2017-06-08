@@ -64,6 +64,7 @@ public class ConcreteTower implements Tower {
 		
 	}
 	
+	@Override
 	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
 

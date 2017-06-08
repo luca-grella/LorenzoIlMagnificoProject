@@ -63,7 +63,6 @@ public class Board extends Observable {
 		addObserver(boardview);
 		notifyLogBoardView("Setup Board Initiated.");
 		int count;
-		HashMapQE.init();
 
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
 			this.towers.add(new ConcreteTower(count));
@@ -81,6 +80,8 @@ public class Board extends Observable {
 		 * e lo stesso per le celle produzione e raccolto. 
 		 * In questo modo posso posizionare un numero illimitato di familiari.
 		 * Domanda: in che parte del codice devo incrementare l'ArrayList?
+		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		 * Risposta: lo fanno direttamente le azioni nel turno, non te preoccupà
 		 */
 		
 		
@@ -134,6 +135,19 @@ public class Board extends Observable {
 			builder.append("\n-----------------\n");
 		}
 		
+		return builder.toString();
+	}
+	
+	public String toStringCouncil(){
+		StringBuilder builder = new StringBuilder();
+		if(this.councilCells.size()==0){
+			builder.append("The Council is Empty.\n\n");
+		} else {
+			for(int i=0; i<this.councilCells.size(); i++){
+				CouncilCell tempcell = this.councilCells.get(i);
+			    builder.append(tempcell.toString(i));	
+			}
+		}
 		return builder.toString();
 	}
 	

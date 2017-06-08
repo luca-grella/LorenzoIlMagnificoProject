@@ -7,6 +7,10 @@ class Coins implements Resources{
 		this.quantity=value;
 	}
 	
+	public Coins(long value) {
+		this.quantity = (int) value;
+	}
+
 	public int getQuantity(){
 		return this.quantity;
 	}

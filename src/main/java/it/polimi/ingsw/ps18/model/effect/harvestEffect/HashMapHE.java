@@ -10,23 +10,23 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addRock;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.privilege;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
 
 public class HashMapHE {
-    private static Map<String,HarvestEffect> genHEffects = new HashMap<>();
+    private Map<String,HarvestEffect> genHEffects = new HashMap<>();
 	
-	public static void init(){
+	public HashMapHE(){
 		genHEffects.put("AddWood", new addWood());
 		genHEffects.put("AddStone", new addRock());
 		genHEffects.put("AddServant", new addServants());
 		genHEffects.put("AddCoin", new addCoins());
-		genHEffects.put("AddPC", new privilege());
+		genHEffects.put("AddPC", new Privilege());
 		genHEffects.put("AddPM", new addMP());
 		genHEffects.put("AddPF", new addFP());
 		genHEffects.put("AddPV", new addVP());
 	}
 	
-	public static HarvestEffect geteffect(String a){
+	public HarvestEffect geteffect(String a){
 		return genHEffects.get(a);
 	}
 

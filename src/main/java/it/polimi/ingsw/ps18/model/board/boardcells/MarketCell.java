@@ -28,36 +28,36 @@ public class MarketCell {
 	
 	
 	public MarketCell() {
-		
 		marketCellFM = null;
-		JSONParser parser = new JSONParser();
-
-	    try {
-	    	//Edit PATH (JSON cards file is now splitted in four different files)
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json")); 
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(1); //get(i.toString())
-	        
-	        
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        for(int count=0; count<qeffects.size(); count++){
-	        	if(qeffects.get(count)!=null){
-	        		if(qeffectvalues.get(count)!=null){
-	        			this.add(HashMapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
-	        		} else {
-	        			this.effects.add(HashMapQE.geteffect((String) qeffects.get(count)));
-	        		}
-	        	}
-	        }
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File not found.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problem in parser");
-		}
+//		HashMapQE mapQE = new HashMapQE();
+//		JSONParser parser = new JSONParser();
+//
+//	    try {
+//	    	//Edit PATH (JSON cards file is now splitted in four different files)
+//	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json")); 
+//	    	JSONObject jsonObject = (JSONObject) obj;
+//	        JSONObject a = (JSONObject) jsonObject.get(1); //get(i.toString())
+//	        
+//	        
+//	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+//	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+//	        for(int count=0; count<qeffects.size(); count++){
+//	        	if(qeffects.get(count)!=null){
+//	        		if(qeffectvalues.get(count)!=null){
+//	        			this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+//	        		} else {
+//	        			this.effects.add(mapQE.geteffect((String) qeffects.get(count)));
+//	        		}
+//	        	}
+//	        }
+//	    }catch (FileNotFoundException e) {
+//	        System.out.println("File not found.");
+//
+//	    } catch (IOException e) {
+//		    System.out.println("IOException");
+//		} catch (org.json.simple.parser.ParseException e) {
+//			System.out.println("Problem in parser");
+//		}
 		
 	}
 

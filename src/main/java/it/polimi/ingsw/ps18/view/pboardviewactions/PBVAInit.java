@@ -20,6 +20,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 		Scanner input = new Scanner(System.in);
 		int ans;
 		do{
+			input.reset();
 			StringBuilder builder = new StringBuilder();
 			builder.append("Choose an action:\n");
 			builder.append("1. Visualize Towers.\n");
@@ -38,15 +39,15 @@ public class PBVAInit extends Observable implements PBViewAction {
 			System.out.println(builder.toString());
 			ans = input.nextInt();
 			switch (ans){
-//			case 1:
-//				notifyStatusMainController("Show Towers");
-//				break;
+			case 1:
+				notifyStatusMainController("Show Towers Zoom");
+				break;
 			case 2:
 				notifyStatusMainController("Show Market");
 				break;
-//			case 3:
-//				
-//				break;
+			case 3:
+				notifyStatusMainController("Show Council");
+				break;
 //			case 4:
 //				
 //				break;
@@ -68,9 +69,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 			case 10:
 				notifyActionMainController("FamtoMarket");
 				break;
-//			case 11:
-//				
-//				break;
+			case 11:
+				notifyActionMainController("FamtoCouncil");
+				break;
 //			case 12:
 //				
 //				break;
@@ -80,14 +81,10 @@ public class PBVAInit extends Observable implements PBViewAction {
 			}
 		}while(ans<9);
 		
-		input.close();
+		
 	}
 	
-	
-	private void notifyLogMainController(String msg){
-		setChanged();
-		notifyObservers(new LogMessage(msg));
-	}
+
 	
 	private void notifyActionMainController(String msg){
 		setChanged();

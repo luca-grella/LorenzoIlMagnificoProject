@@ -14,5 +14,6 @@ public abstract interface GeneralParameters {
 	public final static int numberPurpleC = 24;
 	public final static int numberofMarketCells = 4;
 	public final static int numberofExcommCells = 3;
+	public final static int numPrivilegesFromCouncil = 1;
 
 }

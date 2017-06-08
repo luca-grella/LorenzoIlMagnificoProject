@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,31 +13,33 @@ import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class GreenC extends Cards {
 	private long harvValue;
 	private List<HarvestEffect> harveffect = new ArrayList<>();
-	Scanner input = new Scanner(System.in);
 	
 	public GreenC(Integer i){
 		JSONParser parser = new JSONParser();
+		HashMapQE mapQE = new HashMapQE();
+		HashMapHE mapHE = new HashMapHE();
 
 	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/GreenC.json"));
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/GreenC.json"));
 	    	JSONObject jsonObject = (JSONObject) obj;
 	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
-	        
 	        this.setName((String) a.get("name"));
 	        this.setID((long) a.get("number"));
 	        this.setColor((long) a.get("color"));
 	        this.setPeriod((long) a.get("period"));
 	        this.harvValue = (long) a.get("HarvestValue");
+	        this.setCardCost(new Stats(0,0,0,0,0,0,0));
 	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
 	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        addQEffects(qeffects,qeffectvalues);
+	        addQEffects(qeffects,qeffectvalues,mapQE);
 	        JSONArray heffects = (JSONArray) a.get("HarvestEffects");
 	        JSONArray heffectvalues = (JSONArray) a.get("HarvestEffectsValues");
-	        addHEffects(heffects,heffectvalues);
+	        addHEffects(heffects,heffectvalues,mapHE);
 	        
 	    }catch (FileNotFoundException e) {
 	        System.out.println("File non trovato.");
@@ -51,27 +52,27 @@ public class GreenC extends Cards {
 	}
 	
 	
-	private void addHEffects(JSONArray heffects, JSONArray heffectvalues) {
+	private void addHEffects(JSONArray heffects, JSONArray heffectvalues, HashMapHE map) {
 		for(int count=0; count<heffects.size(); count++){
         	if(heffects.get(count)!=null){
         		if(heffectvalues.get(count)!=null){
-        			this.add(HashMapHE.geteffect((String) heffects.get(count)), (long) heffectvalues.get(count));
+        			this.add(map.geteffect((String) heffects.get(count)), (long) heffectvalues.get(count));
         		} else {
-        			this.harveffect.add(HashMapHE.geteffect((String) heffects.get(count)));
+        			this.harveffect.add(map.geteffect((String) heffects.get(count)));
         		}
         	}
-        }
+		}
 		
 	}
 
 
-	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues) {
+	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues, HashMapQE map) {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){
         		if(qeffectvalues.get(count)!=null){
-        			this.add(HashMapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+        			this.add(map.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
         		} else {
-        			this.effects.add(HashMapQE.geteffect((String) qeffects.get(count)));
+        			this.effects.add(map.geteffect((String) qeffects.get(count)));
         		}
         	}
         }
@@ -80,19 +81,15 @@ public class GreenC extends Cards {
 
 
 	private boolean add(QuickEffect e, long quantity){
-	    boolean ris = this.effects.add(e);
-	    if(ris){
-		    e.setQuantity(Math.toIntExact(quantity));
-		    return true;
-	    }return false;		
+		QuickEffect a = e;
+		a.setQuantity((int) quantity);
+	    return (this.getEffects()).add(a);	
     }
 	
 	private boolean add(HarvestEffect e, long quantity){
-	    boolean ris = this.harveffect.add(e);
-	    if(ris){
-		    e.setQuantity(Math.toIntExact(quantity));
-		    return true;
-	    }return false;		
+		HarvestEffect a = e;
+		a.setQuantity((int) quantity);	
+	    return (this.getHarveffect()).add(a);
     }
 
 	/**
@@ -123,7 +120,6 @@ public class GreenC extends Cards {
 		this.harveffect = harveffect;
 	}
 	
-
 	
 	
 

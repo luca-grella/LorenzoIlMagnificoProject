@@ -5,23 +5,23 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
-public class ShowChoiceFloor extends Observable implements PBViewAction {
+public class ShowChoiceFamtoCouncil extends Observable implements PBViewAction {
 	Scanner input = new Scanner(System.in);
-	private int index;
 
 	@Override
 	public void setObserver(MainController controller) {
 		addObserver(controller);
-		
+
 	}
 
 	@Override
 	public void act() {
-		System.out.println("Chose the Floor in which you want to move in:\n");
-		notifyParamMainController("RecieveTowertoShow",this.index);
-		int choiceFloor = input.nextInt();
-		notifyParamMainController("RecieveFloor",choiceFloor);
+		System.out.println("Chose from yours family members which one to move:\n");
+		notifyStatusMainController("Show Fam");
+		int choice = input.nextInt();
+		notifyParamMainController("RecieveFamtoCouncil",choice);
 
 	}
 	
@@ -29,11 +29,15 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 		setChanged();
 		notifyObservers(new ParamMessage(msg,i));
 	}
+	
+	private void notifyStatusMainController(String msg){
+		setChanged();
+		notifyObservers(new StatusMessage(msg));
+	}
 
 	@Override
 	public void setIndex(int number) {
-		this.index = number;
-		
+		return;
 	}
 
 }

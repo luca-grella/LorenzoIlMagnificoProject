@@ -12,6 +12,9 @@ public class HashMapStatus {
 	public static void init(){
 		genStatus.put("Show Market", new ShowMarket());
 		genStatus.put("Show Fam", new ShowFam());
+		genStatus.put("Show Towers Zoom", new ShowTowerswithZoom());
+		genStatus.put("Show Towers", new ShowTowers());
+		genStatus.put("Show Council", new ShowCouncil());
 	}
 	
 	public static Status geteffect(String a){

@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps18.controller.controlleractions;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.RecieveFamtoCouncil;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.FamtoMarketTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.RecieveFamtoMarket;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
@@ -21,6 +23,9 @@ public class HashMapActions {
 		genActions.put("RecieveFloor", new RecieveFloortoTower());
 		genActions.put("FamtoMarket", new FamtoMarketTrigger());
 		genActions.put("RecieveFamtoMarket", new RecieveFamtoMarket());
+		genActions.put("RecieveTowertoShow", new ShowTowerCells());
+		genActions.put("FamtoCouncil", new FamtoCouncilTrigger());
+		genActions.put("RecieveFamtoCouncil", new RecieveFamtoCouncil());
 	}
 	
 	public static ActionChoice geteffect(String a){

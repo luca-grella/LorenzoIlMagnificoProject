@@ -12,7 +12,7 @@ public class HashMapPBVS {
 	private static Map<String,PBViewStatus> genPBVStatus = new HashMap<>();
 	
 	public static void init(){
-		
+		genPBVStatus.put("Tower Choice", new ChooseTowertoShow());
 	}
 	
 	public static PBViewStatus geteffect(String a){

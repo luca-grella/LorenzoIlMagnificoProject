@@ -7,6 +7,10 @@ class Wood implements Resources{
 		this.quantity=value;
 	}
 	
+	public Wood(long value) {
+		this.quantity = (int) value;
+	}
+
 	public int getQuantity(){
 		return this.quantity;
 	}

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps18.model.personalboard.resources;
 
+import org.json.simple.JSONArray;
+
 public class Stats {
 	private Resources wood;
 	private Resources rock;
@@ -19,7 +21,21 @@ public class Stats {
 		this.vp = new VictoryPoints(vp);
 	}
 	
-    public void addWood(int value){
+	
+	
+    public Stats(JSONArray costs) {
+		this.wood = new Wood((long) costs.get(0));
+		this.rock = new Rock((long) costs.get(1));
+		this.coin = new Coins((long) costs.get(2));
+		this.servant = new Servants((long) costs.get(3));
+		this.fp = new FaithPoints((long) costs.get(4));
+		this.mp = new MilitaryPoints((long) costs.get(5));
+		this.vp = new VictoryPoints((long) costs.get(6));
+	}
+
+
+
+	public void addWood(int value){
 		this.wood.addQuantity(value);
 	}
 	

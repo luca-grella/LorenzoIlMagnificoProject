@@ -12,7 +12,7 @@ public abstract class Cards {
 	private String name;
 	private long period;
 	private long color;
-	private Stats cardCost = new Stats(0,0,0,0,0,0,0);
+	private Stats cardCost;
 	protected List<QuickEffect> effects = new ArrayList<>(); 
 	
 	

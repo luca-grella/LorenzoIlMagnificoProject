@@ -7,6 +7,10 @@ class VictoryPoints implements Points{
 		this.quantity=value;
 	}
 	
+	public VictoryPoints(long value) {
+		this.quantity = (int) value;
+	}
+
 	public int getQuantity(){
 		return this.quantity;
 	}

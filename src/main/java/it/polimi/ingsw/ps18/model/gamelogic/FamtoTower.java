@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
@@ -29,7 +30,7 @@ public class FamtoTower extends Observable implements Action {
 	}
 	
 	public void floorChoice(){
-		notifyActionPBoardView("Floor Choice");
+		notifyParamPBoardView("Floor Choice",this.chosenTower);
 	}
 
 	@Override
@@ -45,6 +46,11 @@ public class FamtoTower extends Observable implements Action {
 	private void notifyActionPBoardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
+	}
+	
+	private void notifyParamPBoardView(String msg,int index){
+		setChanged();
+		notifyObservers(new ParamMessage(msg,index));
 	}
 
 	/**

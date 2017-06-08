@@ -21,9 +21,9 @@ public class FMember {
 	
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-		builder.append("Owner's Color: " + this.playercol);
-		builder.append("\nMember's color: " + this.color);
-		builder.append("\nMember's value: " + this.value);
+		builder.append("\n   Owner's Color: " + this.playercol);
+		builder.append("\n   Member's color: " + this.color);
+		builder.append("\n   Member's value: " + this.value);
 		return builder.toString();
 	}
 

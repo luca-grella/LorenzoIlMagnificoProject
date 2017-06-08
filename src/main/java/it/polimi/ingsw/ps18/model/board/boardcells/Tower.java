@@ -21,4 +21,6 @@ public interface Tower {
 
 	public void insertCards(List<Cards> turnCards, int period);
 	
+	public String toString(int index);
+	
 }

@@ -7,6 +7,10 @@ class MilitaryPoints implements Points{
 		this.quantity=value;
 	}
 	
+	public MilitaryPoints(long value) {
+		this.quantity = (int) value;
+	}
+
 	public int getQuantity(){
 		return this.quantity;
 	}
