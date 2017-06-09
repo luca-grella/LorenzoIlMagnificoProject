@@ -25,7 +25,6 @@ public class MainController implements Observer {
 	public MainController(int nplayer){
 		game = new GameLogic(nplayer,this);
 		game.setup(this);
-		board = game.getBoard();
 		HashMapActions.init();
 		HashMapStatus.init();
 		game.gameFlow();

@@ -13,6 +13,17 @@ La classe DistruttoreFinestra non è predefinita in java. Deve essere definita 
 */
 
 
+/**
+ * 
+ * @author admin
+ *
+ */
+public class DistruttoreFinestra extends WindowAdapter { 
+	
+	
 public class DistruttoreFinestra extends WindowAdapter { public void windowClosing(WindowEvent e) {
 System.exit(0);
 } }
+	
+	
+}

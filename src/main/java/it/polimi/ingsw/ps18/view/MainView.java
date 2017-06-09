@@ -8,11 +8,10 @@ import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
 
-public class MainView extends Observable  implements Observer{
+public class MainView extends Observable  implements Observer {
 	MainController controller;
 	
-	public MainView(MainController controller2){
-		controller = controller2;
+	public MainView(MainController controller){
 		addObserver(controller);
 	}
 

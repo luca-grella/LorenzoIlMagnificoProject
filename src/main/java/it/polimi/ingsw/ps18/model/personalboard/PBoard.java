@@ -46,6 +46,8 @@ public class PBoard extends Observable {
 				card.activateSecondaryEffect(this, actionValue);
 			}
 		}
+		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
+		System.out.println(this.toString(this.getResources()));
 		
 	}
 	
@@ -73,10 +75,14 @@ public class PBoard extends Observable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
 		for(int i=0; i<this.fams.size(); i++){
-			FMember fam = fams.get(i);
-			builder.append("Family Member " + i + ":\n");
-			builder.append(fam.toString());
-			builder.append("\n\n");
+			if((fams.get(i))!=null){
+				FMember fam = fams.get(i);
+				builder.append("Family Member " + i + ":\n");
+				builder.append(fam.toString());
+				builder.append("\n\n");
+			} else {
+				builder.append("Family Member Already Used\n\n.");
+			}
 		} builder.append("-----------------\n");
 		notifyLogPBoardView(builder.toString());
 	}

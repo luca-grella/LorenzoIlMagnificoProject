@@ -12,12 +12,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
-import it.polimi.ingsw.ps18.model.cards.YellowC;
-import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
-import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -84,7 +79,6 @@ public class GameLogic extends Observable {
 	}
 	
 	private void genDeck(){
-//	    trasformare tutti gli hashmap in non statici.
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
 			Integer index = new Integer(i);
 			this.greencards.add(new GreenC(index));	
@@ -115,8 +109,9 @@ public class GameLogic extends Observable {
 //			case 2:
 //				singletower.insertCards(yellowcards, AGE);
 //				break;
-//			case 3:
-//				singletower.insertCards(purplecards, AGE);
+			case 3:
+				singletower.insertCards(purplecards, AGE);
+				break;
 			}
 					
 		}
