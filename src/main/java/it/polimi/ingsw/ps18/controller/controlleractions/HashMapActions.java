@@ -5,8 +5,11 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.RecieveFamtoCouncil;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.FamtoHarvestTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.RecieveFamtoHarvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.FamtoMarketTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.RecieveFamtoMarket;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.RecieveMarketCell;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.RecieveFamtoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.RecieveFloortoTower;
@@ -23,9 +26,12 @@ public class HashMapActions {
 		genActions.put("RecieveFloor", new RecieveFloortoTower());
 		genActions.put("FamtoMarket", new FamtoMarketTrigger());
 		genActions.put("RecieveFamtoMarket", new RecieveFamtoMarket());
+		genActions.put("RecieveMarketCell", new RecieveMarketCell());
 		genActions.put("RecieveTowertoShow", new ShowTowerCells());
 		genActions.put("FamtoCouncil", new FamtoCouncilTrigger());
 		genActions.put("RecieveFamtoCouncil", new RecieveFamtoCouncil());
+		genActions.put("FamtoHarvest", new FamtoHarvestTrigger());
+		genActions.put("RecieveFamtoHarvest", new RecieveFamtoHarvest());
 	}
 	
 	public static ActionChoice geteffect(String a){

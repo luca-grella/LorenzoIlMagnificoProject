@@ -17,7 +17,7 @@ public class addFP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 	 */
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getStats();
+		Stats stat = player.getResources();
 		stat.addFP(quantity);
 		
 	}

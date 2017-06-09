@@ -17,7 +17,7 @@ public class addServants implements QuickEffect, HarvestEffect, ProductionEffect
 	 */
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getStats();
+		Stats stat = player.getResources();
 		stat.addServants(quantity);
 		
 	}

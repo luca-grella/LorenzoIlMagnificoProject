@@ -22,6 +22,14 @@ public abstract class Cards {
 			qeffect.activate(player);
 		}
 	}
+	
+	public abstract boolean hasHarvest();
+	
+	public abstract boolean hasProduction();
+	
+	public abstract boolean hasFinal();
+	
+	public abstract void activateSecondaryEffect(PBoard player,int actionValue);
 
 	/**
 	 * @return the iD

@@ -52,7 +52,7 @@ public class FamtoTower extends Observable implements Action {
 		setChanged();
 		notifyObservers(new ParamMessage(msg,index));
 	}
-
+	
 	/**
 	 * @param chosenFam the chosenFam to set
 	 */

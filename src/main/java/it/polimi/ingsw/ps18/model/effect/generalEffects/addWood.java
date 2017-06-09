@@ -17,7 +17,7 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 	 */
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getStats();
+		Stats stat = player.getResources();
 		stat.addWood(quantity);
 		
 	}

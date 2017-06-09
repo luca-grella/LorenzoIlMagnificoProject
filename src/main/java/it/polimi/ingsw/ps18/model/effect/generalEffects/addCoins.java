@@ -17,7 +17,7 @@ public class addCoins implements QuickEffect, HarvestEffect, ProductionEffect, F
 	 */
 	@Override
 	public void activate(PBoard player) {
-		Stats stat = player.getStats();
+		Stats stat = player.getResources();
 		stat.addCoins(quantity);
 		
 	}

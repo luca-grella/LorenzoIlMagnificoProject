@@ -47,6 +47,10 @@ public class ShowBoard extends Observable {
 		notifyLogView(board.toStringCouncil());
 	}
 	
+	public void showHarvest(Board board){
+		notifyLogView(board.toStringHarvest());
+	}
+	
 	
 	
 	

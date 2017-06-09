@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class YellowC extends Cards {
@@ -53,6 +54,39 @@ public class YellowC extends Cards {
 	 */
 	public void setProdEffect(List<ProductionEffect> prodEffect) {
 		this.prodEffect = prodEffect;
+	}
+
+
+
+	@Override
+	public boolean hasHarvest() {
+		return false;
+	}
+
+
+
+	@Override
+	public boolean hasProduction() {
+		if(prodEffect.isEmpty()){
+			return false;
+		}
+		return true;
+	}
+
+
+
+	@Override
+	public boolean hasFinal() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	@Override
+	public void activateSecondaryEffect(PBoard player, int actionValue) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

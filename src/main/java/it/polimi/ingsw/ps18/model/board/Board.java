@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.BoardView;
 
 /**
@@ -120,6 +121,22 @@ public class Board extends Observable {
 		
 	}
 	
+	public int insertFMHarv(FMember fam){
+		if(harvestCells.isEmpty()){
+			HarvCell cell = new HarvCell(0);
+			if(cell.insertFM(fam)){
+				harvestCells.add(cell);
+				return (fam.getValue() - cell.getMalus());
+			}
+		} else {
+			HarvCell cell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+			if(cell.insertFM(fam)){
+				harvestCells.add(cell);
+				return (fam.getValue() - cell.getMalus());
+			}
+		} return -100;
+	}
+	
 	/*
 	 * DEFINE LATER
 	 */
@@ -145,6 +162,19 @@ public class Board extends Observable {
 		} else {
 			for(int i=0; i<this.councilCells.size(); i++){
 				CouncilCell tempcell = this.councilCells.get(i);
+			    builder.append(tempcell.toString(i));	
+			}
+		}
+		return builder.toString();
+	}
+	
+	public String toStringHarvest(){
+		StringBuilder builder = new StringBuilder();
+		if(this.councilCells.size()==0){
+			builder.append("The Harvest Section is Empty.\n\n");
+		} else {
+			for(int i=0; i<this.harvestCells.size(); i++){
+				HarvCell tempcell = this.harvestCells.get(i);
 			    builder.append(tempcell.toString(i));	
 			}
 		}

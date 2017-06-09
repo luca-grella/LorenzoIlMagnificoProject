@@ -11,8 +11,10 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.ActHarvest;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.ActProduction;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.DifferentPrivilege;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeAnyCard;
 
 public class HashMapQE {
     private static Map<String,QuickEffect> genQEffects = new HashMap<>();
@@ -28,6 +30,8 @@ public class HashMapQE {
 		genQEffects.put("AddPF", new addFP());
 		genQEffects.put("AddPV", new addVP());
 		genQEffects.put("ActivateHarvest", new ActHarvest());
+		genQEffects.put("ActivateProduction", new ActProduction());
+		genQEffects.put("TakeAnyCard", new TakeAnyCard());
 	}
 	
 	public QuickEffect geteffect(String a){

@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 
@@ -94,6 +95,15 @@ public class PurpleC extends Cards {
 	    return (this.getFineffect()).add(a);	
     }
 	
+	@Override
+	public void activateSecondaryEffect(PBoard player, int actionValue) {
+		for(int i=0; i<fineffect.size(); i++){
+			FinalEffect feffect = fineffect.get(i);
+			feffect.activate(player);
+		}
+		
+	}
+	
 	
 	/**
 	 * @return the fineffect
@@ -114,9 +124,24 @@ public class PurpleC extends Cards {
 	public int getMinMP() {
 		return (int) minMP;
 	}
-	
-	
-	
+
+	@Override
+	public boolean hasHarvest() {
+		return false;
+	}
+
+	@Override
+	public boolean hasProduction() {
+		return false;
+	}
+
+	@Override
+	public boolean hasFinal() {
+		if(fineffect.isEmpty()){
+			return false;
+		}
+		return true;
+	}	
 	
 
 }

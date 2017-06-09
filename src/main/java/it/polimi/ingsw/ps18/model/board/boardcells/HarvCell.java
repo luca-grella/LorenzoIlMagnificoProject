@@ -17,18 +17,20 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 public class HarvCell {
 	private FMember harvCellFM;
 	private int harvCellValue;
+	private int malus = 0;
 
 	
 	
-	public HarvCell() {
+	public HarvCell(int malus) {
 		harvCellFM = null;
 		harvCellValue = GeneralParameters.baseValueHarvCells;
+		this.malus = malus;
 	}
 
 
-	public boolean insertFM(FMember pBoardFM, int valueFM) {
+	public boolean insertFM(FMember pBoardFM) {
 		if(this.isEmpty()){	
-			if(valueFM >= harvCellValue){
+			if(pBoardFM.getValue() >= harvCellValue){
 				this.harvCellFM = pBoardFM;
 				return true;
 				// Harvest Effects gestiti dal chaimante
@@ -38,11 +40,9 @@ public class HarvCell {
 	
 	private boolean isEmpty() {
 		if(this.harvCellFM==null){ 
-			System.out.println("\nHarvest cell is clear!");
 			return true;	
 		}
 		else {
-			System.out.println("\nError: Harvest cell occupied!");
 			return false;
 		}
 	}
@@ -53,13 +53,14 @@ public class HarvCell {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
 		builder.append("Harvest cell number " + index + ":\n");
-		builder.append("Malus value in position " + index + ": " + harvCellValue); //Must be -3 malus if position > 0
+		builder.append("Minimum value to access this cell: " + harvCellValue);
+		builder.append("\nAction Malus from this cell: " + malus);
 		
 		if(harvCellFM != null){
-			builder.append("Family Member in harvest cell number " + index + ":\n"
-					+ "Player color: " + harvCellFM.getPlayercol() + "\n"
-					+ "Family Member color: " + harvCellFM.getColor() + "\n"
-					+ "Family Member value: " + harvCellFM.getValue() + "\n"
+			builder.append("\nFamily Member in harvest cell number " + index + ":\n"
+					+ "     Player color: " + harvCellFM.getPlayercol() + "\n"
+					+ "     Family Member color: " + harvCellFM.getColor() + "\n"
+					+ "     Family Member value: " + harvCellFM.getValue() + "\n"
 					);
 		}
 		else{
@@ -101,6 +102,24 @@ public class HarvCell {
 	public void setHarvCellValue(int harvCellValue) {
 		this.harvCellValue = harvCellValue;
 	}
+
+
+	/**
+	 * @param malus the malus to set
+	 */
+	public void setMalus(int malus) {
+		this.malus = malus;
+	}
+
+
+	/**
+	 * @return the malus
+	 */
+	public int getMalus() {
+		return malus;
+	}
+	
+	
 	
 	
 }

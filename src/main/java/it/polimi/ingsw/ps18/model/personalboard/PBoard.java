@@ -40,24 +40,24 @@ public class PBoard extends Observable {
 		} this.fams.add(new FMember(0,playercol));
 	}
 	
-	private void notifyLogPBoardView(String msg){
-		setChanged();
-		notifyObservers(new LogMessage(msg));
+	public void actHarvest(int actionValue) {
+		for(Cards card: cards){
+			if(card.hasHarvest()){
+				card.activateSecondaryEffect(this, actionValue);
+			}
+		}
+		
 	}
 	
-	
-	public Stats getStats(){
-		return this.resources;
-	}
 	
 	
 	public void addCard(Cards card){
 		System.out.println("Risorse pre attivazione carta.");
-		System.out.println(this.toString(this.getStats()));
+		System.out.println(this.toString(this.getResources()));
 		cards.add(card);
 		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
 		card.activateQEffects(this);
-		System.out.println(this.toString(this.getStats()));
+		System.out.println(this.toString(this.getResources()));
 	}
 	
 	public void privilege(){
@@ -72,7 +72,7 @@ public class PBoard extends Observable {
 	public void toString(List<FMember> fams){
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
-		for(int i=0; i<GeneralParameters.nfamperplayer; i++){
+		for(int i=0; i<this.fams.size(); i++){
 			FMember fam = fams.get(i);
 			builder.append("Family Member " + i + ":\n");
 			builder.append(fam.toString());
@@ -93,6 +93,11 @@ public class PBoard extends Observable {
 		builder.append("VP: " + resources.getVP() + "\n");
 		builder.append("-----------------\n");
 		return builder.toString();
+	}
+	
+	private void notifyLogPBoardView(String msg){
+		setChanged();
+		notifyObservers(new LogMessage(msg));
 	}
 
 	/**
@@ -157,6 +162,5 @@ public class PBoard extends Observable {
 	public void setFams(List<FMember> fams) {
 		this.fams = fams;
 	}
-	
 
 }

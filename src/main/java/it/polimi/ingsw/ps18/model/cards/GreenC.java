@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class GreenC extends Cards {
@@ -91,6 +92,17 @@ public class GreenC extends Cards {
 		a.setQuantity((int) quantity);	
 	    return (this.getHarveffect()).add(a);
     }
+	
+	@Override
+	public void activateSecondaryEffect(PBoard player, int actionValue) {
+		if(actionValue >= this.harvValue){
+			for(int i=0; i<harveffect.size(); i++){
+				HarvestEffect heffect = harveffect.get(i);
+				heffect.activate(player);
+			}
+		}
+		
+	}
 
 	/**
 	 * @return the harvValue
@@ -118,6 +130,27 @@ public class GreenC extends Cards {
 	 */
 	public void setHarveffect(List<HarvestEffect> harveffect) {
 		this.harveffect = harveffect;
+	}
+
+
+	@Override
+	public boolean hasHarvest() {
+		if(harveffect.isEmpty()){
+			return false;
+		}
+		return true;
+	}
+
+
+	@Override
+	public boolean hasProduction() {
+		return false;
+	}
+
+
+	@Override
+	public boolean hasFinal() {
+		return false;
 	}
 	
 	

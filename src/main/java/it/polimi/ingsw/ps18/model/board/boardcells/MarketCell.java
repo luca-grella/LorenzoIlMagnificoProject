@@ -114,9 +114,9 @@ public class MarketCell {
 		
 		if(marketCellFM != null){
 			builder.append("Family Member in market cell number " + index + ":\n"
-					+ "Player color: " + marketCellFM.getPlayercol() + "\n"
-					+ "Family Member color: " + marketCellFM.getColor() + "\n"
-					+ "Family Member value: " + marketCellFM.getValue() + "\n"
+					+ "    Player color: " + marketCellFM.getPlayercol() + "\n"
+					+ "    Family Member color: " + marketCellFM.getColor() + "\n"
+					+ "    Family Member value: " + marketCellFM.getValue() + "\n"
 					);
 		}
 		else{

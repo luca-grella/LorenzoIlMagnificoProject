@@ -10,11 +10,12 @@ public class HashMapStatus {
     private static Map<String,Status> genStatus = new HashMap<>();
 	
 	public static void init(){
-		genStatus.put("Show Market", new ShowMarket());
 		genStatus.put("Show Fam", new ShowFam());
-		genStatus.put("Show Towers Zoom", new ShowTowerswithZoom());
 		genStatus.put("Show Towers", new ShowTowers());
+		genStatus.put("Show Towers Zoom", new ShowTowerswithZoom());
+		genStatus.put("Show Market", new ShowMarket());
 		genStatus.put("Show Council", new ShowCouncil());
+		genStatus.put("Show Harvest", new ShowHarvest());
 	}
 	
 	public static Status geteffect(String a){
