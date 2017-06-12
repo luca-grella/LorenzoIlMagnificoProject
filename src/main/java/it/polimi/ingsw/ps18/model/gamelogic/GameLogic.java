@@ -62,7 +62,7 @@ public class GameLogic extends Observable {
 	 */
 	public void setup(MainController mainController){
 		notifyLogMainView("Setup Initiated.");
-		this.board = new Board(mainController);
+		this.board = new Board(mainController, this.nplayer);
 		for(int i=0; i<GeneralParameters.numberofDices; i++){
 			this.dices.add(new Dice(i));
 		}
@@ -215,6 +215,21 @@ public class GameLogic extends Observable {
 		return players;
 	}
 
+	/**
+	 * @return the ongoingEffect
+	 */
+	public GeneralEffect getOngoingEffect() {
+		return ongoingEffect;
+	}
+
+	/**
+	 * @param ongoingEffect the ongoingEffect to set
+	 */
+	public void setOngoingEffect(GeneralEffect ongoingEffect) {
+		this.ongoingEffect = ongoingEffect;
+	}
+	
+	
 	
 	
 	

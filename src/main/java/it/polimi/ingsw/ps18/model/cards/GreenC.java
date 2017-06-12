@@ -121,11 +121,11 @@ public class GreenC extends Cards {
 				);
 		builder.append("Quick Effects:\n");
 		for(int i=0; i<(this.getEffects()).size(); i++){
-			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
 		builder.append("\nHarvest Effects\n");
 		for(int i=0;  i<this.harveffect.size(); i++){
-			builder.append("\t" + i + ": " + ((this.getHarveffect()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getHarveffect()).get(i)).toString() + "\n");
 		}
 		return builder.toString();
 	}

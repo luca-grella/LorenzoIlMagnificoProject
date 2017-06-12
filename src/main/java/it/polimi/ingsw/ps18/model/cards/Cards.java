@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
@@ -16,9 +17,10 @@ public abstract class Cards {
 	protected List<QuickEffect> effects = new ArrayList<>(); 
 	
 	
-	public void activateQEffects(PBoard player){
+	public void activateQEffects(PBoard player, GameLogic game){
 		for(int i = 0 ; i < this.effects.size() ; i++){
 			QuickEffect qeffect = this.effects.get(i);
+			game.setOngoingEffect(qeffect);
 			qeffect.activate(player);
 		}
 	}

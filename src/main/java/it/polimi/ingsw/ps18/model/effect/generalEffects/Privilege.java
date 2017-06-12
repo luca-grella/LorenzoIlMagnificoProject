@@ -1,22 +1,23 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class Privilege implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect   {
+public class Privilege extends Observable implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect   {
 	private String name = "privilege";
 	private int quantity;
 
 	@Override
 	public void activate(PBoard player) {
-		System.out.println("poi se vede");
-		//scelta privilegio + attivazione
+		addObserver(player.getpBoardView());
+		setChanged();
+		notifyObservers(new StatusMessage("PrivilegeChoice"));
 		
 	}
 	

@@ -52,6 +52,7 @@ import it.polimi.ingsw.ps18.view.BoardView;
  */
 public class Board extends Observable {
 	private BoardView boardview;
+	private int nplayer;
 	private List<Tower> towers = new ArrayList<>();
 	private List<MarketCell> marketCells = new ArrayList<>();
 	private List<CouncilCell> councilCells = new ArrayList<>();
@@ -59,17 +60,22 @@ public class Board extends Observable {
 	private List<ProdCell> productionCells = new ArrayList<>();
 	private List<Excommunications> excommCells = new ArrayList<>(); 
 	
-	public Board (MainController mcontroller){
+	public Board (MainController mcontroller, int nplayer){
 		boardview = new BoardView(mcontroller);
 		addObserver(boardview);
 		notifyLogBoardView("Setup Board Initiated.");
+		this.nplayer = nplayer; //usato nei controlli di harv e prod, con 2 giocatori c'è solo uno slot
 		int count;
 
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
 			this.towers.add(new ConcreteTower(count));
 		}
-		for(count=0; count<GeneralParameters.numberofMarketCells; count++){ 
-			this.marketCells.add(new MarketCell());
+		for(count=1; count<=GeneralParameters.numberofMarketCells; count++){ 
+			Integer i = new Integer(count);
+			MarketCell cell = new MarketCell(i);
+			if(cell.getMinPlayers() <= nplayer){
+				this.marketCells.add(cell);
+			}
 		}
 		
 		/*
@@ -112,7 +118,8 @@ public class Board extends Observable {
 			towers.set(count, new ConcreteTower(count));
 		}
 		for(count=0; count<GeneralParameters.numberofMarketCells; count++){
-			marketCells.set(count, new MarketCell());
+			Integer i = new Integer(count);
+			marketCells.set(count, new MarketCell(i));
 		}
 		
 		councilCells.clear();

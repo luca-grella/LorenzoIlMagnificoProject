@@ -7,7 +7,9 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
@@ -51,15 +53,11 @@ public class PBoard extends Observable {
 		
 	}
 	
-	
-	
-	public void addCard(Cards card){
-		System.out.println("Risorse pre attivazione carta.");
-		System.out.println(this.toStringResources());
-		cards.add(card);
-		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
-		card.activateQEffects(this);
-		System.out.println(this.toStringResources());
+	public void addCard(Cards card, GameLogic game) {
+		if(cards.add(card)){
+			card.activateQEffects(this,game);
+		}
+		
 	}
 	
 	public void privilege(){
@@ -143,6 +141,11 @@ public class PBoard extends Observable {
 	private void notifyLogPBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
+	}
+	
+	private void notifyStatusPBoardView(String msg){
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
 	}
 
 	/**

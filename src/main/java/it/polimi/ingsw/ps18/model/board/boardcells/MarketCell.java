@@ -23,41 +23,41 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  */
 
 public class MarketCell {
+	private long minPlayers;
 	private FMember marketCellFM;
 	private List<QuickEffect> effects = new ArrayList<>();
 	
 	
-	public MarketCell() {
+	public MarketCell(Integer i) {
 		marketCellFM = null;
-//		HashMapQE mapQE = new HashMapQE();
-//		JSONParser parser = new JSONParser();
-//
-//	    try {
-//	    	//Edit PATH (JSON cards file is now splitted in four different files)
-//	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/Model/Cards/cards.json")); 
-//	    	JSONObject jsonObject = (JSONObject) obj;
-//	        JSONObject a = (JSONObject) jsonObject.get(1); //get(i.toString())
-//	        
-//	        
-//	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-//	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-//	        for(int count=0; count<qeffects.size(); count++){
-//	        	if(qeffects.get(count)!=null){
-//	        		if(qeffectvalues.get(count)!=null){
-//	        			this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
-//	        		} else {
-//	        			this.effects.add(mapQE.geteffect((String) qeffects.get(count)));
-//	        		}
-//	        	}
-//	        }
-//	    }catch (FileNotFoundException e) {
-//	        System.out.println("File not found.");
-//
-//	    } catch (IOException e) {
-//		    System.out.println("IOException");
-//		} catch (org.json.simple.parser.ParseException e) {
-//			System.out.println("Problem in parser");
-//		}
+		HashMapQE mapQE = new HashMapQE();
+		JSONParser parser = new JSONParser();
+
+	    try {
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/MarketCell.json")); 
+	    	JSONObject jsonObject = (JSONObject) obj;
+	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
+	        
+	        this.setMinPlayers((long) a.get("MinPlayers"));
+	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+	        for(int count=0; count<qeffects.size(); count++){
+	        	if(qeffects.get(count)!=null){
+	        		if(qeffectvalues.get(count)!=null){
+	        			this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+	        		} else {
+	        			this.effects.add(mapQE.geteffect((String) qeffects.get(count)));
+	        		}
+	        	}
+	        }
+	    }catch (FileNotFoundException e) {
+	        System.out.println("File not found.");
+
+	    } catch (IOException e) {
+		    System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problem in parser");
+		}
 		
 	}
 
@@ -114,15 +114,19 @@ public class MarketCell {
 		
 		if(marketCellFM != null){
 			builder.append("Family Member in market cell number " + index + ":\n"
-					+ "    Player color: " + marketCellFM.getPlayercol() + "\n"
-					+ "    Family Member color: " + marketCellFM.getColor() + "\n"
-					+ "    Family Member value: " + marketCellFM.getValue() + "\n"
+					+ "\tPlayer color: " + marketCellFM.getPlayercol() + "\n"
+					+ "\tFamily Member color: " + marketCellFM.getColor() + "\n"
+					+ "\tFamily Member value: " + marketCellFM.getValue() + "\n"
 					);
 		}
 		else{
-			builder.append("\nMarket cell is empty!");
+			builder.append("Market cell is empty!\n");
 		}
-		builder.append("\n-----------------\n");
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.effects).size(); i++){
+			builder.append("\t" + i + ": " + ((this.effects).get(i)).toString() + "\n");
+		}
+		builder.append("-----------------\n");
 		return builder.toString();
 	}
 
@@ -139,6 +143,23 @@ public class MarketCell {
 	public void setMarketCellFM(FMember marketCellFM) {
 		this.marketCellFM = marketCellFM;
 	}
+
+	/**
+	 * @return the minPlayers
+	 */
+	public int getMinPlayers() {
+		return (int) minPlayers;
+	}
+
+	/**
+	 * @param minPlayers the minPlayers to set
+	 */
+	public void setMinPlayers(long minPlayers) {
+		this.minPlayers = minPlayers;
+	}
+	
+	
+	
 	
 	
 }
