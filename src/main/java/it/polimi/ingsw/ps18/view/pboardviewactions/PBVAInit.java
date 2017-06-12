@@ -28,14 +28,13 @@ public class PBVAInit extends Observable implements PBViewAction {
 			builder.append("3. Visualize Council.\n");
 			builder.append("4. Visualize Harvest.\n");
 			builder.append("5. Visualize Production.\n");
-			builder.append("6. Visualize Player Cards.\n");
-			builder.append("7. Visualize Player Resources.\n");
-			builder.append("8. Visualize Player Excommunications.\n");
-			builder.append("9. Place one Familiar to a Tower\n");
-			builder.append("10. Place one Familiar to the Market\n");
-			builder.append("11. Place one Familiar to the Council\n");
-			builder.append("12. Place one Familiar to Harvest\n");
-			builder.append("13. Place one Familiar to Production");
+			builder.append("6. Visualize Player Board.\n");
+			builder.append("7. Visualize Player Excommunications.\n");
+			builder.append("8. Place one Familiar to a Tower\n");
+			builder.append("9. Place one Familiar to the Market\n");
+			builder.append("10. Place one Familiar to the Council\n");
+			builder.append("11. Place one Familiar to Harvest\n");
+			builder.append("12. Place one Familiar to Production");
 			System.out.println(builder.toString());
 			ans = input.nextInt();
 			switch (ans){
@@ -54,32 +53,29 @@ public class PBVAInit extends Observable implements PBViewAction {
 //			case 5:
 //				
 //				break;
-//			case 6:
-//				
-//				break;
+			case 6:
+				notifyActionMainController("Show Player");
+				break;
 //			case 7:
 //				
 //				break;
-//			case 8:
-//				
-//				break;
-			case 9:
+			case 8:
 				notifyActionMainController("FamtoTower");
 			    break;
-			case 10:
+			case 9:
 				notifyActionMainController("FamtoMarket");
 				break;
-			case 11:
+			case 10:
 				notifyActionMainController("FamtoCouncil");
 				break;
-			case 12:
+			case 11:
 				notifyActionMainController("FamtoHarvest");
 				break;
-//			case 13:
+//			case 12:
 //				
 //				break;
 			}
-		}while(ans<9);
+		}while(ans<8);
 		
 		
 	}

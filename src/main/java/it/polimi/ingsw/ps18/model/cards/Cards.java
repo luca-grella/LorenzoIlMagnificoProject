@@ -30,6 +30,10 @@ public abstract class Cards {
 	public abstract boolean hasFinal();
 	
 	public abstract void activateSecondaryEffect(PBoard player,int actionValue);
+	
+	public abstract String toString(int count);
+	
+	public abstract boolean costCheck(Stats playerResources);
 
 	/**
 	 * @return the iD

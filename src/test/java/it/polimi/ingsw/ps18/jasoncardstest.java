@@ -38,10 +38,8 @@ public class jasoncardstest {
         e.printStackTrace();
 
 } catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} catch (org.json.simple.parser.ParseException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 }

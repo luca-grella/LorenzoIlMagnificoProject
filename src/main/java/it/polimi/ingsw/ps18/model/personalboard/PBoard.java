@@ -47,7 +47,7 @@ public class PBoard extends Observable {
 			}
 		}
 		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
-		System.out.println(this.toString(this.getResources()));
+		System.out.println(this.toStringResources());
 		
 	}
 	
@@ -55,11 +55,11 @@ public class PBoard extends Observable {
 	
 	public void addCard(Cards card){
 		System.out.println("Risorse pre attivazione carta.");
-		System.out.println(this.toString(this.getResources()));
+		System.out.println(this.toStringResources());
 		cards.add(card);
 		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
 		card.activateQEffects(this);
-		System.out.println(this.toString(this.getResources()));
+		System.out.println(this.toStringResources());
 	}
 	
 	public void privilege(){
@@ -71,8 +71,9 @@ public class PBoard extends Observable {
 		
 	}
 	
-	public void toString(List<FMember> fams){
+	public void toStringFams(){
 		StringBuilder builder = new StringBuilder();
+		List<FMember> fams = this.getFams();
 		builder.append("-----------------\n");
 		for(int i=0; i<this.fams.size(); i++){
 			if((fams.get(i))!=null){
@@ -87,9 +88,11 @@ public class PBoard extends Observable {
 		notifyLogPBoardView(builder.toString());
 	}
 	
-	public String toString(Stats resources){
+	public String toStringResources(){
 		StringBuilder builder = new StringBuilder();
+		Stats resources = this.getResources();
 		builder.append("-----------------\n");
+		builder.append("Resources of player " + this.playercol + "\n");
 		builder.append("Wood: " + resources.getWood() + "\n");
 		builder.append("Rock: " + resources.getRock() + "\n");
 		builder.append("Coin: " + resources.getCoin() + "\n");
@@ -98,6 +101,42 @@ public class PBoard extends Observable {
 		builder.append("MP: " + resources.getMP() + "\n");
 		builder.append("VP: " + resources.getVP() + "\n");
 		builder.append("-----------------\n");
+		return builder.toString();
+	}
+	
+	public String toStringCards(){
+		StringBuilder builder = new StringBuilder();
+		List<Cards> cards = this.getCards();
+		int count;
+		builder.append("Cards of player " + this.playercol + ":\n-----------------\n");
+		builder.append("Green Cards:\n");
+		count = 1;
+		for(Cards card: cards){
+			if(card.getColor()==0){
+				builder.append(card.toString(count));
+			}
+		}
+		builder.append("\n-----------------\nBlue Cards:\n");
+		count = 1;
+		for(Cards card: cards){
+			if(card.getColor()==1){
+				builder.append(card.toString(count));
+			}
+		}
+		builder.append("\n-----------------\nYellow Cards:\n");
+		count = 1;
+		for(Cards card: cards){
+			if(card.getColor()==2){
+				builder.append(card.toString(count));
+			}
+		}
+		builder.append("\n-----------------\nPurple Cards:\n");
+		count = 1;
+		for(Cards card: cards){
+			if(card.getColor()==3){
+				builder.append(card.toString(count));
+			}
+		}
 		return builder.toString();
 	}
 	

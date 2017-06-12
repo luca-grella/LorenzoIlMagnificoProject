@@ -8,7 +8,7 @@ public class ShowFam implements Status {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		currentplayer.toString(currentplayer.getFams());
+		currentplayer.toStringFams();
 
 	}
 	

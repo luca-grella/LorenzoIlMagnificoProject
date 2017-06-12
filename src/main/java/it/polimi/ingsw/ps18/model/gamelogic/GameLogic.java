@@ -129,7 +129,9 @@ public class GameLogic extends Observable {
 			for(int i=0; i<GeneralParameters.nfamperplayer; i++){
 				for(int j=0; j<nplayer; j++){
 					this.turnplayer = players.get(j);
-					notifyActionMainView("Turn Handle Init");	
+					notifyActionMainView("Turn Handle Init");
+					
+					System.out.println(" ");
 				}
 			}
 			if(TURN%2==0){
@@ -204,6 +206,13 @@ public class GameLogic extends Observable {
 	 */
 	public void setOngoingAction(Action ongoingAction) {
 		this.ongoingAction = ongoingAction;
+	}
+
+	/**
+	 * @return the players
+	 */
+	public List<PBoard> getPlayers() {
+		return players;
 	}
 
 	

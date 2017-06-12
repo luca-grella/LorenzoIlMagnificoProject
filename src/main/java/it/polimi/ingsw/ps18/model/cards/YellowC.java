@@ -14,7 +14,21 @@ public class YellowC extends Cards {
 	
 	
 	public YellowC(String string) {
-		// TODO Auto-generated constructor stub
+	}
+	
+	
+	@Override
+	public String toString(int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public boolean costCheck(Stats playerResources) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
@@ -77,7 +91,6 @@ public class YellowC extends Cards {
 
 	@Override
 	public boolean hasFinal() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -85,9 +98,11 @@ public class YellowC extends Cards {
 
 	@Override
 	public void activateSecondaryEffect(PBoard player, int actionValue) {
-		// TODO Auto-generated method stub
-		
 	}
+
+
+
+	
 	
 	
 

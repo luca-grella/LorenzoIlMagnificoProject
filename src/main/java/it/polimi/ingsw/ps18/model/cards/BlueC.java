@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps18.model.cards;
 
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class BlueC extends Cards {
 
@@ -10,26 +11,31 @@ public class BlueC extends Cards {
 
 	@Override
 	public boolean hasHarvest() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean hasProduction() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean hasFinal() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void activateSecondaryEffect(PBoard player, int actionValue) {
+	}
+	
+	public boolean costCheck(Stats playerResources){
+		return true;
+	}
+
+	@Override
+	public String toString(int count) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

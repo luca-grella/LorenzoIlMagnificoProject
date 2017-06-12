@@ -104,6 +104,31 @@ public class PurpleC extends Cards {
 		
 	}
 	
+	public boolean costCheck(Stats playerResources){
+		return true;
+	}
+	
+	@Override
+	public String toString(int count){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Card number " + count + ":\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				//TODO: scrittura dei costi
+				);
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+		}
+		builder.append("\nFinal Effects\n");
+		for(int i=0;  i<this.fineffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString());
+		}
+		return builder.toString();
+	}
+	
 	
 	/**
 	 * @return the fineffect
@@ -141,7 +166,7 @@ public class PurpleC extends Cards {
 			return false;
 		}
 		return true;
-	}	
+	}
 	
 
 }

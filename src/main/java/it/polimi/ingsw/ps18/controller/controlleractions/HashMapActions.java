@@ -32,6 +32,8 @@ public class HashMapActions {
 		genActions.put("RecieveFamtoCouncil", new RecieveFamtoCouncil());
 		genActions.put("FamtoHarvest", new FamtoHarvestTrigger());
 		genActions.put("RecieveFamtoHarvest", new RecieveFamtoHarvest());
+		genActions.put("Show Player", new ChosePlayer());
+		genActions.put("RecievePlayertoShow", new ShowPlayer());
 	}
 	
 	public static ActionChoice geteffect(String a){

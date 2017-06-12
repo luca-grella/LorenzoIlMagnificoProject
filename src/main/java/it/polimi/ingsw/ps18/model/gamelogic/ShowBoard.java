@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.*;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class ShowBoard extends Observable {
@@ -51,6 +52,14 @@ public class ShowBoard extends Observable {
 		notifyLogView(board.toStringHarvest());
 	}
 	
+	public void choosePlayer(){
+		notifyStatusView("Player Choice");
+	}
+	
+	public void showPlayer(PBoard player){
+		notifyLogView(player.toStringResources());
+		notifyLogView(player.toStringCards());
+	}
 	
 	
 	
