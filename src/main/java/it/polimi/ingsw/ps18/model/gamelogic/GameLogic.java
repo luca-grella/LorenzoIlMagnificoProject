@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
+import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
@@ -85,10 +86,11 @@ public class GameLogic extends Observable {
 			Integer index = new Integer(i);
 			this.greencards.add(new GreenC(index));	
 		} notifyLogMainView("Green Deck Created.");
-		for(Integer i=1; i<=GeneralParameters.numberYellowC; i++){
-			//yellowcards.add(new YellowC(i.toString()));
+		for(int i=1; i<=GeneralParameters.numberYellowC; i++){
+			Integer index = new Integer(i);
+			yellowcards.add(new YellowC(index));
 		} notifyLogMainView("Yellow Deck Created.");
-		for(Integer i=1; i<=GeneralParameters.numberBlueC; i++){
+		for(int i=1; i<=GeneralParameters.numberBlueC; i++){
 			//bluecards.add(new BlueC(i.toString()));
 		} notifyLogMainView("Blue Deck Created.");
 		for(int i=1; i<=GeneralParameters.numberPurpleC; i++){
@@ -112,9 +114,9 @@ public class GameLogic extends Observable {
 //			case 1:
 //				singletower.insertCards(bluecards, AGE);
 //				break;
-//			case 2:
-//				singletower.insertCards(yellowcards, AGE);
-//				break;
+			case 2:
+				singletower.insertCards(yellowcards, AGE);
+				break;
 			case 3:
 				singletower.insertCards(purplecards, AGE);
 				break;

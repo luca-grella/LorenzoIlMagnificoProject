@@ -32,6 +32,51 @@ public class Stats {
 		this.mp = new MilitaryPoints((long) costs.get(5));
 		this.vp = new VictoryPoints((long) costs.get(6));
 	}
+    
+    public void addStats(Stats adder){
+    	addWood(adder.getWood());
+    	addRock(adder.getRock());
+    	addCoins(adder.getCoin());
+    	addServants(adder.getServants());
+    	addFP(adder.getFP());
+    	addMP(adder.getMP());
+    	addVP(adder.getVP());
+    }
+    
+    public void subStats(Stats subber){
+    	addWood(-(subber.getWood()));
+    	addRock(-(subber.getRock()));
+    	addCoins(-(subber.getCoin()));
+    	addServants(-(subber.getServants()));
+    	addFP(-(subber.getFP()));
+    	addMP(-(subber.getMP()));
+    	addVP(-(subber.getVP()));
+    }
+    
+    public boolean enoughStats(Stats neededStats){
+		if(this.wood.getQuantity() < neededStats.getWood()){
+			return false;
+		}
+		if(this.rock.getQuantity() < neededStats.getRock()){
+			return false;
+		}
+		if(this.coin.getQuantity() < neededStats.getCoin()){
+			return false;
+		}
+		if(this.servant.getQuantity() < neededStats.getServants()){
+			return false;
+		}
+		if(this.fp.getQuantity() < neededStats.getFP()){
+			return false;
+		}
+		if(this.mp.getQuantity() < neededStats.getMP()){
+			return false;
+		}
+		if(this.vp.getQuantity() < neededStats.getVP()){
+			return false;
+		}
+    	return true;
+    }
 
 
 

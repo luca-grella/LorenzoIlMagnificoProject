@@ -18,10 +18,10 @@ public class ChoosePrivilege extends Observable implements PBViewStatus {
 	@Override
 	public void act() {
 		System.out.println("Choose which Privilege you want to take:\n"
-				+ "1. 1 Wood or 1 Rock."
-				+ "2. 2 Servants."
-				+ "3. 2 Coins."
-				+ "4. 2 Military Points."
+				+ "1. 1 Wood or 1 Rock.\n"
+				+ "2. 2 Servants.\n"
+				+ "3. 2 Coins.\n"
+				+ "4. 2 Military Points.\n"
 				+ "5. 1 Faith Point");
 		int choice = input.nextInt();
 		notifyParamMainController("Chosen Privilege", choice);

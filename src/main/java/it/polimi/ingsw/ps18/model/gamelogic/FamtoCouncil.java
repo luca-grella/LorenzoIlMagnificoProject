@@ -31,6 +31,7 @@ public class FamtoCouncil extends Observable implements Action {
 		List<CouncilCell> cells = board.getCouncilCells();
 		cells.add(new CouncilCell(this.chosenFam));
 		PBoard currentplayer = game.getTurnplayer();
+		(currentplayer.getResources()).addCoins(1); //TODO: il valore di monete aggiunte nel consiglio deve essere generale
 		privilege.activate(currentplayer);
 
 	}

@@ -20,6 +20,7 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 
 public class PurpleC extends Cards {
+	private Stats secondaryCost;
 	private long minMP;
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
@@ -39,7 +40,7 @@ public class PurpleC extends Cards {
 	        this.setPeriod((long) a.get("period"));
 	        this.minMP = (long) a.get("minPM");
 	        JSONArray costs = (JSONArray) a.get("PurpleCardCost");
-	        this.setCardCost(new Stats(costs));
+	        setCosts(costs);
 	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
 	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
 	        addQEffects(qeffects,qeffectvalues,mapQE);
@@ -100,8 +101,23 @@ public class PurpleC extends Cards {
 		for(int i=0; i<fineffect.size(); i++){
 			FinalEffect feffect = fineffect.get(i);
 			feffect.activate(player);
+		}	
+	}
+	
+	private void setCosts(JSONArray costs){
+		JSONArray cost1 = new JSONArray();
+		JSONArray cost2 = new JSONArray();
+		for(int i=0; i<costs.size(); i++){
+			if(i==5){
+				cost2.add((long) costs.get(5));
+				cost1.add((long) 0);
+			} else {
+				cost1.add((long) costs.get(i));
+				cost2.add((long) 0);
+			}
 		}
-		
+		this.setCardCost(new Stats(cost1));
+		this.secondaryCost = new Stats(cost2);
 	}
 	
 	public boolean costCheck(Stats playerResources){

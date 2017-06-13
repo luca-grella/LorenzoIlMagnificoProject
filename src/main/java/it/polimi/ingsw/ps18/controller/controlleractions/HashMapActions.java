@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps18.controller.controlleractions;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.PrivilegeHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.RecieveFamtoCouncil;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.FamtoHarvestTrigger;
@@ -34,6 +35,7 @@ public class HashMapActions {
 		genActions.put("RecieveFamtoHarvest", new RecieveFamtoHarvest());
 		genActions.put("Show Player", new ChosePlayer());
 		genActions.put("RecievePlayertoShow", new ShowPlayer());
+		genActions.put("Chosen Privilege", new PrivilegeHandler());
 	}
 	
 	public static ActionChoice geteffect(String a){
