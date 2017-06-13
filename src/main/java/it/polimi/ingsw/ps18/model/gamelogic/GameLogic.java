@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
@@ -34,6 +35,7 @@ public class GameLogic extends Observable {
 	private List<Cards> bluecards = new ArrayList<>(GeneralParameters.numberBlueC);
 	private List<Cards> yellowcards = new ArrayList<>(GeneralParameters.numberYellowC);
 	private List<Cards> purplecards = new ArrayList<>(GeneralParameters.numberPurpleC);
+	private List<Excommunications> excommcards = new ArrayList<>(GeneralParameters.numberExcommC);
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	private Action ongoingAction;
 	private GeneralEffect ongoingEffect;
@@ -93,6 +95,10 @@ public class GameLogic extends Observable {
 			Integer index = new Integer(i);
 			purplecards.add(new PurpleC(index));
 		} notifyLogMainView("Purple Deck Created.");
+		for(int i=1; i<=GeneralParameters.numberExcommC; i++){
+			Integer index = new Integer(i);
+			this.excommcards.add(new Excommunications(index));	
+		} notifyLogMainView("Excommunication Deck Created.");
 	}
 	
 	private void insertCardsinTowers() {

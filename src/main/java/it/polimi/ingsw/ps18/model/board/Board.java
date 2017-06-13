@@ -93,7 +93,7 @@ public class Board extends Observable {
 		
 		
 		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
-			this.excommCells.add(new Excommunications());
+			this.excommCells.add(new Excommunications(null));
 		}
 		
 		notifyLogBoardView("Setup Board Terminated.");

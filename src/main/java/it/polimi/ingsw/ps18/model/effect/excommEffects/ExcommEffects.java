@@ -5,6 +5,8 @@ public interface ExcommEffects {
 	
 	public void activate();
 	
+	public void setQuantity(int quantity);
+	
 	public String toString();
 
 }
