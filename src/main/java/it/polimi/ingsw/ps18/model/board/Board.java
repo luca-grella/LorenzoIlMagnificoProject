@@ -167,9 +167,9 @@ public class Board extends Observable {
 		if(this.councilCells.size()==0){
 			builder.append("The Council is Empty.\n\n");
 		} else {
-			for(int i=0; i<this.councilCells.size(); i++){
-				CouncilCell tempcell = this.councilCells.get(i);
-			    builder.append(tempcell.toString(i));	
+			for(int councilIndex=0; councilIndex<this.councilCells.size(); councilIndex++){
+				CouncilCell tempcell = this.councilCells.get(councilIndex);
+			    builder.append(tempcell.toString(councilIndex));	
 			}
 		}
 		return builder.toString();
@@ -180,9 +180,9 @@ public class Board extends Observable {
 		if(this.councilCells.size()==0){
 			builder.append("The Harvest Section is Empty.\n\n");
 		} else {
-			for(int i=0; i<this.harvestCells.size(); i++){
-				HarvCell tempcell = this.harvestCells.get(i);
-			    builder.append(tempcell.toString(i));	
+			for(int harvestIndex=0; harvestIndex<this.harvestCells.size(); harvestIndex++){
+				HarvCell tempcell = this.harvestCells.get(harvestIndex);
+			    builder.append(tempcell.toString(harvestIndex));	
 			}
 		}
 		return builder.toString();

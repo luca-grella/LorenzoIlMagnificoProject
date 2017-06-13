@@ -40,11 +40,24 @@ public class FamtoMarket extends Observable implements Action {
 	}
 
 	/**
+	 * @return the chosenFam
+	 */
+	public FMember getChosenFam() {
+		return chosenFam;
+	}
+
+	/**
 	 * @param chosenFam the chosenFam to set
 	 */
-	@Override
 	public void setChosenFam(FMember chosenFam) {
 		this.chosenFam = chosenFam;
+	}
+
+	/**
+	 * @return the chosenCell
+	 */
+	public int getChosenCell() {
+		return chosenCell;
 	}
 
 	/**
@@ -53,5 +66,7 @@ public class FamtoMarket extends Observable implements Action {
 	public void setChosenCell(int chosenCell) {
 		this.chosenCell = chosenCell;
 	}
+
+
 	
 }

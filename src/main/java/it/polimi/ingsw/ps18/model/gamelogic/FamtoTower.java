@@ -43,6 +43,7 @@ public class FamtoTower extends Observable implements Action {
 		currentplayer.addCard(newcard,game);
 	}
 	
+
 	private void notifyActionPBoardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
@@ -52,13 +53,26 @@ public class FamtoTower extends Observable implements Action {
 		setChanged();
 		notifyObservers(new ParamMessage(msg,index));
 	}
-	
+
+	/**
+	 * @return the chosenFam
+	 */
+	public FMember getChosenFam() {
+		return chosenFam;
+	}
+
 	/**
 	 * @param chosenFam the chosenFam to set
 	 */
-	@Override
 	public void setChosenFam(FMember chosenFam) {
 		this.chosenFam = chosenFam;
+	}
+
+	/**
+	 * @return the chosenTower
+	 */
+	public int getChosenTower() {
+		return chosenTower;
 	}
 
 	/**
@@ -69,12 +83,17 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * @return the chosenFloor
+	 */
+	public int getChosenFloor() {
+		return chosenFloor;
+	}
+
+	/**
 	 * @param chosenFloor the chosenFloor to set
 	 */
 	public void setChosenFloor(int chosenFloor) {
 		this.chosenFloor = chosenFloor;
 	}
 	
-	
-
 }

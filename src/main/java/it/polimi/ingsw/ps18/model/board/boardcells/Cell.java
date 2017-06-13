@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
@@ -12,13 +13,15 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
  * @author yazan-matar
  */
 
-class Cell { 
+public class Cell { 
 	private Cards cellCard;
 	private FMember cellFM;
+	private int value;
 	
 	public Cell() {
 		cellCard = null;
 		cellFM = null;
+		value =  3;     //Settare in modo diverso, magari su GeneralParameters
 	}
 	
 	/**
@@ -37,10 +40,9 @@ class Cell {
 	 */
 	
 	public Cards insertFM(FMember pBoardFM) { 
-		if(this.isEmpty()){
-			this.cellFM = pBoardFM; //Adds FM
-		}
-		return this.cellCard;
+  //TODO: Levare il controllo da qui e piazzarlo nel controller
+			this.cellFM = pBoardFM;
+			return this.cellCard;
 	}
 	
 	/**
@@ -48,15 +50,28 @@ class Cell {
 	 * @return a boolean state
 	 */
 	
-	private boolean isEmpty() {
+	public boolean isEmptyTC() {
 		if(this.cellFM==null){ 
 			System.out.println("\nCell is clear!");
-			return true;	
+			return true;
 		}
 		else {
 			System.out.println("\nError: Cell occupied!");
 			return false;
 		}
+	}
+	
+	public boolean isLegalTC(FMember pBoardFM) {
+		if(pBoardFM.getValue() >= this.getValue()){
+			if(this.cellCard != null){
+//				if(CONTROLLA SE IL PEZZENTE HA LE RISORSE PER PAGARE LA CARTA) FORSE CONVIENE IMPLEMENTARLO NEL CONTROLLER
+				return true;
+			}
+			else
+				return false;
+		}
+		return false;
+				
 	}
 	
 	public String toString(int index){
@@ -66,10 +81,10 @@ class Cell {
 		
 		if(cellCard != null){
 			builder.append("Cards in tower cell number " + index + ":\n"
-					+ "Name: " + cellCard.getName() + "\n"
-					+ "ID: " + cellCard.getID() + "\n"
-					+ "Color: " + cellCard.getColor() + "\n"
-					+ "Period: " + cellCard.getPeriod() + "\n"
+					+ "\tName: " + cellCard.getName() + "\n"
+					+ "\tID: " + cellCard.getID() + "\n"
+					+ "\tColor: " + cellCard.getColor() + "\n"
+					+ "\tPeriod: " + cellCard.getPeriod() + "\n"
 					);
 		}
 		else{
@@ -77,9 +92,9 @@ class Cell {
 		}
 		if(cellFM != null){
 			builder.append("Family Member in tower cell number " + index + ":\n"
-					+ "Player color: " + cellFM.getPlayercol() + "\n"
-					+ "Family Member color: " + cellFM.getColor() + "\n"
-					+ "Family Member value: " + cellFM.getValue() + "\n"
+					+ "\tPlayer color: " + cellFM.getPlayercol() + "\n"
+					+ "\tFamily Member color: " + cellFM.getColor() + "\n"
+					+ "\tFamily Member value: " + cellFM.getValue() + "\n"
 					);
 		}
 		else{
@@ -117,6 +132,20 @@ class Cell {
 	 */
 	public void setCellFM(FMember cellFM) {
 		this.cellFM = cellFM;
+	}
+
+	/**
+	 * @return the value
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(int value) {
+		this.value = value;
 	}
 	
 	

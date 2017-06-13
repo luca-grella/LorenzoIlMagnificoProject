@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
@@ -20,7 +21,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 public class ConcreteTower implements Tower {
 	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
-	//private int cellIndex; //Used for toString(index) method
 	private int color;
 	
 	public ConcreteTower (int towerIndex) {
@@ -60,9 +60,58 @@ public class ConcreteTower implements Tower {
 	public Cards insertFM(FMember pBoardFM, int floor) {
 		
 		Cell towerCell = this.towerCells.get(floor);
-		return towerCell.insertFM(pBoardFM);
+	//		if(this.isLegal(pBoardFM))
+	//		if(this.isEmpty()){
+	//			return towerCell.insertFM(pBoardFM);
+	//		}
+	//		else{
+	//			/*
+	//			 * Controllo le monete del giocatore per verificare 
+	//			 * se sono maggiori di 3, e se non lo sono non ritorno la carta
+	//			 */
+	//			return towerCell.insertFM(pBoardFM);
+	//		}
+			return towerCell.insertFM(pBoardFM);  //insertFM chiama isEmpty
+			
 		
 	}
+	
+	
+	public boolean isLegalT(FMember pBoardFM) {
+		
+		for(int index=0; index<GeneralParameters.numberofCells; index++){
+			Cell towerCell = towerCells.get(index);
+			FMember towerCellFM = towerCell.getCellFM();
+			if(!(towerCell.isEmptyTC())){
+				
+					if(towerCellFM.getColor() != GeneralParameters.neutralFMColor)
+						if(towerCellFM.getColor() == pBoardFM.getColor())
+						return false; 
+				
+					//Se e' neutro allora cicla alla cella dopo perche' nella torre possono stare un neutro e un
+					//non neutro dello stesso colore
+				}
+			}
+		return true;
+	}
+	
+	//TODO: trovare un modo per incorporare isEmpty in isLegal senza che il RecieveTowertoTower si incasini
+	public boolean isEmptyT(){
+		if(towerCells.size() == 0){
+			return true;
+		}
+		else{
+			for(int index=0; index<GeneralParameters.numberofCells; index++){
+				Cell towerCell = towerCells.get(index);
+				if(!(towerCell.isEmptyTC()))
+					return false;
+			}
+			
+		}
+		return true;
+	}
+	
+	
 	
 	@Override
 	public String toString(int index){
@@ -89,8 +138,8 @@ public class ConcreteTower implements Tower {
 
 		builder.append("-----------------\n");
 		builder.append("Details of tower: \n");
-		builder.append("Tower color: " + this.color); //Qui l'ho chiamato Tower color, da altre parti il colore l'ho chiamato numero
-		builder.append("Number of cells in tower: " + this.towerCells.size());
+		builder.append("\tTower color: " + this.color + "\n");
+		builder.append("\tNumber of cells in tower: " + this.towerCells.size());
 		return builder.toString();
 	}
 	/*

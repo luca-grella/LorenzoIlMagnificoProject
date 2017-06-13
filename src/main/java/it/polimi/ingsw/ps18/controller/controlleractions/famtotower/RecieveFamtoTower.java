@@ -33,6 +33,5 @@ public class RecieveFamtoTower implements ActionChoice {
 
 	
 	
-	
 
 }

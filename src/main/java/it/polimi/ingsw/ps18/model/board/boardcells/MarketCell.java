@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
@@ -25,6 +26,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 public class MarketCell {
 	private long minPlayers;
 	private FMember marketCellFM;
+	private int value;
 	private List<QuickEffect> effects = new ArrayList<>();
 	
 	
@@ -67,7 +69,7 @@ public class MarketCell {
 	 */
 	public boolean insertFM (FMember pBoardFM, PBoard player) {
 		
-		if(this.isEmpty()){
+		if(this.isEmptyMC()){
 			this.marketCellFM = pBoardFM;
 			activateQEffects(player); 			//attivo effetti sul giocatore
 			return true;
@@ -80,7 +82,7 @@ public class MarketCell {
 	 * @return a boolean state
 	 */
 	
-	private boolean isEmpty() {
+	public boolean isEmptyMC() {
 		if(this.marketCellFM==null){ 
 			return true;		
 		}
@@ -88,7 +90,13 @@ public class MarketCell {
 			return false;
 		}	
 	}
-	
+	public boolean isLegalMC(FMember pBoardFM){
+		if(pBoardFM.getValue() >= this.value){
+			return true;
+		}
+		return false;
+		
+	}
 	
 	private boolean add(QuickEffect marketQuickEffect, long quantity){
 	    boolean isAdded = this.effects.add(marketQuickEffect);

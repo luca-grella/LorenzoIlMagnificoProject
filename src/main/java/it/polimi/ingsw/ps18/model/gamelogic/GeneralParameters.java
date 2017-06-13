@@ -18,5 +18,9 @@ public abstract interface GeneralParameters {
 	public final static int numberofMarketCells = 4;
 	public final static int numberofExcommCells = 3;
 	public final static int numPrivilegesFromCouncil = 1;
+	public final static int neutralFMColor = -1;
+	public final static int marketCellValue = 1;
+	public final static int councilCellValue = 1;
+
 
 }
