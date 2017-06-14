@@ -26,7 +26,7 @@ public class RecieveFloortoTower implements ActionChoice {
 		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 		
 		//TODO: dato che ora la classe Cell è PUBBLICA, forse si possono evitare sti getter
-		if( ! (((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
+		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
 			/*
 			 * Vecchio controllo che mi tengo buono nel caso in cui lo spostamento dei metodi al model dia problemi
 			 * P.S: Ovviamente sta dando problemi
@@ -51,6 +51,9 @@ public class RecieveFloortoTower implements ActionChoice {
 			}
 			else
 				((FamtoTower) currentaction).floorChoice();
+		}
+		else{
+			((FamtoTower) currentaction).floorChoice();
 		}
 	}
 
