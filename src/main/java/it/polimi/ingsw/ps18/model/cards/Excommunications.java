@@ -9,16 +9,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-
-import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
-
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.HashMapExcomm;
-import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
-import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 
 public class Excommunications {
 	public List<ExcommEffects> effects = new ArrayList<>();
