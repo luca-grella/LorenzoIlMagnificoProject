@@ -97,10 +97,11 @@ public class GameLogic extends Observable {
 			Integer index = new Integer(i);
 			purplecards.add(new PurpleC(index));
 		} notifyLogMainView("Purple Deck Created.");
-		for(int i=1; i<=GeneralParameters.numberExcommC; i++){
-			Integer index = new Integer(i);
-			this.excommcards.add(new Excommunications(index));	
-		} notifyLogMainView("Excommunication Deck Created.");
+//		for(int i=1; i<=GeneralParameters.numberExcommC; i++){
+//			Integer index = new Integer(i);
+//			this.excommcards.add(new Excommunications(index));	
+//		} notifyLogMainView("Excommunication Deck Created.");
+		//SE NON SI DEFINISCONO GLI EFFETTI E SI ASSOCIANO AD UN HASHMAP IL CODICE NON COMPILA
 	}
 	
 	private void insertCardsinTowers() {
