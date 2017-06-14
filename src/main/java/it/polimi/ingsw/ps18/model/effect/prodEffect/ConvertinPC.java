@@ -1,17 +1,26 @@
 package it.polimi.ingsw.ps18.model.effect.prodEffect;
 
+import java.util.Observable;
+
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-public class ConvertinPC implements ProductionEffect {
+public class ConvertinPC extends Observable implements ProductionEffect {
 	private Stats cost;
 	private int quantity;
 
 	@Override
 	public void activate(PBoard player) {
-
+		addObserver(player.getpBoardView());
+		Stats playerStats = player.getResources();
+		playerStats.subStats(cost);
+		for(int i=0; i<quantity; i++){
+			setChanged();
+			notifyObservers(new StatusMessage("PrivilegeChoice"));
+		}
 	}
 
 	@Override

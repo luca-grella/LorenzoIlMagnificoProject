@@ -58,9 +58,9 @@ public class HarvCell {
 		
 		if(harvCellFM != null){
 			builder.append("\nFamily Member in harvest cell number " + index + ":\n"
-					+ "     Player color: " + harvCellFM.getPlayercol() + "\n"
-					+ "     Family Member color: " + harvCellFM.getColor() + "\n"
-					+ "     Family Member value: " + harvCellFM.getValue() + "\n"
+					+ "\tPlayer color: " + harvCellFM.getPlayercol() + "\n"
+					+ "\tFamily Member color: " + harvCellFM.getColor() + "\n"
+					+ "\tFamily Member value: " + harvCellFM.getValue() + "\n"
 					);
 		}
 		else{

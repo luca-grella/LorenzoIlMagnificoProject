@@ -5,16 +5,19 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.PrivilegeHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.RecieveFamtoCouncil;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.ReceiveFamtoCouncil;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ActivateHarvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.FamtoHarvestTrigger;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.RecieveFamtoHarvest;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ReceiveFamtoHarvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.FamtoMarketTrigger;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.RecieveFamtoMarket;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.RecieveMarketCell;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveFamtoMarket;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveMarketCell;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.FamtoProductionTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveFamtoProduction;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.RecieveFamtoTower;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.RecieveFloortoTower;
-import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.RecieveTowertoTower;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamtoTower;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
 
 public class HashMapActions {
     private static Map<String,ActionChoice> genActions = new HashMap<>();
@@ -22,19 +25,22 @@ public class HashMapActions {
 	public static void init(){
 		genActions.put("Turn Handle Init", new TurnHandleInit());
 		genActions.put("FamtoTower", new FamtoTowerTrigger());
-		genActions.put("RecieveFamtoTower", new RecieveFamtoTower());
-		genActions.put("RecieveTower", new RecieveTowertoTower());
-		genActions.put("RecieveFloor", new RecieveFloortoTower());
+		genActions.put("ReceiveFamtoTower", new ReceiveFamtoTower());
+		genActions.put("ReceiveTower", new ReceiveTowertoTower());
+		genActions.put("ReceiveFloor", new ReceiveFloortoTower());
 		genActions.put("FamtoMarket", new FamtoMarketTrigger());
-		genActions.put("RecieveFamtoMarket", new RecieveFamtoMarket());
-		genActions.put("RecieveMarketCell", new RecieveMarketCell());
-		genActions.put("RecieveTowertoShow", new ShowTowerCells());
+		genActions.put("ReceiveFamtoMarket", new ReceiveFamtoMarket());
+		genActions.put("ReceiveMarketCell", new ReceiveMarketCell());
+		genActions.put("ReceiveTowertoShow", new ShowTowerCells());
 		genActions.put("FamtoCouncil", new FamtoCouncilTrigger());
-		genActions.put("RecieveFamtoCouncil", new RecieveFamtoCouncil());
+		genActions.put("ReceiveFamtoCouncil", new ReceiveFamtoCouncil());
 		genActions.put("FamtoHarvest", new FamtoHarvestTrigger());
-		genActions.put("RecieveFamtoHarvest", new RecieveFamtoHarvest());
+		genActions.put("ReceiveFamtoHarvest", new ReceiveFamtoHarvest());
+		genActions.put("actHarvest", new ActivateHarvest());
+		genActions.put("FamtoProduction", new FamtoProductionTrigger());
+		genActions.put("ReceiveFamtoProduction", new ReceiveFamtoProduction());
 		genActions.put("Show Player", new ChosePlayer());
-		genActions.put("RecievePlayertoShow", new ShowPlayer());
+		genActions.put("ReceivePlayertoShow", new ShowPlayer());
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
 	}
 	

@@ -14,7 +14,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class RecieveTowertoTower implements ActionChoice {
+public class ReceiveTowertoTower implements ActionChoice {
 	private int index;
 
 	@Override

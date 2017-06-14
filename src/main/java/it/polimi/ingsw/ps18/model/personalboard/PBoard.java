@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
@@ -42,25 +43,19 @@ public class PBoard extends Observable {
 		} this.fams.add(new FMember(0,playercol));
 	}
 	
-	public void actHarvest(int actionValue) {
-		for(Cards card: cards){
-			if(card.hasHarvest()){
-				card.activateSecondaryEffect(this, actionValue);
-			}
-		}
-		System.out.println("Attivazione effetto della carta. Risorse post attivazione");
-		System.out.println(this.toStringResources());
-		
+	public void actHarvest() {
+		notifyStatusPBoardView("actHarvest");
+	}
+	
+	public void actProduction() {
+		notifyStatusPBoardView("actProduction");
 	}
 	
 	public void addCard(Cards card, GameLogic game) {
+		this.resources.subStats(card.getCardCost());
 		if(cards.add(card)){
 			card.activateQEffects(this,game);
 		}
-		
-	}
-	
-	public void privilege(){
 		
 	}
 	
@@ -88,19 +83,10 @@ public class PBoard extends Observable {
 	
 	public String toStringResources(){
 		StringBuilder builder = new StringBuilder();
-		Stats resources = this.getResources();
-		builder.append("-----------------\n");
 		builder.append("Resources of player " + this.playercol + "\n");
-		builder.append("Wood: " + resources.getWood() + "\n");
-		builder.append("Rock: " + resources.getRock() + "\n");
-		builder.append("Coin: " + resources.getCoin() + "\n");
-		builder.append("Servant: " + resources.getServants() + "\n");
-		builder.append("FP: " + resources.getFP() + "\n");
-		builder.append("MP: " + resources.getMP() + "\n");
-		builder.append("VP: " + resources.getVP() + "\n");
-		builder.append("-----------------\n");
+		builder.append(this.resources.toString());
 		return builder.toString();
-	}
+		}
 	
 	public String toStringCards(){
 		StringBuilder builder = new StringBuilder();
@@ -145,7 +131,7 @@ public class PBoard extends Observable {
 	
 	private void notifyStatusPBoardView(String msg){
 		setChanged();
-		notifyObservers(new ActionMessage(msg));
+		notifyObservers(new StatusMessage(msg));
 	}
 
 	/**

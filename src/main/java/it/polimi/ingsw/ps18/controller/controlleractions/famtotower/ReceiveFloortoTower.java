@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-public class RecieveFloortoTower implements ActionChoice {
+public class ReceiveFloortoTower implements ActionChoice {
 	private int index;
 
 	@Override
@@ -40,8 +40,8 @@ public class RecieveFloortoTower implements ActionChoice {
 			}
 			else
 				((FamtoTower) currentaction).floorChoice();
-		}
-		else{
+			}
+		} else {
 			((FamtoTower) currentaction).floorChoice();
 		}
 	}

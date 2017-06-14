@@ -50,9 +50,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 			case 4:
 				notifyStatusMainController("Show Harvest");
 				break;
-//			case 5:
-//				
-//				break;
+			case 5:
+				notifyStatusMainController("Show Production");
+				break;
 			case 6:
 				notifyActionMainController("Show Player");
 				break;
@@ -71,9 +71,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 			case 11:
 				notifyActionMainController("FamtoHarvest");
 				break;
-//			case 12:
-//				
-//				break;
+			case 12:
+				notifyActionMainController("FamtoProduction");
+				break;
 			}
 		}while(ans<8);
 		

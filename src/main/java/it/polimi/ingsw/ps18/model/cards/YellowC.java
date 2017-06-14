@@ -122,8 +122,46 @@ public class YellowC extends Cards {
 	
 	@Override
 	public String toString(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder builder = new StringBuilder();
+		builder.append("Card number " + count + ":\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				+ "\tProduction Value: " + this.getProductionValue() + "\n"
+				+ "\tCost:\n" + (this.getCardCost()).toStringCost() + "\n"
+				);
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
+		}
+		builder.append("\nProduction Effects\n");
+		for(int i=0;  i<this.prodEffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.getProdEffect()).get(i)).toString() + "\n");
+		}
+		return builder.toString();
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Current Card:\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				+ "\tProduction Value " + this.getProductionValue() + "\n"
+				+ "\tCost:\n" + (this.getCardCost()).toStringCost() + "\n"
+				);
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
+		}
+		builder.append("\nProduction Effects\n");
+		for(int i=0;  i<this.prodEffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.getProdEffect()).get(i)).toString() + "\n");
+		}
+		return builder.toString();
 	}
 
 
@@ -159,6 +197,7 @@ public class YellowC extends Cards {
 	public void setProdEffect(List<ProductionEffect> prodEffect) {
 		this.prodEffect = prodEffect;
 	}
+	
 
 
 

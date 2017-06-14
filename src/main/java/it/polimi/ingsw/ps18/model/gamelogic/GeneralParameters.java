@@ -21,6 +21,7 @@ public abstract interface GeneralParameters {
 	public final static int neutralFMColor = -1;
 	public final static int marketCellValue = 1;
 	public final static int councilCellValue = 1;
+	public final static int coinsFromCouncil = 1;
 
 
 }

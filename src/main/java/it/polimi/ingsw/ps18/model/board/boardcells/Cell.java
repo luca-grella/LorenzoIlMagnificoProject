@@ -80,12 +80,8 @@ public class Cell {
 		builder.append("Tower cell number " + index + ":\n");
 		
 		if(cellCard != null){
-			builder.append("Cards in tower cell number " + index + ":\n"
-					+ "\tName: " + cellCard.getName() + "\n"
-					+ "\tID: " + cellCard.getID() + "\n"
-					+ "\tColor: " + cellCard.getColor() + "\n"
-					+ "\tPeriod: " + cellCard.getPeriod() + "\n"
-					);
+			builder.append("Cards in tower cell number " + index + ":\n");
+			builder.append(this.cellCard.toString());
 		}
 		else{
 			builder.append("Card already taken!");

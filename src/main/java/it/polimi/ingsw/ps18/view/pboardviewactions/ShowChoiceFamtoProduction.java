@@ -7,13 +7,12 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
-public class ShowChoiceFamtoHarvest extends Observable implements PBViewAction {
+public class ShowChoiceFamtoProduction extends Observable implements PBViewAction {
 	Scanner input = new Scanner(System.in);
 
 	@Override
 	public void setObserver(MainController controller) {
 		addObserver(controller);
-
 	}
 
 	@Override
@@ -21,7 +20,7 @@ public class ShowChoiceFamtoHarvest extends Observable implements PBViewAction {
 		System.out.println("Chose from yours family members which one to move:\n");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
-		notifyParamMainController("ReceiveFamtoHarvest",choice);
+		notifyParamMainController("ReceiveFamtoProduction",choice);
 
 	}
 	

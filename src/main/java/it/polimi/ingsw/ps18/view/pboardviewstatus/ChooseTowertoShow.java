@@ -21,7 +21,7 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 		System.out.println("Choose a tower to zoom in. Type 0 to continue.");
 		int choice = input.nextInt();
 		while(choice!=0){
-			notifyParamMainController("RecieveTowertoShow",choice-1);
+			notifyParamMainController("ReceiveTowertoShow",choice-1);
 			System.out.println("Choose a tower to zoom in. Type 0 to continue.");
 			choice = input.nextInt();
 		}

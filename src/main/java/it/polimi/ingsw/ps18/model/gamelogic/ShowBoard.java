@@ -52,6 +52,10 @@ public class ShowBoard extends Observable {
 		notifyLogView(board.toStringHarvest());
 	}
 	
+	public void showProduction(Board board){
+		notifyLogView(board.toStringProduction());
+	}
+	
 	public void choosePlayer(){
 		notifyStatusView("Player Choice");
 	}

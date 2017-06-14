@@ -20,6 +20,7 @@ public class HashMapPBVA {
 		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell());
 		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil());
 		genPBVAction.put("Fam Choice Harvest", new ShowChoiceFamtoHarvest());
+		genPBVAction.put("Fam Choice Production", new ShowChoiceFamtoProduction());
 	}
 	
 	public static PBViewAction geteffect(String a){

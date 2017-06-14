@@ -34,7 +34,11 @@ public class BlueC extends Cards {
 
 	@Override
 	public String toString(int count) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String toString() {
 		return null;
 	}
 

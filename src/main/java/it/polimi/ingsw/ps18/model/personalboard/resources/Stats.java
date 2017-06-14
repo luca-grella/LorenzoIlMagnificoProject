@@ -21,8 +21,6 @@ public class Stats {
 		this.vp = new VictoryPoints(vp);
 	}
 	
-	
-	
     public Stats(JSONArray costs) {
 		this.wood = new Wood((long) costs.get(0));
 		this.rock = new Rock((long) costs.get(1));
@@ -32,6 +30,31 @@ public class Stats {
 		this.mp = new MilitaryPoints((long) costs.get(5));
 		this.vp = new VictoryPoints((long) costs.get(6));
 	}
+    
+    public boolean isEmpty(){
+    	if(this.wood.getQuantity() != 0){
+			return false;
+		}
+		if(this.rock.getQuantity() != 0){
+			return false;
+		}
+		if(this.coin.getQuantity() != 0){
+			return false;
+		}
+		if(this.servant.getQuantity() != 0){
+			return false;
+		}
+		if(this.fp.getQuantity() != 0){
+			return false;
+		}
+		if(this.mp.getQuantity() != 0){
+			return false;
+		}
+		if(this.vp.getQuantity() != 0){
+			return false;
+		}
+    	return true;
+    }
     
     public void addStats(Stats adder){
     	addWood(adder.getWood());
@@ -76,6 +99,49 @@ public class Stats {
 			return false;
 		}
     	return true;
+    }
+    
+    public String toString(){
+    	StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		builder.append("Wood: " + this.getWood() + "\n");
+		builder.append("Rock: " + this.getRock() + "\n");
+		builder.append("Coin: " + this.getCoin() + "\n");
+		builder.append("Servant: " + this.getServants() + "\n");
+		builder.append("FP: " + this.getFP() + "\n");
+		builder.append("MP: " + this.getMP() + "\n");
+		builder.append("VP: " + this.getVP() + "\n");
+		builder.append("-----------------\n");
+		return builder.toString();
+    }
+    
+    public String toStringCost(){
+    	StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
+		if(this.getWood() != 0){
+			builder.append("Wood: " + this.getWood() + "\n");
+		}
+		if(this.getRock() != 0){
+			builder.append("Rock: " + this.getRock() + "\n");
+		}
+		if(this.getCoin() != 0){
+			builder.append("Coin: " + this.getCoin() + "\n");
+		}
+		if(this.getServants() != 0){
+			builder.append("Servant: " + this.getServants() + "\n");
+		}
+		if(this.getFP() != 0){
+			builder.append("FP: " + this.getFP() + "\n");
+		}
+		if(this.getMP() != 0){
+			builder.append("MP: " + this.getMP() + "\n");
+		}
+		if(this.getVP() != 0){
+			builder.append("VP: " + this.getVP() + "\n");
+		}
+		builder.append("-----------------\n");
+		return builder.toString();
+    	
     }
 
 

@@ -105,19 +105,24 @@ public class PurpleC extends Cards {
 	}
 	
 	private void setCosts(JSONArray costs){
-		JSONArray cost1 = new JSONArray();
-		JSONArray cost2 = new JSONArray();
-		for(int i=0; i<costs.size(); i++){
-			if(i==5){
-				cost2.add((long) costs.get(5));
-				cost1.add((long) 0);
-			} else {
-				cost1.add((long) costs.get(i));
-				cost2.add((long) 0);
+		if(this.minMP != 0){
+			JSONArray cost1 = new JSONArray();
+			JSONArray cost2 = new JSONArray();
+			for(int i=0; i<costs.size(); i++){
+				if(i==5){
+					cost2.add((long) costs.get(5));
+					cost1.add((long) 0);
+				} else {
+					cost1.add((long) costs.get(i));
+					cost2.add((long) 0);
+				}
 			}
+			this.setCardCost(new Stats(cost1));
+			this.secondaryCost = new Stats(cost2);
+		} else {
+			this.setCardCost(new Stats(costs));
+			this.secondaryCost = new Stats(0,0,0,0,0,0,0);
 		}
-		this.setCardCost(new Stats(cost1));
-		this.secondaryCost = new Stats(cost2);
 	}
 	
 	public boolean costCheck(Stats playerResources){
@@ -132,8 +137,41 @@ public class PurpleC extends Cards {
 				+ "\tID: " + this.getID() + "\n"
 				+ "\tColor: " + this.getColor() + "\n"
 				+ "\tPeriod: " + this.getPeriod() + "\n"
-				//TODO: scrittura dei costi
 				);
+		if(!((this.getCardCost()).isEmpty())){
+			builder.append("\tCost:\n" + (this.getCardCost()).toStringCost() + "\n");
+		}
+		if(!(this.secondaryCost.isEmpty())){
+			builder.append("\tRequired MP: " + this.minMP + "\n"
+					+ "\tSecondary Cost:\n" + (this.secondaryCost).toStringCost() + "\n");
+		}
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+		}
+		builder.append("\nFinal Effects\n");
+		for(int i=0;  i<this.fineffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString());
+		}
+		return builder.toString();
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Current Card:\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				);
+		if(!((this.getCardCost()).isEmpty())){
+			builder.append("\tCost:\n" + (this.getCardCost()).toStringCost() + "\n");
+		}
+		if(!(this.secondaryCost.isEmpty())){
+			builder.append("\tRequired MP: " + this.minMP + "\n"
+					+ "\tSecondary Cost:\n" + (this.secondaryCost).toStringCost() + "\n");
+		}
 		builder.append("Quick Effects:\n");
 		for(int i=0; i<(this.getEffects()).size(); i++){
 			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());

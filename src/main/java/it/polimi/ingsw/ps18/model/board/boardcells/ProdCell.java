@@ -15,19 +15,20 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
  */
 
 public class ProdCell {
-	
 	private FMember prodCellFM;
 	private int prodCellValue;
+	private int malus = 0;
 
-	public ProdCell() {
+	public ProdCell(int malus) {
 		prodCellFM = null;
 		prodCellValue = GeneralParameters.baseValueProdCells;
+		this.malus = malus;
 	}
 
 	
-	public boolean insertFM(FMember pBoardFM, int valueFM) {
+	public boolean insertFM(FMember pBoardFM) {
 		if(this.isEmpty()){
-			if(valueFM >= prodCellValue){
+			if(pBoardFM.getValue() >= prodCellValue){
 				this.prodCellFM = pBoardFM;
 				return true;
 				//Production Effects gestiti dal chiamante
@@ -37,11 +38,10 @@ public class ProdCell {
 	
 	private boolean isEmpty() {
 		if(this.prodCellFM==null){ 
-			System.out.println("\nProduction cell is clear!");
 			return true;	
 		}
 		else {
-			System.out.println("\nError: Production cell occupied!");
+			System.out.println("\nError: Production cell occupied!"); //da eliminare
 			return false;
 		}
 	}
@@ -52,14 +52,14 @@ public class ProdCell {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
 		builder.append("Production cell number " + index + ":\n");
-		builder.append("Malus value in position " + index + ": " + prodCellValue); //Must be -3 malus if position > 0
-
+		builder.append("Minimum value to access this cell: " + prodCellValue);
+		builder.append("\nAction Malus from this cell: " + malus);
 		
 		if(prodCellFM != null){
 			builder.append("Family Member in production cell number " + index + ":\n"
-					+ "Player color: " + prodCellFM.getPlayercol() + "\n"
-					+ "Family Member color: " + prodCellFM.getColor() + "\n"
-					+ "Family Member value: " + prodCellFM.getValue() + "\n"
+					+ "\tPlayer color: " + prodCellFM.getPlayercol() + "\n"
+					+ "\tFamily Member color: " + prodCellFM.getColor() + "\n"
+					+ "\tFamily Member value: " + prodCellFM.getValue() + "\n"
 					);
 		}
 		else{
@@ -100,6 +100,24 @@ public class ProdCell {
 	public void setProdCellValue(int prodCellValue) {
 		this.prodCellValue = prodCellValue;
 	}
+
+
+	/**
+	 * @return the malus
+	 */
+	public int getMalus() {
+		return malus;
+	}
+
+
+	/**
+	 * @param malus the malus to set
+	 */
+	public void setMalus(int malus) {
+		this.malus = malus;
+	}
+	
+	
 	
 	
 }

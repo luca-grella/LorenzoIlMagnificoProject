@@ -129,6 +129,27 @@ public class GreenC extends Cards {
 		}
 		return builder.toString();
 	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Current Card:\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				+ "\tHarvest Value " + this.getHarvValue() + "\n"
+				);
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
+		}
+		builder.append("\nHarvest Effects\n");
+		for(int i=0;  i<this.harveffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.getHarveffect()).get(i)).toString() + "\n");
+		}
+		return builder.toString();
+	}
 
 	/**
 	 * @return the harvValue

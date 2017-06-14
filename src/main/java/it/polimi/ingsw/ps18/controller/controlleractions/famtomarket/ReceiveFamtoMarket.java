@@ -1,15 +1,15 @@
-package it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest;
+package it.polimi.ingsw.ps18.controller.controlleractions.famtomarket;
 
 import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
-import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
+import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class RecieveFamtoHarvest implements ActionChoice {
+public class ReceiveFamtoMarket implements ActionChoice {
 	int index;
 
 	@Override
@@ -19,7 +19,7 @@ public class RecieveFamtoHarvest implements ActionChoice {
 		FMember chosenfam = fams.set(index, null);
 		Action currentaction = game.getOngoingAction();
 		currentaction.setChosenFam(chosenfam);
-		((FamtoHarvest) currentaction).act(game);
+		((FamtoMarket) currentaction).cellChoice();
 
 	}
 

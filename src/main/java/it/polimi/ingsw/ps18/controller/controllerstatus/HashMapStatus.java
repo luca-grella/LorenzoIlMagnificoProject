@@ -16,6 +16,7 @@ public class HashMapStatus {
 		genStatus.put("Show Market", new ShowMarket());
 		genStatus.put("Show Council", new ShowCouncil());
 		genStatus.put("Show Harvest", new ShowHarvest());
+		genStatus.put("Show Production", new ShowProduction());
 	}
 	
 	public static Status geteffect(String a){

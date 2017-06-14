@@ -11,7 +11,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class RecieveMarketCell implements ActionChoice{
+public class ReceiveMarketCell implements ActionChoice{
 	private int index;
 
 	@Override

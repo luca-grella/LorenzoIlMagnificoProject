@@ -12,7 +12,6 @@ import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
@@ -129,19 +128,34 @@ public class Board extends Observable {
 	}
 	
 	public int insertFMHarv(FMember fam){
+		HarvCell cell;
 		if(harvestCells.isEmpty()){
-			HarvCell cell = new HarvCell(0);
+			cell = new HarvCell(0);
 			if(cell.insertFM(fam)){
 				harvestCells.add(cell);
-				return (fam.getValue() - cell.getMalus());
 			}
 		} else {
-			HarvCell cell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+			cell = new HarvCell(GeneralParameters.baseMalusHarvCells);
 			if(cell.insertFM(fam)){
 				harvestCells.add(cell);
-				return (fam.getValue() - cell.getMalus());
 			}
-		} return -100;
+		} return (fam.getValue() - cell.getMalus());
+	}
+	
+	
+	public int insertFMProd(FMember fam){
+		ProdCell cell;
+		if(harvestCells.isEmpty()){
+			cell = new ProdCell(0);
+			if(cell.insertFM(fam)){
+				productionCells.add(cell);
+			}
+		} else {
+			cell = new ProdCell(GeneralParameters.baseMalusProdCells);
+			if(cell.insertFM(fam)){
+				productionCells.add(cell);
+			}
+		} return (fam.getValue() - cell.getMalus());
 	}
 	
 	/*
@@ -165,7 +179,7 @@ public class Board extends Observable {
 	public String toStringCouncil(){
 		StringBuilder builder = new StringBuilder();
 		if(this.councilCells.size()==0){
-			builder.append("The Council is Empty.\n\n");
+			builder.append("\nThe Council Section is Empty.\n\n");
 		} else {
 			for(int councilIndex=0; councilIndex<this.councilCells.size(); councilIndex++){
 				CouncilCell tempcell = this.councilCells.get(councilIndex);
@@ -177,12 +191,25 @@ public class Board extends Observable {
 	
 	public String toStringHarvest(){
 		StringBuilder builder = new StringBuilder();
-		if(this.councilCells.size()==0){
-			builder.append("The Harvest Section is Empty.\n\n");
+		if(this.harvestCells.isEmpty()){
+			builder.append("\nThe Harvest Section is Empty.\n\n");
 		} else {
 			for(int harvestIndex=0; harvestIndex<this.harvestCells.size(); harvestIndex++){
 				HarvCell tempcell = this.harvestCells.get(harvestIndex);
 			    builder.append(tempcell.toString(harvestIndex));	
+			}
+		}
+		return builder.toString();
+	}
+	
+	public String toStringProduction(){
+		StringBuilder builder = new StringBuilder();
+		if(this.productionCells.isEmpty()){
+			builder.append("\nThe Production Section is Empty.\n\n");
+		} else {
+			for(int productionIndex=0; productionIndex<this.productionCells.size(); productionIndex++){
+				HarvCell tempcell = this.harvestCells.get(productionIndex);
+			    builder.append(tempcell.toString(productionIndex));	
 			}
 		}
 		return builder.toString();

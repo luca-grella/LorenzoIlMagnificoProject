@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.view.pboardviewactions;
+package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
 import java.util.Observable;
 import java.util.Scanner;
@@ -6,34 +6,26 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 
-public class ShowChoiceFloor extends Observable implements PBViewAction {
+public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	Scanner input = new Scanner(System.in);
-	private int index;
 
 	@Override
 	public void setObserver(MainController controller) {
 		addObserver(controller);
-		
 	}
 
 	@Override
 	public void act() {
-		System.out.println("Chose the Floor in which you want to move in:\n");
-		notifyParamMainController("ReceiveTowertoShow",this.index);
-		int choiceFloor = input.nextInt();
-		notifyParamMainController("ReceiveFloor",choiceFloor);
-
+		System.out.println("Choose which Resource you want to use:\n"
+				+ "1. Wood\n"
+				+ "2. Rock");
+		int choice = input.nextInt();
+		notifyParamMainController("Chosen Resource", choice);
 	}
 	
 	private void notifyParamMainController(String msg,int i){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,i));
-	}
-
-	@Override
-	public void setIndex(int number) {
-		this.index = number;
-		
 	}
 
 }

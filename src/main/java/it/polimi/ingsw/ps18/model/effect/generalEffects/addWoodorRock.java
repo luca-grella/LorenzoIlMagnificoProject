@@ -1,12 +1,15 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
+import java.util.Observable;
+
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
+public class addWoodorRock extends Observable implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
 	private String name = "Wood or Rock";
 	private int quantity;
 
@@ -16,12 +19,9 @@ public class addWoodorRock implements QuickEffect, HarvestEffect, ProductionEffe
 	 */
 	@Override
 	public void activate(PBoard player) {
-		//Stats stat = player.getStats();
-		
-		//TODO: scelta fra wood o rock
-//		stat.addWood(quantity);
-//		stat.addRock(quantity);
-		
+		addObserver(player.getpBoardView());
+		setChanged();
+		notifyObservers(new StatusMessage("WoodorRockChoice"));
 	}
 
 	/**

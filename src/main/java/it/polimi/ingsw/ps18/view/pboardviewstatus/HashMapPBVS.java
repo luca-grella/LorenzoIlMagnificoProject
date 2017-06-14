@@ -15,6 +15,9 @@ public class HashMapPBVS {
 		genPBVStatus.put("Tower Choice", new ChooseTowertoShow());
 		genPBVStatus.put("Player Choice", new ChoosePlayertoShow());
 		genPBVStatus.put("PrivilegeChoice", new ChoosePrivilege());
+		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock());
+		genPBVStatus.put("actHarvest", new ActHarvest());
+		genPBVStatus.put("actProduction", new ActProduction());
 	}
 	
 	public static PBViewStatus geteffect(String a){

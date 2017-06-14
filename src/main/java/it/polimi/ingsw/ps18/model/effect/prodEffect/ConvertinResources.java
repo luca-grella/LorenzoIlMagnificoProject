@@ -11,7 +11,9 @@ public class ConvertinResources implements ProductionEffect {
 
 	@Override
 	public void activate(PBoard player) {
-		
+		Stats playerStats = player.getResources();
+		playerStats.subStats(cost);
+		playerStats.addStats(reward);
 	}
 
 	@Override
