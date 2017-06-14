@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -16,11 +18,18 @@ public class RecieveFamtoCouncil implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		List<FMember> fams = currentplayer.getFams();
+		Board gameBoard = game.getBoard();
+		List<CouncilCell> councilCells = gameBoard.getCouncilCells();
+		CouncilCell councilCell = councilCells.get(index);
+		
 		FMember chosenfam = fams.set(index, null);
 		Action currentaction = game.getOngoingAction();
+		
+		if(councilCell.isEmpty()){
+//			if(councilCell.isLegal(pBoardFM))
 		currentaction.setChosenFam(chosenfam);
 		((FamtoCouncil) currentaction).act(game);
-
+		}
 	}
 
 	/**

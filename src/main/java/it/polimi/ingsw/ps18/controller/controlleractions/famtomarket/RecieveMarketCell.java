@@ -23,7 +23,6 @@ public class RecieveMarketCell implements ActionChoice{
 		PBoard currentPlayer = game.getTurnplayer();
 		FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
 		if(boardMarketCell.isEmptyMC()){
-			
 			if(boardMarketCell.isLegalMC(pBoardFM)){
 				((FamtoMarket) currentaction).setChosenCell(index);
 				currentaction.act(game);

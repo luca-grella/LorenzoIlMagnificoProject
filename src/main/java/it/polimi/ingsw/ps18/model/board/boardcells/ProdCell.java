@@ -61,7 +61,6 @@ public class ProdCell {
 					+ "Family Member color: " + prodCellFM.getColor() + "\n"
 					+ "Family Member value: " + prodCellFM.getValue() + "\n"
 					);
-			// Add cell value
 		}
 		else{
 			builder.append("\nProduction cell is empty!");

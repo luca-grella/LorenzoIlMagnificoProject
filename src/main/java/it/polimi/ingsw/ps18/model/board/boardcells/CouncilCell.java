@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
  */
 public class CouncilCell { 
 	private FMember councilCellFM;
-	
+	private int councilCellValue;
 	
 	public CouncilCell(FMember pBoardFM) {
 		if(this.isEmpty()){
@@ -24,7 +24,7 @@ public class CouncilCell {
 	 * @return a boolean state
 	 */
 	
-	private boolean isEmpty() {
+	public boolean isEmpty() {
 		if(this.councilCellFM == null){
 			System.out.println("\nCouncil cell is empty!");
 			return true;
@@ -34,7 +34,12 @@ public class CouncilCell {
 			return false;
 		}	
 	}
-	
+	public boolean isLegal(FMember pBoardFM){
+		if(pBoardFM.getValue() >= this.getCouncilCellValue()){
+			return true;
+		}
+		return false;
+	}
 	
 	
 	
@@ -71,6 +76,20 @@ public class CouncilCell {
 	 */
 	public void setCouncilCellFM(FMember councilCellFM) {
 		this.councilCellFM = councilCellFM;
+	}
+
+	/**
+	 * @return the councilCellValue
+	 */
+	public int getCouncilCellValue() {
+		return councilCellValue;
+	}
+
+	/**
+	 * @param councilCellValue the councilCellValue to set
+	 */
+	public void setCouncilCellValue(int councilCellValue) {
+		this.councilCellValue = councilCellValue;
 	}
 	
 	

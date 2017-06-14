@@ -52,11 +52,11 @@ public class Cell {
 	
 	public boolean isEmptyTC() {
 		if(this.cellFM==null){ 
-			System.out.println("\nCell is clear!");
+//			System.out.println("\nCell is clear!");
 			return true;
 		}
 		else {
-			System.out.println("\nError: Cell occupied!");
+//			System.out.println("\nError: Cell occupied!");
 			return false;
 		}
 	}
@@ -100,7 +100,7 @@ public class Cell {
 		else{
 			builder.append("\nTower cell is empty!");
 		}
-		builder.append("-----------------\n");
+		builder.append("\n-----------------\n");
 		return builder.toString();
 		
 	}
