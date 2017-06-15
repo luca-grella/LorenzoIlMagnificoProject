@@ -19,5 +19,12 @@ public class TakeAnyCard implements FinalEffect, HarvestEffect, ProductionEffect
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 }

@@ -53,4 +53,11 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 		}
 		return "Error";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 }

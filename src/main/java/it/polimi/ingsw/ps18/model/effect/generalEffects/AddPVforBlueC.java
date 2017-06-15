@@ -34,5 +34,12 @@ public class AddPVforBlueC implements FinalEffect, HarvestEffect, ProductionEffe
 	public String toString(){
 		return "Da scrivere";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 }

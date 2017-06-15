@@ -18,6 +18,7 @@ public class HashMapPBVS {
 		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock());
 		genPBVStatus.put("actHarvest", new ActHarvest());
 		genPBVStatus.put("actProduction", new ActProduction());
+		genPBVStatus.put("Select YC", new SelectYellowC());
 	}
 	
 	public static PBViewStatus geteffect(String a){

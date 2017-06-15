@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class ActivateProduction implements ActionChoice {
-	private int index;
+	private int index = -1;
 
 	@Override
 	public void act(GameLogic game) {

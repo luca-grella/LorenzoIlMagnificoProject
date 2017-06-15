@@ -23,5 +23,7 @@ public interface ProductionEffect extends GeneralEffect{
 	
 	@Override
 	public String toString();
+	
+	public String getName();
 
 }

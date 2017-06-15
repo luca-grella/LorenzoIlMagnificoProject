@@ -14,7 +14,8 @@ public class Dice {
 	public Dice(int color){
 		Random rand = new Random();
 		this.color = color;
-		this.value = rand.nextInt(6) + 1;
+		this.value = 6;
+//		this.value = rand.nextInt(6) + 1;
 	}
 	
 	

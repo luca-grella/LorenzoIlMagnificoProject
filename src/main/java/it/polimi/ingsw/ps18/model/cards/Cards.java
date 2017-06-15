@@ -36,8 +36,6 @@ public abstract class Cards {
 	public abstract String toString();
 	
 	public abstract String toString(int count);
-	
-	public abstract boolean costCheck(Stats playerResources);
 
 	/**
 	 * @return the iD

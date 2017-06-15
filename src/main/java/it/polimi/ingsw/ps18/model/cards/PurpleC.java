@@ -125,10 +125,6 @@ public class PurpleC extends Cards {
 		}
 	}
 	
-	public boolean costCheck(Stats playerResources){
-		return true;
-	}
-	
 	@Override
 	public String toString(int count){
 		StringBuilder builder = new StringBuilder();

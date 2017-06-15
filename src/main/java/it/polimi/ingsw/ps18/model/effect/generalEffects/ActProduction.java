@@ -20,5 +20,12 @@ public class ActProduction implements FinalEffect, HarvestEffect, ProductionEffe
 		this.quantity= quantity;
 
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 }

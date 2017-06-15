@@ -24,5 +24,12 @@ public class DifferentPrivilege implements QuickEffect, HarvestEffect, Productio
 	public String toString(){
 		return "Da scrivere";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 }

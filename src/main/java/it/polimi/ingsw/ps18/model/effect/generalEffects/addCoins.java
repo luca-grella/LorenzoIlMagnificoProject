@@ -53,6 +53,13 @@ public class addCoins implements QuickEffect, HarvestEffect, ProductionEffect, F
 		}
 		return "Error";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 	
 }

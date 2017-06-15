@@ -7,9 +7,9 @@ public class Stats {
 	private Resources rock;
 	private Resources coin;
 	private Resources servant;
-	private Points vp;
-	private Points mp;
 	private Points fp;
+	private Points mp;
+	private Points vp;
 	
 	public Stats(int wood, int rock, int coin, int servant, int fp, int mp, int vp){
 		this.wood = new Wood(wood);
@@ -26,9 +26,9 @@ public class Stats {
 		this.rock = new Rock((long) costs.get(1));
 		this.coin = new Coins((long) costs.get(2));
 		this.servant = new Servants((long) costs.get(3));
-		this.fp = new FaithPoints((long) costs.get(4));
+		this.fp = new FaithPoints((long) costs.get(6));
 		this.mp = new MilitaryPoints((long) costs.get(5));
-		this.vp = new VictoryPoints((long) costs.get(6));
+		this.vp = new VictoryPoints((long) costs.get(4));
 	}
     
     public boolean isEmpty(){

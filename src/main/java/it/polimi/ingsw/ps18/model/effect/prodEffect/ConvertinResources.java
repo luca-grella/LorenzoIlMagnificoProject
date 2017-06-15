@@ -5,14 +5,14 @@ import org.json.simple.JSONArray;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-public class ConvertinResources implements ProductionEffect {
+public class ConvertinResources implements Converter {
+	private String name = "Convert in Resources";
 	private Stats cost;
 	private Stats reward;
 
 	@Override
 	public void activate(PBoard player) {
 		Stats playerStats = player.getResources();
-		playerStats.subStats(cost);
 		playerStats.addStats(reward);
 	}
 
@@ -52,6 +52,13 @@ public class ConvertinResources implements ProductionEffect {
 	 */
 	public void setReward(Stats reward) {
 		this.reward = reward;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 
 	

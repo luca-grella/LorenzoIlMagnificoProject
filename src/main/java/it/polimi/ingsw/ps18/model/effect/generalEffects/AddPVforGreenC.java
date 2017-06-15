@@ -34,5 +34,12 @@ public class AddPVforGreenC implements FinalEffect, HarvestEffect, ProductionEff
 	public String toString(){
 		return "Da scrivere";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 }

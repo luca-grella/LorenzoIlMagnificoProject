@@ -53,4 +53,11 @@ public class addVP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 		}
 		return "Error";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 }

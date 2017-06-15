@@ -42,4 +42,11 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	public String toString(){
 		return "Da scrivere";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 }

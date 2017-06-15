@@ -53,4 +53,11 @@ public class addServants implements QuickEffect, HarvestEffect, ProductionEffect
 		}
 		return "Error";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 }

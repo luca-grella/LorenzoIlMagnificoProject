@@ -6,15 +6,18 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class FamtoProduction extends Observable implements Action {
-	List<Cards> yellowCards = new ArrayList<>();
+	List<YellowC> yellowCards = new ArrayList<>();
+	YellowC currentcard;
 	List<Cards> cardsForActivation = new ArrayList<>();
 	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
 	private FMember chosenFam;
@@ -39,16 +42,30 @@ public class FamtoProduction extends Observable implements Action {
 	public void activateProduction(PBoard player){
 		for(Cards card: player.getCards()){
 			if(card.getColor()==2){
-				this.yellowCards.add(card);
+				this.yellowCards.add((YellowC) card);
 			}
-		} chooseCards(player);
+		} this.chooseCards(player);
 	}
 	
-	private void chooseCards(PBoard player){
-		for(Cards card: yellowCards){
-			notifyLogPBoardView(card.toString());
-			notifyLogPBoardView(player.toStringResources());
-			notifyLogPBoardView(totalCostPreview.toString());
+	public void chooseCards(PBoard player){
+		for(YellowC card: yellowCards){
+			if(card.getProductionValue() <= this.actionValue){
+				this.currentcard = card;
+				notifyLogPBoardView(card.toString());
+				notifyLogPBoardView(player.toStringResources());
+				notifyLogPBoardView(totalCostPreview.toString());
+				notifyStatusPBoardView("Select YC");
+			}
+		} activateEffects(player);
+	}
+	
+	public void activateEffects(PBoard player){
+		List<Cards> cards = player.getCards();
+		(player.getResources()).subStats(totalCostPreview);
+		for(Cards card: cards){
+			if(card.hasProduction()){
+				card.activateSecondaryEffect(player, actionValue);
+			}
 		}
 	}
 
@@ -66,6 +83,11 @@ public class FamtoProduction extends Observable implements Action {
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
+	
+	private void notifyStatusPBoardView(String msg){
+		setChanged();
+		notifyObservers(new StatusMessage(msg));
+	}
 
 	/**
 	 * @param actionValue the actionValue to set
@@ -73,6 +95,28 @@ public class FamtoProduction extends Observable implements Action {
 	public void setActionValue(int actionValue) {
 		this.actionValue = actionValue;
 	}
+
+	/**
+	 * @return the currentcard
+	 */
+	public YellowC getCurrentcard() {
+		return currentcard;
+	}
+
+	/**
+	 * @return the cardsForActivation
+	 */
+	public List<Cards> getCardsForActivation() {
+		return cardsForActivation;
+	}
+
+	/**
+	 * @return the totalCostPreview
+	 */
+	public Stats getTotalCostPreview() {
+		return totalCostPreview;
+	}
+	
 
 	
 }

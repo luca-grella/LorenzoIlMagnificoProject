@@ -12,8 +12,10 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ReceiveFam
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.FamtoMarketTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveFamtoMarket;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveMarketCell;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ActivateProduction;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.FamtoProductionTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveFamtoProduction;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveSelectionCard;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamtoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
@@ -39,9 +41,11 @@ public class HashMapActions {
 		genActions.put("actHarvest", new ActivateHarvest());
 		genActions.put("FamtoProduction", new FamtoProductionTrigger());
 		genActions.put("ReceiveFamtoProduction", new ReceiveFamtoProduction());
+		genActions.put("actProduction", new ActivateProduction());
 		genActions.put("Show Player", new ChosePlayer());
 		genActions.put("ReceivePlayertoShow", new ShowPlayer());
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
+		genActions.put("Selected YCard", new ReceiveSelectionCard());
 	}
 	
 	public static ActionChoice geteffect(String a){

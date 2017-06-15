@@ -27,10 +27,6 @@ public class BlueC extends Cards {
 	@Override
 	public void activateSecondaryEffect(PBoard player, int actionValue) {
 	}
-	
-	public boolean costCheck(Stats playerResources){
-		return true;
-	}
 
 	@Override
 	public String toString(int count) {

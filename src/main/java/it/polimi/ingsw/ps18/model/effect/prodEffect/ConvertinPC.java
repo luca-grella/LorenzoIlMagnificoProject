@@ -8,15 +8,14 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-public class ConvertinPC extends Observable implements ProductionEffect {
+public class ConvertinPC extends Observable implements Converter {
+	private String name = "Convert in PC";
 	private Stats cost;
 	private int quantity;
 
 	@Override
 	public void activate(PBoard player) {
 		addObserver(player.getpBoardView());
-		Stats playerStats = player.getResources();
-		playerStats.subStats(cost);
 		for(int i=0; i<quantity; i++){
 			setChanged();
 			notifyObservers(new StatusMessage("PrivilegeChoice"));
@@ -54,6 +53,12 @@ public class ConvertinPC extends Observable implements ProductionEffect {
 		return quantity;
 	}
 	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 	
 
 }

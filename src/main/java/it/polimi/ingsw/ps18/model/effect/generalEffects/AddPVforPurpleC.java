@@ -34,6 +34,13 @@ public class AddPVforPurpleC implements FinalEffect, HarvestEffect, ProductionEf
 	public String toString(){
 		return "Da scrivere";
 	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
 
 }

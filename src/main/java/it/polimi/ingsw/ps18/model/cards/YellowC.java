@@ -10,7 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.*;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
@@ -117,6 +117,12 @@ public class YellowC extends Cards {
 	
 	@Override
 	public void activateSecondaryEffect(PBoard player, int actionValue) {
+		if(actionValue >= this.productionValue){
+			for(int i=0; i<prodEffect.size(); i++){
+				ProductionEffect peffect = prodEffect.get(i);
+				peffect.activate(player);
+			}
+		}
 	}
 	
 	
@@ -164,14 +170,6 @@ public class YellowC extends Cards {
 		return builder.toString();
 	}
 
-
-
-	@Override
-	public boolean costCheck(Stats playerResources) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 	
 	/**
 	 * @return the value
@@ -222,15 +220,5 @@ public class YellowC extends Cards {
 	public boolean hasFinal() {
 		return false;
 	}
-
-
-
-	
-
-
-
-	
-	
-	
 
 }

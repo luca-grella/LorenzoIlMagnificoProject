@@ -8,23 +8,26 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-public class ConvertResorResinResources extends Observable implements ProductionEffect {
+public class ConvertResorResinResources extends Observable implements Converter {
+	private String name = "Convert WR in Resources";
 	private int quantity;
+	private Stats cost;
 	private Stats reward;
 
 	@Override
 	public void activate(PBoard player) {
+		Stats playerStats = player.getResources();
+		playerStats.addStats(reward);
+	}
+	
+	public void WoodorRockChoice(PBoard player){
 		addObserver(player.getpBoardView());
 		Stats playerStats = player.getResources();
 		if(playerStats.getWood() < quantity){
-			Stats cost = new Stats(0,quantity,0,0,0,0,0);
-			playerStats.subStats(cost);
-			playerStats.addStats(reward);
+			cost = new Stats(0,quantity,0,0,0,0,0);
 			return;
 		} else if(playerStats.getRock() < quantity){
-			Stats cost = new Stats(quantity,0,0,0,0,0,0);
-			playerStats.subStats(cost);
-			playerStats.addStats(reward);
+			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {
 			setChanged();
 			notifyObservers(new StatusMessage("WoodorRockChoice"));
@@ -32,15 +35,10 @@ public class ConvertResorResinResources extends Observable implements Production
 	}
 	
 	public void pay(PBoard player, int index){
-		Stats playerStats = player.getResources();
 		if(index==1){
-			Stats cost = new Stats(quantity,0,0,0,0,0,0);
-			playerStats.subStats(cost);
-			playerStats.addStats(reward);
+			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {
-			Stats cost = new Stats(0,quantity,0,0,0,0,0);
-			playerStats.subStats(cost);
-			playerStats.addStats(reward);
+			cost = new Stats(0,quantity,0,0,0,0,0);
 		}
 	}
 
@@ -74,6 +72,21 @@ public class ConvertResorResinResources extends Observable implements Production
 	 */
 	public int getQuantity() {
 		return quantity;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return the cost
+	 */
+	@Override
+	public Stats getCost() {
+		return cost;
 	}
 	
 	

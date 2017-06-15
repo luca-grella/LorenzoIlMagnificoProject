@@ -104,10 +104,6 @@ public class GreenC extends Cards {
 		
 	}
 	
-	@Override
-	public boolean costCheck(Stats playerResources){
-		return true;
-	}
 	
 	@Override
 	public String toString(int count){
