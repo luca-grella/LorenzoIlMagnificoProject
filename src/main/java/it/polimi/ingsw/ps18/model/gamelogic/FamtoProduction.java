@@ -19,7 +19,7 @@ public class FamtoProduction extends Observable implements Action {
 	List<YellowC> yellowCards = new ArrayList<>();
 	YellowC currentcard;
 	List<Cards> cardsForActivation = new ArrayList<>();
-	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
+	Stats totalCostPreview;
 	private FMember chosenFam;
 	private int actionValue;
 	
@@ -48,6 +48,8 @@ public class FamtoProduction extends Observable implements Action {
 	}
 	
 	public void chooseCards(PBoard player){
+		cardsForActivation.clear();
+		totalCostPreview = new Stats(0,0,0,0,0,0,0);
 		for(YellowC card: yellowCards){
 			if(card.getProductionValue() <= this.actionValue){
 				this.currentcard = card;

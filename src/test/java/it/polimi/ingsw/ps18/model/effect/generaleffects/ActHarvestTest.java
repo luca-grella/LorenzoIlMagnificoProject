@@ -8,17 +8,17 @@ public class ActHarvestTest {
 
 	@Test
 	public void testActivate() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetQuantity() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testToString() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 }

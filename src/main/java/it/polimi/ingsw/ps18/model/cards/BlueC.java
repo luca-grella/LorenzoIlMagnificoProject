@@ -30,12 +30,12 @@ public class BlueC extends Cards {
 
 	@Override
 	public String toString(int count) {
-		return null;
+		return " ";
 	}
 	
 	@Override
 	public String toString() {
-		return null;
+		return " ";
 	}
 
 }

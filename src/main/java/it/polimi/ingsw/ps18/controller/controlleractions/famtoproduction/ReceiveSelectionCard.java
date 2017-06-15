@@ -22,20 +22,24 @@ public class ReceiveSelectionCard implements ActionChoice {
 			YellowC currentcard = ((FamtoProduction) currentaction).getCurrentcard();
 			Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
 			List<ProductionEffect> peffects = currentcard.getProdEffect();
-			for(ProductionEffect effect: peffects){
-				if(("Convert in Resources".equals(effect.getName()) || "Convert in PC".equals(effect.getName()))){
-					Converter ceffect = (Converter) effect;
-					costPreview.addStats(ceffect.getCost());
-				} else if ("Convert WR in Resources".equals(effect.getName())){
-					ConvertResorResinResources ceffect = (ConvertResorResinResources) effect;
-					ceffect.WoodorRockChoice(currentplayer);
-					costPreview.addStats(ceffect.getCost());
+//			if(peffects.contains(Converter )){
+//				
+//			} else {
+				for(ProductionEffect effect: peffects){
+					if(("Convert in Resources".equals(effect.getName()) || "Convert in PC".equals(effect.getName()))){
+						Converter ceffect = (Converter) effect;
+						costPreview.addStats(ceffect.getCost());
+					} else if ("Convert WR in Resources".equals(effect.getName())){
+						ConvertResorResinResources ceffect = (ConvertResorResinResources) effect;
+						ceffect.WoodorRockChoice(currentplayer);
+						costPreview.addStats(ceffect.getCost());
+					}
 				}
-			}
-			if(!((currentplayer.getResources()).enoughStats(costPreview))){
-				((FamtoProduction) currentaction).chooseCards(currentplayer);
-			}
-			(((FamtoProduction) currentaction).getCardsForActivation()).add(currentcard);
+				if(!((currentplayer.getResources()).enoughStats(costPreview))){
+					((FamtoProduction) currentaction).chooseCards(currentplayer);
+				}
+				(((FamtoProduction) currentaction).getCardsForActivation()).add(currentcard);
+			//}
 			if(index == 3){
 				((FamtoProduction) currentaction).activateEffects(currentplayer);
 			}
