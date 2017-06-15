@@ -58,6 +58,56 @@ public class PBoard extends Observable {
 		}
 		
 	}
+	public boolean hasSpace(int cardColor){
+		if(cards.isEmpty())
+			return true;
+		else{
+			int colorCount = 0;
+			int playerMP = resources.getMP();
+			
+			for(int cardIndex=0; cardIndex<GeneralParameters.maxPlayerCards; cardIndex++){
+				if((cards.get(cardIndex)).getColor() == cardColor){
+					colorCount++;
+				}
+			}
+			if(cardColor != 0){
+				if(colorCount < 6)
+					return true;
+				else
+					return false;
+			}
+			/*
+			 * TODO: Else molto meccanico, se possibile sistemare
+			 */
+			else{
+				int futureCount = colorCount+1;
+				
+				switch(playerMP) {
+				case 1:
+					if(futureCount <= 3)
+						return true;
+					else
+						return false;
+				case 4:
+					if(futureCount <= 4)
+						return true;
+					else
+						return false;
+				case 10:
+					if(futureCount <= 5)
+						return true;
+					else
+						return false;
+				case 20:
+					if(futureCount <= 6)
+						return true;
+					else
+						return false;
+				}
+			}
+		}
+		return false;
+	}
 	
 	public int vPCalc(){
 		return playercol;

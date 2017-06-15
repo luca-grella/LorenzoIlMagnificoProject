@@ -58,44 +58,43 @@ public class ConcreteTower implements Tower {
 	 */
 	
 	public Cards insertFM(FMember pBoardFM, int floor) {
-		
 		Cell towerCell = this.towerCells.get(floor);
-	//		if(this.isLegal(pBoardFM))
-	//		if(this.isEmpty()){
-	//			return towerCell.insertFM(pBoardFM);
-	//		}
-	//		else{
-	//			/*
-	//			 * Controllo le monete del giocatore per verificare 
-	//			 * se sono maggiori di 3, e se non lo sono non ritorno la carta
-	//			 */
-	//			return towerCell.insertFM(pBoardFM);
-	//		}
-			return towerCell.insertFM(pBoardFM);  //insertFM chiama isEmpty
-			
-		
+		return towerCell.insertFM(pBoardFM);  //insertFM chiama isEmpty
 	}
 	
 	
 	public boolean isLegalT(FMember pBoardFM) {
 		
-		for(int index=0; index<GeneralParameters.numberofCells; index++){
-			Cell towerCell = towerCells.get(index);
-			FMember towerCellFM = towerCell.getCellFM();
-			if(!(towerCell.isEmptyTC())){
-				
-					if(towerCellFM.getColor() != GeneralParameters.neutralFMColor)
-						if(towerCellFM.getColor() == pBoardFM.getColor())
-						return false; 
-				
-					//Se e' neutro allora cicla alla cella dopo perche' nella torre possono stare un neutro e un
-					//non neutro dello stesso colore
+		if(this.isEmptyT()){
+			return true;
+		}
+		else{
+			for(int index=0; index<GeneralParameters.numberofCells; index++){
+				Cell towerCell = towerCells.get(index);
+				FMember towerCellFM = towerCell.getCellFM();
+				if(!(towerCell.isEmptyTC())){ 
+					if(towerCellFM.getPlayercol() == pBoardFM.getPlayercol()){
+						if(towerCellFM.getColor() != GeneralParameters.neutralFMColor){
+							return false;
+						}
+					}
+						/*
+						 * Se e' neutro allora cicla alla cella dopo perche' nella torre possono stare un neutro e un
+						 * non neutro dello stesso colore. Questo controllo diventa debole se si iniziano a prevedere più familiari neutri
+						 * per ogni plancia giocatore.
+						 */
+						
 				}
 			}
+		}
+		
 		return true;
 	}
-	
-	//TODO: trovare un modo per incorporare isEmpty in isLegal senza che il RecieveTowertoTower si incasini
+	/*
+	 * TODO:
+	 * PROBABILMENTE NON SERVE AD UN CAZZO
+	 * esiste un isEmpty() per gli ArrayList, anche se isEmptyT viene usato da oggetti di tipo ConcreteTower
+	 */
 	public boolean isEmptyT(){
 		if(towerCells.size() == 0){
 			return true;
@@ -103,12 +102,12 @@ public class ConcreteTower implements Tower {
 		else{
 			for(int index=0; index<GeneralParameters.numberofCells; index++){
 				Cell towerCell = towerCells.get(index);
-				if(!(towerCell.isEmptyTC()))
+				if( !(towerCell.isEmptyTC()))
 					return false;
 			}
-			
+			return true;
 		}
-		return true;
+		
 	}
 	
 	
@@ -129,10 +128,8 @@ public class ConcreteTower implements Tower {
 		return builder.toString();
 	}
 	
-	/*
-	 * Info generali di una torre
-	 * DEFINE LATER
-	 */
+	
+	 //TODO: Definire Info generali di una torre
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 
@@ -142,9 +139,6 @@ public class ConcreteTower implements Tower {
 		builder.append("\tNumber of cells in tower: " + this.towerCells.size());
 		return builder.toString();
 	}
-	/*
-	 * Controlli vari
-	 */
 	
 
 	/**

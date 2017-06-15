@@ -41,9 +41,14 @@ public class ProdCell {
 			return true;	
 		}
 		else {
-			System.out.println("\nError: Production cell occupied!"); //da eliminare
 			return false;
 		}
+	}
+	public boolean isLegalPC(FMember pBoardFM){
+		if(pBoardFM.getValue() >= this.getProdCellValue()){
+			return true;
+		}
+		return false;
 	}
 	
 	

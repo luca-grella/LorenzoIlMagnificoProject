@@ -40,7 +40,9 @@ public class FamtoTower extends Observable implements Action {
 		Tower tower = towers.get(this.chosenTower);
 		Cards newcard = tower.insertFM(this.chosenFam, this.chosenFloor);
 		PBoard currentplayer = game.getTurnplayer();
+		currentplayer.getResources().addCoins( -(GeneralParameters.towerFee)); //Poco elegante
 		currentplayer.addCard(newcard,game);
+
 	}
 	
 

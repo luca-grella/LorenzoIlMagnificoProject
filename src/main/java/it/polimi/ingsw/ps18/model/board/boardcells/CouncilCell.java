@@ -26,11 +26,9 @@ public class CouncilCell {
 	
 	public boolean isEmpty() {
 		if(this.councilCellFM == null){
-			System.out.println("\nCouncil cell is empty!");
 			return true;
 		}
 		else{
-			System.out.println("Error: Council cell occupied!");
 			return false;
 		}	
 	}

@@ -24,21 +24,29 @@ public class ReceiveTowertoTower implements ActionChoice {
 		List<Tower> boardTowers = gameBoard.getTowers();
 		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 		ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
+		PBoard currentPlayer = game.getTurnplayer(); //turnplayer nel mondo di francope significa giocatore corrente
+
 		if(boardTower.isLegalT(pBoardFM)){ 
 			if(boardTower.isEmptyT()){
-				//DONE: Controllo se il valore del familiare è maggiore o uguale a quello della cella
-				//TODO: Controllo se la carta è presente nella cella
-				
-				((FamtoTower) currentaction).setChosenTower(index);
-				((FamtoTower) currentaction).floorChoice();
+				if(currentPlayer.hasSpace(index)){
+					((FamtoTower) currentaction).setChosenTower(index);
+					((FamtoTower) currentaction).floorChoice();
+				}
+				else{
+					((FamtoTower) currentaction).towerChoice();
+				}
 				
 			} 
 			else {
-				PBoard currentPlayer = game.getTurnplayer(); //turnplayer nel mondo di francope significa giocatore corrente
-				if((currentPlayer.getResources()).getCoin() >= 3){ //TODO: sistemare in GeneralParameters
-					currentPlayer.getResources().addCoins(-3); //TODO: Sistemare in GeneralParameters
-					((FamtoTower) currentaction).setChosenTower(index);
-					((FamtoTower) currentaction).floorChoice();
+				if((currentPlayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+					if(currentPlayer.hasSpace(index)){
+						((FamtoTower) currentaction).setChosenTower(index);
+						((FamtoTower) currentaction).floorChoice();
+					}					
+					else{
+						((FamtoTower) currentaction).towerChoice();
+
+					}
 				} 
 				else {
 					((FamtoTower) currentaction).towerChoice();
@@ -48,18 +56,6 @@ public class ReceiveTowertoTower implements ActionChoice {
 		} else {
 			((FamtoTower) currentaction).towerChoice();
 		}
-		
-		/*
-		 * Controllo, se fallisce il controllo richiamo towerchoice
-		 * ((FamtoTower) currentaction).towerChoice();
-		 * se va a buon fine controllo le monete, da game.getturnPlayer
-		 * Se fallisce, richiama towerchoice
-		 * se ha successo, allora  fa setchosentower etc
-		 */
-//		((FamtoTower) currentaction).setChosenTower(index);
-//		((FamtoTower) currentaction).floorChoice();
-		
-
 	}
 
 	/**

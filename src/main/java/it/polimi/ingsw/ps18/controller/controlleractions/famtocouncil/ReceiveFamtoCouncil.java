@@ -21,14 +21,20 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 		Board gameBoard = game.getBoard();
 		List<CouncilCell> councilCells = gameBoard.getCouncilCells();
 		CouncilCell councilCell = councilCells.get(index);
-		
 		FMember chosenfam = fams.set(index, null);
 		Action currentaction = game.getOngoingAction();
 		
 		if(councilCell.isEmpty()){
-//			if(councilCell.isLegal(pBoardFM))
-		currentaction.setChosenFam(chosenfam);
-		((FamtoCouncil) currentaction).act(game);
+			if(councilCell.isLegal(chosenfam)){
+				currentaction.setChosenFam(chosenfam);
+				((FamtoCouncil) currentaction).act(game);
+			}
+			else{
+				((FamtoCouncil) currentaction).famchoice();
+			}
+		}
+		else{
+			((FamtoCouncil) currentaction).famchoice();
 		}
 	}
 

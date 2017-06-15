@@ -23,28 +23,36 @@ public class HarvCell {
 	
 	public HarvCell(int malus) {
 		harvCellFM = null;
-		harvCellValue = GeneralParameters.baseValueHarvCells;
 		this.malus = malus;
+		harvCellValue = GeneralParameters.baseValueHarvCells - malus;  
+		//TODO: verificare se si intede un malus positivo da sottrarre o uno negativo da aggiungere
+		
 	}
 
 
 	public boolean insertFM(FMember pBoardFM) {
-		if(this.isEmpty()){	
+		if(this.isEmptyHC()){	
 			if(pBoardFM.getValue() >= harvCellValue){
 				this.harvCellFM = pBoardFM;
 				return true;
-				// Harvest Effects gestiti dal chaimante
+				// Harvest Effects gestiti dal chiamante
 			}return false;
 		}return false;
 	}
 	
-	private boolean isEmpty() {
+	public boolean isEmptyHC() {
 		if(this.harvCellFM==null){ 
 			return true;	
 		}
 		else {
 			return false;
 		}
+	}
+	public boolean isLegalHC(FMember pBoardFM){
+		if(pBoardFM.getValue() >= this.getHarvCellValue()){
+			return true;
+		}
+		return false;
 	}
 	
 	

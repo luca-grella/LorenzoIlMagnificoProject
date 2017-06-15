@@ -16,12 +16,12 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 public class Cell { 
 	private Cards cellCard;
 	private FMember cellFM;
-	private int value;
+	private int cellValue;
 	
 	public Cell() {
 		cellCard = null;
 		cellFM = null;
-		value =  3;     //Settare in modo diverso, magari su GeneralParameters
+		cellValue =  3;     //Settare in modo diverso, magari su GeneralParameters
 	}
 	
 	/**
@@ -52,19 +52,16 @@ public class Cell {
 	
 	public boolean isEmptyTC() {
 		if(this.cellFM==null){ 
-//			System.out.println("\nCell is clear!");
 			return true;
 		}
 		else {
-//			System.out.println("\nError: Cell occupied!");
 			return false;
 		}
 	}
 	
 	public boolean isLegalTC(FMember pBoardFM) {
-		if(pBoardFM.getValue() >= this.getValue()){
+		if(pBoardFM.getValue() >= this.getCellValue()){
 			if(this.cellCard != null){
-//				if(CONTROLLA SE IL PEZZENTE HA LE RISORSE PER PAGARE LA CARTA) FORSE CONVIENE IMPLEMENTARLO NEL CONTROLLER
 				return true;
 			}
 			else
@@ -133,15 +130,15 @@ public class Cell {
 	/**
 	 * @return the value
 	 */
-	public int getValue() {
-		return value;
+	public int getCellValue() {
+		return cellValue;
 	}
 
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(int value) {
-		this.value = value;
+	public void setCellValue(int value) {
+		this.cellValue = value;
 	}
 	
 	

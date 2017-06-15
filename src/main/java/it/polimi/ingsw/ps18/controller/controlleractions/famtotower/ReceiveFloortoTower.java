@@ -6,9 +6,11 @@ import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
@@ -26,6 +28,8 @@ public class ReceiveFloortoTower implements ActionChoice {
 		PBoard currentPlayer = game.getTurnplayer();
 		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 		Stats neededStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
+		List<Cards> playerCards = currentPlayer.getCards();
+		
 		
 		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
 			if(((boardTower.getTowerCells()).get(index)).isLegalTC(pBoardFM)){
