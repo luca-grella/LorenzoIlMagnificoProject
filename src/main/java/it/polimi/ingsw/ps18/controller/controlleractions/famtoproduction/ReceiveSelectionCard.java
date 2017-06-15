@@ -22,9 +22,21 @@ public class ReceiveSelectionCard implements ActionChoice {
 			YellowC currentcard = ((FamtoProduction) currentaction).getCurrentcard();
 			Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
 			List<ProductionEffect> peffects = currentcard.getProdEffect();
-//			if(peffects.contains(Converter )){
-//				
-//			} else {
+			int counter = 0;
+			for(int i=0; i<peffects.size(); i++){
+				if("Convert in Resources".equals((peffects.get(i)).getName())){
+					counter++;
+				}
+				if("Convert in PC".equals((peffects.get(i)).getName())){
+					counter++;
+				}
+				if("Convert WR in Resources".equals((peffects.get(i)).getName())){
+					counter++;
+				}
+			}
+			if(counter>=2){
+				((FamtoProduction) currentaction).ChooseEffect();
+			} else {
 				for(ProductionEffect effect: peffects){
 					if(("Convert in Resources".equals(effect.getName()) || "Convert in PC".equals(effect.getName()))){
 						Converter ceffect = (Converter) effect;
@@ -39,10 +51,11 @@ public class ReceiveSelectionCard implements ActionChoice {
 					((FamtoProduction) currentaction).chooseCards(currentplayer);
 				}
 				(((FamtoProduction) currentaction).getCardsForActivation()).add(currentcard);
-			//}
-			if(index == 3){
-				((FamtoProduction) currentaction).activateEffects(currentplayer);
 			}
+			//migliorare gestione. se si rimanda a chooseCards avendo premuto 3 diventa un casino
+//			if(index == 3){
+//				((FamtoProduction) currentaction).activateEffects(currentplayer);
+//			}
 		}
 	}
 

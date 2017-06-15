@@ -54,6 +54,13 @@ public class YellowC extends Cards {
 		}
 	}
 	
+	/**
+	 * Usato per creare una copia di un acarta esistente ma con meno effetti.
+	 * Sfruttato solo nella scelta degli effetti produzione da attivare.
+	 */
+	public YellowC() {
+	}
+
 	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues, HashMapQE map) {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){

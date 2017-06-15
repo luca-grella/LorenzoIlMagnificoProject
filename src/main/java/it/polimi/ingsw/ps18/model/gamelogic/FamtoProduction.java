@@ -7,6 +7,7 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
@@ -59,6 +60,24 @@ public class FamtoProduction extends Observable implements Action {
 				notifyStatusPBoardView("Select YC");
 			}
 		} activateEffects(player);
+	}
+	
+	public void ChooseEffect(){
+		List<ProductionEffect> effects = this.currentcard.getProdEffect();
+		notifyLogPBoardView("Scegli quale effetto attivare:\n");
+		for(int i=0;  i<effects.size(); i++){
+			if("Convert in Resources".equals((effects.get(i)).getName())){
+				notifyLogPBoardView("\t" + i + ": " + ((effects.get(i)).toString() + "\n"));
+			}
+			if("Convert in PC".equals((effects.get(i)).getName())){
+				notifyLogPBoardView("\t" + i + ": " + ((effects.get(i)).toString() + "\n"));
+			}
+			if("Convert WR in Resources".equals((effects.get(i)).getName())){
+				notifyLogPBoardView("\t" + i + ": " + ((effects.get(i)).toString() + "\n"));
+			}
+		}
+		notifyStatusPBoardView("Choose Effect");
+		
 	}
 	
 	public void activateEffects(PBoard player){

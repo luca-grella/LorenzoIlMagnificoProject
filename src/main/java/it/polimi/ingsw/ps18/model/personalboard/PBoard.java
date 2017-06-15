@@ -28,7 +28,8 @@ public class PBoard extends Observable {
 		addObserver(pBoardView);
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
 		this.playercol = playercol;
-		this.resources = new Stats(2,2,5,2,0,0,0);
+//		this.resources = new Stats(2,2,5,2,0,0,0);
+		this.resources = new Stats(9,9,9,9,9,9,9);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
 		} this.fams.add(new FMember(0,playercol));

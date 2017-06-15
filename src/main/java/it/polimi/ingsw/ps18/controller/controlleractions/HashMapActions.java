@@ -14,6 +14,7 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveFamt
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveMarketCell;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ActivateProduction;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.FamtoProductionTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveChoseneffect;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveFamtoProduction;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveSelectionCard;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
@@ -46,6 +47,7 @@ public class HashMapActions {
 		genActions.put("ReceivePlayertoShow", new ShowPlayer());
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
 		genActions.put("Selected YCard", new ReceiveSelectionCard());
+		genActions.put("Chosen Effect", new ReceiveChoseneffect());
 	}
 	
 	public static ActionChoice geteffect(String a){
