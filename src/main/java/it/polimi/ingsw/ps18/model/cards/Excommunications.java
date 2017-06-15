@@ -45,9 +45,9 @@ public class Excommunications {
 		for(int count=0; count<eeffects.size(); count++){
         	if(eeffects.get(count)!=null){
         		if(eeffectvalues.get(count)!=null){
-        			this.add(HashMapExcomm.geteffect((String) eeffects.get(count)), (long) eeffectvalues.get(count));
+        			this.add(mapExcomm.geteffect((String) eeffects.get(count)), (long) eeffectvalues.get(count));
         		} else {
-        			this.effects.add(HashMapExcomm.geteffect((String) eeffects.get(count)));
+        			this.effects.add(mapExcomm.geteffect((String) eeffects.get(count)));
         		}
         	}
 		}

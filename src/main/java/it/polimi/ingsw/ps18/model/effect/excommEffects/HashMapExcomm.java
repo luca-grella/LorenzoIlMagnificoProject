@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 public class HashMapExcomm {
-	private static Map<String,ExcommEffects> geneffetti = new HashMap<>();
+	private Map<String,ExcommEffects> geneffetti = new HashMap<>();
 	
 	public HashMapExcomm(){
 		geneffetti.put("MalusMP", new MalusMP());
@@ -33,7 +33,7 @@ public class HashMapExcomm {
 
 	}
 	
-	public static ExcommEffects geteffect(String a){
+	public ExcommEffects geteffect(String a){
 		return geneffetti.get(a);
 	}
 
