@@ -20,7 +20,7 @@ public class HashMapExcomm {
 		geneffetti.put("MalusBlueC", new MalusBlueC());
 		geneffetti.put("MalusPurpleC", new MalusPurpleC());
 		geneffetti.put("MalusMarket", new MalusMarket());
-		geneffetti.put("MalusDoubleServant", new MalusDoubleServant());
+		geneffetti.put("MalusIncreaseActionValue", new MalusIncreaseActionValue());
 		geneffetti.put("MalusTurnOrder", new MalusTurnOrder());
 		geneffetti.put("IgnoreBlueC", new IgnoreBlueC());
 		geneffetti.put("IgnorePurpleC", new IgnorePurpleC());
@@ -28,7 +28,7 @@ public class HashMapExcomm {
 		geneffetti.put("LoseVPforVP", new LoseVPforVP());
 		geneffetti.put("LoseVPforMP", new LoseVPforMP());
 		geneffetti.put("LoseVPforCosts", new LoseVPforCosts());
-		geneffetti.put("LoseVPforResources", new LoseVPforResources());
+		geneffetti.put("LoseVPforResources", new LoseVPforResources()); 
 		
 
 	}

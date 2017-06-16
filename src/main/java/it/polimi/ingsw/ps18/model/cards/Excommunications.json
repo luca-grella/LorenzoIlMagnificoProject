@@ -123,10 +123,13 @@
     "number": 13,
     "period": 2,
     "Effects": [
-      "MalusDoubleServant"
+      "MalusIncreaseActionValue"
     ],
     "EffectsValues": [
-      null
+      [
+        1,
+        2
+      ]
     ]
   },
   "14": {

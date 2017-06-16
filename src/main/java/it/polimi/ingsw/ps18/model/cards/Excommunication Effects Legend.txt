@@ -10,7 +10,7 @@ MalusYellowC: riduce valore azione (di x) quando prendi carta gialla
 MalusBlueC: riduce valore azione (di x) quando prendi carta blu
 MalusPurpleC: riduce valore azione (di x) quando prendi carta viola
 MalusMarket: familiari non possono essere posizionati negli spazi azione del Mercato
-MalusDoubleServant: valore azione aumentato di 1/2 per ogni servitore
+MalusIncreaseActionValue: valore azione aumentato di x per ogni y servitori [x,y]
 MalusTurnOrder: prima azione di ogni turno viene saltata e recuperata quando tutti i giocatori hanno svolto i loro turni
 IgnoreBlueC: non guadagni punti vittoria a fine partita per carte blu
 IgnorePurpleC: non guadagni punti vittoria a fine partita per carte viola

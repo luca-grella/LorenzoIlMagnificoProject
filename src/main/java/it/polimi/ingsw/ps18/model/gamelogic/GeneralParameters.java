@@ -23,6 +23,6 @@ public abstract interface GeneralParameters {
 	public final static int councilCellValue = 1;
 	public final static int towerFee = 3;
 	public final static int maxPlayerCards = 24;
-	public final static int coinsFromCouncil = 1;
+	public static final int coinsFromCouncil = 1;
 
 }

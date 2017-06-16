@@ -43,8 +43,8 @@ public class ReceiveFloortoTower implements ActionChoice {
 				}
 			}else{
 				((FamtoTower) currentaction).floorChoice();
-			}
-		} else {
+			}}
+		 else {
 			((FamtoTower) currentaction).floorChoice();
 		}
 	}

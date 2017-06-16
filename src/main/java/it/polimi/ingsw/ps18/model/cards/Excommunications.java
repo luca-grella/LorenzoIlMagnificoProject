@@ -11,6 +11,10 @@ import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.HashMapExcomm;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforMP;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforVP;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusIncreaseActionValue;
+
 
 public class Excommunications {
 	public List<ExcommEffects> effects = new ArrayList<>();
@@ -41,22 +45,50 @@ public class Excommunications {
 		}
 	}
 
-	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm mapExcomm) {
-		for(int count=0; count<eeffects.size(); count++){
-        	if(eeffects.get(count)!=null){
-        		if(eeffectvalues.get(count)!=null){
-        			this.add(mapExcomm.geteffect((String) eeffects.get(count)), (long) eeffectvalues.get(count));
-        		} else {
-        			this.effects.add(mapExcomm.geteffect((String) eeffects.get(count)));
-        		}
-        	}
+	
+	
+	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm mapExcomm){
+		ExcommEffects effect;
+		JSONArray valueffect;
+		for(int pos=0; pos<eeffects.size(); pos++){
+			if(eeffects.get(pos)!=null){
+				switch((String) eeffects.get(pos)){
+				case "MalusIncreaseActionValue":
+					effect = mapExcomm.geteffect((String) eeffects.get(pos));
+					valueffect = (JSONArray) eeffectvalues.get(pos);
+					((MalusIncreaseActionValue) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
+					this.effects.add(pos, effect);
+					break;
+				case "LoseVPforVP":
+					effect = mapExcomm.geteffect((String) eeffects.get(pos));
+					valueffect = (JSONArray) eeffectvalues.get(pos);
+					((LoseVPforVP) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
+					this.effects.add(pos, effect);
+					break;
+				case "LoseVPforMP":
+					effect = mapExcomm.geteffect((String) eeffects.get(pos));
+					valueffect = (JSONArray) eeffectvalues.get(pos);
+					((LoseVPforMP) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
+					this.effects.add(pos, effect);
+					break;
+				default:
+					if(eeffectvalues.get(pos)!=null){
+		        		this.add(mapExcomm.geteffect((String) eeffects.get(pos)), (long) eeffectvalues.get(pos));
+		        		} else {
+		        			this.effects.add(mapExcomm.geteffect((String) eeffects.get(pos)));
+	        		}
+				}
+			}
 		}
 	}
+	
+	
+	
 	
 	private boolean add(ExcommEffects e, long quantity){
 		ExcommEffects a = e;
 		a.setQuantity((int) quantity);
-	    return (this.getEffects()).add(a);	
+	    return (this.getEffects()).add(a);
     }
 	
 
