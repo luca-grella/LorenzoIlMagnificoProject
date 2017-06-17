@@ -237,6 +237,20 @@ public class GameLogic extends Observable {
 	public void setOngoingEffect(GeneralEffect ongoingEffect) {
 		this.ongoingEffect = ongoingEffect;
 	}
+
+	/**
+	 * @return the nplayer
+	 */
+	public int getNplayer() {
+		return nplayer;
+	}
+
+	/**
+	 * @param nplayer the nplayer to set
+	 */
+	public void setNplayer(int nplayer) {
+		this.nplayer = nplayer;
+	}
 	
 	
 	

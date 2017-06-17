@@ -25,26 +25,28 @@ public class ReceiveFloortoTower implements ActionChoice {
 		List<Tower> boardTowers = gameBoard.getTowers();
 		FamtoTower towerIndex = (FamtoTower) game.getOngoingAction();
 		ConcreteTower boardTower = (ConcreteTower)boardTowers.get(towerIndex.getChosenTower());
-		PBoard currentPlayer = game.getTurnplayer();
-		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
+		PBoard currentplayer = game.getTurnplayer();
+		FMember chosenfam = ((FamtoTower) currentaction).getChosenFam();
 		Stats neededStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
-		List<Cards> playerCards = currentPlayer.getCards();
+		List<Cards> playerCards = currentplayer.getCards();
 		
 		
 		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
-			if(((boardTower.getTowerCells()).get(index)).isLegalTC(pBoardFM)){
+			if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam)){
 				
-				if((currentPlayer.getResources().enoughStats(neededStats))){
+				if((currentplayer.getResources().enoughStats(neededStats))){
 					((FamtoTower) currentaction).setChosenFloor(index);
 					currentaction.act(game);
 				}
 				else{
 					((FamtoTower) currentaction).floorChoice();
 				}
-			}else{
+			}
+			else{
 				((FamtoTower) currentaction).floorChoice();
-			}}
-		 else {
+			}
+		} 
+		else {
 			((FamtoTower) currentaction).floorChoice();
 		}
 	}

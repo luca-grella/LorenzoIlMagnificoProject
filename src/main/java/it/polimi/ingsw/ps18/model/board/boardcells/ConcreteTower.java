@@ -72,7 +72,7 @@ public class ConcreteTower implements Tower {
 			for(int index=0; index<GeneralParameters.numberofCells; index++){
 				Cell towerCell = towerCells.get(index);
 				FMember towerCellFM = towerCell.getCellFM();
-				if(!(towerCell.isEmptyTC())){ 
+				if( ! (towerCell.isEmptyTC())){ 
 					if(towerCellFM.getPlayercol() == pBoardFM.getPlayercol()){
 						if(towerCellFM.getColor() != GeneralParameters.neutralFMColor){
 							return false;

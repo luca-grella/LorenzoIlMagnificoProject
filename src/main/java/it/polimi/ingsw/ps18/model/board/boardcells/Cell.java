@@ -21,7 +21,7 @@ public class Cell {
 	public Cell() {
 		cellCard = null;
 		cellFM = null;
-		cellValue =  3;     //Settare in modo diverso, magari su GeneralParameters
+		cellValue =  3;     //TODO: Settare in modo diverso, magari su GeneralParameters
 	}
 	
 	/**
@@ -40,7 +40,6 @@ public class Cell {
 	 */
 	
 	public Cards insertFM(FMember pBoardFM) { 
-  //TODO: Levare il controllo da qui e piazzarlo nel controller
 			this.cellFM = pBoardFM;
 			return this.cellCard;
 	}

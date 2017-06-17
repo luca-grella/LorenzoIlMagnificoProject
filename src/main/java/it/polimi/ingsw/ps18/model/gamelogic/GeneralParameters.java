@@ -6,10 +6,13 @@ public abstract interface GeneralParameters {
 	public final static int numberofCells = 4;
 	public final static int numberofDices = 3;
 	public final static int nfamperplayer = 4;
+	public final static int minValueTowerCells = 1;
 	public final static int baseValueProdCells = 1;
 	public final static int baseMalusProdCells = -3;
 	public final static int baseValueHarvCells = 1;
 	public final static int baseMalusHarvCells = -3;
+	public final static int baseValueCouncilCells = 1;
+	public final static int baseValueMarketCells = 1;
 	public final static int numberGreenC = 24;
 	public final static int numberYellowC = 24;
 	public final static int numberBlueC = 24;
@@ -23,6 +26,5 @@ public abstract interface GeneralParameters {
 	public final static int councilCellValue = 1;
 	public final static int towerFee = 3;
 	public final static int maxPlayerCards = 24;
-	public static final int coinsFromCouncil = 1;
-
+	public final static int coinsFromCouncil = 1;
 }

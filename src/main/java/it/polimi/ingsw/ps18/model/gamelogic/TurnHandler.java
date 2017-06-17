@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
@@ -12,7 +13,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  * @author Francesco-Musio
  *
  */
-public class TurnHandler extends Observable {
+public class TurnHandler extends Observable implements Action {
 	PBoard currentPlayer;
 	
 	public TurnHandler(PBoard currentplayer){
@@ -20,7 +21,7 @@ public class TurnHandler extends Observable {
 		addObserver(currentplayer.getpBoardView());
 	}
 	
-	public void init(){
+	public void act(GameLogic game){
 		notifyLogPBoardView("Player color " + currentPlayer.getPlayercol() + " turn");
 		notifyActionPboardView("Init Player Turn");
 	}
@@ -35,6 +36,12 @@ public class TurnHandler extends Observable {
 	private void notifyActionPboardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
+	}
+
+	@Override
+	public void setChosenFam(FMember chosenFam) {
+		return;
+		
 	}
 
 }

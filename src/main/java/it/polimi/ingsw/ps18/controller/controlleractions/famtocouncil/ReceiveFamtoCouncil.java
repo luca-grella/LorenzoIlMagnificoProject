@@ -20,22 +20,48 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 		List<FMember> fams = currentplayer.getFams();
 		Board gameBoard = game.getBoard();
 		List<CouncilCell> councilCells = gameBoard.getCouncilCells();
-		CouncilCell councilCell = councilCells.get(index);
 		FMember chosenfam = fams.set(index, null);
 		Action currentaction = game.getOngoingAction();
 		
-		if(councilCell.isEmpty()){
-			if(councilCell.isLegal(chosenfam)){
-				currentaction.setChosenFam(chosenfam);
-				((FamtoCouncil) currentaction).act(game);
-			}
-			else{
-				((FamtoCouncil) currentaction).famchoice();
-			}
+		
+		if(councilCells.get(councilCells.size()).isLegalCC(chosenfam) ){
+			currentaction.setChosenFam(chosenfam);
+			((FamtoCouncil) currentaction).act(game);
 		}
 		else{
 			((FamtoCouncil) currentaction).famchoice();
+
 		}
+		/*
+		 * 
+		 * TODO: Da rivedere in quanto il consiglio e' un ArrayList che si crea a runtime
+		 * quando viene inserito un familiare, quindi questo codice genererebbe un IndexOutOfBounds
+		 */
+//		if( ! (councilCells.isEmpty()) ){
+//			for(int councilIndex=0; councilIndex<councilCells.size(); councilIndex++){
+//				if( ! (councilCells.get(councilIndex).isLegalCC(chosenfam)) ){ //Se non e' legale esci
+//				((FamtoCouncil) currentaction).famchoice();
+//				
+//				//Qui va bene famchoice perche' l'unica limitazione e' il valore della cella (valore 1)
+//				//TODO: sulla base dei controlli che si metteranno a monte 
+//				//(per esempio l'accesso alle celle negato se non si ha alcun familiare di valore uguale o maggiore al valore minimo delle celle)
+//				//bisogna rivedere questi controlli
+//
+//				}
+//			}
+//		}
+
+		
+//		if(councilCells.isLegalCC(chosenfam)){
+//		currentaction.setChosenFam(chosenfam);
+//		((FamtoCouncil) currentaction).act(game);
+//	}
+//	else{
+//		((FamtoCouncil) currentaction).famchoice();
+//	}
+//}
+//else{
+//	((FamtoCouncil) currentaction).famchoice();
 	}
 
 	/**

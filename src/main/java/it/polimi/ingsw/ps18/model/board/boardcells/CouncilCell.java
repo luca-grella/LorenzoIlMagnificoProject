@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
@@ -13,10 +14,8 @@ public class CouncilCell {
 	private int councilCellValue;
 	
 	public CouncilCell(FMember pBoardFM) {
-		if(this.isEmpty()){
 			this.councilCellFM = pBoardFM;
-		}
-		//privilegio gestito dal chiamante
+			this.councilCellValue = GeneralParameters.baseValueCouncilCells;
 	}
 	
 	/**
@@ -24,7 +23,7 @@ public class CouncilCell {
 	 * @return a boolean state
 	 */
 	
-	public boolean isEmpty() {
+	public boolean isEmptyCC() {
 		if(this.councilCellFM == null){
 			return true;
 		}
@@ -32,7 +31,7 @@ public class CouncilCell {
 			return false;
 		}	
 	}
-	public boolean isLegal(FMember pBoardFM){
+	public boolean isLegalCC(FMember pBoardFM) {
 		if(pBoardFM.getValue() >= this.getCouncilCellValue()){
 			return true;
 		}
