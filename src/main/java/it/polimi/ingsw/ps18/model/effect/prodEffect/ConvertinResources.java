@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps18.model.effect.prodEffect;
 
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
@@ -11,7 +12,7 @@ public class ConvertinResources implements Converter {
 	private Stats reward;
 
 	@Override
-	public void activate(PBoard player) {
+	public void activate(PBoard player, GameLogic game) {
 		Stats playerStats = player.getResources();
 		playerStats.addStats(reward);
 	}
@@ -24,6 +25,14 @@ public class ConvertinResources implements Converter {
 	public void setStats(JSONArray cost, JSONArray reward){
 		this.cost = new Stats(cost);
 		this.reward = new Stats(reward);
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pay:\n" + this.cost.toStringCost()
+		               + "to gain:\n " + this.reward.toStringCost());
+		return builder.toString();
 	}
 
 	/**

@@ -42,12 +42,12 @@ public class ReceiveChoseneffect implements ActionChoice {
 				costPreview.addStats(ceffect.getCost());
 			} else if ("Convert WR in Resources".equals(effect.getName())){
 				ConvertResorResinResources ceffect = (ConvertResorResinResources) effect;
-				ceffect.WoodorRockChoice(currentplayer);
+				ceffect.WoodorRockChoice(currentplayer, game);
 				costPreview.addStats(ceffect.getCost());
 			}
 		}
 		if(!((currentplayer.getResources()).enoughStats(costPreview))){
-			((FamtoProduction) currentaction).chooseCards(currentplayer);
+			((FamtoProduction) currentaction).chooseCards(currentplayer, game);
 		}
 		(((FamtoProduction) currentaction).getCardsForActivation()).add(newcard);
 	}

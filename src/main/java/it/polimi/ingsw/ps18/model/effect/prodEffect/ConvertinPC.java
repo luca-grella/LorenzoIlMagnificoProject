@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
@@ -14,7 +15,7 @@ public class ConvertinPC extends Observable implements Converter {
 	private int quantity;
 
 	@Override
-	public void activate(PBoard player) {
+	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
 		for(int i=0; i<quantity; i++){
 			setChanged();
@@ -30,6 +31,14 @@ public class ConvertinPC extends Observable implements Converter {
 	public void setStats(JSONArray cost, long quantity){
 		this.cost = new Stats(cost);
 		this.setQuantity((int) quantity);
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pay:\n" + this.cost.toStringCost()
+				+ "to gain " + this.quantity + "Privileges");
+		return builder.toString();
 	}
 
 	/**

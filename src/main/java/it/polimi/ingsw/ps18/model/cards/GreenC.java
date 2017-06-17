@@ -94,18 +94,6 @@ public class GreenC extends Cards {
     }
 	
 	@Override
-	public void activateSecondaryEffect(PBoard player, int actionValue) {
-		if(actionValue >= this.harvValue){
-			for(int i=0; i<harveffect.size(); i++){
-				HarvestEffect heffect = harveffect.get(i);
-				heffect.activate(player);
-			}
-		}
-		
-	}
-	
-	
-	@Override
 	public String toString(int count){
 		StringBuilder builder = new StringBuilder();
 		builder.append("Card number " + count + ":\n"

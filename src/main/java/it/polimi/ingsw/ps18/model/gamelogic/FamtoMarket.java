@@ -31,7 +31,7 @@ public class FamtoMarket extends Observable implements Action {
 		Board board = game.getBoard();
 		ArrayList<MarketCell> marketCells = (ArrayList<MarketCell>) board.getMarketCells();
 		MarketCell cell = marketCells.get(chosenCell);
-		cell.insertFM(chosenFam, game.getTurnplayer());
+		cell.insertFM(chosenFam, game);
 	}
 	
 	private void notifyActionPBoardView(String msg){

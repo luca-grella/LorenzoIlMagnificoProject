@@ -3,7 +3,9 @@ package it.polimi.ingsw.ps18.controller.controlleractions;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.DifferentPrivilegeHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.PrivilegeHandler;
+import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.WoodorRockHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.ReceiveFamtoCouncil;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ActivateHarvest;
@@ -48,6 +50,8 @@ public class HashMapActions {
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
 		genActions.put("Selected YCard", new ReceiveSelectionCard());
 		genActions.put("Chosen Effect", new ReceiveChoseneffect());
+		genActions.put("Chosen Resource", new WoodorRockHandler());
+		genActions.put("Chosen Diff Privilege", new DifferentPrivilegeHandler());
 	}
 	
 	public static ActionChoice geteffect(String a){

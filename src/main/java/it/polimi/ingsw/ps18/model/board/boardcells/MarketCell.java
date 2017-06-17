@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -67,11 +68,11 @@ public class MarketCell {
 	 * Places a FMember from PBoard to the cell
 	 * @param pBoardFM
 	 */
-	public boolean insertFM (FMember pBoardFM, PBoard player) {
+	public boolean insertFM (FMember pBoardFM, GameLogic game) {
 		
 		if(this.isEmptyMC()){
 			this.marketCellFM = pBoardFM;
-			activateQEffects(player); 			//attivo effetti sul giocatore
+			activateQEffects(game); 			//attivo effetti sul giocatore
 			return true;
 		} return false;
 		//QuickEff activation gestita dal chiamante
@@ -108,10 +109,10 @@ public class MarketCell {
 	    	return false;		
     }
 	
-	private void activateQEffects(PBoard player){
+	private void activateQEffects(GameLogic game){
 		for(int count=0; count<this.effects.size(); count++){
 			QuickEffect marketQuickEffect = this.effects.get(count); //Sicuro mi da errore su Sonar
-			marketQuickEffect.activate(player);
+			marketQuickEffect.activate(game.getTurnplayer(), game);
 		}
 	}
 	

@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
@@ -16,7 +17,7 @@ public class addCoins implements QuickEffect, HarvestEffect, ProductionEffect, F
 	 * @see QuickEffect,HarvestEffect,ProductionEffect,FinalEffect
 	 */
 	@Override
-	public void activate(PBoard player) {
+	public void activate(PBoard player, GameLogic game) {
 		Stats stat = player.getResources();
 		stat.addCoins(quantity);
 		

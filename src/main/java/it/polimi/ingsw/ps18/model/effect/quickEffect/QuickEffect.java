@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps18.model.effect.quickEffect;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public interface QuickEffect extends GeneralEffect{
@@ -11,7 +12,7 @@ public interface QuickEffect extends GeneralEffect{
 	 * @param player indicates the player which resources are going to be modified
 	 */
 	@Override
-	public void activate(PBoard player);
+	public void activate(PBoard player, GameLogic game);
 	
 	/**
 	 * Set the Parameter that the method "activate" may use in his functioning

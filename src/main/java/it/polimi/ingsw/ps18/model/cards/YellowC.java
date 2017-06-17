@@ -122,16 +122,6 @@ public class YellowC extends Cards {
 	    return (this.getProdEffect()).add(a);	
     }
 	
-	@Override
-	public void activateSecondaryEffect(PBoard player, int actionValue) {
-		if(actionValue >= this.productionValue){
-			for(int i=0; i<prodEffect.size(); i++){
-				ProductionEffect peffect = prodEffect.get(i);
-				peffect.activate(player);
-			}
-		}
-	}
-	
 	
 	@Override
 	public String toString(int count) {

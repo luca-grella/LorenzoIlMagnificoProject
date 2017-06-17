@@ -27,7 +27,7 @@ public class GameLogic extends Observable {
 	Scanner input = new Scanner(System.in);
 	
 	private int TURN = 0;
-	private int AGE = 1;
+	private int AGE = 3;
 	private int nplayer;
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
@@ -51,6 +51,13 @@ public class GameLogic extends Observable {
 		this.nplayer = nplayer;
 		mView = new MainView(mController);
 		addObserver(mView);
+	}
+	
+	/**
+	 * Per i test
+	 */
+	public GameLogic(){
+		
 	}
 	
 	/**

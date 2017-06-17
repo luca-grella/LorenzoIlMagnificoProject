@@ -1,27 +1,7 @@
--AddWood: aggiunge legno
--AddCoin: aggiunge monete
--AddStone: aggiunge pietra
--AddServant: aggiunge servitore
--AddPF: aggiunge punto fede
--AddPM: aggiunge punto militare
--AddPC: aggiunge privilegio del consiglio
-AddDifferentPC: aggiunge privilegi del consiglio diversi tra loro
--AddPV: aggiunge punto vittoria
--AddPVforGreenCard: aggiunge punto vittoria per ogni carta verde posseduta
--AddPVforYellowCard: aggiunge punto vittoria per ogni carta gialla posseduta
--AddPVforBlueCard: aggiunge punto vittoria per ogni carta blu posseduta
--AddPVforPurpleCard: aggiunge punto vittoria per ogni carta viola posseduta
-AddCoinforYellowCard: aggiunge moneta per ogni carta gialla posseduta
-AddCoinforGreenCard: aggiunge moneta per ogni carta verde posseduta
-ConvertResourcesInResources: converte risorsa x in risorsa y (vettore con due array [wood, rock, coin, servant, PV, PM, PF, PC] il primo indica risorsa (o punti) dati, secondo indica risorsa (o punti) ricevuti)
-ConvertResourcesOrResourcesInResources: converte risorsa x oppure risorsa z in risorsa y (come sopra ma 2 vettori nel primo array contenenti le due scelte, il secondo array contiene invece la risorsa che il giocatore otterrà - come sopra-)
-ConvertResourcesInPC: converte risorse x in privilegi
-ActivateHarvest: attiva effetto raccolta di valore x
-ActivateProduction: attiva effetto produzione di valore x
+﻿PERMANENTI
 IncreaseFMvalueOnGreenTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre verde)
 IncreaseFMvalueOnYellowTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre gialla)
 SalesWoodorRockYellow: sconta legno o roccia sull'acquisto di carte gialle
-SalesWoodandRockYellow: sconta legno e roccia sull'acquisto di carte gialle
 IncreaseFMvalueOnBlueTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre blu)
 SalesCoinBlue: sconta monete sull'acquisto di carte blu
 IncreaseFMvalueOnPurpleTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre viola)
@@ -30,6 +10,37 @@ IncreaseFMvalueOnProduction: aumenta il valore del familiare del valore indicato
 BlockFloorBonus: blocca i bonus stampati sulla board dei piani indicati (piano 1 = 0, piano 2 = 1, piano 3 = 2, piano 4 = 3) 
 TakeAnyCard: effettua un’azione a valore x per prendere una carta di una qualsiasi categoria
 
+DA SCRIVERE
+SalesWoodandRockYellow: sconta legno e roccia sull'acquisto di carte gialle
+SalesCoinBlue: sconta monete sull'acquisto di carte blu
+AddPVforMP: aggiunge x PV per ogni y MP
+TakeAnyCard: effettua un’azione a valore x per prendere una carta di una qualsiasi categoria
+TakePurpleCard: effettua un’azione a valore x per prendere una carta viola
+TakeBlueCard: effettua un’azione a valore x per prendere una carta blu
+TakeGreenCard: effettua un’azione a valore x per prendere una carta
+
+
+SCRITTI
+AddWood: aggiunge legno
+AddCoin: aggiunge monete
+AddStone: aggiunge pietra
+AddServant: aggiunge servitore
+AddPF: aggiunge punto fede
+AddPM: aggiunge punto militare
+AddPC: aggiunge privilegio del consiglio
+AddDifferentPC: aggiunge privilegi del consiglio diversi tra loro
+AddPV: aggiunge punto vittoria
+ConvertResourcesInResources: converte risorsa x in risorsa y (vettore con due array [wood, rock, coin, servant, PV, PM, PF, PC] il primo indica risorsa (o punti) dati, secondo indica risorsa (o punti) ricevuti)
+ConvertResourcesOrResourcesInResources: converte risorsa x oppure risorsa z in risorsa y (come sopra ma 2 vettori nel primo array contenenti le due scelte, il secondo array contiene invece la risorsa che il giocatore otterrà - come sopra-)
+ConvertResourcesInPC: converte risorse x in privilegi
+AddPVforGreenCard: aggiunge punto vittoria per ogni carta verde posseduta
+AddPVforYellowCard: aggiunge punto vittoria per ogni carta gialla posseduta
+AddPVforBlueCard: aggiunge punto vittoria per ogni carta blu posseduta
+AddPVforPurpleCard: aggiunge punto vittoria per ogni carta viola posseduta
+AddCoinforYellowCard: aggiunge moneta per ogni carta gialla posseduta
+AddCoinforGreenCard: aggiunge moneta per ogni carta verde posseduta
+ActivateHarvest: attiva effetto raccolta di valore x
+ActivateProduction: attiva effetto produzione di valore x
 
 Colors Codes:
 green: 0

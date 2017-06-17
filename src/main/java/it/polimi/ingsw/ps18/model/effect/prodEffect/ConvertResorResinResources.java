@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
@@ -15,12 +16,12 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	private Stats reward;
 
 	@Override
-	public void activate(PBoard player) {
+	public void activate(PBoard player, GameLogic game) {
 		Stats playerStats = player.getResources();
 		playerStats.addStats(reward);
 	}
 	
-	public void WoodorRockChoice(PBoard player){
+	public void WoodorRockChoice(PBoard player, GameLogic game){
 		addObserver(player.getpBoardView());
 		Stats playerStats = player.getResources();
 		if(playerStats.getWood() < quantity){
@@ -30,6 +31,7 @@ public class ConvertResorResinResources extends Observable implements Converter 
 			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {
 			setChanged();
+			game.setOngoingEffect(this);
 			notifyObservers(new StatusMessage("WoodorRockChoice"));
 		}
 	}
@@ -51,6 +53,14 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	public void setStats(long quantity, JSONArray reward){
 		this.reward = new Stats(reward);
 		this.setQuantity((int) quantity);
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pay " + this.quantity + "Wood or Rock\n"
+                       + "to gain:\n " + this.reward.toStringCost());
+		return builder.toString();
 	}
 
 	/**

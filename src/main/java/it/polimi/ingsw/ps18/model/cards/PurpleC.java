@@ -96,13 +96,13 @@ public class PurpleC extends Cards {
 	    return (this.getFineffect()).add(a);	
     }
 	
-	@Override
-	public void activateSecondaryEffect(PBoard player, int actionValue) {
-		for(int i=0; i<fineffect.size(); i++){
-			FinalEffect feffect = fineffect.get(i);
-			feffect.activate(player);
-		}	
-	}
+//	@Override
+//	public void activateSecondaryEffect(PBoard player, int actionValue) {
+//		for(int i=0; i<fineffect.size(); i++){
+//			FinalEffect feffect = fineffect.get(i);
+//			feffect.activate(player);
+//		}	
+//	}
 	
 	private void setCosts(JSONArray costs){
 		if(this.minMP != 0){

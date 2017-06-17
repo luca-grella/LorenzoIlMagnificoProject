@@ -20,8 +20,7 @@ public abstract class Cards {
 	public void activateQEffects(PBoard player, GameLogic game){
 		for(int i = 0 ; i < this.effects.size() ; i++){
 			QuickEffect qeffect = this.effects.get(i);
-			game.setOngoingEffect(qeffect);
-			qeffect.activate(player);
+			qeffect.activate(player, game);
 		}
 	}
 	
@@ -30,8 +29,6 @@ public abstract class Cards {
 	public abstract boolean hasProduction();
 	
 	public abstract boolean hasFinal();
-	
-	public abstract void activateSecondaryEffect(PBoard player,int actionValue);
 	
 	public abstract String toString();
 	

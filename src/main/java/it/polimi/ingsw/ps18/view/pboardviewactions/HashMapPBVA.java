@@ -3,6 +3,10 @@ package it.polimi.ingsw.ps18.view.pboardviewactions;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActHarvestwithParameter;
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActProductionwithParameter;
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
+
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View actions 
  * @author Francesco-Musio
@@ -21,6 +25,9 @@ public class HashMapPBVA {
 		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil());
 		genPBVAction.put("Fam Choice Harvest", new ShowChoiceFamtoHarvest());
 		genPBVAction.put("Fam Choice Production", new ShowChoiceFamtoProduction());
+		genPBVAction.put("actHarvest", new ActHarvestwithParameter());
+		genPBVAction.put("actProduction", new ActProductionwithParameter());
+		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege());
 	}
 	
 	public static PBViewAction geteffect(String a){

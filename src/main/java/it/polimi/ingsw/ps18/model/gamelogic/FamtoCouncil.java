@@ -32,7 +32,7 @@ public class FamtoCouncil extends Observable implements Action {
 		cells.add(new CouncilCell(this.chosenFam));
 		PBoard currentplayer = game.getTurnplayer();
 		(currentplayer.getResources()).addCoins(GeneralParameters.coinsFromCouncil); 
-		privilege.activate(currentplayer);
+		privilege.activate(currentplayer, game);
 
 	}
 

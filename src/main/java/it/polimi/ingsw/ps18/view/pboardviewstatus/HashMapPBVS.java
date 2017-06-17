@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps18.view.pboardviewstatus;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
+
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View status 
  * @author Francesco-Musio
@@ -14,7 +16,6 @@ public class HashMapPBVS {
 	public static void init(){
 		genPBVStatus.put("Tower Choice", new ChooseTowertoShow());
 		genPBVStatus.put("Player Choice", new ChoosePlayertoShow());
-		genPBVStatus.put("PrivilegeChoice", new ChoosePrivilege());
 		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock());
 		genPBVStatus.put("actHarvest", new ActHarvest());
 		genPBVStatus.put("actProduction", new ActProduction());

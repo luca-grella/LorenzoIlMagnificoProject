@@ -16,11 +16,11 @@ public class ActivateProduction implements ActionChoice {
 			Action currentaction = new FamtoProduction(currentplayer.getpBoardView());
 			game.setOngoingAction(currentaction);
 			((FamtoProduction) currentaction).setActionValue(index);
-			((FamtoProduction) currentaction).activateProduction(currentplayer);
+			((FamtoProduction) currentaction).activateProduction(currentplayer, game);
 		} else {
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
-			((FamtoProduction) currentaction).activateProduction(currentplayer);
+			((FamtoProduction) currentaction).activateProduction(currentplayer, game);
 		}
 
 	}

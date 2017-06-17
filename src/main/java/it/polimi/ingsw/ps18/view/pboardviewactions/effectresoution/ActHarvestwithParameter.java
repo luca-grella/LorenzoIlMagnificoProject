@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 
-public class actHarvestwithParameter extends Observable implements PBViewAction {
+public class ActHarvestwithParameter extends Observable implements PBViewAction {
     private int index;
 
 	@Override

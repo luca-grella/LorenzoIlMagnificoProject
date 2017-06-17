@@ -1,10 +1,13 @@
 package it.polimi.ingsw.ps18.model.gamelogic;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -30,11 +33,22 @@ public class FamtoHarvest extends Observable implements Action {
 		currentplayer.actHarvest();
 	}
 	
-	public void activateHarvest(PBoard player){
+	public void activateHarvest(PBoard player, GameLogic game){
 		List<Cards> cards = player.getCards();
+		List<GreenC> greenc = new ArrayList<>();
 		for(Cards card: cards){
+			if(card.getColor()==0){
+				greenc.add((GreenC) card);
+			}
+		}
+		for(GreenC card: greenc){
 			if(card.hasHarvest()){
-				card.activateSecondaryEffect(player, actionValue);
+				if(actionValue >= card.getHarvValue()){
+					for(int i=0; i<card.getHarveffect().size(); i++){
+						HarvestEffect heffect = card.getHarveffect().get(i);
+						heffect.activate(player, game);
+					}
+				}
 			}
 		}
 	}

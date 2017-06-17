@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
@@ -30,7 +31,7 @@ public class addWoodTest {
 		PBoard player = new PBoard(a, dices);
 		Stats stats = player.getResources();
 		int ris = stats.getWood();
-		tester.activate(player);
+		tester.activate(player, new GameLogic());
 		int ris2 = stats.getWood();
 		if(ris2!=ris + tester.getQuantity()){
 			fail("Activate non funziona");

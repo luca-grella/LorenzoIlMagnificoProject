@@ -19,7 +19,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 public class FamtoProduction extends Observable implements Action {
 	List<YellowC> yellowCards = new ArrayList<>();
 	YellowC currentcard;
-	List<Cards> cardsForActivation = new ArrayList<>();
+	List<YellowC> cardsForActivation = new ArrayList<>();
 	Stats totalCostPreview;
 	private FMember chosenFam;
 	private int actionValue;
@@ -40,15 +40,15 @@ public class FamtoProduction extends Observable implements Action {
 		currentplayer.actProduction();
 	}
 	
-	public void activateProduction(PBoard player){
+	public void activateProduction(PBoard player, GameLogic game){
 		for(Cards card: player.getCards()){
 			if(card.getColor()==2){
 				this.yellowCards.add((YellowC) card);
 			}
-		} this.chooseCards(player);
+		} this.chooseCards(player, game);
 	}
 	
-	public void chooseCards(PBoard player){
+	public void chooseCards(PBoard player, GameLogic game){
 		cardsForActivation.clear();
 		totalCostPreview = new Stats(0,0,0,0,0,0,0);
 		for(YellowC card: yellowCards){
@@ -59,7 +59,7 @@ public class FamtoProduction extends Observable implements Action {
 				notifyLogPBoardView(totalCostPreview.toString());
 				notifyStatusPBoardView("Select YC");
 			}
-		} activateEffects(player);
+		} activateEffects(player, game);
 	}
 	
 	public void ChooseEffect(){
@@ -80,13 +80,17 @@ public class FamtoProduction extends Observable implements Action {
 		
 	}
 	
-	public void activateEffects(PBoard player){
-		List<Cards> cards = player.getCards();
+	public void activateEffects(PBoard player, GameLogic game){
 		(player.getResources()).subStats(totalCostPreview);
-		for(Cards card: cards){
+		for(YellowC card: this.cardsForActivation){
 			if(card.hasProduction()){
-				card.activateSecondaryEffect(player, actionValue);
-			}
+				if(actionValue >= card.getProductionValue()){
+					for(int i=0; i<card.getProdEffect().size(); i++){
+						ProductionEffect peffect = card.getProdEffect().get(i);
+						peffect.activate(player, game);
+					}
+			    }
+		    }
 		}
 	}
 
@@ -127,7 +131,7 @@ public class FamtoProduction extends Observable implements Action {
 	/**
 	 * @return the cardsForActivation
 	 */
-	public List<Cards> getCardsForActivation() {
+	public List<YellowC> getCardsForActivation() {
 		return cardsForActivation;
 	}
 

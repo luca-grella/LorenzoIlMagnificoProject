@@ -25,10 +25,6 @@ public class BlueC extends Cards {
 	}
 
 	@Override
-	public void activateSecondaryEffect(PBoard player, int actionValue) {
-	}
-
-	@Override
 	public String toString(int count) {
 		return " ";
 	}

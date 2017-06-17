@@ -238,7 +238,7 @@
       0
     ],
     "QuickEffects": [
-      "IncreaseFMvalueOnGreenTower",
+      "TakeGreenCard",
       "AddPM"
     ],
     "QuickEffectsValues": [
@@ -267,7 +267,7 @@
       0
     ],
     "QuickEffects": [
-      "IncreaseFMvalueOnYellowTower",
+      "TakeYellowCard",
       "SalesWoodandRockYellow"
     ],
     "QuickEffectsValues": [
@@ -296,7 +296,7 @@
       0
     ],
     "QuickEffects": [
-      "IncreaseFMvalueOnBlueTower",
+      "TakeBlueCard",
       "SalesCoinBlue"
     ],
     "QuickEffectsValues": [
@@ -325,7 +325,7 @@
       0
     ],
     "QuickEffects": [
-      "IncreaseFMvalueOnPurpleTower",
+      "TakePurpleCard",
       "AddPC"
     ],
     "QuickEffectsValues": [
@@ -628,27 +628,13 @@
       0
     ],
     "QuickEffects": [
-      "ConvertResourcesInResources"
+      "AddPVforMP"
     ],
     "QuickEffectsValues": [
       [
         [
-          0,
-          0,
-          0,
-          0,
           1,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          2,
-          0
+          2
         ]
       ]
     ],

@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
@@ -18,7 +19,7 @@ public class AddCoinforGreenC implements FinalEffect, HarvestEffect, ProductionE
 	private int quantity;
 
 	@Override
-	public void activate(PBoard player) {
+	public void activate(PBoard player, GameLogic game) {
 		int count = 0;
 		List<Cards> cards = player.getCards();
 		for(Cards card: cards){
@@ -36,7 +37,9 @@ public class AddCoinforGreenC implements FinalEffect, HarvestEffect, ProductionE
 	
 	@Override
 	public String toString(){
-		return "Da scrivere";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Gain " + this.quantity + " Coins for every Green Card you have.");
+		return builder.toString();
 	}
 	
 	/**

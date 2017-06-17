@@ -9,8 +9,10 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
@@ -36,7 +38,7 @@ public class addCoinsTest {
 		PBoard player = new PBoard(a, dices);
 		Stats stats = player.getResources();
 		int ris = stats.getCoin();
-		tester.activate(player);
+		tester.activate(player, new GameLogic());
 		int ris2 = stats.getCoin();
 		assertEquals(ris + tester.getQuantity(), ris2);
 	}
