@@ -108,7 +108,7 @@ public class GameLogic extends Observable {
 			Integer index = new Integer(i);
 			this.excommcards.add(new Excommunications(index));	
 		} notifyLogMainView("Excommunication Deck Created.");
-		//SE NON SI DEFINISCONO GLI EFFETTI E SI ASSOCIANO AD UN HASHMAP IL CODICE NON COMPILA
+		//EXCOMM DA SISTEMARE
 	}
 	
 	private void insertCardsinTowers() {

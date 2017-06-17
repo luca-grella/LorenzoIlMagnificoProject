@@ -4,6 +4,9 @@ public class MalusWR implements ExcommEffects {
 
 
 	private int malusQuantity;
+	private String name = "Lose Woods or Rocks every time you gain Woods or Rocks";
+	
+	
 	
 	@Override
 	public void setQuantity(int quantity) {
@@ -17,6 +20,10 @@ public class MalusWR implements ExcommEffects {
 	 */
 	public int getMalusQuantity() {
 		return malusQuantity;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 }

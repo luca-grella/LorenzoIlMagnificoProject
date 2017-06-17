@@ -4,6 +4,8 @@ public class MalusMP implements ExcommEffects {
 
 	
 	private int malusQuantity;
+	private String name = "Lose Military Point every time you gain Military Point";
+	
 	
 	@Override
 	public void setQuantity(int quantity) {
@@ -17,6 +19,10 @@ public class MalusMP implements ExcommEffects {
 	 */
 	public int getMalusQuantity() {
 		return malusQuantity;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 }

@@ -1,13 +1,10 @@
 package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
-import org.json.simple.JSONArray;
-
-import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class LoseVPforVP implements ExcommEffects {
 	private String name = "Lose Victory Point for same Victory Point";
-	private Stats hasVP;
-	private Stats loseVP;
+	private long hasVP;
+	private long loseVP;
 
 
 	@Override
@@ -19,28 +16,28 @@ public class LoseVPforVP implements ExcommEffects {
 	/**
 	 * @return the loseVP
 	 */
-	public Stats getLoseVP() {
+	public long getLoseVP() {
 		return loseVP;
 	}
 
 	/**
 	 * @param loseVP the VP to lose
 	 */
-	public void setLoseVP(Stats loseVP) {
+	public void setLoseVP(int loseVP) {
 		this.loseVP = loseVP;
 	}
 
 	/**
 	 * @return the hasVP
 	 */
-	public Stats getBoostActionValue() {
+	public long getBoostActionValue() {
 		return hasVP;
 	}
 
 	/**
 	 * @param hasVP the number of VP every lose VP to set
 	 */
-	public void setBoostActionValue(Stats hasVP) {
+	public void setBoostActionValue(int hasVP) {
 		this.hasVP = hasVP;
 	}
 
@@ -51,11 +48,14 @@ public class LoseVPforVP implements ExcommEffects {
 		return name;
 	}
 
-	public void setStats(JSONArray hasVP, JSONArray loseVP){
-		this.hasVP = new Stats(hasVP);
-		this.loseVP = new Stats(loseVP);
-	}
 
+	public void setVEx(long hasVP, long loseVP) {
+		this.hasVP=hasVP;
+		this.loseVP=loseVP;
+		
+		
+	}
 	
+
 	
 }

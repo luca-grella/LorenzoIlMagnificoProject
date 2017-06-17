@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.HashMapExcomm;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforMP;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforVP;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusIncreaseActionValue;
 
 
 public class Excommunications {
@@ -53,22 +52,16 @@ public class Excommunications {
 		for(int pos=0; pos<eeffects.size(); pos++){
 			if(eeffects.get(pos)!=null){
 				switch((String) eeffects.get(pos)){
-				case "MalusIncreaseActionValue":
-					effect = mapExcomm.geteffect((String) eeffects.get(pos));
-					valueffect = (JSONArray) eeffectvalues.get(pos);
-					((MalusIncreaseActionValue) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
-					this.effects.add(pos, effect);
-					break;
 				case "LoseVPforVP":
 					effect = mapExcomm.geteffect((String) eeffects.get(pos));
 					valueffect = (JSONArray) eeffectvalues.get(pos);
-					((LoseVPforVP) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
+					((LoseVPforVP) effect).setVEx((long) valueffect.get(0), (long) valueffect.get(1));
 					this.effects.add(pos, effect);
 					break;
 				case "LoseVPforMP":
 					effect = mapExcomm.geteffect((String) eeffects.get(pos));
 					valueffect = (JSONArray) eeffectvalues.get(pos);
-					((LoseVPforMP) effect).setStats((JSONArray) valueffect.get(0), (JSONArray) valueffect.get(1));
+					((LoseVPforMP) effect).setVEx((long) valueffect.get(0), (long) valueffect.get(1));
 					this.effects.add(pos, effect);
 					break;
 				default:
@@ -81,6 +74,8 @@ public class Excommunications {
 			}
 		}
 	}
+	
+	
 	
 	
 	

@@ -6,7 +6,10 @@ public class MalusCoins implements ExcommEffects {
 
 
 	private int malusQuantity;
-
+	private String name = "Lose Coins every time you gain Coins";
+	
+	
+	
 	@Override
 	public void setQuantity(int quantity) {
 	
@@ -22,4 +25,9 @@ public class MalusCoins implements ExcommEffects {
 	}
 
 
+	public String getName() {
+		return name;
+	}
+	
+	
 }

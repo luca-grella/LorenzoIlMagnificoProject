@@ -6,8 +6,8 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class LoseVPforMP implements ExcommEffects {
 	private String name = "Lose Victory Point for same Military Point";
-	private Stats hasMP;
-	private Stats loseVP;
+	private long hasMP;
+	private long loseVP;
 
 
 	@Override
@@ -19,28 +19,28 @@ public class LoseVPforMP implements ExcommEffects {
 	/**
 	 * @return the loseVP
 	 */
-	public Stats getLoseVP() {
+	public long getLoseVP() {
 		return loseVP;
 	}
 
 	/**
 	 * @param loseVP the VP to lose
 	 */
-	public void setLoseVP(Stats loseVP) {
+	public void setLoseVP(long loseVP) {
 		this.loseVP = loseVP;
 	}
 
 	/**
 	 * @return the hasMP
 	 */
-	public Stats getBoostActionValue() {
+	public long getBoostActionValue() {
 		return hasMP;
 	}
 
 	/**
 	 * @param hasMP the number of MP every lose VP to set
 	 */
-	public void setBoostActionValue(Stats hasMP) {
+	public void setBoostActionValue(long hasMP) {
 		this.hasMP = hasMP;
 	}
 
@@ -51,9 +51,11 @@ public class LoseVPforMP implements ExcommEffects {
 		return name;
 	}
 
-	public void setStats(JSONArray hasMP, JSONArray loseVP){
-		this.hasMP = new Stats(hasMP);
-		this.loseVP = new Stats(loseVP);
+	public void setVEx(long hasMP, long loseVP) {
+		this.hasMP=hasMP;
+		this.loseVP=loseVP;
+		
+		
 	}
 
 	
