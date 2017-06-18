@@ -19,6 +19,16 @@ public class FMember {
 		this.playercol = playercol;
 	}
 	
+	/**
+	 * Fmember farlocco per prendere la carta da effetto di un'altra carta
+	 * @param value
+	 */
+	public FMember(int value){
+		this.value = value;
+		this.color = -2;
+		this.playercol = -2;
+	}
+	
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		builder.append("\n   Owner's Color: " + this.playercol);

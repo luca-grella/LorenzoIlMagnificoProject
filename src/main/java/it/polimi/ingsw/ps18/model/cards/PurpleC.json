@@ -499,12 +499,12 @@
       0
     ],
     "QuickEffects": [
-      "TakeAnyCard",
-      "AddPF"
+      "AddPF",
+      "TakeAnyCard"
     ],
     "QuickEffectsValues": [
-      7,
-      1
+      1,
+      7
     ],
     "FinalEffects": [
       "AddPV"

@@ -66,7 +66,7 @@ public class PBoard extends Observable {
 			int colorCount = 0;
 			int playerMP = resources.getMP();
 			
-			for(int cardIndex=0; cardIndex<GeneralParameters.maxPlayerCards; cardIndex++){
+			for(int cardIndex=0; cardIndex<this.cards.size(); cardIndex++){
 				if((cards.get(cardIndex)).getColor() == cardColor){
 					colorCount++;
 				}
@@ -82,32 +82,28 @@ public class PBoard extends Observable {
 			 */
 			else{
 				int futureCount = colorCount+1;
-				
-				switch(playerMP) {
-				case 1:
-					if(futureCount <= 3)
+				if(futureCount<=2){
+					return true;
+				} else if(futureCount == 3){
+					if((this.getResources()).getMP() >= 3){
 						return true;
-					else
-						return false;
-				case 4:
-					if(futureCount <= 4)
+					}
+				} else if(futureCount == 4){
+					if((this.getResources()).getMP() >= 7){
 						return true;
-					else
-						return false;
-				case 10:
-					if(futureCount <= 5)
+					}
+				} else if(futureCount == 5){
+				    if((this.getResources()).getMP() >= 12){
 						return true;
-					else
-						return false;
-				case 20:
-					if(futureCount <= 6)
+					}
+				} else if(futureCount == 6){
+				    if((this.getResources()).getMP() >= 18){
 						return true;
-					else
-						return false;
-				}
+					}
+				} 
+				return false;
 			}
 		}
-		return false;
 	}
 	
 	public int vPCalc(){

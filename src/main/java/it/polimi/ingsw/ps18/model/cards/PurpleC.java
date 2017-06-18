@@ -143,11 +143,11 @@ public class PurpleC extends Cards {
 		}
 		builder.append("Quick Effects:\n");
 		for(int i=0; i<(this.getEffects()).size(); i++){
-			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
 		builder.append("\nFinal Effects\n");
 		for(int i=0;  i<this.fineffect.size(); i++){
-			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString() + "\n");
 		}
 		return builder.toString();
 	}
@@ -170,11 +170,11 @@ public class PurpleC extends Cards {
 		}
 		builder.append("Quick Effects:\n");
 		for(int i=0; i<(this.getEffects()).size(); i++){
-			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
 		builder.append("\nFinal Effects\n");
 		for(int i=0;  i<this.fineffect.size(); i++){
-			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getFineffect()).get(i)).toString() + "\n");
 		}
 		return builder.toString();
 	}

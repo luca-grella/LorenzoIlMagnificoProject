@@ -12,6 +12,7 @@ public interface GeneralEffect {
 	 * @param game some effects need to save themselves as ongoing effect
 	 */
 	public void activate(PBoard player, GameLogic game);
+	//TODO: teoricamente non bisognerebbe passare il player perchè si può ricavare da game, ma così è possibile attivare effetti su altri giocatori
 	
     /**
 	 * Set the Parameter that the method "activate" may use in his functioning
