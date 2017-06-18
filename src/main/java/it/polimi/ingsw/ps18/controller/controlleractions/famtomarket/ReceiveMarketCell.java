@@ -20,7 +20,7 @@ public class ReceiveMarketCell implements ActionChoice{
 		Board gameBoard = game.getBoard();
 		List<MarketCell> boardMarketCells = gameBoard.getMarketCells();
 		MarketCell boardMarketCell = boardMarketCells.get(index);
-		PBoard currentPlayer = game.getTurnplayer();
+//		PBoard currentPlayer = game.getTurnplayer();
 		FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
 		if(boardMarketCell.isEmptyMC()){
 			if(boardMarketCell.isLegalMC(pBoardFM)){

@@ -27,7 +27,7 @@ public class ProdCell {
 
 	
 	public boolean insertFM(FMember pBoardFM) {
-		if(this.isEmpty()){
+		if(this.isEmptyPC()){
 			if(pBoardFM.getValue() >= prodCellValue){
 				this.prodCellFM = pBoardFM;
 				return true;
@@ -36,7 +36,7 @@ public class ProdCell {
 		}return false;
 	}
 	
-	private boolean isEmpty() {
+	public boolean isEmptyPC() {
 		if(this.prodCellFM==null){ 
 			return true;	
 		}

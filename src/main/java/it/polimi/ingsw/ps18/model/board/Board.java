@@ -126,36 +126,89 @@ public class Board extends Observable {
 		productionCells.clear();
 		
 	}
-	
-	public int insertFMHarv(FMember fam){
-		HarvCell cell;
+	/**
+	 * Controlla se c'e' gia' un familiare del tuo colore nell'ArrayList
+	 * @param pBoardFM
+	 * @return
+	 */
+	public boolean isLegalHarv(FMember pBoardFM){
 		if(harvestCells.isEmpty()){
-			cell = new HarvCell(0);
-			if(cell.insertFM(fam)){
-				harvestCells.add(cell);
+			return true;
+		}
+		else{
+			for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
+				HarvCell harvCell = harvestCells.get(harvIndex);
+				if( ! (harvCell.isEmptyHC()) ){ 
+					if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+						if(pBoardFM.getColor() == GeneralParameters.neutralFMColor){
+							return true;
+						}
+						else{
+							return false;
+						}
+					}
+					//else cicla alla cella dopo
+				}
+			}
+			return true;
+		}
+	}
+	
+	
+	public boolean isLegalProd(FMember pBoardFM){
+		if(productionCells.isEmpty()){
+			return true;
+		}
+		else{
+			for(int prodIndex=0; prodIndex < productionCells.size(); prodIndex++){
+				ProdCell prodCell = productionCells.get(prodIndex);
+				if( ! (prodCell.isEmptyPC()) ){ 
+					if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+						if(pBoardFM.getColor() == GeneralParameters.neutralFMColor){
+							return true;
+						}
+						else{
+							return false;
+						}
+					}
+				}
+			}
+			return true;
+		}
+	}
+	
+	/*
+	 * Funziona solo se l'accesso all'ArrayList e' sequenziale, cosi' come tutti i controlli a monte
+	 */
+	public int insertFMHarv(FMember fam){
+		HarvCell harvCell;
+		if(harvestCells.isEmpty()){
+			harvCell = new HarvCell(0);
+			if(harvCell.insertFM(fam)){
+				harvestCells.add(harvCell);
 			}
 		} else {
-			cell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-			if(cell.insertFM(fam)){
-				harvestCells.add(cell);
+			harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+			if(harvCell.insertFM(fam)){
+				harvestCells.add(harvCell);
 			}
-		} return (fam.getValue() - cell.getMalus());
+		} return (fam.getValue() - harvCell.getMalus());
 	}
 	
 	
 	public int insertFMProd(FMember fam){
-		ProdCell cell;
-		if(harvestCells.isEmpty()){
-			cell = new ProdCell(0);
-			if(cell.insertFM(fam)){
-				productionCells.add(cell);
+		ProdCell prodCell;
+		if(productionCells.isEmpty()){
+			prodCell = new ProdCell(0);
+			if(prodCell.insertFM(fam)){
+				productionCells.add(prodCell);
 			}
 		} else {
-			cell = new ProdCell(GeneralParameters.baseMalusProdCells);
-			if(cell.insertFM(fam)){
-				productionCells.add(cell);
+			prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
+			if(prodCell.insertFM(fam)){
+				productionCells.add(prodCell);
 			}
-		} return (fam.getValue() - cell.getMalus());
+		} return (fam.getValue() - prodCell.getMalus());
 	}
 	
 	/*
@@ -298,6 +351,20 @@ public class Board extends Observable {
 	 */
 	public void setExcommCells(List<Excommunications> excommCells) {
 		this.excommCells = excommCells;
+	}
+
+	/**
+	 * @return the nplayer
+	 */
+	public int getNplayer() {
+		return nplayer;
+	}
+
+	/**
+	 * @param nplayer the nplayer to set
+	 */
+	public void setNplayer(int nplayer) {
+		this.nplayer = nplayer;
 	}
 
 	

@@ -14,19 +14,24 @@ public class FamtoCouncilTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(null, currentplayer.getPlayercol());
+		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
+		int maxValue = 0;
 		
 		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-			maxFM.setValue(currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants());
-			
-			if(maxFM.getValue() > GeneralParameters.baseValueCouncilCells){
-				Action action = new FamtoCouncil(currentplayer.getpBoardView());
-				game.setOngoingAction(action);
-				((FamtoCouncil) action).famchoice();
+			maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
+			if(maxValue > maxFM.getValue()){
+				maxFM.setValue(maxValue);
 			}
 		}
-		Action action = game.getOngoingAction();
-		action.act(game); 		
+		if(maxFM.getValue() > GeneralParameters.baseValueCouncilCells){
+			Action action = new FamtoCouncil(currentplayer.getpBoardView());
+			game.setOngoingAction(action);
+			((FamtoCouncil) action).famchoice();
+		}
+		else{
+			Action action = game.getOngoingAction();
+			action.act(game); 
+		}
 	}
 
 	@Override

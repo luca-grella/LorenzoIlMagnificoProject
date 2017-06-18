@@ -14,7 +14,10 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class ReceiveFamtoHarvest implements ActionChoice {
 	int index;
-
+	/*
+	 * TODO: ATTENZIONE: CONTROLLI HARV SBAGLIATI (probabilmente anche prod e altri)
+	 * CLASSE CORRETTA
+	 */
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
@@ -22,37 +25,50 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 		FMember chosenfam = fams.set(index, null);
 		List<HarvCell> harvCells = game.getBoard().getHarvestCells();
 		Action currentaction = game.getOngoingAction();
+		
 		if( ! (harvCells.isEmpty()) ){
-			for(int harvIndex=0; harvIndex<harvCells.size(); harvIndex++){
-				if( ! (harvCells.get(harvIndex).isLegalHC(chosenfam)) ){ //Se non e' legale esce
-					/*
-					 * Non posso mandarlo alla famchoice perche' in queste celle basta che ci sia un familiare 
-					 * colorato e non ci si puo' piu' accedere
-					 * Se lui ha ancora un fam neutro lo rimando al famchoice
-					 * Se no, creo un TurnHandler setto a currentaction e chiamo init
-					 * 
-					*/
-					for(int famIndex=0; famIndex<fams.size(); famIndex++){
-						if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-							((FamtoHarvest) currentaction).famchoice();
-						}
-						//else cicla al familiare dopo
-					}
-//					Questo se fallisce					
+			if(game.getBoard().isLegalHarv(chosenfam)){
+				HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+				if(harvCell.isLegalHC(chosenfam)){
+					currentaction.setChosenFam(chosenfam);
+					((FamtoHarvest) currentaction).act(game);
+				}
+				else{
+					//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
 					Action action = new TurnHandler(currentplayer);
 					game.setOngoingAction(action);
 				}
-				//else cicla alla cella dopo
 			}
-			currentaction.setChosenFam(chosenfam);
-			((FamtoHarvest) currentaction).act(game);
-		}
-		else{
-			currentaction.setChosenFam(chosenfam);
-			((FamtoHarvest) currentaction).act(game);
-		}
+			else{
+				//Se e' illegale, forse puo' ancora inserire un familiare neutro
+				for(int famIndex=0; famIndex<fams.size(); famIndex++){
+					if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
+						((FamtoHarvest) currentaction).famchoice();
+						return;
+					}
+					//else cicla al familiare dopo
+				}
+				//Se non ha alcun familiare neutro, esci
+				Action action = new TurnHandler(currentplayer);
+				game.setOngoingAction(action);
+				//Ci vorrebbe un messaggio di errore, sia qui che in tutte le altre classi del controller
 
+			}
+		}
+		//L'ArrayList e' vuoto, procedi
+		else{
+			HarvCell harvCell = new HarvCell(0); //malus=0
+			if(harvCell.isLegalHC(chosenfam)){
+				currentaction.setChosenFam(chosenfam);
+				((FamtoHarvest) currentaction).act(game);
+			}
+			else{
+				Action action = new TurnHandler(currentplayer);
+				game.setOngoingAction(action);
+			}
+		}
 	}
+
 
 	/**
 	 * @param index the index to set

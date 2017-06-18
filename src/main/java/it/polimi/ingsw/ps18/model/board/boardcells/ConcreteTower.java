@@ -86,27 +86,26 @@ public class ConcreteTower implements Tower {
 						
 				}
 			}
-		}
-		
-		return true;
-	}
-	/*
-	 * TODO:
-	 * PROBABILMENTE NON SERVE AD UN CAZZO
-	 * esiste un isEmpty() per gli ArrayList, anche se isEmptyT viene usato da oggetti di tipo ConcreteTower
-	 */
-	public boolean isEmptyT(){
-		if(towerCells.size() == 0){
 			return true;
 		}
-		else{
+	}
+	/*
+	 * Parte commentata di isEmptyT: il controllo e' concettualmente errato in quanto towerCells non sara' mai vuota
+	 * Questo perche' e' composto da celle (inizializzate), quindi l'ArrayList sara' sempre pieno di celle.
+	 */
+	public boolean isEmptyT(){
+//		if(towerCells.isEmpty()){
+//			//Se l'ArrayList fosse davvero vuoto, ci sarebberero problemi
+//			return true;
+//		}
+//		else{
 			for(int index=0; index<GeneralParameters.numberofCells; index++){
 				Cell towerCell = towerCells.get(index);
 				if( !(towerCell.isEmptyTC()))
 					return false;
 			}
 			return true;
-		}
+		
 		
 	}
 	

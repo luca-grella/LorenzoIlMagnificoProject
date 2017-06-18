@@ -12,10 +12,17 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 public class CouncilCell { 
 	private FMember councilCellFM;
 	private int councilCellValue;
-	
+	/*
+	 * TODO: QUESTO COSTRUTTORE ROVINA I CONTROLLI DEL COUNCIL
+	 * Ho creato un secondo costruttore per risolvere, ma andrebbe rivista questa classe
+	 */
 	public CouncilCell(FMember pBoardFM) {
 			this.councilCellFM = pBoardFM;
 			this.councilCellValue = GeneralParameters.baseValueCouncilCells;
+	}
+	
+	public CouncilCell(){
+		this.councilCellValue = GeneralParameters.baseValueCouncilCells;
 	}
 	
 	/**

@@ -49,8 +49,10 @@ public class HarvCell {
 		}
 	}
 	public boolean isLegalHC(FMember pBoardFM){
-		if(pBoardFM.getValue() >= this.getHarvCellValue()){
-			return true;
+		if(this.isEmptyHC()){
+			if(pBoardFM.getValue() >= this.getHarvCellValue()){
+				return true;
+			}
 		}
 		return false;
 	}

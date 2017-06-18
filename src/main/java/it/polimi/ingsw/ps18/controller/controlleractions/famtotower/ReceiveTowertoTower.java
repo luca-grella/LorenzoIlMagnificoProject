@@ -24,23 +24,27 @@ public class ReceiveTowertoTower implements ActionChoice {
 		List<Tower> boardTowers = gameBoard.getTowers();
 		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 		ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
-		PBoard currentPlayer = game.getTurnplayer(); //turnplayer nel mondo di francope significa giocatore corrente
+		PBoard currentplayer = game.getTurnplayer(); //turnplayer nel mondo di francope significa giocatore corrente
 
 		if(boardTower.isLegalT(pBoardFM)){ 
 			if(boardTower.isEmptyT()){
-				if(currentPlayer.hasSpace(index)){
+				if(currentplayer.hasSpace(index)){
 					((FamtoTower) currentaction).setChosenTower(index);
 					((FamtoTower) currentaction).floorChoice();
 				}
 				else{
 					((FamtoTower) currentaction).towerChoice();
-				}
-				
+				}		
 			} 
 			else {
-				if((currentPlayer.getResources()).getCoin() >= GeneralParameters.towerFee){
-					if(currentPlayer.hasSpace(index)){
+				if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+					if(currentplayer.hasSpace(index)){
+						/*
+						 * Motivazioni del pagamento qui: vedi commento in FamtoTower nel model
+						 */
+//						currentPlayer.getResources().addCoins( -GeneralParameters.towerFee);
 						((FamtoTower) currentaction).setChosenTower(index);
+						//prima di flooChoice dovro' sistemare sta cosa delle monete
 						((FamtoTower) currentaction).floorChoice();
 					}					
 					else{
@@ -49,7 +53,11 @@ public class ReceiveTowertoTower implements ActionChoice {
 					}
 				} 
 				else {
+					/*
+					 * Non dovrebbe andare al towerChoice ma piu' su
+					 */
 					((FamtoTower) currentaction).towerChoice();
+					
 				}
 			}
 				

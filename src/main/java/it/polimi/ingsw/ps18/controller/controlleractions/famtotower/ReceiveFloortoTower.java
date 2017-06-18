@@ -30,7 +30,6 @@ public class ReceiveFloortoTower implements ActionChoice {
 		Stats neededStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
 		List<Cards> playerCards = currentplayer.getCards();
 		
-		
 		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
 			if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam)){
 				
