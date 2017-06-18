@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps18.model.effect.excommEffects;
 public class MalusServants implements ExcommEffects {
 
 	private int malusQuantity;
-	private String name = "Lose Servants every time you gain Servants";
+	private String name = "Servant";
 	
 	@Override
 	public void setQuantity(int quantity) {
@@ -19,6 +19,23 @@ public class MalusServants implements ExcommEffects {
 		return malusQuantity;
 	}
 	
+	@Override
+	public String toString(){
+		if(malusQuantity>=0){
+			if(malusQuantity == 1){
+				return "detract " + malusQuantity + " " + name;
+			} else if(malusQuantity==0 || malusQuantity>1){
+				return "detract " + malusQuantity + " " + name + "s";
+			}
+		} else {
+			if(malusQuantity == -1){
+				return "add " + malusQuantity + " " + name;
+			} else {
+				return "add " + malusQuantity + " " + name + "s";
+			}
+		}
+		return "Error";
+	}
 	
 	public String getName() {
 		return name;
