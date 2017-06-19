@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
@@ -35,8 +37,18 @@ public class FamtoProduction extends Observable implements Action {
 	@Override
 	public void act(GameLogic game) {
 		Board board = game.getBoard();
-		this.actionValue = board.insertFMProd(this.chosenFam);
 		PBoard currentplayer = game.getTurnplayer();
+		int modifierValue = 0;
+		for(Cards card: currentplayer.getCards()){
+			if(card.hasPermanent()){
+				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+					if("IncraseFMvalueOnProduction".equals(effect.getName())){
+						modifierValue += effect.getQuantity();
+					}
+				}
+			}
+		}
+		this.actionValue = board.insertFMProd(this.chosenFam) + modifierValue;
 		currentplayer.actProduction();
 	}
 	

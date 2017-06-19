@@ -183,6 +183,12 @@ public class GreenC extends Cards {
 	public boolean hasFinal() {
 		return false;
 	}
+
+
+	@Override
+	public boolean hasPermanent() {
+		return false;
+	}
 	
 	
 	

@@ -24,6 +24,12 @@ public class FamtoTowerTrigger implements ActionChoice {
 				maxFM.setValue(maxValue);
 			}
 		}
+		/**
+		 * TODO: bisogna analizzare ogni cella della torre con il reispettivo valore perchè
+		 * il punto è garantire che almeno un familiare del giocatore possa avere accesso ad una cella
+		 * della torre. Poi oltre che al valore massimo dei familiari bisogna tener conto anche degli
+		 * effetti permanenti delle carte blu.
+		 */
 		if(maxFM.getValue() > GeneralParameters.minValueTowerCells){
 			Action action = new FamtoTower(currentplayer.getpBoardView());
 			game.setOngoingAction(action);

@@ -55,7 +55,7 @@ public class YellowC extends Cards {
 	}
 	
 	/**
-	 * Usato per creare una copia di un acarta esistente ma con meno effetti.
+	 * Usato per creare una copia di una carta esistente ma con meno effetti.
 	 * Sfruttato solo nella scelta degli effetti produzione da attivare.
 	 */
 	public YellowC() {
@@ -215,6 +215,11 @@ public class YellowC extends Cards {
 
 	@Override
 	public boolean hasFinal() {
+		return false;
+	}
+	
+	@Override
+	public boolean hasPermanent() {
 		return false;
 	}
 

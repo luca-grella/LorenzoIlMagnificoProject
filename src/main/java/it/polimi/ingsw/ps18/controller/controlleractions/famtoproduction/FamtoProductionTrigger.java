@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
@@ -20,6 +23,16 @@ public class FamtoProductionTrigger implements ActionChoice {
 		 * TODO: verificare che mettendo 0 al valore, non mi incasini i controlli
 		 * Controllare per tutti i trigger
 		 */
+		int modifierValue = 0;
+		for(Cards card: currentplayer.getCards()){
+			if(card.hasPermanent()){
+				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+					if("IncraseFMvalueOnProduction".equals(effect.getName())){
+						modifierValue += effect.getQuantity();
+					}
+				}
+			}
+		}
 		
 		if(game.getNplayer() > 2){
 			int maxValue = 0;
@@ -28,7 +41,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(maxValue > maxFM.getValue()){
 					maxFM.setValue(maxValue);
 				}
-			}
+			} int actual = maxFM.getValue();
+			maxFM.setValue(actual + modifierValue);
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				ProdCell prodCell = new ProdCell(0);
 				if(maxFM.getValue() > prodCell.getProdCellValue()){
@@ -63,7 +77,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 					if(maxValue > maxFM.getValue()){
 						maxFM.setValue(maxValue);
 					}
-				}
+				} int actual = maxFM.getValue();
+				maxFM.setValue(actual + modifierValue);
 				if(maxFM.getValue() > GeneralParameters.baseValueProdCells){
 					Action action = new FamtoProduction(currentplayer.getpBoardView());
 					game.setOngoingAction(action);

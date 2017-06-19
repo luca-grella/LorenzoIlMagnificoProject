@@ -9,6 +9,7 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
@@ -98,7 +99,8 @@ public class GameLogic extends Observable {
 			yellowcards.add(new YellowC(index));
 		} notifyLogMainView("Yellow Deck Created.");
 		for(int i=1; i<=GeneralParameters.numberBlueC; i++){
-			//bluecards.add(new BlueC(i.toString()));
+			Integer index = new Integer(i);
+			bluecards.add(new BlueC(index));
 		} notifyLogMainView("Blue Deck Created.");
 		for(int i=1; i<=GeneralParameters.numberPurpleC; i++){
 			Integer index = new Integer(i);

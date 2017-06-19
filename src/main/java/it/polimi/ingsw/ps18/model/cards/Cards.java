@@ -30,6 +30,8 @@ public abstract class Cards {
 	
 	public abstract boolean hasFinal();
 	
+	public abstract boolean hasPermanent();
+	
 	public abstract String toString();
 	
 	public abstract String toString(int count);

@@ -1,23 +1,11 @@
 ﻿PERMANENTI
-IncreaseFMvalueOnGreenTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre verde)
-IncreaseFMvalueOnYellowTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre gialla)
 SalesWoodorRockYellow: sconta legno o roccia sull'acquisto di carte gialle
-IncreaseFMvalueOnBlueTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre blu)
 SalesCoinBlue: sconta monete sull'acquisto di carte blu
-IncreaseFMvalueOnPurpleTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre viola)
-IncreaseFMvalueOnHarvest: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di raccolta)
-IncreaseFMvalueOnProduction: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di produzione)
 BlockFloorBonus: blocca i bonus stampati sulla board dei piani indicati (piano 1 = 0, piano 2 = 1, piano 3 = 2, piano 4 = 3) 
-TakeAnyCard: effettua un’azione a valore x per prendere una carta di una qualsiasi categoria
 
 DA SCRIVERE
 SalesWoodandRockYellow: sconta legno e roccia sull'acquisto di carte gialle
 SalesCoinBlue: sconta monete sull'acquisto di carte blu
-AddPVforMP: aggiunge x PV per ogni y MP
-TakeAnyCard: effettua un’azione a valore x per prendere una carta di una qualsiasi categoria
-TakePurpleCard: effettua un’azione a valore x per prendere una carta viola
-TakeBlueCard: effettua un’azione a valore x per prendere una carta blu
-TakeGreenCard: effettua un’azione a valore x per prendere una carta
 
 
 SCRITTI
@@ -41,6 +29,19 @@ AddCoinforYellowCard: aggiunge moneta per ogni carta gialla posseduta
 AddCoinforGreenCard: aggiunge moneta per ogni carta verde posseduta
 ActivateHarvest: attiva effetto raccolta di valore x
 ActivateProduction: attiva effetto produzione di valore x
+TakeAnyCard: effettua un’azione a valore x per prendere una carta di una qualsiasi categoria
+TakePurpleCard: effettua un’azione a valore x per prendere una carta viola
+TakeBlueCard: effettua un’azione a valore x per prendere una carta blu
+TakeGreenCard: effettua un’azione a valore x per prendere una carta verde
+TakeYellowCard: effettua un'azione a valore x per prendere una carta gialla
+AddPVforMP: aggiunge x PV per ogni y MP
+IncreaseFMvalueOnGreenTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre verde)
+IncreaseFMvalueOnYellowTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre gialla)
+IncreaseFMvalueOnBlueTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre blu)
+IncreaseFMvalueOnPurpleTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre viola)
+IncreaseFMvalueOnHarvest: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di raccolta)
+IncreaseFMvalueOnProduction: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di produzione)
+
 
 Colors Codes:
 green: 0

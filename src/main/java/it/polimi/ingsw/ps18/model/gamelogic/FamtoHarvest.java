@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -28,8 +30,20 @@ public class FamtoHarvest extends Observable implements Action {
 	@Override
 	public void act(GameLogic game) {
 		Board board = game.getBoard();
-		this.actionValue = board.insertFMHarv(chosenFam);
 		PBoard currentplayer = game.getTurnplayer();
+		
+		int modifierValue = 0;
+		for(Cards card: currentplayer.getCards()){
+			if(card.hasPermanent()){
+				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
+						modifierValue += effect.getQuantity();
+					}
+				}
+			}
+		}
+		
+		this.actionValue = board.insertFMHarv(chosenFam) + modifierValue;
 		currentplayer.actHarvest();
 	}
 	

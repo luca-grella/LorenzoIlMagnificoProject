@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
@@ -16,6 +19,18 @@ public class FamtoHarvestTrigger implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
+		
+		//calcola il modificatore dagli effetti permanenti e lo aggiunge al maxValue
+		int modifierValue = 0;
+		for(Cards card: currentplayer.getCards()){
+			if(card.hasPermanent()){
+				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
+						modifierValue += effect.getQuantity();
+					}
+				}
+			}
+		}
 		
 		/* TODO: il controllo per vedere se la prima cella e' vuota, va messo SSE non e' consentito al giocatore di piazzare un FMember
 		 * in una cella a sua scelta nell'harvest, come nel Council 
@@ -39,7 +54,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				if(maxValue > maxFM.getValue()){
 					maxFM.setValue(maxValue);
 				}
-			}
+			} int actual = maxFM.getValue();
+			maxFM.setValue(actual + modifierValue);
 			/*
 			 * TODO: Dati i controlli nella classe Board per l'inserimento dei familiari
 			 * forse questi controlli relativi al malus sono ridondanti
@@ -81,7 +97,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					if(maxValue > maxFM.getValue()){
 						maxFM.setValue(maxValue);
 					}
-				}
+				} int actual = maxFM.getValue();
+				maxFM.setValue(actual + modifierValue);
 				if(maxFM.getValue() > GeneralParameters.baseValueHarvCells){
 					Action action = new FamtoHarvest(currentplayer.getpBoardView());
 					game.setOngoingAction(action);

@@ -218,5 +218,10 @@ public class PurpleC extends Cards {
 		return true;
 	}
 	
+	@Override
+	public boolean hasPermanent() {
+		return false;
+	}
+	
 
 }

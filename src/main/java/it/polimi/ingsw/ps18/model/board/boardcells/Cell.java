@@ -57,13 +57,11 @@ public class Cell {
 		}
 	}
 	
-	public boolean isLegalTC(FMember pBoardFM) {
-		if(pBoardFM.getValue() >= this.getCellValue()){
+	public boolean isLegalTC(int actionValue) {
+		if(actionValue >= this.getCellValue()){
 			if(this.cellCard != null){
 				return true;
 			}
-			else
-				return false;
 		}
 		return false;
 				
