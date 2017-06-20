@@ -117,12 +117,22 @@ public class StatsTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.resources.Stats#isEmpty()}.
 	 */
-//	@Test
-//	public void testIsEmpty() {
-//		fail("Not yet implemented");
-//	}
-//	
-//	DA FARE!!
+	@Test
+	public void testIsEmpty() {
+		int wood=0;
+		int rock=0;
+		int coin=0;
+		int servant=0;
+		int fp=0;
+		int mp=0;
+		int vp=0;
+		
+		Stats tester = new Stats(wood, rock, coin, servant, fp, mp, vp);
+		boolean empty = tester.isEmpty();
+		assertTrue(empty);
+	}
+	
+	
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.resources.Stats#addStats(it.polimi.ingsw.ps18.model.personalboard.resources.Stats)}.
@@ -239,12 +249,29 @@ public class StatsTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.resources.Stats#enoughStats(it.polimi.ingsw.ps18.model.personalboard.resources.Stats)}.
 	 */
-//	@Test
-//	public void testEnoughStats() {
-//		fail("Not yet implemented");
-//	}
-//	
-//	DA FARE!!
+	@Test
+	public void testEnoughStats() {
+		int wood=5;
+		int rock=7;
+		int coin=14;
+		int servant=24;
+		int fp=10;
+		int mp=9;
+		int vp=33;
+		int woodneeded=1;
+		int rockneeded=2;
+		int coinneeded=4;
+		int servantneeded=4;
+		int fpneeded=3;
+		int mpneeded=2;
+		int vpneeded=2;
+		
+		Stats tester = new Stats(wood, rock, coin, servant, fp, mp, vp);
+		Stats neededStats = new Stats(woodneeded, rockneeded, coinneeded, servantneeded, fpneeded, mpneeded, vpneeded);
+		boolean isenough = tester.enoughStats(neededStats);
+		assertTrue(isenough);
+	}
+	
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.resources.Stats#addWood(int)}.

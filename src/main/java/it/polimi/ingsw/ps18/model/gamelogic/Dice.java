@@ -15,7 +15,7 @@ public class Dice {
 		Random rand = new Random();
 		this.color = color;
 		this.value = 6;
-//		this.value = rand.nextInt(6) + 1;
+//		this.value = rand.nextInt(5) + 1;
 	}
 	
 	
