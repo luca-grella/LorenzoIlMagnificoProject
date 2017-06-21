@@ -33,7 +33,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
 					//TODO: INCRASE NELLA LINGUA DI FRANCO SIGNIFICA INCREASE: MODIFICARE LE SETTORDICI CLASSI CON SCRITTO INCRASE
 					//COMPRESI I NOMI DELLE FOTTUTE CLASSI
-					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
+					if("Harvest".equals(effect.getName())){
 						modifierValue += effect.getQuantity();
 					}
 				}

@@ -44,6 +44,14 @@ public class PBoard extends Observable {
 		} this.fams.add(new FMember(0,playercol));
 	}
 	
+	public PBoard(){
+		pBoardView = null;
+		playercol = 0;
+		resources = null;
+		cards = null;
+		fams = null;
+	}
+	
 	public void actHarvest() {
 		notifyStatusPBoardView("actHarvest");
 	}

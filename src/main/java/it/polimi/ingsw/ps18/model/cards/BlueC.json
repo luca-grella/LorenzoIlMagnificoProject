@@ -20,10 +20,13 @@
       3
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnGreenTower"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      2
+      [
+        "Green",
+        2
+      ]
     ]
   },
   "2": {
@@ -47,11 +50,14 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnYellowTower",
+      "IncreaseFMvalueOnAction",
       "SalesWoodorRockYellow"
     ],
     "PermanentEffectsValues": [
-      2,
+      [
+        "Yellow",
+        2
+      ],
       1
     ]
   },
@@ -76,11 +82,14 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnBlueTower",
+      "IncreaseFMvalueOnAction",
       "SalesCoinBlue"
     ],
     "PermanentEffectsValues": [
-      2,
+      [
+        "Blue",
+        2
+      ],
       1
     ]
   },
@@ -105,10 +114,13 @@
       1
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnPurpleTower"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      2
+      [
+        "Purple",
+        2
+      ]
     ]
   },
   "5": {
@@ -132,10 +144,13 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnHarvest"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      2
+      [
+        "Harvest",
+        2
+      ]
     ]
   },
   "6": {
@@ -159,10 +174,13 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnProduction"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      2
+      [
+        "Production",
+        2
+      ]
     ]
   },
   "7": {
@@ -360,10 +378,13 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnHarvest"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      3
+      [
+        "Harvest",
+        3
+      ]
     ]
   },
   "14": {
@@ -387,10 +408,13 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnProduction"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
-      3
+      [
+        "Production",
+        3
+      ]
     ]
   },
   "15": {

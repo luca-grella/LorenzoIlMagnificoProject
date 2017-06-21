@@ -53,6 +53,7 @@ public class FamtoTower extends Observable implements Action {
 		 */
 		currentplayer.getFams().set(indexFamtoRemove, null);
 		//riattivare gli effetti della cella sul giocatore
+		tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
 		if(currentplayer.getResources().enoughStats(totalCostPreview)){
 			currentplayer.getResources().subStats(totalCostPreview);
 			currentplayer.addCard(newcard,game);

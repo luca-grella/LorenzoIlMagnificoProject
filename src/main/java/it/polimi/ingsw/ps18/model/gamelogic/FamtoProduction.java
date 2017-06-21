@@ -43,7 +43,7 @@ public class FamtoProduction extends Observable implements Action {
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
 				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					if("IncraseFMvalueOnProduction".equals(effect.getName())){
+					if("Production".equals(effect.getName())){
 						modifierValue += effect.getQuantity();
 					}
 				}

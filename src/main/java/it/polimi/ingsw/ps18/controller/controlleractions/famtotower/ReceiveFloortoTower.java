@@ -40,22 +40,22 @@ public class ReceiveFloortoTower implements ActionChoice {
 				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
 					switch(towerIndex.getChosenTower()){
 					case 0:
-						if("IncraseFMvalueOnGreenTower".equals(effect.getName())){
+						if("Green".equals(effect.getName())){
 							modifierValue += effect.getQuantity();
 						}
 						break;
 					case 1:
-						if("IncraseFMvalueOnBlueTower".equals(effect.getName())){
+						if("Blue".equals(effect.getName())){
 							modifierValue += effect.getQuantity();
 						}
 						break;
 					case 2:
-						if("IncraseFMvalueOnYellowTower".equals(effect.getName())){
+						if("Yellow".equals(effect.getName())){
 							modifierValue += effect.getQuantity();
 						}
 						break;
 					case 3:
-						if("IncraseFMvalueOnPurpleTower".equals(effect.getName())){
+						if("Purple".equals(effect.getName())){
 							modifierValue += effect.getQuantity();
 						}
 						break;
@@ -67,8 +67,11 @@ public class ReceiveFloortoTower implements ActionChoice {
 		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
 			if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue)){	
 				//creare un giocatore farlocco e attivare gli effetti della cella e fare l'ultimo controllo su di lui
+				PBoard temp = new PBoard();
+				temp.setResources(currentplayer.getResources());
+				boardTower.getTowerCells().get(index).activateQEffects(temp, game);
 				totalCostPreview.addStats(cardStats);
-				if((currentplayer.getResources().enoughStats(totalCostPreview))){
+				if((temp.getResources().enoughStats(totalCostPreview))){
 					((FamtoTower) currentaction).setChosenFloor(index);
 					currentaction.act(game);
 				}

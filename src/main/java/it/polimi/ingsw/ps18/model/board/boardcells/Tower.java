@@ -23,4 +23,6 @@ public interface Tower {
 	
 	public String toString(int index);
 	
+	public List<Cell> getTowerCells();
+	
 }

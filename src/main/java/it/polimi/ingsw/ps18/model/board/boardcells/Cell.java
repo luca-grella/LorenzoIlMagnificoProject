@@ -13,7 +13,9 @@ import org.json.simple.parser.JSONParser;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
  * Defines a Tower cell, which contains a Cards object. <br>
@@ -57,6 +59,13 @@ public class Cell {
 	    	return true;
 	    } return false;
     }
+	
+	public void activateQEffects(PBoard player, GameLogic game){
+		for(int count=0; count<this.cellEffects.size(); count++){
+			QuickEffect cellQuickEffect = this.cellEffects.get(count); //Sicuro mi da errore su Sonar
+			cellQuickEffect.activate(player, game);
+		}
+	}
 	
 	/**
 	 * Places a card in Cell

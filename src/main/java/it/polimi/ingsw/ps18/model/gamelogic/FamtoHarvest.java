@@ -37,7 +37,7 @@ public class FamtoHarvest extends Observable implements Action {
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
 				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
+					if("Harvest".equals(effect.getName())){
 						modifierValue += effect.getQuantity();
 					}
 				}

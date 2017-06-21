@@ -11,13 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.AddVPforMP;
-import it.polimi.ingsw.ps18.model.effect.permeffects.HashMapPermE;
-import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertinPC;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertinResources;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
-import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
+import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
@@ -86,11 +80,18 @@ public class BlueC extends Cards {
 		for(int count=0; count<peffects.size(); count++){
 			HashMapPermE map = new HashMapPermE();
 			if(peffects.get(count)!=null){
-				if(peffectvalues.get(count)!=null){
-					this.add(map.getEffect((String) peffects.get(count)), (long) peffectvalues.get(count));
-    		    } else {
-    		    	this.getPermeffect().add(map.getEffect((String) peffects.get(count)));
-    		    }
+				if("IncreaseFMvalueOnAction".equals((String) peffects.get(count))){
+					Permanenteffect effect = map.getEffect((String) peffects.get(count));
+					JSONArray effectParam = (JSONArray) peffectvalues.get(count);
+					((IncreaseFMValueOnAction) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1));
+					this.permeffect.add(effect);
+				} else {
+					if(peffectvalues.get(count)!=null){
+						this.add(map.getEffect((String) peffects.get(count)), (long) peffectvalues.get(count));
+	    		    } else {
+	    		    	this.getPermeffect().add(map.getEffect((String) peffects.get(count)));
+	    		    }
+				}
 			}
 		}
 	}
