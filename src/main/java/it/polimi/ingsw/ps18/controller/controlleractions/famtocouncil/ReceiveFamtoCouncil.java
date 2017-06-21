@@ -10,6 +10,12 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+
+/**
+ * 
+ * @author yaz
+ *
+ */
 public class ReceiveFamtoCouncil implements ActionChoice {
     int index;
 

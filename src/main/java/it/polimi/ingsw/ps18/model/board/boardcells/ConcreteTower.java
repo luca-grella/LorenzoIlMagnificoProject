@@ -100,7 +100,12 @@ public class ConcreteTower implements Tower {
 				if( ! (towerCell.isEmptyTC())){ 
 					if(towerCellFM.getPlayercol() == pBoardFM.getPlayercol()){
 						if(towerCellFM.getColor() != GeneralParameters.neutralFMColor){
-							return false;
+							if(pBoardFM.getColor() == GeneralParameters.neutralFMColor){
+								return true;
+							}
+							else{
+								return false;
+							}
 						}
 					}
 						/*

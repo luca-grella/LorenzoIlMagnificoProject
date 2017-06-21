@@ -9,6 +9,11 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * 
+ * @author yaz
+ *
+ */
 public class FamtoCouncilTrigger implements ActionChoice {
 
 	@Override

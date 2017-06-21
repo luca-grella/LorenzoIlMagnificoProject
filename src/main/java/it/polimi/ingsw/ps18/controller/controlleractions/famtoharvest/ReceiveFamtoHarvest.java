@@ -12,12 +12,15 @@ import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+
+/**
+ * 
+ * @author yaz
+ *
+ */
 public class ReceiveFamtoHarvest implements ActionChoice {
 	int index;
-	/*
-	 * TODO: ATTENZIONE: CONTROLLI HARV SBAGLIATI (probabilmente anche prod e altri)
-	 * CLASSE CORRETTA
-	 */
+	
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();

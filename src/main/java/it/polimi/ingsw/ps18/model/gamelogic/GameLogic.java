@@ -22,7 +22,11 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
-
+/**
+ * 
+ * @author Francesco-Musio
+ *
+ */
 public class GameLogic extends Observable {
 	MainView mView;
 	Scanner input = new Scanner(System.in);

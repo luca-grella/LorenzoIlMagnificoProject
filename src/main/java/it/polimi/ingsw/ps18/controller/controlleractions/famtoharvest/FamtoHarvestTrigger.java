@@ -13,6 +13,12 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+
+/**
+ * 
+ * @author yaz
+ *
+ */
 public class FamtoHarvestTrigger implements ActionChoice {
 
 	@Override
@@ -25,6 +31,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
 				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+					//TODO: INCRASE NELLA LINGUA DI FRANCO SIGNIFICA INCREASE: MODIFICARE LE SETTORDICI CLASSI CON SCRITTO INCRASE
+					//COMPRESI I NOMI DELLE FOTTUTE CLASSI
 					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
 						modifierValue += effect.getQuantity();
 					}
@@ -52,10 +60,10 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 				maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
 				if(maxValue > maxFM.getValue()){
-					maxFM.setValue(maxValue);
+					maxFM.setValue(maxValue + modifierValue);
 				}
-			} int actual = maxFM.getValue();
-			maxFM.setValue(actual + modifierValue);
+			} 
+			
 			/*
 			 * TODO: Dati i controlli nella classe Board per l'inserimento dei familiari
 			 * forse questi controlli relativi al malus sono ridondanti

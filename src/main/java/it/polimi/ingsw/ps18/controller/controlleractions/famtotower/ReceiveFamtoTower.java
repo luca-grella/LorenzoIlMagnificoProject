@@ -9,6 +9,12 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+
+/**
+ * 
+ * @author yazan-matar
+ *
+ */
 public class ReceiveFamtoTower implements ActionChoice {
 	int index;
 
