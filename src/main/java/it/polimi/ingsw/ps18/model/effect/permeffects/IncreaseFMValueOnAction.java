@@ -28,7 +28,7 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	@Override
 	public String toString(){
 		return "Incrase Permanently the Action Value by " + this.quantity + "\n"
-				+ "when you take a card from the Blue Tower";
+				+ "\t   when you take a card from the " + this.name + " Tower";
 	}
 
 }

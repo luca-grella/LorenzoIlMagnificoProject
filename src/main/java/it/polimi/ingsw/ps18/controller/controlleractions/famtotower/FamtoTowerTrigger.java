@@ -28,45 +28,65 @@ public class FamtoTowerTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
-		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
 		List<Tower> towers = game.getBoard().getTowers();
-		int maxValue = 0;
-		int maxNeutralValue = 0;
-		
-		int modifierValue = 0;
-		for(Cards card: currentplayer.getCards()){
-			if(card.hasPermanent()){
-				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					if("IncraseFMvalueOnHarvest".equals(effect.getName())){
-						modifierValue += effect.getQuantity();
-					}
-				}
-			}
-		}
-		
-		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-			FMember curFM = currentplayer.getFams().get(famIndex);
-			if(curFM.getColor() == GeneralParameters.neutralFMColor){
-				maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants() + modifierValue;
-				if(maxNeutralValue > maxNeutralFM.getValue() ){
-					maxNeutralFM.setValue(maxNeutralValue);
-					maxNeutralFM.setColor(curFM.getColor()); //penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
-					//PERO' STICAZZI
-				}
-			}
-			else{
-				maxValue = curFM.getValue() + currentplayer.getResources().getServants() + modifierValue;
-				if(maxValue > maxFM.getValue() ){
-					maxFM.setValue(maxValue);
-					maxFM.setColor(curFM.getColor());
-				}
-			}
-		}
 		
 		for(int towerIndex=0; towerIndex<GeneralParameters.numberofBaseTowers; towerIndex++){
 			ConcreteTower boardTower = (ConcreteTower) towers.get(towerIndex); 
 			List<Cell> towerCells = boardTower.getTowerCells();
+			FMember maxFM = new FMember(0, currentplayer.getPlayercol());
+			FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+			int maxValue = 0;
+			int maxNeutralValue = 0;
+			int modifierValue = 0;
+			for(Cards card: currentplayer.getCards()){
+				if(card.hasPermanent()){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						switch(towerIndex){
+						case 0:
+							if("Green".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 1:
+							if("Blue".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 2:
+							if("Yellow".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 3:
+							if("Purple".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						}
+					}
+				}
+			}
+			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
+				FMember curFM = currentplayer.getFams().get(famIndex);
+				if(curFM!=null){
+					if(curFM.getColor() == GeneralParameters.neutralFMColor){
+						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxNeutralValue > maxNeutralFM.getValue() ){
+							maxNeutralFM.setValue(maxNeutralValue + modifierValue);
+							maxNeutralFM.setColor(curFM.getColor()); //penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
+							//PERO' STICAZZI
+						}
+					}
+					else{
+						maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxValue > maxFM.getValue() ){
+							maxFM.setValue(maxValue + modifierValue);
+							maxFM.setColor(curFM.getColor());
+						}
+					}
+				}
+			}
+			
 
 			if(boardTower.isLegalT(maxFM)){
 				for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){ //Valutare se mettere towerCells.size

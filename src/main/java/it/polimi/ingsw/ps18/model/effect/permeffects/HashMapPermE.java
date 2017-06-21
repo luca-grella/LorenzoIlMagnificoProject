@@ -7,7 +7,7 @@ public class HashMapPermE {
 	private Map<String,Permanenteffect> permEffects = new HashMap<>();
 	
 	public HashMapPermE(){
-		permEffects.put("IncreaseFMvalueOnBlueTower", new IncreaseFMValueOnAction());
+		permEffects.put("IncreaseFMvalueOnAction", new IncreaseFMValueOnAction());
 		permEffects.put("BlockFloorBonus", new BlockFloorBonus());
 		permEffects.put("SalesCoinBlue", new SalesCoinBlue());
 		permEffects.put("SalesWoodorRockYellow", new SalesWoodorRockYellow());

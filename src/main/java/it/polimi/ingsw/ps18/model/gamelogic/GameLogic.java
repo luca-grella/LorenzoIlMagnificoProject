@@ -32,7 +32,7 @@ public class GameLogic extends Observable {
 	Scanner input = new Scanner(System.in);
 	
 	private int TURN = 0;
-	private int AGE = 3;
+	private int AGE = 1;
 	private int nplayer;
 	private Board board;
 	private List<PBoard> players = new ArrayList<>(nplayer);
@@ -124,9 +124,9 @@ public class GameLogic extends Observable {
 			case 0:
 				singletower.insertCards(greencards, AGE);
 				break;
-//			case 1:
-//				singletower.insertCards(bluecards, AGE);
-//				break;
+			case 1:
+				singletower.insertCards(bluecards, AGE);
+				break;
 			case 2:
 				singletower.insertCards(yellowcards, AGE);
 				break;

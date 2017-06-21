@@ -123,13 +123,49 @@ public class BlueC extends Cards {
 	}
 
 	@Override
-	public String toString(int count) {
-		return " ";
+	public String toString(int count){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Card number " + count + ":\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				);
+		if(!((this.getCardCost()).isEmpty())){
+			builder.append("\tCost:\n" + (this.getCardCost()).toStringCost() + "\n");
+		}
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
+		}
+		builder.append("\nPermanent Effects\n");
+		for(int i=0;  i<this.permeffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.permeffect).get(i)).toString() + "\n");
+		}
+		return builder.toString();
 	}
 	
 	@Override
-	public String toString() {
-		return " ";
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Current Card:\n"
+				+ "\tName: " + this.getName() + "\n"
+				+ "\tID: " + this.getID() + "\n"
+				+ "\tColor: " + this.getColor() + "\n"
+				+ "\tPeriod: " + this.getPeriod() + "\n"
+				);
+		if(!((this.getCardCost()).isEmpty())){
+			builder.append("\tCost:\n" + (this.getCardCost()).toStringCost() + "\n");
+		}
+		builder.append("Quick Effects:\n");
+		for(int i=0; i<(this.getEffects()).size(); i++){
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
+		}
+		builder.append("\nFinal Effects:\n");
+		for(int i=0;  i<this.permeffect.size(); i++){
+			builder.append("\t" + i + ": " + ((this.permeffect).get(i)).toString() + "\n");
+		}
+		return builder.toString();
 	}
 
 	/**

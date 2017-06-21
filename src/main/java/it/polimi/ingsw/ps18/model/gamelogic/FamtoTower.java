@@ -18,7 +18,7 @@ public class FamtoTower extends Observable implements Action {
 	private int indexFamtoRemove;
 	int chosenTower;
 	int chosenFloor;
-	Stats totalCostPreview;
+	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
 	
 	public FamtoTower(PBoardView view){
 		addObserver(view);
