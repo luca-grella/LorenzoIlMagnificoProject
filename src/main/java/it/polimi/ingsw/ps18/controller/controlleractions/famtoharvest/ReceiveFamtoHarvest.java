@@ -20,11 +20,12 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.set(index, null);
+		FMember chosenfam = fams.get(index);
+		((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
 		List<HarvCell> harvCells = game.getBoard().getHarvestCells();
-		Action currentaction = game.getOngoingAction();
 		
 		if( ! (harvCells.isEmpty()) ){
 			if(game.getBoard().isLegalHarv(chosenfam)){

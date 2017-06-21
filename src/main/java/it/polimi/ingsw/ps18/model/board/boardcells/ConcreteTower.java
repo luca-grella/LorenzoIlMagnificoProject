@@ -1,11 +1,19 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
@@ -23,10 +31,27 @@ public class ConcreteTower implements Tower {
 	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
 	private int color;
 	
-	public ConcreteTower (int towerIndex) {
+	public ConcreteTower (Integer towerIndex) {
+		JSONParser parser = new JSONParser();
 		this.color = towerIndex;
-		for(int count=0; count<GeneralParameters.numberofCells; count++){
-		      this.towerCells.add(count, new Cell());
+		
+		
+		try {
+		    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/TowerCell.json")); 
+		    	JSONObject jsonObject = (JSONObject) obj;
+		        JSONObject a = (JSONObject) jsonObject.get(towerIndex.toString());
+		        for(Integer count=0; count<GeneralParameters.numberofCells; count++){
+		        	JSONObject cell = (JSONObject) a.get(count.toString());
+				    this.towerCells.add(count, new Cell(cell));
+				}
+		        
+		        
+	    }catch (FileNotFoundException e) {
+	    	System.out.println("File not found.");
+	    } catch (IOException e) {
+	    	System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problem in parser");
 		}
 	}
 	

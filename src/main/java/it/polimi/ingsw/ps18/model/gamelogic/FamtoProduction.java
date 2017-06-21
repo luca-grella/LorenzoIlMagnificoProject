@@ -24,6 +24,7 @@ public class FamtoProduction extends Observable implements Action {
 	List<YellowC> cardsForActivation = new ArrayList<>();
 	Stats totalCostPreview;
 	private FMember chosenFam;
+	private int indexFamtoRemove;
 	private int actionValue;
 	
 	public FamtoProduction(PBoardView view){
@@ -49,6 +50,7 @@ public class FamtoProduction extends Observable implements Action {
 			}
 		}
 		this.actionValue = board.insertFMProd(this.chosenFam) + modifierValue;
+		currentplayer.getFams().set(indexFamtoRemove, null);
 		currentplayer.actProduction();
 	}
 	
@@ -152,6 +154,13 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public Stats getTotalCostPreview() {
 		return totalCostPreview;
+	}
+
+	/**
+	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 */
+	public void setIndexFamtoRemove(int indexFamtoRemove) {
+		this.indexFamtoRemove = indexFamtoRemove;
 	}
 	
 

@@ -53,7 +53,6 @@ public class PBoard extends Observable {
 	}
 	
 	public void addCard(Cards card, GameLogic game) {
-		this.resources.subStats(card.getCardCost());
 		if(cards.add(card)){
 			card.activateQEffects(this,game);
 		}

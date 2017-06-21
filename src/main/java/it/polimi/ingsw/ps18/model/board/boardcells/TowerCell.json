@@ -1,0 +1,154 @@
+{
+  "0": {
+    "0": {
+      "CellValue": 1,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "1": {
+      "CellValue": 3,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "2": {
+      "CellValue": 5,
+      "QuickEffects": [
+        "AddWood"
+      ],
+      "QuickEffectValues": [
+        1
+      ]
+    },
+    "3": {
+      "CellValue": 7,
+      "QuickEffects": [
+        "AddWood"
+      ],
+      "QuickEffectValues": [
+        2
+      ]
+    }
+  },
+  "1": {
+    "0": {
+      "CellValue": 1,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "1": {
+      "CellValue": 3,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "2": {
+      "CellValue": 5,
+      "QuickEffects": [
+        "AddStone"
+      ],
+      "QuickEffectValues": [
+        1
+      ]
+    },
+    "3": {
+      "CellValue": 7,
+      "QuickEffects": [
+        "AddStone"
+      ],
+      "QuickEffectValues": [
+        2
+      ]
+    }
+  },
+  "2": {
+    "0": {
+      "CellValue": 1,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "1": {
+      "CellValue": 3,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "2": {
+      "CellValue": 5,
+      "QuickEffects": [
+        "AddPM"
+      ],
+      "QuickEffectValues": [
+        1
+      ]
+    },
+    "3": {
+      "CellValue": 7,
+      "QuickEffects": [
+        "AddPM"
+      ],
+      "QuickEffectValues": [
+        2
+      ]
+    }
+  },
+  "3": {
+    "0": {
+      "CellValue": 1,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "1": {
+      "CellValue": 3,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "2": {
+      "CellValue": 5,
+      "QuickEffects": [
+        "AddCoin"
+      ],
+      "QuickEffectValues": [
+        1
+      ]
+    },
+    "3": {
+      "CellValue": 7,
+      "QuickEffects": [
+        "AddCoin"
+      ],
+      "QuickEffectValues": [
+        2
+      ]
+    }
+  }
+}

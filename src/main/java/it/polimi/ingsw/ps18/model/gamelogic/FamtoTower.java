@@ -10,12 +10,15 @@ import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class FamtoTower extends Observable implements Action {
 	FMember chosenFam;
+	private int indexFamtoRemove;
 	int chosenTower;
 	int chosenFloor;
+	Stats totalCostPreview;
 	
 	public FamtoTower(PBoardView view){
 		addObserver(view);
@@ -48,7 +51,15 @@ public class FamtoTower extends Observable implements Action {
 		 * ma se prima non sono state pagate le 3 monete per la torre, allora quel controllo sarebbe errato
 		 * CONTROLLO AGGIUNTO A RECEIVETOWERTOTOWER
 		 */
-		currentplayer.addCard(newcard,game);
+		currentplayer.getFams().set(indexFamtoRemove, null);
+		//riattivare gli effetti della cella sul giocatore
+		if(currentplayer.getResources().enoughStats(totalCostPreview)){
+			currentplayer.getResources().subStats(totalCostPreview);
+			currentplayer.addCard(newcard,game);
+		} else {
+			this.famchoice();
+		}
+		
 
 	}
 	
@@ -104,5 +115,21 @@ public class FamtoTower extends Observable implements Action {
 	public void setChosenFloor(int chosenFloor) {
 		this.chosenFloor = chosenFloor;
 	}
+
+	/**
+	 * @return the totalCostPreview
+	 */
+	public Stats getTotalCostPreview() {
+		return totalCostPreview;
+	}
+
+	/**
+	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 */
+	public void setIndexFamtoRemove(int indexFamtoRemove) {
+		this.indexFamtoRemove = indexFamtoRemove;
+	}
+	
+	
 	
 }

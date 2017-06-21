@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class addMP implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
-	private String name = "Military Points";
+	private String name = "Military Point";
 	private int quantity;
 
 	/**

@@ -14,10 +14,11 @@ public class ReceiveFamtoTower implements ActionChoice {
 
 	@Override
 	public void act(GameLogic game) {
+		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.set(index, null);
-		Action currentaction = game.getOngoingAction();
+		((FamtoTower) currentaction).setIndexFamtoRemove(index);
+		FMember chosenfam = fams.get(index);
 		currentaction.setChosenFam(chosenfam);
 		((FamtoTower) currentaction).towerChoice();
 

@@ -12,7 +12,8 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
 
 public class FamtoCouncil extends Observable implements Action {
-	FMember chosenFam;
+	private FMember chosenFam;
+	private int indexFamtoRemove;
 	private Privilege privilege;
 
 	public FamtoCouncil(PBoardView view) {
@@ -31,6 +32,7 @@ public class FamtoCouncil extends Observable implements Action {
 		List<CouncilCell> cells = board.getCouncilCells();
 		cells.add(new CouncilCell(this.chosenFam));
 		PBoard currentplayer = game.getTurnplayer();
+		currentplayer.getFams().set(indexFamtoRemove, null);
 		(currentplayer.getResources()).addCoins(GeneralParameters.coinsFromCouncil); 
 		privilege.activate(currentplayer, game);
 

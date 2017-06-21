@@ -1,6 +1,18 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
@@ -16,12 +28,35 @@ public class Cell {
 	private Cards cellCard;
 	private FMember cellFM;
 	private int cellValue;
+	private List<QuickEffect> cellEffects = new ArrayList<>();
 	
-	public Cell() {
+	public Cell(JSONObject a) {
 		cellCard = null;
 		cellFM = null;
-		cellValue =  3;     //TODO: Settare in modo diverso, magari su GeneralParameters
+		HashMapQE mapQE = new HashMapQE();
+		
+	    this.setCellValue((long) a.get("CellValue"));
+	    JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+	    JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectValues");
+	    for(int count=0; count<qeffects.size(); count++){
+	    	if(qeffects.get(count)!=null){
+	    		if(qeffectvalues.get(count)!=null){
+	    			this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+	   			} else {
+	        		this.cellEffects.add(mapQE.geteffect((String) qeffects.get(count)));
+	        	}	
+	        }	
+	    }	
+	    
 	}
+	
+	private boolean add(QuickEffect cellQuickEffect, long quantity){
+	    QuickEffect effect = cellQuickEffect;
+	    effect.setQuantity((int) quantity);
+	    if(this.cellEffects.add(effect)){
+	    	return true;
+	    } return false;
+    }
 	
 	/**
 	 * Places a card in Cell
@@ -131,10 +166,10 @@ public class Cell {
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param l the value to set
 	 */
-	public void setCellValue(int value) {
-		this.cellValue = value;
+	public void setCellValue(long value) {
+		this.cellValue = (int) value;
 	}
 	
 	

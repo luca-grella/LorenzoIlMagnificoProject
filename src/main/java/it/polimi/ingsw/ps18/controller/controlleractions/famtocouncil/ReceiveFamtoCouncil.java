@@ -17,7 +17,7 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.set(index, null);
+		FMember chosenfam = fams.get(index);
 		Action currentaction = game.getOngoingAction();
 		
 		/*

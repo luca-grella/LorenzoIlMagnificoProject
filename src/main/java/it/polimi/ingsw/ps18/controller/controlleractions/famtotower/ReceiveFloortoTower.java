@@ -30,7 +30,8 @@ public class ReceiveFloortoTower implements ActionChoice {
 		ConcreteTower boardTower = (ConcreteTower)boardTowers.get(towerIndex.getChosenTower());
 		PBoard currentplayer = game.getTurnplayer();
 		FMember chosenfam = ((FamtoTower) currentaction).getChosenFam();
-		Stats neededStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
+		Stats cardStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
+		Stats totalCostPreview = ((FamtoTower) currentaction).getTotalCostPreview();
 		List<Cards> playerCards = currentplayer.getCards();
 		
 		int modifierValue = 0;
@@ -64,8 +65,10 @@ public class ReceiveFloortoTower implements ActionChoice {
 		}
 		
 		if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
-			if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue)){		
-				if((currentplayer.getResources().enoughStats(neededStats))){
+			if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue)){	
+				//creare un giocatore farlocco e attivare gli effetti della cella e fare l'ultimo controllo su di lui
+				totalCostPreview.addStats(cardStats);
+				if((currentplayer.getResources().enoughStats(totalCostPreview))){
 					((FamtoTower) currentaction).setChosenFloor(index);
 					currentaction.act(game);
 				}

@@ -42,7 +42,7 @@ public class ReceiveTowertoTower implements ActionChoice {
 						/*
 						 * Motivazioni del pagamento qui: vedi commento in FamtoTower nel model
 						 */
-//						currentPlayer.getResources().addCoins( -GeneralParameters.towerFee);
+						((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
 						((FamtoTower) currentaction).setChosenTower(index);
 						//prima di flooChoice dovro' sistemare sta cosa delle monete
 						((FamtoTower) currentaction).floorChoice();

@@ -19,11 +19,12 @@ public class ReceiveFamtoProduction implements ActionChoice {
 
 	@Override
 	public void act(GameLogic game) {
+		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.set(index, null);
+		FMember chosenfam = fams.get(index);
+		((FamtoProduction) currentaction).setIndexFamtoRemove(index);
 		List <ProdCell> prodCells = game.getBoard().getProductionCells();
-		Action currentaction = game.getOngoingAction();
 
 		if( ! (prodCells.isEmpty()) ){
 			if(game.getBoard().isLegalProd(chosenfam)){

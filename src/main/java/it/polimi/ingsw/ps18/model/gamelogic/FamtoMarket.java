@@ -10,8 +10,9 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class FamtoMarket extends Observable implements Action {
-	FMember chosenFam;
-	int chosenCell;
+	private FMember chosenFam;
+	private int indexFamtoRemove; 
+	private int chosenCell;
 
 	public FamtoMarket(PBoardView view) {
 		addObserver(view);
@@ -32,6 +33,7 @@ public class FamtoMarket extends Observable implements Action {
 		ArrayList<MarketCell> marketCells = (ArrayList<MarketCell>) board.getMarketCells();
 		MarketCell cell = marketCells.get(chosenCell);
 		cell.insertFM(chosenFam, game);
+		game.getTurnplayer().getFams().set(indexFamtoRemove, null);
 	}
 	
 	private void notifyActionPBoardView(String msg){
@@ -67,6 +69,14 @@ public class FamtoMarket extends Observable implements Action {
 		this.chosenCell = chosenCell;
 	}
 
+	/**
+	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 */
+	public void setIndexFamtoRemove(int indexFamtoRemove) {
+		this.indexFamtoRemove = indexFamtoRemove;
+	}
+
+	
 
 	
 }

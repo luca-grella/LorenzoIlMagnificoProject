@@ -17,6 +17,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 
 public class FamtoHarvest extends Observable implements Action {
 	private FMember chosenFam;
+	private int indexFamtoRemove;
 	private int actionValue;
 	
 	public FamtoHarvest(PBoardView view){
@@ -44,6 +45,7 @@ public class FamtoHarvest extends Observable implements Action {
 		}
 		
 		this.actionValue = board.insertFMHarv(chosenFam) + modifierValue;
+		currentplayer.getFams().set(indexFamtoRemove, null);
 		currentplayer.actHarvest();
 	}
 	
@@ -83,6 +85,13 @@ public class FamtoHarvest extends Observable implements Action {
 	 */
 	public void setActionValue(int actionValue) {
 		this.actionValue = actionValue;
+	}
+
+	/**
+	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 */
+	public void setIndexFamtoRemove(int indexFamtoRemove) {
+		this.indexFamtoRemove = indexFamtoRemove;
 	}
 	
 	
