@@ -17,8 +17,8 @@ public class FamtoMarketTrigger implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
 		int maxValue = 0;
-		
-		if(game.getNplayer() >= 2){
+
+		if( ! (game.getBoard().isFullMarket()) ) {
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 				maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
 				if(maxValue > maxFM.getValue()){
@@ -34,6 +34,10 @@ public class FamtoMarketTrigger implements ActionChoice {
 				Action action = game.getOngoingAction();
 				action.act(game); 
 			}
+		}
+		else{
+			Action action = game.getOngoingAction();
+			action.act(game);
 		}
 	}
 

@@ -43,14 +43,6 @@ public class FamtoTower extends Observable implements Action {
 		Tower tower = towers.get(this.chosenTower);
 		Cards newcard = tower.insertFM(this.chosenFam, this.chosenFloor);
 		PBoard currentplayer = game.getTurnplayer();
-//		currentplayer.getResources().addCoins( -(GeneralParameters.towerFee)); 
-		
-		//TODO: verificare che il pagamento delle 3 monete sia qui e non in ReceiveTowertoTower
-		/*
-		 * Questo perche' quando il controller va a ReceiveFloortoTower, verifica se si hanno le risorse per pagare la carta
-		 * ma se prima non sono state pagate le 3 monete per la torre, allora quel controllo sarebbe errato
-		 * CONTROLLO AGGIUNTO A RECEIVETOWERTOTOWER
-		 */
 		currentplayer.getFams().set(indexFamtoRemove, null);
 		//riattivare gli effetti della cella sul giocatore
 		tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);

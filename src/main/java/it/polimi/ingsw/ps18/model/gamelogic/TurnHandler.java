@@ -16,7 +16,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /*
  * TODO: la classe si potrebbe anche eliminare/modificare per compiere
- * le azioni che accomunano le varie azioni (decorator, sa franco)
+ * le azioni che accomunano le varie azioni (decorator)
  */
 public class TurnHandler extends Observable implements Action {
 	PBoard currentPlayer;

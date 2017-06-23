@@ -19,8 +19,14 @@ public class ReceiveFamtoMarket implements ActionChoice {
 		List<FMember> fams = currentplayer.getFams();
 		FMember chosenfam = fams.get(index);
 		((FamtoMarket) currentaction).setIndexFamtoRemove(index);
-		currentaction.setChosenFam(chosenfam);
-		((FamtoMarket) currentaction).cellChoice();
+		if(chosenfam != null){
+			currentaction.setChosenFam(chosenfam);
+			((FamtoMarket) currentaction).cellChoice();
+		}
+		else{
+			((FamtoMarket) currentaction).famchoice();
+		}
+
 
 	}
 

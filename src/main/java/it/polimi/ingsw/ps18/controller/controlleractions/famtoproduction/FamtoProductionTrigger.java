@@ -19,10 +19,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol()); 
-		/*
-		 * TODO: verificare che mettendo 0 al valore, non mi incasini i controlli
-		 * Controllare per tutti i trigger
-		 */
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
@@ -36,13 +33,28 @@ public class FamtoProductionTrigger implements ActionChoice {
 		
 		if(game.getNplayer() > 2){
 			int maxValue = 0;
+			int maxNeutralValue = 0;
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-				maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-				if(maxValue > maxFM.getValue()){
-					maxFM.setValue(maxValue);
+				FMember curFM = currentplayer.getFams().get(famIndex);
+				if(curFM!=null){
+					if(curFM.getColor() == GeneralParameters.neutralFMColor){
+						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxNeutralValue > maxNeutralFM.getValue() ){
+							maxNeutralFM.setValue(maxNeutralValue + modifierValue);
+							maxNeutralFM.setColor(curFM.getColor());
+						}
+					}
+					else{
+						maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxValue > maxFM.getValue() ){
+							maxFM.setValue(maxValue + modifierValue);
+							maxFM.setColor(curFM.getColor());
+						}
+					}
 				}
-			} int actual = maxFM.getValue();
-			maxFM.setValue(actual + modifierValue);
+			}
+
+			//In quanto e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				ProdCell prodCell = new ProdCell(0);
 				if(maxFM.getValue() > prodCell.getProdCellValue()){
@@ -75,10 +87,9 @@ public class FamtoProductionTrigger implements ActionChoice {
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 					maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
 					if(maxValue > maxFM.getValue()){
-						maxFM.setValue(maxValue);
+						maxFM.setValue(maxValue + modifierValue);
 					}
-				} int actual = maxFM.getValue();
-				maxFM.setValue(actual + modifierValue);
+				}
 				if(maxFM.getValue() > GeneralParameters.baseValueProdCells){
 					Action action = new FamtoProduction(currentplayer.getpBoardView());
 					game.setOngoingAction(action);

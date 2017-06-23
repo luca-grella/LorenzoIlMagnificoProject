@@ -29,10 +29,33 @@ public class ReceiveFamtoProduction implements ActionChoice {
 		FMember chosenfam = fams.get(index);
 		((FamtoProduction) currentaction).setIndexFamtoRemove(index);
 		List <ProdCell> prodCells = game.getBoard().getProductionCells();
-
-		if( ! (prodCells.isEmpty()) ){
-			if(game.getBoard().isLegalProd(chosenfam)){
-				ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
+		if(chosenfam != null){
+			if( ! (prodCells.isEmpty()) ){
+				if(game.getBoard().isLegalProd(chosenfam)){
+					ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
+					if(prodCell.isLegalPC(chosenfam)){
+						currentaction.setChosenFam(chosenfam);
+						((FamtoProduction) currentaction).act(game);
+					}
+					else{
+						//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
+						Action action = new TurnHandler(currentplayer);
+						game.setOngoingAction(action);
+					}
+				}
+				else{
+					for(int famIndex=0; famIndex<fams.size(); famIndex++){
+						if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
+							((FamtoProduction) currentaction).famchoice();
+							return;
+						}
+					}
+					Action action = new TurnHandler(currentplayer);
+					game.setOngoingAction(action);
+				}
+			}
+			else{
+				ProdCell prodCell = new ProdCell(0);
 				if(prodCell.isLegalPC(chosenfam)){
 					currentaction.setChosenFam(chosenfam);
 					((FamtoProduction) currentaction).act(game);
@@ -43,28 +66,9 @@ public class ReceiveFamtoProduction implements ActionChoice {
 					game.setOngoingAction(action);
 				}
 			}
-			else{
-				for(int famIndex=0; famIndex<fams.size(); famIndex++){
-					if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-						((FamtoProduction) currentaction).famchoice();
-						return;
-					}
-				}
-				Action action = new TurnHandler(currentplayer);
-				game.setOngoingAction(action);
-			}
 		}
 		else{
-			ProdCell prodCell = new ProdCell(0);
-			if(prodCell.isLegalPC(chosenfam)){
-				currentaction.setChosenFam(chosenfam);
-				((FamtoProduction) currentaction).act(game);
-			}
-			else{
-				//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
-				Action action = new TurnHandler(currentplayer);
-				game.setOngoingAction(action);
-			}
+			((FamtoProduction) currentaction).famchoice();
 		}
 		
 	}

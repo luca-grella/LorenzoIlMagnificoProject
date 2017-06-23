@@ -25,31 +25,20 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 		List<FMember> fams = currentplayer.getFams();
 		FMember chosenfam = fams.get(index);
 		Action currentaction = game.getOngoingAction();
-		
-		/*
-		 * Questo controllo e' errato, perche' la cella che controlla ancora non esiste, quindi o prima la creo, la controllo e poi la aggiungo in coda
-		 * all'ArrayList, se no balza e faccio if-else
-		 */
-//		if(councilCells.get(councilCells.size()).isLegalCC(chosenfam) ){
-//			currentaction.setChosenFam(chosenfam);
-//			((FamtoCouncil) currentaction).act(game);
-//		}
-//		else{
-//			((FamtoCouncil) currentaction).famchoice();
-//		}
-		
-		/*
-		 * TODO: SISTEMARE IL COSTRUTTORE DI COUNCIL SE NO SALTANO I CONTROLLI
-		 * ho creato un costruttore innocuo, ma va risolta sta cosa
-		 */
 		CouncilCell councilCell = new CouncilCell();
-		if(councilCell.isLegalCC(chosenfam) ){
-			currentaction.setChosenFam(chosenfam);
-			((FamtoCouncil) currentaction).act(game);
+		if(chosenfam != null){
+			if(councilCell.isLegalCC(chosenfam) ){
+				currentaction.setChosenFam(chosenfam);
+				((FamtoCouncil) currentaction).act(game);
+			}
+			else{
+				((FamtoCouncil) currentaction).famchoice();
+			}		
 		}
 		else{
 			((FamtoCouncil) currentaction).famchoice();
-		}		
+		}
+		
 	}
 		
 	/**

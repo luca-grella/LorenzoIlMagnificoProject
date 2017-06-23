@@ -25,6 +25,8 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
  * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell} 
  * @see
  * {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower}
+ * 
+ * @author yazan-matar
  */
 
 public class ConcreteTower implements Tower {
@@ -70,7 +72,7 @@ public class ConcreteTower implements Tower {
 				cellCard = itr.next();
 			}
 			towerCell.insertCard(cellCard);
-			/*boolean isRemoved = */towerCards.remove(cellCard);
+			towerCards.remove(cellCard);
 
 		}
 	}
@@ -87,10 +89,31 @@ public class ConcreteTower implements Tower {
 		return towerCell.insertFM(pBoardFM);  //insertFM chiama isEmpty
 	}
 	
-	
-	public boolean isLegalT(FMember pBoardFM) {
+	/**
+	 * Checks the legality of the current player's action
+	 * @param pBoardFM is the family member chosen by the player
+	 * @return a boolean value:
+	 * <ul>
+	 * 	<li>True:
+	 * 		<ul>
+	 * 			<li> The tower is empty
+	 * 			<li> The tower contains some family Member, but there's no Family Member
+	 * 				 of the current player's color
+	 * 			<li> The tower contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is neutral
+	 * 			<li> The tower contains a Family Member that belongs to the current player
+	 * 				 that's neutral
+	 * 		</ul>
+	 * 	<li> False:
+	 * 		<ul>
+	 * 			<li> The tower contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is not neutral
+	 * 		</ul>
+	 * </ul>
+	 */
+	public boolean isLegalTower(FMember pBoardFM) {
 		
-		if(this.isEmptyT()){
+		if(this.isEmptyTower()){
 			return true;
 		}
 		else{
@@ -119,24 +142,52 @@ public class ConcreteTower implements Tower {
 			return true;
 		}
 	}
-	/*
-	 * Parte commentata di isEmptyT: il controllo e' concettualmente errato in quanto towerCells non sara' mai vuota
-	 * Questo perche' e' composto da celle (inizializzate), quindi l'ArrayList sara' sempre pieno di celle.
+	/**
+	 * Checks the tower status
+	 * @return a boolean value:
+	 * <ul>
+	 * 	<li>True:
+	 * 		<ul>
+	 * 			<li> The tower is empty
+	 * 		</ul>
+	 * 	<li> False:
+	 * 		<ul>
+	 * 			<li> The tower contains at least a Family member
+	 * 				 (regardless of the Family Member player color)
+	 * 		</ul>
+	 * </ul>
 	 */
-	public boolean isEmptyT(){
-//		if(towerCells.isEmpty()){
-//			//Se l'ArrayList fosse davvero vuoto, ci sarebberero problemi
-//			return true;
-//		}
-//		else{
+	public boolean isEmptyTower(){
 			for(int index=0; index<GeneralParameters.numberofCells; index++){
 				Cell towerCell = towerCells.get(index);
 				if( !(towerCell.isEmptyTC()))
 					return false;
 			}
-			return true;
-		
-		
+			return true;	
+	}
+	
+	/**
+	 * Checks the tower status
+	 * @return a boolean value:
+	 * <ul>
+	 * 	<li>True:
+	 * 		<ul>
+	 * 			<li> The tower is full, meaning that all of the tower cells are occupied by a Family Member
+	 * 				 (regardless of the Family Member player color)
+	 * 		</ul>
+	 * 	<li> False:
+	 * 		<ul>
+	 * 			<li> The tower contains at least an empty cell
+	 * 		</ul>
+	 * </ul>
+	 */
+	public boolean isFullTower (){
+		for(int index=0; index<GeneralParameters.numberofCells; index++){
+			Cell towerCell = towerCells.get(index);
+			if(towerCell.isEmptyTC())
+				return false;
+		}
+		return true;
 	}
 	
 	

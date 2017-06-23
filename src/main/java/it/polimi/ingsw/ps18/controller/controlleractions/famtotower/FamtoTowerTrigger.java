@@ -19,12 +19,28 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * Receiv
+ * Sets the ongoing action and goes to the Family Member choice
+ * 
  * @author yazan-matar
  *
  */
 public class FamtoTowerTrigger implements ActionChoice {
-
+	
+	/**
+	 * Controls if there's at least a Family Member in the current player Personal Board
+	 * that can be put in at least one tower: 
+	 * <ol> 
+	 * <li> It finds the Family Member with the greater Action Value and eventually adds
+	 * 		the player cards's action bonuses and all of the player's servants.
+	 * <li> Then it checks the legality of the action with that Family Member
+	 * 		for every cell of the tower, for every tower:
+	 * 		<ul>
+	 * 			<li> If the action is legal, the method moves to the Family Member choice.
+	 * 			<li> Else, it returns to the Action choice.
+	 * 		</ul>
+	 * </ol>
+	 * All of this controls are diversified depending on the Family Member color (neutral/colored).
+	 */
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
@@ -38,6 +54,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 			int maxValue = 0;
 			int maxNeutralValue = 0;
 			int modifierValue = 0;
+			
 			for(Cards card: currentplayer.getCards()){
 				if(card.hasPermanent()){
 					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
@@ -73,8 +90,10 @@ public class FamtoTowerTrigger implements ActionChoice {
 						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
 						if(maxNeutralValue > maxNeutralFM.getValue() ){
 							maxNeutralFM.setValue(maxNeutralValue + modifierValue);
-							maxNeutralFM.setColor(curFM.getColor()); //penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
-							//PERO' STICAZZI
+							maxNeutralFM.setColor(curFM.getColor());
+							/*
+							 * Penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
+							 */
 						}
 					}
 					else{
@@ -88,7 +107,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 			}
 			
 
-			if(boardTower.isLegalT(maxFM)){
+			if(boardTower.isLegalTower(maxFM)){
 				for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){ //Valutare se mettere towerCells.size
 					Cell towerCell = towerCells.get(cellIndex);
 					if(towerCell.isEmptyTC()){
@@ -102,7 +121,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 				}
 			}
 			else{
-				if(boardTower.isLegalT(maxNeutralFM)){
+				if(boardTower.isLegalTower(maxNeutralFM)){
 					for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
 						Cell towerCell = towerCells.get(cellIndex);
 						if(towerCell.isEmptyTC()){
@@ -116,17 +135,9 @@ public class FamtoTowerTrigger implements ActionChoice {
 					}
 				}
 			}
-			Action action = game.getOngoingAction();
-			action.act(game);	
 		}
-		/*
-		 * TODO: bisogna analizzare ogni cella della torre con il rispettivo valore perchè
-		 * il punto è garantire che almeno un familiare del giocatore possa avere accesso ad una cella
-		 * della torre. Poi oltre che al valore massimo dei familiari bisogna tener conto anche degli
-		 * effetti permanenti delle carte blu.
-		 * --------------------------------------------------------------------------
-		 * "Non te preoccupà"(cit)
-		 */
+		Action action = game.getOngoingAction();
+		action.act(game);
 	}
 
 	@Override

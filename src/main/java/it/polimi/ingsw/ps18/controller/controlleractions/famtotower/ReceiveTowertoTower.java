@@ -13,10 +13,21 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-
+/**
+ * Receives the tower's index chosen by the current player.
+ * 
+ * @author yazan-matar
+ *
+ */
 public class ReceiveTowertoTower implements ActionChoice {
 	private int index;
-
+	
+	/**
+	 * 
+	 * if this method's controls work, the player goes to the floor choice
+	 * else, he returns to the tower choice
+	 * @param game <br> instance of the game setup and flow
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
@@ -24,45 +35,42 @@ public class ReceiveTowertoTower implements ActionChoice {
 		List<Tower> boardTowers = gameBoard.getTowers();
 		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 		ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
-		PBoard currentplayer = game.getTurnplayer(); //turnplayer nel mondo di francope significa giocatore corrente
-
-		if(boardTower.isLegalT(pBoardFM)){ 
-			if(boardTower.isEmptyT()){
-				if(currentplayer.hasSpace(index)){
-					((FamtoTower) currentaction).setChosenTower(index);
-					((FamtoTower) currentaction).floorChoice();
-				}
-				else{
-					((FamtoTower) currentaction).towerChoice();
-				}		
-			} 
-			else {
-				if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+		PBoard currentplayer = game.getTurnplayer();
+		
+		if(boardTower.isFullTower()){
+			((FamtoTower) currentaction).towerChoice();
+		}
+		else{
+			if(boardTower.isLegalTower(pBoardFM)){ 
+				if(boardTower.isEmptyTower()){
 					if(currentplayer.hasSpace(index)){
-						/*
-						 * Motivazioni del pagamento qui: vedi commento in FamtoTower nel model
-						 */
-						((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
 						((FamtoTower) currentaction).setChosenTower(index);
-						//prima di flooChoice dovro' sistemare sta cosa delle monete
 						((FamtoTower) currentaction).floorChoice();
-					}					
+					}
 					else{
 						((FamtoTower) currentaction).towerChoice();
-
-					}
+					}		
 				} 
 				else {
-					/*
-					 * Non dovrebbe andare al towerChoice ma piu' su
-					 */
-					((FamtoTower) currentaction).towerChoice();
-					
+					if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+						if(currentplayer.hasSpace(index)){
+							((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
+							((FamtoTower) currentaction).setChosenTower(index);
+							((FamtoTower) currentaction).floorChoice();
+						}					
+						else{
+							((FamtoTower) currentaction).towerChoice();
+	
+						}
+					} 
+					else {
+						((FamtoTower) currentaction).towerChoice();	
+					}
 				}
+			} 
+			else {
+				((FamtoTower) currentaction).towerChoice();
 			}
-				
-		} else {
-			((FamtoTower) currentaction).towerChoice();
 		}
 	}
 

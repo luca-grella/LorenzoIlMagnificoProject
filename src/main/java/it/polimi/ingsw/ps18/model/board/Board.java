@@ -63,7 +63,7 @@ public class Board extends Observable {
 		boardview = new BoardView(mcontroller);
 		addObserver(boardview);
 		notifyLogBoardView("Setup Board Initiated.");
-		this.nplayer = nplayer; //usato nei controlli di harv e prod, con 2 giocatori c'è solo uno slot
+		this.nplayer = nplayer;
 		int count;
 
 		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
@@ -76,21 +76,6 @@ public class Board extends Observable {
 				this.marketCells.add(cell);
 			}
 		}
-		
-		/*
-		 * Production, Harvest and Council cells da implementare.
-		 * Per queste celle conviene creare una nuova cella ad ogni azione verso uno di questi ArrayList:
-		 * Se voglio mettere un familiare nel consiglio:
-		 * councilCells.add(index, new CouncilCell()); 
-		 * councilCells.set(index, councilCell) con councilCell settato con il familiare corretto
-		 * e lo stesso per le celle produzione e raccolto. 
-		 * In questo modo posso posizionare un numero illimitato di familiari.
-		 * Domanda: in che parte del codice devo incrementare l'ArrayList?
-		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		 * Risposta: lo fanno direttamente le azioni nel turno, non te preoccupà
-		 */
-		
-		
 		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
 			this.excommCells.add(null);
 		}
@@ -126,6 +111,18 @@ public class Board extends Observable {
 		productionCells.clear();
 		
 	}
+	
+	public boolean isFullMarket() {
+		for(int marketIndex=0; marketIndex<marketCells.size(); marketIndex++){
+			MarketCell marketCell = marketCells.get(marketIndex);
+			if(marketCell.isEmptyMC())
+				return false;
+		}
+		return true;
+	}
+	
+	
+	
 	/**
 	 * Controlla se c'e' gia' un familiare del tuo colore nell'ArrayList
 	 * @param pBoardFM
@@ -153,7 +150,7 @@ public class Board extends Observable {
 			return true;
 		}
 	}
-	
+
 	
 	public boolean isLegalProd(FMember pBoardFM){
 		if(productionCells.isEmpty()){
@@ -176,7 +173,7 @@ public class Board extends Observable {
 			return true;
 		}
 	}
-	
+
 	/*
 	 * Funziona solo se l'accesso all'ArrayList e' sequenziale, cosi' come tutti i controlli a monte
 	 */

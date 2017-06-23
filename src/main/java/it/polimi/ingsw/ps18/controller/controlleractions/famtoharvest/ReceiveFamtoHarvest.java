@@ -30,46 +30,44 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 		((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
 		List<HarvCell> harvCells = game.getBoard().getHarvestCells();
 		
-		if( ! (harvCells.isEmpty()) ){
-			if(game.getBoard().isLegalHarv(chosenfam)){
-				HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-				if(harvCell.isLegalHC(chosenfam)){
-					currentaction.setChosenFam(chosenfam);
-					((FamtoHarvest) currentaction).act(game);
+		if(chosenfam != null){
+			if( ! (harvCells.isEmpty()) ){
+				if(game.getBoard().isLegalHarv(chosenfam)){
+					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					if(harvCell.isLegalHC(chosenfam)){
+						currentaction.setChosenFam(chosenfam);
+						((FamtoHarvest) currentaction).act(game);
+					}
+					else{
+						Action action = new TurnHandler(currentplayer);
+						game.setOngoingAction(action);
+					}
 				}
 				else{
-					//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
+					for(int famIndex=0; famIndex<fams.size(); famIndex++){
+						if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
+							((FamtoHarvest) currentaction).famchoice();
+							return;
+						}
+					}
 					Action action = new TurnHandler(currentplayer);
 					game.setOngoingAction(action);
 				}
 			}
 			else{
-				//Se e' illegale, forse puo' ancora inserire un familiare neutro
-				for(int famIndex=0; famIndex<fams.size(); famIndex++){
-					if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-						((FamtoHarvest) currentaction).famchoice();
-						return;
-					}
-					//else cicla al familiare dopo
+				HarvCell harvCell = new HarvCell(0);
+				if(harvCell.isLegalHC(chosenfam)){
+					currentaction.setChosenFam(chosenfam);
+					((FamtoHarvest) currentaction).act(game);
 				}
-				//Se non ha alcun familiare neutro, esci
-				Action action = new TurnHandler(currentplayer);
-				game.setOngoingAction(action);
-				//Ci vorrebbe un messaggio di errore, sia qui che in tutte le altre classi del controller
-
+				else{
+					Action action = new TurnHandler(currentplayer);
+					game.setOngoingAction(action);
+				}
 			}
 		}
-		//L'ArrayList e' vuoto, procedi
 		else{
-			HarvCell harvCell = new HarvCell(0); //malus=0
-			if(harvCell.isLegalHC(chosenfam)){
-				currentaction.setChosenFam(chosenfam);
-				((FamtoHarvest) currentaction).act(game);
-			}
-			else{
-				Action action = new TurnHandler(currentplayer);
-				game.setOngoingAction(action);
-			}
+			((FamtoHarvest) currentaction).famchoice();
 		}
 	}
 
