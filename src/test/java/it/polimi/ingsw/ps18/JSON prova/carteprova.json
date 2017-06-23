@@ -1,0 +1,21 @@
+{
+  "0": {
+    "name": "Prova",
+    "number": 1,
+    "color": 0,
+    "period": 1,
+    "HarvestValue": 1,
+    "QuickEffects": [
+      "AddWood"
+    ],
+    "QuickEffectsValues": [
+      1
+    ],
+    "HarvestEffects": [
+      "AddCoin"
+    ],
+    "HarvestEffectsValues": [
+      1
+    ]
+  }
+}

@@ -25,6 +25,8 @@ public class GreenC extends Cards {
 		HashMapQE mapQE = new HashMapQE();
 		HashMapHE mapHE = new HashMapHE();
 
+		//  src/test/java/it/polimi/ingsw/ps18/model/personalboard/carteprova.json
+		
 	    try {
 	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/GreenC.json"));
 	    	JSONObject jsonObject = (JSONObject) obj;

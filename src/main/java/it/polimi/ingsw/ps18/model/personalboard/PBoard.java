@@ -71,7 +71,6 @@ public class PBoard extends Observable {
 			return true;
 		else{
 			int colorCount = 0;
-			int playerMP = resources.getMP();
 			
 			for(int cardIndex=0; cardIndex<this.cards.size(); cardIndex++){
 				if((cards.get(cardIndex)).getColor() == cardColor){
