@@ -6,6 +6,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
@@ -64,9 +65,17 @@ public class FamtoHarvest extends Observable implements Action {
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
-				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					if("Harvest".equals(effect.getName())){
-						modifierValue += effect.getQuantity();
+				if(card.getColor()==1){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						if("Harvest".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
+					}
+				} else if(card.getColor()==-1){
+					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+						if("Harvest".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
 					}
 				}
 			}
@@ -91,6 +100,16 @@ public class FamtoHarvest extends Observable implements Action {
 		for(Cards card: cards){
 			if(card.getColor()==0){
 				greenc.add((GreenC) card);
+			} else if(card.getColor()==-1){
+				BonusTile bonusT = (BonusTile) card;
+				if(card.hasHarvest()){
+					if(actionValue >= bonusT.getHarvValue()){
+						for(int i=0; i<bonusT.getHarveffect().size(); i++){
+							HarvestEffect heffect = bonusT.getHarveffect().get(i);
+							heffect.activate(player, game);
+						}
+					}
+				}
 			}
 		}
 		for(GreenC card: greenc){

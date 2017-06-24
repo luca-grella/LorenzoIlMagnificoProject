@@ -6,6 +6,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
@@ -23,25 +24,9 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  * The Class FamtoProduction.
  */
 public class FamtoProduction extends Observable implements Action {
-	
-	/**
-	 * The yellow cards.
-	 */
-	List<YellowC> yellowCards = new ArrayList<>();
-	
-	/**
-	 * The currentcard.
-	 */
-	YellowC currentcard;
-	
-	/**
-	 * The cards for activation.
-	 */
-	List<YellowC> cardsForActivation = new ArrayList<>();
-	
-	/**
-	 * The total cost preview.
-	 */
+	List<Cards> cardsWithProduction = new ArrayList<>();
+	Cards currentcard;
+	List<Cards> cardsForActivation = new ArrayList<>();
 	Stats totalCostPreview;
 	
 	/**
@@ -86,11 +71,20 @@ public class FamtoProduction extends Observable implements Action {
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
-				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					if("Production".equals(effect.getName())){
-						modifierValue += effect.getQuantity();
+				if(card.getColor()==1){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						if("Production".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
+					}
+				} else if(card.getColor()==-1){
+					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+						if("Production".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
 					}
 				}
+				
 			}
 		}
 		this.actionValue = board.insertFMProd(this.chosenFam) + modifierValue;
@@ -108,8 +102,10 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public void activateProduction(PBoard player, GameLogic game){
 		for(Cards card: player.getCards()){
-			if(card.getColor()==2){
-				this.yellowCards.add((YellowC) card);
+			if(card.getColor()==2 || card.getColor()==-1){
+				if(card.hasProduction()){
+					this.cardsWithProduction.add(card);
+				}
 			}
 		} this.chooseCards(player, game);
 	}
@@ -125,13 +121,23 @@ public class FamtoProduction extends Observable implements Action {
 	public void chooseCards(PBoard player, GameLogic game){
 		cardsForActivation.clear();
 		totalCostPreview = new Stats(0,0,0,0,0,0,0);
-		for(YellowC card: yellowCards){
-			if(card.getProductionValue() <= this.actionValue){
-				this.currentcard = card;
-				notifyLogPBoardView(card.toString());
-				notifyLogPBoardView(player.toStringResources());
-				notifyLogPBoardView(totalCostPreview.toString());
-				notifyStatusPBoardView("Select YC");
+		for(Cards card: cardsWithProduction){
+			if(card.getColor()==2){
+				if(((YellowC) card).getProductionValue() <= this.actionValue){
+					this.currentcard = card;
+					notifyLogPBoardView(card.toString());
+					notifyLogPBoardView(player.toStringResources());
+					notifyLogPBoardView(totalCostPreview.toString());
+					notifyStatusPBoardView("Select YC");
+				}
+			} else if(card.getColor()==-1){
+				if(((BonusTile) card).getProductionValue() <= this.actionValue){
+					this.currentcard = card;
+					notifyLogPBoardView(card.toString());
+					notifyLogPBoardView(player.toStringResources());
+					notifyLogPBoardView(totalCostPreview.toString());
+					notifyStatusPBoardView("Select YC");
+				}
 			}
 		} activateEffects(player, game);
 	}
@@ -140,7 +146,12 @@ public class FamtoProduction extends Observable implements Action {
 	 * Choose effect.
 	 */
 	public void ChooseEffect(){
-		List<ProductionEffect> effects = this.currentcard.getProdEffect();
+		List<ProductionEffect> effects = new ArrayList<>();
+		if(currentcard.getColor()==2){
+			effects = ((YellowC)this.currentcard).getProdEffect();
+		} else if(currentcard.getColor()==-1){
+			effects = ((BonusTile)this.currentcard).getProdEffect();
+		}
 		notifyLogPBoardView("Scegli quale effetto attivare:\n");
 		for(int i=0;  i<effects.size(); i++){
 			if("Convert in Resources".equals((effects.get(i)).getName())){
@@ -167,14 +178,23 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public void activateEffects(PBoard player, GameLogic game){
 		(player.getResources()).subStats(totalCostPreview);
-		for(YellowC card: this.cardsForActivation){
+		for(Cards card: this.cardsForActivation){
 			if(card.hasProduction()){
-				if(actionValue >= card.getProductionValue()){
-					for(int i=0; i<card.getProdEffect().size(); i++){
-						ProductionEffect peffect = card.getProdEffect().get(i);
-						peffect.activate(player, game);
-					}
-			    }
+				if(card.getColor()==2){
+					if(actionValue >= ((YellowC)card).getProductionValue()){
+						for(int i=0; i<((YellowC)card).getProdEffect().size(); i++){
+							ProductionEffect peffect = ((YellowC)card).getProdEffect().get(i);
+							peffect.activate(player, game);
+						}
+				    }
+				} else if(card.getColor()==-1){
+					if(actionValue >= ((BonusTile)card).getProductionValue()){
+						for(int i=0; i<((BonusTile)card).getProdEffect().size(); i++){
+							ProductionEffect peffect = ((BonusTile)card).getProdEffect().get(i);
+							peffect.activate(player, game);
+						}
+				    }
+				}
 		    }
 		}
 	}
@@ -235,7 +255,7 @@ public class FamtoProduction extends Observable implements Action {
 	 *
 	 * @return the currentcard
 	 */
-	public YellowC getCurrentcard() {
+	public Cards getCurrentcard() {
 		return currentcard;
 	}
 
@@ -244,7 +264,7 @@ public class FamtoProduction extends Observable implements Action {
 	 *
 	 * @return the cardsForActivation
 	 */
-	public List<YellowC> getCardsForActivation() {
+	public List<Cards> getCardsForActivation() {
 		return cardsForActivation;
 	}
 

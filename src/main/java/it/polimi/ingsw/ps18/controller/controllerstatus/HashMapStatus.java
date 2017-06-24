@@ -28,6 +28,7 @@ public class HashMapStatus {
 		genStatus.put("Show Council", new ShowCouncil());
 		genStatus.put("Show Harvest", new ShowHarvest());
 		genStatus.put("Show Production", new ShowProduction());
+		genStatus.put("ShowBonusTiles", new ShowBonusTiles());
 	}
 	
 	/**

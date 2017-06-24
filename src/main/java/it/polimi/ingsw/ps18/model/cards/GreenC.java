@@ -32,44 +32,22 @@ public class GreenC extends Cards {
 	 */
 	private List<HarvestEffect> harveffect = new ArrayList<>();
 	
-	/**
-	 * Instantiates a new green C.
-	 *
-	 * @param i
-	 *            the i
-	 */
-	public GreenC(Integer i){
-		JSONParser parser = new JSONParser();
+	public GreenC(JSONObject a){
 		HashMapQE mapQE = new HashMapQE();
 		HashMapHE mapHE = new HashMapHE();
 
-		//  src/test/java/it/polimi/ingsw/ps18/model/personalboard/carteprova.json
-		
-	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/GreenC.json"));
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
-	        this.setName((String) a.get("name"));
-	        this.setID((long) a.get("number"));
-	        this.setColor((long) a.get("color"));
-	        this.setPeriod((long) a.get("period"));
-	        this.harvValue = (long) a.get("HarvestValue");
-	        this.setCardCost(new Stats(0,0,0,0,0,0,0));
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        addQEffects(qeffects,qeffectvalues,mapQE);
-	        JSONArray heffects = (JSONArray) a.get("HarvestEffects");
-	        JSONArray heffectvalues = (JSONArray) a.get("HarvestEffectsValues");
-	        addHEffects(heffects,heffectvalues,mapHE);
-	        
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File non trovato.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problema nel parser");
-		}
+		this.setName((String) a.get("name"));
+		this.setID((long) a.get("number"));
+		this.setColor((long) a.get("color"));
+		this.setPeriod((long) a.get("period"));
+		this.harvValue = (long) a.get("HarvestValue");
+		this.setCardCost(new Stats(0,0,0,0,0,0,0));
+		JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+		JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+		addQEffects(qeffects,qeffectvalues,mapQE);
+		JSONArray heffects = (JSONArray) a.get("HarvestEffects");
+		JSONArray heffectvalues = (JSONArray) a.get("HarvestEffectsValues");
+		addHEffects(heffects,heffectvalues,mapHE);
 	}
 	
 	

@@ -5,10 +5,13 @@ import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.board.boardcells.Cell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
@@ -48,28 +51,55 @@ public class ReceiveFloortoTower implements ActionChoice {
 		int modifierValue = 0;
 		for(Cards card: playerCards){
 			if(card.hasPermanent()){
-				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					switch(towerIndex.getChosenTower()){
-					case 0:
-						if("Green".equals(effect.getName())){
-							modifierValue += effect.getQuantity();
+				if(card.getColor()==1){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						switch(towerIndex.getChosenTower()){
+						case 0:
+							if("Green".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 1:
+							if("Blue".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 2:
+							if("Yellow".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 3:
+							if("Purple".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
 						}
-						break;
-					case 1:
-						if("Blue".equals(effect.getName())){
-							modifierValue += effect.getQuantity();
+					}
+				} else if(card.getColor()==-1){
+					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+						switch(towerIndex.getChosenTower()){
+						case 0:
+							if("Green".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 1:
+							if("Blue".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 2:
+							if("Yellow".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
+						case 3:
+							if("Purple".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+							break;
 						}
-						break;
-					case 2:
-						if("Yellow".equals(effect.getName())){
-							modifierValue += effect.getQuantity();
-						}
-						break;
-					case 3:
-						if("Purple".equals(effect.getName())){
-							modifierValue += effect.getQuantity();
-						}
-						break;
 					}
 				}
 			}
@@ -81,7 +111,33 @@ public class ReceiveFloortoTower implements ActionChoice {
 				PBoard temp = new PBoard();
 				temp.setResources(currentplayer.getResources());
 				boardTower.getTowerCells().get(index).activateQEffects(temp, game);
-				totalCostPreview.addStats(cardStats);
+				if(towerIndex.getChosenTower() == 3){
+					PurpleC chosenCard = (PurpleC) boardTower.getTowerCells().get(index).getCellCard();
+					Stats secondaryCost = chosenCard.getSecondaryCost();
+					if(!(secondaryCost.isEmpty())){
+						if(cardStats.isEmpty()){
+							//se ho abbastanza mp pago in mp
+							if(chosenCard.getMinMP() <= currentplayer.getResources().getMP()){
+								totalCostPreview.addStats(secondaryCost);
+							} else {
+								((FamtoTower) currentaction).floorChoice();
+							}
+						} else {
+							//scelta costo da pagare
+							((FamtoTower) currentaction).costChoice();
+							int choice = ((FamtoTower) currentaction).getCostchoice();
+							if(choice == 1){
+								totalCostPreview.addStats(cardStats);
+							} else if(choice == 2){
+								totalCostPreview.addStats(secondaryCost);
+							}
+						}
+					} else {
+						totalCostPreview.addStats(cardStats);
+					}
+				} else {
+					totalCostPreview.addStats(cardStats);
+				}
 				if((temp.getResources().enoughStats(totalCostPreview))){
 					((FamtoTower) currentaction).setChosenFloor(index);
 					currentaction.act(game);

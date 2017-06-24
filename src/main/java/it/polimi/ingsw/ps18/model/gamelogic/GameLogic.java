@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps18.model.gamelogic;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -7,19 +10,27 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Scanner;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
+import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
@@ -70,10 +81,7 @@ public class GameLogic extends Observable {
 	 * The turnplayer.
 	 */
 	private PBoard turnplayer;
-	
-	/**
-	 * The greencards.
-	 */
+	private List<Cards> bonusTiles = new ArrayList<>(GeneralParameters.numberOfBonusTiles); 
 	private List<Cards> greencards = new ArrayList<>(GeneralParameters.numberGreenC);
 	
 	/**
@@ -120,8 +128,9 @@ public class GameLogic extends Observable {
 	 * @param mController
 	 *            the m controller
 	 */
-	public GameLogic(int nplayer,MainController mController){
+	public GameLogic(int nplayer,MainController mController, List<PBoard> players){
 		this.nplayer = nplayer;
+		this.players = players;
 		mView = new MainView(mController);
 		addObserver(mView);
 	}
@@ -152,11 +161,13 @@ public class GameLogic extends Observable {
 		for(int i=0; i<GeneralParameters.numberofDices; i++){
 			this.dices.add(new Dice(i));
 		}
-		for(int i=0; i<nplayer; i++){
-			this.players.add(new PBoard(i, this.dices, mainController));
-		}
 		genDeck();
 		notifyLogMainView("Deck Initialized.");
+		for(int i=0; i<nplayer; i++){
+			this.turnplayer = players.get(i);
+			this.players.get(i).completePBoardSetup(dices, mainController, bonusTiles);
+			
+		}
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
@@ -170,26 +181,58 @@ public class GameLogic extends Observable {
 	 * Gen deck.
 	 */
 	private void genDeck(){
-		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
-			Integer index = new Integer(i);
-			this.greencards.add(new GreenC(index));	
-		} notifyLogMainView("Green Deck Created.");
-		for(int i=1; i<=GeneralParameters.numberYellowC; i++){
-			Integer index = new Integer(i);
-			yellowcards.add(new YellowC(index));
-		} notifyLogMainView("Yellow Deck Created.");
-		for(int i=1; i<=GeneralParameters.numberBlueC; i++){
-			Integer index = new Integer(i);
-			bluecards.add(new BlueC(index));
-		} notifyLogMainView("Blue Deck Created.");
-		for(int i=1; i<=GeneralParameters.numberPurpleC; i++){
-			Integer index = new Integer(i);
-			purplecards.add(new PurpleC(index));
-		} notifyLogMainView("Purple Deck Created.");
-		for(int i=1; i<=GeneralParameters.numberExcommC; i++){
-			Integer index = new Integer(i);
-			this.excommcards.add(new Excommunications(index));	
-		} notifyLogMainView("Excommunication Deck Created.");
+		JSONParser parser = new JSONParser();
+	    try {
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/GreenC.json"));
+	    	JSONObject jsonObject = (JSONObject) obj;
+	        for(int i=1; i<=GeneralParameters.numberGreenC; i++){
+				Integer index = new Integer(i);
+				this.greencards.add(new GreenC((JSONObject) jsonObject.get(index.toString())));	
+			} notifyLogMainView("Green Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/YellowC.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberYellowC; i++){
+				Integer index = new Integer(i);
+				yellowcards.add(new YellowC((JSONObject) jsonObject.get(index.toString())));
+			} notifyLogMainView("Yellow Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberBlueC; i++){
+				Integer index = new Integer(i);
+				bluecards.add(new BlueC((JSONObject) jsonObject.get(index.toString())));
+			} notifyLogMainView("Blue Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/PurpleC.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberPurpleC; i++){
+				Integer index = new Integer(i);
+				purplecards.add(new PurpleC((JSONObject) jsonObject.get(index.toString())));
+			} notifyLogMainView("Purple Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/Excommunications.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberExcommC; i++){
+				Integer index = new Integer(i);
+				this.excommcards.add(new Excommunications((JSONObject) jsonObject.get(index.toString())));	
+			} notifyLogMainView("Excommunication Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BonusTiles.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberOfBonusTiles; i++){
+				Integer index = new Integer(i);
+				this.bonusTiles.add(new BonusTile((JSONObject) jsonObject.get(index.toString())));
+			} notifyLogMainView("Bonus Tiles Deck Created.");
+	        
+	    }catch (FileNotFoundException e) {
+	        System.out.println("File non trovato.");
+
+	    } catch (IOException e) {
+		    System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problema nel parser");
+		}
 	}
 
 	
@@ -412,6 +455,13 @@ public class GameLogic extends Observable {
 	 */
 	public void setNplayer(int nplayer) {
 		this.nplayer = nplayer;
+	}
+
+	/**
+	 * @return the bonusTiles
+	 */
+	public List<Cards> getBonusTiles() {
+		return bonusTiles;
 	}
 	
 	

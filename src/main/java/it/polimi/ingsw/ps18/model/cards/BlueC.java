@@ -1,15 +1,10 @@
 package it.polimi.ingsw.ps18.model.cards;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import it.polimi.ingsw.ps18.model.effect.generalEffects.AddVPforMP;
 import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
@@ -27,41 +22,21 @@ public class BlueC extends Cards {
 	 */
 	private List<Permanenteffect> permeffect = new ArrayList<>();
 
-	/**
-	 * Instantiates a new blue C.
-	 *
-	 * @param i
-	 *            the i
-	 */
-	public BlueC(Integer i) {
-		JSONParser parser = new JSONParser();
+	public BlueC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE(); 
 
-	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
-	        this.setName((String) a.get("name"));
-	        this.setID((long) a.get("number"));
-	        this.setColor((long) a.get("color"));
-	        this.setPeriod((long) a.get("period"));
-	        JSONArray cost = (JSONArray) a.get("CardCost");
-	        this.setCardCost(new Stats(cost));
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        addQEffects(qeffects,qeffectvalues,mapQE);
-	        JSONArray peffects = (JSONArray) a.get("PermanentEffects");
-	        JSONArray peffectvalues = (JSONArray) a.get("PermanentEffectsValues");
-	        addPEffects(peffects,peffectvalues);
-	        
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File non trovato.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problema nel parser");
-		}
+		this.setName((String) a.get("name"));
+		this.setID((long) a.get("number"));
+		this.setColor((long) a.get("color"));
+		this.setPeriod((long) a.get("period"));
+		JSONArray cost = (JSONArray) a.get("CardCost");
+		this.setCardCost(new Stats(cost));
+		JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+		JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+		addQEffects(qeffects,qeffectvalues,mapQE);
+		JSONArray peffects = (JSONArray) a.get("PermanentEffects");
+		JSONArray peffectvalues = (JSONArray) a.get("PermanentEffectsValues");
+		addPEffects(peffects,peffectvalues);
 	}
 	
 	/**
@@ -181,6 +156,9 @@ public class BlueC extends Cards {
 	 */
 	@Override
 	public boolean hasPermanent() {
+		if(this.permeffect.isEmpty()){
+			return false;
+		} 
 		return true;
 	}
 
@@ -203,7 +181,7 @@ public class BlueC extends Cards {
 		for(int i=0; i<(this.getEffects()).size(); i++){
 			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
-		builder.append("\nPermanent Effects\n");
+		builder.append("\nPermanent Effects:\n");
 		for(int i=0;  i<this.permeffect.size(); i++){
 			builder.append("\t" + i + ": " + ((this.permeffect).get(i)).toString() + "\n");
 		}
