@@ -5,9 +5,14 @@ package it.polimi.ingsw.ps18.model.personalboard;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
@@ -106,31 +111,45 @@ public class PBoardTest {
 	 */
 	@Test
 	public void testAddCard() {
+		JSONParser parser = new JSONParser();	
+		try {
+	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/GreenC.json"));
+	    	JSONObject jsonObject = (JSONObject) obj;
+	    	JSONObject a = (JSONObject) jsonObject.get("1");
+	    	
+	    	
+	    	List<Cards> cards = new ArrayList<>();
+	    	int ris = cards.size();
+	    	Cards card = new GreenC(a);
+	    	cards.add(card);
+	    	int ris2 = cards.size();
+	    	GameLogic game= new GameLogic();
+	    	int nplayer=1;
+	    	game.setNplayer(nplayer);
+	    	Action ongoingAction = null;
+	    	game.setOngoingAction(ongoingAction);
+	    	GeneralEffect ongoingEffect = null;
+	    	game.setOngoingEffect(ongoingEffect);
+	    	PBoard player= new PBoard();
+	    	Stats resources= new Stats(0, 0, 0, 0, 0, 0, 0);
+	    	player.setResources(resources);
+	    	Stats ris8 = player.getResources();
+	    	int ris9 = ris8.getCoin();
+	    	cards.get(0).activateQEffects(player, null);
+	    	Stats ris3 = player.getResources();
+	    	int ris4 = ris3.getCoin();
+	    	assertEquals(ris+1, ris2);
+	    	assertEquals(ris9, ris4);
+	    	
+	    	
+		}catch (FileNotFoundException e) {
+	        System.out.println("File non trovato.");
 
-	List<Cards> cards = new ArrayList<>();
-	int ris = cards.size();
-	Cards card = new GreenC(1);
-	cards.add(card);
-	int ris2 = cards.size();
-	GameLogic game= new GameLogic();
-	int nplayer=1;
-	game.setNplayer(nplayer);
-	Action ongoingAction = null;
-	game.setOngoingAction(ongoingAction);
-	GeneralEffect ongoingEffect = null;
-	game.setOngoingEffect(ongoingEffect);
-	PBoard player= new PBoard();
-	Stats resources= new Stats(0, 0, 0, 0, 0, 0, 0);
-	player.setResources(resources);
-	Stats ris8 = player.getResources();
-	int ris9 = ris8.getCoin();
-	cards.get(0).activateQEffects(player, null);
-	Stats ris3 = player.getResources();
-	int ris4 = ris3.getCoin();
-
-
-	assertEquals(ris+1, ris2);
-	assertEquals(ris9, ris4);
+	    } catch (IOException e) {
+		    System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problema nel parser");
+		}
 
 	}
 

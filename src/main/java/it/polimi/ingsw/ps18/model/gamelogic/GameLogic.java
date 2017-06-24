@@ -274,7 +274,6 @@ public class GameLogic extends Observable {
 				excommcard = itr.next();
 			}
 			excommcards.add(excommcard);
-			excommcards.remove(excommcard);
 		}
 	}
 	

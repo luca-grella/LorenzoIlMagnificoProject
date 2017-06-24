@@ -71,12 +71,6 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			}
 		}
 		
-		/* TODO: il controllo per vedere se la prima cella e' vuota, va messo SSE non e' consentito al giocatore di piazzare un FMember
-					}
-				}
-			}
-		}
-		
 		if(game.getNplayer() > 2){
 			int maxValue = 0;
 			int maxNeutralValue = 0;
