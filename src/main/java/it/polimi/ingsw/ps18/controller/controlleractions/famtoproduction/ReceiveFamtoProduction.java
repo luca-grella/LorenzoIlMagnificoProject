@@ -14,13 +14,22 @@ import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 /**
+ * Receives a Family Member chosen by the current player and moves to the actiovation of the Production Cell
  * 
- * @author yaz
+ * @author yazan-matar
  *
  */
 public class ReceiveFamtoProduction implements ActionChoice {
 	private int index;
-
+	
+	
+	/**
+	 * Controls if the chosen Family Member is empty (meaning that it was already used in the previous turns):
+	 * <ul> 
+	 * 	<li> If the Family Member is empty, the method returns to the Family Member choice.
+	   	<li> Else, it moves to the activation of the Production Cell.
+	 * </ul>
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
@@ -38,7 +47,6 @@ public class ReceiveFamtoProduction implements ActionChoice {
 						((FamtoProduction) currentaction).act(game);
 					}
 					else{
-						//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
 					}
@@ -61,7 +69,6 @@ public class ReceiveFamtoProduction implements ActionChoice {
 					((FamtoProduction) currentaction).act(game);
 				}
 				else{
-					//Entra qui soltanto se il familiare era legale, ma il suo valore non era sufficiente rispetto a quello della cella
 					Action action = new TurnHandler(currentplayer);
 					game.setOngoingAction(action);
 				}

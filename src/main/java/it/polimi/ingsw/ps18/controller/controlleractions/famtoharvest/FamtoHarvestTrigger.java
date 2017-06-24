@@ -15,12 +15,28 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
 /**
+ * Sets the ongoing action (placing the Family Member to a Harvest Cell) and goes to the Family Member choice
  * 
- * @author yaz
+ * @author yazan-matar
  *
  */
 public class FamtoHarvestTrigger implements ActionChoice {
-
+	
+	/**
+	 * Controls if there's at least a Family Member in the current player Personal Board
+	 * that can be put in at least one Harvest Cell (with or without the malus value): 
+	 * <ol> 
+	 * <li> It finds the Family Member with the greater Action Value and eventually adds
+	 * 		the player cards's action bonuses and all of the player's servants.
+	 * <li> Then it checks the legality of the action with that Family Member
+	 * 		for every cell of the Harvest:
+	 * 		<ul>
+	 * 			<li> If the action is legal, the method moves to the Family Member choice.
+	 * 			<li> Else, it returns to the Action choice.
+	 * 		</ul>
+	 * </ol>
+	 * All of this controls are diversified depending on the Family Member color (neutral/colored).
+	 */
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
@@ -60,7 +76,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					}
 				}
 			}
-	
+			//In quanto l'accesso e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				HarvCell harvCell = new HarvCell(0); //TODO: generalparameters
 				if(harvCell.isLegalHC(maxFM)){ 
@@ -74,11 +90,21 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				}
 			}
 			else{
-				HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-				if(harvCell.isLegalHC(maxFM)){ 
-					Action action = new FamtoHarvest(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoHarvest) action).famchoice();
+				if(game.getBoard().isLegalHarv(maxFM)){
+					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					if(harvCell.isLegalHC(maxFM)){ 
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+					}
+				}
+				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
+					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					if(harvCell.isLegalHC(maxNeutralFM)){ 
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+					}
 				}
 				else{
 					Action action = game.getOngoingAction();

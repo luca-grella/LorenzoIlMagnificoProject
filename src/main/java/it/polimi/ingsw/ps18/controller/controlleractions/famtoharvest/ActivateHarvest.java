@@ -28,7 +28,8 @@ public class ActivateHarvest implements ActionChoice {
 			}
 			((FamtoHarvest) currentaction).setActionValue(index + modifierValue);
 			((FamtoHarvest) currentaction).activateHarvest(currentplayer, game);
-		} else {
+		} 
+		else {
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
 			((FamtoHarvest) currentaction).activateHarvest(currentplayer, game);
