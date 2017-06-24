@@ -9,18 +9,49 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConvertResorResinResources.
+ */
 public class ConvertResorResinResources extends Observable implements Converter {
+	
+	/**
+	 * The name.
+	 */
 	private String name = "Convert WR in Resources";
+	
+	/**
+	 * The quantity.
+	 */
 	private int quantity;
+	
+	/**
+	 * The cost.
+	 */
 	private Stats cost;
+	
+	/**
+	 * The reward.
+	 */
 	private Stats reward;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats playerStats = player.getResources();
 		playerStats.addStats(reward);
 	}
 	
+	/**
+	 * Woodor rock choice.
+	 *
+	 * @param player
+	 *            the player
+	 * @param game
+	 *            the game
+	 */
 	public void WoodorRockChoice(PBoard player, GameLogic game){
 		addObserver(player.getpBoardView());
 		Stats playerStats = player.getResources();
@@ -36,6 +67,14 @@ public class ConvertResorResinResources extends Observable implements Converter 
 		}
 	}
 	
+	/**
+	 * Pay.
+	 *
+	 * @param player
+	 *            the player
+	 * @param index
+	 *            the index
+	 */
 	public void pay(PBoard player, int index){
 		if(index==1){
 			cost = new Stats(quantity,0,0,0,0,0,0);
@@ -44,17 +83,31 @@ public class ConvertResorResinResources extends Observable implements Converter 
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 
 	}
 	
+	/**
+	 * Sets the stats.
+	 *
+	 * @param quantity
+	 *            the quantity
+	 * @param reward
+	 *            the reward
+	 */
 	public void setStats(long quantity, JSONArray reward){
 		this.reward = new Stats(reward);
 		this.setQuantity((int) quantity);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -64,6 +117,8 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	}
 
 	/**
+	 * Gets the reward.
+	 *
 	 * @return the reward
 	 */
 	public Stats getReward() {
@@ -71,13 +126,18 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	}
 
 	/**
-	 * @param reward the reward to set
+	 * Sets the reward.
+	 *
+	 * @param reward
+	 *            the reward to set
 	 */
 	public void setReward(Stats reward) {
 		this.reward = reward;
 	}
 
 	/**
+	 * Gets the quantity.
+	 *
 	 * @return the quantity
 	 */
 	public int getQuantity() {
@@ -85,6 +145,8 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	}
 
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -92,6 +154,8 @@ public class ConvertResorResinResources extends Observable implements Converter 
 	}
 
 	/**
+	 * Gets the cost.
+	 *
 	 * @return the cost
 	 */
 	@Override

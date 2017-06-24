@@ -10,10 +10,25 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Privilege.
+ */
 public class Privilege extends Observable implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect   {
+	
+	/**
+	 * The name.
+	 */
 	private String name = "privilege";
+	
+	/**
+	 * The quantity.
+	 */
 	private int quantity;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
@@ -25,6 +40,9 @@ public class Privilege extends Observable implements QuickEffect, HarvestEffect,
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity){
 		this.quantity = quantity;
@@ -32,6 +50,9 @@ public class Privilege extends Observable implements QuickEffect, HarvestEffect,
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -40,6 +61,8 @@ public class Privilege extends Observable implements QuickEffect, HarvestEffect,
 	}
 	
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {

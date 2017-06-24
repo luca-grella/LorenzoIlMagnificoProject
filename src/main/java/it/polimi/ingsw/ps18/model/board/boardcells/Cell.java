@@ -13,21 +13,42 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a Tower cell, which contains a Cards object. <br>
- * 
- * @see
- * {@link it.polimi.ingsw.ps18.model.cards.Cards}
- * 
+ *
  * @author yazan-matar
+ * @see {@link it.polimi.ingsw.ps18.model.cards.Cards}
  */
 
 public class Cell { 
+	
+	/**
+	 * The cell card.
+	 */
 	private Cards cellCard;
+	
+	/**
+	 * The cell FM.
+	 */
 	private FMember cellFM;
+	
+	/**
+	 * The cell value.
+	 */
 	private int cellValue;
+	
+	/**
+	 * The cell effects.
+	 */
 	private List<QuickEffect> cellEffects = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new cell.
+	 *
+	 * @param a
+	 *            the a
+	 */
 	public Cell(JSONObject a) {
 		cellCard = null;
 		cellFM = null;
@@ -48,6 +69,15 @@ public class Cell {
 	    
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param cellQuickEffect
+	 *            the cell quick effect
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(QuickEffect cellQuickEffect, long quantity){
 	    QuickEffect effect = cellQuickEffect;
 	    effect.setQuantity((int) quantity);
@@ -56,6 +86,14 @@ public class Cell {
 	    } return false;
     }
 	
+	/**
+	 * Activate Q effects.
+	 *
+	 * @param player
+	 *            the player
+	 * @param game
+	 *            the game
+	 */
 	public void activateQEffects(PBoard player, GameLogic game){
 		for(int count=0; count<this.cellEffects.size(); count++){
 			QuickEffect cellQuickEffect = this.cellEffects.get(count); //Sicuro mi da errore su Sonar
@@ -64,8 +102,10 @@ public class Cell {
 	}
 	
 	/**
-	 * Places a card in Cell
+	 * Places a card in Cell.
+	 *
 	 * @param card
+	 *            the card
 	 */
 	
 	public void insertCard(Cards card) {
@@ -73,8 +113,10 @@ public class Cell {
 	}
 
 	/**
-	 * Places a FMember from PBoard to Cell
+	 * Places a FMember from PBoard to Cell.
+	 *
 	 * @param pBoardFM
+	 *            the board FM
 	 * @return card from Cell to PBoard
 	 */
 	
@@ -84,7 +126,8 @@ public class Cell {
 	}
 	
 	/**
-	 * Checks Cell state (Empty/Full)
+	 * Checks Cell state (Empty/Full).
+	 *
 	 * @return a boolean state
 	 */
 	
@@ -97,6 +140,13 @@ public class Cell {
 		}
 	}
 	
+	/**
+	 * Checks if is legal TC.
+	 *
+	 * @param actionValue
+	 *            the action value
+	 * @return true, if is legal TC
+	 */
 	public boolean isLegalTC(int actionValue) {
 		if(actionValue >= this.getCellValue()){
 			if(this.cellCard != null){
@@ -107,6 +157,13 @@ public class Cell {
 				
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @param index
+	 *            the index
+	 * @return the string
+	 */
 	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -136,6 +193,8 @@ public class Cell {
 	
 
 	/**
+	 * Gets the cell card.
+	 *
 	 * @return the cellCard
 	 */
 	public Cards getCellCard() {
@@ -143,13 +202,18 @@ public class Cell {
 	}
 
 	/**
-	 * @param cellCard the cellCard to set
+	 * Sets the cell card.
+	 *
+	 * @param cellCard
+	 *            the cellCard to set
 	 */
 	public void setCellCard(Cards cellCard) {
 		this.cellCard = cellCard;
 	}
 
 	/**
+	 * Gets the cell FM.
+	 *
 	 * @return the cellFM
 	 */
 	public FMember getCellFM() {
@@ -157,13 +221,18 @@ public class Cell {
 	}
 
 	/**
-	 * @param cellFM the cellFM to set
+	 * Sets the cell FM.
+	 *
+	 * @param cellFM
+	 *            the cellFM to set
 	 */
 	public void setCellFM(FMember cellFM) {
 		this.cellFM = cellFM;
 	}
 
 	/**
+	 * Gets the cell value.
+	 *
 	 * @return the value
 	 */
 	public int getCellValue() {
@@ -171,7 +240,10 @@ public class Cell {
 	}
 
 	/**
-	 * @param l the value to set
+	 * Sets the cell value.
+	 *
+	 * @param value
+	 *            the new cell value
 	 */
 	public void setCellValue(long value) {
 		this.cellValue = (int) value;

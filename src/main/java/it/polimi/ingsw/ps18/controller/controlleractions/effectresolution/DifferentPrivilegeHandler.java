@@ -23,11 +23,30 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DifferentPrivilegeHandler.
+ */
 public class DifferentPrivilegeHandler implements ActionChoice {
+	
+	/**
+	 * The possibilities.
+	 */
 	private Map<String,GeneralEffect> possibilities = new HashMap<>();
+	
+	/**
+	 * The effect.
+	 */
 	private List<GeneralEffect> effect = new ArrayList<>();
+	
+	/**
+	 * The index.
+	 */
 	private Integer index;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		init();
@@ -68,18 +87,34 @@ public class DifferentPrivilegeHandler implements ActionChoice {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = new Integer(i);
 
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param count
+	 *            the count
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 */
 	private void add(int count, GeneralEffect e, long quantity){
 		GeneralEffect a = e;
 		a.setQuantity((int) quantity);
 	    (this.effect).add(count, a);	
     }
 	
+	/**
+	 * Inits the.
+	 */
 	private void init(){
 		possibilities.put("AddWood", new addWood());
 		possibilities.put("AddStone", new addRock());
@@ -89,6 +124,13 @@ public class DifferentPrivilegeHandler implements ActionChoice {
 		possibilities.put("AddPF", new addFP());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public GeneralEffect geteffect(String a){
 		return possibilities.get(a);
 	}

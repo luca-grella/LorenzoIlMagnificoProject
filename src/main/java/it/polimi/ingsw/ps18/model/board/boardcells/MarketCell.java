@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a market cell. <br>
  * When a family member is placed, MarketCell activates a set of quick effects.
@@ -25,12 +26,34 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  */
 
 public class MarketCell {
+	
+	/**
+	 * The min players.
+	 */
 	private long minPlayers;
+	
+	/**
+	 * The market cell FM.
+	 */
 	private FMember marketCellFM;
+	
+	/**
+	 * The value.
+	 */
 	private int value;
+	
+	/**
+	 * The effects.
+	 */
 	private List<QuickEffect> effects = new ArrayList<>();
 	
 	
+	/**
+	 * Instantiates a new market cell.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public MarketCell(Integer i) {
 		marketCellFM = null;
 		HashMapQE mapQE = new HashMapQE();
@@ -65,8 +88,13 @@ public class MarketCell {
 	}
 
 	/**
-	 * Places a FMember from PBoard to the cell
+	 * Places a FMember from PBoard to the cell.
+	 *
 	 * @param pBoardFM
+	 *            the board FM
+	 * @param game
+	 *            the game
+	 * @return true, if successful
 	 */
 	public boolean insertFM (FMember pBoardFM, GameLogic game) {
 		
@@ -79,7 +107,8 @@ public class MarketCell {
 	}
 	
 	/**
-	 * Checks the cell's state (Empty/Full)
+	 * Checks the cell's state (Empty/Full).
+	 *
 	 * @return a boolean state
 	 */
 	
@@ -91,6 +120,14 @@ public class MarketCell {
 			return false;
 		}	
 	}
+	
+	/**
+	 * Checks if is legal MC.
+	 *
+	 * @param pBoardFM
+	 *            the board FM
+	 * @return true, if is legal MC
+	 */
 	public boolean isLegalMC(FMember pBoardFM){
 		if(pBoardFM.getValue() >= this.value){
 			return true;
@@ -99,6 +136,15 @@ public class MarketCell {
 		
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param marketQuickEffect
+	 *            the market quick effect
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(QuickEffect marketQuickEffect, long quantity){
 	    boolean isAdded = this.effects.add(marketQuickEffect);
 	    if(isAdded){
@@ -109,6 +155,12 @@ public class MarketCell {
 	    	return false;		
     }
 	
+	/**
+	 * Activate Q effects.
+	 *
+	 * @param game
+	 *            the game
+	 */
 	private void activateQEffects(GameLogic game){
 		for(int count=0; count<this.effects.size(); count++){
 			QuickEffect marketQuickEffect = this.effects.get(count); //Sicuro mi da errore su Sonar
@@ -116,6 +168,13 @@ public class MarketCell {
 		}
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @param index
+	 *            the index
+	 * @return the string
+	 */
 	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -140,6 +199,8 @@ public class MarketCell {
 	}
 
 	/**
+	 * Gets the market cell FM.
+	 *
 	 * @return the marketCellFM
 	 */
 	public FMember getMarketCellFM() {
@@ -147,13 +208,18 @@ public class MarketCell {
 	}
 
 	/**
-	 * @param marketCellFM the marketCellFM to set
+	 * Sets the market cell FM.
+	 *
+	 * @param marketCellFM
+	 *            the marketCellFM to set
 	 */
 	public void setMarketCellFM(FMember marketCellFM) {
 		this.marketCellFM = marketCellFM;
 	}
 
 	/**
+	 * Gets the min players.
+	 *
 	 * @return the minPlayers
 	 */
 	public int getMinPlayers() {
@@ -161,7 +227,10 @@ public class MarketCell {
 	}
 
 	/**
-	 * @param minPlayers the minPlayers to set
+	 * Sets the min players.
+	 *
+	 * @param minPlayers
+	 *            the minPlayers to set
 	 */
 	public void setMinPlayers(long minPlayers) {
 		this.minPlayers = minPlayers;

@@ -2,8 +2,20 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.Random;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Dice.
+ */
 public class Dice {
+	
+	/**
+	 * The color.
+	 */
 	private int color;
+	
+	/**
+	 * The value.
+	 */
 	private int value;
 	
 	
@@ -20,25 +32,38 @@ public class Dice {
 	
 	
 	/**
+	 * Gets the color.
+	 *
 	 * @return the color
 	 */
 	public int getColor() {
 		return color;
 	}
+	
 	/**
-	 * @param color the color to set
+	 * Sets the color.
+	 *
+	 * @param color
+	 *            the color to set
 	 */
 	public void setColor(int color) {
 		this.color = color;
 	}
+	
 	/**
+	 * Gets the value.
+	 *
 	 * @return the value
 	 */
 	public int getValue() {
 		return value;
 	}
+	
 	/**
-	 * @param value the value to set
+	 * Sets the value.
+	 *
+	 * @param value
+	 *            the value to set
 	 */
 	public void setValue(int value) {
 		this.value = value;

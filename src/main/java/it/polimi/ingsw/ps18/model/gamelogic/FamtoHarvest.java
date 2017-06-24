@@ -15,19 +15,47 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FamtoHarvest.
+ */
 public class FamtoHarvest extends Observable implements Action {
+	
+	/**
+	 * The chosen fam.
+	 */
 	private FMember chosenFam;
+	
+	/**
+	 * The index famto remove.
+	 */
 	private int indexFamtoRemove;
+	
+	/**
+	 * The action value.
+	 */
 	private int actionValue;
 	
+	/**
+	 * Instantiates a new famto harvest.
+	 *
+	 * @param view
+	 *            the view
+	 */
 	public FamtoHarvest(PBoardView view){
 		addObserver(view);
 	}
 	
+	/**
+	 * Famchoice.
+	 */
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Harvest");
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Board board = game.getBoard();
@@ -49,6 +77,14 @@ public class FamtoHarvest extends Observable implements Action {
 		currentplayer.actHarvest();
 	}
 	
+	/**
+	 * Activate harvest.
+	 *
+	 * @param player
+	 *            the player
+	 * @param game
+	 *            the game
+	 */
 	public void activateHarvest(PBoard player, GameLogic game){
 		List<Cards> cards = player.getCards();
 		List<GreenC> greenc = new ArrayList<>();
@@ -69,26 +105,41 @@ public class FamtoHarvest extends Observable implements Action {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
+	 */
 	@Override
 	public void setChosenFam(FMember chosenFam) {
 		this.chosenFam = chosenFam;
 
 	}
 	
+	/**
+	 * Notify action P board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyActionPBoardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
 
 	/**
-	 * @param actionValue the actionValue to set
+	 * Sets the action value.
+	 *
+	 * @param actionValue
+	 *            the actionValue to set
 	 */
 	public void setActionValue(int actionValue) {
 		this.actionValue = actionValue;
 	}
 
 	/**
-	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 * Sets the index famto remove.
+	 *
+	 * @param indexFamtoRemove
+	 *            the indexFamtoRemove to set
 	 */
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;

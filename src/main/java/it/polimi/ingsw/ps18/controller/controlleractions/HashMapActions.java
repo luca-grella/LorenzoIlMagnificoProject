@@ -24,9 +24,20 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamto
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HashMapActions.
+ */
 public class HashMapActions {
+    
+    /**
+	 * The gen actions.
+	 */
     private static Map<String,ActionChoice> genActions = new HashMap<>();
 	
+	/**
+	 * Inits the.
+	 */
 	public static void init(){
 		genActions.put("Turn Handle Init", new TurnHandleInit());
 		genActions.put("FamtoTower", new FamtoTowerTrigger());
@@ -54,6 +65,13 @@ public class HashMapActions {
 		genActions.put("Chosen Diff Privilege", new DifferentPrivilegeHandler());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public static ActionChoice geteffect(String a){
 		return genActions.get(a);
 	}

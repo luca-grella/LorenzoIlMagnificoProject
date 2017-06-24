@@ -8,13 +8,23 @@ import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PBVAInit.
+ */
 public class PBVAInit extends Observable implements PBViewAction {
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
+	 */
 	@Override
 	public void setObserver(MainController controller){
 		addObserver(controller);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
+	 */
 	@Override
 	public void act() {
 		Scanner input = new Scanner(System.in);
@@ -82,16 +92,31 @@ public class PBVAInit extends Observable implements PBViewAction {
 	
 
 	
+	/**
+	 * Notify action main controller.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyActionMainController(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
 	
+	/**
+	 * Notify status main controller.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyStatusMainController(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		return;

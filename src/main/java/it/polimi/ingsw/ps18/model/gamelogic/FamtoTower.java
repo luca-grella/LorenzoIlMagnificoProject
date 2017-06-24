@@ -13,29 +13,71 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FamtoTower.
+ */
 public class FamtoTower extends Observable implements Action {
+	
+	/**
+	 * The chosen fam.
+	 */
 	FMember chosenFam;
+	
+	/**
+	 * The index famto remove.
+	 */
 	private int indexFamtoRemove;
+	
+	/**
+	 * The chosen tower.
+	 */
 	int chosenTower;
+	
+	/**
+	 * The chosen floor.
+	 */
 	int chosenFloor;
+	
+	/**
+	 * The total cost preview.
+	 */
 	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
 	
+	/**
+	 * Instantiates a new famto tower.
+	 *
+	 * @param view
+	 *            the view
+	 */
 	public FamtoTower(PBoardView view){
 		addObserver(view);
 	}
 	
+	/**
+	 * Famchoice.
+	 */
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Tower");
 	}
 	
+	/**
+	 * Tower choice.
+	 */
 	public void towerChoice(){
 		notifyActionPBoardView("Tower Choice");
 	}
 	
+	/**
+	 * Floor choice.
+	 */
 	public void floorChoice(){
 		notifyParamPBoardView("Floor Choice",this.chosenTower);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Board board = game.getBoard();
@@ -57,17 +99,33 @@ public class FamtoTower extends Observable implements Action {
 	}
 	
 
+	/**
+	 * Notify action P board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyActionPBoardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
 	
+	/**
+	 * Notify param P board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 * @param index
+	 *            the index
+	 */
 	private void notifyParamPBoardView(String msg,int index){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,index));
 	}
 
 	/**
+	 * Gets the chosen fam.
+	 *
 	 * @return the chosenFam
 	 */
 	public FMember getChosenFam() {
@@ -75,13 +133,18 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
-	 * @param chosenFam the chosenFam to set
+	 * Sets the chosen fam.
+	 *
+	 * @param chosenFam
+	 *            the chosenFam to set
 	 */
 	public void setChosenFam(FMember chosenFam) {
 		this.chosenFam = chosenFam;
 	}
 
 	/**
+	 * Gets the chosen tower.
+	 *
 	 * @return the chosenTower
 	 */
 	public int getChosenTower() {
@@ -89,13 +152,18 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
-	 * @param chosenTower the chosenTower to set
+	 * Sets the chosen tower.
+	 *
+	 * @param chosenTower
+	 *            the chosenTower to set
 	 */
 	public void setChosenTower(int chosenTower) {
 		this.chosenTower = chosenTower;
 	}
 
 	/**
+	 * Gets the chosen floor.
+	 *
 	 * @return the chosenFloor
 	 */
 	public int getChosenFloor() {
@@ -103,13 +171,18 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
-	 * @param chosenFloor the chosenFloor to set
+	 * Sets the chosen floor.
+	 *
+	 * @param chosenFloor
+	 *            the chosenFloor to set
 	 */
 	public void setChosenFloor(int chosenFloor) {
 		this.chosenFloor = chosenFloor;
 	}
 
 	/**
+	 * Gets the total cost preview.
+	 *
 	 * @return the totalCostPreview
 	 */
 	public Stats getTotalCostPreview() {
@@ -117,7 +190,10 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
-	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 * Sets the index famto remove.
+	 *
+	 * @param indexFamtoRemove
+	 *            the indexFamtoRemove to set
 	 */
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;

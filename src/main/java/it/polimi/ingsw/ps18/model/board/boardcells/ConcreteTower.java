@@ -18,21 +18,34 @@ import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a Tower composed by Cell objects. <br>
  * Inherits and overrides methods from the Tower Interface.
- * @see
- * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell} 
- * @see
- * {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower}
- * 
+ *
  * @author yazan-matar
+ * @see {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell}
+ * @see {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower}
  */
 
 public class ConcreteTower implements Tower {
+	
+	/**
+	 * The tower cells.
+	 */
 	private List<Cell> towerCells = new ArrayList<>(GeneralParameters.numberofCells);
+	
+	/**
+	 * The color.
+	 */
 	private int color;
 	
+	/**
+	 * Instantiates a new concrete tower.
+	 *
+	 * @param towerIndex
+	 *            the tower index
+	 */
 	public ConcreteTower (Integer towerIndex) {
 		JSONParser parser = new JSONParser();
 		this.color = towerIndex;
@@ -58,8 +71,21 @@ public class ConcreteTower implements Tower {
 	}
 	
 	/**
-	 * Uses the Cell method insertCard, that places a card in a cell
-	 * and iterates it for all the cells in a tower
+	 * Inserts specific cards in a Tower:
+	 * <ul>
+	 * <li>Shuffles and cycles the cards in the ArrayList until a card with a
+	 * specific period is found
+	 * <li>Uses the Cell method insertCard, that places a card in a cell and
+	 * iterates it for all the Cells in a Tower
+	 * </ul>
+	 * .
+	 *
+	 * @param towerCards
+	 *            ArrayList that contains the card with the same type of the
+	 *            chosen Tower
+	 * @param period
+	 *            An integer used to find a card of a specific period in
+	 *            towerCards
 	 */
 	public void insertCards (List<Cards> towerCards, int period) {
 		Collections.shuffle(towerCards);
@@ -79,9 +105,16 @@ public class ConcreteTower implements Tower {
 	
 	
 	/**
-	 * Uses the Cell method insertFM, that places a FMember in a cell
-	 * after selecting the cell floor in a tower
-	 * @param pBoardFM indicates the FM that is going to be used in the action
+	 * Inserts a FMember in a Tower Cell:
+	 * <ul>
+	 * 	<li>Uses the Cell method insertFM, that places a FMember in a Cell
+	 * 		after selecting the Cell floor in a tower.
+	 * </ul>
+	 * @param pBoardFM 
+	 * FMember chosen for the current action
+	 * @param floor
+	 * Chosen floor of a Tower
+	 * @return the Card of the chosen Tower Cell
 	 */
 	
 	public Cards insertFM(FMember pBoardFM, int floor) {
@@ -90,7 +123,7 @@ public class ConcreteTower implements Tower {
 	}
 	
 	/**
-	 * Checks the legality of the current player's action
+	 * Checks the legality of the current player's action.
 	 * @param pBoardFM is the family member chosen by the player
 	 * @return a boolean value:
 	 * <ul>
@@ -130,32 +163,28 @@ public class ConcreteTower implements Tower {
 								return false;
 							}
 						}
-					}
-						/*
-						 * Se e' neutro allora cicla alla cella dopo perche' nella torre possono stare un neutro e un
-						 * non neutro dello stesso colore. Questo controllo diventa debole se si iniziano a prevedere più familiari neutri
-						 * per ogni plancia giocatore.
-						 */
-						
+					}	
 				}
 			}
 			return true;
 		}
 	}
+	
 	/**
-	 * Checks the tower status
+	 * Checks the Tower status.
+	 *
 	 * @return a boolean value:
-	 * <ul>
-	 * 	<li>True:
-	 * 		<ul>
-	 * 			<li> The tower is empty
-	 * 		</ul>
-	 * 	<li> False:
-	 * 		<ul>
-	 * 			<li> The tower contains at least a Family member
-	 * 				 (regardless of the Family Member player color)
-	 * 		</ul>
-	 * </ul>
+	 *         <ul>
+	 *         <li>True:
+	 *         <ul>
+	 *         <li>The tower is empty
+	 *         </ul>
+	 *         <li>False:
+	 *         <ul>
+	 *         <li>The tower contains at least a Family member (regardless of
+	 *         the Family Member player color)
+	 *         </ul>
+	 *         </ul>
 	 */
 	public boolean isEmptyTower(){
 			for(int index=0; index<GeneralParameters.numberofCells; index++){
@@ -167,19 +196,21 @@ public class ConcreteTower implements Tower {
 	}
 	
 	/**
-	 * Checks the tower status
+	 * Checks the Tower status.
+	 *
 	 * @return a boolean value:
-	 * <ul>
-	 * 	<li>True:
-	 * 		<ul>
-	 * 			<li> The tower is full, meaning that all of the tower cells are occupied by a Family Member
-	 * 				 (regardless of the Family Member player color)
-	 * 		</ul>
-	 * 	<li> False:
-	 * 		<ul>
-	 * 			<li> The tower contains at least an empty cell
-	 * 		</ul>
-	 * </ul>
+	 *         <ul>
+	 *         <li>True:
+	 *         <ul>
+	 *         <li>The tower is full, meaning that all of the tower cells are
+	 *         occupied by a Family Member (regardless of the Family Member
+	 *         player color)
+	 *         </ul>
+	 *         <li>False:
+	 *         <ul>
+	 *         <li>The tower contains at least an empty cell
+	 *         </ul>
+	 *         </ul>
 	 */
 	public boolean isFullTower (){
 		for(int index=0; index<GeneralParameters.numberofCells; index++){
@@ -192,6 +223,9 @@ public class ConcreteTower implements Tower {
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.board.boardcells.Tower#toString(int)
+	 */
 	@Override
 	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
@@ -209,7 +243,10 @@ public class ConcreteTower implements Tower {
 	}
 	
 	
-	 //TODO: Definire Info generali di una torre
+	 /* (non-Javadoc)
+ 	 * @see java.lang.Object#toString()
+ 	 */
+ 	//TODO: Definire Info generali di una torre
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 
@@ -222,6 +259,8 @@ public class ConcreteTower implements Tower {
 	
 
 	/**
+	 * Gets the tower cells.
+	 *
 	 * @return the towerCells
 	 */
 	public List<Cell> getTowerCells() {
@@ -229,7 +268,10 @@ public class ConcreteTower implements Tower {
 	}
 
 	/**
-	 * @param towerCells the towerCells to set
+	 * Sets the tower cells.
+	 *
+	 * @param towerCells
+	 *            the towerCells to set
 	 */
 	public void setTowerCells(List<Cell> towerCells) {
 		this.towerCells = towerCells;

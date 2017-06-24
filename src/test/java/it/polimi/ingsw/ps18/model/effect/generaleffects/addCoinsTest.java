@@ -16,14 +16,27 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author Francesco Musio
+ * The Class addCoinsTest.
  *
+ * @author Francesco Musio
  */
 public class addCoinsTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The a.
+	 */
 	int a = rand.nextInt(1000);
+	
+	/**
+	 * The b.
+	 */
 	int b = rand.nextInt(1000);
 	
 	/**
@@ -43,6 +56,9 @@ public class addCoinsTest {
 		assertEquals(ris + tester.getQuantity(), ris2);
 	}
 
+	/**
+	 * Test get quantity.
+	 */
 	/*
 	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins#getQuantity()}
 	 */
@@ -56,6 +72,9 @@ public class addCoinsTest {
 		}
 	}
 
+	/**
+	 * Test set quantity.
+	 */
 	/*
 	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins#setQuantity()}
 	 */

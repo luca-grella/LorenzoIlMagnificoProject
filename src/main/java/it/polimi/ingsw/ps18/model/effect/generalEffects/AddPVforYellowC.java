@@ -10,10 +10,25 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AddPVforYellowC.
+ */
 public class AddPVforYellowC implements FinalEffect, HarvestEffect, ProductionEffect, QuickEffect {
+	
+	/**
+	 * The name.
+	 */
 	private String name;
+	
+	/**
+	 * The quantity.
+	 */
 	private int quantity;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		int count = 0;
@@ -25,12 +40,18 @@ public class AddPVforYellowC implements FinalEffect, HarvestEffect, ProductionEf
 		} (player.getResources()).addVP(count * this.quantity);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -43,6 +64,8 @@ public class AddPVforYellowC implements FinalEffect, HarvestEffect, ProductionEf
 	}
 	
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {

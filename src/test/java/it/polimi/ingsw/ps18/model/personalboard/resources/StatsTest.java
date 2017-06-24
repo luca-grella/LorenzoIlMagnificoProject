@@ -10,18 +10,52 @@ import java.util.Random;
 import org.json.simple.JSONArray;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class StatsTest.
  *
+ * @author luca-grella
  */
 public class StatsTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The wood.
+	 */
 	int wood = rand.nextInt(1000);
+	
+	/**
+	 * The rock.
+	 */
 	int rock = rand.nextInt(1000);
+	
+	/**
+	 * The coin.
+	 */
 	int coin = rand.nextInt(1000);
+	
+	/**
+	 * The servant.
+	 */
 	int servant = rand.nextInt(1000);
+	
+	/**
+	 * The fp.
+	 */
 	int fp = rand.nextInt(1000);
+	
+	/**
+	 * The mp.
+	 */
 	int mp = rand.nextInt(1000);
+	
+	/**
+	 * The vp.
+	 */
 	int vp = rand.nextInt(1000);
 
 

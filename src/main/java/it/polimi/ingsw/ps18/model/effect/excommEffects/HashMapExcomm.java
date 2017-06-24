@@ -4,9 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HashMapExcomm.
+ */
 public class HashMapExcomm {
+	
+	/**
+	 * The geneffetti.
+	 */
 	private Map<String,ExcommEffects> geneffetti = new HashMap<>();
 	
+	/**
+	 * Instantiates a new hash map excomm.
+	 */
 	public HashMapExcomm(){
 		geneffetti.put("MalusMP", new MalusMP());
 		geneffetti.put("MalusCoins", new MalusCoins());
@@ -33,6 +44,13 @@ public class HashMapExcomm {
 
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public ExcommEffects geteffect(String a){
 		return geneffetti.get(a);
 	}

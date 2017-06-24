@@ -10,10 +10,25 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ActProduction.
+ */
 public class ActProduction extends Observable implements FinalEffect, HarvestEffect, ProductionEffect, QuickEffect {
+	
+	/**
+	 * The name.
+	 */
 	private String name = "activate production";
+	
+	/**
+	 * The quantity.
+	 */
 	private int quantity;
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
@@ -21,11 +36,17 @@ public class ActProduction extends Observable implements FinalEffect, HarvestEff
 		notifyObservers(new ParamMessage("actProduction",quantity));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -34,6 +55,8 @@ public class ActProduction extends Observable implements FinalEffect, HarvestEff
 	}
 	
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {

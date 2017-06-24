@@ -9,13 +9,27 @@ import java.util.Random;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class VictoryPointsTest.
  *
+ * @author luca-grella
  */
 public class VictoryPointsTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The a.
+	 */
 	int a = rand.nextInt(1000);
+	
+	/**
+	 * The b.
+	 */
 	int b = rand.nextInt(1000);
 
 	/**

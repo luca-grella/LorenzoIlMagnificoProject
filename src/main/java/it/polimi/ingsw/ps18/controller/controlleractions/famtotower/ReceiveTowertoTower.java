@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+// TODO: Auto-generated Javadoc
 /**
  * Receives the tower's index chosen by the current player.
  * 
@@ -20,13 +21,19 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  *
  */
 public class ReceiveTowertoTower implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	private int index;
 	
 	/**
-	 * 
-	 * if this method's controls work, the player goes to the floor choice
-	 * else, he returns to the tower choice
-	 * @param game <br> instance of the game setup and flow
+	 * if this method's controls work, the player goes to the floor choice else,
+	 * he returns to the tower choice.
+	 *
+	 * @param game
+	 *            <br>
+	 *            instance of the game setup and flow
 	 */
 	@Override
 	public void act(GameLogic game) {
@@ -75,7 +82,10 @@ public class ReceiveTowertoTower implements ActionChoice {
 	}
 
 	/**
-	 * @param index the index to set
+	 * Sets the index.
+	 *
+	 * @param index
+	 *            the index to set
 	 */
 	@Override
 	public void setIndex(int index) {

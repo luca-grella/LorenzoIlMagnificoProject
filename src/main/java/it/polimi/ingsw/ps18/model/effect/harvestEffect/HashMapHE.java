@@ -12,9 +12,20 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HashMapHE.
+ */
 public class HashMapHE {
+    
+    /**
+	 * The gen H effects.
+	 */
     private Map<String,HarvestEffect> genHEffects = new HashMap<>();
 	
+	/**
+	 * Instantiates a new hash map HE.
+	 */
 	public HashMapHE(){
 		genHEffects.put("AddWood", new addWood());
 		genHEffects.put("AddStone", new addRock());
@@ -26,6 +37,13 @@ public class HashMapHE {
 		genHEffects.put("AddPV", new addVP());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public HarvestEffect geteffect(String a){
 		return genHEffects.get(a);
 	}

@@ -19,11 +19,33 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PurpleC.
+ */
 public class PurpleC extends Cards {
+	
+	/**
+	 * The secondary cost.
+	 */
 	private Stats secondaryCost;
+	
+	/**
+	 * The min MP.
+	 */
 	private long minMP;
+	
+	/**
+	 * The fineffect.
+	 */
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new purple C.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public PurpleC(Integer i) {
 		JSONParser parser = new JSONParser();
 		HashMapQE mapQE = new HashMapQE();
@@ -58,6 +80,16 @@ public class PurpleC extends Cards {
 		}
 	}
 	
+	/**
+	 * Adds the F effects.
+	 *
+	 * @param feffects
+	 *            the feffects
+	 * @param feffectvalues
+	 *            the feffectvalues
+	 * @param map
+	 *            the map
+	 */
 	private void addFEffects(JSONArray feffects, JSONArray feffectvalues, HashMapFE map) {
 		for(int count=0; count<feffects.size(); count++){
         	if(feffects.get(count)!=null){
@@ -72,6 +104,16 @@ public class PurpleC extends Cards {
 	}
 
 
+	/**
+	 * Adds the Q effects.
+	 *
+	 * @param qeffects
+	 *            the qeffects
+	 * @param qeffectvalues
+	 *            the qeffectvalues
+	 * @param map
+	 *            the map
+	 */
 	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues, HashMapQE map) {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){
@@ -84,12 +126,30 @@ public class PurpleC extends Cards {
         }
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(QuickEffect e, long quantity){
 		QuickEffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getEffects()).add(a);	
     }
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(FinalEffect e, long quantity){
 		FinalEffect a = e;
 		a.setQuantity((int) quantity);
@@ -104,7 +164,13 @@ public class PurpleC extends Cards {
 //		}	
 //	}
 	
-	private void setCosts(JSONArray costs){
+	/**
+ * Sets the costs.
+ *
+ * @param costs
+ *            the new costs
+ */
+private void setCosts(JSONArray costs){
 		if(this.minMP != 0){
 			JSONArray cost1 = new JSONArray();
 			JSONArray cost2 = new JSONArray();
@@ -125,6 +191,9 @@ public class PurpleC extends Cards {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString(int)
+	 */
 	@Override
 	public String toString(int count){
 		StringBuilder builder = new StringBuilder();
@@ -152,6 +221,9 @@ public class PurpleC extends Cards {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -181,35 +253,52 @@ public class PurpleC extends Cards {
 	
 	
 	/**
+	 * Gets the fineffect.
+	 *
 	 * @return the fineffect
 	 */
 	public List<FinalEffect> getFineffect() {
 		return fineffect;
 	}
+	
 	/**
-	 * @param fineffect the fineffect to set
+	 * Sets the fineffect.
+	 *
+	 * @param fineffect
+	 *            the fineffect to set
 	 */
 	public void setFineffect(List<FinalEffect> fineffect) {
 		this.fineffect = fineffect;
 	}
 
 	/**
+	 * Gets the min MP.
+	 *
 	 * @return the minMP
 	 */
 	public int getMinMP() {
 		return (int) minMP;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasHarvest()
+	 */
 	@Override
 	public boolean hasHarvest() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasProduction()
+	 */
 	@Override
 	public boolean hasProduction() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasFinal()
+	 */
 	@Override
 	public boolean hasFinal() {
 		if(fineffect.isEmpty()){
@@ -218,6 +307,9 @@ public class PurpleC extends Cards {
 		return true;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasPermanent()
+	 */
 	@Override
 	public boolean hasPermanent() {
 		return false;

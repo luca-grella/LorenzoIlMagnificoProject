@@ -15,11 +15,33 @@ import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforMP;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforVP;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Excommunications.
+ */
 public class Excommunications {
+	
+	/**
+	 * The effects.
+	 */
 	public List<ExcommEffects> effects = new ArrayList<>();
+	
+	/**
+	 * The id.
+	 */
 	private long ID;
+	
+	/**
+	 * The period.
+	 */
 	private long period;
 
+	/**
+	 * Instantiates a new excommunications.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public Excommunications(Integer i){
 		JSONParser parser = new JSONParser();
 		HashMapExcomm mapExcomm = new HashMapExcomm();
@@ -46,6 +68,16 @@ public class Excommunications {
 
 	
 	
+	/**
+	 * Adds the effects.
+	 *
+	 * @param eeffects
+	 *            the eeffects
+	 * @param eeffectvalues
+	 *            the eeffectvalues
+	 * @param mapExcomm
+	 *            the map excomm
+	 */
 	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm mapExcomm){
 		ExcommEffects effect;
 		JSONArray valueffect;
@@ -80,6 +112,15 @@ public class Excommunications {
 	
 	
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(ExcommEffects e, long quantity){
 		ExcommEffects a = e;
 		a.setQuantity((int) quantity);
@@ -87,6 +128,13 @@ public class Excommunications {
     }
 	
 
+	/**
+	 * To string.
+	 *
+	 * @param pos
+	 *            the pos
+	 * @return the string
+	 */
 	public String toString(int pos){
 		StringBuilder builder = new StringBuilder();
 		builder.append("Card number " + pos + ":\n"
@@ -101,6 +149,9 @@ public class Excommunications {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -118,6 +169,8 @@ public class Excommunications {
 
 
 	/**
+	 * Gets the id.
+	 *
 	 * @return the iD
 	 */
 	public long getID() {
@@ -125,13 +178,18 @@ public class Excommunications {
 	}
 
 	/**
-	 * @param iD the iD to set
+	 * Sets the id.
+	 *
+	 * @param iD
+	 *            the iD to set
 	 */
 	public void setID(long iD) {
 		ID = iD;
 	}
 	
 	/**
+	 * Gets the period.
+	 *
 	 * @return the period
 	 */
 	public long getPeriod() {
@@ -139,13 +197,18 @@ public class Excommunications {
 	}
 
 	/**
-	 * @param period the period to set
+	 * Sets the period.
+	 *
+	 * @param period
+	 *            the period to set
 	 */
 	public void setPeriod(long period) {
 		this.period = period;
 	}
 	
 	/**
+	 * Gets the effects.
+	 *
 	 * @return the effects
 	 */
 	public List<ExcommEffects> getEffects() {
@@ -153,13 +216,21 @@ public class Excommunications {
 	}
 
 	/**
-	 * @param effects the effects to set
+	 * Sets the effects.
+	 *
+	 * @param effects
+	 *            the effects to set
 	 */
 	public void setEffects(List<ExcommEffects> effects) {
 		this.effects = effects;
 	}
 	
 
+	/**
+	 * Checks for effect.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasEffect() {
 		if(effects.isEmpty()){
 			return false;

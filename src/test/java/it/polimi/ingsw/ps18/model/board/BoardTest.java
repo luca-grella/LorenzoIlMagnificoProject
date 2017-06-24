@@ -7,9 +7,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class BoardTest.
  *
+ * @author luca-grella
  */
 public class BoardTest {
 

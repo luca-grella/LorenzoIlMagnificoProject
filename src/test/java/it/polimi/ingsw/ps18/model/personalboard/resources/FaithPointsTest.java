@@ -6,18 +6,35 @@ import java.util.Random;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class FaithPointsTest.
  *
+ * @author luca-grella
  */
 
 public class FaithPointsTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The a.
+	 */
 	int a = rand.nextInt(1000);
+	
+	/**
+	 * The b.
+	 */
 	int b = rand.nextInt(1000);
 
 	
 	
+	/**
+	 * Test faith points int.
+	 */
 	@Test
 	public void testFaithPointsInt() {
 		FaithPoints tester = new FaithPoints(a);
@@ -26,6 +43,9 @@ public class FaithPointsTest {
 			fail("errore in FaithPoints (int)");
 		}}
 
+	/**
+	 * Test faith points long.
+	 */
 	@Test
 	public void testFaithPointsLong() {
 		FaithPoints tester = new FaithPoints(a);
@@ -34,6 +54,9 @@ public class FaithPointsTest {
 			fail("errore in FaithPoints (long)");
 		}}
 
+	/**
+	 * Test get quantity.
+	 */
 	@Test
 	public void testGetQuantity() {
 		FaithPoints tester = new FaithPoints(a);
@@ -42,6 +65,9 @@ public class FaithPointsTest {
 			fail("errore nella getQuantity");
 		}}
 
+	/**
+	 * Test add quantity.
+	 */
 	@Test
 	public void testAddQuantity() {
 		FaithPoints tester = new FaithPoints(a);

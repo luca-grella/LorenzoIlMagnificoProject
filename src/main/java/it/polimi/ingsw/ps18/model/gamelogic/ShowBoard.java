@@ -11,12 +11,28 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShowBoard.
+ */
 public class ShowBoard extends Observable {
 	
+	/**
+	 * Instantiates a new show board.
+	 *
+	 * @param view
+	 *            the view
+	 */
 	public ShowBoard(PBoardView view){
 		addObserver(view);
 	}
 	
+	/**
+	 * Show market.
+	 *
+	 * @param market
+	 *            the market
+	 */
 	public void showMarket(List<MarketCell> market){
 		StringBuilder builder = new StringBuilder();
 		for(int i=0; i<market.size(); i++){
@@ -28,38 +44,85 @@ public class ShowBoard extends Observable {
 		
 	}
 	
+	/**
+	 * Show all towers.
+	 *
+	 * @param board
+	 *            the board
+	 */
 	public void showAllTowers(Board board) {
 		notifyLogView(board.toStringTowers());
 		
 	}
 	
+	/**
+	 * Show all towerswith zoom.
+	 *
+	 * @param board
+	 *            the board
+	 */
 	public void showAllTowerswithZoom(Board board){
 		notifyLogView(board.toStringTowers());
 		notifyStatusView("Tower Choice");
 	}
 	
+	/**
+	 * Show tower cell.
+	 *
+	 * @param board
+	 *            the board
+	 * @param i
+	 *            the i
+	 */
 	public void showTowerCell(Board board, int i){
 		List<Tower> towers = board.getTowers();
 		Tower tower = towers.get(i);
 		notifyLogView(tower.toString(i));
 	}
 	
+	/**
+	 * Show council.
+	 *
+	 * @param board
+	 *            the board
+	 */
 	public void showCouncil(Board board){
 		notifyLogView(board.toStringCouncil());
 	}
 	
+	/**
+	 * Show harvest.
+	 *
+	 * @param board
+	 *            the board
+	 */
 	public void showHarvest(Board board){
 		notifyLogView(board.toStringHarvest());
 	}
 	
+	/**
+	 * Show production.
+	 *
+	 * @param board
+	 *            the board
+	 */
 	public void showProduction(Board board){
 		notifyLogView(board.toStringProduction());
 	}
 	
+	/**
+	 * Choose player.
+	 */
 	public void choosePlayer(){
 		notifyStatusView("Player Choice");
 	}
 	
+	/**
+	 * Show player.
+	 *
+	 * @param player
+	 *            the player
+	 */
 	public void showPlayer(PBoard player){
 		notifyLogView(player.toStringResources());
 		notifyLogView(player.toStringCards());
@@ -67,11 +130,23 @@ public class ShowBoard extends Observable {
 	
 	
 	
+	/**
+	 * Notify log view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyLogView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}
 	
+	/**
+	 * Notify status view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyStatusView(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));

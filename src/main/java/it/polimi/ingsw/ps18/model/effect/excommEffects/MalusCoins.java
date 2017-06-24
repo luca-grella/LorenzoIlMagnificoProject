@@ -2,14 +2,28 @@ package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MalusCoins.
+ */
 public class MalusCoins implements ExcommEffects {
 
 
+	/**
+	 * The malus quantity.
+	 */
 	private int malusQuantity;
+	
+	/**
+	 * The name.
+	 */
 	private String name = "Coin";
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 	
@@ -18,12 +32,17 @@ public class MalusCoins implements ExcommEffects {
 }
 
 	/**
+	 * Gets the malus quantity.
+	 *
 	 * @return the malusQuantity
 	 */
 	public int getMalusQuantity() {
 		return malusQuantity;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		if(malusQuantity>=0){
@@ -43,6 +62,11 @@ public class MalusCoins implements ExcommEffects {
 	}
 	
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}

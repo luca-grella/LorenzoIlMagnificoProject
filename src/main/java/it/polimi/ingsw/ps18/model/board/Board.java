@@ -17,6 +17,7 @@ import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.BoardView;
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a game board, composed of: <br>
  * <ul>
@@ -27,38 +28,69 @@ import it.polimi.ingsw.ps18.view.BoardView;
  * <li>Production cells
  * <li>Excommunication cells
  * </ul>
- * 
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.Tower}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.Cell}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell}
- * @see
- * {@link import it.polimi.ingsw.ps18.model.cards.Excommunications}
- * 
+ * .
+ *
  * @author yazan-matar
  * @author Francesco-Musio
- *
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.Tower}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.Cell}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell}
+ * @see {@link import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell}
+ * @see {@link import it.polimi.ingsw.ps18.model.cards.Excommunications}
  */
 public class Board extends Observable {
+	
+	/**
+	 * The boardview.
+	 */
 	private BoardView boardview;
+	
+	/**
+	 * The nplayer.
+	 */
 	private int nplayer;
+	
+	/**
+	 * The towers.
+	 */
 	private List<Tower> towers = new ArrayList<>();
+	
+	/**
+	 * The market cells.
+	 */
 	private List<MarketCell> marketCells = new ArrayList<>();
+	
+	/**
+	 * The council cells.
+	 */
 	private List<CouncilCell> councilCells = new ArrayList<>();
+	
+	/**
+	 * The harvest cells.
+	 */
 	private List<HarvCell> harvestCells = new ArrayList<>();
+	
+	/**
+	 * The production cells.
+	 */
 	private List<ProdCell> productionCells = new ArrayList<>();
+	
+	/**
+	 * The excomm cells.
+	 */
 	private List<Excommunications> excommCells = new ArrayList<>(); 
 	
+	/**
+	 * Instantiates a new board.
+	 *
+	 * @param mcontroller
+	 *            the mcontroller
+	 * @param nplayer
+	 *            the nplayer
+	 */
 	public Board (MainController mcontroller, int nplayer){
 		boardview = new BoardView(mcontroller);
 		addObserver(boardview);
@@ -80,9 +112,17 @@ public class Board extends Observable {
 			this.excommCells.add(null);
 		}
 		
+		
+		
 		notifyLogBoardView("Setup Board Terminated.");
 	}
 	
+	/**
+	 * Notify log board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyLogBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
@@ -91,7 +131,7 @@ public class Board extends Observable {
 	
 	/**
 	 * Cleans the board for the next game period. <br>
-	 * Excommunications cells remains intact.
+	 * Excommunication cells remains intact.
 	 * 
 	 */
 	public void refreshBoard(){
@@ -112,6 +152,22 @@ public class Board extends Observable {
 		
 	}
 	
+	/**
+	 * Checks the Market status.
+	 *
+	 * @return a boolean value:
+	 *         <ul>
+	 *         <li>True:
+	 *         <ul>
+	 *         <li>Market is full, meaning that all of its cells are occupied by
+	 *         a Family Member (regardless of the Family Member player color)
+	 *         </ul>
+	 *         <li>False:
+	 *         <ul>
+	 *         <li>Market contains at least an empty cell
+	 *         </ul>
+	 *         </ul>
+	 */
 	public boolean isFullMarket() {
 		for(int marketIndex=0; marketIndex<marketCells.size(); marketIndex++){
 			MarketCell marketCell = marketCells.get(marketIndex);
@@ -124,9 +180,26 @@ public class Board extends Observable {
 	
 	
 	/**
-	 * Controlla se c'e' gia' un familiare del tuo colore nell'ArrayList
-	 * @param pBoardFM
-	 * @return
+	 * Checks the legality of the current player's action.
+	 * @param pBoardFM is the family member chosen by the player
+	 * @return a boolean value:
+	 * <ul>
+	 * 	<li>True:
+	 * 		<ul>
+	 * 			<li> Harvest is empty
+	 * 			<li> Harvest contains some family Member, but there's no Family Member
+	 * 				 of the current player's color
+	 * 			<li> Harvest contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is neutral
+	 * 			<li> Harvest contains a Family Member that belongs to the current player
+	 * 				 that's neutral
+	 * 		</ul>
+	 * 	<li> False:
+	 * 		<ul>
+	 * 			<li> Harvest contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is not neutral
+	 * 		</ul>
+	 * </ul>
 	 */
 	public boolean isLegalHarv(FMember pBoardFM){
 		if(harvestCells.isEmpty()){
@@ -151,7 +224,28 @@ public class Board extends Observable {
 		}
 	}
 
-	
+	/**
+	 * Checks the legality of the current player's action.
+	 * @param pBoardFM is the family member chosen by the player
+	 * @return a boolean value:
+	 * <ul>
+	 * 	<li>True:
+	 * 		<ul>
+	 * 			<li> Production is empty
+	 * 			<li> Production contains some family Member, but there's no Family Member
+	 * 				 of the current player's color
+	 * 			<li> Production contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is neutral
+	 * 			<li> Production contains a Family Member that belongs to the current player
+	 * 				 that's neutral
+	 * 		</ul>
+	 * 	<li> False:
+	 * 		<ul>
+	 * 			<li> Production contains a Family Member that belongs to the current player
+	 * 				 that's not neutral and the chosen Family Member is not neutral
+	 * 		</ul>
+	 * </ul>
+	 */
 	public boolean isLegalProd(FMember pBoardFM){
 		if(productionCells.isEmpty()){
 			return true;
@@ -174,8 +268,19 @@ public class Board extends Observable {
 		}
 	}
 
-	/*
-	 * Funziona solo se l'accesso all'ArrayList e' sequenziale, cosi' come tutti i controlli a monte
+	/**
+	 * Inserts a FMember in Harvest:<br>
+	 * There are two cases:
+	 * 		<ol>
+	 * 			<li> Harvest is empty, meaning that the player can access only the first Cell of the ArrayList (malus missing).
+	 * 			<li> Harvest is not empty, meaning that the player can access only the Cells containing a malus.
+	 * 		</ol>
+	 * 
+	 * In both cases, the method uses the Harvest Cell method insertFM, that places a FMember in a Cell.
+	 * 
+	 * @param fam
+	 * FMember chosen for the current action
+	 * @return the FMember value considering a possible Harvest malus
 	 */
 	public int insertFMHarv(FMember fam){
 		HarvCell harvCell;
@@ -192,7 +297,20 @@ public class Board extends Observable {
 		} return (fam.getValue() - harvCell.getMalus());
 	}
 	
-	
+	/**
+	 * Inserts a FMember in Production:<br>
+	 * There are two cases:
+	 * 		<ol>
+	 * 			<li> Production is empty, meaning that the player can access only the first Cell of the ArrayList (malus missing).
+	 * 			<li> Production is not empty, meaning that the player can access only the Cells containing a malus,
+	 * 		</ol>
+	 * 
+	 * In both cases, the method uses the Production Cell method insertFM, that places a FMember in a Cell.
+	 * 
+	 * @param fam
+	 * FMember chosen for the current action.
+	 * @return the FMember value considering a possible Harvest malus.
+	 */
 	public int insertFMProd(FMember fam){
 		ProdCell prodCell;
 		if(productionCells.isEmpty()){
@@ -208,6 +326,11 @@ public class Board extends Observable {
 		} return (fam.getValue() - prodCell.getMalus());
 	}
 	
+	/**
+	 * To string towers.
+	 *
+	 * @return the string
+	 */
 	/*
 	 * DEFINE LATER
 	 */
@@ -226,6 +349,11 @@ public class Board extends Observable {
 		return builder.toString();
 	}
 	
+	/**
+	 * To string council.
+	 *
+	 * @return the string
+	 */
 	public String toStringCouncil(){
 		StringBuilder builder = new StringBuilder();
 		if(this.councilCells.size()==0){
@@ -239,6 +367,11 @@ public class Board extends Observable {
 		return builder.toString();
 	}
 	
+	/**
+	 * To string harvest.
+	 *
+	 * @return the string
+	 */
 	public String toStringHarvest(){
 		StringBuilder builder = new StringBuilder();
 		if(this.harvestCells.isEmpty()){
@@ -252,6 +385,11 @@ public class Board extends Observable {
 		return builder.toString();
 	}
 	
+	/**
+	 * To string production.
+	 *
+	 * @return the string
+	 */
 	public String toStringProduction(){
 		StringBuilder builder = new StringBuilder();
 		if(this.productionCells.isEmpty()){
@@ -267,6 +405,8 @@ public class Board extends Observable {
 	
 
 	/**
+	 * Gets the towers.
+	 *
 	 * @return the towers
 	 */
 	public List<Tower> getTowers() {
@@ -274,13 +414,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param towers the towers to set
+	 * Sets the towers.
+	 *
+	 * @param towers
+	 *            the towers to set
 	 */
 	public void setTowers(List<Tower> towers) {
 		this.towers = towers;
 	}
 
 	/**
+	 * Gets the market cells.
+	 *
 	 * @return the marketCells
 	 */
 	public List<MarketCell> getMarketCells() {
@@ -288,13 +433,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param marketCells the marketCells to set
+	 * Sets the market cells.
+	 *
+	 * @param marketCells
+	 *            the marketCells to set
 	 */
 	public void setMarketCells(List<MarketCell> marketCells) {
 		this.marketCells = marketCells;
 	}
 
 	/**
+	 * Gets the council cells.
+	 *
 	 * @return the councilCells
 	 */
 	public List<CouncilCell> getCouncilCells() {
@@ -302,13 +452,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param councilCells the councilCells to set
+	 * Sets the council cells.
+	 *
+	 * @param councilCells
+	 *            the councilCells to set
 	 */
 	public void setCouncilCells(List<CouncilCell> councilCells) {
 		this.councilCells = councilCells;
 	}
 
 	/**
+	 * Gets the harvest cells.
+	 *
 	 * @return the harvestCells
 	 */
 	public List<HarvCell> getHarvestCells() {
@@ -316,13 +471,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param harvestCells the harvestCells to set
+	 * Sets the harvest cells.
+	 *
+	 * @param harvestCells
+	 *            the harvestCells to set
 	 */
 	public void setHarvestCells(List<HarvCell> harvestCells) {
 		this.harvestCells = harvestCells;
 	}
 
 	/**
+	 * Gets the production cells.
+	 *
 	 * @return the productionCells
 	 */
 	public List<ProdCell> getProductionCells() {
@@ -330,13 +490,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param productionCells the productionCells to set
+	 * Sets the production cells.
+	 *
+	 * @param productionCells
+	 *            the productionCells to set
 	 */
 	public void setProductionCells(List<ProdCell> productionCells) {
 		this.productionCells = productionCells;
 	}
 
 	/**
+	 * Gets the excomm cells.
+	 *
 	 * @return the excommCells
 	 */
 	public List<Excommunications> getExcommCells() {
@@ -344,13 +509,18 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param excommCells the excommCells to set
+	 * Sets the excomm cells.
+	 *
+	 * @param excommCells
+	 *            the excommCells to set
 	 */
 	public void setExcommCells(List<Excommunications> excommCells) {
 		this.excommCells = excommCells;
 	}
 
 	/**
+	 * Gets the nplayer.
+	 *
 	 * @return the nplayer
 	 */
 	public int getNplayer() {
@@ -358,7 +528,10 @@ public class Board extends Observable {
 	}
 
 	/**
-	 * @param nplayer the nplayer to set
+	 * Sets the nplayer.
+	 *
+	 * @param nplayer
+	 *            the nplayer to set
 	 */
 	public void setNplayer(int nplayer) {
 		this.nplayer = nplayer;

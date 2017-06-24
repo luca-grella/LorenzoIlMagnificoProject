@@ -10,9 +10,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class ConcreteTowerTest.
  *
+ * @author luca-grella
  */
 public class ConcreteTowerTest {
 

@@ -22,9 +22,11 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class CellTest.
  *
+ * @author luca-grella
  */
 
 
@@ -32,10 +34,15 @@ public class CellTest {
 
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#Cell(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * Test method for
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#Cell(org.json.simple.JSONObject)}.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
 	 */
 	@Test
 	public void testCell() throws FileNotFoundException, IOException, ParseException {
@@ -58,10 +65,15 @@ public class CellTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#activateQEffects(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * Test method for
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#activateQEffects(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
 	 */
 	@Test
 	public void testActivateQEffects() throws FileNotFoundException, IOException, ParseException {
@@ -91,10 +103,15 @@ public class CellTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#insertCard(it.polimi.ingsw.ps18.model.cards.Cards)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * Test method for
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#insertCard(it.polimi.ingsw.ps18.model.cards.Cards)}.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
 	 */
 	@Test
 	public void testInsertCard() throws FileNotFoundException, IOException, ParseException {
@@ -139,10 +156,15 @@ public class CellTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#isEmptyTC()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * Test method for
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#isEmptyTC()}.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
 	 */
 	@Test
 	public void testIsEmptyTC() throws FileNotFoundException, IOException, ParseException {
@@ -168,10 +190,15 @@ public class CellTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#isLegalTC(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * Test method for
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#isLegalTC(int)}.
+	 *
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
 	 */
 	@Test
 	public void testIsLegalTC() throws FileNotFoundException, IOException, ParseException {

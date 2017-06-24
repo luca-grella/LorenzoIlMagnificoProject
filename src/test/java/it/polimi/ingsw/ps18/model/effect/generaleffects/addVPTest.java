@@ -14,9 +14,25 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class addVPTest.
+ */
 public class addVPTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The a.
+	 */
 	int a = rand.nextInt(1000);
+	
+	/**
+	 * The b.
+	 */
 	int b = rand.nextInt(1000);
 	
 	/**
@@ -38,6 +54,9 @@ public class addVPTest {
 		}
 	}
 
+	/**
+	 * Test get quantity.
+	 */
 	/*
 	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addVP#getQuantity()}
 	 */
@@ -51,6 +70,9 @@ public class addVPTest {
 		}
 	}
 
+	/**
+	 * Test set quantity.
+	 */
 	/*
 	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addVP#setQuantity()}
 	 */

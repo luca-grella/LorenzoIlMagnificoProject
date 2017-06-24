@@ -25,9 +25,11 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class PBoardTest.
  *
+ * @author luca-grella
  */
 public class PBoardTest {
 

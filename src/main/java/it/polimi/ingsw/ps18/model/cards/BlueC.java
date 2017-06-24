@@ -16,9 +16,23 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BlueC.
+ */
 public class BlueC extends Cards {
+	
+	/**
+	 * The permeffect.
+	 */
 	private List<Permanenteffect> permeffect = new ArrayList<>();
 
+	/**
+	 * Instantiates a new blue C.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public BlueC(Integer i) {
 		JSONParser parser = new JSONParser();
 		HashMapQE mapQE = new HashMapQE(); 
@@ -50,6 +64,16 @@ public class BlueC extends Cards {
 		}
 	}
 	
+	/**
+	 * Adds the Q effects.
+	 *
+	 * @param qeffects
+	 *            the qeffects
+	 * @param qeffectvalues
+	 *            the qeffectvalues
+	 * @param map
+	 *            the map
+	 */
 	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues, HashMapQE map) {
 	    QuickEffect effect;
 		for(int count=0; count<qeffects.size(); count++){
@@ -70,12 +94,29 @@ public class BlueC extends Cards {
         }	
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(QuickEffect e, long quantity){
 		QuickEffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getEffects()).add(a);	
     }
 	
+	/**
+	 * Adds the P effects.
+	 *
+	 * @param peffects
+	 *            the peffects
+	 * @param peffectvalues
+	 *            the peffectvalues
+	 */
 	private void addPEffects(JSONArray peffects, JSONArray peffectvalues){
 		for(int count=0; count<peffects.size(); count++){
 			HashMapPermE map = new HashMapPermE();
@@ -96,32 +137,56 @@ public class BlueC extends Cards {
 		}
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(Permanenteffect e, long quantity){
 		Permanenteffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getPermeffect()).add(a);	
     }
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasHarvest()
+	 */
 	@Override
 	public boolean hasHarvest() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasProduction()
+	 */
 	@Override
 	public boolean hasProduction() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasFinal()
+	 */
 	@Override
 	public boolean hasFinal() {
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasPermanent()
+	 */
 	@Override
 	public boolean hasPermanent() {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString(int)
+	 */
 	@Override
 	public String toString(int count){
 		StringBuilder builder = new StringBuilder();
@@ -145,6 +210,9 @@ public class BlueC extends Cards {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -169,6 +237,8 @@ public class BlueC extends Cards {
 	}
 
 	/**
+	 * Gets the permeffect.
+	 *
 	 * @return the permeffect
 	 */
 	public List<Permanenteffect> getPermeffect() {

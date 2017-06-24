@@ -18,9 +18,20 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReceiveFloortoTower.
+ */
 public class ReceiveFloortoTower implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	private int index;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
@@ -89,7 +100,10 @@ public class ReceiveFloortoTower implements ActionChoice {
 	}
 
 	/**
-	 * @param index the index to set
+	 * Sets the index.
+	 *
+	 * @param index
+	 *            the index to set
 	 */
 	@Override
 	public void setIndex(int index) {

@@ -11,9 +11,20 @@ import it.polimi.ingsw.ps18.model.gamelogic.*;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReceiveSelectionCard.
+ */
 public class ReceiveSelectionCard implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	private int index;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		if(index!=2){
@@ -59,6 +70,9 @@ public class ReceiveSelectionCard implements ActionChoice {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = i;;

@@ -25,9 +25,20 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeGreenCard;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.TakePurpleCard;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeYellowCard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HashMapQE.
+ */
 public class HashMapQE {
+    
+    /**
+	 * The gen Q effects.
+	 */
     private Map<String,QuickEffect> genQEffects = new HashMap<>();
 	
+	/**
+	 * Instantiates a new hash map QE.
+	 */
 	public HashMapQE(){
 		genQEffects.put("AddWood", new addWood());
 		genQEffects.put("AddStone", new addRock());
@@ -54,6 +65,13 @@ public class HashMapQE {
 		genQEffects.put("SalesCoinBlue", new QuickSalesWoodorRockYellow());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public QuickEffect geteffect(String a){
 		return genQEffects.get(a);
 	}

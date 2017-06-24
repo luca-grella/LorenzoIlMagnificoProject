@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps18.model.board.boardcells;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a council cell.
  * When a FMember is placed, the player can choose a quick effect.
@@ -10,8 +11,23 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
  * @author yazan-matar
  */
 public class CouncilCell { 
+	
+	/**
+	 * The council cell FM.
+	 */
 	private FMember councilCellFM;
+	
+	/**
+	 * The council cell value.
+	 */
 	private int councilCellValue;
+	
+	/**
+	 * Instantiates a new council cell.
+	 *
+	 * @param pBoardFM
+	 *            the board FM
+	 */
 	/*
 	 * TODO: QUESTO COSTRUTTORE ROVINA I CONTROLLI DEL COUNCIL
 	 * Ho creato un secondo costruttore per risolvere, ma andrebbe rivista questa classe
@@ -21,12 +37,16 @@ public class CouncilCell {
 			this.councilCellValue = GeneralParameters.baseValueCouncilCells;
 	}
 	
+	/**
+	 * Instantiates a new council cell.
+	 */
 	public CouncilCell(){
 		this.councilCellValue = GeneralParameters.baseValueCouncilCells;
 	}
 	
 	/**
-	 * Checks the cell's state (Empty/Full)
+	 * Checks the cell's state (Empty/Full).
+	 *
 	 * @return a boolean state
 	 */
 	
@@ -38,6 +58,14 @@ public class CouncilCell {
 			return false;
 		}	
 	}
+	
+	/**
+	 * Checks if is legal CC.
+	 *
+	 * @param pBoardFM
+	 *            the board FM
+	 * @return true, if is legal CC
+	 */
 	public boolean isLegalCC(FMember pBoardFM) {
 		if(pBoardFM.getValue() >= this.getCouncilCellValue()){
 			return true;
@@ -47,6 +75,13 @@ public class CouncilCell {
 	
 	
 	
+	/**
+	 * To string.
+	 *
+	 * @param index
+	 *            the index
+	 * @return the string
+	 */
 	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -69,6 +104,8 @@ public class CouncilCell {
 	
 
 	/**
+	 * Gets the council cell FM.
+	 *
 	 * @return the councilCellFM
 	 */
 	public FMember getCouncilCellFM() {
@@ -76,13 +113,18 @@ public class CouncilCell {
 	}
 
 	/**
-	 * @param councilCellFM the councilCellFM to set
+	 * Sets the council cell FM.
+	 *
+	 * @param councilCellFM
+	 *            the councilCellFM to set
 	 */
 	public void setCouncilCellFM(FMember councilCellFM) {
 		this.councilCellFM = councilCellFM;
 	}
 
 	/**
+	 * Gets the council cell value.
+	 *
 	 * @return the councilCellValue
 	 */
 	public int getCouncilCellValue() {
@@ -90,7 +132,10 @@ public class CouncilCell {
 	}
 
 	/**
-	 * @param councilCellValue the councilCellValue to set
+	 * Sets the council cell value.
+	 *
+	 * @param councilCellValue
+	 *            the councilCellValue to set
 	 */
 	public void setCouncilCellValue(int councilCellValue) {
 		this.councilCellValue = councilCellValue;

@@ -2,15 +2,65 @@ package it.polimi.ingsw.ps18.model.personalboard.resources;
 
 import org.json.simple.JSONArray;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Stats.
+ */
 public class Stats {
+	
+	/**
+	 * The wood.
+	 */
 	private Resources wood;
+	
+	/**
+	 * The rock.
+	 */
 	private Resources rock;
+	
+	/**
+	 * The coin.
+	 */
 	private Resources coin;
+	
+	/**
+	 * The servant.
+	 */
 	private Resources servant;
+	
+	/**
+	 * The fp.
+	 */
 	private Points fp;
+	
+	/**
+	 * The mp.
+	 */
 	private Points mp;
+	
+	/**
+	 * The vp.
+	 */
 	private Points vp;
 	
+	/**
+	 * Instantiates a new stats.
+	 *
+	 * @param wood
+	 *            the wood
+	 * @param rock
+	 *            the rock
+	 * @param coin
+	 *            the coin
+	 * @param servant
+	 *            the servant
+	 * @param fp
+	 *            the fp
+	 * @param mp
+	 *            the mp
+	 * @param vp
+	 *            the vp
+	 */
 	public Stats(int wood, int rock, int coin, int servant, int fp, int mp, int vp){
 		this.wood = new Wood(wood);
 		this.rock = new Rock(rock);
@@ -21,6 +71,12 @@ public class Stats {
 		this.vp = new VictoryPoints(vp);
 	}
 	
+    /**
+	 * Instantiates a new stats.
+	 *
+	 * @param costs
+	 *            the costs
+	 */
     public Stats(JSONArray costs) {
 		this.wood = new Wood((long) costs.get(0));
 		this.rock = new Rock((long) costs.get(1));
@@ -31,6 +87,11 @@ public class Stats {
 		this.vp = new VictoryPoints((long) costs.get(4));
 	}
     
+    /**
+	 * Checks if is empty.
+	 *
+	 * @return true, if is empty
+	 */
     public boolean isEmpty(){
     	if(this.wood.getQuantity() != 0){
 			return false;
@@ -56,6 +117,12 @@ public class Stats {
     	return true;
     }
     
+    /**
+	 * Adds the stats.
+	 *
+	 * @param adder
+	 *            the adder
+	 */
     public void addStats(Stats adder){
     	addWood(adder.getWood());
     	addRock(adder.getRock());
@@ -66,6 +133,12 @@ public class Stats {
     	addVP(adder.getVP());
     }
     
+    /**
+	 * Sub stats.
+	 *
+	 * @param subber
+	 *            the subber
+	 */
     public void subStats(Stats subber){
     	addWood(-(subber.getWood()));
     	addRock(-(subber.getRock()));
@@ -76,6 +149,13 @@ public class Stats {
     	addVP(-(subber.getVP()));
     }
     
+    /**
+	 * Enough stats.
+	 *
+	 * @param neededStats
+	 *            the needed stats
+	 * @return true, if successful
+	 */
     public boolean enoughStats(Stats neededStats){
 		if(this.wood.getQuantity() < neededStats.getWood()){
 			return false;
@@ -101,6 +181,9 @@ public class Stats {
     	return true;
     }
     
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     public String toString(){
     	StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -115,6 +198,11 @@ public class Stats {
 		return builder.toString();
     }
     
+    /**
+	 * To string cost.
+	 *
+	 * @return the string
+	 */
     public String toStringCost(){
     	StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -146,58 +234,135 @@ public class Stats {
 
 
 
+	/**
+	 * Adds the wood.
+	 *
+	 * @param value
+	 *            the value
+	 */
 	public void addWood(int value){
 		this.wood.addQuantity(value);
 	}
 	
+    /**
+	 * Adds the rock.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addRock(int value){
 		this.rock.addQuantity(value);
 	}
     
+    /**
+	 * Adds the coins.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addCoins(int value){
 		this.coin.addQuantity(value);
 	}
     
+    /**
+	 * Adds the servants.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addServants(int value){
 		this.servant.addQuantity(value);
 	}
     
+    /**
+	 * Adds the FP.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addFP(int value){
 		this.fp.addQuantity(value);
 	}
     
+    /**
+	 * Adds the VP.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addVP(int value){
 		this.vp.addQuantity(value);
 	}
     
+    /**
+	 * Adds the MP.
+	 *
+	 * @param value
+	 *            the value
+	 */
     public void addMP(int value){
 		this.mp.addQuantity(value);
 	}
     
+    /**
+	 * Gets the wood.
+	 *
+	 * @return the wood
+	 */
     public int getWood(){
     	return this.wood.getQuantity();
     }
     
+    /**
+	 * Gets the rock.
+	 *
+	 * @return the rock
+	 */
     public int getRock(){
     	return this.rock.getQuantity();
     }
     
+    /**
+	 * Gets the coin.
+	 *
+	 * @return the coin
+	 */
     public int getCoin(){
     	return this.coin.getQuantity();
     }
     
+    /**
+	 * Gets the servants.
+	 *
+	 * @return the servants
+	 */
     public int getServants(){
     	return this.servant.getQuantity();
     }
     
+    /**
+	 * Gets the fp.
+	 *
+	 * @return the fp
+	 */
     public int getFP(){
     	return this.fp.getQuantity();
     }
     
+    /**
+	 * Gets the mp.
+	 *
+	 * @return the mp
+	 */
     public int getMP(){
     	return this.mp.getQuantity();
     }
     
+    /**
+	 * Gets the vp.
+	 *
+	 * @return the vp
+	 */
     public int getVP(){
     	return this.vp.getQuantity();
     }

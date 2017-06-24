@@ -11,14 +11,22 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author yaz
+ * The Class ReceiveFamtoCouncil.
  *
+ * @author yaz
  */
 public class ReceiveFamtoCouncil implements ActionChoice {
+    
+    /**
+	 * The index.
+	 */
     int index;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
@@ -42,7 +50,10 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 	}
 		
 	/**
-	 * @param index the index to set
+	 * Sets the index.
+	 *
+	 * @param index
+	 *            the index to set
 	 */
 	@Override
 	public void setIndex(int index) {

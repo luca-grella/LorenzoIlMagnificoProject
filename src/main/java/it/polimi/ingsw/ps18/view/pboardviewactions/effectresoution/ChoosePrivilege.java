@@ -8,16 +8,34 @@ import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ChoosePrivilege.
+ */
 public class ChoosePrivilege extends Observable implements PBViewAction {
+	
+	/**
+	 * The input.
+	 */
 	Scanner input = new Scanner(System.in);
+	
+	/**
+	 * The index.
+	 */
 	private int index = -1;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
+	 */
 	@Override
 	public void setObserver(MainController controller) {
 		addObserver(controller);
 
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
+	 */
 	@Override
 	public void act() {
 		System.out.println("Choose which Privilege you want to take:\n"
@@ -35,11 +53,22 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 
 	}
 	
+	/**
+	 * Notify param main controller.
+	 *
+	 * @param msg
+	 *            the msg
+	 * @param i
+	 *            the i
+	 */
 	private void notifyParamMainController(String msg,int i){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,i));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		this.index = number;

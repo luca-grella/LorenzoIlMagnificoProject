@@ -13,22 +13,32 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Receives a Family Member chosen by the current player and moves to the activation of the Harvest Cell
- * 
- * @author yazan-matar
+ * Receives a Family Member chosen by the current player and moves to the
+ * activation of the Harvest Cell.
  *
+ * @author yazan-matar
  */
 public class ReceiveFamtoHarvest implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	int index;
 	
 	
 	/**
-	 * Controls if the chosen Family Member is empty (meaning that it was already used in the previous turns):
-	 * <ul> 
-	 * 	<li> If the Family Member is empty, the method returns to the Family Member choice.
-	   	<li> Else, it moves to the activation of the Harvest Cell.
+	 * Controls if the chosen Family Member is empty (meaning that it was
+	 * already used in the previous turns):
+	 * <ul>
+	 * <li>If the Family Member is empty, the method returns to the Family
+	 * Member choice.
+	 * <li>Else, it moves to the activation of the Harvest Cell.
 	 * </ul>
+	 *
+	 * @param game
+	 *            the game
 	 */
 	@Override
 	public void act(GameLogic game) {
@@ -82,7 +92,10 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 
 
 	/**
-	 * @param index the index to set
+	 * Sets the index.
+	 *
+	 * @param index
+	 *            the index to set
 	 */
 	@Override
 	public void setIndex(int index) {

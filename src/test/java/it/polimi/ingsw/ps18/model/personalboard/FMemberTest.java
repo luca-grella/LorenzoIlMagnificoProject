@@ -11,16 +11,42 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author luca-grella
+ * The Class FMemberTest.
  *
+ * @author luca-grella
  */
 public class FMemberTest {
+	
+	/**
+	 * The rand.
+	 */
 	Random rand  = new Random();
+	
+	/**
+	 * The dicevalue.
+	 */
 	int dicevalue = rand.nextInt(5)+1;
+	
+	/**
+	 * The dicecolor.
+	 */
 	int dicecolor = rand.nextInt(2)+1;
+	
+	/**
+	 * The fmvalue.
+	 */
 	int fmvalue = rand.nextInt(10);
+	
+	/**
+	 * The playercol.
+	 */
 	int playercol = rand.nextInt(3);
+	
+	/**
+	 * The dice.
+	 */
 	Dice dice = new Dice(dicecolor);
 
 	/**

@@ -7,14 +7,23 @@ import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActHarvestwit
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActProductionwithParameter;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
 
+// TODO: Auto-generated Javadoc
 /**
- * Support for the Strategy Pattern that runs the various PBoard's View actions 
- * @author Francesco-Musio
+ * Support for the Strategy Pattern that runs the various PBoard's View actions
+ * .
  *
+ * @author Francesco-Musio
  */
 public class HashMapPBVA {
+    
+    /**
+	 * The gen PBV action.
+	 */
     private static Map<String,PBViewAction> genPBVAction = new HashMap<>();
 	
+	/**
+	 * Inits the.
+	 */
 	public static void init(){
 		genPBVAction.put("Init Player Turn", new PBVAInit());
 		genPBVAction.put("Fam Choice Tower", new ShowChoiceFamtoTower());
@@ -30,6 +39,13 @@ public class HashMapPBVA {
 		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public static PBViewAction geteffect(String a){
 		return genPBVAction.get(a);
 	}

@@ -5,14 +5,22 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
 
+// TODO: Auto-generated Javadoc
 /**
- * Support for the Strategy Pattern that runs the various PBoard's View status 
- * @author Francesco-Musio
+ * Support for the Strategy Pattern that runs the various PBoard's View status .
  *
+ * @author Francesco-Musio
  */
 public class HashMapPBVS {
+	
+	/**
+	 * The gen PBV status.
+	 */
 	private static Map<String,PBViewStatus> genPBVStatus = new HashMap<>();
 	
+	/**
+	 * Inits the.
+	 */
 	public static void init(){
 		genPBVStatus.put("Tower Choice", new ChooseTowertoShow());
 		genPBVStatus.put("Player Choice", new ChoosePlayertoShow());
@@ -23,6 +31,13 @@ public class HashMapPBVS {
 		genPBVStatus.put("Choose Effect", new ChooseEffect());
 	}
 	
+	/**
+	 * Gets the effect.
+	 *
+	 * @param a
+	 *            the a
+	 * @return the effect
+	 */
 	public static PBViewStatus geteffect(String a){
 		return genPBVStatus.get(a);
 	}

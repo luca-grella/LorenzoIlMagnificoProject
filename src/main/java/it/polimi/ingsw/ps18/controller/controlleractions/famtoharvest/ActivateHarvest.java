@@ -7,9 +7,20 @@ import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.*;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ActivateHarvest.
+ */
 public class ActivateHarvest implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	private int index = -1;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		if(index != -1){
@@ -37,6 +48,9 @@ public class ActivateHarvest implements ActionChoice {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = i;

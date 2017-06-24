@@ -3,22 +3,39 @@ package it.polimi.ingsw.ps18.model.board.boardcells;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
+// TODO: Auto-generated Javadoc
 /**
  * Defines a production cell. <br>
- * When a FMember is placed, this cell activates 
- * a set of permanent effects if conditions are fulfilled.
- * 
- * @see
- * {@link it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE}
- * 
+ * When a FMember is placed, this cell activates a set of permanent effects if
+ * conditions are fulfilled.
+ *
  * @author yazan-matar
+ * @see {@link it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE}
  */
 
 public class ProdCell {
+	
+	/**
+	 * The prod cell FM.
+	 */
 	private FMember prodCellFM;
+	
+	/**
+	 * The prod cell value.
+	 */
 	private int prodCellValue;
+	
+	/**
+	 * The malus.
+	 */
 	private int malus = 0;
 
+	/**
+	 * Instantiates a new prod cell.
+	 *
+	 * @param malus
+	 *            the malus
+	 */
 	public ProdCell(int malus) {
 		prodCellFM = null;
 		prodCellValue = GeneralParameters.baseValueProdCells;
@@ -26,6 +43,13 @@ public class ProdCell {
 	}
 
 	
+	/**
+	 * Insert FM.
+	 *
+	 * @param pBoardFM
+	 *            the board FM
+	 * @return true, if successful
+	 */
 	public boolean insertFM(FMember pBoardFM) {
 		if(this.isEmptyPC()){
 			if(pBoardFM.getValue() >= prodCellValue){
@@ -36,6 +60,11 @@ public class ProdCell {
 		}return false;
 	}
 	
+	/**
+	 * Checks if is empty PC.
+	 *
+	 * @return true, if is empty PC
+	 */
 	public boolean isEmptyPC() {
 		if(this.prodCellFM==null){ 
 			return true;	
@@ -44,6 +73,14 @@ public class ProdCell {
 			return false;
 		}
 	}
+	
+	/**
+	 * Checks if is legal PC.
+	 *
+	 * @param pBoardFM
+	 *            the board FM
+	 * @return true, if is legal PC
+	 */
 	public boolean isLegalPC(FMember pBoardFM){
 		if(pBoardFM.getValue() >= this.getProdCellValue()){
 			return true;
@@ -53,6 +90,13 @@ public class ProdCell {
 	
 	
 	
+	/**
+	 * To string.
+	 *
+	 * @param index
+	 *            the index
+	 * @return the string
+	 */
 	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
@@ -76,6 +120,8 @@ public class ProdCell {
 
 
 	/**
+	 * Gets the prod cell FM.
+	 *
 	 * @return the prodCellFM
 	 */
 	public FMember getProdCellFM() {
@@ -84,7 +130,10 @@ public class ProdCell {
 
 
 	/**
-	 * @param prodCellFM the prodCellFM to set
+	 * Sets the prod cell FM.
+	 *
+	 * @param prodCellFM
+	 *            the prodCellFM to set
 	 */
 	public void setProdCellFM(FMember prodCellFM) {
 		this.prodCellFM = prodCellFM;
@@ -92,6 +141,8 @@ public class ProdCell {
 
 
 	/**
+	 * Gets the prod cell value.
+	 *
 	 * @return the prodCellValue
 	 */
 	public int getProdCellValue() {
@@ -100,7 +151,10 @@ public class ProdCell {
 
 
 	/**
-	 * @param prodCellValue the prodCellValue to set
+	 * Sets the prod cell value.
+	 *
+	 * @param prodCellValue
+	 *            the prodCellValue to set
 	 */
 	public void setProdCellValue(int prodCellValue) {
 		this.prodCellValue = prodCellValue;
@@ -108,6 +162,8 @@ public class ProdCell {
 
 
 	/**
+	 * Gets the malus.
+	 *
 	 * @return the malus
 	 */
 	public int getMalus() {
@@ -116,7 +172,10 @@ public class ProdCell {
 
 
 	/**
-	 * @param malus the malus to set
+	 * Sets the malus.
+	 *
+	 * @param malus
+	 *            the malus to set
 	 */
 	public void setMalus(int malus) {
 		this.malus = malus;

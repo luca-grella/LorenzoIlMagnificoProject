@@ -7,12 +7,25 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BoardView.
+ */
 public class BoardView extends Observable implements Observer{
 
+	/**
+	 * Instantiates a new board view.
+	 *
+	 * @param mcontroller
+	 *            the mcontroller
+	 */
 	public BoardView(MainController mcontroller) {
 		addObserver(mcontroller);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		Message msg = (Message) arg;

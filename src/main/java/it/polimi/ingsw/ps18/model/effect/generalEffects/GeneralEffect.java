@@ -3,6 +3,10 @@ package it.polimi.ingsw.ps18.model.effect.generalEffects;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface GeneralEffect.
+ */
 public interface GeneralEffect {
 	
 	/**
@@ -15,12 +19,19 @@ public interface GeneralEffect {
 	//TODO: teoricamente non bisognerebbe passare il player perchè si può ricavare da game, ma così è possibile attivare effetti su altri giocatori
 	
     /**
-	 * Set the Parameter that the method "activate" may use in his functioning
-	 * @param quantity indicates usually a multiplier for the methods of the classes
-	 *        that inplement this interface
+	 * Set the Parameter that the method "activate" may use in his functioning.
+	 *
+	 * @param quantity
+	 *            indicates usually a multiplier for the methods of the classes
+	 *            that inplement this interface
 	 */
     public void setQuantity(int quantity);
     
+    /**
+	 * To string.
+	 *
+	 * @return the string
+	 */
     public String toString();
 
 }

@@ -15,14 +15,48 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PBoard.
+ */
 public class PBoard extends Observable {
+	
+	/**
+	 * The p board view.
+	 */
 	PBoardView pBoardView;
+	
+	/**
+	 * The playercol.
+	 */
 	private int playercol;
+	
+	/**
+	 * The resources.
+	 */
 	private Stats resources;
+	
+	/**
+	 * The cards.
+	 */
 	private List<Cards> cards = new ArrayList<>();
+	
+	/**
+	 * The fams.
+	 */
 	private List<FMember> fams = new ArrayList<>(GeneralParameters.nfamperplayer);
 	
 	
+	/**
+	 * Instantiates a new p board.
+	 *
+	 * @param playercol
+	 *            the playercol
+	 * @param dices
+	 *            the dices
+	 * @param mcontroller
+	 *            the mcontroller
+	 */
 	public PBoard(int playercol, List<Dice> dices, MainController mcontroller){
 		pBoardView = new PBoardView(mcontroller);
 		addObserver(pBoardView);
@@ -36,6 +70,14 @@ public class PBoard extends Observable {
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 	}
 	
+	/**
+	 * Instantiates a new p board.
+	 *
+	 * @param playercol
+	 *            the playercol
+	 * @param dices
+	 *            the dices
+	 */
 	public PBoard(int playercol, List<Dice> dices){
 		this.playercol = playercol;
 		this.resources = new Stats(2,2,5,2,0,0,0);
@@ -44,6 +86,9 @@ public class PBoard extends Observable {
 		} this.fams.add(new FMember(0,playercol));
 	}
 	
+	/**
+	 * Instantiates a new p board.
+	 */
 	public PBoard(){
 		pBoardView = null;
 		playercol = 0;
@@ -52,20 +97,42 @@ public class PBoard extends Observable {
 		fams = null;
 	}
 	
+	/**
+	 * Act harvest.
+	 */
 	public void actHarvest() {
 		notifyStatusPBoardView("actHarvest");
 	}
 	
+	/**
+	 * Act production.
+	 */
 	public void actProduction() {
 		notifyStatusPBoardView("actProduction");
 	}
 	
+	/**
+	 * Adds the card.
+	 *
+	 * @param card
+	 *            the card
+	 * @param game
+	 *            the game
+	 */
 	public void addCard(Cards card, GameLogic game) {
 		if(cards.add(card)){
 			card.activateQEffects(this,game);
 		}
 		
 	}
+	
+	/**
+	 * Checks for space.
+	 *
+	 * @param cardColor
+	 *            the card color
+	 * @return true, if successful
+	 */
 	public boolean hasSpace(int cardColor){
 		if(cards.isEmpty())
 			return true;
@@ -112,11 +179,19 @@ public class PBoard extends Observable {
 		}
 	}
 	
+	/**
+	 * V P calc.
+	 *
+	 * @return the int
+	 */
 	public int vPCalc(){
 		return playercol;
 		
 	}
 	
+	/**
+	 * To string fams.
+	 */
 	public void toStringFams(){
 		StringBuilder builder = new StringBuilder();
 		List<FMember> fams = this.getFams();
@@ -134,6 +209,11 @@ public class PBoard extends Observable {
 		notifyLogPBoardView(builder.toString());
 	}
 	
+	/**
+	 * To string resources.
+	 *
+	 * @return the string
+	 */
 	public String toStringResources(){
 		StringBuilder builder = new StringBuilder();
 		builder.append("Resources of player " + this.playercol + "\n");
@@ -141,6 +221,11 @@ public class PBoard extends Observable {
 		return builder.toString();
 		}
 	
+	/**
+	 * To string cards.
+	 *
+	 * @return the string
+	 */
 	public String toStringCards(){
 		StringBuilder builder = new StringBuilder();
 		List<Cards> cards = this.getCards();
@@ -177,17 +262,31 @@ public class PBoard extends Observable {
 		return builder.toString();
 	}
 	
+	/**
+	 * Notify log P board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyLogPBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}
 	
+	/**
+	 * Notify status P board view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyStatusPBoardView(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));
 	}
 
 	/**
+	 * Gets the p board view.
+	 *
 	 * @return the pBoardView
 	 */
 	public PBoardView getpBoardView() {
@@ -195,6 +294,8 @@ public class PBoard extends Observable {
 	}
 
 	/**
+	 * Gets the playercol.
+	 *
 	 * @return the playercol
 	 */
 	public int getPlayercol() {
@@ -202,13 +303,18 @@ public class PBoard extends Observable {
 	}
 
 	/**
-	 * @param playercol the playercol to set
+	 * Sets the playercol.
+	 *
+	 * @param playercol
+	 *            the playercol to set
 	 */
 	public void setPlayercol(int playercol) {
 		this.playercol = playercol;
 	}
 
 	/**
+	 * Gets the resources.
+	 *
 	 * @return the resources
 	 */
 	public Stats getResources() {
@@ -216,13 +322,18 @@ public class PBoard extends Observable {
 	}
 
 	/**
-	 * @param resources the resources to set
+	 * Sets the resources.
+	 *
+	 * @param resources
+	 *            the resources to set
 	 */
 	public void setResources(Stats resources) {
 		this.resources = resources;
 	}
 
 	/**
+	 * Gets the cards.
+	 *
 	 * @return the cards
 	 */
 	public List<Cards> getCards() {
@@ -230,13 +341,18 @@ public class PBoard extends Observable {
 	}
 
 	/**
-	 * @param cards the cards to set
+	 * Sets the cards.
+	 *
+	 * @param cards
+	 *            the cards to set
 	 */
 	public void setCards(List<Cards> cards) {
 		this.cards = cards;
 	}
 
 	/**
+	 * Gets the fams.
+	 *
 	 * @return the fams
 	 */
 	public List<FMember> getFams() {
@@ -244,7 +360,10 @@ public class PBoard extends Observable {
 	}
 
 	/**
-	 * @param fams the fams to set
+	 * Sets the fams.
+	 *
+	 * @param fams
+	 *            the fams to set
 	 */
 	public void setFams(List<FMember> fams) {
 		this.fams = fams;

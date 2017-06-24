@@ -16,10 +16,28 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GreenC.
+ */
 public class GreenC extends Cards {
+	
+	/**
+	 * The harv value.
+	 */
 	private long harvValue;
+	
+	/**
+	 * The harveffect.
+	 */
 	private List<HarvestEffect> harveffect = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new green C.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public GreenC(Integer i){
 		JSONParser parser = new JSONParser();
 		HashMapQE mapQE = new HashMapQE();
@@ -55,6 +73,16 @@ public class GreenC extends Cards {
 	}
 	
 	
+	/**
+	 * Adds the H effects.
+	 *
+	 * @param heffects
+	 *            the heffects
+	 * @param heffectvalues
+	 *            the heffectvalues
+	 * @param map
+	 *            the map
+	 */
 	private void addHEffects(JSONArray heffects, JSONArray heffectvalues, HashMapHE map) {
 		for(int count=0; count<heffects.size(); count++){
         	if(heffects.get(count)!=null){
@@ -69,6 +97,16 @@ public class GreenC extends Cards {
 	}
 
 
+	/**
+	 * Adds the Q effects.
+	 *
+	 * @param qeffects
+	 *            the qeffects
+	 * @param qeffectvalues
+	 *            the qeffectvalues
+	 * @param map
+	 *            the map
+	 */
 	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues, HashMapQE map) {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){
@@ -83,18 +121,39 @@ public class GreenC extends Cards {
 	}
 
 
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(QuickEffect e, long quantity){
 		QuickEffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getEffects()).add(a);	
     }
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e
+	 *            the e
+	 * @param quantity
+	 *            the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(HarvestEffect e, long quantity){
 		HarvestEffect a = e;
 		a.setQuantity((int) quantity);	
 	    return (this.getHarveffect()).add(a);
     }
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString(int)
+	 */
 	@Override
 	public String toString(int count){
 		StringBuilder builder = new StringBuilder();
@@ -116,6 +175,9 @@ public class GreenC extends Cards {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -138,6 +200,8 @@ public class GreenC extends Cards {
 	}
 
 	/**
+	 * Gets the harv value.
+	 *
 	 * @return the harvValue
 	 */
 	public long getHarvValue() {
@@ -145,13 +209,18 @@ public class GreenC extends Cards {
 	}
 
 	/**
-	 * @param harvValue the harvValue to set
+	 * Sets the harv value.
+	 *
+	 * @param harvValue
+	 *            the harvValue to set
 	 */
 	public void setHarvValue(long harvValue) {
 		this.harvValue = harvValue;
 	}
 
 	/**
+	 * Gets the harveffect.
+	 *
 	 * @return the harveffect
 	 */
 	public List<HarvestEffect> getHarveffect() {
@@ -159,13 +228,19 @@ public class GreenC extends Cards {
 	}
 
 	/**
-	 * @param harveffect the harveffect to set
+	 * Sets the harveffect.
+	 *
+	 * @param harveffect
+	 *            the harveffect to set
 	 */
 	public void setHarveffect(List<HarvestEffect> harveffect) {
 		this.harveffect = harveffect;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasHarvest()
+	 */
 	@Override
 	public boolean hasHarvest() {
 		if(harveffect.isEmpty()){
@@ -175,18 +250,27 @@ public class GreenC extends Cards {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasProduction()
+	 */
 	@Override
 	public boolean hasProduction() {
 		return false;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasFinal()
+	 */
 	@Override
 	public boolean hasFinal() {
 		return false;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasPermanent()
+	 */
 	@Override
 	public boolean hasPermanent() {
 		return false;

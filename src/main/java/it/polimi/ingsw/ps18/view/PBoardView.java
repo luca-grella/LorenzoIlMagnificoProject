@@ -17,9 +17,23 @@ import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PBoardView.
+ */
 public class PBoardView extends Observable implements Observer {
+	
+	/**
+	 * The controller.
+	 */
 	MainController controller;
 	
+	/**
+	 * Instantiates a new p board view.
+	 *
+	 * @param mcontroller
+	 *            the mcontroller
+	 */
 	public PBoardView(MainController mcontroller){
 		this.controller = mcontroller;
 		addObserver(controller);
@@ -27,6 +41,9 @@ public class PBoardView extends Observable implements Observer {
 		HashMapPBVS.init();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		Message msg = (Message) arg;

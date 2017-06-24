@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Scanner;
@@ -22,35 +23,102 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author Francesco-Musio
+ * The Class GameLogic.
  *
+ * @author Francesco-Musio
  */
 public class GameLogic extends Observable {
+	
+	/**
+	 * The m view.
+	 */
 	MainView mView;
+	
+	/**
+	 * The input.
+	 */
 	Scanner input = new Scanner(System.in);
 	
+	/**
+	 * The turn.
+	 */
 	private int TURN = 0;
+	
+	/**
+	 * The age.
+	 */
 	private int AGE = 1;
+	
+	/**
+	 * The nplayer.
+	 */
 	private int nplayer;
+	
+	/**
+	 * The board.
+	 */
 	private Board board;
+	
+	/**
+	 * The players.
+	 */
 	private List<PBoard> players = new ArrayList<>(nplayer);
+	
+	/**
+	 * The turnplayer.
+	 */
 	private PBoard turnplayer;
+	
+	/**
+	 * The greencards.
+	 */
 	private List<Cards> greencards = new ArrayList<>(GeneralParameters.numberGreenC);
+	
+	/**
+	 * The bluecards.
+	 */
 	private List<Cards> bluecards = new ArrayList<>(GeneralParameters.numberBlueC);
+	
+	/**
+	 * The yellowcards.
+	 */
 	private List<Cards> yellowcards = new ArrayList<>(GeneralParameters.numberYellowC);
+	
+	/**
+	 * The purplecards.
+	 */
 	private List<Cards> purplecards = new ArrayList<>(GeneralParameters.numberPurpleC);
+	
+	/**
+	 * The excommcards.
+	 */
 	private List<Excommunications> excommcards = new ArrayList<>(GeneralParameters.numberExcommC);
+	
+	/**
+	 * The dices.
+	 */
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
+	
+	/**
+	 * The ongoing action.
+	 */
 	private Action ongoingAction;
+	
+	/**
+	 * The ongoing effect.
+	 */
 	private GeneralEffect ongoingEffect;
 	
 	
 	/**
-	 * Initialize the game
-	 * @param nplayer set the number of players this game has
-	 * @param controller 
+	 * Initialize the game.
+	 *
+	 * @param nplayer
+	 *            set the number of players this game has
+	 * @param mController
+	 *            the m controller
 	 */
 	public GameLogic(int nplayer,MainController mController){
 		this.nplayer = nplayer;
@@ -59,7 +127,7 @@ public class GameLogic extends Observable {
 	}
 	
 	/**
-	 * Per i test
+	 * Per i test.
 	 */
 	public GameLogic(){
 		
@@ -67,13 +135,16 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Initial Setup that create:
-	 * {@link it.polimi.ingsw.ps18.model.board.Board#Board}
-	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice} 
-	 * - {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#PBoard(int, List)}
-	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.GameLogic#genDeck()}
-	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice}
-	 * - insert the cards in the Tower Cells {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower#insertCards(List)} 
-	 * @param mainController 
+	 * {@link it.polimi.ingsw.ps18.model.board.Board#Board} -
+	 * {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice} -
+	 * {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#PBoard(int, List)}
+	 * - {@link it.polimi.ingsw.ps18.model.gamelogic.GameLogic#genDeck()} -
+	 * {@link it.polimi.ingsw.ps18.model.gamelogic.Dice#Dice} - insert the cards
+	 * in the Tower Cells
+	 * {@link it.polimi.ingsw.ps18.model.board.boardcells.Tower#insertCards(List)}
+	 *
+	 * @param mainController
+	 *            the new up
 	 */
 	public void setup(MainController mainController){
 		notifyLogMainView("Setup Initiated.");
@@ -88,11 +159,16 @@ public class GameLogic extends Observable {
 		notifyLogMainView("Deck Initialized.");
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
+		insertExcommInBoard();
+		notifyLogMainView("Excommunications Inserted in Board."); //Controllare
 		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
 	}
 	
+	/**
+	 * Gen deck.
+	 */
 	private void genDeck(){
 		for(int i=1; i<=GeneralParameters.numberGreenC; i++){
 			Integer index = new Integer(i);
@@ -115,7 +191,11 @@ public class GameLogic extends Observable {
 			this.excommcards.add(new Excommunications(index));	
 		} notifyLogMainView("Excommunication Deck Created.");
 	}
+
 	
+	/**
+	 * Insert cardsin towers.
+	 */
 	private void insertCardsinTowers() {
 		List<Tower> towers = board.getTowers();
 		for(int i=0; i<GeneralParameters.numberofBaseTowers; i++){
@@ -140,23 +220,45 @@ public class GameLogic extends Observable {
 	}
 	
 	/**
-	 * Handle the flow of the game, but without the interaction with the players
-	 * @return true if every player want play again
+	 * Insert excomm in board.
+	 */
+	private void insertExcommInBoard() {
+		Collections.shuffle(excommcards);
+		for(int excommPeriod=1; excommPeriod<=GeneralParameters.numberofExcommCells; excommPeriod++){
+			Iterator<Excommunications> itr = excommcards.iterator();
+			Excommunications excommcard = itr.next();
+			while(itr.hasNext() && excommcard.getPeriod() != excommPeriod){
+				excommcard = itr.next();
+			}
+			excommcards.add(excommcard);
+			excommcards.remove(excommcard);
+		}
+	}
+	
+	/**
+	 * Handles the game flow, but without the interaction with the players.
+	 *
+	 * @return a boolean value:
+	 *         <ul>
+	 *         <li>True: Every player in the game wants to play again
+	 *         <li>False: At least one player doesn't want to play again
+	 *         </ul>
 	 */
 	public boolean gameFlow(){
 		do{
 			this.TURN++;
 			//riordina giocatori
-			for(int i=0; i<GeneralParameters.nfamperplayer; i++){
-				for(int j=0; j<nplayer; j++){
-					this.turnplayer = players.get(j);
+			for(int famIndex=0; famIndex<GeneralParameters.nfamperplayer; famIndex++){
+				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+					this.turnplayer = players.get(playerIndex);
 					notifyActionMainView("Turn Handle Init");
-					
+
 					System.out.println(" ");
 				}
 			}
+
 			if(TURN%2==0){
-				board.refreshBoard(); //Added board cleaning after every period
+				board.refreshBoard();
 				VaticanReport(TURN/2);
 			}
 		} while (TURN!=GeneralParameters.totalTurns);
@@ -171,7 +273,9 @@ public class GameLogic extends Observable {
 
 	/**
 	 * Calls {@link it.polimi.ingsw.ps18.model.personalBoard.PBoard#vPCalc()}
+	 *
 	 * @param players
+	 *            the players
 	 * @return the player who has won
 	 */
 	private PBoard winnerCalc(List<PBoard> players) {
@@ -179,29 +283,56 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * Handle the vatican report phase
-	 * @param age 
+	 * Handle the vatican report phase.
+	 *
+	 * @param age
+	 *            the age
 	 */
 	private void VaticanReport(int age) {
+		//Giri MVC
+		/*
+		 * Da qui dovrebbe partire una notify(credo message o parameter) alla View
+		 */
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @param i
+	 *            the i
+	 * @return the string
+	 */
 	private String toString(Integer i){
 		StringBuilder builder = new StringBuilder();
 		builder.append(i);
 		return builder.toString();
 	}
 	
+	/**
+	 * Notify log main view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyLogMainView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}
 	
+	/**
+	 * Notify action main view.
+	 *
+	 * @param msg
+	 *            the msg
+	 */
 	private void notifyActionMainView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
 
 	/**
+	 * Gets the turnplayer.
+	 *
 	 * @return the turnplayer
 	 */
 	public PBoard getTurnplayer() {
@@ -209,6 +340,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the board.
+	 *
 	 * @return the board
 	 */
 	public Board getBoard() {
@@ -216,6 +349,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the ongoing action.
+	 *
 	 * @return the ongoingAction
 	 */
 	public Action getOngoingAction() {
@@ -223,13 +358,18 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * @param ongoingAction the ongoingAction to set
+	 * Sets the ongoing action.
+	 *
+	 * @param ongoingAction
+	 *            the ongoingAction to set
 	 */
 	public void setOngoingAction(Action ongoingAction) {
 		this.ongoingAction = ongoingAction;
 	}
 
 	/**
+	 * Gets the players.
+	 *
 	 * @return the players
 	 */
 	public List<PBoard> getPlayers() {
@@ -237,6 +377,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the ongoing effect.
+	 *
 	 * @return the ongoingEffect
 	 */
 	public GeneralEffect getOngoingEffect() {
@@ -244,13 +386,18 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * @param ongoingEffect the ongoingEffect to set
+	 * Sets the ongoing effect.
+	 *
+	 * @param ongoingEffect
+	 *            the ongoingEffect to set
 	 */
 	public void setOngoingEffect(GeneralEffect ongoingEffect) {
 		this.ongoingEffect = ongoingEffect;
 	}
 
 	/**
+	 * Gets the nplayer.
+	 *
 	 * @return the nplayer
 	 */
 	public int getNplayer() {
@@ -258,7 +405,10 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * @param nplayer the nplayer to set
+	 * Sets the nplayer.
+	 *
+	 * @param nplayer
+	 *            the nplayer to set
 	 */
 	public void setNplayer(int nplayer) {
 		this.nplayer = nplayer;

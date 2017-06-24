@@ -9,9 +9,20 @@ import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ActivateProduction.
+ */
 public class ActivateProduction implements ActionChoice {
+	
+	/**
+	 * The index.
+	 */
 	private int index = -1;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		if(index != -1){
@@ -38,6 +49,9 @@ public class ActivateProduction implements ActionChoice {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = i;
