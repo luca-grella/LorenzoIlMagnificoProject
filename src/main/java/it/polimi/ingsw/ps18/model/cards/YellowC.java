@@ -1,20 +1,13 @@
 package it.polimi.ingsw.ps18.model.cards;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.*;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
-import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 public class YellowC extends Cards {
@@ -22,36 +15,22 @@ public class YellowC extends Cards {
 	private List<ProductionEffect> prodEffect = new ArrayList<>();
 	
 	
-	public YellowC(Integer i) {
-		JSONParser parser = new JSONParser();
+	public YellowC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE();
 
-	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/YellowC.json"));
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
-	        this.setName((String) a.get("name"));
-	        this.setID((long) a.get("number"));
-	        this.setColor((long) a.get("color"));
-	        this.setPeriod((long) a.get("period"));
-	        this.productionValue = (long) a.get("ProductionValue");
-	        JSONArray cost = (JSONArray) a.get("CardCost");
-	        this.setCardCost(new Stats(cost));
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        addQEffects(qeffects,qeffectvalues,mapQE);
-	        JSONArray peffects = (JSONArray) a.get("ProductionEffects");
-	        JSONArray peffectvalues = (JSONArray) a.get("ProductionEffectsValues");
-	        addPEffects(peffects,peffectvalues);
-	        
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File non trovato.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problema nel parser");
-		}
+		this.setName((String) a.get("name"));
+		this.setID((long) a.get("number"));
+		this.setColor((long) a.get("color"));
+		this.setPeriod((long) a.get("period"));
+		this.productionValue = (long) a.get("ProductionValue");
+		JSONArray cost = (JSONArray) a.get("CardCost");
+		this.setCardCost(new Stats(cost));
+		JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+		JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+		addQEffects(qeffects,qeffectvalues,mapQE);
+		JSONArray peffects = (JSONArray) a.get("ProductionEffects");
+		JSONArray peffectvalues = (JSONArray) a.get("ProductionEffectsValues");
+		addPEffects(peffects,peffectvalues);
 	}
 	
 	/**

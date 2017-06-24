@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.controller;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -13,6 +14,7 @@ import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.Message;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class MainController implements Observer {
 	GameLogic game;
@@ -22,11 +24,11 @@ public class MainController implements Observer {
 		
 	}
 	
-	public MainController(int nplayer){
-		game = new GameLogic(nplayer,this);
-		game.setup(this);
+	public MainController(int nplayer, List<PBoard> players){
 		HashMapActions.init();
 		HashMapStatus.init();
+		game = new GameLogic(nplayer,this, players);
+		game.setup(this);
 		game.gameFlow();
 	}
 

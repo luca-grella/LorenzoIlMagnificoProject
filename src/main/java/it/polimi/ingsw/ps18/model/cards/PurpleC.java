@@ -24,38 +24,23 @@ public class PurpleC extends Cards {
 	private long minMP;
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
-	public PurpleC(Integer i) {
-		JSONParser parser = new JSONParser();
+	public PurpleC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE();
 		HashMapFE mapFE = new HashMapFE();
 
-	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/PurpleC.json"));
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
-	        
-	        this.setName((String) a.get("name"));
-	        this.setID((long) a.get("number"));
-	        this.setColor((long) a.get("color"));
-	        this.setPeriod((long) a.get("period"));
-	        this.minMP = (long) a.get("minPM");
-	        JSONArray costs = (JSONArray) a.get("PurpleCardCost");
-	        setCosts(costs);
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        addQEffects(qeffects,qeffectvalues,mapQE);
-	        JSONArray feffects = (JSONArray) a.get("FinalEffects");
-	        JSONArray feffectvalues = (JSONArray) a.get("FinalEffectsValues");
-	        addFEffects(feffects,feffectvalues,mapFE);
-	        
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File non trovato.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problema nel parser");
-		}
+		this.setName((String) a.get("name"));
+		this.setID((long) a.get("number"));
+		this.setColor((long) a.get("color"));
+		this.setPeriod((long) a.get("period"));
+		this.minMP = (long) a.get("minPM");
+		JSONArray costs = (JSONArray) a.get("PurpleCardCost");
+		setCosts(costs);
+		JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+		JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+		addQEffects(qeffects,qeffectvalues,mapQE);
+		JSONArray feffects = (JSONArray) a.get("FinalEffects");
+		JSONArray feffectvalues = (JSONArray) a.get("FinalEffectsValues");
+		addFEffects(feffects,feffectvalues,mapFE);
 	}
 	
 	private void addFEffects(JSONArray feffects, JSONArray feffectvalues, HashMapFE map) {
@@ -198,6 +183,13 @@ public class PurpleC extends Cards {
 	 */
 	public int getMinMP() {
 		return (int) minMP;
+	}
+
+	/**
+	 * @return the secondaryCost
+	 */
+	public Stats getSecondaryCost() {
+		return secondaryCost;
 	}
 
 	@Override

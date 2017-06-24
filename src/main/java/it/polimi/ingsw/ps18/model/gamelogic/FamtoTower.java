@@ -19,6 +19,7 @@ public class FamtoTower extends Observable implements Action {
 	int chosenTower;
 	int chosenFloor;
 	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
+	int costchoice; //1 = risorse , 2 = mp
 	
 	public FamtoTower(PBoardView view){
 		addObserver(view);
@@ -34,6 +35,10 @@ public class FamtoTower extends Observable implements Action {
 	
 	public void floorChoice(){
 		notifyParamPBoardView("Floor Choice",this.chosenTower);
+	}
+	
+	public void costChoice(){
+		notifyActionPBoardView("CardCostChoice");
 	}
 
 	@Override
@@ -129,6 +134,20 @@ public class FamtoTower extends Observable implements Action {
 	 */
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;
+	}
+
+	/**
+	 * @return the costchoice
+	 */
+	public int getCostchoice() {
+		return costchoice;
+	}
+
+	/**
+	 * @param costchoice the costchoice to set
+	 */
+	public void setCostchoice(int costchoice) {
+		this.costchoice = costchoice;
 	}
 	
 	

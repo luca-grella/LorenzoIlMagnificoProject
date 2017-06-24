@@ -1,9 +1,19 @@
 package it.polimi.ingsw.ps18.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+
 public class Test {
+	private static List<PBoard> players = new ArrayList<>();
+	private static int nplayer = 4;
 
 	public static void main(String[] args) {
-		MainController prova = new MainController(1);
+		for(int i=0; i<nplayer; i++){
+			players.add(new PBoard(i));
+		}
+		MainController prova = new MainController(nplayer,players);
 	}
 
 }

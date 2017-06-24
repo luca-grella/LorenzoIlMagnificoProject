@@ -28,6 +28,8 @@ public class HashMapPBVA {
 		genPBVAction.put("actHarvest", new ActHarvestwithParameter());
 		genPBVAction.put("actProduction", new ActProductionwithParameter());
 		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege());
+		genPBVAction.put("CardCostChoice", new CostChoice());
+		genPBVAction.put("ChooseBonusTile", new ShowChoiceBonusTiles());
 	}
 	
 	public static PBViewAction geteffect(String a){

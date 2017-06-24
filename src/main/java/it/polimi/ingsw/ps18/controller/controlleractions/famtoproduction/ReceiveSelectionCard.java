@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.Converter;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
@@ -19,9 +22,14 @@ public class ReceiveSelectionCard implements ActionChoice {
 		if(index!=2){
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
-			YellowC currentcard = ((FamtoProduction) currentaction).getCurrentcard();
+			Cards currentcard = ((FamtoProduction) currentaction).getCurrentcard();
 			Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
-			List<ProductionEffect> peffects = currentcard.getProdEffect();
+			List<ProductionEffect> peffects = new ArrayList<>();
+			if(currentcard.getColor()==2){
+				peffects = ((YellowC)currentcard).getProdEffect();
+			} else if(currentcard.getColor()==-1){
+				peffects = ((BonusTile)currentcard).getProdEffect();
+			}
 			int counter = 0;
 			for(int i=0; i<peffects.size(); i++){
 				if("Convert in Resources".equals((peffects.get(i)).getName())){

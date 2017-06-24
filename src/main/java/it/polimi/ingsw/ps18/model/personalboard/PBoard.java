@@ -23,17 +23,22 @@ public class PBoard extends Observable {
 	private List<FMember> fams = new ArrayList<>(GeneralParameters.nfamperplayer);
 	
 	
-	public PBoard(int playercol, List<Dice> dices, MainController mcontroller){
+	public PBoard(int playercol){
+		this.playercol = playercol;
+	}
+	
+	public void completePBoardSetup(List<Dice> dices, MainController mcontroller, List<Cards> BonusTiles){
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
 		pBoardView = new PBoardView(mcontroller);
 		addObserver(pBoardView);
-		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
-		this.playercol = playercol;
 //		this.resources = new Stats(2,2,5,2,0,0,0);
 		this.resources = new Stats(9,9,9,9,9,9,9);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
 		} this.fams.add(new FMember(0,playercol));
+		notifyActionPBoardView("ChooseBonusTile");
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
+		
 	}
 	
 	public PBoard(int playercol, List<Dice> dices){
@@ -147,11 +152,21 @@ public class PBoard extends Observable {
 		List<Cards> cards = this.getCards();
 		int count;
 		builder.append("Cards of player " + this.playercol + ":\n-----------------\n");
-		builder.append("Green Cards:\n");
+		
+		builder.append("Bonus Tiles:\n");
+		count = 1;
+		for(Cards card: cards){
+			if(card.getColor()==-1){
+				builder.append(card.toString(count));
+				count++;
+			}
+		}
+		builder.append("\n-----------------\nGreen Cards:\n");
 		count = 1;
 		for(Cards card: cards){
 			if(card.getColor()==0){
 				builder.append(card.toString(count));
+				count++;
 			}
 		}
 		builder.append("\n-----------------\nBlue Cards:\n");
@@ -159,6 +174,7 @@ public class PBoard extends Observable {
 		for(Cards card: cards){
 			if(card.getColor()==1){
 				builder.append(card.toString(count));
+				count++;
 			}
 		}
 		builder.append("\n-----------------\nYellow Cards:\n");
@@ -166,6 +182,7 @@ public class PBoard extends Observable {
 		for(Cards card: cards){
 			if(card.getColor()==2){
 				builder.append(card.toString(count));
+				count++;
 			}
 		}
 		builder.append("\n-----------------\nPurple Cards:\n");
@@ -173,8 +190,10 @@ public class PBoard extends Observable {
 		for(Cards card: cards){
 			if(card.getColor()==3){
 				builder.append(card.toString(count));
+				count++;
 			}
 		}
+		builder.append("\n-----------------\n");
 		return builder.toString();
 	}
 	
@@ -186,6 +205,11 @@ public class PBoard extends Observable {
 	private void notifyStatusPBoardView(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));
+	}
+	
+	private void notifyActionPBoardView(String msg){
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
 	}
 
 	/**

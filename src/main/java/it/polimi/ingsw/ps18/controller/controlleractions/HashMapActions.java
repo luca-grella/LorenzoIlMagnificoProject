@@ -20,6 +20,7 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.Receive
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveFamtoProduction;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveSelectionCard;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveChosenCost;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamtoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
@@ -33,6 +34,7 @@ public class HashMapActions {
 		genActions.put("ReceiveFamtoTower", new ReceiveFamtoTower());
 		genActions.put("ReceiveTower", new ReceiveTowertoTower());
 		genActions.put("ReceiveFloor", new ReceiveFloortoTower());
+		genActions.put("ReceiveChosenCost", new ReceiveChosenCost());
 		genActions.put("FamtoMarket", new FamtoMarketTrigger());
 		genActions.put("ReceiveFamtoMarket", new ReceiveFamtoMarket());
 		genActions.put("ReceiveMarketCell", new ReceiveMarketCell());
@@ -52,6 +54,7 @@ public class HashMapActions {
 		genActions.put("Chosen Effect", new ReceiveChoseneffect());
 		genActions.put("Chosen Resource", new WoodorRockHandler());
 		genActions.put("Chosen Diff Privilege", new DifferentPrivilegeHandler());
+		genActions.put("ReceiveChosenBonusTile", new ReceiveBonusTile());
 	}
 	
 	public static ActionChoice geteffect(String a){

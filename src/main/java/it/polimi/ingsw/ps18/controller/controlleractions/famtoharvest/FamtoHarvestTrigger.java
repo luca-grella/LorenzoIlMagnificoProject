@@ -3,10 +3,10 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
-import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
@@ -30,11 +30,19 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
-				for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-					//TODO: INCRASE NELLA LINGUA DI FRANCO SIGNIFICA INCREASE: MODIFICARE LE SETTORDICI CLASSI CON SCRITTO INCRASE
-					//COMPRESI I NOMI DELLE FOTTUTE CLASSI
-					if("Harvest".equals(effect.getName())){
-						modifierValue += effect.getQuantity();
+				if(card.getColor()==1){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						//TODO: INCRASE NELLA LINGUA DI FRANCO SIGNIFICA INCREASE: MODIFICARE LE SETTORDICI CLASSI CON SCRITTO INCRASE
+						//COMPRESI I NOMI DELLE FOTTUTE CLASSI
+						if("Harvest".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
+					}
+				} else if(card.getColor()==-1){
+					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+						if("Harvest".equals(effect.getName())){
+							modifierValue += effect.getQuantity();
+						}
 					}
 				}
 			}

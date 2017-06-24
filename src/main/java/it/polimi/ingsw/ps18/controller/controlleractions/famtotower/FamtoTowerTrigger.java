@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Cell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
@@ -40,28 +41,55 @@ public class FamtoTowerTrigger implements ActionChoice {
 			int modifierValue = 0;
 			for(Cards card: currentplayer.getCards()){
 				if(card.hasPermanent()){
-					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
-						switch(towerIndex){
-						case 0:
-							if("Green".equals(effect.getName())){
-								modifierValue += effect.getQuantity();
+					if(card.getColor()==1){
+						for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+							switch(towerIndex){
+							case 0:
+								if("Green".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 1:
+								if("Blue".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 2:
+								if("Yellow".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 3:
+								if("Purple".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
 							}
-							break;
-						case 1:
-							if("Blue".equals(effect.getName())){
-								modifierValue += effect.getQuantity();
+						}
+					} else if(card.getColor()==-1){
+						for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+							switch(towerIndex){
+							case 0:
+								if("Green".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 1:
+								if("Blue".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 2:
+								if("Yellow".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
+							case 3:
+								if("Purple".equals(effect.getName())){
+									modifierValue += effect.getQuantity();
+								}
+								break;
 							}
-							break;
-						case 2:
-							if("Yellow".equals(effect.getName())){
-								modifierValue += effect.getQuantity();
-							}
-							break;
-						case 3:
-							if("Purple".equals(effect.getName())){
-								modifierValue += effect.getQuantity();
-							}
-							break;
 						}
 					}
 				}

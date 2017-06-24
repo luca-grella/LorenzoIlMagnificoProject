@@ -1,0 +1,182 @@
+{
+  "0": {
+    "ID": 0,
+    "Name": "BonusTile00",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddWood",
+      "AddStone",
+      "AddServant"
+    ],
+    "HarvestEffectValue": [
+      1,
+      1,
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddCoin",
+      "AddPM"
+    ],
+    "ProductionEffectValue": [
+      2,
+      1
+    ],
+    "FinalEffect": [
+      null
+    ],
+    "FinalEffectValue": [
+      null
+    ],
+    "PermanentEffect": [
+      null
+    ],
+    "PermanentEffectValue": [
+      null
+    ]
+  },
+  "1": {
+    "ID": 1,
+    "Name": "BonusTile01",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddWood",
+      "AddStone",
+      "AddPM"
+    ],
+    "HarvestEffectValue": [
+      1,
+      1,
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddCoin",
+      "AddServant"
+    ],
+    "ProductionEffectValue": [
+      1,
+      2
+    ],
+    "FinalEffect": [
+      null
+    ],
+    "FinalEffectValue": [
+      null
+    ],
+    "PermanentEffect": [
+      null
+    ],
+    "PermanentEffectValue": [
+      null
+    ]
+  },
+  "2": {
+    "ID": 2,
+    "Name": "BonusTile02",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddWood",
+      "AddStone",
+      "AddServant"
+    ],
+    "HarvestEffectValue": [
+      1,
+      1,
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddCoin",
+      "AddPM"
+    ],
+    "ProductionEffectValue": [
+      1,
+      2
+    ],
+    "FinalEffect": [
+      null
+    ],
+    "FinalEffectValue": [
+      null
+    ],
+    "PermanentEffect": [
+      null
+    ],
+    "PermanentEffectValue": [
+      null
+    ]
+  },
+  "3": {
+    "ID": 3,
+    "Name": "BonusTile03",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddWood",
+      "AddStone",
+      "AddPM"
+    ],
+    "HarvestEffectValue": [
+      1,
+      1,
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddCoin",
+      "AddServant"
+    ],
+    "ProductionEffectValue": [
+      2,
+      1
+    ],
+    "FinalEffect": [
+      null
+    ],
+    "FinalEffectValue": [
+      null
+    ],
+    "PermanentEffect": [
+      null
+    ],
+    "PermanentEffectValue": [
+      null
+    ]
+  },
+  "4": {
+    "ID": 4,
+    "Name": "BonusTile04",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddWood",
+      "AddStone",
+      "AddCoin"
+    ],
+    "HarvestEffectValue": [
+      1,
+      1,
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddPM",
+      "AddServant"
+    ],
+    "ProductionEffectValue": [
+      2,
+      1
+    ],
+    "FinalEffect": [
+      null
+    ],
+    "FinalEffectValue": [
+      null
+    ],
+    "PermanentEffect": [
+      null
+    ],
+    "PermanentEffectValue": [
+      null
+    ]
+  }
+}
