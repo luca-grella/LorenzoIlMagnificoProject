@@ -27,6 +27,7 @@ public class PBoardView extends Observable implements Observer {
 	 * The controller.
 	 */
 	MainController controller;
+	private int a;
 	
 	/**
 	 * Instantiates a new p board view.
@@ -73,5 +74,18 @@ public class PBoardView extends Observable implements Observer {
 			
 		}
 	}
+	
+	/**
+	 * 
+	 *Per test
+	 * @return 
+	 */
+	
+	public PBoardView(int b){
+		
+		b = 1;
+		this.a = b;
+		
+	};
 
 }

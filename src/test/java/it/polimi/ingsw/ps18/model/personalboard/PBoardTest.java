@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
@@ -194,17 +195,25 @@ public class PBoardTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getpBoardView()}.
 	 */
-//	@Test
-//	public void testGetpBoardView() {
-//    PBoard tester = new PBoard();
-//    PBoardView ciao = new PBoardView(null);
-//    
-//    PBoardView ris = tester.getpBoardView();
-//     
-//    
-//    DA RIVEDERE
-//    
-//	}
+	@Test
+	public void testGetpBoardView() {
+		
+    PBoard tester = new PBoard();
+    PBoardView pb = new PBoardView(1);
+	tester.pBoardView = pb;
+    PBoardView ris = tester.getpBoardView();
+    Class<? extends PBoardView> a = ris.getClass();
+    String f = a.getName();
+    PBoardView pb1 = new PBoardView(1);
+	tester.pBoardView = pb1;
+    PBoardView ris2 = tester.getpBoardView();
+    Class<? extends PBoardView> b = ris2.getClass();
+    String g = b.getName();
+    
+    assertEquals(f,g);
+    
+    
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getPlayercol()}.
@@ -303,128 +312,125 @@ public class PBoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getCards()}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testGetCards() {
-//		
-//		PBoard tester = new PBoard();
-//		List<Cards> cards = new ArrayList<>();
-//		Cards cgreen = new GreenC(1);
-//		Cards cblue = new BlueC(2);
-//		Cards cyellow = new YellowC(3);
-//		Cards cpurple = new PurpleC(4);
-//		long cgreenid = cgreen.getID();
-//		long cblueid = cblue.getID();
-//		long cyellowid = cyellow.getID();
-//		long cpurpleid = cpurple.getID();
-//		cards.set(1, cgreen);
-//		cards.set(2, cblue);
-//		cards.set(3, cyellow);
-//		cards.set(4, cpurple);
-//		tester.setCards(cards);
-//		List<Cards> ris = tester.getCards();
-//		long ris1 = ris.get(1).getID();
-//		long ris2 = ris.get(2).getID();
-//		long ris3 = ris.get(3).getID();
-//		long ris4 = ris.get(4).getID();
-//		
-//		
-//		assertEquals(cgreenid, ris1);
-//		assertEquals(cblueid, ris2);
-//		assertEquals(cyellowid, ris3);
-//		assertEquals(cpurpleid, ris4);
-//		
-//	}
+	@Test
+	public void testGetCards() throws FileNotFoundException, IOException, ParseException {
+		
+		PBoard tester = new PBoard();
+		List<Cards> cards = new ArrayList<>();
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a2 = (JSONObject) jsonObject.get("0");
+        String name = (String) a2.get("name");
+        long number = (long) a2.get("number");
+        long color = (long) a2.get("color");
+        long period = (long) a2.get("period");
+        long harvalue = (long) a2.get("HarvestValue");
+		
+
+		
+		
+		Cards cgreen = new GreenC(a2);
+
+		long cgreenid = cgreen.getID();
+
+		cards.add(cgreen);
+
+		tester.setCards(cards);
+		List<Cards> ris = tester.getCards();
+		long ris1 = ris.get(0).getID();
+
+		
+		
+		assertEquals(cgreenid, ris1);
+
+		
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#setCards(java.util.List)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testSetCards() {
-//		PBoard tester = new PBoard();
-//		List<Cards> cards = new ArrayList<>();
-//		Cards cgreen = new GreenC(1);
-//		Cards cblue = new BlueC(2);
-//		Cards cyellow = new YellowC(3);
-//		Cards cpurple = new PurpleC(4);
-//		long cgreenid = cgreen.getID();
-//		long cblueid = cblue.getID();
-//		long cyellowid = cyellow.getID();
-//		long cpurpleid = cpurple.getID();
-//		cards.set(1, cgreen);
-//		cards.set(2, cblue);
-//		cards.set(3, cyellow);
-//		cards.set(4, cpurple);
-//		tester.setCards(cards);
-//		List<Cards> ris = tester.getCards();
-//		long ris1 = ris.get(1).getID();
-//		long ris2 = ris.get(2).getID();
-//		long ris3 = ris.get(3).getID();
-//		long ris4 = ris.get(4).getID();
-//		
-//		
-//		assertEquals(cgreenid, ris1);
-//		assertEquals(cblueid, ris2);
-//		assertEquals(cyellowid, ris3);
-//		assertEquals(cpurpleid, ris4);
-//	}
+	@Test
+	public void testSetCards() throws FileNotFoundException, IOException, ParseException {
+		
+		PBoard tester = new PBoard();
+		List<Cards> cards = new ArrayList<>();
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a2 = (JSONObject) jsonObject.get("0");
+        String name = (String) a2.get("name");
+        long number = (long) a2.get("number");
+        long color = (long) a2.get("color");
+        long period = (long) a2.get("period");
+        long harvalue = (long) a2.get("HarvestValue");
+		
+
+		
+		
+		Cards cgreen = new GreenC(a2);
+
+		long cgreenid = cgreen.getID();
+
+		cards.add(cgreen);
+
+		tester.setCards(cards);
+		List<Cards> ris = tester.getCards();
+		long ris1 = ris.get(0).getID();
+
+		
+		
+		assertEquals(cgreenid, ris1);
+		
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getFams()}.
 	 */
-//	@Test
-//	public void testGetFams() {
-//
-//		PBoard tester = new PBoard();
-//		List<FMember> fams = new ArrayList<>();
-//		FMember fam1 = new FMember(1, 1);
-//		FMember fam2 = new FMember(2, 2);
-//		FMember fam3 = new FMember(3, 3);
-//		int fam1r = fam1.getPlayercol();
-//		int fam2r = fam2.getPlayercol();
-//		int fam3r = fam3.getPlayercol();
-//		fams.add(fam1);
-//		fams.add(fam2);
-//		fams.add(fam3);
-//		tester.setFams(fams);
-//		List<FMember> ris = tester.getFams();
-//		int ris1 = ris.get(1).getPlayercol();
-//		int ris2 = ris.get(2).getPlayercol();
-//		int ris3 = ris.get(3).getPlayercol();
-//		
-//		assertEquals(fam1r, ris1);
-//		assertEquals(fam2r, ris2);
-//		assertEquals(fam3r, ris3);
-//		
-//	}
+	@Test
+	public void testGetFams() {
+
+		PBoard tester = new PBoard();
+		List<FMember> fams= new ArrayList<>();
+		Dice dice = new Dice(4);
+		FMember e = new FMember(dice , 1);
+		fams.add(e);
+		int ris = fams.get(0).getPlayercol();
+		tester.setFams(fams);
+		int ris2 = tester.getFams().get(0).getPlayercol();
+		
+		assertEquals(ris, ris2);
+		
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#setFams(java.util.List)}.
 	 */
-//	@Test
-//	public void testSetFams() {
-//
-//		PBoard tester = new PBoard();
-//		List<FMember> fams = new ArrayList<>();
-//		FMember fam1 = new FMember(1, 1);
-//		FMember fam2 = new FMember(2, 2);
-//		FMember fam3 = new FMember(3, 3);
-//		int fam1r = fam1.getPlayercol();
-//		int fam2r = fam2.getPlayercol();
-//		int fam3r = fam3.getPlayercol();
-//		fams.add(fam1);
-//		fams.add(fam2);
-//		fams.add(fam3);
-//		tester.setFams(fams);
-//		List<FMember> ris = tester.getFams();
-//		int ris1 = ris.get(1).getPlayercol();
-//		int ris2 = ris.get(2).getPlayercol();
-//		int ris3 = ris.get(3).getPlayercol();
-//		
-//		assertEquals(fam1r, ris1);
-//		assertEquals(fam2r, ris2);
-//		assertEquals(fam3r, ris3);
-//		
-//	}
+	@Test
+	public void testSetFams() {
+
+		PBoard tester = new PBoard();
+		List<FMember> fams= new ArrayList<>();
+		Dice dice = new Dice(4);
+		FMember e = new FMember(dice , 1);
+		fams.add(e);
+		int ris = fams.get(0).getPlayercol();
+		tester.setFams(fams);
+		int ris2 = tester.getFams().get(0).getPlayercol();
+		
+		assertEquals(ris, ris2);
+		
+	}
 
 }

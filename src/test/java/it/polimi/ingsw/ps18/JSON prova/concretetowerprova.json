@@ -1,0 +1,40 @@
+{
+  "0": {
+    "0": {
+      "CellValue": 1,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "1": {
+      "CellValue": 3,
+      "QuickEffects": [
+        null
+      ],
+      "QuickEffectValues": [
+        null
+      ]
+    },
+    "2": {
+      "CellValue": 5,
+      "QuickEffects": [
+        "AddWood"
+      ],
+      "QuickEffectValues": [
+        1
+      ]
+    },
+    "3": {
+      "CellValue": 7,
+      "QuickEffects": [
+        "AddWood"
+      ],
+      "QuickEffectValues": [
+        2
+      ]
+    }
+  }
+}
