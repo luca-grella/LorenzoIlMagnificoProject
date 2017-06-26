@@ -32,7 +32,8 @@ public class ShowChoiceMarketCell extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act() {
-		System.out.println("Chose the Cell in which you want to move in:\n");
+		System.out.println("Chose the Cell in which you want to move in:\n"
+				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Market");
 		int choiceFloor = input.nextInt();
 		notifyParamMainController("ReceiveMarketCell",choiceFloor);

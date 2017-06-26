@@ -229,7 +229,7 @@ public class ConcreteTower implements Tower {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("-----------------\n");
-		builder.append("Cells in tower number" + index + ":\n");
+		builder.append("Cells in tower number" + (index+1) + ":\n");
 		
 		for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
 			Cell towerCell = towerCells.get(cellIndex);
@@ -245,8 +245,6 @@ public class ConcreteTower implements Tower {
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("-----------------\n");
-		builder.append("Details of tower: \n");
 		builder.append("\tTower color: " + this.color + "\n");
 		builder.append("\tNumber of cells in tower: " + this.towerCells.size());
 		return builder.toString();

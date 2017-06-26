@@ -7,11 +7,11 @@ import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReceiveFamtoCouncil.
  *
@@ -29,22 +29,32 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		PBoard currentplayer = game.getTurnplayer();
-		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.get(index);
-		Action currentaction = game.getOngoingAction();
-		CouncilCell councilCell = new CouncilCell();
-		if(chosenfam != null){
-			if(councilCell.isLegalCC(chosenfam) ){
-				currentaction.setChosenFam(chosenfam);
-				((FamtoCouncil) currentaction).act(game);
+		if(index==0){
+			Action tHandler = new TurnHandler(game.getTurnplayer());
+			game.setOngoingAction(tHandler);
+			tHandler.act(game);
+		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			Action currentaction = game.getOngoingAction();
+			((FamtoCouncil) currentaction).famchoice();
+		} else {
+			index -= 1;
+			Action currentaction = game.getOngoingAction();
+			PBoard currentplayer = game.getTurnplayer();
+			List<FMember> fams = currentplayer.getFams();
+			FMember chosenfam = fams.get(index);
+			CouncilCell councilCell = new CouncilCell();
+			if(chosenfam != null){
+				if(councilCell.isLegalCC(chosenfam) ){
+					currentaction.setChosenFam(chosenfam);
+					((FamtoCouncil) currentaction).act(game);
+				}
+				else{
+					((FamtoCouncil) currentaction).famchoice();
+				}		
 			}
 			else{
 				((FamtoCouncil) currentaction).famchoice();
-			}		
-		}
-		else{
-			((FamtoCouncil) currentaction).famchoice();
+			}
 		}
 		
 	}

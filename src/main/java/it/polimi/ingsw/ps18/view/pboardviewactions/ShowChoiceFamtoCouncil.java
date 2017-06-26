@@ -32,7 +32,8 @@ public class ShowChoiceFamtoCouncil extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act() {
-		System.out.println("Chose from yours family members which one to move:\n");
+		System.out.println("Chose from yours family members which one to move:\n"
+				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
 		notifyParamMainController("ReceiveFamtoCouncil",choice);

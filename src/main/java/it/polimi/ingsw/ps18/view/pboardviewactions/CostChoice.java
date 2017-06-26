@@ -18,6 +18,7 @@ public class CostChoice extends Observable implements PBViewAction {
 	@Override
 	public void act() {
 		System.out.println("How do You want to pay for this Card?\n"
+				+ "0. Back."
 				+ "1. Resources.\n"
 				+ "2. Military Points");
 		int choice = input.nextInt();

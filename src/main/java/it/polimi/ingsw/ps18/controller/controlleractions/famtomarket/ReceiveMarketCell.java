@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
@@ -28,19 +29,25 @@ public class ReceiveMarketCell implements ActionChoice{
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
-		Board gameBoard = game.getBoard();
-		List<MarketCell> boardMarketCells = gameBoard.getMarketCells();
-		MarketCell boardMarketCell = boardMarketCells.get(index);
-//		PBoard currentPlayer = game.getTurnplayer();
-		FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
-		if(boardMarketCell.isEmptyMC()){
-			if(boardMarketCell.isLegalMC(pBoardFM)){
-				((FamtoMarket) currentaction).setChosenCell(index);
-				currentaction.act(game);
+		if(index==0){
+			((FamtoMarket) currentaction).famchoice();
+		} else if(index<0 || index>GeneralParameters.numberofMarketCells){
+			((FamtoMarket) currentaction).cellChoice();
+		} else {
+			index -= 1;
+			Board gameBoard = game.getBoard();
+			List<MarketCell> boardMarketCells = gameBoard.getMarketCells();
+			MarketCell boardMarketCell = boardMarketCells.get(index);
+			FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
+			if(boardMarketCell.isEmptyMC()){
+				if(boardMarketCell.isLegalMC(pBoardFM)){
+					((FamtoMarket) currentaction).setChosenCell(index);
+					currentaction.act(game);
+				}
+				else
+					((FamtoMarket) currentaction).cellChoice();
+				
 			}
-			else
-				((FamtoMarket) currentaction).cellChoice();
-			
 		}
 	}
 

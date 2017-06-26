@@ -178,7 +178,7 @@ public class MarketCell {
 	public String toString(int index) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
-		builder.append("Market cell number " + index + ":\n");
+		builder.append("Market cell number " + (index+1) + ":\n");
 		
 		if(marketCellFM != null){
 			builder.append("Family Member in market cell number " + index + ":\n"

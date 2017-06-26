@@ -336,12 +336,11 @@ public class Board extends Observable {
 	public String toStringTowers(){
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append("\n-----------------\n");
-		builder.append("Details of board towers\n");
+		builder.append("-----------------\n");
 		
 		for(int towerIndex=0; towerIndex<GeneralParameters.numberofBaseTowers; towerIndex++){
 			Tower boardTower = towers.get(towerIndex);
-			builder.append(boardTower.toString());
+			builder.append("Tower number: " + (towerIndex+1) + "\n" + boardTower.toString());
 			builder.append("\n-----------------\n");
 		}
 		

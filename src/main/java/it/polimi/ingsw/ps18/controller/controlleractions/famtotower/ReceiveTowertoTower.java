@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-// TODO: Auto-generated Javadoc
+
 /**
  * Receives the tower's index chosen by the current player.
  * 
@@ -38,45 +38,52 @@ public class ReceiveTowertoTower implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
-		Board gameBoard = game.getBoard();
-		List<Tower> boardTowers = gameBoard.getTowers();
-		FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
-		ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
-		PBoard currentplayer = game.getTurnplayer();
-		
-		if(boardTower.isFullTower()){
+		if(index==0){
+			((FamtoTower) currentaction).famchoice();
+		} else if(index<0 || index>GeneralParameters.numberofBaseTowers){
 			((FamtoTower) currentaction).towerChoice();
-		}
-		else{
-			if(boardTower.isLegalTower(pBoardFM)){ 
-				if(boardTower.isEmptyTower()){
-					if(currentplayer.hasSpace(index)){
-						((FamtoTower) currentaction).setChosenTower(index);
-						((FamtoTower) currentaction).floorChoice();
-					}
-					else{
-						((FamtoTower) currentaction).towerChoice();
-					}		
-				} 
-				else {
-					if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+		} else {
+			index -= 1;
+			Board gameBoard = game.getBoard();
+			List<Tower> boardTowers = gameBoard.getTowers();
+			FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
+			ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
+			PBoard currentplayer = game.getTurnplayer();
+			
+			if(boardTower.isFullTower()){
+				((FamtoTower) currentaction).towerChoice();
+			}
+			else{
+				if(boardTower.isLegalTower(pBoardFM)){ 
+					if(boardTower.isEmptyTower()){
 						if(currentplayer.hasSpace(index)){
-							((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
 							((FamtoTower) currentaction).setChosenTower(index);
 							((FamtoTower) currentaction).floorChoice();
-						}					
+						}
 						else{
 							((FamtoTower) currentaction).towerChoice();
-	
-						}
+						}		
 					} 
 					else {
-						((FamtoTower) currentaction).towerChoice();	
+						if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+							if(currentplayer.hasSpace(index)){
+								((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
+								((FamtoTower) currentaction).setChosenTower(index);
+								((FamtoTower) currentaction).floorChoice();
+							}					
+							else{
+								((FamtoTower) currentaction).towerChoice();
+		
+							}
+						} 
+						else {
+							((FamtoTower) currentaction).towerChoice();	
+						}
 					}
+				} 
+				else {
+					((FamtoTower) currentaction).towerChoice();
 				}
-			} 
-			else {
-				((FamtoTower) currentaction).towerChoice();
 			}
 		}
 	}

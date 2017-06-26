@@ -42,17 +42,48 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		Action currentaction = game.getOngoingAction();
-		PBoard currentplayer = game.getTurnplayer();
-		List<FMember> fams = currentplayer.getFams();
-		FMember chosenfam = fams.get(index);
-		((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
-		List<HarvCell> harvCells = game.getBoard().getHarvestCells();
-		
-		if(chosenfam != null){
-			if( ! (harvCells.isEmpty()) ){
-				if(game.getBoard().isLegalHarv(chosenfam)){
-					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+		if(index==0){
+			Action tHandler = new TurnHandler(game.getTurnplayer());
+			game.setOngoingAction(tHandler);
+			tHandler.act(game);
+		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			Action currentaction = game.getOngoingAction();
+			((FamtoHarvest) currentaction).famchoice();
+		} else {
+			index -= 1;
+			Action currentaction = game.getOngoingAction();
+			PBoard currentplayer = game.getTurnplayer();
+			List<FMember> fams = currentplayer.getFams();
+			FMember chosenfam = fams.get(index);
+			((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
+			List<HarvCell> harvCells = game.getBoard().getHarvestCells();
+			
+			if(chosenfam != null){
+				if( ! (harvCells.isEmpty()) ){
+					if(game.getBoard().isLegalHarv(chosenfam)){
+						HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
+						if(harvCell.isLegalHC(chosenfam)){
+							currentaction.setChosenFam(chosenfam);
+							((FamtoHarvest) currentaction).act(game);
+						}
+						else{
+							Action action = new TurnHandler(currentplayer);
+							game.setOngoingAction(action);
+						}
+					}
+					else{
+						for(int famIndex=0; famIndex<fams.size(); famIndex++){
+							if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
+								((FamtoHarvest) currentaction).famchoice();
+								return;
+							}
+						}
+						Action action = new TurnHandler(currentplayer);
+						game.setOngoingAction(action);
+					}
+				}
+				else{
+					HarvCell harvCell = new HarvCell(0);
 					if(harvCell.isLegalHC(chosenfam)){
 						currentaction.setChosenFam(chosenfam);
 						((FamtoHarvest) currentaction).act(game);
@@ -62,32 +93,12 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 						game.setOngoingAction(action);
 					}
 				}
-				else{
-					for(int famIndex=0; famIndex<fams.size(); famIndex++){
-						if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-							((FamtoHarvest) currentaction).famchoice();
-							return;
-						}
-					}
-					Action action = new TurnHandler(currentplayer);
-					game.setOngoingAction(action);
-				}
 			}
 			else{
-				HarvCell harvCell = new HarvCell(0);
-				if(harvCell.isLegalHC(chosenfam)){
-					currentaction.setChosenFam(chosenfam);
-					((FamtoHarvest) currentaction).act(game);
-				}
-				else{
-					Action action = new TurnHandler(currentplayer);
-					game.setOngoingAction(action);
-				}
+				((FamtoHarvest) currentaction).famchoice();
 			}
 		}
-		else{
-			((FamtoHarvest) currentaction).famchoice();
-		}
+		
 	}
 
 

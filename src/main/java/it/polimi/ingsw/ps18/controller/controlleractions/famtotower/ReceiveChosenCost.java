@@ -11,7 +11,11 @@ public class ReceiveChosenCost implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
-		((FamtoTower) currentaction).setCostchoice(index);
+		if(index==0){
+			((FamtoTower) currentaction).floorChoice();
+		} else if(index<0 || index>2){
+			((FamtoTower) currentaction).setCostchoice(index);
+		}
 	}
 
 	@Override

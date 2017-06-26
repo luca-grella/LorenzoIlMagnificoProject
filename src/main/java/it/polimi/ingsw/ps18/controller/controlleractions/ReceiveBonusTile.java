@@ -12,9 +12,14 @@ public class ReceiveBonusTile implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		Cards bonusTile = game.getBonusTiles().get(index);
-		currentplayer.getCards().add(bonusTile);
-		game.getBonusTiles().remove(index);
+		if(index<=0 || index>game.getBonusTiles().size()){
+			currentplayer.ChooseBonusTile();
+		} else {
+			index -= 1;
+			Cards bonusTile = game.getBonusTiles().get(index);
+			currentplayer.getCards().add(bonusTile);
+			game.getBonusTiles().remove(index);
+		}
 	}
 
 	@Override

@@ -234,7 +234,7 @@ public class BonusTile extends Cards {
 	@Override
 	public String toString(int count) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Card Number " + count 
+		builder.append("Card Number " + (count+1) 
 				+ "\n\tName: " + this.getName() + "\n"
 				+ "\tID: " + this.getID() + "\n"
 				);

@@ -31,7 +31,8 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 */
 	@Override
 	public void act() {
-		System.out.println("Choose a family member to place:\n");
+		System.out.println("Choose a family member to place:\n"
+				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
 		notifyParamMainController("ReceiveFamtoTower",choice);

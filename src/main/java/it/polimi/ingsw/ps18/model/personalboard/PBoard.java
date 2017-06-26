@@ -64,9 +64,13 @@ public class PBoard extends Observable {
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
 		} this.fams.add(new FMember(0,playercol));
-		notifyActionPBoardView("ChooseBonusTile");
+		ChooseBonusTile();
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
+	}
+	
+	public void ChooseBonusTile(){
+		notifyActionPBoardView("ChooseBonusTile");
 	}
 	
 	/**
@@ -198,7 +202,7 @@ public class PBoard extends Observable {
 		for(int i=0; i<this.fams.size(); i++){
 			if((fams.get(i))!=null){
 				FMember fam = fams.get(i);
-				builder.append("Family Member " + i + ":\n");
+				builder.append("Family Member " + (i+1) + ":\n");
 				builder.append(fam.toString());
 				builder.append("\n\n");
 			} else {

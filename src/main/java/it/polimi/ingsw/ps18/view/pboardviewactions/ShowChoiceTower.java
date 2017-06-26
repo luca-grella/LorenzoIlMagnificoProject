@@ -32,7 +32,8 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act() {
-		System.out.println("Choose the Tower in which you want to move in:\n");
+		System.out.println("Choose the Tower in which you want to move in:\n"
+				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Towers");
 		int choiceTower = input.nextInt();
 		notifyParamMainController("ReceiveTower",choiceTower);

@@ -166,10 +166,9 @@ public class Cell {
 	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
 		builder.append("-----------------\n");
-		builder.append("Tower cell number " + index + ":\n");
+		builder.append("Tower cell number " + (index+1) + ":\n");
 		
 		if(cellCard != null){
-			builder.append("Cards in tower cell number " + index + ":\n");
 			builder.append(this.cellCard.toString());
 		}
 		else{

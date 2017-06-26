@@ -31,7 +31,8 @@ public class ShowChoiceFamtoProduction extends Observable implements PBViewActio
 	 */
 	@Override
 	public void act() {
-		System.out.println("Chose from yours family members which one to move:\n");
+		System.out.println("Chose from yours family members which one to move:\n"
+				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
 		notifyParamMainController("ReceiveFamtoProduction",choice);

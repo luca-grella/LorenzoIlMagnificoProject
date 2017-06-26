@@ -8,6 +8,8 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
@@ -39,18 +41,28 @@ public class ReceiveFamtoTower implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		Action currentaction = game.getOngoingAction();
-		PBoard currentplayer = game.getTurnplayer();
-		List<FMember> fams = currentplayer.getFams();
-		((FamtoTower) currentaction).setIndexFamtoRemove(index);
-		FMember chosenfam = fams.get(index);
-		
-		if(chosenfam == null){
+		if(index==0){
+			Action tHandler = new TurnHandler(game.getTurnplayer());
+			game.setOngoingAction(tHandler);
+			tHandler.act(game);
+		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			Action currentaction = game.getOngoingAction();
 			((FamtoTower) currentaction).famchoice();
-		}
-		else{
-			currentaction.setChosenFam(chosenfam);
-			((FamtoTower) currentaction).towerChoice();
+		} else {
+			index -= 1;
+			Action currentaction = game.getOngoingAction();
+			PBoard currentplayer = game.getTurnplayer();
+			List<FMember> fams = currentplayer.getFams();
+			((FamtoTower) currentaction).setIndexFamtoRemove(index);
+			FMember chosenfam = fams.get(index);
+			
+			if(chosenfam == null){
+				((FamtoTower) currentaction).famchoice();
+			}
+			else{
+				currentaction.setChosenFam(chosenfam);
+				((FamtoTower) currentaction).towerChoice();
+			}
 		}
 	}
 
