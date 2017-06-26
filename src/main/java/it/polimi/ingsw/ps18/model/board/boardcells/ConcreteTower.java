@@ -41,31 +41,17 @@ public class ConcreteTower implements Tower {
 	
 	/**
 	 * Instantiates a new concrete tower.
+	 * @param towerIndex 
 	 *
-	 * @param towerIndex
+	 * @param a
 	 *            the tower index
 	 */
-	public ConcreteTower (Integer towerIndex) {
-		JSONParser parser = new JSONParser();
+	public ConcreteTower (Integer towerIndex, JSONObject a) {
 		this.color = towerIndex;
 		
-		
-		try {
-		    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/TowerCell.json")); 
-		    	JSONObject jsonObject = (JSONObject) obj;
-		        JSONObject a = (JSONObject) jsonObject.get(towerIndex.toString());
-		        for(Integer count=0; count<GeneralParameters.numberofCells; count++){
-		        	JSONObject cell = (JSONObject) a.get(count.toString());
-				    this.towerCells.add(count, new Cell(cell));
-				}
-		        
-		        
-	    }catch (FileNotFoundException e) {
-	    	System.out.println("File not found.");
-	    } catch (IOException e) {
-	    	System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problem in parser");
+		for(Integer count=0; count<GeneralParameters.numberofCells; count++){
+			JSONObject cell = (JSONObject) a.get(count.toString());
+			this.towerCells.add(count, new Cell(cell));
 		}
 	}
 	

@@ -46,60 +46,60 @@ public class MarketCellTest {
 //		
 //	}
 
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 */
-	@Test
-	public void testInsertFM() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isEmptyMC()}.
-	 */
-	@Test
-	public void testIsEmptyMC() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isLegalMC(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 */
-	@Test
-	public void testIsLegalMC() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMarketCellFM()}.
-	 */
-	@Test
-	public void testGetMarketCellFM() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMarketCellFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 */
-	@Test
-	public void testSetMarketCellFM() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMinPlayers()}.
-	 */
-	@Test
-	public void testGetMinPlayers() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMinPlayers(long)}.
-	 */
-	@Test
-	public void testSetMinPlayers() {
-		fail("Not yet implemented");
-	}
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+//	 */
+//	@Test
+//	public void testInsertFM() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isEmptyMC()}.
+//	 */
+//	@Test
+//	public void testIsEmptyMC() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isLegalMC(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
+//	 */
+//	@Test
+//	public void testIsLegalMC() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMarketCellFM()}.
+//	 */
+//	@Test
+//	public void testGetMarketCellFM() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMarketCellFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
+//	 */
+//	@Test
+//	public void testSetMarketCellFM() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMinPlayers()}.
+//	 */
+//	@Test
+//	public void testGetMinPlayers() {
+//		fail("Not yet implemented");
+//	}
+//
+//	/**
+//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMinPlayers(long)}.
+//	 */
+//	@Test
+//	public void testSetMinPlayers() {
+//		fail("Not yet implemented");
+//	}
 
 }

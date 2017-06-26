@@ -5,7 +5,6 @@ import java.util.List;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
-// TODO: Auto-generated Javadoc
 /**
  * Interface of a generic tower. <br>
  * In the base game, towers have the same attributes, but a specific tower for a

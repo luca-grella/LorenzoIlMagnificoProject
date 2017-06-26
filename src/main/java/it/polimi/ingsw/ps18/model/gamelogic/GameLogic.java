@@ -310,7 +310,7 @@ public class GameLogic extends Observable {
 			if(TURN%2==0){
 				notifyActionMainController("Verify Church Support");
 			}
-			board.refreshBoard();
+//			board.refreshBoard();
 
 		} while (TURN!=GeneralParameters.totalTurns);
 		//PBoard winner = winnerCalc(players);

@@ -17,8 +17,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * Defines a market cell. <br>
  * When a family member is placed, MarketCell activates a set of quick effects.
@@ -51,40 +49,25 @@ public class MarketCell {
 	/**
 	 * Instantiates a new market cell.
 	 *
-	 * @param i
+	 * @param a
 	 *            the i
 	 */
-	public MarketCell(Integer i) {
+	public MarketCell(JSONObject a) {
 		marketCellFM = null;
 		HashMapQE mapQE = new HashMapQE();
-		JSONParser parser = new JSONParser();
-
-	    try {
-	    	Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/MarketCell.json")); 
-	    	JSONObject jsonObject = (JSONObject) obj;
-	        JSONObject a = (JSONObject) jsonObject.get(i.toString());
 	        
-	        this.setMinPlayers((long) a.get("MinPlayers"));
-	        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-	        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-	        for(int count=0; count<qeffects.size(); count++){
-	        	if(qeffects.get(count)!=null){
-	        		if(qeffectvalues.get(count)!=null){
-	        			this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
-	        		} else {
-	        			this.effects.add(mapQE.geteffect((String) qeffects.get(count)));
-	        		}
-	        	}
-	        }
-	    }catch (FileNotFoundException e) {
-	        System.out.println("File not found.");
-
-	    } catch (IOException e) {
-		    System.out.println("IOException");
-		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("Problem in parser");
-		}
-		
+		this.setMinPlayers((long) a.get("MinPlayers"));
+		JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+		JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+		for(int count=0; count<qeffects.size(); count++){
+			if(qeffects.get(count)!=null){
+				if(qeffectvalues.get(count)!=null){
+					this.add(mapQE.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+				} else {
+					this.effects.add(mapQE.geteffect((String) qeffects.get(count)));
+				}	
+			}	
+	    }	
 	}
 
 	/**

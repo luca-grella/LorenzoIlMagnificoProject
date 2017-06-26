@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.controller.controlleractions;
+package it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -66,7 +67,7 @@ public class VaticanReportTrigger implements ActionChoice{
 				//else cella dopo
 			}
 			 catch (IOException | ParseException e) {
-				e.printStackTrace();
+				System.out.println("Errore");
 			}
 		}
 		

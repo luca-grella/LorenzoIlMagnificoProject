@@ -24,6 +24,8 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveChose
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamtoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
+import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.ReceiveVaticanAnswer;
+import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.VaticanReportTrigger;
 
 // TODO: Auto-generated Javadoc
 /**
