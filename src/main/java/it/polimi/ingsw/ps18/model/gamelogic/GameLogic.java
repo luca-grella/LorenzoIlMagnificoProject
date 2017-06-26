@@ -29,12 +29,12 @@ import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GameLogic.
  *
@@ -81,7 +81,15 @@ public class GameLogic extends Observable {
 	 * The turnplayer.
 	 */
 	private PBoard turnplayer;
-	private List<Cards> bonusTiles = new ArrayList<>(GeneralParameters.numberOfBonusTiles); 
+	
+	/**
+	 * The bonusTiles
+	 */
+	private List<Cards> bonusTiles = new ArrayList<>(GeneralParameters.numberOfBonusTiles);
+	
+	/**
+	 * The Green Cards
+	 */
 	private List<Cards> greencards = new ArrayList<>(GeneralParameters.numberGreenC);
 	
 	/**
@@ -300,9 +308,10 @@ public class GameLogic extends Observable {
 			}
 
 			if(TURN%2==0){
-				board.refreshBoard();
-				VaticanReport(TURN/2);
+				notifyActionMainController("Verify Church Support");
 			}
+			board.refreshBoard();
+
 		} while (TURN!=GeneralParameters.totalTurns);
 		//PBoard winner = winnerCalc(players);
 		//System.out.println("Do you want to play again? Y|N");
@@ -323,19 +332,6 @@ public class GameLogic extends Observable {
 	private PBoard winnerCalc(List<PBoard> players) {
 		return null;
 	}
-
-	/**
-	 * Handle the vatican report phase.
-	 *
-	 * @param age
-	 *            the age
-	 */
-	private void VaticanReport(int age) {
-		//Giri MVC
-		/*
-		 * Da qui dovrebbe partire una notify(credo message o parameter) alla View
-		 */
-	}
 	
 	/**
 	 * To string.
@@ -348,6 +344,12 @@ public class GameLogic extends Observable {
 		StringBuilder builder = new StringBuilder();
 		builder.append(i);
 		return builder.toString();
+	}
+	
+	
+	private void notifyActionMainController(String msg) {
+		setChanged();
+		notifyObservers(new ActionMessage(msg));
 	}
 	
 	/**
@@ -370,6 +372,11 @@ public class GameLogic extends Observable {
 	private void notifyActionMainView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
+	}
+	
+	private void notifyStatusMainView(String msg){
+		setChanged();
+		notifyObservers(new StatusMessage(msg));
 	}
 
 	/**
@@ -462,6 +469,21 @@ public class GameLogic extends Observable {
 	public List<Cards> getBonusTiles() {
 		return bonusTiles;
 	}
+
+	/**
+	 * @return the excommcards
+	 */
+	public List<Excommunications> getExcommcards() {
+		return excommcards;
+	}
+
+	/**
+	 * @return the aGE
+	 */
+	public int getAGE() {
+		return AGE;
+	}
+	
 	
 	
 	

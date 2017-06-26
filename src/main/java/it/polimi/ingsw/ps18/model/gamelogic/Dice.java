@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.Random;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Dice.
  */

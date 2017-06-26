@@ -1,7 +1,6 @@
 
 package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ExcommEffects.
  */

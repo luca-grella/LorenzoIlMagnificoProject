@@ -39,6 +39,7 @@ public class HashMapPBVA {
 		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege());
 		genPBVAction.put("CardCostChoice", new CostChoice());
 		genPBVAction.put("ChooseBonusTile", new ShowChoiceBonusTiles());
+		genPBVAction.put("Choose Church Support", new ChooseSupport());
 	}
 	
 	/**

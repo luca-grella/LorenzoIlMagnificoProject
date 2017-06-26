@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FamtoTower.
  */
@@ -80,7 +79,7 @@ public class FamtoTower extends Observable implements Action {
 		notifyActionPBoardView("CardCostChoice");
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -97,7 +96,7 @@ public class FamtoTower extends Observable implements Action {
 			currentplayer.getResources().subStats(totalCostPreview);
 			currentplayer.addCard(newcard,game);
 		} else {
-			this.famchoice();
+			this.famchoice(); //Teoricamente non si entra mai qui, ma sarebbe piu' sensato rimandarlo alla scelta dell'azione
 		}
 		
 

@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * Support Class that handle the player's turn. It has a specific View and Controller to
  * separate the work on the main ones.
@@ -37,7 +37,7 @@ public class TurnHandler extends Observable implements Action {
 		addObserver(currentplayer.getpBoardView());
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	public void act(GameLogic game){
@@ -69,7 +69,7 @@ public class TurnHandler extends Observable implements Action {
 		notifyObservers(new ActionMessage(msg));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override

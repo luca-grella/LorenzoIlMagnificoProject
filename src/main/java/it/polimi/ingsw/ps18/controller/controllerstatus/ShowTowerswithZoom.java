@@ -5,13 +5,12 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ShowTowerswithZoom.
  */
 public class ShowTowerswithZoom implements Status {
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controllerstatus.Status#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override

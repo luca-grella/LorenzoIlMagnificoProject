@@ -6,6 +6,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
@@ -15,7 +16,6 @@ import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PBoard.
  */
@@ -41,6 +41,10 @@ public class PBoard extends Observable {
 	 */
 	private List<Cards> cards = new ArrayList<>();
 	
+	/**
+	 * the excomm Cards
+	 */
+	private List<Excommunications> excommCards = new ArrayList<>();
 	/**
 	 * The fams.
 	 */
@@ -382,5 +386,14 @@ public class PBoard extends Observable {
 	public void setFams(List<FMember> fams) {
 		this.fams = fams;
 	}
+
+	/**
+	 * @return the excommCards
+	 */
+	public List<Excommunications> getExcommCards() {
+		return excommCards;
+	}
+	
+	
 
 }

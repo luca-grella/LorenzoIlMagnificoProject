@@ -21,7 +21,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReceiveFloortoTower.
  */
@@ -32,7 +31,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 	 */
 	private int index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override

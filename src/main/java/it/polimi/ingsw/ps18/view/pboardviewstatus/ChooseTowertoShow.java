@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChooseTowertoShow.
  */
@@ -18,7 +17,7 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
 	 */
 	@Override
@@ -27,7 +26,7 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

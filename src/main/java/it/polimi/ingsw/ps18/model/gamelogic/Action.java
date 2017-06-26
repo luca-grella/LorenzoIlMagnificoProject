@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Action.
  */

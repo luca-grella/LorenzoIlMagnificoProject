@@ -14,7 +14,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Sets the ongoing action (placing the Family Member to a Harvest Cell) and
  * goes to the Family Member choice.
@@ -156,7 +155,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

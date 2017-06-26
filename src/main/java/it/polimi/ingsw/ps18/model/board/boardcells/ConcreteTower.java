@@ -18,7 +18,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defines a Tower composed by Cell objects. <br>
  * Inherits and overrides methods from the Tower Interface.
@@ -76,9 +75,8 @@ public class ConcreteTower implements Tower {
 	 * <li>Shuffles and cycles the cards in the ArrayList until a card with a
 	 * specific period is found
 	 * <li>Uses the Cell method insertCard, that places a card in a cell and
-	 * iterates it for all the Cells in a Tower
+	 * iterates it for all the Cells in a Tower.
 	 * </ul>
-	 * .
 	 *
 	 * @param towerCards
 	 *            ArrayList that contains the card with the same type of the
@@ -223,7 +221,7 @@ public class ConcreteTower implements Tower {
 	
 	
 	
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.board.boardcells.Tower#toString(int)
 	 */
 	@Override
@@ -243,9 +241,6 @@ public class ConcreteTower implements Tower {
 	}
 	
 	
-	 /* (non-Javadoc)
- 	 * @see java.lang.Object#toString()
- 	 */
  	//TODO: Definire Info generali di una torre
 	public String toString(){
 		StringBuilder builder = new StringBuilder();

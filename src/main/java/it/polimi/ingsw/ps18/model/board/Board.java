@@ -17,7 +17,6 @@ import it.polimi.ingsw.ps18.model.messages.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.BoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defines a game board, composed of: <br>
  * <ul>

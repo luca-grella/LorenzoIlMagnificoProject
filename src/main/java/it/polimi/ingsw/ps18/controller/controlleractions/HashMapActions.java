@@ -66,6 +66,8 @@ public class HashMapActions {
 		genActions.put("Chosen Resource", new WoodorRockHandler());
 		genActions.put("Chosen Diff Privilege", new DifferentPrivilegeHandler());
 		genActions.put("ReceiveChosenBonusTile", new ReceiveBonusTile());
+		genActions.put("Verify Church Support", new VaticanReportTrigger());
+		genActions.put("Receive Vatican Answer", new ReceiveVaticanAnswer());
 	}
 	
 	/**

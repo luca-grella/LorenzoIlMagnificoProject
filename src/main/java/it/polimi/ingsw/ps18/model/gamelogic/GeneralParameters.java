@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.gamelogic;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface GeneralParameters.
  */
@@ -135,5 +134,8 @@ public abstract interface GeneralParameters {
 	 * The Constant coinsFromCouncil.
 	 */
 	public final static int coinsFromCouncil = 1;
+	/**
+	 * The Constant numberOfBonusTiles
+	 */
 	public final static int numberOfBonusTiles = 4; 
 }

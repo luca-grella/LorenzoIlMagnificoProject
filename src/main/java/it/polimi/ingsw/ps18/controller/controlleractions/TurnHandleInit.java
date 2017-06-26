@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class TurnHandleInit.
  */
@@ -26,7 +25,7 @@ public class TurnHandleInit implements ActionChoice{
 		
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

@@ -6,7 +6,6 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChoosePlayertoShow.
  */
@@ -17,7 +16,7 @@ public class ChoosePlayertoShow extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
 	 */
 	@Override
@@ -26,7 +25,7 @@ public class ChoosePlayertoShow extends Observable implements PBViewStatus {
 
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

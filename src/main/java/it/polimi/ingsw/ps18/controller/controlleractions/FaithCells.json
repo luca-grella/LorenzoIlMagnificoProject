@@ -1,0 +1,114 @@
+{
+  "0": {
+    "VP": "0",
+    "FP": "0",
+    "SupportOKAge1": false,
+    "SupportOKAge2": false,
+    "SupportOKAge3": false
+  },
+  "1": {
+    "VP": "1",
+    "FP": "1",
+    "SupportOKAge1": false,
+    "SupportOKAge2": false,
+    "SupportOKAge3": false
+  },
+  "2": {
+    "VP": "2",
+    "FP": "2",
+    "SupportOKAge1": false,
+    "SupportOKAge2": false,
+    "SupportOKAge3": false
+  },
+  "3": {
+    "VP": "3",
+    "FP": "3",
+    "SupportOKAge1": true,
+    "SupportOKAge2": false,
+    "SupportOKAge3": false
+  },
+  "4": {
+    "VP": "4",
+    "FP": "4",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": false
+  },
+  "5": {
+    "VP": "5",
+    "FP": "5",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "6": {
+    "VP": "7",
+    "FP": "6",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "7": {
+    "VP": "9",
+    "FP": "7",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "8": {
+    "VP": "11",
+    "FP": "8",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "9": {
+    "VP": "13",
+    "FP": "9",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "10": {
+    "VP": "15",
+    "FP": "10",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "11": {
+    "VP": "17",
+    "FP": "11",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "12": {
+    "VP": "19",
+    "FP": "12",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "13": {
+    "VP": "22",
+    "FP": "13",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "14": {
+    "VP": "25",
+    "FP": "14",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  },
+  "15": {
+    "VP": "30",
+    "FP": "15",
+    "SupportOKAge1": true,
+    "SupportOKAge2": true,
+    "SupportOKAge3": true
+  }
+}

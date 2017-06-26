@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messages.ParamMessage;
 import it.polimi.ingsw.ps18.model.messages.StatusMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ShowChoiceFamtoTower.
  */
@@ -18,7 +17,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
 	 */
 	@Override
@@ -27,7 +26,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -63,7 +62,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 		notifyObservers(new StatusMessage(msg));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

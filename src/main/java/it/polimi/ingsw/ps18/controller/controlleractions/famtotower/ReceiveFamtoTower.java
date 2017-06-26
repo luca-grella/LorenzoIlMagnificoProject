@@ -12,7 +12,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Receives a Family Member chosen by the current player and moves to the Tower choice.
  * 

@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.messages;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ParamMessage.
  */
@@ -15,7 +14,7 @@ public class ParamMessage extends Message{
 	 * The number.
 	 */
     private int number;
-	
+    
 	
 	/**
 	 * Instantiates a new param message.
@@ -25,11 +24,12 @@ public class ParamMessage extends Message{
 	 * @param number
 	 *            the number
 	 */
-	public ParamMessage(String msg,int number) {
+	public ParamMessage(String msg, int number) {
 		this.message = msg;
 		this.number = number;
 		this.ID = 4;
 	}
+
 	
 	/**
 	 * Gets the message.
@@ -48,7 +48,5 @@ public class ParamMessage extends Message{
 	public int getNumber() {
 		return number;
 	}
-	
-	
 
 }

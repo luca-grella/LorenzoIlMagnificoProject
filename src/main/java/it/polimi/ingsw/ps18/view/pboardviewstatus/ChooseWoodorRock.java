@@ -17,7 +17,7 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
 	 */
 	@Override
@@ -25,7 +25,7 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 		addObserver(controller);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

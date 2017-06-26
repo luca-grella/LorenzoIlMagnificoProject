@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforMP;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforVP;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Excommunications.
  */

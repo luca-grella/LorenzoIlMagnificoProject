@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defines a Tower cell, which contains a Cards object. <br>
  *
