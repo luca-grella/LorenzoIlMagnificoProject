@@ -4,8 +4,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import it.polimi.ingsw.ps18.controller.MainController;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.messages.Message;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 
 // TODO: Auto-generated Javadoc
 /**

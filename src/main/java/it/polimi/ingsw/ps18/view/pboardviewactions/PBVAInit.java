@@ -4,9 +4,9 @@ import java.util.Observable;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 
 // TODO: Auto-generated Javadoc
 /**

@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
-import it.polimi.ingsw.ps18.model.messages.ParamMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 

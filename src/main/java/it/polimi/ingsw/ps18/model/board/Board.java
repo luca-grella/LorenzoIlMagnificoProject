@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.BoardView;
 

@@ -10,10 +10,10 @@ import it.polimi.ingsw.ps18.controller.controllerstatus.HashMapStatus;
 import it.polimi.ingsw.ps18.controller.controllerstatus.Status;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.Message;
-import it.polimi.ingsw.ps18.model.messages.ParamMessage;
-import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 // TODO: Auto-generated Javadoc

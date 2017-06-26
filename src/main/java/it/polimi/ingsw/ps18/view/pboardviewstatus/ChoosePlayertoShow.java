@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
-import it.polimi.ingsw.ps18.model.messages.ParamMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 
 /**
  * The Class ChoosePlayertoShow.

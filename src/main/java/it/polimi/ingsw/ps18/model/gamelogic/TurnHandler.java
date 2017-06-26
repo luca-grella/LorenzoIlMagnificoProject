@@ -2,8 +2,8 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.Observable;
 
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 

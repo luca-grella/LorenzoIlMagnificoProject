@@ -5,7 +5,7 @@ import java.util.Observable;
 import org.json.simple.JSONArray;
 
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
-import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 

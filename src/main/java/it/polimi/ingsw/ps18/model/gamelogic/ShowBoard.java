@@ -6,9 +6,9 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.*;
 import it.polimi.ingsw.ps18.model.cards.Cards;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 

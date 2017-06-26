@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps18.model.gamelogic;
 
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 
 import java.util.List;
 import java.util.Observable;

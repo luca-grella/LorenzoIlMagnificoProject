@@ -5,11 +5,11 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 
 // TODO: Auto-generated Javadoc
 /**

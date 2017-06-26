@@ -11,7 +11,7 @@ import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;

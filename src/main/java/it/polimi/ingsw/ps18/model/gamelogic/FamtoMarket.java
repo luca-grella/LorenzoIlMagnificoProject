@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.view.PBoardView;
 

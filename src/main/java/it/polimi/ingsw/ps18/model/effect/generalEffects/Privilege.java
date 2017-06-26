@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 // TODO: Auto-generated Javadoc

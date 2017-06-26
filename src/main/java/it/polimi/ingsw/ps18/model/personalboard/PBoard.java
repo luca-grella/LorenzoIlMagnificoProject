@@ -10,9 +10,9 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
-import it.polimi.ingsw.ps18.model.messages.ActionMessage;
-import it.polimi.ingsw.ps18.model.messages.LogMessage;
-import it.polimi.ingsw.ps18.model.messages.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 

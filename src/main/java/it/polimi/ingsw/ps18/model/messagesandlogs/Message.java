@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.messages;
+package it.polimi.ingsw.ps18.model.messagesandlogs;
 
 // TODO: Auto-generated Javadoc
 /**
