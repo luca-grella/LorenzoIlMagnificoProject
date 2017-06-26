@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import it.polimi.ingsw.ps18.controller.MainController;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class BoardTest.
@@ -15,14 +17,19 @@ import org.junit.Test;
  */
 public class BoardTest {
 
-//	/**
-//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#Board(it.polimi.ingsw.ps18.controller.MainController, int)}.
-//	 */
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#Board(it.polimi.ingsw.ps18.controller.MainController, int)}.
+	 */
 //	@Test
 //	public void testBoard() {
-//		fail("Not yet implemented");
+//		
+//		MainController mcontroller = new MainController();
+//		Board tester = new Board(mcontroller , 1);
+//		
+//		
+//		
 //	}
-//
+
 //	/**
 //	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#refreshBoard()}.
 //	 */

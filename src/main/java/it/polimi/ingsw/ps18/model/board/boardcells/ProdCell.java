@@ -38,8 +38,9 @@ public class ProdCell {
 	 */
 	public ProdCell(int malus) {
 		prodCellFM = null;
-		prodCellValue = GeneralParameters.baseValueProdCells;
 		this.malus = malus;
+		prodCellValue = GeneralParameters.baseValueProdCells - malus;
+		
 	}
 
 	

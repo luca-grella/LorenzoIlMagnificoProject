@@ -19,6 +19,8 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -87,9 +89,9 @@ public class ConcreteTowerTest {
         ConcreteTower tester = new ConcreteTower(0);
         
         long ris = card.getID();
-        long ris2 = card.getID();
-        long ris3 = card.getID();
-        long ris4 = card.getID();
+        long ris2 = card2.getID();
+        long ris3 = card3.getID();
+        long ris4 = card4.getID();
         
         List<Cards> towerCards = new ArrayList<>();
 
@@ -108,49 +110,199 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember, int)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testInsertFM() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isLegalT(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-//	 */
-//	@Test
-//	public void testIsLegalT() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isEmptyT()}.
-//	 */
-//	@Test
-//	public void testIsEmptyT() {
-//		fail("Not yet implemented");
-//	}
-//
-//	/**
-//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#getTowerCells()}.
-//	 */
-//	@Test
-//	public void testGetTowerCells() {
-//		
-//		ConcreteTower tester = new ConcreteTower(1);
-//		List<Cell> towerCells = new ArrayList<>();
-//		Cell e = new Cell(null);
-//		towerCells.add(e );
-//		tester.setTowerCells(towerCells);
-//		List<Cell> ris = tester.getTowerCells();
-//		
-//	}
-//
-//	/**
-//	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#setTowerCells(java.util.List)}.
-//	 */
-//	@Test
-//	public void testSetTowerCells() {
-//		fail("Not yet implemented");
-//	}
-//
+	@Test
+	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        Dice dice = new Dice(3);
+		FMember pBoardFM = new FMember(dice , 1);
+		int floor=2;
+		int ris = pBoardFM.getPlayercol();
+//		tester.isEmptyTower();
+		tester.insertFM(pBoardFM, floor);
+        int ris2 = tester.getTowerCells().get(2).getCellFM().getPlayercol();
+        
+        assertEquals(ris, ris2);
+		
+		
+	}
+
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isLegalT(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	@Test
+	public void testIsLegalT() throws FileNotFoundException, IOException, ParseException {
+
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        
+        Dice dice = new Dice(3);
+		FMember pBoardFM = new FMember(dice , 1);
+		int floor=2;
+		int ris = pBoardFM.getPlayercol();
+		
+		assertTrue(tester.isEmptyTower());
+		assertTrue(tester.isLegalTower(pBoardFM));
+		
+		tester.insertFM(pBoardFM, floor);
+        int ris2 = tester.getTowerCells().get(2).getCellFM().getPlayercol();
+        
+		Dice dice2 = new Dice(3);
+		FMember pBoardFM2 = new FMember(dice2, 2);
+		
+		assertTrue(tester.isLegalTower(pBoardFM2));
+		
+		int b = 2;
+		int c = 1;
+		FMember pBoardFM3 = new FMember(b, c);
+		assertTrue(tester.isLegalTower(pBoardFM3));
+		
+	}
+
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isEmptyT()}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	@Test
+	public void testIsEmptyTower() throws FileNotFoundException, IOException, ParseException {
+
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        
+        assertTrue(tester.isEmptyTower());
+		
+		
+		
+	}
+	
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isFullTower()}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	@Test
+	public void testIsFullTower () throws FileNotFoundException, IOException, ParseException{
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        
+        FMember pBoardFM = new FMember(2, 0);
+		tester.insertFM(pBoardFM, 0);
+        FMember pBoardFM1 = new FMember(5, 1);
+		tester.insertFM(pBoardFM1, 1);
+        FMember pBoardFM2 = new FMember(1, 2);
+		tester.insertFM(pBoardFM2, 2);
+        FMember pBoardFM3 = new FMember(6, 3);
+		tester.insertFM(pBoardFM3, 3);
+		
+		assertTrue(tester.isFullTower());
+	
+	}
+
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#getTowerCells()}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	@Test
+	public void testGetTowerCells() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+		JSONParser parser2 = new JSONParser();
+
+    	Object obj2 = parser2.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/cellprova.json"));
+    	JSONObject jsonObject2 = (JSONObject) obj2;
+        JSONObject a2 = (JSONObject) jsonObject2.get("0");
+        long value = (long) a2.get("CellValue");
+        JSONArray qeffects = (JSONArray) a2.get("QuickEffects");
+        JSONArray qeffectvalues = (JSONArray) a2.get("QuickEffectsValues");
+             
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        List<Cell> towerCells = new ArrayList<>();
+        Cell cell = new Cell(a2);
+        
+		towerCells.add(0, cell);
+		tester.setTowerCells(towerCells);
+        int ris = tester.getTowerCells().get(0).getCellValue();
+        
+        assertEquals(value, ris);
+		
+	}
+
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#setTowerCells(java.util.List)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	@Test
+	public void testSetTowerCells() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/concretetowerprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+        
+		JSONParser parser2 = new JSONParser();
+
+    	Object obj2 = parser2.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/cellprova.json"));
+    	JSONObject jsonObject2 = (JSONObject) obj2;
+        JSONObject a2 = (JSONObject) jsonObject2.get("0");
+        long value = (long) a2.get("CellValue");
+        JSONArray qeffects = (JSONArray) a2.get("QuickEffects");
+        JSONArray qeffectvalues = (JSONArray) a2.get("QuickEffectsValues");
+             
+        
+        ConcreteTower tester = new ConcreteTower(0);
+        List<Cell> towerCells = new ArrayList<>();
+        Cell cell = new Cell(a2);
+        
+		towerCells.add(0, cell);
+		tester.setTowerCells(towerCells);
+        int ris = tester.getTowerCells().get(0).getCellValue();
+        
+        assertEquals(value, ris);
+		
+		
+	}
+
 }

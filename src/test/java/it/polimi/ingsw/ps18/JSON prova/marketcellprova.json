@@ -1,0 +1,55 @@
+{
+  "1": {
+
+      "MinPlayers": 2,
+      "MarketCellValue": 1,
+      "QuickEffects": [
+      "AddCoin"
+    ],
+    
+      "QuickEffectsValues": [
+      5
+    ]
+ 
+   },
+  
+   "2": {
+  
+      "MinPlayers": 2,
+      "MarketCellValue": 1,
+      "QuickEffects": [
+         "AddServant"
+      ],
+      "QuickEffectsValues": [
+         5
+      ]
+  
+   },
+
+   "3": {
+    
+      "MinPlayers": 4,
+      "MarketCellValue": 1,
+      "QuickEffects": [
+         "AddPM",
+         "AddCoin"
+      ],
+      "QuickEffectsValues": [
+         3,
+         2
+      ]
+   },
+  
+   "4": {
+  
+      "MinPlayers": 4,
+      "MarketCellValue": 1,
+      "QuickEffects": [
+        "AddDifferentPC"
+      ],
+      "QuickEffectsValues": [
+        2
+      ]
+   }
+
+}
