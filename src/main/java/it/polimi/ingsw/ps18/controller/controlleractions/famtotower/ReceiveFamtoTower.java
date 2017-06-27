@@ -41,6 +41,9 @@ public class ReceiveFamtoTower implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		/*
+		 * Lo ZERO serve per tornare indietro, per quello gli setta il tHandler
+		 */
 		if(index==0){
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);

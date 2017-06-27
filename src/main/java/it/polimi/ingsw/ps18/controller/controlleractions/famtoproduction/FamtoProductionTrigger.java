@@ -92,7 +92,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 			//In quanto e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				ProdCell prodCell = new ProdCell(0);
-				if(maxFM.getValue() > prodCell.getProdCellValue()){
+				if(prodCell.isLegalPC(maxFM) || prodCell.isLegalPC(maxNeutralFM)){
 					Action action = new FamtoProduction(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoProduction) action).famchoice();
@@ -104,16 +104,25 @@ public class FamtoProductionTrigger implements ActionChoice {
 			}
 			else{
 				if(game.getBoard().isLegalProd(maxFM)){
-					ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-					if(prodCell.isLegalPC(maxFM)){
+					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
+					ProdCell prodCell = new ProdCell(0);
+					/*
+					 * Controlla che  sia legale l'azione per la cosa dei colori dei familiari, poi pero' controlla
+					 * anche che il valore del familiare massimo sia superiore o al caso senza malus, oppure a quello con malus.
+					 * Se non supera nessuno dei due, allora se ne va a @#$%^&*(^+
+					 */
+					if(prodCellMalus.isLegalPC(maxFM) || prodCell.isLegalPC(maxFM)){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
 					}
+					
 				}
 				else if(game.getBoard().isLegalProd(maxNeutralFM)){
-					ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-					if(prodCell.isLegalPC(maxNeutralFM)){
+					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
+					ProdCell prodCell = new ProdCell(0);
+
+					if(prodCellMalus.isLegalPC(maxNeutralFM) || prodCell.isLegalPC(maxNeutralFM)){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -127,18 +136,44 @@ public class FamtoProductionTrigger implements ActionChoice {
 		}
 		else if(game.getNplayer() == 2){
 			int maxValue = 0;
+			int maxNeutralValue = 0;
+
 			if((((game.getBoard()).getProductionCells().isEmpty()))){
 				
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-					maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-					if(maxValue > maxFM.getValue()){
-						maxFM.setValue(maxValue + modifierValue);
+					FMember curFM = currentplayer.getFams().get(famIndex);
+					if(curFM!=null){
+						if(curFM.getColor() == GeneralParameters.neutralFMColor){
+							maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+							if(maxNeutralValue > maxNeutralFM.getValue() ){
+								maxNeutralFM.setValue(maxNeutralValue + modifierValue);
+								maxNeutralFM.setColor(curFM.getColor());
+							}
+						}
+						else{
+							maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+							if(maxValue > maxFM.getValue() ){
+								maxFM.setValue(maxValue + modifierValue);
+								maxFM.setColor(curFM.getColor());
+							}
+						}
 					}
 				}
-				if(maxFM.getValue() > GeneralParameters.baseValueProdCells){
-					Action action = new FamtoProduction(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoProduction) action).famchoice();
+				if(game.getBoard().isLegalProd(maxFM)){
+					ProdCell prodCell = new ProdCell(0);
+					if(prodCell.isLegalPC(maxFM)){
+						Action action = new FamtoProduction(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoProduction) action).famchoice();
+					}
+				}
+				else if(game.getBoard().isLegalProd(maxNeutralFM)){
+					ProdCell prodCell = new ProdCell(0);
+					if(prodCell.isLegalPC(maxNeutralFM)){
+						Action action = new FamtoProduction(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoProduction) action).famchoice();
+					}
 				}
 				else{
 					Action action = game.getOngoingAction();

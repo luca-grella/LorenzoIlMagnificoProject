@@ -17,6 +17,10 @@ Scanner input = new Scanner(System.in);
 
 	@Override
 	public void act() {
+		/*
+		 * Al sesto turno non ci sarebbe scelta, perche' il gioco finisce e quindi non ha senso che ti becchi la scomunica
+		 * Pero' non ho la GameLogic come parametro, quindi devo trovare un altro modo
+		 */
 		System.out.println("\nDo you want to support the Church?\n"
 				+ "Digit 1 if you want to support the Church\n"
 				+ "Digit 2 if you want to be excommunicated\n");

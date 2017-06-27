@@ -27,7 +27,6 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTower
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.ReceiveVaticanAnswer;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.VaticanReportTrigger;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashMapActions.
  */

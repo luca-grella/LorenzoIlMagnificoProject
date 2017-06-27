@@ -96,7 +96,7 @@ public class MarketCell {
 	 */
 	
 	public boolean isEmptyMC() {
-		if(this.marketCellFM==null){ 
+		if(this.marketCellFM==null){
 			return true;		
 		}
 		else {
@@ -112,8 +112,10 @@ public class MarketCell {
 	 * @return true, if is legal MC
 	 */
 	public boolean isLegalMC(FMember pBoardFM){
-		if(pBoardFM.getValue() >= this.value){
-			return true;
+		if(this.isEmptyMC()){
+			if(pBoardFM.getValue() >= this.value){
+				return true;
+			}
 		}
 		return false;
 		

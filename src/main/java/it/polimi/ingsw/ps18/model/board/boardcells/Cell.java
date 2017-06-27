@@ -147,9 +147,11 @@ public class Cell {
 	 * @return true, if is legal TC
 	 */
 	public boolean isLegalTC(int actionValue) {
-		if(actionValue >= this.getCellValue()){
-			if(this.cellCard != null){
-				return true;
+		if(this.isEmptyTC()){
+			if(actionValue >= this.getCellValue()){
+				if(this.cellCard != null){
+					return true;
+				}
 			}
 		}
 		return false;

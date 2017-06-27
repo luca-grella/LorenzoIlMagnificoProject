@@ -44,9 +44,12 @@ public class FamtoCouncilTrigger implements ActionChoice {
 		int maxValue = 0;
 		
 		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-			maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-			if(maxValue > maxFM.getValue()){
-				maxFM.setValue(maxValue);
+			FMember curFM = currentplayer.getFams().get(famIndex);
+			if(curFM != null){
+				maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
+				if(maxValue > maxFM.getValue()){
+					maxFM.setValue(maxValue);
+				}
 			}
 		}
 		if(maxFM.getValue() > GeneralParameters.baseValueCouncilCells){

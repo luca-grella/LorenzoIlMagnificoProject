@@ -83,8 +83,10 @@ public class ProdCell {
 	 * @return true, if is legal PC
 	 */
 	public boolean isLegalPC(FMember pBoardFM){
-		if(pBoardFM.getValue() >= this.getProdCellValue()){
-			return true;
+		if(this.isEmptyPC()){
+			if(pBoardFM.getValue() >= this.getProdCellValue()){
+				return true;
+			}
 		}
 		return false;
 	}

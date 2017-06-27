@@ -62,7 +62,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 						HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
 						if(harvCell.isLegalHC(chosenfam)){
 							currentaction.setChosenFam(chosenfam);
-							((FamtoHarvest) currentaction).act(game);
+							currentaction.act(game);
 						}
 						else{
 							Action action = new TurnHandler(currentplayer);

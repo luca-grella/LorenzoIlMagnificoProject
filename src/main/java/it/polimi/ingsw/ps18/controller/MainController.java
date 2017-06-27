@@ -16,7 +16,6 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MainController.
  */
@@ -47,7 +46,7 @@ public class MainController implements Observer {
 		game.gameFlow();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override

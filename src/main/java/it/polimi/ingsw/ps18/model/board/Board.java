@@ -241,11 +241,18 @@ public class Board extends Observable {
 		else{
 			for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
 				HarvCell harvCell = harvestCells.get(harvIndex);
-				if( ! (harvCell.isEmptyHC()) ){ 
+				if( ! (harvCell.isEmptyHC()) ){
+					
 					if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+						
 						if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
-							return false;
+							
+							if(harvCell.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor)
+								return false;
 						}
+						/*
+						 * Se sto inserendo un neutro, posso fare quel che voglio.
+						 */
 					}
 					//else cicla alla cella dopo
 				}
@@ -283,13 +290,14 @@ public class Board extends Observable {
 		else{
 			for(int prodIndex=0; prodIndex < productionCells.size(); prodIndex++){
 				ProdCell prodCell = productionCells.get(prodIndex);
+				
 				if( ! (prodCell.isEmptyPC()) ){ 
+					
 					if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){
-						if(pBoardFM.getColor() == GeneralParameters.neutralFMColor){
-							return true;
-						}
-						else{
-							return false;
+						
+						if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
+							if(prodCell.getProdCellFM().getColor() != GeneralParameters.neutralFMColor)
+								return false;
 						}
 					}
 				}

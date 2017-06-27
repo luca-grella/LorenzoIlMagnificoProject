@@ -86,7 +86,7 @@ public class PBoard extends Observable {
 		this.resources = new Stats(2,2,5,2,0,0,0);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol));
-		} this.fams.add(new FMember(0,playercol));
+		} this.fams.add(new FMember(666, playercol));
 	}
 	
 	/**

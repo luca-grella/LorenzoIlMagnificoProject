@@ -23,7 +23,6 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DifferentPrivilegeHandler.
  */
@@ -44,7 +43,7 @@ public class DifferentPrivilegeHandler implements ActionChoice {
 	 */
 	private Integer index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -87,7 +86,7 @@ public class DifferentPrivilegeHandler implements ActionChoice {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

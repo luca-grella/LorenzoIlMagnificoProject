@@ -67,8 +67,10 @@ public class CouncilCell {
 	 * @return true, if is legal CC
 	 */
 	public boolean isLegalCC(FMember pBoardFM) {
-		if(pBoardFM.getValue() >= this.getCouncilCellValue()){
-			return true;
+		if(this.isEmptyCC()){
+			if(pBoardFM.getValue() >= this.getCouncilCellValue()){
+				return true;
+			}
 		}
 		return false;
 	}

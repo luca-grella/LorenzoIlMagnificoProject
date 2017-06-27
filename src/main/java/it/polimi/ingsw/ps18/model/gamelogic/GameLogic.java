@@ -192,8 +192,8 @@ public class GameLogic extends Observable {
 		}
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
-		insertExcommInBoard();
-		notifyLogMainView("Excommunications Inserted in Board."); //Controllare
+		board.setExcommCells(insertExcommInBoard()); //TODO: Controllare doppio carpiato
+		notifyLogMainView("Excommunications Inserted in Board."); //TODO: Controllare
 		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
@@ -286,8 +286,9 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Insert excomm in board.
+	 * @return 
 	 */
-	private void insertExcommInBoard() {
+	private List<Excommunications> insertExcommInBoard() {
 		Collections.shuffle(excommcards);
 		for(int excommPeriod=1; excommPeriod<=GeneralParameters.numberofExcommCells; excommPeriod++){
 			Iterator<Excommunications> itr = excommcards.iterator();
@@ -297,6 +298,7 @@ public class GameLogic extends Observable {
 			}
 			excommcards.add(excommcard);
 		}
+		return excommcards;
 	}
 	
 	/**
@@ -321,7 +323,11 @@ public class GameLogic extends Observable {
 				}
 			}
 
-			if(TURN%2==0){
+			if(TURN%2==0){		
+				/*
+				 * Se faccio qui il parser al posto di fare due volte il parser (in Trigger e in VaticanReport)
+				 * devo capire come passare i valori letti tramite notify, perche' 
+				 */
 				notifyActionMainController("Verify Church Support");
 			}
 //			board.refreshBoard();

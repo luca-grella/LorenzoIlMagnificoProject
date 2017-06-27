@@ -95,28 +95,38 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			//In quanto l'accesso e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				HarvCell harvCell = new HarvCell(0); //TODO: generalparameters
-				if(harvCell.isLegalHC(maxFM)){ 
+				if(harvCell.isLegalHC(maxFM) || harvCell.isLegalHC(maxNeutralFM)){
 					Action action = new FamtoHarvest(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoHarvest) action).famchoice();
 				}
+
 				else{
 					Action action = game.getOngoingAction();
 					action.act(game); 
 				}
 			}
 			else{
+				/*
+				 * E' sensato anche se non sembra
+				 * Questo perche' isLegalHarv controlla se c'e' gia' un fam del colore del currentplayer
+				 * Quindi nel trigger se da false, torna al turnhandler 
+				 * (implicitamente, in quanto non setta la nuova azione e richiama l'azione non settata, che e' quella del turnhandler)
+				 */
 				if(game.getBoard().isLegalHarv(maxFM)){
-					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-					if(harvCell.isLegalHC(maxFM)){ 
+					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					HarvCell harvCell = new HarvCell(0);
+					if(harvCellMalus.isLegalHC(maxFM) || harvCell.isLegalHC(maxFM)){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 					}
 				}
 				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
-					HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-					if(harvCell.isLegalHC(maxNeutralFM)){ 
+					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					HarvCell harvCell = new HarvCell(0);
+
+					if(harvCellMalus.isLegalHC(maxNeutralFM) || harvCell.isLegalHC(maxNeutralFM)){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
@@ -130,18 +140,43 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		}
 		else if(game.getNplayer() == 2){
 			int maxValue = 0;
+			int maxNeutralValue = 0;
+			
 			if((((game.getBoard()).getHarvestCells()).isEmpty())){
-				
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
-					maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-					if(maxValue > maxFM.getValue()){
-						maxFM.setValue(maxValue + modifierValue);
+					FMember curFM = currentplayer.getFams().get(famIndex);
+					if(curFM!=null){
+						if(curFM.getColor() == GeneralParameters.neutralFMColor){
+							maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+							if(maxNeutralValue > maxNeutralFM.getValue() ){
+								maxNeutralFM.setValue(maxNeutralValue + modifierValue);
+								maxNeutralFM.setColor(curFM.getColor());
+							}
+						}
+						else{
+							maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+							if(maxValue > maxFM.getValue() ){
+								maxFM.setValue(maxValue + modifierValue);
+								maxFM.setColor(curFM.getColor());
+							}
+						}
 					}
 				}
-				if(maxFM.getValue() > GeneralParameters.baseValueHarvCells){
-					Action action = new FamtoHarvest(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoHarvest) action).famchoice();
+				if(game.getBoard().isLegalHarv(maxFM)){
+					HarvCell harvCell = new HarvCell(0);
+					if(harvCell.isLegalHC(maxFM)){ 
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+					}
+				}
+				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
+					HarvCell harvCell = new HarvCell(0);
+					if(harvCell.isLegalHC(maxNeutralFM)){ 
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+					}
 				}
 				else{
 					Action action = game.getOngoingAction();

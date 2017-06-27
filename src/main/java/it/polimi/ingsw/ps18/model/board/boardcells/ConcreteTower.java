@@ -129,7 +129,9 @@ public class ConcreteTower implements Tower {
 	 * </ul>
 	 */
 	public boolean isLegalTower(FMember pBoardFM) {
-		
+		/**
+		 * TODO: RIVEDERE QUESTO E TUTTI GLI ISLEGAL PERCHE' FANNO SCHIFO
+		 */
 		if(this.isEmptyTower()){
 			return true;
 		}

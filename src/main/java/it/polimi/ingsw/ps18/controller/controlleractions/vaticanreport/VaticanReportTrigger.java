@@ -18,18 +18,10 @@ public class VaticanReportTrigger implements ActionChoice{
 
 	@Override
 	public void act(GameLogic game) {
-		PBoard currentplayer = game.getTurnplayer();
-//		JSONParser parser = new JSONParser();
-//
-//    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/cellprova.json"));
-//    	JSONObject jsonObject = (JSONObject) obj;
-//        JSONObject a = (JSONObject) jsonObject.get("0");
-//        long value = (long) a.get("CellValue");
-//        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-//        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-//       
+		PBoard currentplayer = game.getTurnplayer();       
 		int age = game.getAGE();
-		for(int index=0; index<16; index++){
+		
+		for(int index=0; index<16; index++){ //TODO: GeneralParameters
 			Integer i = new Integer(index);
 			JSONParser parser = new JSONParser();
 			Object obj;
@@ -53,22 +45,25 @@ public class VaticanReportTrigger implements ActionChoice{
 					}
 					if(hasEnoughFP){
 						Action action = new VaticanReport(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
 						((VaticanReport) action).reportChoice();
 						return;
 					}
 					else{
 						Action action = new VaticanReport(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
 						((VaticanReport) action).act(game);
+						return;
 					}
-					
-					
-					long victoryPoints = (long) a.get("VP");
 				}
 				//else cella dopo
 			}
 			 catch (IOException | ParseException e) {
 				System.out.println("Errore");
 			}
+			/*
+			 * Se non trova il giocatore non so se ha senso gestirlo
+			 */
 		}
 		
 
