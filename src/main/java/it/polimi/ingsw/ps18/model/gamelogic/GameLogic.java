@@ -118,6 +118,11 @@ public class GameLogic extends Observable {
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
 	/**
+	 * per test
+	 */
+	int tester;
+	
+	/**
 	 * The ongoing action.
 	 */
 	private Action ongoingAction;
@@ -145,9 +150,18 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Per i test.
+	 * @return 
 	 */
 	public GameLogic(){
-		
+	
+	}
+	
+	/**
+	 * Per i test.
+	 * @return 
+	 */
+	public GameLogic(int test){
+	this.tester=test;
 	}
 	
 	/**
@@ -482,6 +496,14 @@ public class GameLogic extends Observable {
 	 */
 	public int getAGE() {
 		return AGE;
+	}
+
+	/**
+	 * 
+	 */
+	public void setCurrentPlayer(PBoard turnplayer) {
+		this.turnplayer = turnplayer;
+		
 	}
 	
 	

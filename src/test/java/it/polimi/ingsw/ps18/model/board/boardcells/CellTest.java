@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -139,10 +140,41 @@ public class CellTest {
 	Cell tester = new Cell(a);
 	Cards card = new GreenC(a2);
 	long ris = card.getID();
+	long ris2 = card.getColor();
+	long ris3 = card.getPeriod();
+	int ris41 = card.getCardCost().getCoin();
+	int ris42 = card.getCardCost().getFP();
+	int ris43 = card.getCardCost().getMP();
+	int ris44 = card.getCardCost().getRock();
+	int ris45 = card.getCardCost().getServants();
+	int ris46 = card.getCardCost().getVP();
+	int ris47 = card.getCardCost().getWood();
+	String ris6 = card.getName();
 	tester.insertCard(card);
-	long ris2 = tester.getCellCard().getID();
+	long risf = tester.getCellCard().getID();
+	long risf2 = tester.getCellCard().getColor();
+	long risf3 = tester.getCellCard().getPeriod();
+	int risf41 = tester.getCellCard().getCardCost().getCoin();
+	int risf42 = tester.getCellCard().getCardCost().getFP();
+	int risf43 = tester.getCellCard().getCardCost().getMP();
+	int risf44 = tester.getCellCard().getCardCost().getRock();
+	int risf45 = tester.getCellCard().getCardCost().getServants();
+	int risf46 = tester.getCellCard().getCardCost().getVP();
+	int risf47 = tester.getCellCard().getCardCost().getWood();
+	String risf6 = tester.getCellCard().getName();
 	
-	assertEquals(ris, ris2);
+	
+	assertEquals(ris, risf);
+	assertEquals(ris2, risf2);
+	assertEquals(ris3, risf3);
+	assertEquals(ris41, risf41);
+	assertEquals(ris42, risf42);
+	assertEquals(ris43, risf43);
+	assertEquals(ris44, risf44);
+	assertEquals(ris45, risf45);
+	assertEquals(ris46, risf46);
+	assertEquals(ris47, risf47);
+	assertEquals(ris6, risf6);
 		
 		
 	}
@@ -297,15 +329,46 @@ public class CellTest {
         
         Cards card = new GreenC(a2);
         
-        long ris = card.getID();
+    	long ris = card.getID();
+    	long ris2 = card.getColor();
+    	long ris3 = card.getPeriod();
+    	int ris41 = card.getCardCost().getCoin();
+    	int ris42 = card.getCardCost().getFP();
+    	int ris43 = card.getCardCost().getMP();
+    	int ris44 = card.getCardCost().getRock();
+    	int ris45 = card.getCardCost().getServants();
+    	int ris46 = card.getCardCost().getVP();
+    	int ris47 = card.getCardCost().getWood();
+    	String ris6 = card.getName();
         
         Cell tester = new Cell(a);
         
         tester.insertCard(card);
         
-        long ris2 = tester.getCellCard().getID();
-        
-        assertEquals(ris, ris2);
+    	long risf = tester.getCellCard().getID();
+    	long risf2 = tester.getCellCard().getColor();
+    	long risf3 = tester.getCellCard().getPeriod();
+    	int risf41 = tester.getCellCard().getCardCost().getCoin();
+    	int risf42 = tester.getCellCard().getCardCost().getFP();
+    	int risf43 = tester.getCellCard().getCardCost().getMP();
+    	int risf44 = tester.getCellCard().getCardCost().getRock();
+    	int risf45 = tester.getCellCard().getCardCost().getServants();
+    	int risf46 = tester.getCellCard().getCardCost().getVP();
+    	int risf47 = tester.getCellCard().getCardCost().getWood();
+    	String risf6 = tester.getCellCard().getName();
+    	
+    	
+    	assertEquals(ris, risf);
+    	assertEquals(ris2, risf2);
+    	assertEquals(ris3, risf3);
+    	assertEquals(ris41, risf41);
+    	assertEquals(ris42, risf42);
+    	assertEquals(ris43, risf43);
+    	assertEquals(ris44, risf44);
+    	assertEquals(ris45, risf45);
+    	assertEquals(ris46, risf46);
+    	assertEquals(ris47, risf47);
+    	assertEquals(ris6, risf6);
        
 		
 	}
@@ -318,6 +381,7 @@ public class CellTest {
 	 */
 	@Test
 	public void testSetCellCard() throws FileNotFoundException, IOException, ParseException {
+
 
 		JSONParser parser = new JSONParser();
 
@@ -343,15 +407,46 @@ public class CellTest {
         
         Cards card = new GreenC(a2);
         
-        long ris = card.getID();
+    	long ris = card.getID();
+    	long ris2 = card.getColor();
+    	long ris3 = card.getPeriod();
+    	int ris41 = card.getCardCost().getCoin();
+    	int ris42 = card.getCardCost().getFP();
+    	int ris43 = card.getCardCost().getMP();
+    	int ris44 = card.getCardCost().getRock();
+    	int ris45 = card.getCardCost().getServants();
+    	int ris46 = card.getCardCost().getVP();
+    	int ris47 = card.getCardCost().getWood();
+    	String ris6 = card.getName();
         
         Cell tester = new Cell(a);
         
         tester.insertCard(card);
         
-        long ris2 = tester.getCellCard().getID();
-        
-        assertEquals(ris, ris2);
+    	long risf = tester.getCellCard().getID();
+    	long risf2 = tester.getCellCard().getColor();
+    	long risf3 = tester.getCellCard().getPeriod();
+    	int risf41 = tester.getCellCard().getCardCost().getCoin();
+    	int risf42 = tester.getCellCard().getCardCost().getFP();
+    	int risf43 = tester.getCellCard().getCardCost().getMP();
+    	int risf44 = tester.getCellCard().getCardCost().getRock();
+    	int risf45 = tester.getCellCard().getCardCost().getServants();
+    	int risf46 = tester.getCellCard().getCardCost().getVP();
+    	int risf47 = tester.getCellCard().getCardCost().getWood();
+    	String risf6 = tester.getCellCard().getName();
+    	
+    	
+    	assertEquals(ris, risf);
+    	assertEquals(ris2, risf2);
+    	assertEquals(ris3, risf3);
+    	assertEquals(ris41, risf41);
+    	assertEquals(ris42, risf42);
+    	assertEquals(ris43, risf43);
+    	assertEquals(ris44, risf44);
+    	assertEquals(ris45, risf45);
+    	assertEquals(ris46, risf46);
+    	assertEquals(ris47, risf47);
+    	assertEquals(ris6, risf6);
 	
 
 	}
