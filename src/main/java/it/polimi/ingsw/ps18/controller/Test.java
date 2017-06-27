@@ -1,5 +1,4 @@
 package it.polimi.ingsw.ps18.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 

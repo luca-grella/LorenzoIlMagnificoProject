@@ -9,9 +9,9 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.AddVPforMP;
 import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.*;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BlueC.
  */
@@ -54,9 +54,14 @@ public class BlueC extends Cards {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){
         		if(qeffectvalues.get(count)!=null){
-        			if("AddPVforMP".equals((String) qeffects.get(count))){
+        			if("TakeOneCard".equals((String) qeffects.get(count))){
+        				effect = map.geteffect((String) qeffects.get(count));
+						JSONArray statseffect = (JSONArray) qeffectvalues.get(count);
+						((TakeOneCard) effect).setParameters((long) statseffect.get(1), (String) statseffect.get(0), (JSONArray) statseffect.get(2));
+						this.effects.add(effect);
+        			} else if("AddPVforMP".equals((String) qeffects.get(count))){
 						effect = map.geteffect((String) qeffects.get(count));
-						JSONArray statseffect = (JSONArray) qeffectvalues.get(0);
+						JSONArray statseffect = (JSONArray) qeffectvalues.get(count);
 						((AddVPforMP) effect).setQuantity((JSONArray) statseffect.get(0));
 						this.effects.add(effect);
 					} else {
@@ -207,7 +212,7 @@ public class BlueC extends Cards {
 		for(int i=0; i<(this.getEffects()).size(); i++){
 			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
-		builder.append("\nFinal Effects:\n");
+		builder.append("\nPermanent Effects:\n");
 		for(int i=0;  i<this.permeffect.size(); i++){
 			builder.append("\t" + i + ": " + ((this.permeffect).get(i)).toString() + "\n");
 		}

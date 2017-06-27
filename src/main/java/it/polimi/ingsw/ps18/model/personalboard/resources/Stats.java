@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps18.model.personalboard.resources;
 
 import org.json.simple.JSONArray;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Stats.
  */
@@ -69,6 +68,16 @@ public class Stats {
 		this.fp = new FaithPoints(fp);
 		this.mp = new MilitaryPoints(mp);
 		this.vp = new VictoryPoints(vp);
+	}
+	
+	public Stats(Stats stat){
+		this.wood = new Wood(stat.getWood());
+		this.rock = new Rock(stat.getRock());
+		this.coin = new Coins(stat.getCoin());
+		this.servant = new Servants(stat.getServants());
+		this.fp = new FaithPoints(stat.getFP());
+		this.mp = new MilitaryPoints(stat.getMP());
+		this.vp = new VictoryPoints(stat.getVP());
 	}
 	
     /**
@@ -366,5 +375,81 @@ public class Stats {
     public int getVP(){
     	return this.vp.getQuantity();
     }
+
+	/**
+	 * @param wood the wood to set
+	 */
+	public void setWood(Resources wood) {
+		this.wood = wood;
+	}
+
+	/**
+	 * @param rock the rock to set
+	 */
+	public void setRock(Resources rock) {
+		this.rock = rock;
+	}
+
+	/**
+	 * @param coin the coin to set
+	 */
+	public void setCoin(Resources coin) {
+		this.coin = coin;
+	}
+
+	/**
+	 * @param servant the servant to set
+	 */
+	public void setServant(Resources servant) {
+		this.servant = servant;
+	}
+
+	/**
+	 * @param fp the fp to set
+	 */
+	public void setFp(Points fp) {
+		this.fp = fp;
+	}
+
+	/**
+	 * @param mp the mp to set
+	 */
+	public void setMp(Points mp) {
+		this.mp = mp;
+	}
+
+	/**
+	 * @param vp the vp to set
+	 */
+	public void setVp(Points vp) {
+		this.vp = vp;
+	}
+
+	public void fixStats() {
+		if(this.getWood() < 0){
+			this.setWood(new Wood(0));
+		}
+		if(this.getRock() < 0){
+			this.setRock(new Rock(0));
+		}
+		if(this.getCoin() < 0){
+			this.setCoin(new Coins(0));
+		}
+		if(this.getServants() < 0){
+			this.setServant(new Servants(0));
+		}
+		if(this.getFP() < 0){
+			this.setFp(new FaithPoints(0));
+		}
+		if(this.getMP() < 0){
+			this.setMp(new MilitaryPoints(0));
+		}
+		if(this.getVP() < 0){
+			this.setVp(new VictoryPoints(0));
+		}
+		
+	}
+    
+    
 
 }

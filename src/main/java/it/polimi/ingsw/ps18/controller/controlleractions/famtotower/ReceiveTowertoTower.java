@@ -39,7 +39,11 @@ public class ReceiveTowertoTower implements ActionChoice {
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
 		if(index==0){
-			((FamtoTower) currentaction).famchoice();
+			if(((FamtoTower) currentaction).isCanGoBacktoFamChoice()){
+				((FamtoTower) currentaction).famchoice();
+			} else {
+				((FamtoTower) currentaction).towerChoice();
+			}
 		} else if(index<0 || index>GeneralParameters.numberofBaseTowers){
 			((FamtoTower) currentaction).towerChoice();
 		} else {

@@ -243,10 +243,7 @@ public class Board extends Observable {
 				HarvCell harvCell = harvestCells.get(harvIndex);
 				if( ! (harvCell.isEmptyHC()) ){ 
 					if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
-						if(pBoardFM.getColor() == GeneralParameters.neutralFMColor){
-							return true;
-						}
-						else{
+						if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
 							return false;
 						}
 					}

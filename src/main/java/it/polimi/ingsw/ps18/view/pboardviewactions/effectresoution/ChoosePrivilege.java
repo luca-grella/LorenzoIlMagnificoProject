@@ -30,6 +30,7 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	@Override
 	public void setObserver(MainController controller) {
 		addObserver(controller);
+		index = -1;
 
 	}
 

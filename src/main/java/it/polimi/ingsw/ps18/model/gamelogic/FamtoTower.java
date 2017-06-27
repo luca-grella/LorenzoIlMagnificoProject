@@ -5,7 +5,10 @@ import java.util.Observable;
 
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
@@ -44,6 +47,12 @@ public class FamtoTower extends Observable implements Action {
 	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
 	int costchoice; //1 = risorse , 2 = mp
 	
+	Stats totalDiscountPreview = new Stats(0,0,0,0,0,0,0);
+	
+	private boolean canGoBacktoFamChoice;
+	
+	private boolean canGoBacktoTowerChoice;
+	
 	/**
 	 * Instantiates a new famto tower.
 	 *
@@ -52,6 +61,8 @@ public class FamtoTower extends Observable implements Action {
 	 */
 	public FamtoTower(PBoardView view){
 		addObserver(view);
+		this.canGoBacktoTowerChoice = true;
+		this.canGoBacktoFamChoice = true;
 	}
 	
 	/**
@@ -90,8 +101,32 @@ public class FamtoTower extends Observable implements Action {
 		Cards newcard = tower.insertFM(this.chosenFam, this.chosenFloor);
 		PBoard currentplayer = game.getTurnplayer();
 		currentplayer.getFams().set(indexFamtoRemove, null);
-		//riattivare gli effetti della cella sul giocatore
-		tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
+		//riattivare gli effetti della cella sul giocatore se può
+		boolean canAct = true;
+		for(Cards card: currentplayer.getCards()){
+			if(card.hasPermanent()){
+				if(card.getColor()==1){
+					for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+						if("BlockFloorBonus".equals(effect.getName())){
+							if(this.chosenFloor == effect.getQuantity()){
+								canAct = false;
+							}
+						}
+					}
+				} else if(card.getColor()==-1){
+					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+						if("BlockFloorBonus".equals(effect.getName())){
+							if(this.chosenFloor == effect.getQuantity()){
+								canAct = false;
+							}
+						}
+					}
+				}
+			}
+		}
+		if(canAct){
+tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
+		}
 		if(currentplayer.getResources().enoughStats(totalCostPreview)){
 			currentplayer.getResources().subStats(totalCostPreview);
 			currentplayer.addCard(newcard,game);
@@ -216,6 +251,43 @@ public class FamtoTower extends Observable implements Action {
 	public void setCostchoice(int costchoice) {
 		this.costchoice = costchoice;
 	}
+
+	/**
+	 * @return the canGoBacktoFamChoice
+	 */
+	public boolean isCanGoBacktoFamChoice() {
+		return canGoBacktoFamChoice;
+	}
+
+	/**
+	 * @param canGoBacktoFamChoice the canGoBacktoFamChoice to set
+	 */
+	public void setCanGoBacktoFamChoice(boolean canGoBacktoFamChoice) {
+		this.canGoBacktoFamChoice = canGoBacktoFamChoice;
+	}
+
+	/**
+	 * @return the canGoBacktoTowerChoice
+	 */
+	public boolean isCanGoBacktoTowerChoice() {
+		return canGoBacktoTowerChoice;
+	}
+
+	/**
+	 * @param canGoBacktoTowerChoice the canGoBacktoTowerChoice to set
+	 */
+	public void setCanGoBacktoTowerChoice(boolean canGoBacktoTowerChoice) {
+		this.canGoBacktoTowerChoice = canGoBacktoTowerChoice;
+	}
+
+	/**
+	 * @return the totalDiscountPreview
+	 */
+	public Stats getTotalDiscountPreview() {
+		return totalDiscountPreview;
+	}
+
+	
 	
 	
 	

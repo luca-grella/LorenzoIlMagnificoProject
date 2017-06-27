@@ -19,13 +19,8 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.AddPVforYellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.AddVPforMP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.DifferentPrivilege;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeAnyCard;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeBlueCard;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeGreenCard;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.TakePurpleCard;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeYellowCard;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeOneCard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashMapQE.
  */
@@ -51,11 +46,7 @@ public class HashMapQE {
 		genQEffects.put("AddPV", new addVP());
 		genQEffects.put("ActivateHarvest", new ActHarvest());
 		genQEffects.put("ActivateProduction", new ActProduction());
-		genQEffects.put("TakeAnyCard", new TakeAnyCard());
-		genQEffects.put("TakeGreenCard", new TakeGreenCard());
-		genQEffects.put("TakeBlueCard", new TakeBlueCard());
-		genQEffects.put("TakeYellowCard", new TakeYellowCard());
-		genQEffects.put("TakePurpleCard", new TakePurpleCard());
+		genQEffects.put("TakeOneCard", new TakeOneCard());
 		genQEffects.put("AddPVforGreenCard", new AddPVforGreenC());
 		genQEffects.put("AddPVforBlueCard", new AddPVforBlueC());
 		genQEffects.put("AddPVforYellowCard", new AddPVforYellowC());

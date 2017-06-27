@@ -1,18 +1,18 @@
 package it.polimi.ingsw.ps18.model.effect.permeffects;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BlockFloorBonus.
  */
 public class BlockFloorBonus implements Permanenteffect {
+	private String name = "BlockFloorBonus";
+	private int floor;
 
 	/* (non-Javadoc)
 	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getQuantity()
 	 */
 	@Override
 	public int getQuantity() {
-		// TODO Auto-generated method stub
-		return 0;
+		return floor;
 	}
 
 	/* (non-Javadoc)
@@ -20,8 +20,7 @@ public class BlockFloorBonus implements Permanenteffect {
 	 */
 	@Override
 	public void setQuantity(int quantity) {
-		// TODO Auto-generated method stub
-
+		this.floor = quantity;
 	}
 
 	/* (non-Javadoc)
@@ -29,8 +28,13 @@ public class BlockFloorBonus implements Permanenteffect {
 	 */
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
+	}
+	
+	@Override
+	public String toString(){
+		return "You can't receive anymore the Bonus from the\n"
+				+ "\t" + this.floor + " floor of any Tower.";
 	}
 
 }

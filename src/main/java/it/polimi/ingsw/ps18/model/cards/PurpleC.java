@@ -12,7 +12,10 @@ import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.TakeOneCard;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.permeffects.IncreaseFMValueOnAction;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -97,7 +100,14 @@ public class PurpleC extends Cards {
 		for(int count=0; count<qeffects.size(); count++){
         	if(qeffects.get(count)!=null){
         		if(qeffectvalues.get(count)!=null){
-        			this.add(map.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+        			if("TakeOneCard".equals((String) qeffects.get(count))){
+        				QuickEffect effect = map.geteffect((String) qeffects.get(count));
+						JSONArray statseffect = (JSONArray) qeffectvalues.get(count);
+						((TakeOneCard) effect).setParameters((long) statseffect.get(1), (String) statseffect.get(0), (JSONArray) statseffect.get(2));
+						this.effects.add(effect);
+        			} else {
+    					this.add(map.geteffect((String) qeffects.get(count)), (long) qeffectvalues.get(count));
+    				}
         		} else {
         			this.effects.add(map.geteffect((String) qeffects.get(count)));
         		}

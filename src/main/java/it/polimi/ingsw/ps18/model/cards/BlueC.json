@@ -227,11 +227,23 @@
       0
     ],
     "QuickEffects": [
-      "TakeAnyCard",
+      "TakeOneCard",
       "AddPF"
     ],
     "QuickEffectsValues": [
-      4,
+      [
+        null,
+        4,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       1
     ],
     "PermanentEffects": [
@@ -256,11 +268,23 @@
       0
     ],
     "QuickEffects": [
-      "TakeGreenCard",
+      "TakeOneCard",
       "AddPM"
     ],
     "QuickEffectsValues": [
-      6,
+      [
+        "Green",
+        6,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       2
     ],
     "PermanentEffects": [
@@ -285,11 +309,22 @@
       0
     ],
     "QuickEffects": [
-      "TakeYellowCard",
-      "SalesWoodandRockYellow"
+      "TakeOneCard"
     ],
     "QuickEffectsValues": [
-      6,
+      [
+        "Yellow",
+        6,
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       1
     ],
     "PermanentEffects": [
@@ -314,11 +349,22 @@
       0
     ],
     "QuickEffects": [
-      "TakeBlueCard",
-      "SalesCoinBlue"
+      "TakeOneCard"
     ],
     "QuickEffectsValues": [
-      6,
+      [
+        "Blue",
+        6,
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       2
     ],
     "PermanentEffects": [
@@ -343,11 +389,23 @@
       0
     ],
     "QuickEffects": [
-      "TakePurpleCard",
+      "TakeOneCard",
       "AddPC"
     ],
     "QuickEffectsValues": [
-      6,
+      [
+        "Purple",
+        6,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       1
     ],
     "PermanentEffects": [
@@ -684,11 +742,23 @@
       0
     ],
     "QuickEffects": [
-      "TakeAnyCard",
+      "TakeOneCard",
       "AddPC"
     ],
     "QuickEffectsValues": [
-      7,
+      [
+        null,
+        7,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
       1
     ],
     "PermanentEffects": [

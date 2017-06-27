@@ -85,7 +85,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 				notifyActionMainController("FamtoProduction");
 				break;
 			}
-		}while(ans<8);
+		}while(ans<8 || ans>12);
 		
 		
 	}

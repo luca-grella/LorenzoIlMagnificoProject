@@ -500,11 +500,23 @@
     ],
     "QuickEffects": [
       "AddPF",
-      "TakeAnyCard"
+      "TakeOneCard"
     ],
     "QuickEffectsValues": [
       1,
-      7
+      [
+        null,
+        7,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
     ],
     "FinalEffects": [
       "AddPV"

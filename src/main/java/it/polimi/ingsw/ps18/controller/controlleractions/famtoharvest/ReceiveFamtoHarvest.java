@@ -12,8 +12,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * Receives a Family Member chosen by the current player and moves to the
  * activation of the Harvest Cell.
@@ -69,17 +67,19 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 						else{
 							Action action = new TurnHandler(currentplayer);
 							game.setOngoingAction(action);
+							((TurnHandler) action).act(game);
 						}
 					}
 					else{
-						for(int famIndex=0; famIndex<fams.size(); famIndex++){
-							if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-								((FamtoHarvest) currentaction).famchoice();
-								return;
-							}
-						}
+//						for(int famIndex=0; famIndex<fams.size(); famIndex++){
+//							if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
+//								((FamtoHarvest) currentaction).famchoice();
+//								return;
+//							}
+//						}
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
+						((TurnHandler) action).act(game);
 					}
 				}
 				else{
@@ -91,6 +91,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 					else{
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
+						((TurnHandler) action).act(game);
 					}
 				}
 			}
