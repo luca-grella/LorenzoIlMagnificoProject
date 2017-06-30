@@ -24,7 +24,7 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 	 */
     int index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -43,8 +43,10 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
 			CouncilCell councilCell = new CouncilCell();
+			
 			if(chosenfam != null){
-				if(councilCell.isLegalCC(chosenfam) ){
+				((FamtoCouncil) currentaction).servantsChoice(game);
+				if(councilCell.isLegalCC(chosenfam.getValue() + ((FamtoCouncil) currentaction).getNumberOfServants()) ){
 					currentaction.setChosenFam(chosenfam);
 					((FamtoCouncil) currentaction).act(game);
 				}

@@ -34,8 +34,9 @@ public class ShowBoard extends Observable {
 	 * @param market
 	 *            the market
 	 */
-	public void showMarket(List<MarketCell> market){
+	public void showMarket(Board board){
 		StringBuilder builder = new StringBuilder();
+		List<MarketCell> market = board.getMarketCells();
 		for(int i=0; i<market.size(); i++){
 			MarketCell cell = market.get(i);
 			builder.append(cell.toString(i));
@@ -127,6 +128,9 @@ public class ShowBoard extends Observable {
 	public void showPlayer(PBoard player){
 		notifyLogView(player.toStringResources());
 		notifyLogView(player.toStringCards());
+	}
+	public void showServants(PBoard player){
+		notifyLogView(player.getResources().toStringServants());
 	}
 	
 	public void showBonusTiles(List<Cards> bonusTiles){

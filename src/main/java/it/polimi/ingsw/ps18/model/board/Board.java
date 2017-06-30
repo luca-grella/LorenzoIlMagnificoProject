@@ -106,13 +106,6 @@ public class Board extends Observable {
 	    		Integer towerIndex = new Integer(count);
 				this.towers.add(new ConcreteTower(towerIndex,(JSONObject) jsonObject.get(towerIndex.toString())));
 			}
-	    	
-			
-			
-			
-			
-			
-			
 			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/MarketCell.json")); 
 	    	jsonObject = (JSONObject) obj;
 	    	
@@ -161,10 +154,42 @@ public class Board extends Observable {
 	 * Excommunication cells remains intact.
 	 * 
 	 */
-//	public void refreshBoard(){
-//		
-//		int count;
-//		
+	public void refreshBoard(){
+		
+		int count;
+		JSONParser parser = new JSONParser();
+		
+		try {
+	    	
+			Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/TowerCell.json")); 
+	    	JSONObject jsonObject = (JSONObject) obj;
+			
+	    	for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
+	    		Integer towerIndex = new Integer(count);
+//				this.towers.add(new ConcreteTower(towerIndex,(JSONObject) jsonObject.get(towerIndex.toString())));
+	    		this.towers.set(count, new ConcreteTower(towerIndex, (JSONObject) jsonObject.get(towerIndex.toString())));
+			}
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/MarketCell.json")); 
+	    	jsonObject = (JSONObject) obj;
+	    	
+	    	for(count=1; count<=GeneralParameters.numberofMarketCells; count++){ 
+	    		Integer i = new Integer(count);
+				MarketCell cell = new MarketCell((JSONObject) jsonObject.get(i.toString()));
+				if(cell.getMinPlayers() <= nplayer){
+//					this.marketCells.add(cell);
+					this.marketCells.set(count, cell);
+				}
+			}
+	    	
+		}catch (FileNotFoundException e) {
+	        System.out.println("File not found.");
+
+	    } catch (IOException e) {
+		    System.out.println("IOException");
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("Problem in parser");
+		}
+		
 //		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){
 //			towers.set(count, new ConcreteTower(count));
 //		}
@@ -172,12 +197,12 @@ public class Board extends Observable {
 //			Integer i = new Integer(count);
 //			marketCells.set(count, new MarketCell(i));
 //		}
-//		
-//		councilCells.clear();
-//		harvestCells.clear();
-//		productionCells.clear();
-//		
-//	}
+		
+		councilCells.clear();
+		harvestCells.clear();
+		productionCells.clear();
+		
+	}
 	
 	/**
 	 * Checks the Market status.

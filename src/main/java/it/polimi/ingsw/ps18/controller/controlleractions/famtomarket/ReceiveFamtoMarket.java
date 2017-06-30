@@ -43,7 +43,7 @@ public class ReceiveFamtoMarket implements ActionChoice {
 			((FamtoMarket) currentaction).setIndexFamtoRemove(index);
 			if(chosenfam != null){
 				currentaction.setChosenFam(chosenfam);
-				((FamtoMarket) currentaction).cellChoice();
+				((FamtoMarket) currentaction).cellChoice(game);
 			}
 			else{
 				((FamtoMarket) currentaction).famchoice();

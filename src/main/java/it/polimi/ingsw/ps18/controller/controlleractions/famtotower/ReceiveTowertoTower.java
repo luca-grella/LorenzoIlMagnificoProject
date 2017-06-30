@@ -13,6 +13,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
  * Receives the tower's index chosen by the current player.
@@ -48,6 +49,7 @@ public class ReceiveTowertoTower implements ActionChoice {
 			((FamtoTower) currentaction).towerChoice();
 		} else {
 			index -= 1;
+			Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
 			Board gameBoard = game.getBoard();
 			List<Tower> boardTowers = gameBoard.getTowers();
 			FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
@@ -62,7 +64,7 @@ public class ReceiveTowertoTower implements ActionChoice {
 					if(boardTower.isEmptyTower()){
 						if(currentplayer.hasSpace(index)){
 							((FamtoTower) currentaction).setChosenTower(index);
-							((FamtoTower) currentaction).floorChoice();
+							((FamtoTower) currentaction).floorChoice(game);
 						}
 						else{
 							((FamtoTower) currentaction).towerChoice();
@@ -71,9 +73,10 @@ public class ReceiveTowertoTower implements ActionChoice {
 					else {
 						if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
 							if(currentplayer.hasSpace(index)){
-								((FamtoTower) currentaction).getTotalCostPreview().addCoins(GeneralParameters.towerFee);
+								totalCostPreview.addCoins(GeneralParameters.towerFee);
+								((FamtoTower) currentaction).setTotalCostPreview(totalCostPreview);
 								((FamtoTower) currentaction).setChosenTower(index);
-								((FamtoTower) currentaction).floorChoice();
+								((FamtoTower) currentaction).floorChoice(game);
 							}					
 							else{
 								((FamtoTower) currentaction).towerChoice();

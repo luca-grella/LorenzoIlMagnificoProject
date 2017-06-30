@@ -48,10 +48,12 @@ public class ReceiveFamtoTower implements ActionChoice {
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
-		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+		}
+		else if(index<0 || index>GeneralParameters.nfamperplayer){
 			Action currentaction = game.getOngoingAction();
 			((FamtoTower) currentaction).famchoice();
-		} else {
+		} 
+		else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
@@ -64,6 +66,8 @@ public class ReceiveFamtoTower implements ActionChoice {
 			}
 			else{
 				currentaction.setChosenFam(chosenfam);
+				//Prima o dopo aver settato il chosenfam, parte il giro di MVC per la scelta del numero di servitori
+//				((FamtoTower) currentaction).servantsChoice();
 				((FamtoTower) currentaction).towerChoice();
 			}
 		}

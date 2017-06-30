@@ -57,10 +57,11 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 			List<HarvCell> harvCells = game.getBoard().getHarvestCells();
 			
 			if(chosenfam != null){
+				((FamtoHarvest) currentaction).servantsChoice(game);
 				if( ! (harvCells.isEmpty()) ){
 					if(game.getBoard().isLegalHarv(chosenfam)){
 						HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-						if(harvCell.isLegalHC(chosenfam)){
+						if(harvCell.isLegalHC(chosenfam.getValue() + ((FamtoHarvest) currentaction).getNumberOfServants())){
 							currentaction.setChosenFam(chosenfam);
 							currentaction.act(game);
 						}
@@ -71,12 +72,6 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 						}
 					}
 					else{
-//						for(int famIndex=0; famIndex<fams.size(); famIndex++){
-//							if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-//								((FamtoHarvest) currentaction).famchoice();
-//								return;
-//							}
-//						}
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
 						((TurnHandler) action).act(game);
@@ -84,7 +79,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 				}
 				else{
 					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(chosenfam)){
+					if(harvCell.isLegalHC(chosenfam.getValue() + ((FamtoHarvest) currentaction).getNumberOfServants())){
 						currentaction.setChosenFam(chosenfam);
 						((FamtoHarvest) currentaction).act(game);
 					}

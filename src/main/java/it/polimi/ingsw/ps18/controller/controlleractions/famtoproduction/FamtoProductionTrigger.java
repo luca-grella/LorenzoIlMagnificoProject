@@ -92,7 +92,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 			//In quanto e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				ProdCell prodCell = new ProdCell(0);
-				if(prodCell.isLegalPC(maxFM) || prodCell.isLegalPC(maxNeutralFM)){
+				if(prodCell.isLegalPC(maxFM.getValue()) || prodCell.isLegalPC(maxNeutralFM.getValue())){
 					Action action = new FamtoProduction(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoProduction) action).famchoice();
@@ -111,7 +111,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 					 * anche che il valore del familiare massimo sia superiore o al caso senza malus, oppure a quello con malus.
 					 * Se non supera nessuno dei due, allora se ne va a @#$%^&*(^+
 					 */
-					if(prodCellMalus.isLegalPC(maxFM) || prodCell.isLegalPC(maxFM)){
+					if(prodCellMalus.isLegalPC(maxFM.getValue()) || prodCell.isLegalPC(maxFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -122,7 +122,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
 					ProdCell prodCell = new ProdCell(0);
 
-					if(prodCellMalus.isLegalPC(maxNeutralFM) || prodCell.isLegalPC(maxNeutralFM)){
+					if(prodCellMalus.isLegalPC(maxNeutralFM.getValue()) || prodCell.isLegalPC(maxNeutralFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -161,7 +161,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 				}
 				if(game.getBoard().isLegalProd(maxFM)){
 					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(maxFM)){
+					if(prodCell.isLegalPC(maxFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -169,7 +169,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 				}
 				else if(game.getBoard().isLegalProd(maxNeutralFM)){
 					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(maxNeutralFM)){
+					if(prodCell.isLegalPC(maxNeutralFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -187,7 +187,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

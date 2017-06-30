@@ -6,7 +6,6 @@ import java.util.Map;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.TurnHandleInit;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashMapStatus.
  */
@@ -22,6 +21,7 @@ public class HashMapStatus {
 	 */
 	public static void init(){
 		genStatus.put("Show Fam", new ShowFam());
+		genStatus.put("Show Servants", new ShowServants());
 		genStatus.put("Show Towers", new ShowTowers());
 		genStatus.put("Show Towers Zoom", new ShowTowerswithZoom());
 		genStatus.put("Show Market", new ShowMarket());

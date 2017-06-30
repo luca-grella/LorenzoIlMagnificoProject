@@ -85,9 +85,9 @@ public class HarvCell {
 	 *            the board FM
 	 * @return true, if is legal HC
 	 */
-	public boolean isLegalHC(FMember pBoardFM){
+	public boolean isLegalHC(int actionValue){
 		if(this.isEmptyHC()){
-			if(pBoardFM.getValue() >= this.getHarvCellValue()){
+			if(actionValue >= this.getHarvCellValue()){
 				return true;
 			}
 		}

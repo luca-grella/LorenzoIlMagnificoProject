@@ -24,7 +24,10 @@ public class FamtoTower extends Observable implements Action {
 	/**
 	 * The chosen fam.
 	 */
-	FMember chosenFam;
+	private FMember chosenFam;
+	
+	
+	private int numberOfServants;
 	
 	/**
 	 * The index famto remove.
@@ -34,7 +37,7 @@ public class FamtoTower extends Observable implements Action {
 	/**
 	 * The chosen tower.
 	 */
-	int chosenTower;
+	private int chosenTower;
 	
 	/**
 	 * The chosen floor.
@@ -72,6 +75,10 @@ public class FamtoTower extends Observable implements Action {
 		notifyActionPBoardView("Fam Choice Tower");
 	}
 	
+//	public void servantsChoice(){
+//		notifyParamPBoardView("Servants Choice", this.chosenTower);
+//	}
+	
 	/**
 	 * Tower choice.
 	 */
@@ -82,7 +89,15 @@ public class FamtoTower extends Observable implements Action {
 	/**
 	 * Floor choice.
 	 */
-	public void floorChoice(){
+	public void floorChoice(GameLogic game){
+		PBoard currentplayer = game.getTurnplayer();
+		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
+		showBoard.showTowerCell(game.getBoard(), chosenTower);
+		
+		numberOfServants = -1;
+		while(this.numberOfServants < 0 || this.numberOfServants > currentplayer.getResources().getServants()){
+			notifyParamPBoardView("Servants Choice", this.chosenTower);	
+		}
 		notifyParamPBoardView("Floor Choice",this.chosenTower);
 	}
 	
@@ -125,7 +140,7 @@ public class FamtoTower extends Observable implements Action {
 			}
 		}
 		if(canAct){
-tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
+			tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
 		}
 		if(currentplayer.getResources().enoughStats(totalCostPreview)){
 			currentplayer.getResources().subStats(totalCostPreview);
@@ -227,6 +242,15 @@ tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
 	public Stats getTotalCostPreview() {
 		return totalCostPreview;
 	}
+	
+	
+
+	/**
+	 * @param totalCostPreview the totalCostPreview to set
+	 */
+	public void setTotalCostPreview(Stats totalCostPreview) {
+		this.totalCostPreview = totalCostPreview;
+	}
 
 	/**
 	 * Sets the index famto remove.
@@ -285,6 +309,20 @@ tower.getTowerCells().get(chosenFloor).activateQEffects(currentplayer, game);
 	 */
 	public Stats getTotalDiscountPreview() {
 		return totalDiscountPreview;
+	}
+
+	
+	
+	/**
+	 * @return the numberOfServants
+	 */
+	public int getNumberOfServants() {
+		return numberOfServants;
+	}
+
+	@Override
+	public void setNumberOfServants(int numberOfServants) {
+		this.numberOfServants = numberOfServants;
 	}
 
 	

@@ -23,12 +23,12 @@ public class ShowChoiceFamtoCouncil extends Observable implements PBViewAction {
 
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
 	public void act() {
-		System.out.println("Chose from yours family members which one to move:\n"
+		System.out.println("Choose a family member to place:\n"
 				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
@@ -60,7 +60,7 @@ public class ShowChoiceFamtoCouncil extends Observable implements PBViewAction {
 		notifyObservers(new StatusMessage(msg));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

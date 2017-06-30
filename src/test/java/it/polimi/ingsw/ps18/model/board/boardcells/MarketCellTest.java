@@ -178,7 +178,7 @@ public class MarketCellTest {
         MarketCell tester = new MarketCell(a);
         FMember pBoardFM = new FMember(3, 1);
         
-        assertTrue(tester.isLegalMC(pBoardFM));
+        assertTrue(tester.isLegalMC(pBoardFM.getValue()));
         
         int nplayer=1;
 		MainController mcontroller = new MainController();
@@ -198,7 +198,7 @@ public class MarketCellTest {
 		tester.insertFM(fm, game);
 		
 		
-		assertTrue(!(tester.isLegalMC(pBoardFM)));
+		assertTrue(!(tester.isLegalMC(pBoardFM.getValue())));
         
 		
 	}

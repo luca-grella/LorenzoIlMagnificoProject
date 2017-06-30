@@ -12,7 +12,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReceiveMarketCell.
  */
@@ -23,7 +22,7 @@ public class ReceiveMarketCell implements ActionChoice{
 	 */
 	private int index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -32,7 +31,7 @@ public class ReceiveMarketCell implements ActionChoice{
 		if(index==0){
 			((FamtoMarket) currentaction).famchoice();
 		} else if(index<0 || index>GeneralParameters.numberofMarketCells){
-			((FamtoMarket) currentaction).cellChoice();
+			((FamtoMarket) currentaction).cellChoice(game);
 		} else {
 			index -= 1;
 			Board gameBoard = game.getBoard();
@@ -40,13 +39,12 @@ public class ReceiveMarketCell implements ActionChoice{
 			MarketCell boardMarketCell = boardMarketCells.get(index);
 			FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
 			if(boardMarketCell.isEmptyMC()){
-				if(boardMarketCell.isLegalMC(pBoardFM)){
+				if(boardMarketCell.isLegalMC(pBoardFM.getValue() + ((FamtoMarket) currentaction).getNumberOfServants())){
 					((FamtoMarket) currentaction).setChosenCell(index);
 					currentaction.act(game);
 				}
 				else
-					((FamtoMarket) currentaction).cellChoice();
-				
+					((FamtoMarket) currentaction).cellChoice(game);
 			}
 		}
 	}

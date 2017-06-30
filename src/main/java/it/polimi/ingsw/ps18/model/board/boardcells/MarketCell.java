@@ -111,9 +111,9 @@ public class MarketCell {
 	 *            the board FM
 	 * @return true, if is legal MC
 	 */
-	public boolean isLegalMC(FMember pBoardFM){
+	public boolean isLegalMC(int actionValue){
 		if(this.isEmptyMC()){
-			if(pBoardFM.getValue() >= this.value){
+			if(actionValue >= this.value){
 				return true;
 			}
 		}

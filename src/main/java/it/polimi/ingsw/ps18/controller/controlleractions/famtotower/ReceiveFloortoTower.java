@@ -38,24 +38,25 @@ public class ReceiveFloortoTower implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
 			if(((FamtoTower) currentaction).isCanGoBacktoTowerChoice()){
 				((FamtoTower) currentaction).towerChoice();
 			} else {
-				((FamtoTower) currentaction).floorChoice();
+				((FamtoTower) currentaction).floorChoice(game);
 			}
 		} else if(index<0 || index>GeneralParameters.numberofCells){
-			((FamtoTower) currentaction).floorChoice();
+			((FamtoTower) currentaction).floorChoice(game);
 		} else {
 	        index -= 1;
 			Board gameBoard = game.getBoard();
 			List<Tower> boardTowers = gameBoard.getTowers();
 			FamtoTower towerIndex = (FamtoTower) game.getOngoingAction();
 			ConcreteTower boardTower = (ConcreteTower)boardTowers.get(towerIndex.getChosenTower());
-			PBoard currentplayer = game.getTurnplayer();
 			FMember chosenfam = ((FamtoTower) currentaction).getChosenFam();
 			Stats cardStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
-			Stats totalCostPreview = ((FamtoTower) currentaction).getTotalCostPreview();
+			Stats tempCostPreview = new Stats(((FamtoTower) currentaction).getTotalCostPreview()); 
+			//temporaneo per evitare che totalCostPreview accumuli risorse per ogni giocata
 			Stats totalDiscountPreview = ((FamtoTower) currentaction).getTotalDiscountPreview();
 			List<Cards> playerCards = currentplayer.getCards();
 			
@@ -117,7 +118,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 			}
 			
 			if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
-				if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue)){	
+				if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue +((FamtoTower) currentaction).getNumberOfServants())){	
 					//creare un giocatore farlocco e attivare gli effetti della cella e fare l'ultimo controllo su di lui
 					PBoard temp = new PBoard();
 					temp.setResources(new Stats(currentplayer.getResources()));
@@ -155,9 +156,9 @@ public class ReceiveFloortoTower implements ActionChoice {
 								if(chosenCard.getMinMP() <= currentplayer.getResources().getMP()){
 									secondaryCost.subStats(totalDiscountPreview);
 									secondaryCost.fixStats();
-									totalCostPreview.addStats(secondaryCost);
+									tempCostPreview.addStats(secondaryCost);
 								} else {
-									((FamtoTower) currentaction).floorChoice();
+									((FamtoTower) currentaction).floorChoice(game);
 								}
 							} else {
 								//scelta costo da pagare
@@ -166,37 +167,39 @@ public class ReceiveFloortoTower implements ActionChoice {
 								if(choice == 1){
 									cardStats.subStats(totalDiscountPreview);
 									cardStats.fixStats();
-									totalCostPreview.addStats(cardStats);
+									tempCostPreview.addStats(cardStats);
 								} else if(choice == 2){
 									secondaryCost.subStats(totalDiscountPreview);
 									secondaryCost.fixStats();
-									totalCostPreview.addStats(secondaryCost);
+									tempCostPreview.addStats(secondaryCost);
 								}
 							}
 						} else {
 							cardStats.subStats(totalDiscountPreview);
 							cardStats.fixStats();
-							totalCostPreview.addStats(cardStats);
+							tempCostPreview.addStats(cardStats);
 						}
 					} else {
 						cardStats.subStats(totalDiscountPreview);
 						cardStats.fixStats();
-						totalCostPreview.addStats(cardStats);
+						tempCostPreview.addStats(cardStats);
 					}
-					if((temp.getResources().enoughStats(totalCostPreview))){
+					tempCostPreview.addServants(((FamtoTower) currentaction).getNumberOfServants());
+					if((temp.getResources().enoughStats(tempCostPreview))){
+						((FamtoTower) currentaction).setTotalCostPreview(tempCostPreview);
 						((FamtoTower) currentaction).setChosenFloor(index);
 						currentaction.act(game);
 					}
 					else{
-						((FamtoTower) currentaction).floorChoice();
+						((FamtoTower) currentaction).floorChoice(game);
 					}
 				}
 				else{
-					((FamtoTower) currentaction).floorChoice();
+					((FamtoTower) currentaction).floorChoice(game);
 				}
 			}
 		    else {
-		    	((FamtoTower) currentaction).floorChoice();
+		    	((FamtoTower) currentaction).floorChoice(game);
 		    }
 		}
 	}

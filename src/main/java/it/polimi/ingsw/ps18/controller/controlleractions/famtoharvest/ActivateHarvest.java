@@ -56,7 +56,7 @@ public class ActivateHarvest implements ActionChoice {
 
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

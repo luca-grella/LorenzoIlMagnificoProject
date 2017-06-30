@@ -13,7 +13,7 @@ public interface Action {
 	 * @param game
 	 *            the game
 	 */
-	public void act(GameLogic game);
+	public abstract void act(GameLogic game);
 	
 	/**
 	 * Sets the chosen fam.
@@ -21,6 +21,13 @@ public interface Action {
 	 * @param chosenFam
 	 *            the new chosen fam
 	 */
-	public void setChosenFam(FMember chosenFam);
+	public abstract void setChosenFam(FMember chosenFam);
+
+	/**
+	 * @param numberOfServants the numberOfServants to set
+	 */
+	public void setNumberOfServants(int numberOfServants);
+	
+	
 
 }

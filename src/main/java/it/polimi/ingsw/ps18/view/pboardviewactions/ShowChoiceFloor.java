@@ -26,7 +26,7 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -52,7 +52,7 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 		notifyObservers(new ParamMessage(msg,i));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

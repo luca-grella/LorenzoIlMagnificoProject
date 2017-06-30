@@ -13,7 +13,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-// TODO: Auto-generated Javadoc
 
 /**
  * Receives a Family Member chosen by the current player and moves to the
@@ -59,10 +58,11 @@ public class ReceiveFamtoProduction implements ActionChoice {
 			((FamtoProduction) currentaction).setIndexFamtoRemove(index);
 			List <ProdCell> prodCells = game.getBoard().getProductionCells();
 			if(chosenfam != null){
+				((FamtoProduction) currentaction).servantsChoice(game);
 				if( ! (prodCells.isEmpty()) ){
 					if(game.getBoard().isLegalProd(chosenfam)){
 						ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-						if(prodCell.isLegalPC(chosenfam)){
+						if(prodCell.isLegalPC(chosenfam.getValue() + ((FamtoProduction) currentaction).getNumberOfServants())){
 							currentaction.setChosenFam(chosenfam);
 							((FamtoProduction) currentaction).act(game);
 						}
@@ -72,19 +72,13 @@ public class ReceiveFamtoProduction implements ActionChoice {
 						}
 					}
 					else{
-						for(int famIndex=0; famIndex<fams.size(); famIndex++){
-							if(chosenfam.getColor() == GeneralParameters.neutralFMColor){
-								((FamtoProduction) currentaction).famchoice();
-								return;
-							}
-						}
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
 					}
 				}
 				else{
 					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(chosenfam)){
+					if(prodCell.isLegalPC(chosenfam.getValue() + ((FamtoProduction) currentaction).getNumberOfServants())){
 						currentaction.setChosenFam(chosenfam);
 						((FamtoProduction) currentaction).act(game);
 					}
@@ -101,7 +95,7 @@ public class ReceiveFamtoProduction implements ActionChoice {
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

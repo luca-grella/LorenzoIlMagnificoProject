@@ -16,7 +16,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FamtoHarvest.
  */
@@ -31,6 +30,12 @@ public class FamtoHarvest extends Observable implements Action {
 	 * The index famto remove.
 	 */
 	private int indexFamtoRemove;
+	
+	/**
+	 * The number of servants to add to the action value 
+	 * of the current FMember, chosen by the current player
+	 */
+	private int numberOfServants;
 	
 	/**
 	 * The action value.
@@ -53,8 +58,19 @@ public class FamtoHarvest extends Observable implements Action {
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Harvest");
 	}
+	
+	public void servantsChoice(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
+		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
+		showBoard.showHarvest(game.getBoard());
+		
+		numberOfServants = -1;
+		while(this.numberOfServants < 0 || this.numberOfServants > currentplayer.getResources().getServants()){
+			notifyActionPBoardView("Servants Choice");
+		}
+	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -83,6 +99,7 @@ public class FamtoHarvest extends Observable implements Action {
 		
 		this.actionValue = board.insertFMHarv(chosenFam) + modifierValue;
 		currentplayer.getFams().set(indexFamtoRemove, null);
+		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actHarvest();
 	}
 	
@@ -124,7 +141,7 @@ public class FamtoHarvest extends Observable implements Action {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override
@@ -162,6 +179,19 @@ public class FamtoHarvest extends Observable implements Action {
 	 */
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;
+	}
+
+	
+	/**
+	 * @return the numberOfServants
+	 */
+	public int getNumberOfServants() {
+		return numberOfServants;
+	}
+
+	@Override
+	public void setNumberOfServants(int numberOfServants) {
+		this.numberOfServants = numberOfServants;
 	}
 	
 	

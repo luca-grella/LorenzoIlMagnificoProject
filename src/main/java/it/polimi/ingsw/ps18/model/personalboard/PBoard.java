@@ -68,6 +68,13 @@ public class PBoard extends Observable {
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
 	}
+	public void refreshFMembers(List<Dice> dices){
+		int count;
+		
+		for(count=0; count<dices.size(); count++){
+			this.fams.set(count, new FMember(dices.get(count), playercol));
+		} this.fams.set(count, new FMember(666, playercol));
+	}
 	
 	public void ChooseBonusTile(){
 		notifyActionPBoardView("ChooseBonusTile");

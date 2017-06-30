@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps18.model.board.boardcells;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defines a council cell.
  * When a FMember is placed, the player can choose a quick effect.
@@ -66,9 +65,9 @@ public class CouncilCell {
 	 *            the board FM
 	 * @return true, if is legal CC
 	 */
-	public boolean isLegalCC(FMember pBoardFM) {
+	public boolean isLegalCC(int actionValue) {
 		if(this.isEmptyCC()){
-			if(pBoardFM.getValue() >= this.getCouncilCellValue()){
+			if(actionValue >= this.getCouncilCellValue()){
 				return true;
 			}
 		}

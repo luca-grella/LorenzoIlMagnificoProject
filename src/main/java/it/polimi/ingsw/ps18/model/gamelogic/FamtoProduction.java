@@ -19,7 +19,6 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FamtoProduction.
  */
@@ -38,6 +37,12 @@ public class FamtoProduction extends Observable implements Action {
 	 * The index famto remove.
 	 */
 	private int indexFamtoRemove;
+	
+	/**
+	 * The number of servants to add to the action value 
+	 * of the current FMember, chosen by the current player
+	 */
+	private int numberOfServants;
 	
 	/**
 	 * The action value.
@@ -60,8 +65,19 @@ public class FamtoProduction extends Observable implements Action {
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Production");
 	}
+	
+	public void servantsChoice(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
+		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
+		showBoard.showProduction(game.getBoard());
+		
+		numberOfServants = -1;
+		while(this.numberOfServants < 0 || this.numberOfServants > currentplayer.getResources().getServants()){
+			notifyActionPBoardView("Servants Choice");
+		}
+	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -89,6 +105,7 @@ public class FamtoProduction extends Observable implements Action {
 		}
 		this.actionValue = board.insertFMProd(this.chosenFam) + modifierValue;
 		currentplayer.getFams().set(indexFamtoRemove, null);
+		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actProduction();
 	}
 	
@@ -285,6 +302,20 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;
+	}
+	
+	
+	/**
+	 * @return the numberOfServants
+	 */
+	public int getNumberOfServants() {
+		return numberOfServants;
+	}
+
+	@Override
+	public void setNumberOfServants(int numberOfServants) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

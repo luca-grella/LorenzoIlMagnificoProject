@@ -34,7 +34,7 @@ public class PBoardView extends Observable implements Observer {
 		HashMapPBVS.init(mcontroller);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override

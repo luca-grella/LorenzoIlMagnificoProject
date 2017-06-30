@@ -97,6 +97,12 @@ public class VaticanReport extends Observable implements Action{
 	public void setChosenAnswer(int chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
+
+	@Override
+	public void setNumberOfServants(int numberOfServants) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

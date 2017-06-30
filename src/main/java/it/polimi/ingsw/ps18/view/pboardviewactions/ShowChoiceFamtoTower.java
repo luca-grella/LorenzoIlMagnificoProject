@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 
@@ -32,6 +33,11 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();
+//		while(choice < 0 || choice > GeneralParameters.nfamperplayer){
+//			System.out.println("\nErrore: input non valido\n");
+//			notifyStatusMainController("Show Fam");
+//			choice = input.nextInt();
+//		}
 		notifyParamMainController("ReceiveFamtoTower",choice);
 		
 	}

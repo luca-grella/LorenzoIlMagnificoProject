@@ -240,6 +240,18 @@ public class Stats {
 		return builder.toString();
     	
     }
+    
+    
+    public String toStringServants() {
+    	StringBuilder builder = new StringBuilder();
+    	builder.append("-----------------\n");
+    	if(this.getServants() != 0){
+			builder.append("Servant: " + this.getServants() + "\n");
+		}
+    	else
+    		builder.append("No servants\n");
+    	return builder.toString();
+    }
 
 
 

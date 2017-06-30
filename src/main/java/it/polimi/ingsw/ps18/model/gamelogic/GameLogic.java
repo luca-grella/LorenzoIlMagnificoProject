@@ -330,7 +330,7 @@ public class GameLogic extends Observable {
 				 */
 				notifyActionMainController("Verify Church Support");
 			}
-//			board.refreshBoard();
+			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
 		//PBoard winner = winnerCalc(players);
@@ -340,6 +340,17 @@ public class GameLogic extends Observable {
 			return true;
 		}
 		return false;
+	}
+	
+	
+	
+	public void refreshGame(){
+		for(int diceIndex=0; diceIndex<GeneralParameters.numberofDices; diceIndex++){
+			this.dices.set(diceIndex, new Dice(diceIndex)); 
+			//Dice riceve il colore del dado, che coincide con il valore sequenziale dell'ArrayList
+		}
+		this.getTurnplayer().refreshFMembers(dices);
+		this.getBoard().refreshBoard();
 	}
 
 	/**

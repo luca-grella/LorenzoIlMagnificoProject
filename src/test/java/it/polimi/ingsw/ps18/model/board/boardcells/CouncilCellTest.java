@@ -84,7 +84,7 @@ public class CouncilCellTest {
 		tester.setCouncilCellValue(1);
 		
 		
-		assertTrue(tester.isLegalCC(pBoardFM));
+		assertTrue(tester.isLegalCC(pBoardFM.getValue()));
 		
 		
 	}

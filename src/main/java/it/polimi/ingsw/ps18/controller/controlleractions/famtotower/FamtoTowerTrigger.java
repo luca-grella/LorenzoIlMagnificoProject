@@ -19,7 +19,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * Sets the ongoing action (placing the Family Member to a Tower Cell) and goes
  * to the Family Member choice.
@@ -174,7 +173,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 		action.act(game);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

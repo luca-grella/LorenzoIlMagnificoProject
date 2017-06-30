@@ -44,6 +44,7 @@ public class HashMapActions {
 		genActions.put("Turn Handle Init", new TurnHandleInit());
 		genActions.put("FamtoTower", new FamtoTowerTrigger());
 		genActions.put("ReceiveFamtoTower", new ReceiveFamtoTower());
+		genActions.put("Add Servants", new ReceiveServants());
 		genActions.put("ReceiveTower", new ReceiveTowertoTower());
 		genActions.put("ReceiveFloor", new ReceiveFloortoTower());
 		genActions.put("ReceiveChosenCost", new ReceiveChosenCost());

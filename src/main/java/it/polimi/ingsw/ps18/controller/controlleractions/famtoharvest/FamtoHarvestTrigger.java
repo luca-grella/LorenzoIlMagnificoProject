@@ -95,7 +95,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			//In quanto l'accesso e' sequenziale
 			if(game.getBoard().getHarvestCells().isEmpty()){
 				HarvCell harvCell = new HarvCell(0); //TODO: generalparameters
-				if(harvCell.isLegalHC(maxFM) || harvCell.isLegalHC(maxNeutralFM)){
+				if(harvCell.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){
 					Action action = new FamtoHarvest(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoHarvest) action).famchoice();
@@ -116,7 +116,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				if(game.getBoard().isLegalHarv(maxFM)){
 					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 					HarvCell harvCell = new HarvCell(0);
-					if(harvCellMalus.isLegalHC(maxFM) || harvCell.isLegalHC(maxFM)){ 
+					if(harvCellMalus.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
@@ -126,7 +126,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 					HarvCell harvCell = new HarvCell(0);
 
-					if(harvCellMalus.isLegalHC(maxNeutralFM) || harvCell.isLegalHC(maxNeutralFM)){ 
+					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
@@ -164,7 +164,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				}
 				if(game.getBoard().isLegalHarv(maxFM)){
 					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(maxFM)){ 
+					if(harvCell.isLegalHC(maxFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
@@ -172,7 +172,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				}
 				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
 					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(maxNeutralFM)){ 
+					if(harvCell.isLegalHC(maxNeutralFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();

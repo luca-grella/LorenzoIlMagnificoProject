@@ -84,7 +84,7 @@ public class ProdCellTest {
 		int val = 40;
 		FMember fm = new FMember(val, 1);
 		
-		assertTrue(tester.isLegalPC(fm));
+		assertTrue(tester.isLegalPC(fm.getValue()));
 		
 		
 	}

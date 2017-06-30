@@ -80,7 +80,7 @@ public class HarvCellTest {
 		int val = 58;
 		FMember fm = new FMember(val, 1);
 		
-		assertTrue(tester.isLegalHC(fm));
+		assertTrue(tester.isLegalHC(fm.getValue()));
 		
 		
 		
