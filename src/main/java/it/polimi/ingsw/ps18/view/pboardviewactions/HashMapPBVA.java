@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.MainController;
-import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActHarvestwithParameter;
-import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActProductionwithParameter;
-import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ActHarvestwithParameter;
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ActProductionwithParameter;
+import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ChoosePrivilege;
 
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View actions

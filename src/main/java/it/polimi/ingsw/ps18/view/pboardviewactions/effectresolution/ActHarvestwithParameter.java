@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution;
+package it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution;
 
 import java.util.Observable;
 

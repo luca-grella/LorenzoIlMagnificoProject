@@ -219,12 +219,12 @@ public class GameLogic extends Observable {
 				yellowcards.add(new YellowC((JSONObject) jsonObject.get(index.toString())));
 			} notifyLogMainView("Yellow Deck Created.");
 			
-			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
-	    	jsonObject = (JSONObject) obj;
-			for(int i=1; i<=GeneralParameters.numberBlueC; i++){
-				Integer index = new Integer(i);
-				bluecards.add(new BlueC((JSONObject) jsonObject.get(index.toString())));
-			} notifyLogMainView("Blue Deck Created.");
+//			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
+//	    	jsonObject = (JSONObject) obj;
+//			for(int i=1; i<=GeneralParameters.numberBlueC; i++){
+//				Integer index = new Integer(i);
+//				bluecards.add(new BlueC((JSONObject) jsonObject.get(index.toString())));
+//			} notifyLogMainView("Blue Deck Created.");
 			
 			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/PurpleC.json"));
 	    	jsonObject = (JSONObject) obj;
@@ -269,9 +269,9 @@ public class GameLogic extends Observable {
 			case 0:
 				singletower.insertCards(greencards, AGE);
 				break;
-			case 1:
-				singletower.insertCards(bluecards, AGE);
-				break;
+//			case 1:
+//				singletower.insertCards(bluecards, AGE);
+//				break;
 			case 2:
 				singletower.insertCards(yellowcards, AGE);
 				break;

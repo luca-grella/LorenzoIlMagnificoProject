@@ -18,7 +18,8 @@ public class Test {
 		for(int i=0; i<nplayer; i++){
 			players.add(new PBoard(i));
 		}
-		MainController prova = new MainController(nplayer,players);
+		MainController prova = new MainController();
+		prova.startGame(nplayer, players);
 	}
 
 }

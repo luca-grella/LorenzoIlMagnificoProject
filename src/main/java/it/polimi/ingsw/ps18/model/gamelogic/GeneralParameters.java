@@ -134,8 +134,11 @@ public abstract interface GeneralParameters {
 	 * The Constant coinsFromCouncil.
 	 */
 	public final static int coinsFromCouncil = 1;
+	
+	public static final int numofPrivilegesFromCouncil = 1; 
 	/**
 	 * The Constant numberOfBonusTiles
 	 */
-	public final static int numberOfBonusTiles = 4; 
+	public final static int numberOfBonusTiles = 4;
+
 }

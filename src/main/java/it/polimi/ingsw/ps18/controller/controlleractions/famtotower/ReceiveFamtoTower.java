@@ -66,8 +66,6 @@ public class ReceiveFamtoTower implements ActionChoice {
 			}
 			else{
 				currentaction.setChosenFam(chosenfam);
-				//Prima o dopo aver settato il chosenfam, parte il giro di MVC per la scelta del numero di servitori
-//				((FamtoTower) currentaction).servantsChoice();
 				((FamtoTower) currentaction).towerChoice();
 			}
 		}

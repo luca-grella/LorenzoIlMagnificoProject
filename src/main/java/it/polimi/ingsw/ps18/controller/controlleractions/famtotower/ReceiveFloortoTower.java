@@ -54,7 +54,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 			FamtoTower towerIndex = (FamtoTower) game.getOngoingAction();
 			ConcreteTower boardTower = (ConcreteTower)boardTowers.get(towerIndex.getChosenTower());
 			FMember chosenfam = ((FamtoTower) currentaction).getChosenFam();
-			Stats cardStats = (((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost();
+			Stats cardStats = new Stats((((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost());
 			Stats tempCostPreview = new Stats(((FamtoTower) currentaction).getTotalCostPreview()); 
 			//temporaneo per evitare che totalCostPreview accumuli risorse per ogni giocata
 			Stats totalDiscountPreview = ((FamtoTower) currentaction).getTotalDiscountPreview();

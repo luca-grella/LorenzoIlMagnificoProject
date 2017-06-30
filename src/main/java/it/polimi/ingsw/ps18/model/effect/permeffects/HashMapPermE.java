@@ -20,8 +20,6 @@ public class HashMapPermE {
 	public HashMapPermE(){
 		permEffects.put("IncreaseFMvalueOnAction", new IncreaseFMValueOnAction());
 		permEffects.put("BlockFloorBonus", new BlockFloorBonus());
-		permEffects.put("SalesCoinBlue", new SalesCoinBlue());
-		permEffects.put("SalesWoodorRockYellow", new SalesWoodorRockYellow());
 	}
 	
 	/**

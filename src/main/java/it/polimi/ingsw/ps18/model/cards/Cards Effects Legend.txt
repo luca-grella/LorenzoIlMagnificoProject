@@ -3,11 +3,6 @@ SalesWoodorRockYellow: sconta legno o roccia sull'acquisto di carte gialle
 SalesCoinBlue: sconta monete sull'acquisto di carte blu
 BlockFloorBonus: blocca i bonus stampati sulla board dei piani indicati (piano 1 = 0, piano 2 = 1, piano 3 = 2, piano 4 = 3) 
 
-DA SCRIVERE
-SalesWoodandRockYellow: sconta legno e roccia sull'acquisto di carte gialle
-SalesCoinBlue: sconta monete sull'acquisto di carte blu
-
-
 SCRITTI
 AddWood: aggiunge legno
 AddCoin: aggiunge monete

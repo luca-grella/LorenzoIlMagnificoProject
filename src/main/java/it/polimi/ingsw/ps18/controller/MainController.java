@@ -38,7 +38,7 @@ public class MainController implements Observer {
 		
 	}
 	
-	public MainController(int nplayer, List<PBoard> players){
+	public void startGame(int nplayer, List<PBoard> players){
 		HashMapActions.init();
 		HashMapStatus.init();
 		game = new GameLogic(nplayer,this, players);

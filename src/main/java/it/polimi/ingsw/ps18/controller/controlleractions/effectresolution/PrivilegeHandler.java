@@ -71,7 +71,7 @@ public class PrivilegeHandler implements ActionChoice {
 	        for(int i = 0 ; i < this.effect.size() ; i++){
 				GeneralEffect qeffect = this.effect.get(i);
 				qeffect.activate(game.getTurnplayer(), game);
-	        }
+	        }  this.effect.clear();
 		
 		}catch (FileNotFoundException e) {
 	        System.out.println("File non trovato.");

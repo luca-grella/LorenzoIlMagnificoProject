@@ -17,7 +17,7 @@ public class addServants implements QuickEffect, HarvestEffect, ProductionEffect
 	/**
 	 * The name.
 	 */
-	private String name = "Servants";
+	private String name = "Servant";
 	
 	/**
 	 * The quantity.

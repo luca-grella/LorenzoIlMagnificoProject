@@ -49,11 +49,9 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 		if(chosenTower!=-1){
 			((FamtoTower) action).setCanGoBacktoTowerChoice(false);
 			((FamtoTower) action).setChosenTower(chosenTower);
-			setChanged();
-			notifyObservers(new ParamMessage("Floor Choice",chosenTower));
+			((FamtoTower) action).floorChoice(game);
 		} else {
-			setChanged();
-			notifyObservers(new ActionMessage("Tower Choice"));		
+			((FamtoTower) action).towerChoice();	
 		}
 	}
 

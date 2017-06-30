@@ -25,7 +25,16 @@
     "PermanentEffectsValues": [
       [
         "Green",
-        2
+        2,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },
@@ -82,15 +91,22 @@
       null
     ],
     "PermanentEffects": [
-      "IncreaseFMvalueOnAction",
-      "SalesCoinBlue"
+      "IncreaseFMvalueOnAction"
     ],
     "PermanentEffectsValues": [
       [
         "Blue",
-        2
-      ],
-      1
+        2,
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
     ]
   },
   "4": {
@@ -119,7 +135,16 @@
     "PermanentEffectsValues": [
       [
         "Purple",
-        2
+        2,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },
@@ -149,7 +174,16 @@
     "PermanentEffectsValues": [
       [
         "Harvest",
-        2
+        2,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },
@@ -179,7 +213,16 @@
     "PermanentEffectsValues": [
       [
         "Production",
-        2
+        2,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },
@@ -441,7 +484,16 @@
     "PermanentEffectsValues": [
       [
         "Harvest",
-        3
+        3,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },
@@ -471,7 +523,16 @@
     "PermanentEffectsValues": [
       [
         "Production",
-        3
+        3,
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ]
     ]
   },

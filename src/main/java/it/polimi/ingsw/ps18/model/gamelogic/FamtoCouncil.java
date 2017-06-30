@@ -79,7 +79,6 @@ public class FamtoCouncil extends Observable implements Action {
 		currentplayer.getFams().set(indexFamtoRemove, null);
 		(currentplayer.getResources()).addCoins(GeneralParameters.coinsFromCouncil);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
-		//manca il set della quantita' del privilegio
 		privilege.activate(currentplayer, game);
 
 	}
