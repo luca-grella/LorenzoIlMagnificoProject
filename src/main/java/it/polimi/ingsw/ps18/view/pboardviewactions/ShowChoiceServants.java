@@ -12,8 +12,8 @@ public class ShowChoiceServants extends Observable implements PBViewAction{
 	private int index;
 	Scanner input = new Scanner(System.in);
 	
-	@Override
-	public void setObserver(MainController controller) {
+
+	public ShowChoiceServants (MainController controller) {
 		addObserver(controller);
 	}
 
