@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.board.boardcells.Cell;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addMP;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -392,43 +393,42 @@ public class CardsTest {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testSetEffects() throws FileNotFoundException, IOException, ParseException {
-//		JSONParser parser = new JSONParser();
-//		
-//    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
-//    	JSONObject jsonObject = (JSONObject) obj;
-//        JSONObject a = (JSONObject) jsonObject.get("1");
-//        String name = (String) a.get("name");
-//        long number = (long) a.get("number");
-//        long color = (long) a.get("color");
-//        long period = (long) a.get("period");
-//        long harvalue = (long) a.get("HarvestValue");
-////        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-////        JSONArray qeffectsvalues = (JSONArray) a.get("QuickEffectsValues");
-//        
-//        
-//        
-//		Cards tester = new GreenC(a);
-//		List<QuickEffect> effects = new ArrayList<>();
-//		Object "AddWood";
-//		QuickEffect e = geteffect("AddWood");
-//		effects.add(e );
-//		tester.setEffects(effects );
-//		
-//		PBoard player = new PBoard();
-//		int wood = 2636;
-//		Stats resources = new Stats(wood ,0,0,0,0,0,0);
-//		player.setResources(resources);
-//		ris.activate(player, new GameLogic());
-//		int ris2 = player.getResources().getWood();
-//		
-//		assertEquals(wood+1, ris2);
-//	
-//	COME STRACAZZO SI FA QUESTO?!
-//	
-//	
-//	}
+	@Test
+	public void testSetEffects() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("1");
+        String name = (String) a.get("name");
+        long number = (long) a.get("number");
+        long color = (long) a.get("color");
+        long period = (long) a.get("period");
+        long harvalue = (long) a.get("HarvestValue");
+//        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
+//        JSONArray qeffectsvalues = (JSONArray) a.get("QuickEffectsValues");
+        
+        
+        
+		Cards tester = new GreenC(a);
+		List<QuickEffect> effects = new ArrayList<>();
+		QuickEffect e = new addWood();
+		e.setQuantity(5);
+		effects.add(e);
+		tester.setEffects(effects);
+		QuickEffect ris = tester.getEffects().get(0);
+		PBoard player = new PBoard();
+		int wood = 2636;
+		Stats resources = new Stats(wood ,0,0,0,0,0,0);
+		player.setResources(resources);
+		ris.activate(player, new GameLogic());
+		int ris2 = player.getResources().getWood();
+		
+		assertEquals(wood+5, ris2);
+	
+	
+	
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getCardCost()}.

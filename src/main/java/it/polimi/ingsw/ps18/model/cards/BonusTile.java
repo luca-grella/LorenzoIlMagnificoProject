@@ -51,7 +51,7 @@ public class BonusTile extends Cards {
 		JSONArray permeffectvalues = (JSONArray) a.get("PermanentEffectValue");
 		addPermEffects(permeffects,permeffectvalues);
 		JSONArray feffects = (JSONArray) a.get("FinalEffect");
-		JSONArray feffectvalues = (JSONArray) a.get("FinalEffectValues");
+		JSONArray feffectvalues = (JSONArray) a.get("FinalEffectValue");
 		addFEffects(feffects,feffectvalues,mapFE);
 	}
 	

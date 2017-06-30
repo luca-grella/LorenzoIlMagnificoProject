@@ -214,5 +214,15 @@
     "EffectsValues": [
       1
     ]
+  },
+    "22": {
+    "number": 22,
+    "period": 3,
+    "Effects": [
+      null
+    ],
+    "EffectsValues": [
+      null
+    ]
   }
 }

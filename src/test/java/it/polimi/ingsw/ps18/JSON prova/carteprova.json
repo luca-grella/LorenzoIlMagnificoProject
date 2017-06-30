@@ -31,10 +31,10 @@
       1
     ],
     "HarvestEffects": [
-      "AddCoin"
+      null
     ],
     "HarvestEffectsValues": [
-      1
+      null
     ]
   },
   "2": {
@@ -159,6 +159,147 @@
     ],
     "FinalEffectsValues": [
       4
+    ]
+  },
+   "7": {
+    "name": "BlueProva2",
+    "number": 49,
+    "color": 1,
+    "period": 1,
+    "CardCost": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      3
+    ],
+    "PermanentEffects": [
+      null
+    ],
+    "PermanentEffectsValues": [
+      [
+        null
+      ]
+    ]
+  },
+    "8": {
+    "name": "PurpleProva2",
+    "number": 73,
+    "color": 3,
+    "period": 1,
+    "minPM": 0,
+    "PurpleCardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "FinalEffects": [
+      null
+    ],
+    "FinalEffectsValues": [
+      null
+    ]
+  },
+    "9": {
+    "name": "PurpleProva3",
+    "number": 73,
+    "color": 3,
+    "period": 1,
+    "minPM": 7,
+    "PurpleCardCost": [
+      1,
+      1,
+      4,
+      3,
+      3,
+      5,
+      7
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
+  },
+    "10": {
+    "name": "YellowProva2",
+    "number": 25,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 5,
+    "CardCost": [
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      null
+    ],
+    "ProductionEffectsValues": [
+      null
+    ]
+  },
+      "11": {
+    "name": "YellowProva2",
+    "number": 25,
+    "color": 2,
+    "period": 1,
+    "ProductionValue": 5,
+    "CardCost": [
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "QuickEffects": [
+      "AddPV"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "ProductionEffects": [
+      null
+    ],
+    "ProductionEffectsValues": [
+      null
     ]
   }
 }
