@@ -42,6 +42,7 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 			PBoard currentplayer = game.getTurnplayer();
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
+			((FamtoCouncil) currentaction).setIndexFamtoRemove(index);
 			CouncilCell councilCell = new CouncilCell();
 			
 			if(chosenfam != null){

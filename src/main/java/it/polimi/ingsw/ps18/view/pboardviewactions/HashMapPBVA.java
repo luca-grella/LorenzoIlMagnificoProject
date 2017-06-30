@@ -28,6 +28,7 @@ public class HashMapPBVA {
 	public static void init(MainController mcontroller){
 		genPBVAction.put("Init Player Turn", new PBVAInit(mcontroller));
 		genPBVAction.put("Fam Choice Tower", new ShowChoiceFamtoTower(mcontroller));
+		genPBVAction.put("Servants Choice", new ShowChoiceServants(mcontroller));
 		genPBVAction.put("Tower Choice", new ShowChoiceTower(mcontroller));
 		genPBVAction.put("Floor Choice", new ShowChoiceFloor(mcontroller));
 		genPBVAction.put("Fam Choice Market", new ShowChoiceFamtoMarket(mcontroller));

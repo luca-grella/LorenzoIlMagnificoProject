@@ -351,6 +351,7 @@ public class GameLogic extends Observable {
 		}
 		this.getTurnplayer().refreshFMembers(dices);
 		this.getBoard().refreshBoard();
+		this.insertCardsinTowers();
 	}
 
 	/**

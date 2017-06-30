@@ -79,6 +79,7 @@ public class FamtoCouncil extends Observable implements Action {
 		currentplayer.getFams().set(indexFamtoRemove, null);
 		(currentplayer.getResources()).addCoins(GeneralParameters.coinsFromCouncil);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
+		//manca il set della quantita' del privilegio
 		privilege.activate(currentplayer, game);
 
 	}
@@ -116,5 +117,13 @@ public class FamtoCouncil extends Observable implements Action {
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;
 	}
+
+	/**
+	 * @param indexFamtoRemove the indexFamtoRemove to set
+	 */
+	public void setIndexFamtoRemove(int indexFamtoRemove) {
+		this.indexFamtoRemove = indexFamtoRemove;
+	}
+	
 
 }

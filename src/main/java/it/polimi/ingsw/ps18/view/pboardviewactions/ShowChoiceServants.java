@@ -19,13 +19,6 @@ public class ShowChoiceServants extends Observable implements PBViewAction{
 
 	@Override
 	public void act() {
-//		notifyParamMainController("ReceiveTowertoShow",this.index);
-		/*
-		 * Non possiamo mostrare qui le celle della torre selezionata
-		 * perche' questa classe e' acceduta da tutte le azioni in cui
-		 * si possono sommare dei servitori. Quindi questa stampa viene affidata al model
-		 * quando viene chiamato il floorchoice, e in generale da tutti.
-		 */
 		System.out.println("\nChoose a number of servants to add:\n");
 		notifyStatusMainController("Show Servants");
 		int choice = input.nextInt();

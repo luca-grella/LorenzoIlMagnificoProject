@@ -154,8 +154,7 @@ public class FamtoMarket extends Observable implements Action {
 
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
-		// TODO Auto-generated method stub
-		
+			this.numberOfServants = numberOfServants;
 	}
 
 	

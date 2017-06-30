@@ -171,13 +171,13 @@ public class Board extends Observable {
 			}
 			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/MarketCell.json")); 
 	    	jsonObject = (JSONObject) obj;
-	    	
+	    	this.marketCells.clear();
 	    	for(count=1; count<=GeneralParameters.numberofMarketCells; count++){ 
 	    		Integer i = new Integer(count);
 				MarketCell cell = new MarketCell((JSONObject) jsonObject.get(i.toString()));
 				if(cell.getMinPlayers() <= nplayer){
-//					this.marketCells.add(cell);
-					this.marketCells.set(count, cell);
+					this.marketCells.add(cell);
+//					this.marketCells.set(count, cell);
 				}
 			}
 	    	
@@ -452,7 +452,7 @@ public class Board extends Observable {
 			builder.append("\nThe Production Section is Empty.\n\n");
 		} else {
 			for(int productionIndex=0; productionIndex<this.productionCells.size(); productionIndex++){
-				HarvCell tempcell = this.harvestCells.get(productionIndex);
+				ProdCell tempcell = this.productionCells.get(productionIndex);
 			    builder.append(tempcell.toString(productionIndex));	
 			}
 		}

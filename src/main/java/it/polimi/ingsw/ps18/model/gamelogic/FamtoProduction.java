@@ -125,6 +125,7 @@ public class FamtoProduction extends Observable implements Action {
 				}
 			}
 		} this.chooseCards(player, game);
+
 	}
 	
 	/**
@@ -314,8 +315,7 @@ public class FamtoProduction extends Observable implements Action {
 
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
-		// TODO Auto-generated method stub
-		
+		this.numberOfServants = numberOfServants;		
 	}
 	
 
