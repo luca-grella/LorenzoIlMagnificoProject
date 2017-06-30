@@ -7,22 +7,18 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ShowChoiceTower.
  */
 public class ShowChoiceTower extends Observable implements PBViewAction {
+	private int index;
 	
 	/**
 	 * The input.
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ShowChoiceTower(MainController controller) {
 		addObserver(controller);
 		
 	}
@@ -69,8 +65,7 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void setIndex(int number) {
-		return;
-		
+		this.index = number;
 	}
 
 }

@@ -7,10 +7,10 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 
 public class CostChoice extends Observable implements PBViewAction {
+	private int index;
 	Scanner input = new Scanner(System.in);
 
-	@Override
-	public void setObserver(MainController controller) {
+	public CostChoice(MainController controller) {
 		addObserver(controller);
 
 	}
@@ -29,7 +29,7 @@ public class CostChoice extends Observable implements PBViewAction {
 
 	@Override
 	public void setIndex(int number) {
-		return;
+		this.index = number;
 
 	}
 

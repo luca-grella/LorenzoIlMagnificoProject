@@ -3,11 +3,11 @@ package it.polimi.ingsw.ps18.view.pboardviewactions;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActHarvestwithParameter;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ActProductionwithParameter;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
 
-// TODO: Auto-generated Javadoc
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View actions
  * .
@@ -23,23 +23,24 @@ public class HashMapPBVA {
 	
 	/**
 	 * Inits the.
+	 * @param mcontroller 
 	 */
-	public static void init(){
-		genPBVAction.put("Init Player Turn", new PBVAInit());
-		genPBVAction.put("Fam Choice Tower", new ShowChoiceFamtoTower());
-		genPBVAction.put("Tower Choice", new ShowChoiceTower());
-		genPBVAction.put("Floor Choice", new ShowChoiceFloor());
-		genPBVAction.put("Fam Choice Market", new ShowChoiceFamtoMarket());
-		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell());
-		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil());
-		genPBVAction.put("Fam Choice Harvest", new ShowChoiceFamtoHarvest());
-		genPBVAction.put("Fam Choice Production", new ShowChoiceFamtoProduction());
-		genPBVAction.put("actHarvest", new ActHarvestwithParameter());
-		genPBVAction.put("actProduction", new ActProductionwithParameter());
-		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege());
-		genPBVAction.put("CardCostChoice", new CostChoice());
-		genPBVAction.put("ChooseBonusTile", new ShowChoiceBonusTiles());
-		genPBVAction.put("Choose Church Support", new ChooseSupport());
+	public static void init(MainController mcontroller){
+		genPBVAction.put("Init Player Turn", new PBVAInit(mcontroller));
+		genPBVAction.put("Fam Choice Tower", new ShowChoiceFamtoTower(mcontroller));
+		genPBVAction.put("Tower Choice", new ShowChoiceTower(mcontroller));
+		genPBVAction.put("Floor Choice", new ShowChoiceFloor(mcontroller));
+		genPBVAction.put("Fam Choice Market", new ShowChoiceFamtoMarket(mcontroller));
+		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell(mcontroller));
+		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil(mcontroller));
+		genPBVAction.put("Fam Choice Harvest", new ShowChoiceFamtoHarvest(mcontroller));
+		genPBVAction.put("Fam Choice Production", new ShowChoiceFamtoProduction(mcontroller));
+		genPBVAction.put("actHarvest", new ActHarvestwithParameter(mcontroller));
+		genPBVAction.put("actProduction", new ActProductionwithParameter(mcontroller));
+		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege(mcontroller));
+		genPBVAction.put("CardCostChoice", new CostChoice(mcontroller));
+		genPBVAction.put("ChooseBonusTile", new ShowChoiceBonusTiles(mcontroller));
+		genPBVAction.put("Choose Church Support", new ChooseSupport(mcontroller));
 	}
 	
 	/**

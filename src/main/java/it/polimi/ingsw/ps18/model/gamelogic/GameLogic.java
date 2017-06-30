@@ -179,7 +179,7 @@ public class GameLogic extends Observable {
 	 */
 	public void setup(MainController mainController){
 		notifyLogMainView("Setup Initiated.");
-		this.board = new Board(mainController, this.nplayer);
+		this.board = new Board(mainController, this.nplayer, this.mView);
 		for(int i=0; i<GeneralParameters.numberofDices; i++){
 			this.dices.add(new Dice(i));
 		}

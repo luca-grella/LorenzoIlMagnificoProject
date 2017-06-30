@@ -6,7 +6,6 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChooseWoodorRock.
  */
@@ -17,11 +16,7 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/**
-	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ChooseWoodorRock(MainController controller) {
 		addObserver(controller);
 	}
 

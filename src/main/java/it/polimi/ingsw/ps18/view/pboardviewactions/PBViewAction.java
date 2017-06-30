@@ -9,14 +9,6 @@ import it.polimi.ingsw.ps18.controller.MainController;
 public interface PBViewAction {
 	
 	/**
-	 * Sets the observer.
-	 *
-	 * @param controller
-	 *            the new observer
-	 */
-	public void setObserver(MainController controller);
-	
-	/**
 	 * Act.
 	 */
 	public void act();

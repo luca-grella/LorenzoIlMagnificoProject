@@ -14,11 +14,6 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 public class MainView extends Observable  implements Observer {
 	
 	/**
-	 * The controller.
-	 */
-	MainController controller;
-	
-	/**
 	 * Instantiates a new main view.
 	 *
 	 * @param controller

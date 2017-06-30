@@ -17,17 +17,10 @@ import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PBoardView.
  */
 public class PBoardView extends Observable implements Observer {
-	
-	/**
-	 * The controller.
-	 */
-	MainController controller;
-	private int a;
 	
 	/**
 	 * Instantiates a new p board view.
@@ -36,10 +29,9 @@ public class PBoardView extends Observable implements Observer {
 	 *            the mcontroller
 	 */
 	public PBoardView(MainController mcontroller){
-		this.controller = mcontroller;
-		addObserver(controller);
-		HashMapPBVA.init();
-		HashMapPBVS.init();
+		addObserver(mcontroller);
+		HashMapPBVA.init(mcontroller);
+		HashMapPBVS.init(mcontroller);
 	}
 
 	/* (non-Javadoc)
@@ -56,36 +48,21 @@ public class PBoardView extends Observable implements Observer {
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;
 			PBViewAction action = HashMapPBVA.geteffect(aMessage.getMessage());
-			action.setObserver(controller);
+			action.setIndex(-1);
 			action.act();
 			break;
 		case 3:
 			StatusMessage sMessage = (StatusMessage) msg;
 			PBViewStatus statusAction = HashMapPBVS.geteffect(sMessage.getMessage());
-			statusAction.setObserver(controller);
 			statusAction.act();
 			break;
 		case 4:
 			ParamMessage pMessage = (ParamMessage) msg;
 			PBViewAction ParamAction = HashMapPBVA.geteffect(pMessage.getMessage());
-			ParamAction.setObserver(controller);
 			ParamAction.setIndex(pMessage.getNumber());
 			ParamAction.act();
 			
 		}
 	}
-	
-	/**
-	 * 
-	 *Per test
-	 * @return 
-	 */
-	
-	public PBoardView(int b){
-		
-		b = 1;
-		this.a = b;
-		
-	};
 
 }

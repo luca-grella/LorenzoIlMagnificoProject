@@ -21,7 +21,7 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
-import it.polimi.ingsw.ps18.view.BoardView;
+import it.polimi.ingsw.ps18.view.MainView;
 
 /**
  * Defines a game board, composed of: <br>
@@ -46,11 +46,6 @@ import it.polimi.ingsw.ps18.view.BoardView;
  * @see {@link import it.polimi.ingsw.ps18.model.cards.Excommunications}
  */
 public class Board extends Observable {
-	
-	/**
-	 * The boardview.
-	 */
-	private BoardView boardview;
 	
 	/**
 	 * The nplayer.
@@ -95,9 +90,8 @@ public class Board extends Observable {
 	 * @param nplayer
 	 *            the nplayer
 	 */
-	public Board (MainController mcontroller, int nplayer){
-		boardview = new BoardView(mcontroller);
-		addObserver(boardview);
+	public Board (MainController mcontroller, int nplayer, MainView mView){
+		addObserver(mView);
 		notifyLogBoardView("Setup Board Initiated.");
 		this.nplayer = nplayer;
 		int count;

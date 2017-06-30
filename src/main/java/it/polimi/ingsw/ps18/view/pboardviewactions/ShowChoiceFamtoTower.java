@@ -11,17 +11,14 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
  * The Class ShowChoiceFamtoTower.
  */
 public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
+	private int index;
 	
 	/**
 	 * The input.
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/**
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ShowChoiceFamtoTower(MainController controller) {
 		addObserver(controller);
 		
 	}
@@ -68,7 +65,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 */
 	@Override
 	public void setIndex(int number) {
-		return;
+		this.index = number;
 		
 	}
 

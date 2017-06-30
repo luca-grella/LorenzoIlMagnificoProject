@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class Test {
 	private static List<PBoard> players = new ArrayList<>();
-	private static int nplayer = 2;
+	private static int nplayer = 4;
 
 	/**
 	 * The main method.

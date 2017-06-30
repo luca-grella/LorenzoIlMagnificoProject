@@ -26,6 +26,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.view.MainView;
 
 /**
  * The Class BoardTest.
@@ -44,7 +45,7 @@ public class BoardTest {
 	public void testBoard() throws FileNotFoundException, IOException, ParseException {
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller , 1);
+		Board tester = new Board(mcontroller , 1, new MainView(mcontroller));
 		
 		JSONParser parser = new JSONParser();
 
@@ -169,7 +170,7 @@ public class BoardTest {
         JSONObject a2 = (JSONObject) jsonObject2.get("2");
         
         MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller , 2);
+		Board tester = new Board(mcontroller , 2, new MainView(mcontroller));
         
 		MarketCell mcell = new MarketCell(a);
 		FMember fm = new FMember(1, 2);
@@ -196,7 +197,8 @@ public class BoardTest {
 	public void testIsLegalHarv() {
 		
 
-		Board tester = new Board(new MainController(), 2);
+		MainController mcontroller = new MainController();
+		Board tester = new Board(new MainController(), 2, new MainView(mcontroller));
 		List<HarvCell> hcell = new ArrayList<>();
 		HarvCell element = new HarvCell(1);
 		hcell.add(0, element);
@@ -213,7 +215,8 @@ public class BoardTest {
 	@Test
 	public void testIsLegalProd() {
 		
-		Board tester = new Board(new MainController(), 2);
+		MainController mcontroller = new MainController();
+		Board tester = new Board(new MainController(), 2, new MainView(mcontroller));
 		List<ProdCell> pcell = new ArrayList<>();
 		ProdCell element = new ProdCell(1);
 		pcell.add(0, element);
@@ -230,7 +233,8 @@ public class BoardTest {
 	@Test
 	public void testInsertFMHarv() {
 		
-		Board tester = new Board(new MainController(), 2);
+		MainController mcontroller = new MainController();
+		Board tester = new Board(new MainController(), 2, new MainView(mcontroller));
 //		List<HarvCell> hcell = new ArrayList<>();
 //		tester.setHarvestCells(hcell);
 		
@@ -255,7 +259,8 @@ public class BoardTest {
 	@Test
 	public void testInsertFMProd() {
 		
-		Board tester = new Board(new MainController(), 2);
+		MainController mcontroller = new MainController();
+		Board tester = new Board(new MainController(), 2, new MainView(mcontroller));
 //		List<HarvCell> hcell = new ArrayList<>();
 //		tester.setHarvestCells(hcell);
 		
@@ -283,7 +288,7 @@ public class BoardTest {
 	@Test
 	public void testGetTowers() throws FileNotFoundException, IOException, ParseException {
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller , 1);
+		Board tester = new Board(mcontroller , 1, new MainView(mcontroller));
 		
 		JSONParser parser = new JSONParser();
 
@@ -313,7 +318,7 @@ public class BoardTest {
 	@Test
 	public void testSetTowers() throws FileNotFoundException, IOException, ParseException {
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller , 1);
+		Board tester = new Board(mcontroller , 1, new MainView(mcontroller));
 		
 		JSONParser parser = new JSONParser();
 
@@ -351,7 +356,7 @@ public class BoardTest {
         long minplayers = (long) a2.get("MinPlayers");
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		List<MarketCell> mc = new ArrayList<>();
 		MarketCell a = new MarketCell(a2);
 		mc.add(a);
@@ -378,7 +383,7 @@ public class BoardTest {
         long minplayers = (long) a2.get("MinPlayers");
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		List<MarketCell> mc = new ArrayList<>();
 		MarketCell a = new MarketCell(a2);
 		mc.add(a);
@@ -397,7 +402,7 @@ public class BoardTest {
 		
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		List<CouncilCell> cc = new ArrayList<>();
 		CouncilCell e = new CouncilCell();
 		e.setCouncilCellValue(899);
@@ -417,7 +422,7 @@ public class BoardTest {
 		
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		List<CouncilCell> cc = new ArrayList<>();
 		CouncilCell e = new CouncilCell();
 		e.setCouncilCellValue(24);
@@ -435,7 +440,7 @@ public class BoardTest {
 	public void testGetHarvestCells() {
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<HarvCell> hc = new ArrayList<>();
 		HarvCell e = new HarvCell(3);
@@ -455,7 +460,7 @@ public class BoardTest {
 	@Test
 	public void testSetHarvestCells() {
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<HarvCell> hc = new ArrayList<>();
 		HarvCell e = new HarvCell(3);
@@ -475,7 +480,7 @@ public class BoardTest {
 	@Test
 	public void testGetProductionCells() {
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<ProdCell> pc = new ArrayList<>();
 		ProdCell e = new ProdCell(34);
@@ -496,7 +501,7 @@ public class BoardTest {
 	public void testSetProductionCells() {
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<ProdCell> pc = new ArrayList<>();
 		ProdCell e = new ProdCell(14);
@@ -551,7 +556,7 @@ public class BoardTest {
 		
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<Excommunications> ec = new ArrayList<>();
 		Excommunications e = new Excommunications(a3);
@@ -619,7 +624,7 @@ public class BoardTest {
 		
 		
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		
 		List<Excommunications> ec = new ArrayList<>();
 		Excommunications e = new Excommunications(a3);
@@ -652,7 +657,7 @@ public class BoardTest {
 	@Test
 	public void testGetNplayer() {
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		int nplayer = 3;
 		tester.setNplayer(nplayer );
 		int ris = tester.getNplayer();
@@ -667,7 +672,7 @@ public class BoardTest {
 	public void testSetNplayer() {
 
 		MainController mcontroller = new MainController();
-		Board tester = new Board(mcontroller, 4);
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		int nplayer = 1;
 		tester.setNplayer(nplayer );
 		int ris = tester.getNplayer();

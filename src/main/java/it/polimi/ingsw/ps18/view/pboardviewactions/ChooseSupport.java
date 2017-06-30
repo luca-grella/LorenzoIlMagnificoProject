@@ -8,10 +8,10 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 
 public class ChooseSupport extends Observable implements PBViewAction{
 	
-Scanner input = new Scanner(System.in);
+	private int index;
+	Scanner input = new Scanner(System.in);
 
-	@Override
-	public void setObserver(MainController controller) {
+	public ChooseSupport(MainController controller) {
 		addObserver(controller);
 	}
 
@@ -44,7 +44,7 @@ Scanner input = new Scanner(System.in);
 
 	@Override
 	public void setIndex(int number) {
-		return;
+		this.index = number;
 	}
 
 }

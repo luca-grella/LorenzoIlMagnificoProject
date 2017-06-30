@@ -5,8 +5,6 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class HashMapFE.
  */

@@ -31,7 +31,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PBoardTest.
  *
@@ -199,12 +198,12 @@ public class PBoardTest {
 	public void testGetpBoardView() {
 		
     PBoard tester = new PBoard();
-    PBoardView pb = new PBoardView(1);
+    PBoardView pb = new PBoardView(new MainController());
 	tester.pBoardView = pb;
     PBoardView ris = tester.getpBoardView();
     Class<? extends PBoardView> a = ris.getClass();
     String f = a.getName();
-    PBoardView pb1 = new PBoardView(1);
+    PBoardView pb1 = new PBoardView(new MainController());
 	tester.pBoardView = pb1;
     PBoardView ris2 = tester.getpBoardView();
     Class<? extends PBoardView> b = ris2.getClass();

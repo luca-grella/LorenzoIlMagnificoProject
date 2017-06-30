@@ -3,9 +3,9 @@ package it.polimi.ingsw.ps18.view.pboardviewstatus;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresoution.ChoosePrivilege;
 
-// TODO: Auto-generated Javadoc
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View status .
  *
@@ -20,15 +20,16 @@ public class HashMapPBVS {
 	
 	/**
 	 * Inits the.
+	 * @param mcontroller 
 	 */
-	public static void init(){
-		genPBVStatus.put("Tower Choice", new ChooseTowertoShow());
-		genPBVStatus.put("Player Choice", new ChoosePlayertoShow());
-		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock());
-		genPBVStatus.put("actHarvest", new ActHarvest());
-		genPBVStatus.put("actProduction", new ActProduction());
-		genPBVStatus.put("Select YC", new SelectYellowC());
-		genPBVStatus.put("Choose Effect", new ChooseEffect());
+	public static void init(MainController mcontroller){
+		genPBVStatus.put("Tower Choice", new ChooseTowertoShow(mcontroller));
+		genPBVStatus.put("Player Choice", new ChoosePlayertoShow(mcontroller));
+		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock(mcontroller));
+		genPBVStatus.put("actHarvest", new ActHarvest(mcontroller));
+		genPBVStatus.put("actProduction", new ActProduction(mcontroller));
+		genPBVStatus.put("Select YC", new SelectYellowC(mcontroller));
+		genPBVStatus.put("Choose Effect", new ChooseEffect(mcontroller));
 	}
 	
 	/**

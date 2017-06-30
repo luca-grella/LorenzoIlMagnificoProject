@@ -5,17 +5,12 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ActHarvest.
  */
 public class ActHarvest extends Observable implements PBViewStatus {
 
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ActHarvest(MainController controller) {
 		addObserver(controller);
 
 	}

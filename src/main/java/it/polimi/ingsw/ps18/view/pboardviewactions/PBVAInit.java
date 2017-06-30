@@ -8,17 +8,13 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PBVAInit.
  */
 public class PBVAInit extends Observable implements PBViewAction {
+	private int index;
 	
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller){
+	public PBVAInit(MainController controller){
 		addObserver(controller);
 	}
 
@@ -119,7 +115,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void setIndex(int number) {
-		return;
+		this.index = number;
 		
 	}
 

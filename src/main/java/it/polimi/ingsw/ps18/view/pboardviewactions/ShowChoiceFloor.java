@@ -6,7 +6,6 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ShowChoiceFloor.
  */
@@ -22,11 +21,7 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 	 */
 	private int index;
 
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ShowChoiceFloor(MainController controller) {
 		addObserver(controller);
 		
 	}

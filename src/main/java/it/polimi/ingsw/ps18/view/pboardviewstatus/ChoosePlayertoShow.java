@@ -16,11 +16,7 @@ public class ChoosePlayertoShow extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	/**
-	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ChoosePlayertoShow(MainController controller) {
 		addObserver(controller);
 
 	}

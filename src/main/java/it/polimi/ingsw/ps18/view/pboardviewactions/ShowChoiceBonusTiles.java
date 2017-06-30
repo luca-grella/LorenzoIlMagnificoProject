@@ -8,10 +8,10 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 
 public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
+	private int index;
 	Scanner input = new Scanner(System.in);
 
-	@Override
-	public void setObserver(MainController controller) {
+	public ShowChoiceBonusTiles(MainController controller) {
 		addObserver(controller);
 
 	}
@@ -36,7 +36,7 @@ public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
 
 	@Override
 	public void setIndex(int number) {
-		return;
+		this.index = number;
 	}
 
 }

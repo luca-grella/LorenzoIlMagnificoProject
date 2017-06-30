@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChoosePrivilege.
  */
@@ -24,13 +23,8 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 */
 	private int index = -1;
 
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ChoosePrivilege(MainController controller) {
 		addObserver(controller);
-		index = -1;
 
 	}
 

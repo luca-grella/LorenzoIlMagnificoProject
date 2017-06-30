@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ActProductionwithParameter.
  */
@@ -17,11 +16,7 @@ public class ActProductionwithParameter extends Observable implements PBViewActi
 	 */
 	private int index;
 
-	/* (non-Javadoc)
-	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setObserver(it.polimi.ingsw.ps18.controller.MainController)
-	 */
-	@Override
-	public void setObserver(MainController controller) {
+	public ActProductionwithParameter(MainController controller) {
 		addObserver(controller);
 
 	}
