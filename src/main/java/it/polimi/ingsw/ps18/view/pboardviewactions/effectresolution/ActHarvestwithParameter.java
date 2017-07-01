@@ -38,5 +38,13 @@ public class ActHarvestwithParameter extends Observable implements PBViewAction 
 		this.index = number;
 
 	}
+	
+	/**
+	 * Per test
+	 */
+	public int getIndex() {
+		return index;
+
+	}
 
 }

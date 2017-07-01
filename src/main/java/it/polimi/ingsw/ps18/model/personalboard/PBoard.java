@@ -404,6 +404,14 @@ public class PBoard extends Observable {
 	public List<Excommunications> getExcommCards() {
 		return excommCards;
 	}
+
+	/**
+	 * Per Test
+	 * 
+	 */
+	public void setpBoardView(PBoardView pb) {
+		this.pBoardView=pb;		
+	}
 	
 	
 

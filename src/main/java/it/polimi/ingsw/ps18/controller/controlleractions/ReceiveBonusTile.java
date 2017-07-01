@@ -27,4 +27,12 @@ public class ReceiveBonusTile implements ActionChoice {
 		this.index = i;
 	}
 
+	/**
+	 * Per test
+	 */
+	public int getIndex() {
+		
+		return index;
+	}
+
 }

@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  * The Class ChosePlayer.
  */
 public class ChosePlayer implements ActionChoice {
-
+	int index;
 	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
@@ -24,7 +24,15 @@ public class ChosePlayer implements ActionChoice {
 	 */
 	@Override
 	public void setIndex(int i) {
-		return;
+		this.index = i;
+	}
+
+	/**
+	 * Per test
+	 * @return 
+	 */
+	public int getIndex() {
+		return index;
 	}
 
 }

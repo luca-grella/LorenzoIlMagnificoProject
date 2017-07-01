@@ -23,5 +23,14 @@ public class ReceiveServants implements ActionChoice {
 	public void setIndex(int i) {
 		this.index = i;
 	}
+
+	/**
+	 * @return 
+	 * @return
+	 */
+	public int getIndex() {
+		
+		return index;
+	}
 	
 }

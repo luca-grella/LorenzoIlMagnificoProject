@@ -33,4 +33,12 @@ public class WoodorRockHandler implements ActionChoice {
 		this.index = i;
 	}
 
+	/**
+	 * Per test
+	 */
+	public int getIndex() {
+
+		return index;
+	}
+
 }

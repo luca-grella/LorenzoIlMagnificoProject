@@ -1,0 +1,44 @@
+{
+  "1": {
+    "Effect": [
+      "AddWood",
+      "AddRock"
+    ],
+    "Parameters": [
+      1,
+      1
+    ]
+  },
+  "2": {
+    "Effect": [
+      "AddServant"
+    ],
+    "Parameters": [
+      2
+    ]
+  },
+  "3": {
+    "Effect": [
+      "AddCoin"
+    ],
+    "Parameters": [
+      2
+    ]
+  },
+  "4": {
+    "Effect": [
+      "AddPM"
+    ],
+    "Parameters": [
+      2
+    ]
+  },
+  "5": {
+    "Effect": [
+      "AddPF"
+    ],
+    "Parameters": [
+      1
+    ]
+  }
+}
