@@ -35,7 +35,14 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats stat = player.getResources();
-		stat.addWood(quantity);
+		Stats totalmalus;
+		totalmalus = player.generateExcommMalus();
+		int malusWood = totalmalus.getWood();
+		if(quantity >= malusWood){
+			stat.addServants(quantity - malusWood);
+		} else {
+			stat.addServants(0);
+		}
 		
 	}
 

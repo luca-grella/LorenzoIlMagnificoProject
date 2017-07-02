@@ -39,7 +39,10 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 				+ "3. 2 Coins.\n"
 				+ "4. 2 Military Points.\n"
 				+ "5. 1 Faith Point");
-		int choice = input.nextInt();
+		int choice;
+		do{
+			choice = input.nextInt();
+		} while(choice<1 || choice>2);
 		if(index == -1){
 			notifyParamMainController("Chosen Privilege", choice);
 		} else {

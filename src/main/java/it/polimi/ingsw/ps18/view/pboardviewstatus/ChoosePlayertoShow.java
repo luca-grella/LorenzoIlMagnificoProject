@@ -27,7 +27,10 @@ public class ChoosePlayertoShow extends Observable implements PBViewStatus {
 	@Override
 	public void act() {
 		System.out.println("Choose the player of which you want to see the resources");
-		int choice = input.nextInt();
+		int choice;
+		do{
+			choice = input.nextInt();
+		} while(choice<0);
 		notifyParamMainController("ReceivePlayertoShow",choice);
 	}
 	

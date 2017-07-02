@@ -42,7 +42,7 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 	}
 	
 	@Override
-	public void continueEffect(int index) {
+	public void continueEffect(int index, PBoard player, GameLogic game) {
 		if(index==1){
 			chosenDiscount = new Stats(discounts.getWood(),0,0,0,0,0,0);
 		} else {

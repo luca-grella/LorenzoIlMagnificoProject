@@ -41,6 +41,10 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats playerStats = player.getResources();
+		Stats malus = player.generateExcommMalus();
+		Stats updatereward = new Stats(reward);
+		updatereward.subStats(malus);
+		updatereward.fixStats();
 		playerStats.addStats(reward);
 	}
 	
@@ -68,7 +72,7 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	}
 	
 	@Override
-	public void continueEffect(int index){
+	public void continueEffect(int index, PBoard player, GameLogic game){
 		if(index==1){
 			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {

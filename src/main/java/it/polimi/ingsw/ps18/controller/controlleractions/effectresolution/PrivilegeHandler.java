@@ -17,11 +17,8 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addCoins;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addFP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addMP;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.addRock;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
-import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWoodorRock;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
 /**

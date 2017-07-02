@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusResources;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
@@ -36,7 +38,14 @@ public class addCoins implements QuickEffect, HarvestEffect, ProductionEffect, F
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats stat = player.getResources();
-		stat.addCoins(quantity);
+		Stats totalmalus;
+		totalmalus = player.generateExcommMalus();
+		int malusCoins = totalmalus.getCoin();
+		if(quantity >= malusCoins){
+			stat.addServants(quantity - malusCoins);
+		} else {
+			stat.addServants(0);
+		}
 		
 	}
 

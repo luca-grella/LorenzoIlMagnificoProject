@@ -25,21 +25,6 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	 * The quantity.
 	 */
 	private int quantity;
-	
-	PBoard player;
-	
-	GameLogic game ;
-	
-	
-	public addWoodorRock() {
-		this.game = null;
-		this.player = null;
-	}
-	
-	public addWoodorRock(PBoard player, GameLogic game) {
-		this.player = player;
-		this.game = game;
-	}
 
 	/**
 	 * Add a quantity of wood or rock to the player's resources.
@@ -53,15 +38,13 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
-		this.player = player;
-		this.game = game;
 		setChanged();
 		game.setOngoingWREffect((WoodorRockEffects) this);
 		notifyObservers(new StatusMessage("WoodorRockChoice"));
 	}
 	
 	@Override
-	public void continueEffect(int index){
+	public void continueEffect(int index, PBoard player, GameLogic game){
 		QuickEffect effect = null;
 		if(index == 1){
 			effect = new addWood();

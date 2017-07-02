@@ -20,5 +20,7 @@ public interface ExcommEffects {
 	 * @return the string
 	 */
 	public String toString();
+	
+	public String getName();
 
 }

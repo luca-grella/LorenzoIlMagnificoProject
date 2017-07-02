@@ -22,7 +22,7 @@ public class WoodorRockHandler implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		WoodorRockEffects currenteffect = game.getOngoingWREffect();
-		currenteffect.continueEffect(index);
+		currenteffect.continueEffect(index, game.getTurnplayer(), game);
 	}
 
 	/**

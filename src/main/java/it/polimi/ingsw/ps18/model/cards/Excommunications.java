@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.HashMapExcomm;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforMP;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforVP;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.*;
 
 
 /**
@@ -52,54 +49,54 @@ public class Excommunications {
 	 * @param mapExcomm
 	 *            the map excomm
 	 */
-	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm mapExcomm){
+	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm map){
 		ExcommEffects effect;
-		JSONArray valueffect;
 		for(int pos=0; pos<eeffects.size(); pos++){
 			if(eeffects.get(pos)!=null){
-				switch((String) eeffects.get(pos)){
-				case "LoseVPforVP":
-					effect = mapExcomm.geteffect((String) eeffects.get(pos));
-					valueffect = (JSONArray) eeffectvalues.get(pos);
-					((LoseVPforVP) effect).setVEx((long) valueffect.get(0), (long) valueffect.get(1));
-					this.effects.add(pos, effect);
-					break;
-				case "LoseVPforMP":
-					effect = mapExcomm.geteffect((String) eeffects.get(pos));
-					valueffect = (JSONArray) eeffectvalues.get(pos);
-					((LoseVPforMP) effect).setVEx((long) valueffect.get(0), (long) valueffect.get(1));
-					this.effects.add(pos, effect);
-					break;
-				default:
-					if(eeffectvalues.get(pos)!=null){
-		        		this.add(mapExcomm.geteffect((String) eeffects.get(pos)), (long) eeffectvalues.get(pos));
-		        		} else {
-		        			this.effects.add(mapExcomm.geteffect((String) eeffects.get(pos)));
-	        		}
+				if(eeffectvalues.get(pos)!=null){
+					if("MalusResources".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						((MalusResources) effect).setMalus((JSONArray) eeffectvalues.get(0));
+						this.effects.add(effect);
+					}
+					if("MalusValue".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						((MalusValue) effect).setName((String) eeffectvalues.get(0)); 
+						long temp = (long) eeffectvalues.get(1);
+						((MalusValue) effect).setQuantity((int) temp);
+						this.effects.add(effect);
+					}
+					if("IgnoreCards".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						((IgnoreCards) effect).setName((String) eeffectvalues.get(0));
+						this.effects.add(effect);
+					}
+					if("LoseVPforVP".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						((LoseVPforVP) effect).setExcommParam((JSONArray) eeffectvalues.get(0));
+						this.effects.add(effect);
+					}
+					if("LoseVPforMP".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						((LoseVPforMP) effect).setExcommParam((JSONArray) eeffectvalues.get(0));
+						this.effects.add(effect);
+					}
+					if("LoseVPforCosts".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						long temp = (long) eeffectvalues.get(0);
+						((LoseVPforCosts) effect).setQuantity((int) temp);
+						this.effects.add(effect);
+					}
+					if("LoseVPforResources".equals(eeffects.get(pos))){
+						effect = map.geteffect((String) eeffects.get(pos));
+						long temp = (long) eeffectvalues.get(0);
+						((LoseVPforResources) effect).setQuantity((int) temp);
+						this.effects.add(effect);
+					}
 				}
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	/**
-	 * Adds the.
-	 *
-	 * @param e
-	 *            the e
-	 * @param quantity
-	 *            the quantity
-	 * @return true, if successful
-	 */
-	private boolean add(ExcommEffects e, long quantity){
-		ExcommEffects a = e;
-		a.setQuantity((int) quantity);
-	    return (this.getEffects()).add(a);
-    }
 	
 
 	/**

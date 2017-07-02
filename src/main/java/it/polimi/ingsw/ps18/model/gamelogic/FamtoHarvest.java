@@ -8,7 +8,9 @@ import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
@@ -98,6 +100,22 @@ public class FamtoHarvest extends Observable implements Action {
 		}
 		
 		this.actionValue = board.insertFMHarv(chosenFam) + modifierValue;
+		int malusValue = 0;
+		for(int i=0; i<currentplayer.getExcommCards().size(); i++){
+			Excommunications card = currentplayer.getExcommCards().get(i);
+			for(int j=0; j>card.getEffects().size(); j++){
+				if("MalusValue".equals(card.getEffects().get(j).getName())){
+					if("Harvest".equals(((MalusValue) card.getEffects().get(j)).getPlace())){
+						malusValue += ((MalusValue) card.getEffects().get(j)).getMalusValue();
+					}
+				}
+			}
+		}
+		if(actionValue >= malusValue){
+			actionValue -= malusValue;
+		} else {
+			actionValue = 0;
+		}
 		currentplayer.getFams().set(indexFamtoRemove, null);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actHarvest();

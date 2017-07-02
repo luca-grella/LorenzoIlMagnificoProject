@@ -28,7 +28,10 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 		System.out.println("Choose which Resource you want to use:\n"
 				+ "1. Wood\n"
 				+ "2. Rock");
-		int choice = input.nextInt();
+		int choice;
+		do{
+			choice = input.nextInt();
+		} while(choice<=0 || choice>2);
 		notifyParamMainController("Chosen Resource", choice);
 	}
 	

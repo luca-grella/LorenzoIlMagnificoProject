@@ -33,7 +33,11 @@ public class ConvertinResources implements Converter {
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats playerStats = player.getResources();
-		playerStats.addStats(reward);
+		Stats malus = player.generateExcommMalus();
+		Stats updatereward = new Stats(reward);
+		updatereward.subStats(malus);
+		updatereward.fixStats();
+		playerStats.addStats(updatereward);
 	}
 
 	/* (non-Javadoc)

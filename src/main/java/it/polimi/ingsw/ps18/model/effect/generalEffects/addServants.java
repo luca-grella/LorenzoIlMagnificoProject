@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusResources;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
@@ -36,7 +38,15 @@ public class addServants implements QuickEffect, HarvestEffect, ProductionEffect
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		Stats stat = player.getResources();
-		stat.addServants(quantity);
+		Stats totalmalus = new Stats(0,0,0,0,0,0,0);
+		totalmalus = player.generateExcommMalus();
+		int malusServants = totalmalus.getServants();
+		if(quantity >= malusServants){
+			stat.addServants(quantity - malusServants);
+		} else {
+			stat.addServants(0);
+		}
+		
 		
 	}
 

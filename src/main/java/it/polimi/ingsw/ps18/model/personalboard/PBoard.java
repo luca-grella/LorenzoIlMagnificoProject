@@ -7,6 +7,7 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusResources;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
@@ -62,7 +63,7 @@ public class PBoard extends Observable {
 //		this.resources = new Stats(2,2,5,2,0,0,0);
 		this.resources = new Stats(9,9,9,9,9,9,9);
 		for(int i=0; i<dices.size(); i++){
-			this.fams.add(new FMember(dices.get(i), playercol));
+			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} this.fams.add(new FMember(666,playercol));
 		ChooseBonusTile();
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
@@ -72,7 +73,7 @@ public class PBoard extends Observable {
 		this.fams.clear();
 		int count;
 		for(count=0; count<dices.size(); count++){
-			this.fams.add(new FMember(dices.get(count), playercol));
+			this.fams.add(new FMember(dices.get(count), playercol, this));
 		} this.fams.add(new FMember(666,playercol));
 	}
 	
@@ -92,7 +93,7 @@ public class PBoard extends Observable {
 		this.playercol = playercol;
 		this.resources = new Stats(2,2,5,2,0,0,0);
 		for(int i=0; i<dices.size(); i++){
-			this.fams.add(new FMember(dices.get(i), playercol));
+			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} this.fams.add(new FMember(666, playercol));
 	}
 	
@@ -134,6 +135,19 @@ public class PBoard extends Observable {
 			card.activateQEffects(this,game);
 		}
 		
+	}
+	
+	public Stats generateExcommMalus(){
+		Stats totalmalus = new Stats(0,0,0,0,0,0,0);
+		for(int i=0; i<this.excommCards.size(); i++){
+			Excommunications card = this.excommCards.get(i);
+			for(int j=0; j>card.getEffects().size(); j++){
+				if("MalusResources".equals(card.getEffects().get(j).getName())){
+					totalmalus.addStats(((MalusResources) card.getEffects().get(j)).getMalus());
+				}
+			}
+		}
+		return totalmalus;
 	}
 	
 	/**

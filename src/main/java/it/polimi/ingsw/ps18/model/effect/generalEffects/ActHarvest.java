@@ -2,6 +2,8 @@ package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
 import java.util.Observable;
 
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
@@ -32,8 +34,24 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
-		setChanged();
-		notifyObservers(new ParamMessage("actHarvest",quantity));
+		int malusValue = 0;
+		for(int i=0; i<player.getExcommCards().size(); i++){
+			Excommunications card = player.getExcommCards().get(i);
+			for(int j=0; j>card.getEffects().size(); j++){
+				if("MalusValue".equals(card.getEffects().get(j).getName())){
+					if("Harvest".equals(((MalusValue) card.getEffects().get(j)).getPlace())){
+						malusValue += ((MalusValue) card.getEffects().get(j)).getMalusValue();
+					}
+				}
+			}
+		}
+		if(quantity >= malusValue){
+			setChanged();
+			notifyObservers(new ParamMessage("actHarvest",quantity - malusValue));
+		} else {
+			setChanged();
+			notifyObservers(new ParamMessage("actHarvest",0));
+		}
 	}
 
 	/* (non-Javadoc)

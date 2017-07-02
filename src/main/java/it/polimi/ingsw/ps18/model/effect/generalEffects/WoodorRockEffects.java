@@ -8,6 +8,6 @@ public interface WoodorRockEffects extends GeneralParameters {
 	
 	public void activate(PBoard player, GameLogic game);
 	
-	public void continueEffect(int index);
+	public void continueEffect(int index, PBoard player, GameLogic game);
 
 }

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps18.model.personalboard;
 
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 
 // TODO: Auto-generated Javadoc
@@ -33,6 +35,27 @@ public class FMember {
 	 */
 	public FMember(Dice dice, int playercol){
 		this.value = dice.getValue();
+		this.color = dice.getColor();
+		this.playercol = playercol;
+	}
+	
+	public FMember(Dice dice, int playercol, PBoard player){
+		int malusValue = 0;
+		for(int i=0; i<player.getExcommCards().size(); i++){
+			Excommunications card = player.getExcommCards().get(i);
+			for(int j=0; j>card.getEffects().size(); j++){
+				if("MalusValue".equals(card.getEffects().get(j).getName())){
+					if("Dice".equals(((MalusValue) card.getEffects().get(j)).getPlace())){
+						malusValue += ((MalusValue) card.getEffects().get(j)).getMalusValue();
+					}
+				}
+			}
+		}
+		if(dice.getValue() >= malusValue){
+			this.value = dice.getValue() - malusValue;
+		} else {
+			this.value = 0;
+		}
 		this.color = dice.getColor();
 		this.playercol = playercol;
 	}

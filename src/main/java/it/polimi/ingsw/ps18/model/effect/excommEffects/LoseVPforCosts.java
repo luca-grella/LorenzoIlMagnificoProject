@@ -15,17 +15,15 @@ public class LoseVPforCosts implements ExcommEffects {
 	/**
 	 * The name.
 	 */
-	private String name = "Lose Victory Point for each wood or rock represented on each yellow card in your PBoard";
+	private String name = "LoseVpforCosts";
 	
 	
 	/* (non-Javadoc)
 	 * @see it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects#setQuantity(int)
 	 */
 	@Override
-	public void setQuantity(int quantity) {
-
+	public void setQuantity(int quantity){
 		this.loseVP=quantity;
-		
 	}
 	
 	/**
@@ -44,6 +42,11 @@ public class LoseVPforCosts implements ExcommEffects {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public String toString(){
+		return "Lose Victory Point for each wood or rock represented on each yellow card in your PBoard";
 	}
 
 }

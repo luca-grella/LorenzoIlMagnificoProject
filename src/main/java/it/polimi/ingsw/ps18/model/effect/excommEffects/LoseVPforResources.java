@@ -15,7 +15,7 @@ public class LoseVPforResources implements ExcommEffects {
 	/**
 	 * The name.
 	 */
-	private String name = "Lose Victory Point for each resource in your PBoard";
+	private String name = "LoseVPforResources";
 	
 	
 	/* (non-Javadoc)
@@ -23,9 +23,7 @@ public class LoseVPforResources implements ExcommEffects {
 	 */
 	@Override
 	public void setQuantity(int quantity) {
-
 		this.loseVP=quantity;
-		
 	}
 	
 	/**
@@ -44,6 +42,11 @@ public class LoseVPforResources implements ExcommEffects {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public String toString(){
+		return "Lose Victory Point for each resource in your PBoard";
 	}
 
 }

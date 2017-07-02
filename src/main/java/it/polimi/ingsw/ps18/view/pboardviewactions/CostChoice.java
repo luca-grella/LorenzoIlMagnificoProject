@@ -21,7 +21,10 @@ public class CostChoice extends Observable implements PBViewAction {
 				+ "0. Back."
 				+ "1. Resources.\n"
 				+ "2. Military Points");
-		int choice = input.nextInt();
+		int choice;
+		do{
+			choice = input.nextInt();
+		} while(choice<0 || choice>0);
 		setChanged();
 		notifyObservers(new ParamMessage("ReceiveChosenCost", choice));
 

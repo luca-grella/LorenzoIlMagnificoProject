@@ -18,23 +18,9 @@ public class HashMapExcomm {
 	 * Instantiates a new hash map excomm.
 	 */
 	public HashMapExcomm(){
-		geneffetti.put("MalusMP", new MalusMP());
-		geneffetti.put("MalusCoins", new MalusCoins());
-		geneffetti.put("MalusServants", new MalusServants());
-		geneffetti.put("MalusWR", new MalusWR());
-		geneffetti.put("MalusHarv", new MalusHarv());
-		geneffetti.put("MalusProd", new MalusProd());
-		geneffetti.put("MalusDice", new MalusDice());
-		geneffetti.put("MalusGreenC", new MalusGreenC());
-		geneffetti.put("MalusYellowC", new MalusYellowC());
-		geneffetti.put("MalusBlueC", new MalusBlueC());
-		geneffetti.put("MalusPurpleC", new MalusPurpleC());
-		geneffetti.put("MalusMarket", new MalusMarket());
-		geneffetti.put("MalusIncreaseActionValue", new MalusIncreaseActionValue());
-		geneffetti.put("MalusTurnOrder", new MalusTurnOrder());
-		geneffetti.put("IgnoreBlueC", new IgnoreBlueC());
-		geneffetti.put("IgnorePurpleC", new IgnorePurpleC());
-		geneffetti.put("IgnoreGreenC", new IgnoreGreenC());
+		geneffetti.put("MalusResources", new MalusResources());
+		geneffetti.put("MalusValue", new MalusValue());
+		geneffetti.put("IgnoreCards", new IgnoreCards());
 		geneffetti.put("LoseVPforVP", new LoseVPforVP());
 		geneffetti.put("LoseVPforMP", new LoseVPforMP());
 		geneffetti.put("LoseVPforCosts", new LoseVPforCosts());

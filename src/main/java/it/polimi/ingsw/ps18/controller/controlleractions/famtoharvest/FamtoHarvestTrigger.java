@@ -48,8 +48,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
 		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
-		int modifierValue = 0;
 		
+		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
 				if(card.getColor()==1){

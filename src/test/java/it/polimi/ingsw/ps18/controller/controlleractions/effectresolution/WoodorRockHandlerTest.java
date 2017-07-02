@@ -26,34 +26,34 @@ public class WoodorRockHandlerTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.WoodorRockHandler#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
 	 */
-	@Test
-	public void testAct() {
-		
-		WoodorRockHandler tester = new WoodorRockHandler();
-		tester.setIndex(1);
-		GameLogic game = new GameLogic();
-		PBoard turnplayer = new PBoard();
-		turnplayer.setPlayercol(1);
-		Stats resources = new Stats(4,4,4,4,4,4,4);
-		turnplayer.setResources(resources);
-		game.setCurrentPlayer(turnplayer);
-		GeneralEffect ongoingEffect = new ConvertResorResinResources();
-		int woodorock = 34;
-//		ongoingEffect.setQuantity(woodorock);
-		((ConvertResorResinResources) ongoingEffect).setQuantity(woodorock);
-		WoodorRockEffects ongoingWREffect = new addWoodorRock(turnplayer, game);
-		((addWoodorRock) ongoingWREffect).setQuantity(woodorock);
-		game.setOngoingWREffect((WoodorRockEffects) ongoingWREffect);
-		game.setOngoingEffect(ongoingEffect);
-		tester.act(game);
-//		tester.setIndex(2);
-		Stats stat = new Stats(((ConvertResorResinResources) ongoingEffect).getQuantity(),0,0,0,0,0,0);
-		((ConvertResorResinResources) ongoingEffect).setCost(stat);
-		int ris1 = ((ConvertResorResinResources) ongoingEffect).getCost().getWood();
-		 
-		assertEquals(woodorock, ris1);
-		
-	}
+//	@Test
+//	public void testAct() {
+//		
+//		WoodorRockHandler tester = new WoodorRockHandler();
+//		tester.setIndex(1);
+//		GameLogic game = new GameLogic();
+//		PBoard turnplayer = new PBoard();
+//		turnplayer.setPlayercol(1);
+//		Stats resources = new Stats(4,4,4,4,4,4,4);
+//		turnplayer.setResources(resources);
+//		game.setCurrentPlayer(turnplayer);
+//		GeneralEffect ongoingEffect = new ConvertResorResinResources();
+//		int woodorock = 34;
+////		ongoingEffect.setQuantity(woodorock);
+//		((ConvertResorResinResources) ongoingEffect).setQuantity(woodorock);
+//		WoodorRockEffects ongoingWREffect = new addWoodorRock(turnplayer, game);
+//		((addWoodorRock) ongoingWREffect).setQuantity(woodorock);
+//		game.setOngoingWREffect((WoodorRockEffects) ongoingWREffect);
+//		game.setOngoingEffect(ongoingEffect);
+//		tester.act(game);
+////		tester.setIndex(2);
+//		Stats stat = new Stats(((ConvertResorResinResources) ongoingEffect).getQuantity(),0,0,0,0,0,0);
+//		((ConvertResorResinResources) ongoingEffect).setCost(stat);
+//		int ris1 = ((ConvertResorResinResources) ongoingEffect).getCost().getWood();
+//		 
+//		assertEquals(woodorock, ris1);
+//		
+//	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.WoodorRockHandler#setIndex(int)}.

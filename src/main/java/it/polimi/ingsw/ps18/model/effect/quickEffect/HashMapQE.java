@@ -52,8 +52,6 @@ public class HashMapQE {
 		genQEffects.put("AddPVforYellowCard", new AddPVforYellowC());
 		genQEffects.put("AddPVforPurpleCard", new AddPVforPurpleC());
 		genQEffects.put("AddPVforMP", new AddVPforMP());
-		genQEffects.put("SalesWoodandRockYellow", new QuickSalesCoinBlue());
-		genQEffects.put("SalesCoinBlue", new QuickSalesWoodorRockYellow());
 	}
 	
 	/**

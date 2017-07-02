@@ -2,9 +2,6 @@ package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
 import org.json.simple.JSONArray;
 
-import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoseVPforMP.
  */
@@ -13,7 +10,7 @@ public class LoseVPforMP implements ExcommEffects {
 	/**
 	 * The name.
 	 */
-	private String name = "Lose Victory Point for same Military Point";
+	private String name = "LoseVPforMP";
 	
 	/**
 	 * The has MP.
@@ -34,45 +31,19 @@ public class LoseVPforMP implements ExcommEffects {
 		return;
 	}
 	
-
 	/**
-	 * Gets the lose VP.
-	 *
-	 * @return the loseVP
-	 */
-	public long getLoseVP() {
-		return loseVP;
-	}
-
-	/**
-	 * Sets the lose VP.
-	 *
-	 * @param loseVP
-	 *            the VP to lose
-	 */
-	public void setLoseVP(long loseVP) {
-		this.loseVP = loseVP;
-	}
-
-	/**
-	 * Gets the boost action value.
-	 *
-	 * @return the hasMP
-	 */
-	public long getBoostActionValue() {
-		return hasMP;
-	}
-
-	/**
-	 * Sets the boost action value.
+	 * Sets the Parameters.
 	 *
 	 * @param hasMP
-	 *            the number of MP every lose VP to set
+	 *            the has MP
+	 * @param loseVP
+	 *            the lose VP
 	 */
-	public void setBoostActionValue(long hasMP) {
-		this.hasMP = hasMP;
+	public void setExcommParam(JSONArray param) {
+		this.hasMP= (long) param.get(0);
+		this.loseVP= (long) param.get(1);
 	}
-
+	
 	/**
 	 * Gets the name.
 	 *
@@ -83,19 +54,22 @@ public class LoseVPforMP implements ExcommEffects {
 	}
 
 	/**
-	 * Sets the V ex.
-	 *
-	 * @param hasMP
-	 *            the has MP
-	 * @param loseVP
-	 *            the lose VP
+	 * @return the hasMP
 	 */
-	public void setVEx(long hasMP, long loseVP) {
-		this.hasMP=hasMP;
-		this.loseVP=loseVP;
-		
-		
+	public long getHasMP() {
+		return hasMP;
 	}
+
+	/**
+	 * @return the loseVP
+	 */
+	public long getLoseVP() {
+		return loseVP;
+	}
+	
+	
+
+	
 
 	
 	
