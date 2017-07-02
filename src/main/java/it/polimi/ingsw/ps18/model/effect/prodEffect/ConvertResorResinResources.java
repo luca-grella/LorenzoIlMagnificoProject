@@ -4,16 +4,16 @@ import java.util.Observable;
 
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ConvertResorResinResources.
  */
-public class ConvertResorResinResources extends Observable implements Converter {
+public class ConvertResorResinResources extends Observable implements Converter, WoodorRockEffects {
 	
 	/**
 	 * The name.
@@ -62,20 +62,13 @@ public class ConvertResorResinResources extends Observable implements Converter 
 			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {
 			setChanged();
-			game.setOngoingEffect(this);
+			game.setOngoingWREffect((WoodorRockEffects) this);
 			notifyObservers(new StatusMessage("WoodorRockChoice"));
 		}
 	}
 	
-	/**
-	 * Pay.
-	 *
-	 * @param player
-	 *            the player
-	 * @param index
-	 *            the index
-	 */
-	public void pay(PBoard player, int index){
+	@Override
+	public void continueEffect(int index){
 		if(index==1){
 			cost = new Stats(quantity,0,0,0,0,0,0);
 		} else {

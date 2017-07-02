@@ -354,6 +354,7 @@ public class Board extends Observable {
 		} return (fam.getValue() - harvCell.getMalus());
 	}
 	
+	
 	/**
 	 * Inserts a FMember in Production:<br>
 	 * There are two cases:
@@ -368,7 +369,7 @@ public class Board extends Observable {
 	 * FMember chosen for the current action.
 	 * @return the FMember value considering a possible Harvest malus.
 	 */
-	public int insertFMProd(FMember fam){
+	public void insertFMProd(FMember fam){
 		ProdCell prodCell;
 		if(productionCells.isEmpty()){
 			prodCell = new ProdCell(0);
@@ -380,7 +381,15 @@ public class Board extends Observable {
 			if(prodCell.insertFM(fam)){
 				productionCells.add(prodCell);
 			}
-		} return (fam.getValue() - prodCell.getMalus());
+		}
+	}
+	
+	public int getActionValueProd(FMember fam){
+		int malus = 0;
+		if(! productionCells.isEmpty()){
+			malus = -3;
+		}
+		return (fam.getValue() - malus);
 	}
 	
 	/**

@@ -9,12 +9,12 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class addWoodorRock.
  */
-public class addWoodorRock extends Observable implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect  {
+public class addWoodorRock extends Observable implements QuickEffect, HarvestEffect, ProductionEffect, FinalEffect, WoodorRockEffects  {
 	
 	/**
 	 * The name.
@@ -25,6 +25,10 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	 * The quantity.
 	 */
 	private int quantity;
+	
+	PBoard player;
+	
+	GameLogic game ;
 
 	/**
 	 * Add a quantity of wood or rock to the player's resources.
@@ -38,9 +42,23 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
-		game.setOngoingEffect(this);
+		this.player = player;
+		this.game = game;
 		setChanged();
+		game.setOngoingWREffect((WoodorRockEffects) this);
 		notifyObservers(new StatusMessage("WoodorRockChoice"));
+	}
+	
+	@Override
+	public void continueEffect(int index){
+		QuickEffect effect = null;
+		if(index == 1){
+			effect = new addWood();
+			effect.setQuantity(this.quantity);
+		} else if(index == 2){
+			effect = new addRock();
+			effect.setQuantity(this.quantity);
+		} effect.activate(player, game);
 	}
 
 	/**

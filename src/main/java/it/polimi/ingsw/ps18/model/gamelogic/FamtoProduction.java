@@ -103,8 +103,7 @@ public class FamtoProduction extends Observable implements Action {
 				
 			}
 		}
-		this.actionValue = board.insertFMProd(this.chosenFam) + modifierValue;
-		currentplayer.getFams().set(indexFamtoRemove, null);
+		this.actionValue = board.getActionValueProd(this.chosenFam) + modifierValue;
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actProduction();
 	}
@@ -195,6 +194,8 @@ public class FamtoProduction extends Observable implements Action {
 	 *            the game
 	 */
 	public void activateEffects(PBoard player, GameLogic game){
+		game.getTurnplayer().getFams().set(indexFamtoRemove, null);
+		game.getBoard().insertFMProd(this.chosenFam);
 		(player.getResources()).subStats(totalCostPreview);
 		for(Cards card: this.cardsForActivation){
 			if(card.hasProduction()){

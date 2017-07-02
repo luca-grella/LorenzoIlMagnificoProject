@@ -14,7 +14,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.*;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReceiveSelectionCard.
  */
@@ -30,16 +29,19 @@ public class ReceiveSelectionCard implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		if(index!=2){
-			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
+		Action currentaction = game.getOngoingAction();
+		PBoard currentplayer = game.getTurnplayer();
+//		if(index==0){
+//			((FamtoProduction) currentaction).famchoice();
+//			return;
+		/*} else*/ if(index!=2){
 			Cards currentcard = ((FamtoProduction) currentaction).getCurrentcard();
 			Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
 			List<ProductionEffect> peffects = new ArrayList<>();
 			if(currentcard.getColor()==2){
-				peffects = ((YellowC)currentcard).getProdEffect();
+				peffects.addAll(((YellowC)currentcard).getProdEffect());
 			} else if(currentcard.getColor()==-1){
-				peffects = ((BonusTile)currentcard).getProdEffect();
+				peffects.addAll(((BonusTile)currentcard).getProdEffect());
 			}
 			int counter = 0;
 			for(int i=0; i<peffects.size(); i++){
@@ -68,13 +70,13 @@ public class ReceiveSelectionCard implements ActionChoice {
 				}
 				if(!((currentplayer.getResources()).enoughStats(costPreview))){
 					((FamtoProduction) currentaction).chooseCards(currentplayer, game);
+					return;
 				}
 				(((FamtoProduction) currentaction).getCardsForActivation()).add(currentcard);
 			}
-			//migliorare gestione. se si rimanda a chooseCards avendo premuto 3 diventa un casino
-//			if(index == 3){
-//				((FamtoProduction) currentaction).activateEffects(currentplayer);
-//			}
+			if(index == 3){
+				((FamtoProduction) currentaction).activateEffects(currentplayer, game);
+			}
 		}
 	}
 

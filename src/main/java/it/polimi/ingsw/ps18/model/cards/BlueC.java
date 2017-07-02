@@ -104,7 +104,12 @@ public class BlueC extends Cards {
 				if("IncreaseFMvalueOnAction".equals((String) peffects.get(count))){
 					Permanenteffect effect = map.getEffect((String) peffects.get(count));
 					JSONArray effectParam = (JSONArray) peffectvalues.get(count);
-					((IncreaseFMValueOnAction) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1));
+					((IncreaseFMValueOnAction) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1), (JSONArray) effectParam.get(2));
+					this.permeffect.add(effect);
+				} else if("IncreaseFMvalueOnActionWR".equals((String) peffects.get(count))){
+					Permanenteffect effect = map.getEffect((String) peffects.get(count));
+					JSONArray effectParam = (JSONArray) peffectvalues.get(count);
+					((IncreaseFMValueOnActionWR) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1), (JSONArray) effectParam.get(2));
 					this.permeffect.add(effect);
 				} else {
 					if(peffectvalues.get(count)!=null){

@@ -1,5 +1,9 @@
 package it.polimi.ingsw.ps18.model.effect.permeffects;
 
+import org.json.simple.JSONArray;
+
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+
 /**
  * The Class IncreaseFMValueOnAction.
  */
@@ -14,6 +18,8 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	 * The quantity.
 	 */
 	private int quantity;
+	
+	private Stats discounts;
 
 	/* (non-Javadoc)
 	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getQuantity()
@@ -31,17 +37,10 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 		this.quantity = quantity;
 	}
 	
-	/**
-	 * Sets the param.
-	 *
-	 * @param name
-	 *            the name
-	 * @param quantity
-	 *            the quantity
-	 */
-	public void setParam(String name, long quantity){
+	public void setParam(String name, long quantity, JSONArray discounts){
 		this.name = name;
 		this.quantity = (int) quantity;
+		this.discounts = new Stats(discounts);
 	}
 
 	/* (non-Javadoc)
@@ -58,8 +57,22 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	//TODO: da modificare
 	@Override
 	public String toString(){
-		return "Incrase Permanently the Action Value by " + this.quantity + "\n"
-				+ "\t   when you take a card from the " + this.name + " Tower";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Incrase Permanently the Action Value by " + this.quantity + "\n"
+				+ "\t   when you take a card from the " + this.name + " Tower");
+		if(! this.discounts.isEmpty()){
+			builder.append("\n\t with a discount of:\n" + discounts.toStringCost());
+		}
+		return builder.toString();
 	}
+
+	/**
+	 * @return the discounts
+	 */
+	public Stats getDiscounts() {
+		return discounts;
+	}
+	
+	
 
 }

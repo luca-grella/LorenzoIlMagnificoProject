@@ -1,10 +1,4 @@
-﻿PERMANENTI
-SalesWoodorRockYellow: sconta legno o roccia sull'acquisto di carte gialle
-SalesCoinBlue: sconta monete sull'acquisto di carte blu
-BlockFloorBonus: blocca i bonus stampati sulla board dei piani indicati (piano 1 = 0, piano 2 = 1, piano 3 = 2, piano 4 = 3) 
-
-SCRITTI
-AddWood: aggiunge legno
+﻿AddWood: aggiunge legno
 AddCoin: aggiunge monete
 AddStone: aggiunge pietra
 AddServant: aggiunge servitore
@@ -36,6 +30,7 @@ IncreaseFMvalueOnBlueTower: aumenta il valore del familiare del valore indicato 
 IncreaseFMvalueOnPurpleTower: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulla torre viola)
 IncreaseFMvalueOnHarvest: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di raccolta)
 IncreaseFMvalueOnProduction: aumenta il valore del familiare del valore indicato sul dado (ma solo se posizionato sulle celle di produzione)
+BlockFloorBonus: blocca i bonus stampati sulla board dei piani indicati (piano 1 = 0, piano 2 = 1, piano 3 = 2, piano 4 = 3) 
 
 
 Colors Codes:

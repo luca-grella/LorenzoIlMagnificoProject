@@ -436,7 +436,11 @@ JSONParser parser = new JSONParser();
 		
 		List<Permanenteffect> q = new ArrayList<>();
 		Permanenteffect e = new IncreaseFMValueOnAction();
-		((IncreaseFMValueOnAction) e).setParam("Green", 2);
+		JSONArray discount = new JSONArray();
+		for(int i=0; i<7; i++){
+			discount.add(0);
+		}
+		((IncreaseFMValueOnAction) e).setParam("Green", 2, discount);
 		q.add(e );
 		tester.setPermeffect(q );
 		

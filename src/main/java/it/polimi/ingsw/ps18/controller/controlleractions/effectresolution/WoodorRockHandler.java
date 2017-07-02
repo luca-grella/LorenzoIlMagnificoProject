@@ -2,10 +2,10 @@ package it.polimi.ingsw.ps18.controller.controlleractions.effectresolution;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WoodorRockHandler.
  */
@@ -21,8 +21,8 @@ public class WoodorRockHandler implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		GeneralEffect currenteffect = game.getOngoingEffect();
-		((ConvertResorResinResources) currenteffect).pay(game.getTurnplayer(), index);
+		WoodorRockEffects currenteffect = game.getOngoingWREffect();
+		currenteffect.continueEffect(index);
 	}
 
 	/* (non-Javadoc)

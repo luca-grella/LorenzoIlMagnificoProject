@@ -26,10 +26,14 @@ public class SelectYellowC extends Observable implements PBViewStatus {
 	@Override
 	public void act() {
 		System.out.println("Do You Want to Activate this Card's Production Effect?\n"
+				+ "0. Select Cards Again. [NOT YET IMPLEMENTED]\n"
 				+ "1. Yes.\n"
 				+ "2. No.\n"
-				+ "3. Select cards again.");
-		int choice = input.nextInt();
+				+ "3. Select and Continue.");
+		int choice;
+		do{
+			choice = input.nextInt();
+		} while(choice<0 || choice>3);
 		notifyParamMainController("Selected YCard", choice);
 	}
 	

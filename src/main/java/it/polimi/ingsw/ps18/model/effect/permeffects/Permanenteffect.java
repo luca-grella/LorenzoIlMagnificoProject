@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.effect.permeffects;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Permanenteffect.
  */

@@ -25,6 +25,7 @@ import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
@@ -132,6 +133,8 @@ public class GameLogic extends Observable {
 	 */
 	private GeneralEffect ongoingEffect;
 	
+	private WoodorRockEffects ongoingWREffect;
+	
 	
 	/**
 	 * Initialize the game.
@@ -219,12 +222,12 @@ public class GameLogic extends Observable {
 				yellowcards.add(new YellowC((JSONObject) jsonObject.get(index.toString())));
 			} notifyLogMainView("Yellow Deck Created.");
 			
-//			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
-//	    	jsonObject = (JSONObject) obj;
-//			for(int i=1; i<=GeneralParameters.numberBlueC; i++){
-//				Integer index = new Integer(i);
-//				bluecards.add(new BlueC((JSONObject) jsonObject.get(index.toString())));
-//			} notifyLogMainView("Blue Deck Created.");
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/BlueC.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberBlueC; i++){
+				Integer index = new Integer(i);
+				bluecards.add(new BlueC((JSONObject) jsonObject.get(index.toString())));		
+			} notifyLogMainView("Blue Deck Created.");
 			
 			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/PurpleC.json"));
 	    	jsonObject = (JSONObject) obj;
@@ -269,9 +272,9 @@ public class GameLogic extends Observable {
 			case 0:
 				singletower.insertCards(greencards, AGE);
 				break;
-//			case 1:
-//				singletower.insertCards(bluecards, AGE);
-//				break;
+			case 1:
+				singletower.insertCards(bluecards, AGE);
+				break;
 			case 2:
 				singletower.insertCards(yellowcards, AGE);
 				break;
@@ -349,7 +352,9 @@ public class GameLogic extends Observable {
 			this.dices.set(diceIndex, new Dice(diceIndex)); 
 			//Dice riceve il colore del dado, che coincide con il valore sequenziale dell'ArrayList
 		}
-		this.getTurnplayer().refreshFMembers(dices);
+		for(int i=0; i<this.players.size(); i++){
+			this.players.get(i).refreshFMembers(dices);
+		}
 		this.getBoard().refreshBoard();
 		this.insertCardsinTowers();
 	}
@@ -522,6 +527,17 @@ public class GameLogic extends Observable {
 	public void setCurrentPlayer(PBoard turnplayer) {
 		this.turnplayer = turnplayer;
 		
+	}
+
+	public void setOngoingWREffect(WoodorRockEffects woodorRockEffects) {
+		this.ongoingWREffect = woodorRockEffects;
+	}
+
+	/**
+	 * @return the ongoingWREffect
+	 */
+	public WoodorRockEffects getOngoingWREffect() {
+		return ongoingWREffect;
 	}
 	
 	

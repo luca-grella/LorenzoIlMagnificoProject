@@ -19,6 +19,7 @@ public class HashMapPermE {
 	 */
 	public HashMapPermE(){
 		permEffects.put("IncreaseFMvalueOnAction", new IncreaseFMValueOnAction());
+		permEffects.put("IncreaseFMvalueOnActionWR", new IncreaseFMValueOnActionWR());
 		permEffects.put("BlockFloorBonus", new BlockFloorBonus());
 	}
 	

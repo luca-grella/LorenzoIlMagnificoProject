@@ -13,7 +13,8 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
-import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
+import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -57,7 +58,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 			Stats cardStats = new Stats((((boardTower.getTowerCells()).get(index)).getCellCard()).getCardCost());
 			Stats tempCostPreview = new Stats(((FamtoTower) currentaction).getTotalCostPreview()); 
 			//temporaneo per evitare che totalCostPreview accumuli risorse per ogni giocata
-			Stats totalDiscountPreview = ((FamtoTower) currentaction).getTotalDiscountPreview();
+			Stats tempDiscountPreview = new Stats(((FamtoTower) currentaction).getTotalDiscountPreview());
 			List<Cards> playerCards = currentplayer.getCards();
 			
 			int modifierValue = 0;
@@ -116,6 +117,125 @@ public class ReceiveFloortoTower implements ActionChoice {
 					}
 				}
 			}
+			for(Cards card: playerCards){
+				if(card.hasPermanent()){
+					if(card.getColor()==1){
+						for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+							switch(towerIndex.getChosenTower()){
+							case 0:
+								if("Green".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("GreenWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 1:
+								if("Blue".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("BlueWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 2:
+								if("Yellow".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("YellowWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 3:
+								if("Purple".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("PurpleWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							}
+						}
+					} else if(card.getColor()==-1){
+						for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+							switch(towerIndex.getChosenTower()){
+							case 0:
+								if("Green".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("GreenWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 1:
+								if("Blue".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("BlueWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 2:
+								if("Yellow".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("YellowWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							case 3:
+								if("Purple".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnAction) effect).getDiscounts().isEmpty()){
+										tempDiscountPreview.addStats(((IncreaseFMValueOnAction) effect).getDiscounts());
+									}
+								} else if("PurpleWR".equals(effect.getName())){
+									if(! ((IncreaseFMValueOnActionWR) effect).getDiscounts().isEmpty()){
+										WoodorRockEffects wreffect = (WoodorRockEffects) effect;
+										wreffect.activate(currentplayer, game);
+										tempDiscountPreview.addStats(((IncreaseFMValueOnActionWR) effect).getChosenDiscount());
+									}
+								}
+								break;
+							}
+						}
+					}
+				}
+			}
 			
 			if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
 				if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue +((FamtoTower) currentaction).getNumberOfServants())){	
@@ -154,7 +274,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 							if(cardStats.isEmpty()){
 								//se ho abbastanza mp pago in mp
 								if(chosenCard.getMinMP() <= currentplayer.getResources().getMP()){
-									secondaryCost.subStats(totalDiscountPreview);
+									secondaryCost.subStats(tempDiscountPreview);
 									secondaryCost.fixStats();
 									tempCostPreview.addStats(secondaryCost);
 								} else {
@@ -165,22 +285,22 @@ public class ReceiveFloortoTower implements ActionChoice {
 								((FamtoTower) currentaction).costChoice();
 								int choice = ((FamtoTower) currentaction).getCostchoice();
 								if(choice == 1){
-									cardStats.subStats(totalDiscountPreview);
+									cardStats.subStats(tempDiscountPreview);
 									cardStats.fixStats();
 									tempCostPreview.addStats(cardStats);
 								} else if(choice == 2){
-									secondaryCost.subStats(totalDiscountPreview);
+									secondaryCost.subStats(tempDiscountPreview);
 									secondaryCost.fixStats();
 									tempCostPreview.addStats(secondaryCost);
 								}
 							}
 						} else {
-							cardStats.subStats(totalDiscountPreview);
+							cardStats.subStats(tempDiscountPreview);
 							cardStats.fixStats();
 							tempCostPreview.addStats(cardStats);
 						}
 					} else {
-						cardStats.subStats(totalDiscountPreview);
+						cardStats.subStats(tempDiscountPreview);
 						cardStats.fixStats();
 						tempCostPreview.addStats(cardStats);
 					}

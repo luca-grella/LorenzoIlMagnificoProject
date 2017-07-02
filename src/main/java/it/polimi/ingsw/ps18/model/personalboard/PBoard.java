@@ -69,11 +69,11 @@ public class PBoard extends Observable {
 		
 	}
 	public void refreshFMembers(List<Dice> dices){
+		this.fams.clear();
 		int count;
-		
 		for(count=0; count<dices.size(); count++){
-			this.fams.set(count, new FMember(dices.get(count), playercol));
-		} this.fams.set(count, new FMember(666, playercol));
+			this.fams.add(new FMember(dices.get(count), playercol));
+		} this.fams.add(new FMember(666,playercol));
 	}
 	
 	public void ChooseBonusTile(){

@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.permeffects.HashMapPermE;
 import it.polimi.ingsw.ps18.model.effect.permeffects.IncreaseFMValueOnAction;
+import it.polimi.ingsw.ps18.model.effect.permeffects.IncreaseFMValueOnActionWR;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertinPC;
@@ -123,7 +124,12 @@ public class BonusTile extends Cards {
 				if("IncreaseFMvalueOnAction".equals((String) peffects.get(count))){
 					Permanenteffect effect = map.getEffect((String) peffects.get(count));
 					JSONArray effectParam = (JSONArray) peffectvalues.get(count);
-					((IncreaseFMValueOnAction) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1));
+					((IncreaseFMValueOnAction) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1), (JSONArray) effectParam.get(2));
+					this.permeffect.add(effect);
+				} else if("IncreaseFMvalueOnActionWR".equals((String) peffects.get(count))){
+					Permanenteffect effect = map.getEffect((String) peffects.get(count));
+					JSONArray effectParam = (JSONArray) peffectvalues.get(count);
+					((IncreaseFMValueOnActionWR) effect).setParam((String) effectParam.get(0), (long) effectParam.get(1), (JSONArray) effectParam.get(2));
 					this.permeffect.add(effect);
 				} else {
 					if(peffectvalues.get(count)!=null){

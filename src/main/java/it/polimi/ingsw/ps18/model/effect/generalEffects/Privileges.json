@@ -1,11 +1,9 @@
 {
   "1": {
     "Effect": [
-      "AddWood",
-      "AddRock"
+      "AddWoodorRock"
     ],
     "Parameters": [
-      1,
       1
     ]
   },

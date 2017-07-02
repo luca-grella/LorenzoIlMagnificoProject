@@ -20,10 +20,10 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addMP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addRock;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.addWoodorRock;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PrivilegeHandler.
  */
@@ -111,8 +111,7 @@ public class PrivilegeHandler implements ActionChoice {
 	 * Inits the.
 	 */
 	private void init(){
-		possibilities.put("AddWood", new addWood());
-		possibilities.put("AddStone", new addRock());
+		possibilities.put("AddWoodorRock", new addWoodorRock());
 		possibilities.put("AddServant", new addServants());
 		possibilities.put("AddCoin", new addCoins());
 		possibilities.put("AddPM", new addMP());

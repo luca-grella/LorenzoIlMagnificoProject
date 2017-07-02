@@ -16,7 +16,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReceiveChoseneffect.
  */
@@ -45,6 +44,8 @@ public class ReceiveChoseneffect implements ActionChoice {
 			newcard.setProductionValue((int) ((BonusTile)currentcard).getProductionValue());
 			peffects = ((BonusTile)currentcard).getProdEffect();
 		}
+		newcard.setColor(2);
+		
 		List<ProductionEffect> peffectscopy = newcard.getProdEffect();
 		for(int i=0; i<peffects.size(); i++){
 			if(!("Convert in Resources".equals((peffects.get(i)).getName()))){
@@ -68,6 +69,7 @@ public class ReceiveChoseneffect implements ActionChoice {
 		}
 		if(!((currentplayer.getResources()).enoughStats(costPreview))){
 			((FamtoProduction) currentaction).chooseCards(currentplayer, game);
+			return;
 		}
 		(((FamtoProduction) currentaction).getCardsForActivation()).add(newcard);
 	}
