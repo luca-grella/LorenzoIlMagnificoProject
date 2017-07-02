@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
-import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
@@ -41,14 +40,26 @@ public class FamtoCouncilTrigger implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
 		int maxValue = 0;
+		int maxNeutralValue = 0;
 		
 		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 			FMember curFM = currentplayer.getFams().get(famIndex);
-			if(curFM != null){
-				maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-				if(maxValue > maxFM.getValue()){
-					maxFM.setValue(maxValue);
+			if(curFM!=null){
+				if(curFM.getColor() == GeneralParameters.neutralFMColor){
+					maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+					if(maxNeutralValue > maxNeutralFM.getValue() ){
+						maxNeutralFM.setValue(maxNeutralValue);
+						maxNeutralFM.setColor(curFM.getColor());
+					}
+				}
+				else{
+					maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+					if(maxValue > maxFM.getValue() ){
+						maxFM.setValue(maxValue);
+						maxFM.setColor(curFM.getColor());
+					}
 				}
 			}
 		}
@@ -56,11 +67,16 @@ public class FamtoCouncilTrigger implements ActionChoice {
 			Action action = new FamtoCouncil(currentplayer.getpBoardView());
 			game.setOngoingAction(action);
 			((FamtoCouncil) action).famchoice();
+			return;
 		}
-		else{
-			Action action = game.getOngoingAction();
-			action.act(game); 
+		if(maxNeutralFM.getValue() > GeneralParameters.baseValueCouncilCells){
+			Action action = new FamtoCouncil(currentplayer.getpBoardView());
+			game.setOngoingAction(action);
+			((FamtoCouncil) action).famchoice();
+			return;
 		}
+		Action action = game.getOngoingAction();
+		action.act(game); 
 	}
 
 	/**

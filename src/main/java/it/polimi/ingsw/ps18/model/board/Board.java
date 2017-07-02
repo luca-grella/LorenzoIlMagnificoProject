@@ -164,7 +164,7 @@ public class Board extends Observable {
 			Object obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/board/boardcells/TowerCell.json")); 
 	    	JSONObject jsonObject = (JSONObject) obj;
 			
-	    	for(count=0; count<GeneralParameters.numberofBaseTowers; count++){ 
+	    	for(count=0; count<GeneralParameters.numberofBaseTowers; count++){
 	    		Integer towerIndex = new Integer(count);
 //				this.towers.add(new ConcreteTower(towerIndex,(JSONObject) jsonObject.get(towerIndex.toString())));
 	    		this.towers.set(count, new ConcreteTower(towerIndex, (JSONObject) jsonObject.get(towerIndex.toString())));
@@ -189,14 +189,6 @@ public class Board extends Observable {
 		} catch (org.json.simple.parser.ParseException e) {
 			System.out.println("Problem in parser");
 		}
-		
-//		for(count=0; count<GeneralParameters.numberofBaseTowers; count++){
-//			towers.set(count, new ConcreteTower(count));
-//		}
-//		for(count=0; count<GeneralParameters.numberofMarketCells; count++){
-//			Integer i = new Integer(count);
-//			marketCells.set(count, new MarketCell(i));
-//		}
 		
 		councilCells.clear();
 		harvestCells.clear();

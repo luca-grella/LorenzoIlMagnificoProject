@@ -43,8 +43,8 @@ public class ChooseSupport extends Observable implements PBViewAction{
 	}
 
 	@Override
-	public void setIndex(int number) {
-		this.index = number;
+	public void setIndex(int choice) {
+		this.index = choice;
 	}
 
 }

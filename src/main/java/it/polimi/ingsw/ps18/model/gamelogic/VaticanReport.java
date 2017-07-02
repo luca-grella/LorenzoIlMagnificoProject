@@ -61,7 +61,7 @@ public class VaticanReport extends Observable implements Action{
 		}
 		else if(chosenAnswer == 2){
 			PBoard currentplayer = game.getTurnplayer();
-			Excommunications excommCard = game.getExcommcards().get(0);
+			Excommunications excommCard = game.getExcommcards().get(game.getAGE());
 			List<Excommunications> playerExcommCards = currentplayer.getExcommCards();
 			playerExcommCards.add(excommCard);
 		}

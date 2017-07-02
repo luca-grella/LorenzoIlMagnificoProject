@@ -11,7 +11,6 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * Sets the ongoing action (placing the Family Member to a Market Cell) and goes
  * to the Family Member choice.
@@ -49,15 +48,27 @@ public class FamtoMarketTrigger implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
 		int maxValue = 0;
+		int maxNeutralValue = 0;
 
 		if( ! (game.getBoard().isFullMarket()) ) {
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 				FMember curFM = currentplayer.getFams().get(famIndex);
-				if(curFM != null){
-					maxValue = currentplayer.getFams().get(famIndex).getValue() + currentplayer.getResources().getServants();
-					if(maxValue > maxFM.getValue()){
-						maxFM.setValue(maxValue);
+				if(curFM!=null){
+					if(curFM.getColor() == GeneralParameters.neutralFMColor){
+						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxNeutralValue > maxNeutralFM.getValue() ){
+							maxNeutralFM.setValue(maxNeutralValue);
+							maxNeutralFM.setColor(curFM.getColor());
+						}
+					}
+					else{
+						maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+						if(maxValue > maxFM.getValue() ){
+							maxFM.setValue(maxValue);
+							maxFM.setColor(curFM.getColor());
+						}
 					}
 				}
 			}
@@ -65,11 +76,16 @@ public class FamtoMarketTrigger implements ActionChoice {
 				Action action = new FamtoMarket(currentplayer.getpBoardView());
 				game.setOngoingAction(action);
 				((FamtoMarket) action).famchoice();
+				return;
 			}
-			else{
-				Action action = game.getOngoingAction();
-				action.act(game); 
+			if(maxNeutralFM.getValue() > GeneralParameters.baseValueMarketCells){
+				Action action = new FamtoMarket(currentplayer.getpBoardView());
+				game.setOngoingAction(action);
+				((FamtoMarket) action).famchoice();
+				return;
 			}
+			Action action = game.getOngoingAction();
+			action.act(game); 
 		}
 		else{
 			Action action = game.getOngoingAction();
@@ -77,7 +93,7 @@ public class FamtoMarketTrigger implements ActionChoice {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

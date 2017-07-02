@@ -331,12 +331,17 @@ public class GameLogic extends Observable {
 				 * Se faccio qui il parser al posto di fare due volte il parser (in Trigger e in VaticanReport)
 				 * devo capire come passare i valori letti tramite notify, perche' 
 				 */
-				notifyActionMainController("Verify Church Support");
+				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
+					this.setCurrentPlayer(this.players.get(playerIndex));
+					notifyActionMainController("Verify Church Support");
+				}
 			}
 			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
-		//PBoard winner = winnerCalc(players);
+		//PBoard winner = finalScore(players);
+		//if else per il posizionamento ed eventuali VP relativi alla classifica
+		//
 		//System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
 		if("Y".equalsIgnoreCase(answer)){
@@ -352,8 +357,8 @@ public class GameLogic extends Observable {
 			this.dices.set(diceIndex, new Dice(diceIndex)); 
 			//Dice riceve il colore del dado, che coincide con il valore sequenziale dell'ArrayList
 		}
-		for(int i=0; i<this.players.size(); i++){
-			this.players.get(i).refreshFMembers(dices);
+		for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
+			this.players.get(playerIndex).refreshFMembers(dices);
 		}
 		this.getBoard().refreshBoard();
 		this.insertCardsinTowers();
@@ -366,10 +371,40 @@ public class GameLogic extends Observable {
 	 *            the players
 	 * @return the player who has won
 	 */
-	private PBoard winnerCalc(List<PBoard> players) {
-		return null;
+	private PBoard finalScore(List<PBoard> players) {
+		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+			PBoard currentplayer = players.get(playerIndex);
+//			PBoard currentplayer = this.getTurnplayer();
+//			players.set(playerIndex, currentplayer);
+			List<Cards> cards = currentplayer.getCards();
+			Iterator<Cards> itr = cards.iterator();
+			Cards playerCard = itr.next();
+			int greenCount=0;
+			int blueCount=0;
+			while(itr.hasNext()) {
+				if(playerCard.getColor() == 0)
+					greenCount++;
+			    else if(playerCard.getColor() == 1)
+			    	blueCount++;
+			    else if(playerCard.getColor() == 3){
+			    	//Attiva effetti finali
+			    }
+			    playerCard = itr.next();
+			}
+			
+			
+//			territoryVP(greenCount);
+//			characterVP(blueCount);
+			//chiama metodo con dentro switch che assegna i VP giusti
+			//o mappa
+			
+			
+		}
+		return turnplayer;
 	}
+
 	
+
 	/**
 	 * To string.
 	 *

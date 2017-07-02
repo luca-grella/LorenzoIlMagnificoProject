@@ -106,19 +106,16 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(game.getBoard().isLegalProd(maxFM)){
 					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
 					ProdCell prodCell = new ProdCell(0);
-					/*
-					 * Controlla che  sia legale l'azione per la cosa dei colori dei familiari, poi pero' controlla
-					 * anche che il valore del familiare massimo sia superiore o al caso senza malus, oppure a quello con malus.
-					 * Se non supera nessuno dei due, allora se ne va a @#$%^&*(^+
-					 */
+
 					if(prodCellMalus.isLegalPC(maxFM.getValue()) || prodCell.isLegalPC(maxFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
+						return;
 					}
 					
 				}
-				else if(game.getBoard().isLegalProd(maxNeutralFM)){
+				if(game.getBoard().isLegalProd(maxNeutralFM)){
 					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
 					ProdCell prodCell = new ProdCell(0);
 
@@ -126,12 +123,11 @@ public class FamtoProductionTrigger implements ActionChoice {
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
+						return;
 					}
 				}
-				else{
-					Action action = game.getOngoingAction();
-					action.act(game); 
-				}
+				Action action = game.getOngoingAction();
+				action.act(game); 
 			}
 		}
 		else if(game.getNplayer() == 2){
@@ -165,20 +161,20 @@ public class FamtoProductionTrigger implements ActionChoice {
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
+						return;
 					}
 				}
-				else if(game.getBoard().isLegalProd(maxNeutralFM)){
+				if(game.getBoard().isLegalProd(maxNeutralFM)){
 					ProdCell prodCell = new ProdCell(0);
 					if(prodCell.isLegalPC(maxNeutralFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
+						return;
 					}
 				}
-				else{
-					Action action = game.getOngoingAction();
-					action.act(game); 
-				}
+				Action action = game.getOngoingAction();
+				action.act(game); 
 			}
 			else{
 				Action action = game.getOngoingAction();

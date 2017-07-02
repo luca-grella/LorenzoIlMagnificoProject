@@ -34,13 +34,13 @@ public class VaticanReportTrigger implements ActionChoice{
 					boolean hasEnoughFP = false;
 					switch(age){
 						case 1:
-							hasEnoughFP = (boolean) jsonObject.get("SupportOKAge1");
+							hasEnoughFP = (boolean) a.get("SupportOKAge1");
 							break;
 						case 2:
-							hasEnoughFP = (boolean) jsonObject.get("SupportOKAge2");
+							hasEnoughFP = (boolean) a.get("SupportOKAge2");
 							break;
 						case 3:
-							hasEnoughFP = (boolean) jsonObject.get("SupportOKAge3");
+							hasEnoughFP = (boolean) a.get("SupportOKAge3");
 							break;
 					}
 					if(hasEnoughFP){

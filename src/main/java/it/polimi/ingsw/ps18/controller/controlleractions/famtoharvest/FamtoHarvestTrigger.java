@@ -107,22 +107,18 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				}
 			}
 			else{
-				/*
-				 * E' sensato anche se non sembra
-				 * Questo perche' isLegalHarv controlla se c'e' gia' un fam del colore del currentplayer
-				 * Quindi nel trigger se da false, torna al turnhandler 
-				 * (implicitamente, in quanto non setta la nuova azione e richiama l'azione non settata, che e' quella del turnhandler)
-				 */
 				if(game.getBoard().isLegalHarv(maxFM)){
 					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 					HarvCell harvCell = new HarvCell(0);
+					
 					if(harvCellMalus.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
+						return;
 					}
 				}
-				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
+				if(game.getBoard().isLegalHarv(maxNeutralFM)){
 					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 					HarvCell harvCell = new HarvCell(0);
 
@@ -130,12 +126,11 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
+						return;
 					}
 				}
-				else{
-					Action action = game.getOngoingAction();
-					action.act(game); 
-				}
+				Action action = game.getOngoingAction();
+				action.act(game); 
 			}
 		}
 		else if(game.getNplayer() == 2){
@@ -168,20 +163,20 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
+						return;
 					}
 				}
-				else if(game.getBoard().isLegalHarv(maxNeutralFM)){
+				if(game.getBoard().isLegalHarv(maxNeutralFM)){
 					HarvCell harvCell = new HarvCell(0);
 					if(harvCell.isLegalHC(maxNeutralFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
+						return;
 					}
 				}
-				else{
-					Action action = game.getOngoingAction();
-					action.act(game);
-				}
+				Action action = game.getOngoingAction();
+				action.act(game);
 			}
 			else{
 				Action action = game.getOngoingAction();
