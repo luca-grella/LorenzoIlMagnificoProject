@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class addWood.
  */
@@ -59,7 +58,7 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 		this.quantity = quantity;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

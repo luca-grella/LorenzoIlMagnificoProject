@@ -35,7 +35,7 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	 */
 	private Stats reward;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class ConvertResorResinResources extends Observable implements Converter,
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#setQuantity(int)
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class ConvertResorResinResources extends Observable implements Converter,
 		this.setQuantity((int) quantity);
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -154,6 +154,14 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	@Override
 	public Stats getCost() {
 		return cost;
+	}
+
+	/**
+	 * per test, evita l'input utente
+	 * @param cost the cost to set
+	 */
+	public void setCost(Stats cost) {
+		this.cost = cost;
 	}
 	
 	

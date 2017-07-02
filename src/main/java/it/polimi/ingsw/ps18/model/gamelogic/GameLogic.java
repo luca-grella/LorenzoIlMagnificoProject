@@ -371,37 +371,37 @@ public class GameLogic extends Observable {
 	 *            the players
 	 * @return the player who has won
 	 */
-	private PBoard finalScore(List<PBoard> players) {
-		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
-			PBoard currentplayer = players.get(playerIndex);
-//			PBoard currentplayer = this.getTurnplayer();
-//			players.set(playerIndex, currentplayer);
-			List<Cards> cards = currentplayer.getCards();
-			Iterator<Cards> itr = cards.iterator();
-			Cards playerCard = itr.next();
-			int greenCount=0;
-			int blueCount=0;
-			while(itr.hasNext()) {
-				if(playerCard.getColor() == 0)
-					greenCount++;
-			    else if(playerCard.getColor() == 1)
-			    	blueCount++;
-			    else if(playerCard.getColor() == 3){
-			    	//Attiva effetti finali
-			    }
-			    playerCard = itr.next();
-			}
-			
-			
-//			territoryVP(greenCount);
-//			characterVP(blueCount);
-			//chiama metodo con dentro switch che assegna i VP giusti
-			//o mappa
-			
-			
-		}
-		return turnplayer;
-	}
+//	private PBoard finalScore(List<PBoard> players) {
+//		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+//			PBoard currentplayer = players.get(playerIndex);
+////			PBoard currentplayer = this.getTurnplayer();
+////			players.set(playerIndex, currentplayer);
+//			List<Cards> cards = currentplayer.getCards();
+//			Iterator<Cards> itr = cards.iterator();
+//			Cards playerCard = itr.next();
+//			int greenCount=0;
+//			int blueCount=0;
+//			while(itr.hasNext()) {
+//				if(playerCard.getColor() == 0)
+//					greenCount++;
+//			    else if(playerCard.getColor() == 1)
+//			    	blueCount++;
+//			    else if(playerCard.getColor() == 3){
+//			    	//Attiva effetti finali
+//			    }
+//			    playerCard = itr.next();
+//			}
+//			
+//			
+////			territoryVP(greenCount);
+////			characterVP(blueCount);
+//			//chiama metodo con dentro switch che assegna i VP giusti
+//			//o mappa
+//			
+//			
+//		}
+//		return turnplayer;
+//	}
 
 	
 

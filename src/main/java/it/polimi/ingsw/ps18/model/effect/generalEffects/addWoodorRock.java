@@ -29,6 +29,17 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 	PBoard player;
 	
 	GameLogic game ;
+	
+	
+	public addWoodorRock() {
+		this.game = null;
+		this.player = null;
+	}
+	
+	public addWoodorRock(PBoard player, GameLogic game) {
+		this.player = player;
+		this.game = game;
+	}
 
 	/**
 	 * Add a quantity of wood or rock to the player's resources.

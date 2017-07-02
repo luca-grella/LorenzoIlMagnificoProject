@@ -16,7 +16,7 @@ public class WoodorRockHandler implements ActionChoice {
 	 */
 	private int index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -25,7 +25,7 @@ public class WoodorRockHandler implements ActionChoice {
 		currenteffect.continueEffect(index);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override
