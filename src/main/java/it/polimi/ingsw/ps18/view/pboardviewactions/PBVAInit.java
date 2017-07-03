@@ -69,8 +69,13 @@ public class PBVAInit extends Observable implements PBViewAction {
 				notifyActionMainController("FamtoTower");
 			    break;
 			case 9:
-				notifyActionMainController("FamtoMarket");
-				break;
+				if(index == -1){
+					notifyActionMainController("FamtoMarket");
+					break;
+				} else {
+					System.out.println("You can't do this becouse of your Excommunication cards.");
+					break;
+				}
 			case 10:
 				notifyActionMainController("FamtoCouncil");
 				break;

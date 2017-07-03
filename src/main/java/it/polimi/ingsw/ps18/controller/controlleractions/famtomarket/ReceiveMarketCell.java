@@ -5,6 +5,9 @@ import java.util.List;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -35,11 +38,25 @@ public class ReceiveMarketCell implements ActionChoice{
 		} else {
 			index -= 1;
 			Board gameBoard = game.getBoard();
+			int malusServants = 1;
+			for(Excommunications card: game.getTurnplayer().getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						if("Servants".equals(((MalusValue) effect).getPlace())){
+							malusServants = ((MalusValue) effect).getMalusValue();
+							if(malusServants == 0){
+								malusServants = 1;
+							}
+						}
+						
+					}
+				}
+			}
 			List<MarketCell> boardMarketCells = gameBoard.getMarketCells();
 			MarketCell boardMarketCell = boardMarketCells.get(index);
 			FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
 			if(boardMarketCell.isEmptyMC()){
-				if(boardMarketCell.isLegalMC(pBoardFM.getValue() + ((FamtoMarket) currentaction).getNumberOfServants())){
+				if(boardMarketCell.isLegalMC(pBoardFM.getValue() + (((FamtoMarket) currentaction).getNumberOfServants() / malusServants))){
 					((FamtoMarket) currentaction).setChosenCell(index);
 					currentaction.act(game);
 				}

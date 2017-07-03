@@ -4,6 +4,9 @@ import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -40,6 +43,20 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
+			int malusServants = 1;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						if("Servants".equals(((MalusValue) effect).getPlace())){
+							malusServants = ((MalusValue) effect).getMalusValue();
+							if(malusServants == 0){
+								malusServants = 1;
+							}
+						}
+						
+					}
+				}
+			}
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
 			((FamtoCouncil) currentaction).setIndexFamtoRemove(index);
@@ -47,7 +64,7 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 			
 			if(chosenfam != null){
 				((FamtoCouncil) currentaction).servantsChoice(game);
-				if(councilCell.isLegalCC(chosenfam.getValue() + ((FamtoCouncil) currentaction).getNumberOfServants()) ){
+				if(councilCell.isLegalCC(chosenfam.getValue() + (((FamtoCouncil) currentaction).getNumberOfServants() / malusServants))){
 					currentaction.setChosenFam(chosenfam);
 					((FamtoCouncil) currentaction).act(game);
 				}

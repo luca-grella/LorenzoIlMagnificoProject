@@ -4,6 +4,9 @@ import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -51,6 +54,20 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
+			int malusServants = 1;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						if("Servants".equals(((MalusValue) effect).getPlace())){
+							malusServants = ((MalusValue) effect).getMalusValue();
+							if(malusServants == 0){
+								malusServants = 1;
+							}
+						}
+						
+					}
+				}
+			}
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
 			((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
@@ -61,7 +78,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 				if( ! (harvCells.isEmpty()) ){
 					if(game.getBoard().isLegalHarv(chosenfam)){
 						HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-						if(harvCell.isLegalHC(chosenfam.getValue() + ((FamtoHarvest) currentaction).getNumberOfServants())){
+						if(harvCell.isLegalHC(chosenfam.getValue() + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
 							currentaction.act(game);
 						}
@@ -79,7 +96,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 				}
 				else{
 					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(chosenfam.getValue() + ((FamtoHarvest) currentaction).getNumberOfServants())){
+					if(harvCell.isLegalHC(chosenfam.getValue() + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
 						currentaction.setChosenFam(chosenfam);
 						((FamtoHarvest) currentaction).act(game);
 					}

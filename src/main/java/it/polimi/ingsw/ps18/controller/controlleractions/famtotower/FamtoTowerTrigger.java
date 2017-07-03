@@ -9,6 +9,9 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
@@ -116,13 +119,42 @@ public class FamtoTowerTrigger implements ActionChoice {
 					}
 				}
 			}
+			int malusValue = 0;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						switch(towerIndex){
+						case 0:
+							if("Green".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 1:
+							if("Blue".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 2:
+							if("Yellow".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 3:
+							if("Purple".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						}
+					}
+				}
+			}
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 				FMember curFM = currentplayer.getFams().get(famIndex);
 				if(curFM!=null){
 					if(curFM.getColor() == GeneralParameters.neutralFMColor){
-						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants();
+						maxNeutralValue = curFM.getValue() + currentplayer.getResources().getServants()  + modifierValue - malusValue;
 						if(maxNeutralValue > maxNeutralFM.getValue() ){
-							maxNeutralFM.setValue(maxNeutralValue + modifierValue);
+							maxNeutralFM.setValue(maxNeutralValue);
 							maxNeutralFM.setColor(curFM.getColor());
 							/*
 							 * Penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
@@ -130,9 +162,9 @@ public class FamtoTowerTrigger implements ActionChoice {
 						}
 					}
 					else{
-						maxValue = curFM.getValue() + currentplayer.getResources().getServants();
+						maxValue = curFM.getValue() + currentplayer.getResources().getServants()  + modifierValue - modifierValue;
 						if(maxValue > maxFM.getValue() ){
-							maxFM.setValue(maxValue + modifierValue);
+							maxFM.setValue(maxValue);
 							maxFM.setColor(curFM.getColor());
 						}
 					}

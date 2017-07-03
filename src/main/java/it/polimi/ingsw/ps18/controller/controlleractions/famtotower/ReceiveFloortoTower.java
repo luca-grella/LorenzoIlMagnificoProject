@@ -12,7 +12,9 @@ import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.*;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
 import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
@@ -61,6 +63,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 			Stats tempDiscountPreview = new Stats(((FamtoTower) currentaction).getTotalDiscountPreview());
 			List<Cards> playerCards = currentplayer.getCards();
 			
+			//mdoificatore valore familiare per l'azione
 			int modifierValue = 0;
 			for(Cards card: playerCards){
 				if(card.hasPermanent()){
@@ -117,6 +120,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 					}
 				}
 			}
+			//sconti per l'azione corrente
 			for(Cards card: playerCards){
 				if(card.hasPermanent()){
 					if(card.getColor()==1){
@@ -236,9 +240,49 @@ public class ReceiveFloortoTower implements ActionChoice {
 					}
 				}
 			}
+			//calcola i malus al valore dell'azione dovuti alle scomuniche
+			int malusValue = 0;
+			int malusServants = 1;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						switch(towerIndex.getChosenTower()){
+						case 0:
+							if("Green".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 1:
+							if("Blue".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 2:
+							if("Yellow".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						case 3:
+							if("Purple".equals(((MalusValue) effect).getPlace())){
+								malusValue += ((MalusValue) effect).getMalusValue();
+							}
+							break;
+						}
+						if("Servants".equals(((MalusValue) effect).getPlace())){
+							malusServants = ((MalusValue) effect).getMalusValue();
+							if(malusServants == 0){
+								malusServants = 1;
+							}
+						}
+						
+					}
+				}
+			}
+			
+			
 			
 			if((((boardTower.getTowerCells()).get(index)).isEmptyTC())){ 
-				if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue +((FamtoTower) currentaction).getNumberOfServants())){	
+				if(((boardTower.getTowerCells()).get(index)).isLegalTC(chosenfam.getValue() + modifierValue + (((FamtoTower) currentaction).getNumberOfServants() / malusServants ) - malusValue)){	
 					//creare un giocatore farlocco e attivare gli effetti della cella e fare l'ultimo controllo su di lui
 					PBoard temp = new PBoard();
 					temp.setResources(new Stats(currentplayer.getResources()));

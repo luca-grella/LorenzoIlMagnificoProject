@@ -5,6 +5,9 @@ import java.util.List;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
@@ -53,6 +56,20 @@ public class ReceiveFamtoProduction implements ActionChoice {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
+			int malusServants = 1;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						if("Servants".equals(((MalusValue) effect).getPlace())){
+							malusServants = ((MalusValue) effect).getMalusValue();
+							if(malusServants == 0){
+								malusServants = 1;
+							}
+						}
+						
+					}
+				}
+			}
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
 			((FamtoProduction) currentaction).setIndexFamtoRemove(index);
@@ -62,29 +79,32 @@ public class ReceiveFamtoProduction implements ActionChoice {
 				if( ! (prodCells.isEmpty()) ){
 					if(game.getBoard().isLegalProd(chosenfam)){
 						ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-						if(prodCell.isLegalPC(chosenfam.getValue() + ((FamtoProduction) currentaction).getNumberOfServants())){
+						if(prodCell.isLegalPC(chosenfam.getValue() + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
 							((FamtoProduction) currentaction).act(game);
 						}
 						else{
 							Action action = new TurnHandler(currentplayer);
 							game.setOngoingAction(action);
+							action.act(game);
 						}
 					}
 					else{
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
+						action.act(game);
 					}
 				}
 				else{
 					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(chosenfam.getValue() + ((FamtoProduction) currentaction).getNumberOfServants())){
+					if(prodCell.isLegalPC(chosenfam.getValue() + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
 						currentaction.setChosenFam(chosenfam);
 						((FamtoProduction) currentaction).act(game);
 					}
 					else{
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
+						action.act(game);
 					}
 				}
 			}
