@@ -42,9 +42,9 @@ public class addCoins implements QuickEffect, HarvestEffect, ProductionEffect, F
 		totalmalus = player.generateExcommMalus();
 		int malusCoins = totalmalus.getCoin();
 		if(quantity >= malusCoins){
-			stat.addServants(quantity - malusCoins);
+			stat.addCoins(quantity - malusCoins);
 		} else {
-			stat.addServants(0);
+			stat.addCoins(0);
 		}
 		
 	}

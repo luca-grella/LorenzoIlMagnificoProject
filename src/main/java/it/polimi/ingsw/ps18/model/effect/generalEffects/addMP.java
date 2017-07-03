@@ -42,9 +42,9 @@ public class addMP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 		totalmalus = player.generateExcommMalus();
 		int malusMP = totalmalus.getMP();
 		if(quantity >= malusMP){
-			stat.addServants(quantity - malusMP);
+			stat.addMP(quantity - malusMP);
 		} else {
-			stat.addServants(0);
+			stat.addMP(0);
 		}
 		
 	}

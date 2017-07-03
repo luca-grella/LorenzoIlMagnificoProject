@@ -84,9 +84,6 @@ public class CellTest {
     	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/cellprova.json"));
     	JSONObject jsonObject = (JSONObject) obj;
         JSONObject a = (JSONObject) jsonObject.get("0");
-        long value = (long) a.get("CellValue");
-        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
         
 	Cell tester = new Cell(a);
 	PBoard player = new PBoard();

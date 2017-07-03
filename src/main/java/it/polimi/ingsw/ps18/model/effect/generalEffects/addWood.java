@@ -39,9 +39,9 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 		totalmalus = player.generateExcommMalus();
 		int malusWood = totalmalus.getWood();
 		if(quantity >= malusWood){
-			stat.addServants(quantity - malusWood);
+			stat.addWood(quantity - malusWood);
 		} else {
-			stat.addServants(0);
+			stat.addWood(0);
 		}
 		
 	}

@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class addRock.
  */
@@ -40,9 +39,9 @@ public class addRock implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 		totalmalus = player.generateExcommMalus();
 		int malusRock = totalmalus.getRock();
 		if(quantity >= malusRock){
-			stat.addServants(quantity - malusRock);
+			stat.addRock(quantity - malusRock);
 		} else {
-			stat.addServants(0);
+			stat.addRock(0);
 		}
 		
 	}
