@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class addVP.
  */
@@ -17,7 +16,7 @@ public class addVP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 	/**
 	 * The name.
 	 */
-	private String name = "Victory Points";
+	private String name = "Victory Point";
 	
 	/**
 	 * The quantity.
@@ -59,7 +58,7 @@ public class addVP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 		this.quantity = quantity;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +16,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.controller.controlleractions.HashMapActions;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
@@ -24,8 +27,13 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
+import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
+import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapVPBlue;
+import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapVPGreen;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
@@ -56,7 +64,7 @@ public class GameLogic extends Observable {
 	/**
 	 * The turn.
 	 */
-	private int TURN = 0;
+	private int TURN = 5;
 	
 	/**
 	 * The age.
@@ -316,6 +324,10 @@ public class GameLogic extends Observable {
 	public boolean gameFlow(){
 		do{
 			this.TURN++;
+			/*
+			 * Per testing
+			 */
+			PBoard winner = finalScore(players);
 			//riordina giocatori
 			for(int famIndex=0; famIndex<GeneralParameters.nfamperplayer; famIndex++){
 				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
@@ -339,7 +351,7 @@ public class GameLogic extends Observable {
 			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
-		//PBoard winner = finalScore(players);
+		PBoard winner = finalScore(players);
 		//if else per il posizionamento ed eventuali VP relativi alla classifica
 		//
 		//System.out.println("Do you want to play again? Y|N");
@@ -371,37 +383,91 @@ public class GameLogic extends Observable {
 	 *            the players
 	 * @return the player who has won
 	 */
-//	private PBoard finalScore(List<PBoard> players) {
-//		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
-//			PBoard currentplayer = players.get(playerIndex);
-////			PBoard currentplayer = this.getTurnplayer();
-////			players.set(playerIndex, currentplayer);
-//			List<Cards> cards = currentplayer.getCards();
-//			Iterator<Cards> itr = cards.iterator();
-//			Cards playerCard = itr.next();
-//			int greenCount=0;
-//			int blueCount=0;
-//			while(itr.hasNext()) {
-//				if(playerCard.getColor() == 0)
-//					greenCount++;
-//			    else if(playerCard.getColor() == 1)
-//			    	blueCount++;
-//			    else if(playerCard.getColor() == 3){
-//			    	//Attiva effetti finali
-//			    }
-//			    playerCard = itr.next();
-//			}
-//			
-//			
-////			territoryVP(greenCount);
-////			characterVP(blueCount);
-//			//chiama metodo con dentro switch che assegna i VP giusti
-//			//o mappa
-//			
-//			
-//		}
-//		return turnplayer;
-//	}
+	private PBoard finalScore(List<PBoard> players) {
+		/*
+		 * Per testing
+		 */
+		for(int index=0; index<players.size(); index++){
+			PBoard currentplayer = players.get(index);
+			currentplayer.getResources().addMP(index);
+		}
+		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+			
+			PBoard currentplayer = players.get(playerIndex);
+//			PBoard currentplayer = this.getTurnplayer();
+//			players.set(playerIndex, currentplayer);
+			List<Cards> cards = currentplayer.getCards();
+			Iterator<Cards> itr = cards.iterator();
+			Cards playerCard = itr.next();
+			int greenCount=0;
+			int blueCount=0;
+			while(itr.hasNext()) {
+				if(playerCard.getColor() == 0)
+					greenCount++;
+			    else if(playerCard.getColor() == 1)
+			    	blueCount++;
+			    else if(playerCard.getColor() == 3){
+			    	HashMapFE map = new HashMapFE();
+			    	FinalEffect finalEffect = map.geteffect("AddPV");
+			    	finalEffect.activate(currentplayer, this);
+			    }
+			    playerCard = itr.next();
+			}
+			HashMapVPGreen greenMap = new HashMapVPGreen();
+			HashMapVPBlue blueMap = new HashMapVPBlue();
+			Integer greenVP = greenMap.getGenVPGEffect(greenCount);
+			Integer blueVP = blueMap.getGenVPBEffect(blueCount);
+			Stats resources = currentplayer.getResources();
+			int totalRes = resources.getCoin() + resources.getRock() + resources.getServants() + resources.getWood();
+			currentplayer.getResources().addVP(greenVP +  blueVP + totalRes/5);	
+		}
+		int militaryPlacement[] = new int[players.size()];
+		int victoryPlacement[] = new int[players.size()];
+		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+			PBoard currentplayer = players.get(playerIndex);
+			militaryPlacement[playerIndex] = currentplayer.getResources().getMP();
+//			victoryPlacement[playerIndex] = currentplayer.getResources().getVP();
+		}
+		Arrays.sort(militaryPlacement);
+		List<PBoard> temp = new ArrayList<>();
+		/*
+		 * Per testing
+		 */
+		Collections.shuffle(players);
+		for(PBoard player : players){
+			System.out.println(player.getResources().getMP());
+		}
+		Collections.sort(players);
+		for(PBoard player : players){
+			System.out.println(player.getResources().getMP());
+		}
+		for(int playerIndex=1; playerIndex<players.size()-1; playerIndex++){
+			PBoard winner = players.get(0);
+			winner.getResources().addVP(5);
+			PBoard currentplayer = players.get(playerIndex);
+			PBoard nextplayer = players.get(playerIndex+1);
+			if(winner.getResources().getMP() == currentplayer.getResources().getMP()) {
+				currentplayer.getResources().addVP(5);
+			}
+			else if(nextplayer != null) {
+				if(currentplayer.getResources().getMP() == nextplayer.getResources().getMP()){
+					currentplayer.getResources().addVP(2);
+					nextplayer.getResources().addVP(2);
+				}
+				else{
+					currentplayer.getResources().addVP(2);
+				}
+			}
+		}
+		
+		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+			/*
+			 * Ordina i players sulla base del punteggio
+			 */
+		}
+		return turnplayer;
+	
+	}
 
 	
 

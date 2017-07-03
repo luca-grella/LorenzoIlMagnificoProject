@@ -52,7 +52,8 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 		} else if(index == 2){
 			effect = new addRock();
 			effect.setQuantity(this.quantity);
-		} effect.activate(player, game);
+		} if(effect != null)
+			effect.activate(player, game);
 	}
 
 	/**

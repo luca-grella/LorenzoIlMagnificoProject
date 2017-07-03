@@ -20,7 +20,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 /**
  * The Class PBoard.
  */
-public class PBoard extends Observable {
+public class PBoard extends Observable implements Comparable<PBoard>{
 	
 	/**
 	 * The p board view.
@@ -77,6 +77,8 @@ public class PBoard extends Observable {
 		} this.fams.add(new FMember(666,playercol));
 	}
 	
+
+	
 	public void ChooseBonusTile(){
 		notifyActionPBoardView("ChooseBonusTile");
 	}
@@ -106,6 +108,31 @@ public class PBoard extends Observable {
 		resources = null;
 		cards = null;
 		fams = null;
+	}
+	
+	@Override
+	public int compareTo(PBoard player) {
+		int compareMP = player.getResources().getMP();
+		return compareMP - this.getResources().getMP();
+	}
+	@Override
+	public boolean equals(Object obj) {
+	    if (!(obj instanceof PBoard)) {
+	         return false;
+	    }
+//	    if (obj == null) {
+//	        return false;
+//	    }  
+	    PBoard other = (PBoard) obj;
+	    if (this.getResources().getMP() == 0) {
+	        return other.getResources().getMP() == 0;
+	    }
+	    return this.equals(other);
+	}
+	
+	@Override 
+	public int hashCode() {
+		return this.hashCode();
 	}
 	
 	/**
@@ -426,7 +453,5 @@ public class PBoard extends Observable {
 	public void setpBoardView(PBoardView pb) {
 		this.pBoardView=pb;		
 	}
-	
-	
 
 }
