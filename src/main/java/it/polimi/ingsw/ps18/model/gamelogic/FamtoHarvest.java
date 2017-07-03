@@ -103,7 +103,7 @@ public class FamtoHarvest extends Observable implements Action {
 		int malusValue = 0;
 		for(int i=0; i<currentplayer.getExcommCards().size(); i++){
 			Excommunications card = currentplayer.getExcommCards().get(i);
-			for(int j=0; j>card.getEffects().size(); j++){
+			for(int j=0; j<card.getEffects().size(); j++){
 				if("MalusValue".equals(card.getEffects().get(j).getName())){
 					if("Harvest".equals(((MalusValue) card.getEffects().get(j)).getPlace())){
 						malusValue += ((MalusValue) card.getEffects().get(j)).getMalusValue();

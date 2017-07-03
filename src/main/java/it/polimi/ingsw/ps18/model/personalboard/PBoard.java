@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps18.model.personalboard;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
 
@@ -112,6 +113,30 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 		fams = null;
 	}
 	
+	/*Comparator for sorting the list by roll no*/
+//    public static Comparator<Student> StuRollno = new Comparator<Student>() {
+//
+//	public int compare(Student s1, Student s2) {
+//
+//	   int rollno1 = s1.getRollno();
+//	   int rollno2 = s2.getRollno();
+//
+//	   /*For ascending order*/
+//	   return rollno1-rollno2;
+//
+//	   /*For descending order*/
+//	   //rollno2-rollno1;
+//   }};
+	public static final Comparator<PBoard> victoryComparator = new Comparator<PBoard>(){
+		public int compare(PBoard player1, PBoard player2) {
+			int compareVP1 = player1.getResources().getVP();
+			int compareVP2 = player2.getResources().getVP();
+			
+			return compareVP2 - compareVP1;
+	
+		}
+	};
+	
 	@Override
 	public int compareTo(PBoard player) {
 		int compareMP = player.getResources().getMP();
@@ -170,7 +195,7 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 		Stats totalmalus = new Stats(0,0,0,0,0,0,0);
 		for(int i=0; i<this.excommCards.size(); i++){
 			Excommunications card = this.excommCards.get(i);
-			for(int j=0; j>card.getEffects().size(); j++){
+			for(int j=0; j<card.getEffects().size(); j++){
 				if("MalusResources".equals(card.getEffects().get(j).getName())){
 					totalmalus.addStats(((MalusResources) card.getEffects().get(j)).getMalus());
 				}
@@ -461,5 +486,7 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	public void setpBoardView(PBoardView pb) {
 		this.pBoardView=pb;		
 	}
+
+
 
 }

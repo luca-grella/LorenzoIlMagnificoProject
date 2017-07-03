@@ -9,6 +9,8 @@ public class HashMapVPGreen {
 
 	public HashMapVPGreen() {
 		genVPGEffect.put(0, 0);
+		genVPGEffect.put(1, 0);
+		genVPGEffect.put(2, 0);
 		genVPGEffect.put(3, 1);
 		genVPGEffect.put(4, 4);
 		genVPGEffect.put(5, 10);

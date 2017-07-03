@@ -204,7 +204,18 @@ public class GameLogic extends Observable {
 		for(int i=0; i<nplayer; i++){
 			this.turnplayer = players.get(i);
 			this.players.get(i).completePBoardSetup(dices, mainController, bonusTiles);
-			
+			/*
+			 * Per testing
+			 */
+//			Cards greenC = greencards.get(i);
+//			Cards blueC = bluecards.get(i);
+//			greenC = greencards.get(i+1);
+//			blueC = bluecards.get(i+1);
+//			this.players.get(i).addCard(greenC, this);
+//			this.players.get(i).addCard(blueC, this);
+			/*
+			 * delimitatore testing
+			 */
 		}
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
@@ -363,15 +374,32 @@ public class GameLogic extends Observable {
 			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
-		PBoard winner = finalScore(players);
-		//if else per il posizionamento ed eventuali VP relativi alla classifica
-		//
+		List<PBoard> placement = finalScore(players);
+		/*
+		 * TODO: magari evitare che mi stampi tutta la lista di roba inutile, per il resto funziona
+		 */
+		this.toStringPlayers(placement);
+
 		//System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
 		if("Y".equalsIgnoreCase(answer)){
 			return true;
 		}
 		return false;
+	}
+	
+	/*
+	 * TODO: magari evitare che mi stampi tutta la lista di roba inutile, per il resto funziona
+	 */
+	public String toStringPlayers(List<PBoard> players){
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n-----------------\n");
+		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
+			PBoard player = players.get(playerIndex);
+			ShowBoard show = new ShowBoard(player.getpBoardView());
+			show.showPlayer(player);
+		}
+		return builder.toString();
 	}
 	
 	
@@ -395,19 +423,20 @@ public class GameLogic extends Observable {
 	 *            the players
 	 * @return the player who has won
 	 */
-	private PBoard finalScore(List<PBoard> players) {
+	private List<PBoard> finalScore(List<PBoard> players) {
 		/*
 		 * Per testing
 		 */
-		for(int index=0; index<players.size(); index++){
-			PBoard currentplayer = players.get(index);
-			currentplayer.getResources().addMP(index);
-		}
+//		for(int index=0; index<players.size(); index++){
+//			PBoard currentplayer = players.get(index);
+//			currentplayer.getResources().addMP(index);
+//		}
+		/*
+		 * Delimitatore testing
+		 */
 		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
 			
 			PBoard currentplayer = players.get(playerIndex);
-//			PBoard currentplayer = this.getTurnplayer();
-//			players.set(playerIndex, currentplayer);
 			List<Cards> cards = currentplayer.getCards();
 			Iterator<Cards> itr = cards.iterator();
 			Cards playerCard = itr.next();
@@ -433,29 +462,46 @@ public class GameLogic extends Observable {
 			int totalRes = resources.getCoin() + resources.getRock() + resources.getServants() + resources.getWood();
 			currentplayer.getResources().addVP(greenVP +  blueVP + totalRes/5);	
 		}
-		int militaryPlacement[] = new int[players.size()];
-		int victoryPlacement[] = new int[players.size()];
-		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
-			PBoard currentplayer = players.get(playerIndex);
-			militaryPlacement[playerIndex] = currentplayer.getResources().getMP();
-//			victoryPlacement[playerIndex] = currentplayer.getResources().getVP();
-		}
-		Arrays.sort(militaryPlacement);
-		List<PBoard> temp = new ArrayList<>();
+		
+		
 		/*
 		 * Per testing
 		 */
-		Collections.shuffle(players);
-		for(PBoard player : players){
-			System.out.println(player.getResources().getMP());
-		}
+//		System.out.println("\nCaso Comparable\n\n");
+//		System.out.println("MP original placement\n");
+//		for(PBoard player : players){
+//			System.out.println(player.getResources().getMP());
+//		}
+//		Collections.shuffle(players);
+//		System.out.println("MP shuffle\n");
+//		for(PBoard player : players){
+//			System.out.println(player.getResources().getMP());
+//		}
+//		Collections.sort(players);
+//		System.out.println("\n");
+//		System.out.println("MP tempMP sort\n");
+//		for(PBoard player : players){
+//			
+//			System.out.println(player.getResources().getMP());
+//		}
+		
+		/*
+		 * Delimitatore testing
+		 */
+		List<PBoard> turnOrder = new LinkedList<>();
+		/*
+		 * Si salva l'ordine dei giocatori prima di ordinarli in base al punteggio
+		 * perche' in caso di pareggio in VP, vince chi e' piu' avanti nell'ordine del turno
+		 */
+		turnOrder.addAll(players);
 		Collections.sort(players);
-		for(PBoard player : players){
-			System.out.println(player.getResources().getMP());
-		}
+		
+		//TODO:  dare un'occhiata ai controlli sugli MP che potrebbero non essere corretti per tutte le casistiche
+		PBoard winner = players.get(0);
+		winner.getResources().addVP(5);
+		
 		for(int playerIndex=1; playerIndex<players.size()-1; playerIndex++){
-			PBoard winner = players.get(0);
-			winner.getResources().addVP(5);
+		
 			PBoard currentplayer = players.get(playerIndex);
 			PBoard nextplayer = players.get(playerIndex+1);
 			if(winner.getResources().getMP() == currentplayer.getResources().getMP()) {
@@ -463,21 +509,77 @@ public class GameLogic extends Observable {
 			}
 			else if(nextplayer != null) {
 				if(currentplayer.getResources().getMP() == nextplayer.getResources().getMP()){
-					currentplayer.getResources().addVP(2);
-					nextplayer.getResources().addVP(2);
+					if(playerIndex == 1){ 
+						/*
+						 * perche' se e' superiore a 1 vuol dire che ci sono due che hanno pareggiato al primo posto
+						 * e quindi chiunque arrivi secondo non si becca niente per il regolamento
+						 */
+						currentplayer.getResources().addVP(2);
+						nextplayer.getResources().addVP(2);
+					}
+					else{
+						if(winner.getResources().getMP() != players.get(1).getResources().getMP()){
+							/*
+							 * Se sono uguali, allora ci sono 2 al primo posto e quindi balza
+							 * il controllo perche' in questo caso i secondi non prendono punti
+							 */
+							PBoard second = players.get(1);
+							if(second.getResources().getMP() == currentplayer.getResources().getMP()){
+//								currentplayer.getResources().addVP(2);
+								nextplayer.getResources().addVP(2);
+							}
+						}
+					}
 				}
 				else{
-					currentplayer.getResources().addVP(2);
+					if(playerIndex == 1)
+						currentplayer.getResources().addVP(2);
 				}
 			}
 		}
 		
-		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
-			/*
-			 * Ordina i players sulla base del punteggio
-			 */
+		/*
+		 * Per testing
+		 */
+//		System.out.println("\n");
+//		System.out.println("VP original placement\n");
+//		for(PBoard player : players){
+//			System.out.println(player.getResources().getVP());
+//		}
+//		Collections.shuffle(players);
+//		System.out.println("\nCaso Comparator\n\n");
+//		System.out.println("VP shuffle\n");
+//		for(PBoard player : players){
+//			System.out.println(player.getResources().getVP());
+//		}
+//		Collections.sort(players, PBoard.victoryComparator);
+//		System.out.println("\n");
+//		System.out.println("VP sort\n");
+//		for(PBoard player : players){
+//			System.out.println(player.getResources().getVP());
+//		}
+//		
+		/*
+		 * Delimitatore testing
+		 */
+		
+		Collections.sort(players, PBoard.victoryComparator);
+		
+		winner = players.get(0);
+		for(int playerIndex=1; playerIndex<players.size()-1; playerIndex++){
+			
+			PBoard currentplayer = players.get(playerIndex);
+			PBoard nextplayer = players.get(playerIndex+1);
+			if(winner.getResources().getVP() == currentplayer.getResources().getVP()) {
+				for(int playerOrder=0; playerOrder<turnOrder.size(); playerOrder++){
+					/*
+					 * dopo
+					 */
+				}
+			}
+			
 		}
-		return turnplayer;
+		return players;
 	
 	}
 	

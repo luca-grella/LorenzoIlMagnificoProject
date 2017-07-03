@@ -43,7 +43,7 @@ public class FMember {
 		int malusValue = 0;
 		for(int i=0; i<player.getExcommCards().size(); i++){
 			Excommunications card = player.getExcommCards().get(i);
-			for(int j=0; j>card.getEffects().size(); j++){
+			for(int j=0; j<card.getEffects().size(); j++){
 				if("MalusValue".equals(card.getEffects().get(j).getName())){
 					if("Dice".equals(((MalusValue) card.getEffects().get(j)).getPlace())){
 						malusValue += ((MalusValue) card.getEffects().get(j)).getMalusValue();
