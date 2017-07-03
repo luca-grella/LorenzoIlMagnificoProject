@@ -18,7 +18,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 		addObserver(controller);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -110,7 +110,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 		notifyObservers(new StatusMessage(msg));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

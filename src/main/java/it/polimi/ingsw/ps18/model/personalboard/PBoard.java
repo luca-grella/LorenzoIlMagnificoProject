@@ -61,10 +61,11 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 		pBoardView = new PBoardView(mcontroller);
 		addObserver(pBoardView);
 //		this.resources = new Stats(2,2,5,2,0,0,0);
-		this.resources = new Stats(9,9,9,9,9,9,9);
-		for(int i=0; i<dices.size(); i++){
-			this.fams.add(new FMember(dices.get(i), playercol, this));
-		} this.fams.add(new FMember(666,playercol));
+		this.resources = new Stats(9,9,9,0,9,9,9);
+//		for(int i=0; i<dices.size(); i++){
+//			this.fams.add(new FMember(dices.get(i), playercol, this));
+//		} 
+		this.fams.add(new FMember(666,playercol));
 		ChooseBonusTile();
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
@@ -74,7 +75,8 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 		int count;
 		for(count=0; count<dices.size(); count++){
 			this.fams.add(new FMember(dices.get(count), playercol, this));
-		} this.fams.add(new FMember(666,playercol));
+		} 
+		this.fams.add(new FMember(666,playercol));
 	}
 	
 

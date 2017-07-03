@@ -42,7 +42,28 @@ public class TurnHandler extends Observable implements Action {
 	 */
 	public void act(GameLogic game){
 		notifyLogPBoardView("Player color " + currentPlayer.getPlayercol() + " turn");
-		notifyActionPboardView("Init Player Turn");
+		PBoard currentplayer = game.getTurnplayer();
+		FMember neutralFM = null;
+		
+		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
+			FMember fam = currentplayer.getFams().get(famIndex);
+			if(fam!= null){
+				if(fam.getColor() != GeneralParameters.neutralFMColor){
+					notifyActionPboardView("Init Player Turn");
+					return;
+				}
+				else{
+					neutralFM = fam;
+				}
+			}
+		}
+		if(neutralFM != null) {
+			if(currentplayer.getResources().getServants() > 0)
+				notifyActionPboardView("Init Player Turn");
+		}
+		
+
+		
 	}
 	
 	

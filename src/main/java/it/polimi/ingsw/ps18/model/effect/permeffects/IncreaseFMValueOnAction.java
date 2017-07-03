@@ -43,7 +43,7 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 		this.discounts = new Stats(discounts);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getName()
 	 */
 	@Override

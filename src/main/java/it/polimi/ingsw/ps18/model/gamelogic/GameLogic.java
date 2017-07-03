@@ -64,7 +64,7 @@ public class GameLogic extends Observable {
 	/**
 	 * The turn.
 	 */
-	private int TURN = 5;
+	private int TURN = 0;
 	
 	/**
 	 * The age.
@@ -327,7 +327,7 @@ public class GameLogic extends Observable {
 			/*
 			 * Per testing
 			 */
-			PBoard winner = finalScore(players);
+//			PBoard winner = finalScore(players);
 			//riordina giocatori
 			for(int famIndex=0; famIndex<GeneralParameters.nfamperplayer; famIndex++){
 				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
