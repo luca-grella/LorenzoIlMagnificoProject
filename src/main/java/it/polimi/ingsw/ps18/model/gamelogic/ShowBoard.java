@@ -112,6 +112,10 @@ public class ShowBoard extends Observable {
 		notifyLogView(board.toStringProduction());
 	}
 	
+	public void ShowExcomm(Board board){
+		notifyLogView(board.toStringExcomm());
+	}
+	
 	/**
 	 * Choose player.
 	 */

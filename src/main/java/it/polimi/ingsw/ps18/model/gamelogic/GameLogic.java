@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Random;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
@@ -19,6 +21,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.HashMapActions;
 import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
@@ -27,6 +30,8 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapVPBlue;
@@ -84,7 +89,7 @@ public class GameLogic extends Observable {
 	/**
 	 * The players.
 	 */
-	private List<PBoard> players = new ArrayList<>(nplayer);
+	private LinkedList<PBoard> players = new LinkedList<>();
 	
 	/**
 	 * The turnplayer.
@@ -152,7 +157,7 @@ public class GameLogic extends Observable {
 	 * @param mController
 	 *            the m controller
 	 */
-	public GameLogic(int nplayer,MainController mController, List<PBoard> players){
+	public GameLogic(int nplayer,MainController mController, LinkedList<PBoard> players){
 		this.nplayer = nplayer;
 		this.players = players;
 		mView = new MainView(mController);
@@ -203,7 +208,7 @@ public class GameLogic extends Observable {
 		}
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
-		board.setExcommCells(insertExcommInBoard()); //TODO: Controllare doppio carpiato
+		insertExcommInBoard();
 		notifyLogMainView("Excommunications Inserted in Board."); //TODO: Controllare
 		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
@@ -299,17 +304,16 @@ public class GameLogic extends Observable {
 	 * Insert excomm in board.
 	 * @return 
 	 */
-	private List<Excommunications> insertExcommInBoard() {
-		Collections.shuffle(excommcards);
+	private void insertExcommInBoard() {
+		Collections.shuffle(this.excommcards);
 		for(int excommPeriod=1; excommPeriod<=GeneralParameters.numberofExcommCells; excommPeriod++){
 			Iterator<Excommunications> itr = excommcards.iterator();
 			Excommunications excommcard = itr.next();
 			while(itr.hasNext() && excommcard.getPeriod() != excommPeriod){
 				excommcard = itr.next();
 			}
-			excommcards.add(excommcard);
+			this.board.getExcommCells().add(excommcard);
 		}
-		return excommcards;
 	}
 	
 	/**
@@ -324,17 +328,25 @@ public class GameLogic extends Observable {
 	public boolean gameFlow(){
 		do{
 			this.TURN++;
-			/*
-			 * Per testing
-			 */
-//			PBoard winner = finalScore(players);
-			//riordina giocatori
+			if(TURN!=1){
+				newOrder();
+			}
 			for(int famIndex=0; famIndex<GeneralParameters.nfamperplayer; famIndex++){
-				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
-					this.turnplayer = players.get(playerIndex);
-					notifyActionMainView("Turn Handle Init");
+				if(famIndex==0){
+					LinkedList<PBoard> templist = excommOrder();
+					for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+						this.turnplayer = templist.get(playerIndex);
+						notifyActionMainView("Turn Handle Init");
 
-					System.out.println(" ");
+						System.out.println(" ");
+					}
+				} else {
+					for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+						this.turnplayer = players.get(playerIndex);
+						notifyActionMainView("Turn Handle Init");
+
+						System.out.println(" ");
+					}
 				}
 			}
 
@@ -468,20 +480,49 @@ public class GameLogic extends Observable {
 		return turnplayer;
 	
 	}
-
 	
-
-	/**
-	 * To string.
-	 *
-	 * @param i
-	 *            the i
-	 * @return the string
-	 */
-	private String toString(Integer i){
-		StringBuilder builder = new StringBuilder();
-		builder.append(i);
-		return builder.toString();
+	public void newOrder(){
+		List<Integer> order = new ArrayList<>(nplayer);
+		for(CouncilCell cell: this.board.getCouncilCells()){
+			int playercolor = cell.getCouncilCellFM().getPlayercol();
+			if(! order.contains(playercolor)){
+				order.add(playercolor);
+			}
+		}
+		Collections.reverse(order);
+		for(Integer playercol: order){
+			for(int i=0; i<this.players.size(); i++){
+				if(this.players.get(i).getPlayercol() == playercol){
+					PBoard temp = this.players.get(i);
+					players.remove(i);
+					players.addFirst(temp);
+				}
+			}
+		}
+	}
+	
+	private LinkedList<PBoard> excommOrder(){
+		LinkedList<PBoard> tempOrder = new LinkedList<>();
+		tempOrder.addAll(players);
+		List<Integer> toremove = new ArrayList<>();
+		for(int i=0; i<this.nplayer; i++){
+			PBoard player = tempOrder.get(i);
+			for(Excommunications card: player.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("MalusValue".equals(effect.getName())){
+						if("TurnOrder".equals(((MalusValue) effect).getPlace())){
+							toremove.add(i);
+							tempOrder.addLast(player);
+						}
+					}
+				}
+			}
+		}
+		Collections.reverse(toremove);
+		for(int i=0; i<toremove.size(); i++){
+			tempOrder.remove((int) toremove.get(i));
+		}
+		return tempOrder;
 	}
 	
 	

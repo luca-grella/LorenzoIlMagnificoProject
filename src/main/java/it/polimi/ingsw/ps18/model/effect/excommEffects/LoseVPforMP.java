@@ -67,7 +67,10 @@ public class LoseVPforMP implements ExcommEffects {
 		return loseVP;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "Lose " + loseVP + " Victory Point for every " + hasMP + " MP that you have.";
+	}
 
 	
 

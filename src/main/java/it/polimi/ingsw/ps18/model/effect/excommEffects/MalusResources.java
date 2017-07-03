@@ -35,5 +35,13 @@ public class MalusResources implements ExcommEffects {
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("When you receive resources from an Action Space or a Card, reduce yout income by:\n");
+		builder.append(malus.toStringCost());
+		return builder.toString();
+	}
 
 }

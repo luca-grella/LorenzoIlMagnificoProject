@@ -33,18 +33,6 @@ public class ShowPlayer implements ActionChoice {
 			ShowBoard showboard = new ShowBoard(chosenPlayer.getpBoardView());
 			showboard.showPlayer(chosenPlayer);
 		}
-//		else{
-//			Action currentaction = game.getOngoingAction();
-//			((ChosePlayer) currentaction).act(game);
-//			currentaction.act(game);
-//			/*
-//			 * Fare in modo che torni alla scelta del giocatore
-//			 * ed evitare che il giocatore giochi 2 volte di fila
-//			 */
-//		}
-			
-			
-
 	}
 
 	/**

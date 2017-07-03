@@ -62,9 +62,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 			case 6:
 				notifyActionMainController("Show Player");
 				break;
-//			case 7:
-//				
-//				break;
+			case 7:
+				notifyStatusMainController("Show Excomm");
+				break;
 			case 8:
 				notifyActionMainController("FamtoTower");
 			    break;
@@ -86,7 +86,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 				notifyActionMainController("FamtoProduction");
 				break;
 			}
-		}while(ans<8 || ans>12);
+		}while((index==-1 && (ans<8 || ans>12)) || (index!=-1&&(ans<8 || ans>12 || ans==9)));
 		
 		
 	}

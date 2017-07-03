@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,8 +20,10 @@ import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
 /**
@@ -125,16 +128,8 @@ public class Board extends Observable {
 		} catch (org.json.simple.parser.ParseException e) {
 			System.out.println("Problem in parser");
 		}
-		
-		
-		
-		for(count=0; count<GeneralParameters.numberofExcommCells; count++){ 
-			this.excommCells.add(null);
-		}
-		
-		
-		
 		notifyLogBoardView("Setup Board Terminated.");
+		
 	}
 	
 	/**
@@ -457,6 +452,17 @@ public class Board extends Observable {
 			    builder.append(tempcell.toString(productionIndex));	
 			}
 		}
+		return builder.toString();
+	}
+	
+	
+	public String toStringExcomm(){
+		StringBuilder builder = new StringBuilder();
+		for(int i=0; i<this.excommCells.size(); i++){
+			Excommunications card = this.excommCells.get(i);
+			builder.append(card.toString(i));
+		}
+		builder.append("-----------------\n");
 		return builder.toString();
 	}
 	

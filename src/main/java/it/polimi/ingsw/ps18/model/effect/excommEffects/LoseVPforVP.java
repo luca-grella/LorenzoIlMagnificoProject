@@ -59,7 +59,10 @@ public class LoseVPforVP implements ExcommEffects {
 		return loseVP;
 	}
 
-	
+	@Override
+	public String toString(){
+		return "Lose " + loseVP + " Victory Point for every " + hasVP + " VP that you have.";
+	}
 	
 	
 

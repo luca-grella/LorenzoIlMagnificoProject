@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoseVPforCosts.
  */
@@ -46,7 +45,7 @@ public class LoseVPforCosts implements ExcommEffects {
 	
 	@Override
 	public String toString(){
-		return "Lose Victory Point for each wood or rock represented on each yellow card in your PBoard";
+		return "Lose " + loseVP + " Victory Point for each wood or rock represented on each yellow card in your PBoard";
 	}
 
 }

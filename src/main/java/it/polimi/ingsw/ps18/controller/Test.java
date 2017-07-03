@@ -1,11 +1,9 @@
 package it.polimi.ingsw.ps18.controller;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.LinkedList;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class Test {
-	private static List<PBoard> players = new ArrayList<>();
+	private static LinkedList<PBoard> players = new LinkedList<>();
 	private static int nplayer = 4;
 
 	/**

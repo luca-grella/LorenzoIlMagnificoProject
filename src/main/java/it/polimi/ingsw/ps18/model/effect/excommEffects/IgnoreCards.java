@@ -20,5 +20,10 @@ public class IgnoreCards implements ExcommEffects {
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public String toString(){
+		return "Ignore the Victory Points Gain from " + name + "Cards";
+	}
 
 }

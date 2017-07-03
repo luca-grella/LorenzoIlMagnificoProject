@@ -42,7 +42,7 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 		int choice;
 		do{
 			choice = input.nextInt();
-		} while(choice<1 || choice>2);
+		} while(choice<1 || choice>5);
 		if(index == -1){
 			notifyParamMainController("Chosen Privilege", choice);
 		} else {

@@ -108,13 +108,14 @@ public class Excommunications {
 	 */
 	public String toString(int pos){
 		StringBuilder builder = new StringBuilder();
+		builder.append("-----------------\n");
 		builder.append("Card number " + pos + ":\n"
 				+ "\tID: " + this.getID() + "\n"
 				+ "\tPeriod: " + this.getPeriod() + "\n"
 				);
 		builder.append("Effects:\n");
 		for(int i=0; i<(this.getEffects()).size(); i++){
-			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString());
+			builder.append("\t" + i + ": " + ((this.getEffects()).get(i)).toString() + "\n");
 		}
 
 		return builder.toString();

@@ -60,7 +60,7 @@ public class HashMapActions {
 		genActions.put("FamtoProduction", new FamtoProductionTrigger());
 		genActions.put("ReceiveFamtoProduction", new ReceiveFamtoProduction());
 		genActions.put("actProduction", new ActivateProduction());
-		genActions.put("Show Player", new ChosePlayer());
+		genActions.put("Show Player", new ChoosePlayer());
 		genActions.put("ReceivePlayertoShow", new ShowPlayer());
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
 		genActions.put("Selected YCard", new ReceiveSelectionCard());

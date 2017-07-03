@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -38,7 +39,7 @@ public class MainController implements Observer {
 		
 	}
 	
-	public void startGame(int nplayer, List<PBoard> players){
+	public void startGame(int nplayer, LinkedList<PBoard> players){
 		HashMapActions.init();
 		HashMapStatus.init();
 		game = new GameLogic(nplayer,this, players);

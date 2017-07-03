@@ -26,12 +26,12 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 public class ChosePlayerTest {
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChosePlayer#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChoosePlayer#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
 	 */
 	@Test
 	public void testAct() {
 		
-		ChosePlayer tester = new ChosePlayer();
+		ChoosePlayer tester = new ChoosePlayer();
 		
 		GameLogic game = new GameLogic();
 		game.setNplayer(2);
@@ -60,11 +60,11 @@ public class ChosePlayerTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChosePlayer#setIndex(int)}.
+	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChoosePlayer#setIndex(int)}.
 	 */
 	@Test
 	public void testSetIndex() {
-		ChosePlayer tester = new ChosePlayer();
+		ChoosePlayer tester = new ChoosePlayer();
 		int i =1;
 		tester.setIndex(i );
 		

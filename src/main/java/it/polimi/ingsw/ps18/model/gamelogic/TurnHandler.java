@@ -2,8 +2,12 @@ package it.polimi.ingsw.ps18.model.gamelogic;
 
 import java.util.Observable;
 
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
@@ -44,12 +48,27 @@ public class TurnHandler extends Observable implements Action {
 		notifyLogPBoardView("Player color " + currentPlayer.getPlayercol() + " turn");
 		PBoard currentplayer = game.getTurnplayer();
 		FMember neutralFM = null;
+		boolean canActMarket = true;
+		for(Excommunications card: game.getTurnplayer().getExcommCards()){
+			for(ExcommEffects effect: card.getEffects()){
+				if("MalusValue".equals(effect.getName())){
+					if("Market".equals(((MalusValue) effect).getPlace())){
+						canActMarket = false;
+					}
+				}
+			}
+		}
 		
 		for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 			FMember fam = currentplayer.getFams().get(famIndex);
 			if(fam!= null){
 				if(fam.getColor() != GeneralParameters.neutralFMColor){
-					notifyActionPboardView("Init Player Turn");
+					if(canActMarket){
+						notifyActionPboardView("Init Player Turn");
+					} else {
+						notifyParamPboardView("Init Player Turn", 1);
+					}
+					
 					return;
 				}
 				else{
@@ -59,7 +78,11 @@ public class TurnHandler extends Observable implements Action {
 		}
 		if(neutralFM != null) {
 			if(currentplayer.getResources().getServants() > 0)
-				notifyActionPboardView("Init Player Turn");
+				if(canActMarket){
+					notifyActionPboardView("Init Player Turn");
+				} else {
+					notifyParamPboardView("Init Player Turn", 1);
+				}
 		}
 		
 
@@ -88,6 +111,11 @@ public class TurnHandler extends Observable implements Action {
 	private void notifyActionPboardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
+	}
+	
+	private void notifyParamPboardView(String msg, int i){
+		setChanged();
+		notifyObservers(new ParamMessage(msg,i));
 	}
 
 	/**
