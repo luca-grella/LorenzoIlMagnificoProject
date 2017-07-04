@@ -2,6 +2,9 @@ package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
 import org.json.simple.JSONArray;
 
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+
 /**
  * The Class LoseVPforMP.
  */
@@ -21,6 +24,12 @@ public class LoseVPforMP implements ExcommEffects {
 	 * The lose VP.
 	 */
 	private long loseVP;
+	
+	
+	public void activate(PBoard player){
+		Stats resources = player.getResources();
+		resources.addVP((int) - ((resources.getMP() / hasMP) * loseVP));
+	}
 
 
 	/* (non-Javadoc)

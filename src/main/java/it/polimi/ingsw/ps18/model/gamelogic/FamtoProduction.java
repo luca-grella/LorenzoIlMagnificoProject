@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
@@ -105,7 +106,21 @@ public class FamtoProduction extends Observable implements Action {
 				
 			}
 		}
-		this.actionValue = board.getActionValueProd(this.chosenFam) + modifierValue;
+		int malusServants = 1;
+		for(Excommunications card: currentplayer.getExcommCards()){
+			for(ExcommEffects effect: card.getEffects()){
+				if("MalusValue".equals(effect.getName())){
+					if("Servants".equals(((MalusValue) effect).getPlace())){
+						malusServants = ((MalusValue) effect).getMalusValue();
+						if(malusServants == 0){
+							malusServants = 1;
+						}
+					}
+					
+				}
+			}
+		}
+		this.actionValue = board.getActionValueProd(this.chosenFam) + modifierValue + (this.numberOfServants / malusServants);
 		int malusValue = 0;
 		for(int i=0; i<currentplayer.getExcommCards().size(); i++){
 			Excommunications card = currentplayer.getExcommCards().get(i);

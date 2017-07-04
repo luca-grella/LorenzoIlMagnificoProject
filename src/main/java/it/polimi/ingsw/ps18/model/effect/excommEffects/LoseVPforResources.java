@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+
 /**
  * The Class LoseVPforResources.
  */
@@ -15,6 +18,16 @@ public class LoseVPforResources implements ExcommEffects {
 	 * The name.
 	 */
 	private String name = "LoseVPforResources";
+	
+	public void activate(PBoard player){
+		Stats resources = player.getResources();
+		int count = 0;
+		count += resources.getWood();
+		count += resources.getRock();
+		count += resources.getCoin();
+		count += resources.getServants();
+		resources.addVP((int) - (count * loseVP));
+	}
 	
 	
 	/* (non-Javadoc)

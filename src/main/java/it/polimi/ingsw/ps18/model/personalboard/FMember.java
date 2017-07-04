@@ -4,7 +4,6 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FMember.
  */
@@ -136,7 +135,11 @@ public class FMember {
 	 *            the value to set
 	 */
 	public void setValue(int value) {
-		this.value = value;
+		if(value>=0){
+			this.value = value;
+			return;
+		}
+		value = 0;
 	}
 
 	/**

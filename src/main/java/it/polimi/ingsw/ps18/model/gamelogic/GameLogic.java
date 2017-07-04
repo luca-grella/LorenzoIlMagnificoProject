@@ -30,8 +30,7 @@ import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
-import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.*;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapFE;
 import it.polimi.ingsw.ps18.model.effect.finalEffect.HashMapVPBlue;
@@ -91,6 +90,8 @@ public class GameLogic extends Observable {
 	 */
 	private LinkedList<PBoard> players = new LinkedList<>();
 	
+	private LinkedList<PBoard> recoverTurn = new LinkedList<>();
+ 	
 	/**
 	 * The turnplayer.
 	 */
@@ -200,6 +201,18 @@ public class GameLogic extends Observable {
 			this.dices.add(new Dice(i));
 		}
 		genDeck();
+		this.players.get(0).getExcommCards().add(this.excommcards.get(0));
+		this.players.get(0).getExcommCards().add(this.excommcards.get(4));
+		this.players.get(0).getExcommCards().add(this.excommcards.get(6));
+		this.players.get(1).getExcommCards().add(this.excommcards.get(1));
+		this.players.get(1).getExcommCards().add(this.excommcards.get(5));
+		this.players.get(1).getExcommCards().add(this.excommcards.get(12));
+		this.players.get(2).getExcommCards().add(this.excommcards.get(2));
+		this.players.get(2).getExcommCards().add(this.excommcards.get(9));
+		this.players.get(2).getExcommCards().add(this.excommcards.get(8));
+		this.players.get(3).getExcommCards().add(this.excommcards.get(3));
+		this.players.get(3).getExcommCards().add(this.excommcards.get(7));
+		this.players.get(3).getExcommCards().add(this.excommcards.get(10));
 		notifyLogMainView("Deck Initialized.");
 		for(int i=0; i<nplayer; i++){
 			this.turnplayer = players.get(i);
@@ -220,8 +233,8 @@ public class GameLogic extends Observable {
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
-		notifyLogMainView("Excommunications Inserted in Board."); //TODO: Controllare
-		Collections.shuffle(players); //initial order
+		notifyLogMainView("Excommunications Inserted in Board.");
+//		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
 	}
@@ -339,25 +352,28 @@ public class GameLogic extends Observable {
 	public boolean gameFlow(){
 		do{
 			this.TURN++;
-			if(TURN!=1){
-				newOrder();
+			this.recoverTurn.clear();
+			LinkedList<PBoard> templist = excommOrder();
+			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
+				this.turnplayer = templist.get(playerIndex);
+				notifyActionMainView("Turn Handle Init");
+				
+				System.out.println(" ");
 			}
-			for(int famIndex=0; famIndex<GeneralParameters.nfamperplayer; famIndex++){
-				if(famIndex==0){
-					LinkedList<PBoard> templist = excommOrder();
-					for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
-						this.turnplayer = templist.get(playerIndex);
-						notifyActionMainView("Turn Handle Init");
+			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
+				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+					this.turnplayer = players.get(playerIndex);
+					notifyActionMainView("Turn Handle Init");
 
-						System.out.println(" ");
-					}
-				} else {
-					for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
-						this.turnplayer = players.get(playerIndex);
-						notifyActionMainView("Turn Handle Init");
+					System.out.println(" ");
+				}
+			}
+			if(! this.recoverTurn.isEmpty()){
+				for(int recover=0; recover<this.recoverTurn.size(); recover++){
+					this.turnplayer = this.recoverTurn.get(recover);
+					notifyActionMainView("Turn Handle Init");
 
-						System.out.println(" ");
-					}
+					System.out.println(" ");
 				}
 			}
 
@@ -371,6 +387,7 @@ public class GameLogic extends Observable {
 					notifyActionMainController("Verify Church Support");
 				}
 			}
+			newOrder();
 			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
@@ -435,8 +452,33 @@ public class GameLogic extends Observable {
 		 * Delimitatore testing
 		 */
 		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
-			
 			PBoard currentplayer = players.get(playerIndex);
+			boolean considerBlueCards = true;
+			boolean considerPurpleCards = true;
+			boolean considerGreenCards = true;
+			for(Excommunications card: currentplayer.getExcommCards()){
+				for(ExcommEffects effect: card.getEffects()){
+					if("IgnoreCards".equals(effect.getName())){
+						if("Blue".equals(((IgnoreCards) effect).getName())){
+							considerBlueCards = false;
+						} else if("Purple".equals(((IgnoreCards) effect).getName())){
+							considerPurpleCards = false;
+						} else if("Green".equals(((IgnoreCards) effect).getName())){
+							considerGreenCards = false;
+						}
+					} else if("LoseVPforVP".equals(effect.getName())){
+						((LoseVPforVP) effect).activate(currentplayer);
+					} else if("LoseVPforMP".equals(effect.getName())){
+						((LoseVPforMP) effect).activate(currentplayer);
+					} else if("LoseVpforCosts".equals(effect.getName())){
+						((LoseVPforCosts) effect).activate(currentplayer);
+					} else if("LoseVPforResources".equals(effect.getName())){
+						((LoseVPforResources) effect).activate(currentplayer);
+					}
+				}
+			}
+			
+			
 			List<Cards> cards = currentplayer.getCards();
 			Iterator<Cards> itr = cards.iterator();
 			Cards playerCard = itr.next();
@@ -448,20 +490,37 @@ public class GameLogic extends Observable {
 			    else if(playerCard.getColor() == 1)
 			    	blueCount++;
 			    else if(playerCard.getColor() == 3){
-			    	HashMapFE map = new HashMapFE();
-			    	FinalEffect finalEffect = map.geteffect("AddPV");
-			    	finalEffect.activate(currentplayer, this);
+			    	if(considerPurpleCards){
+			    		HashMapFE map = new HashMapFE();
+				    	FinalEffect finalEffect = map.geteffect("AddPV");
+				    	finalEffect.activate(currentplayer, this);
+			    	}
 			    }
 			    playerCard = itr.next();
 			}
-			HashMapVPGreen greenMap = new HashMapVPGreen();
-			HashMapVPBlue blueMap = new HashMapVPBlue();
-			Integer greenVP = greenMap.getGenVPGEffect(greenCount);
-			Integer blueVP = blueMap.getGenVPBEffect(blueCount);
+			
+			
+			if(considerGreenCards){
+				HashMapVPGreen greenMap = new HashMapVPGreen();
+				Integer greenVP = greenMap.getGenVPGEffect(greenCount);
+				currentplayer.getResources().addVP(greenVP);
+			}
+			
+			
+			if(considerBlueCards){
+				HashMapVPBlue blueMap = new HashMapVPBlue();
+				Integer blueVP = blueMap.getGenVPBEffect(blueCount);
+				currentplayer.getResources().addVP(blueVP);
+			}
+			
+			
 			Stats resources = currentplayer.getResources();
 			int totalRes = resources.getCoin() + resources.getRock() + resources.getServants() + resources.getWood();
-			currentplayer.getResources().addVP(greenVP +  blueVP + totalRes/5);	
+			currentplayer.getResources().addVP(totalRes/5);
 		}
+		
+		
+		
 		
 		
 		/*
@@ -537,6 +596,11 @@ public class GameLogic extends Observable {
 				}
 			}
 		}
+		
+		
+		
+		
+		
 		
 		/*
 		 * Per testing
@@ -614,7 +678,6 @@ public class GameLogic extends Observable {
 					if("MalusValue".equals(effect.getName())){
 						if("TurnOrder".equals(((MalusValue) effect).getPlace())){
 							toremove.add(i);
-							tempOrder.addLast(player);
 						}
 					}
 				}
@@ -622,6 +685,7 @@ public class GameLogic extends Observable {
 		}
 		Collections.reverse(toremove);
 		for(int i=0; i<toremove.size(); i++){
+			this.recoverTurn.addFirst(tempOrder.get((int) toremove.get(i)));
 			tempOrder.remove((int) toremove.get(i));
 		}
 		return tempOrder;
