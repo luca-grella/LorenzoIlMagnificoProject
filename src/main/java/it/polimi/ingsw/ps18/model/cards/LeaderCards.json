@@ -1,0 +1,548 @@
+{
+  "1": {
+    "name": "Francesco Sforza",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Purple",
+        5
+      ]
+    ],
+    "QuickEffects": [
+      "ActivateHarvest"
+    ],
+    "QuickEffectValues": [
+      1
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "2": {
+    "name": "Lucrezia Borgia",
+    "active": false,
+    "Requirements": [
+      "CheckMinimumSameTypeCards"
+    ],
+    "RequirementValues": [
+      6
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "ModifierValue"
+    ],
+    "PermanentEffectValues": [
+      [
+        "BonusDiceValue",
+        2
+      ]
+    ]
+  },
+  "3": {
+    "name": "Ludovico Ariosto",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Blue",
+        5
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "4": {
+    "name": "Federico da Montefeltro",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Green",
+        5
+      ]
+    ],
+    "QuickEffects": [
+      "ChangeFamValue"
+    ],
+    "QuickEffectValues": [
+      6
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "5": {
+    "name": "Filippo Brunelleschi",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Yellow",
+        5
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "SkipCoinPaymentinTower"
+    ]
+  },
+  "6": {
+    "name": "Lorenzo De'Medici",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        35,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "7": {
+    "name": "Sigismondo Malatesta",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        3
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "ModifierValue"
+    ],
+    "PermanentEffectValues": [
+      [
+        "BonusNeutralFam",
+        3
+      ]
+    ]
+  },
+  "8": {
+    "name": "Sisto IV",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        6,
+        6,
+        6,
+        6,
+        0,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "BonusVPVaticanReport"
+    ]
+  },
+  "9": {
+    "name": "Girolamo Savonarola",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        18,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "10": {
+    "name": "Cesare Borgia",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        "Yellow",
+        3
+      ],
+      [
+        0,
+        0,
+        12,
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "SkipMPCheckGreenCards"
+    ]
+  },
+  "11": {
+    "name": "Michelangelo Buonarroti",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "12": {
+    "name": "Santa Rita",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "DoubleBonus"
+    ]
+  },
+  "13": {
+    "name": "Giovanni dalle Bande Nere",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "14": {
+    "name": "Cosimo De'Medici",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Yellow",
+        4
+      ],
+      [
+        "Blue",
+        2
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        0,
+        0,
+        0,
+        3,
+        1,
+        0,
+        0
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "15": {
+    "name": "Leonardo Da Vinci",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Green",
+        2
+      ],
+      [
+        "Blue",
+        4
+      ]
+    ],
+    "QuickEffects": [
+      "ActivateProduction"
+    ],
+    "QuickEffectValues": [
+      0
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "16": {
+    "name": "Bartolomeo Colleoni",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Green",
+        4
+      ],
+      [
+        "Purple",
+        2
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "17": {
+    "name": "Sandro Botticelli",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [
+      "AddResources"
+    ],
+    "QuickEffectValues": [
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0
+      ]
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "18": {
+    "name": "Ludovico III Gonzaga",
+    "active": false,
+    "Requirements": [
+      "CheckResources"
+    ],
+    "RequirementValues": [
+      [
+        0,
+        0,
+        0,
+        15,
+        0,
+        0,
+        0
+      ]
+    ],
+    "QuickEffects": [
+      "AddPC"
+    ],
+    "QuickEffectValues": [
+      1
+    ],
+    "PermanentEffects": [],
+    "PermanentEffectValues": []
+  },
+  "19": {
+    "name": "Ludovico Il Moro",
+    "active": false,
+    "Requirements": [
+      "CheckMinimumAllTypeCards"
+    ],
+    "RequirementValues": [
+      2
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "ModifierValue"
+    ],
+    "PermanentEffectValues": [
+      [
+        "BaseFamValueModifier",
+        5
+      ]
+    ]
+  },
+  "20": {
+    "name": "Pico Della Mirandola",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Purple",
+        4
+      ],
+      [
+        "Yellow",
+        2
+      ]
+    ],
+    "QuickEffects": [],
+    "QuickEffectValues": [],
+    "PermanentEffects": [
+      "TowerDiscount"
+    ],
+    "PermanentEffectValues": [
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  }
+}

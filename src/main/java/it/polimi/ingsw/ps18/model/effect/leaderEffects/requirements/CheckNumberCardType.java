@@ -6,7 +6,6 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 public class CheckNumberCardType implements LCRequirement {
 	private int typecolor;
 	private int minimum;
-	private String description;
 	
 	
 	@Override
@@ -23,7 +22,7 @@ public class CheckNumberCardType implements LCRequirement {
 		return false;
 	}
 	
-	public void setParam(String details, int minimum, String description){
+	public void setParam(String details, int minimum){
 		this.minimum = minimum;
 		if("Green".equals(details)){
 			this.typecolor = 0;
@@ -36,12 +35,11 @@ public class CheckNumberCardType implements LCRequirement {
 		} else {
 			this.typecolor = -3;
 		}
-		this.description = description;
 	}
 	
 	@Override
 	public String toString(){
-		return description;
+		return "Da Scrivere";
 	}
 
 }

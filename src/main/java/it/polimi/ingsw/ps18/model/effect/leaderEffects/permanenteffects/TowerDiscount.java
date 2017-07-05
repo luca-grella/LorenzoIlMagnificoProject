@@ -5,7 +5,6 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 public class TowerDiscount implements LCPermEffect {
 	private Stats discount;
 	private String shortDescription = "TowerDiscount";
-	private String description;
 
 	/**
 	 * @return the discount
@@ -17,14 +16,18 @@ public class TowerDiscount implements LCPermEffect {
 	/**
 	 * @param discount the discount to set
 	 */
-	public void setParam(Stats discount, String description) {
+	public void setParam(Stats discount) {
 		this.discount = discount;
-		this.description = description;
 	}
 	
 	@Override
 	public String toString(){
-		return description;
+		return "Da Scrivere";
+	}
+
+	@Override
+	public String getShortDescription() {
+		return this.shortDescription;
 	}
 	
 	

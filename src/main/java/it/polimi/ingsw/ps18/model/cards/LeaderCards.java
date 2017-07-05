@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.LCRequiremen
  */
 public class LeaderCards {
 	private String name;
-	private boolean active = false;
+	private boolean active;
 	private List<LCRequirement> requirements = new ArrayList<>();
 	private List<LCQuickEffect> quickEffects = new ArrayList<>();
 	private List<LCPermEffect> permEffects = new ArrayList<>();

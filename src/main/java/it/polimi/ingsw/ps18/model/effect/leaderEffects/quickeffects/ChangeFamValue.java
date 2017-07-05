@@ -11,7 +11,6 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 public class ChangeFamValue extends Observable implements LCQuickEffect, ChoiceLeaderEffect {
 	private int newActionvalue;
 	private int choice;
-	private String description;
 
 	@Override
 	public void activate(PBoard player, GameLogic game) {
@@ -27,13 +26,12 @@ public class ChangeFamValue extends Observable implements LCQuickEffect, ChoiceL
 		fam.setValue(newActionvalue);
 	}
 	
-	public void setParam(int newActionValue, String description){
+	public void setParam(int newActionValue){
 		if(newActionValue<0){
 			this.newActionvalue=0;
 		} else {
 			this.newActionvalue = newActionValue;
 		}
-		this.description = description;
 	}
 
 	/**
@@ -45,7 +43,7 @@ public class ChangeFamValue extends Observable implements LCQuickEffect, ChoiceL
 	
 	@Override
 	public String toString(){
-		return description;
+		return "Da Scrivere";
 	}
 	
 	

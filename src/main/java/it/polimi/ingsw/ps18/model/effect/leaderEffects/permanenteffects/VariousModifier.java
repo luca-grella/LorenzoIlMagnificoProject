@@ -1,16 +1,12 @@
 package it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects;
 
-public class ModifierValue implements LCPermEffect {
-	private String name = "ModifierValue";
+public class VariousModifier implements LCPermEffect {
 	private String shortDescription;
-	private int quantity;
 	
-	public void setParam(String shortDescription, int quantity){
+	public void setParam(String shortDescription){
 		this.shortDescription = shortDescription;
-		this.quantity = quantity;
 	}
-	
-	
+
 	@Override
 	public String getShortDescription() {
 		return this.shortDescription;
@@ -20,17 +16,5 @@ public class ModifierValue implements LCPermEffect {
 	public String toString(){
 		return "Da Scrivere";
 	}
-
-
-	/**
-	 * @return the quantity
-	 */
-	public int getQuantity() {
-		return quantity;
-	}
-	
-	
-	
-	
 
 }

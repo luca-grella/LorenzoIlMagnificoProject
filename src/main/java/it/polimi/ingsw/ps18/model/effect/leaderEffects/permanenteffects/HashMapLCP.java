@@ -9,6 +9,7 @@ public class HashMapLCP {
 	public HashMapLCP(){
 		peffects.put("TowerDiscount", new TowerDiscount());
 		peffects.put("ModifierValue", new ModifierValue());
+		peffects.put("VariousModifier", new VariousModifier());
 	}
 	
 	public LCPermEffect getLCPermEffect(String key){

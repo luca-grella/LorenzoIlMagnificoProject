@@ -5,7 +5,6 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class CheckMinimumSameTypeCards implements LCRequirement {
 	private int minimum;
-	private String description;
 
 	@Override
 	public boolean checkRequirement(PBoard player) {
@@ -41,14 +40,13 @@ public class CheckMinimumSameTypeCards implements LCRequirement {
 		return false;
 	}
 	
-	public void setParam(int minimum, String description){
+	public void setParam(int minimum){
 		this.minimum = minimum;
-		this.description = description;
 	}
 	
 	@Override
 	public String toString(){
-		return description;
+		return "Da Scrivere";
 	}
 
 }
