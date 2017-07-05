@@ -385,6 +385,7 @@ public class GameLogic extends Observable {
 				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
 					this.setCurrentPlayer(this.players.get(playerIndex));
 					notifyActionMainController("Verify Church Support");
+					this.AGE++;
 				}
 			}
 			newOrder();
@@ -392,10 +393,7 @@ public class GameLogic extends Observable {
 
 		} while (TURN!=GeneralParameters.totalTurns);
 		List<PBoard> placement = finalScore(players);
-		/*
-		 * TODO: magari evitare che mi stampi tutta la lista di roba inutile, per il resto funziona
-		 */
-		this.toStringPlayers(placement);
+		notifyLogMainView(this.toStringPlayers(placement));
 
 		//System.out.println("Do you want to play again? Y|N");
 		String answer = input.nextLine();
@@ -410,13 +408,18 @@ public class GameLogic extends Observable {
 	 */
 	public String toStringPlayers(List<PBoard> players){
 		StringBuilder builder = new StringBuilder();
+		String placement[] = {"Winner", "Second", "Third", "Fourth"};
+		
 		builder.append("\n-----------------\n");
+
 		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
 			PBoard player = players.get(playerIndex);
-			ShowBoard show = new ShowBoard(player.getpBoardView());
-			show.showPlayer(player);
+			builder.append(placement[playerIndex] + ": player " + player.getPlayercol() 
+							+ " with " + player.getResources().getVP() 
+							+ " Victory Points!\n");
 		}
 		return builder.toString();
+//		notifyLogMainView(builder.toString());
 	}
 	
 	
@@ -444,10 +447,10 @@ public class GameLogic extends Observable {
 		/*
 		 * Per testing
 		 */
-//		for(int index=0; index<players.size(); index++){
-//			PBoard currentplayer = players.get(index);
-//			currentplayer.getResources().addMP(index);
-//		}
+		for(int index=0; index<players.size(); index++){
+			PBoard currentplayer = players.get(index);
+			currentplayer.getResources().addMP(index);
+		}
 		/*
 		 * Delimitatore testing
 		 */
@@ -543,7 +546,6 @@ public class GameLogic extends Observable {
 //			
 //			System.out.println(player.getResources().getMP());
 //		}
-		
 		/*
 		 * Delimitatore testing
 		 */
@@ -552,8 +554,15 @@ public class GameLogic extends Observable {
 		 * Si salva l'ordine dei giocatori prima di ordinarli in base al punteggio
 		 * perche' in caso di pareggio in VP, vince chi e' piu' avanti nell'ordine del turno
 		 */
+		
+		/*
+		 * Scommentare dopo test
+		 */
 		turnOrder.addAll(players);
 		Collections.sort(players);
+		/*
+		 * Delimitatore
+		 */
 		
 		//TODO:  dare un'occhiata ai controlli sugli MP che potrebbero non essere corretti per tutte le casistiche
 		PBoard winner = players.get(0);
@@ -622,29 +631,43 @@ public class GameLogic extends Observable {
 //		for(PBoard player : players){
 //			System.out.println(player.getResources().getVP());
 //		}
-//		
 		/*
 		 * Delimitatore testing
 		 */
 		
+		/*
+		 * Scommentare dopo testing
+		 */
 		Collections.sort(players, PBoard.victoryComparator);
+		/*
+		 * Delimitatore
+		 */
 		
-		winner = players.get(0);
 		for(int playerIndex=1; playerIndex<players.size()-1; playerIndex++){
-			
+			winner = players.get(0);
+
 			PBoard currentplayer = players.get(playerIndex);
-			PBoard nextplayer = players.get(playerIndex+1);
+			int winnerPlacement = -1;
+			int currentPlacement = -1;
 			if(winner.getResources().getVP() == currentplayer.getResources().getVP()) {
 				for(int playerOrder=0; playerOrder<turnOrder.size(); playerOrder++){
-					/*
-					 * dopo
-					 */
+					
+					if(winner.getPlayercol() == turnOrder.get(playerOrder).getPlayercol()){
+						winnerPlacement = playerOrder;
+					}
+					if(currentplayer.getPlayercol() == turnOrder.get(playerOrder).getPlayercol()){
+						currentPlacement = playerOrder;
+					}
 				}
-			}
-			
+				if(winnerPlacement > 0 && currentPlacement > 0){
+					if(winnerPlacement > currentPlacement){
+						Collections.swap(players, 0, 1);
+					}
+				}
+			}	
 		}
+		
 		return players;
-	
 	}
 	
 	public void newOrder(){
