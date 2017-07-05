@@ -30,6 +30,7 @@ public class HashMapPBVS {
 		genPBVStatus.put("actProduction", new ActProduction(mcontroller));
 		genPBVStatus.put("Select YC", new SelectYellowC(mcontroller));
 		genPBVStatus.put("Choose Effect", new ChooseEffect(mcontroller));
+		genPBVStatus.put("FamChoiceLC", new ChooseFamforValueChangeLC(mcontroller));
 	}
 	
 	/**

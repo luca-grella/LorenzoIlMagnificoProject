@@ -36,12 +36,11 @@ public class MainController implements Observer {
 	 * Instantiates a new main controller.
 	 */
 	public MainController(){
-		
+		HashMapActions.init();
+		HashMapStatus.init();
 	}
 	
 	public void startGame(int nplayer, LinkedList<PBoard> players){
-		HashMapActions.init();
-		HashMapStatus.init();
 		game = new GameLogic(nplayer,this, players);
 		game.setup(this);
 		game.gameFlow();

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.DifferentPrivilegeHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.PrivilegeHandler;
+import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.ReceiveFamforValueChange;
 import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.WoodorRockHandler;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCouncilTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.ReceiveFamtoCouncil;
@@ -70,6 +71,7 @@ public class HashMapActions {
 		genActions.put("ReceiveChosenBonusTile", new ReceiveBonusTile());
 		genActions.put("Verify Church Support", new VaticanReportTrigger());
 		genActions.put("Receive Vatican Answer", new ReceiveVaticanAnswer());
+		genActions.put("ReceiveFamforValueChange", new ReceiveFamforValueChange());
 	}
 	
 	/**

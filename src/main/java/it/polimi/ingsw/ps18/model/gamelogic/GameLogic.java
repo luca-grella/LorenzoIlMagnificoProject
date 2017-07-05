@@ -39,6 +39,7 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HashMapHE;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.ChoiceLeaderEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
@@ -148,6 +149,8 @@ public class GameLogic extends Observable {
 	private GeneralEffect ongoingEffect;
 	
 	private WoodorRockEffects ongoingWREffect;
+	
+	private ChoiceLeaderEffect ongoingLCEffect;
 	
 	
 	/**
@@ -870,6 +873,22 @@ public class GameLogic extends Observable {
 	public WoodorRockEffects getOngoingWREffect() {
 		return ongoingWREffect;
 	}
+
+	/**
+	 * @return the ongoingLCEffect
+	 */
+	public ChoiceLeaderEffect getOngoingLCEffect() {
+		return ongoingLCEffect;
+	}
+
+	/**
+	 * @param ongoingLCEffect the ongoingLCEffect to set
+	 */
+	public void setOngoingLCEffect(ChoiceLeaderEffect ongoingLCEffect) {
+		this.ongoingLCEffect = ongoingLCEffect;
+	}
+	
+	
 	
 	
 	
