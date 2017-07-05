@@ -67,8 +67,10 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} 
 		this.fams.add(new FMember(666,playercol));
+		if (BonusTiles.size() != 0){
+		
 		ChooseBonusTile();
-		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");};
 		
 	}
 	public void refreshFMembers(List<Dice> dices){

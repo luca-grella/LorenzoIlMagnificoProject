@@ -81,4 +81,11 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 		return name;
 	}
 
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+
 }
