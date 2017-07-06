@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
+import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
@@ -98,9 +99,33 @@ public class FamtoProductionTrigger implements ActionChoice {
 			}
 			
 
+			
 			if(game.getBoard().isLegalProd(maxFM)){
 				if(prodCellNoMalus.isEmptyPC()){
-					if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
+					if(maxFM != null){
+						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
+							Action action = new FamtoProduction(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoProduction) action).famchoice();
+							return;
+						}
+						else{
+							Action action = game.getOngoingAction();
+							action.act(game); 
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+					
+				}
+				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
+				if(maxFM != null){
+					if(prodCellMalus.isLegalPC(maxFM.getValue())){ 
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -112,42 +137,53 @@ public class FamtoProductionTrigger implements ActionChoice {
 						return;
 					}
 				}
-				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
-				if(prodCellMalus.isLegalPC(maxFM.getValue())){ 
-					Action action = new FamtoProduction(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoProduction) action).famchoice();
-					return;
-				}
 				else{
+					System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
 				}
+				
 			}
 			
 			if(game.getBoard().isLegalProd(maxNeutralFM)){
 				if(prodCellNoMalus.isEmptyPC()){
-					if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){
+					if(maxNeutralFM != null){
+						if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){
+							Action action = new FamtoProduction(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoProduction) action).famchoice();
+							return;
+						}
+						else{
+							Action action = game.getOngoingAction();
+							action.act(game); 
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+					
+				}
+				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
+				if(maxNeutralFM != null){
+					if(prodCellMalus.isLegalPC(maxNeutralFM.getValue())){ 
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
 						return;
 					}
-					else{
-						Action action = game.getOngoingAction();
-						action.act(game); 
-						return;
-					}
 				}
-				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
-				if(prodCellMalus.isLegalPC(maxNeutralFM.getValue())){ 
-					Action action = new FamtoProduction(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoProduction) action).famchoice();
+				else{
+					System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+					Action action = game.getOngoingAction();
+					action.act(game); 
 					return;
 				}
-
 			}
 			Action action = game.getOngoingAction();
 			action.act(game); 	
@@ -157,7 +193,6 @@ public class FamtoProductionTrigger implements ActionChoice {
 			int maxNeutralValue = 0;
 
 			if((((game.getBoard()).getProductionCells().isEmpty()))){
-				
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 					FMember curFM = currentplayer.getFams().get(famIndex);
 					if(curFM!=null){
@@ -183,30 +218,39 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(maxNeutralFM.getValue() == 0){
 					maxNeutralFM = null;
 				}
-				
 				if(prodCellNoMalus.isEmptyPC()){
-					if(game.getBoard().isLegalProd(maxFM)){
-						ProdCell prodCell = new ProdCell(0);
-						if(prodCell.isLegalPC(maxFM.getValue())){
+					if(maxFM != null){
+						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){ 
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
 							return;
 						}
 					}
-					if(game.getBoard().isLegalProd(maxNeutralFM)){
-						ProdCell prodCell = new ProdCell(0);
-						if(prodCell.isLegalPC(maxNeutralFM.getValue())){
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+					
+					if(maxNeutralFM != null){
+						if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){ 
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
 							return;
 						}
+					}
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
 					}
 					Action action = game.getOngoingAction();
-					action.act(game); 
+					action.act(game);
 				}
-				
 			}
 			else{
 				Action action = game.getOngoingAction();

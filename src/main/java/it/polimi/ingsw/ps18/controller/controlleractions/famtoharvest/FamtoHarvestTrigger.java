@@ -103,7 +103,30 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			
 			if(game.getBoard().isLegalHarv(maxFM)){
 				if(harvCellNoMalus.isEmptyHC()){
-					if(harvCellNoMalus.isLegalHC(maxFM.getValue())){
+					if(maxFM != null){
+						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){
+							Action action = new FamtoHarvest(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoHarvest) action).famchoice();
+							return;
+						}
+						else{
+							Action action = game.getOngoingAction();
+							action.act(game); 
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+					
+				}
+				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+				if(maxFM != null){
+					if(harvCellMalus.isLegalHC(maxFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
@@ -115,72 +138,56 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						return;
 					}
 				}
-				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-				if(harvCellMalus.isLegalHC(maxFM.getValue())){ 
-					Action action = new FamtoHarvest(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoHarvest) action).famchoice();
+				else{
+					System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+					Action action = game.getOngoingAction();
+					action.act(game); 
 					return;
 				}
+				
+			}
+			
+			if(game.getBoard().isLegalHarv(maxNeutralFM)){
+				if(harvCellNoMalus.isEmptyHC()){
+					if(maxNeutralFM != null){
+						if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){
+							Action action = new FamtoHarvest(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoHarvest) action).famchoice();
+							return;
+						}
+						else{
+							Action action = game.getOngoingAction();
+							action.act(game); 
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+					
+				}
+				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+				if(maxNeutralFM != null){
+					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue())){ 
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+						return;
+					}
+				}
 				else{
+					System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
 				}
 			}
-			
-			if(game.getBoard().isLegalHarv(maxNeutralFM)){
-				if(harvCellNoMalus.isEmptyHC()){
-					if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){
-						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoHarvest) action).famchoice();
-						return;
-					}
-					else{
-						Action action = game.getOngoingAction();
-						action.act(game); 
-						return;
-					}
-				}
-				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-				if(harvCellMalus.isLegalHC(maxNeutralFM.getValue())){ 
-					Action action = new FamtoHarvest(currentplayer.getpBoardView());
-					game.setOngoingAction(action);
-					((FamtoHarvest) action).famchoice();
-					return;
-				}
-
-			}
 			Action action = game.getOngoingAction();
 			action.act(game); 
-			
-//			else{
-//				if(game.getBoard().isLegalHarv(maxFM)){
-//					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-//					HarvCell harvCell = new HarvCell(0);
-//					
-//					if(harvCellMalus.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxFM.getValue())){ 
-//						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-//						game.setOngoingAction(action);
-//						((FamtoHarvest) action).famchoice();
-//						return;
-//					}
-//				}
-//				if(game.getBoard().isLegalHarv(maxNeutralFM)){
-//					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-//					HarvCell harvCell = new HarvCell(0);
-//
-//					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){ 
-//						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-//						game.setOngoingAction(action);
-//						((FamtoHarvest) action).famchoice();
-//						return;
-//					}
-//				}
-//				Action action = game.getOngoingAction();
-//				action.act(game); 
-//			}
 		}
 		else if(game.getNplayer() == 2){
 			int maxValue = 0;
@@ -214,18 +221,35 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				}
 				
 				if(harvCellNoMalus.isEmptyHC()){
-					if(harvCellNoMalus.isLegalHC(maxFM.getValue())){ 
-						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoHarvest) action).famchoice();
+					if(maxFM != null){
+						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){ 
+							Action action = new FamtoHarvest(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoHarvest) action).famchoice();
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
 						return;
 					}
-					if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){ 
-						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoHarvest) action).famchoice();
+					if(maxNeutralFM != null){
+						if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){ 
+							Action action = new FamtoHarvest(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoHarvest) action).famchoice();
+							return;
+						}
+					}
+					else{
+						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
 						return;
 					}
+					
 					Action action = game.getOngoingAction();
 					action.act(game);
 				}
