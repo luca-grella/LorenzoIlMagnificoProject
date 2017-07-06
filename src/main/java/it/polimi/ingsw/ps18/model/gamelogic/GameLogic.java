@@ -46,6 +46,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+import it.polimi.ingsw.ps18.model.personalboard.resources.VictoryPoints;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
@@ -204,18 +205,6 @@ public class GameLogic extends Observable {
 			this.dices.add(new Dice(i));
 		}
 		genDeck();
-		this.players.get(0).getExcommCards().add(this.excommcards.get(0));
-		this.players.get(0).getExcommCards().add(this.excommcards.get(4));
-		this.players.get(0).getExcommCards().add(this.excommcards.get(6));
-		this.players.get(1).getExcommCards().add(this.excommcards.get(1));
-		this.players.get(1).getExcommCards().add(this.excommcards.get(5));
-		this.players.get(1).getExcommCards().add(this.excommcards.get(12));
-		this.players.get(2).getExcommCards().add(this.excommcards.get(2));
-		this.players.get(2).getExcommCards().add(this.excommcards.get(9));
-		this.players.get(2).getExcommCards().add(this.excommcards.get(8));
-		this.players.get(3).getExcommCards().add(this.excommcards.get(3));
-		this.players.get(3).getExcommCards().add(this.excommcards.get(7));
-		this.players.get(3).getExcommCards().add(this.excommcards.get(10));
 		notifyLogMainView("Deck Initialized.");
 		for(int i=0; i<nplayer; i++){
 			this.turnplayer = players.get(i);
@@ -332,6 +321,7 @@ public class GameLogic extends Observable {
 	 * @return 
 	 */
 	private void insertExcommInBoard() {
+
 		Collections.shuffle(this.excommcards);
 		for(int excommPeriod=1; excommPeriod<=GeneralParameters.numberofExcommCells; excommPeriod++){
 			Iterator<Excommunications> itr = excommcards.iterator();
@@ -356,6 +346,14 @@ public class GameLogic extends Observable {
 		do{
 			this.TURN++;
 			this.recoverTurn.clear();
+			/*
+			 * Per testing
+			 */
+//			List<PBoard> placement = finalScore(players);
+//			notifyLogMainView(this.toStringPlayers(placement));
+			/*
+			 * Delimitatore
+			 */
 			LinkedList<PBoard> templist = excommOrder();
 			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
 				this.turnplayer = templist.get(playerIndex);
@@ -388,13 +386,15 @@ public class GameLogic extends Observable {
 				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
 					this.setCurrentPlayer(this.players.get(playerIndex));
 					notifyActionMainController("Verify Church Support");
-					this.AGE++;
+					
 				}
+				this.AGE++;
 			}
 			newOrder();
 			this.refreshGame();
 
 		} while (TURN!=GeneralParameters.totalTurns);
+		
 		List<PBoard> placement = finalScore(players);
 		notifyLogMainView(this.toStringPlayers(placement));
 
@@ -422,15 +422,13 @@ public class GameLogic extends Observable {
 							+ " Victory Points!\n");
 		}
 		return builder.toString();
-//		notifyLogMainView(builder.toString());
 	}
 	
 	
 	
 	public void refreshGame(){
 		for(int diceIndex=0; diceIndex<GeneralParameters.numberofDices; diceIndex++){
-			this.dices.set(diceIndex, new Dice(diceIndex)); 
-			//Dice riceve il colore del dado, che coincide con il valore sequenziale dell'ArrayList
+			this.dices.set(diceIndex, new Dice(diceIndex));
 		}
 		for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
 			this.players.get(playerIndex).refreshFMembers(dices);
@@ -450,10 +448,12 @@ public class GameLogic extends Observable {
 		/*
 		 * Per testing
 		 */
-		for(int index=0; index<players.size(); index++){
-			PBoard currentplayer = players.get(index);
-			currentplayer.getResources().addMP(index);
-		}
+//		for(int index=0; index<players.size(); index++){
+//			PBoard currentplayer = players.get(index);
+//			currentplayer.getResources().addMP(index);
+//		}
+//		players.get(0).getResources().addMP(6);
+//		players.get(1).getResources().addMP(4);
 		/*
 		 * Delimitatore testing
 		 */
@@ -535,18 +535,21 @@ public class GameLogic extends Observable {
 //		System.out.println("\nCaso Comparable\n\n");
 //		System.out.println("MP original placement\n");
 //		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getMP());
 //		}
 //		Collections.shuffle(players);
+//		System.out.println("\n");
 //		System.out.println("MP shuffle\n");
 //		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getMP());
 //		}
 //		Collections.sort(players);
 //		System.out.println("\n");
 //		System.out.println("MP tempMP sort\n");
 //		for(PBoard player : players){
-//			
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getMP());
 //		}
 		/*
@@ -562,9 +565,30 @@ public class GameLogic extends Observable {
 		 * Scommentare dopo test
 		 */
 		turnOrder.addAll(players);
-		Collections.sort(players);
+		/*
+		 * PER TESTING
+		 */
+		 
+//		Collections.shuffle(turnOrder);
+		/*
+		 * DELIMITATORE
+		 */
+		for(int playerIndex = 0; playerIndex<turnOrder.size(); playerIndex++){
+			PBoard player = turnOrder.get(playerIndex);
+			player.setPriorityValue(playerIndex);
+		}
+		
+		
+//		Collections.sort(players);
 		/*
 		 * Delimitatore
+		 */
+		/*
+		 * PER TESTING
+		 */
+//		Collections.shuffle(turnOrder);
+		/*
+		 * DELIMITATORE
 		 */
 		
 		//TODO:  dare un'occhiata ai controlli sugli MP che potrebbero non essere corretti per tutte le casistiche
@@ -609,29 +633,39 @@ public class GameLogic extends Observable {
 			}
 		}
 		
-		
-		
-		
-		
+		for(PBoard player : players){
+			if(player.getResources().getVP() <= 0){
+				player.getResources().setVp(new VictoryPoints(0));
+			}
+		}
 		
 		/*
 		 * Per testing
 		 */
+//		Stats stat = new Stats(0,0,0,0,0,0,34);
+//		players.get(3).setResources(stat);
+//		players.get(1).setResources(stat);
+//		players.get(2).setResources(stat);
+//		players.get(0).setResources(stat);
+//
 //		System.out.println("\n");
 //		System.out.println("VP original placement\n");
 //		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getVP());
 //		}
 //		Collections.shuffle(players);
 //		System.out.println("\nCaso Comparator\n\n");
 //		System.out.println("VP shuffle\n");
 //		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getVP());
 //		}
 //		Collections.sort(players, PBoard.victoryComparator);
 //		System.out.println("\n");
 //		System.out.println("VP sort\n");
 //		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
 //			System.out.println(player.getResources().getVP());
 //		}
 		/*
@@ -646,30 +680,51 @@ public class GameLogic extends Observable {
 		 * Delimitatore
 		 */
 		
-		for(int playerIndex=1; playerIndex<players.size()-1; playerIndex++){
-			winner = players.get(0);
-
-			PBoard currentplayer = players.get(playerIndex);
-			int winnerPlacement = -1;
-			int currentPlacement = -1;
-			if(winner.getResources().getVP() == currentplayer.getResources().getVP()) {
-				for(int playerOrder=0; playerOrder<turnOrder.size(); playerOrder++){
-					
-					if(winner.getPlayercol() == turnOrder.get(playerOrder).getPlayercol()){
-						winnerPlacement = playerOrder;
-					}
-					if(currentplayer.getPlayercol() == turnOrder.get(playerOrder).getPlayercol()){
-						currentPlacement = playerOrder;
-					}
-				}
-				if(winnerPlacement > 0 && currentPlacement > 0){
-					if(winnerPlacement > currentPlacement){
-						Collections.swap(players, 0, 1);
-					}
-				}
-			}	
+		/*
+		 * Per testing
+		 */
+		System.out.println("\n");
+		System.out.println("VP BEFORE swap\n");
+		for(PBoard player : players){
+			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
+			System.out.println(player.getResources().getVP());
 		}
 		
+		System.out.println("\n");
+		System.out.println("Turn Order (shuffled)\n");
+		for(PBoard player : turnOrder){
+			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
+			System.out.println(player.getResources().getVP());
+		}
+		/*
+		 * Delimitatore
+		 */		
+		for(int i=1; i<players.size(); i++){
+			for(int j=i; j>0; j--){
+				PBoard currentplayer = players.get(j);
+				PBoard previousplayer = players.get(j-1);
+				if(currentplayer.getResources().getVP() == previousplayer.getResources().getVP()){
+					if(currentplayer.getPriorityValue() < previousplayer.getPriorityValue()){
+						Collections.swap(players, j, j-1);
+					}
+				}
+			}
+		}
+		
+		
+		
+		/*
+		 * Per testing
+		 */
+//		System.out.println("\n");
+//		System.out.println("VP AFTER swap\n");
+//		for(PBoard player : players){
+//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
+//			System.out.println(player.getResources().getVP());
+//		}
+		/*
+		 * Delimitatore
+		 */
 		return players;
 	}
 	

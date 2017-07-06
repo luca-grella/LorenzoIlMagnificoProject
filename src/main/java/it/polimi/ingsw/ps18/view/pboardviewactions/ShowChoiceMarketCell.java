@@ -60,7 +60,7 @@ public class ShowChoiceMarketCell extends Observable implements PBViewAction {
 		notifyObservers(new StatusMessage(msg));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

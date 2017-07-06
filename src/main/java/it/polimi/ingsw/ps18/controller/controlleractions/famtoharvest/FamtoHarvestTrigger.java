@@ -48,6 +48,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
 		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		HarvCell harvCellNoMalus =  game.getBoard().getHarvCellNoMalus();
 		
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
@@ -92,52 +93,100 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					}
 				}
 			}
-			//In quanto l'accesso e' sequenziale
-			if(game.getBoard().getHarvestCells().isEmpty()){
-				HarvCell harvCell = new HarvCell(0); //TODO: generalparameters
-				if(harvCell.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){
+			if(maxFM.getValue() == 0){
+				maxFM = null;
+			}
+			if(maxNeutralFM.getValue() == 0){
+				maxNeutralFM = null;
+			}
+			
+			
+			if(game.getBoard().isLegalHarv(maxFM)){
+				if(harvCellNoMalus.isEmptyHC()){
+					if(harvCellNoMalus.isLegalHC(maxFM.getValue())){
+						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoHarvest) action).famchoice();
+						return;
+					}
+					else{
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+				}
+				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+				if(harvCellMalus.isLegalHC(maxFM.getValue())){ 
 					Action action = new FamtoHarvest(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoHarvest) action).famchoice();
+					return;
 				}
-
 				else{
 					Action action = game.getOngoingAction();
 					action.act(game); 
+					return;
 				}
 			}
-			else{
-				if(game.getBoard().isLegalHarv(maxFM)){
-					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-					HarvCell harvCell = new HarvCell(0);
-					
-					if(harvCellMalus.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxFM.getValue())){ 
+			
+			if(game.getBoard().isLegalHarv(maxNeutralFM)){
+				if(harvCellNoMalus.isEmptyHC()){
+					if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 						return;
 					}
+					else{
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
 				}
-				if(game.getBoard().isLegalHarv(maxNeutralFM)){
-					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
-					HarvCell harvCell = new HarvCell(0);
+				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+				if(harvCellMalus.isLegalHC(maxNeutralFM.getValue())){ 
+					Action action = new FamtoHarvest(currentplayer.getpBoardView());
+					game.setOngoingAction(action);
+					((FamtoHarvest) action).famchoice();
+					return;
+				}
 
-					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){ 
-						Action action = new FamtoHarvest(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoHarvest) action).famchoice();
-						return;
-					}
-				}
-				Action action = game.getOngoingAction();
-				action.act(game); 
 			}
+			Action action = game.getOngoingAction();
+			action.act(game); 
+			
+//			else{
+//				if(game.getBoard().isLegalHarv(maxFM)){
+//					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+//					HarvCell harvCell = new HarvCell(0);
+//					
+//					if(harvCellMalus.isLegalHC(maxFM.getValue()) || harvCell.isLegalHC(maxFM.getValue())){ 
+//						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+//						game.setOngoingAction(action);
+//						((FamtoHarvest) action).famchoice();
+//						return;
+//					}
+//				}
+//				if(game.getBoard().isLegalHarv(maxNeutralFM)){
+//					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+//					HarvCell harvCell = new HarvCell(0);
+//
+//					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue()) || harvCell.isLegalHC(maxNeutralFM.getValue())){ 
+//						Action action = new FamtoHarvest(currentplayer.getpBoardView());
+//						game.setOngoingAction(action);
+//						((FamtoHarvest) action).famchoice();
+//						return;
+//					}
+//				}
+//				Action action = game.getOngoingAction();
+//				action.act(game); 
+//			}
 		}
 		else if(game.getNplayer() == 2){
 			int maxValue = 0;
 			int maxNeutralValue = 0;
 			
-			if((((game.getBoard()).getHarvestCells()).isEmpty())){
+			if(game.getBoard().getHarvCellNoMalus().isEmptyHC()){
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 					FMember curFM = currentplayer.getFams().get(famIndex);
 					if(curFM!=null){
@@ -157,26 +206,30 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						}
 					}
 				}
-				if(game.getBoard().isLegalHarv(maxFM)){
-					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(maxFM.getValue())){ 
+				if(maxFM.getValue() == 0){
+					maxFM = null;
+				}
+				if(maxNeutralFM.getValue() == 0){
+					maxNeutralFM = null;
+				}
+				
+				if(harvCellNoMalus.isEmptyHC()){
+					if(harvCellNoMalus.isLegalHC(maxFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 						return;
 					}
-				}
-				if(game.getBoard().isLegalHarv(maxNeutralFM)){
-					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(maxNeutralFM.getValue())){ 
+					if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){ 
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 						return;
 					}
+					Action action = game.getOngoingAction();
+					action.act(game);
 				}
-				Action action = game.getOngoingAction();
-				action.act(game);
+				
 			}
 			else{
 				Action action = game.getOngoingAction();

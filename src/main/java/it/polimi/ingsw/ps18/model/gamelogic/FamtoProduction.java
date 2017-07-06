@@ -37,6 +37,11 @@ public class FamtoProduction extends Observable implements Action {
 	private FMember chosenFam;
 	
 	/**
+	 * The chosen production cell.
+	 */
+	private int chosenCell;
+	
+	/**
 	 * The index famto remove.
 	 */
 	private int indexFamtoRemove;
@@ -67,6 +72,10 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Production");
+	}
+	
+	public void cellChoice(){
+		notifyActionPBoardView("Cell Choice Production");
 	}
 	
 	public void servantsChoice(GameLogic game) {
@@ -120,7 +129,7 @@ public class FamtoProduction extends Observable implements Action {
 				}
 			}
 		}
-		this.actionValue = board.getActionValueProd(this.chosenFam) + modifierValue + (this.numberOfServants / malusServants);
+		this.actionValue = board.getActionValueProd(this.chosenFam, this.chosenCell) + modifierValue + (this.numberOfServants / malusServants);
 		int malusValue = 0;
 		for(int i=0; i<currentplayer.getExcommCards().size(); i++){
 			Excommunications card = currentplayer.getExcommCards().get(i);
@@ -228,7 +237,7 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	public void activateEffects(PBoard player, GameLogic game){
 		game.getTurnplayer().getFams().set(indexFamtoRemove, null);
-		game.getBoard().insertFMProd(this.chosenFam);
+		game.getBoard().insertFMProd(this.chosenFam, this.chosenCell);
 		(player.getResources()).subStats(totalCostPreview);
 		for(Cards card: this.cardsForActivation){
 			if(card.hasProduction()){
@@ -251,7 +260,7 @@ public class FamtoProduction extends Observable implements Action {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override
@@ -351,6 +360,28 @@ public class FamtoProduction extends Observable implements Action {
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;		
 	}
+
+	/**
+	 * @return the chosenCell
+	 */
+	public int getChosenCell() {
+		return chosenCell;
+	}
+
+	/**
+	 * @param chosenCell the chosenCell to set
+	 */
+	public void setChosenCell(int chosenCell) {
+		this.chosenCell = chosenCell;
+	}
+
+	/**
+	 * @return the chosenFam
+	 */
+	public FMember getChosenFam() {
+		return chosenFam;
+	}
+	
 	
 
 	

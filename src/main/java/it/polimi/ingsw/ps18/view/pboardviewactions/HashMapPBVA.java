@@ -35,7 +35,9 @@ public class HashMapPBVA {
 		genPBVAction.put("Market Cell Choice", new ShowChoiceMarketCell(mcontroller));
 		genPBVAction.put("Fam Choice Council", new ShowChoiceFamtoCouncil(mcontroller));
 		genPBVAction.put("Fam Choice Harvest", new ShowChoiceFamtoHarvest(mcontroller));
+		genPBVAction.put("Cell Choice Harvest", new ShowChoiceHarvestCell(mcontroller));
 		genPBVAction.put("Fam Choice Production", new ShowChoiceFamtoProduction(mcontroller));
+		genPBVAction.put("Cell Choice Production", new ShowChoiceProductionCell(mcontroller));
 		genPBVAction.put("actHarvest", new ActHarvestwithParameter(mcontroller));
 		genPBVAction.put("actProduction", new ActProductionwithParameter(mcontroller));
 		genPBVAction.put("PrivilegeChoice", new ChoosePrivilege(mcontroller));

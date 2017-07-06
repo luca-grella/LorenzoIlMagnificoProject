@@ -31,7 +31,7 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act() {
-		System.out.println("Chose the Floor in which you want to move in:\n"
+		System.out.println("Choose the Floor in which you want to move in:\n"
 				+ "-----------------\n0. Back.");
 		notifyParamMainController("ReceiveTowertoShow",this.index);
 		int choiceFloor = input.nextInt();

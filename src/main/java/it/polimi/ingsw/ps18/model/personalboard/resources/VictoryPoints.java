@@ -4,7 +4,7 @@ package it.polimi.ingsw.ps18.model.personalboard.resources;
 /**
  * The Class VictoryPoints.
  */
-class VictoryPoints implements Points{
+public class VictoryPoints implements Points{
 	
 	/**
 	 * The quantity.
@@ -31,14 +31,14 @@ class VictoryPoints implements Points{
 		this.quantity = (int) value;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.personalboard.resources.Points#getQuantity()
 	 */
 	public int getQuantity(){
 		return this.quantity;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.personalboard.resources.Points#addQuantity(int)
 	 */
 	public void addQuantity(int value){

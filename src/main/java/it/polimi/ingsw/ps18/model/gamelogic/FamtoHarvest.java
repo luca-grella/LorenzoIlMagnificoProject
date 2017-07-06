@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
 import it.polimi.ingsw.ps18.model.effect.harvestEffect.HarvestEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
@@ -27,6 +28,11 @@ public class FamtoHarvest extends Observable implements Action {
 	 * The chosen fam.
 	 */
 	private FMember chosenFam;
+	
+	/**
+	 * The index of the chosen harvest cell.
+	 */
+	private int chosenCell;
 	
 	/**
 	 * The index famto remove.
@@ -59,6 +65,10 @@ public class FamtoHarvest extends Observable implements Action {
 	 */
 	public void famchoice(){
 		notifyActionPBoardView("Fam Choice Harvest");
+	}
+	
+	public void cellChoice(){
+		notifyActionPBoardView("Cell Choice Harvest");
 	}
 	
 	public void servantsChoice(GameLogic game) {
@@ -99,7 +109,22 @@ public class FamtoHarvest extends Observable implements Action {
 			}
 		}
 		
-		this.actionValue = board.insertFMHarv(chosenFam) + modifierValue;
+		int malusServants = 1;
+		for(Excommunications card: currentplayer.getExcommCards()){
+			for(ExcommEffects effect: card.getEffects()){
+				if("MalusValue".equals(effect.getName())){
+					if("Servants".equals(((MalusValue) effect).getPlace())){
+						malusServants = ((MalusValue) effect).getMalusValue();
+						if(malusServants == 0){
+							malusServants = 1;
+						}
+					}
+					
+				}
+			}
+		}
+		
+		this.actionValue = board.getActionValueHarv(chosenFam, chosenCell) + modifierValue + (this.numberOfServants / malusServants);
 		int malusValue = 0;
 		for(int i=0; i<currentplayer.getExcommCards().size(); i++){
 			Excommunications card = currentplayer.getExcommCards().get(i);
@@ -117,6 +142,7 @@ public class FamtoHarvest extends Observable implements Action {
 			actionValue = 0;
 		}
 		currentplayer.getFams().set(indexFamtoRemove, null);
+		board.insertFMHarv(chosenFam, chosenCell);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actHarvest();
 	}
@@ -158,6 +184,15 @@ public class FamtoHarvest extends Observable implements Action {
 			}
 		}
 	}
+	
+	
+	
+	/**
+	 * @return the chosenFam
+	 */
+	public FMember getChosenFam() {
+		return chosenFam;
+	}
 
 	/**
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
@@ -168,6 +203,13 @@ public class FamtoHarvest extends Observable implements Action {
 
 	}
 	
+	/**
+	 * @param chosenCell the chosenCell to set
+	 */
+	public void setChosenCell(int chosenCell) {
+		this.chosenCell = chosenCell;
+	}
+
 	/**
 	 * Notify action P board view.
 	 *

@@ -108,7 +108,7 @@ public class ProdCell {
 		builder.append("\nAction Malus from this cell: " + malus);
 		
 		if(prodCellFM != null){
-			builder.append("Family Member in production cell number " + index + ":\n"
+			builder.append("\nFamily Member in production cell number " + index + ":\n"
 					+ "\tPlayer color: " + prodCellFM.getPlayercol() + "\n"
 					+ "\tFamily Member color: " + prodCellFM.getColor() + "\n"
 					+ "\tFamily Member value: " + prodCellFM.getValue() + "\n"
@@ -117,7 +117,6 @@ public class ProdCell {
 		else{
 			builder.append("\nProduction cell is empty!");
 		}
-		builder.append("-----------------\n");
 		return builder.toString();
 	}
 

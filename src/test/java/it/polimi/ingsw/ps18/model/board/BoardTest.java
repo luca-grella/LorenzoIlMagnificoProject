@@ -242,7 +242,7 @@ public class BoardTest {
 		fm.setColor(34);
 		fm.setPlayercol(455);
 		fm.setValue(12);
-		tester.insertFMHarv(fm);
+		tester.insertFMHarv(fm, 1);
 		int color = tester.getHarvestCells().get(0).getHarvCellFM().getColor();
 		int playercol = tester.getHarvestCells().get(0).getHarvCellFM().getPlayercol();
 		int value = tester.getHarvestCells().get(0).getHarvCellFM().getValue();
@@ -268,7 +268,7 @@ public class BoardTest {
 		fm.setColor(82);
 		fm.setPlayercol(876);
 		fm.setValue(39);
-		tester.insertFMProd(fm);
+		tester.insertFMProd(fm, 1);
 		int color = tester.getProductionCells().get(0).getProdCellFM().getColor();
 		int playercol = tester.getProductionCells().get(0).getProdCellFM().getPlayercol();
 		int value = tester.getProductionCells().get(0).getProdCellFM().getValue();

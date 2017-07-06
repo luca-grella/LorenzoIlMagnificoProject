@@ -71,14 +71,24 @@ public class Board extends Observable {
 	private List<CouncilCell> councilCells = new ArrayList<>();
 	
 	/**
-	 * The harvest cells.
+	 * The harvest cells with malus.
 	 */
 	private List<HarvCell> harvestCells = new ArrayList<>();
 	
 	/**
-	 * The production cells.
+	 * The harvest cell without malus.
+	 */
+	private HarvCell harvCellNoMalus = new HarvCell(0);
+	
+	/**
+	 * The production cells with malus.
 	 */
 	private List<ProdCell> productionCells = new ArrayList<>();
+	
+	/**
+	 * The production cell without malus
+	 */
+	private ProdCell prodCellNoMalus = new ProdCell(0);
 	
 	/**
 	 * The excomm cells.
@@ -241,30 +251,66 @@ public class Board extends Observable {
 	 * </ul>
 	 */
 	public boolean isLegalHarv(FMember pBoardFM){
-		if(harvestCells.isEmpty()){
-			return true;
-		}
-		else{
-			for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
-				HarvCell harvCell = harvestCells.get(harvIndex);
-				if( ! (harvCell.isEmptyHC()) ){
-					
-					if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
-						
-						if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
-							
-							if(harvCell.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor)
-								return false;
+		if(pBoardFM != null){
+			if(this.harvCellNoMalus.isEmptyHC() && this.harvestCells.isEmpty()){
+				return true;
+			}
+			
+			if( ! (this.harvCellNoMalus.isEmptyHC())){
+				if(this.harvCellNoMalus.getHarvCellFM().getPlayercol() != pBoardFM.getPlayercol()){
+					for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
+						HarvCell harvCell = harvestCells.get(harvIndex);
+						if( ! (harvCell.isEmptyHC()) ){
+							if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+								if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
+									if(harvCell.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor){
+										return false;
+									}
+								}
+							}
 						}
-						/*
-						 * Se sto inserendo un neutro, posso fare quel che voglio.
-						 */
 					}
-					//else cicla alla cella dopo
+				}
+				else{
+					if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){	
+						if(this.harvCellNoMalus.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor)
+							return false;
+						else{
+							for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
+								HarvCell harvCell = harvestCells.get(harvIndex);
+								if( ! (harvCell.isEmptyHC()) ){
+									if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){	
+										if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){		
+											if(harvCell.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor)
+												return false;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
-			return true;
+			else{
+				for(int harvIndex=0; harvIndex < harvestCells.size(); harvIndex++){
+					HarvCell harvCell = harvestCells.get(harvIndex);
+					if( ! (harvCell.isEmptyHC()) ){
+						if(harvCell.getHarvCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+							if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
+								if(harvCell.getHarvCellFM().getColor() != GeneralParameters.neutralFMColor)
+									return false;
+							}
+						}
+					}
+				}
+			}
 		}
+		else{ //Familiare a null
+			System.out.println("\n[Board isLegalHarv] familiare null!");
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -290,26 +336,67 @@ public class Board extends Observable {
 	 * </ul>
 	 */
 	public boolean isLegalProd(FMember pBoardFM){
-		if(productionCells.isEmpty()){
-			return true;
-		}
-		else{
-			for(int prodIndex=0; prodIndex < productionCells.size(); prodIndex++){
-				ProdCell prodCell = productionCells.get(prodIndex);
-				
-				if( ! (prodCell.isEmptyPC()) ){ 
-					
-					if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){
-						
-						if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
-							if(prodCell.getProdCellFM().getColor() != GeneralParameters.neutralFMColor)
-								return false;
+		
+		if(pBoardFM != null){
+			if(this.prodCellNoMalus.isEmptyPC() && this.productionCells.isEmpty()){
+				return true;
+			}
+			
+			if( ! (this.prodCellNoMalus.isEmptyPC())){
+				if(this.prodCellNoMalus.getProdCellFM().getPlayercol() != pBoardFM.getPlayercol()){
+					for(int prodIndex=0; prodIndex < productionCells.size(); prodIndex++){
+						ProdCell prodCell = productionCells.get(prodIndex);
+						if( ! (prodCell.isEmptyPC()) ){
+							if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+								if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
+									if(prodCell.getProdCellFM().getColor() != GeneralParameters.neutralFMColor){
+										return false;
+									}
+								}
+							}
+						}
+					}
+				}
+				else{
+					if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){	
+						if(this.prodCellNoMalus.getProdCellFM().getColor() != GeneralParameters.neutralFMColor)
+							return false;
+						else{
+							for(int prodIndex=0; prodIndex < harvestCells.size(); prodIndex++){
+								ProdCell prodCell = productionCells.get(prodIndex);
+								if( ! (prodCell.isEmptyPC()) ){
+									if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){	
+										if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){		
+											if(prodCell.getProdCellFM().getColor() != GeneralParameters.neutralFMColor)
+												return false;
+										}
+									}
+								}
+							}
 						}
 					}
 				}
 			}
-			return true;
+			else{
+				for(int prodIndex=0; prodIndex < productionCells.size(); prodIndex++){
+					ProdCell prodCell = productionCells.get(prodIndex);
+					if( ! (prodCell.isEmptyPC()) ){
+						if(prodCell.getProdCellFM().getPlayercol() == pBoardFM.getPlayercol()){
+							if(pBoardFM.getColor() != GeneralParameters.neutralFMColor){
+								if(prodCell.getProdCellFM().getColor() != GeneralParameters.neutralFMColor)
+									return false;
+							}
+						}
+					}
+				}
+			}
 		}
+		else{ //Familiare a null
+			System.out.println("\n[Board isLegalProd] familiare null!");
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -326,21 +413,33 @@ public class Board extends Observable {
 	 * FMember chosen for the current action
 	 * @return the FMember value considering a possible Harvest malus
 	 */
-	public int insertFMHarv(FMember fam){
+	public void insertFMHarv(FMember fam, int chosenCell){
 		HarvCell harvCell;
-		if(harvestCells.isEmpty()){
-			harvCell = new HarvCell(0);
-			if(harvCell.insertFM(fam)){
-				harvestCells.add(harvCell);
-			}
-		} else {
+		/*
+		 * Cambia: if la scelta e' stata di piazzare il fam nella prima cella,
+		 * lo inserisce li
+		 */
+		if(chosenCell == 0){
+			this.harvCellNoMalus.insertFM(fam);
+		} 
+		else {
 			harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
 			if(harvCell.insertFM(fam)){
 				harvestCells.add(harvCell);
 			}
-		} return (fam.getValue() - harvCell.getMalus());
+		} 
+//		return (fam.getValue() - harvCell.getMalus());
 	}
 	
+	public int getActionValueHarv(FMember fam, int chosenCell) {
+		int malus = 0;
+		if(chosenCell != 0){
+			malus = -3;
+		}
+		return (fam.getValue() - malus);
+
+	}
+
 	
 	/**
 	 * Inserts a FMember in Production:<br>
@@ -356,13 +455,10 @@ public class Board extends Observable {
 	 * FMember chosen for the current action.
 	 * @return the FMember value considering a possible Harvest malus.
 	 */
-	public void insertFMProd(FMember fam){
+	public void insertFMProd(FMember fam, int chosenCell){
 		ProdCell prodCell;
-		if(productionCells.isEmpty()){
-			prodCell = new ProdCell(0);
-			if(prodCell.insertFM(fam)){
-				productionCells.add(prodCell);
-			}
+		if(chosenCell == 0){
+			this.prodCellNoMalus.insertFM(fam);
 		} else {
 			prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
 			if(prodCell.insertFM(fam)){
@@ -371,9 +467,9 @@ public class Board extends Observable {
 		}
 	}
 	
-	public int getActionValueProd(FMember fam){
+	public int getActionValueProd(FMember fam, int chosenCell){
 		int malus = 0;
-		if(! productionCells.isEmpty()){
+		if(chosenCell != 0){
 			malus = -3;
 		}
 		return (fam.getValue() - malus);
@@ -426,12 +522,17 @@ public class Board extends Observable {
 	 */
 	public String toStringHarvest(){
 		StringBuilder builder = new StringBuilder();
-		if(this.harvestCells.isEmpty()){
+		if(this.harvestCells.isEmpty() && this.harvCellNoMalus.isEmptyHC()){
 			builder.append("\nThe Harvest Section is Empty.\n\n");
-		} else {
-			for(int harvestIndex=0; harvestIndex<this.harvestCells.size(); harvestIndex++){
+		}
+		else{
+			if( ! (this.harvCellNoMalus.isEmptyHC()) )
+				builder.append(this.harvCellNoMalus.toString(0));
+			if( ! (this.harvestCells.isEmpty()) ){
+				for(int harvestIndex=0; harvestIndex<this.harvestCells.size(); harvestIndex++){
 				HarvCell tempcell = this.harvestCells.get(harvestIndex);
-			    builder.append(tempcell.toString(harvestIndex));	
+			    builder.append(tempcell.toString(harvestIndex+1));
+				}
 			}
 		}
 		return builder.toString();
@@ -444,12 +545,17 @@ public class Board extends Observable {
 	 */
 	public String toStringProduction(){
 		StringBuilder builder = new StringBuilder();
-		if(this.productionCells.isEmpty()){
+		if(this.productionCells.isEmpty() && this.prodCellNoMalus.isEmptyPC()){
 			builder.append("\nThe Production Section is Empty.\n\n");
-		} else {
-			for(int productionIndex=0; productionIndex<this.productionCells.size(); productionIndex++){
-				ProdCell tempcell = this.productionCells.get(productionIndex);
-			    builder.append(tempcell.toString(productionIndex));	
+		}
+		else{
+			if( ! (this.prodCellNoMalus.isEmptyPC()) )
+				builder.append(this.prodCellNoMalus.toString(0));
+			if( ! (this.productionCells.isEmpty()) ){
+				for(int prodIndex=0; prodIndex<this.productionCells.size(); prodIndex++){
+					ProdCell tempcell = this.productionCells.get(prodIndex);
+				    builder.append(tempcell.toString(prodIndex+1));
+				}
 			}
 		}
 		return builder.toString();
@@ -542,6 +648,22 @@ public class Board extends Observable {
 	public void setHarvestCells(List<HarvCell> harvestCells) {
 		this.harvestCells = harvestCells;
 	}
+	
+	
+
+	/**
+	 * @return the harvCellNoMalus
+	 */
+	public HarvCell getHarvCellNoMalus() {
+		return harvCellNoMalus;
+	}
+
+	/**
+	 * @param harvCellNoMalus the harvCellNoMalus to set
+	 */
+	public void setHarvCellNoMalus(HarvCell harvCellNoMalus) {
+		this.harvCellNoMalus = harvCellNoMalus;
+	}
 
 	/**
 	 * Gets the production cells.
@@ -560,6 +682,21 @@ public class Board extends Observable {
 	 */
 	public void setProductionCells(List<ProdCell> productionCells) {
 		this.productionCells = productionCells;
+	}
+
+	/**
+	 * @return the prodCellNoMalus
+	 */
+	public ProdCell getProdCellNoMalus() {
+		return prodCellNoMalus;
+	}
+
+	/**
+	 * @param prodCellNoMalus the prodCellNoMalus to set
+	 */
+	
+	public void setProdCellNoMalus(ProdCell prodCellNoMalus) {
+		this.prodCellNoMalus = prodCellNoMalus;
 	}
 
 	/**

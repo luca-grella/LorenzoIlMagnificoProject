@@ -47,6 +47,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol()); 
 		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		ProdCell prodCellNoMalus = game.getBoard().getProdCellNoMalus();
+		
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
 			if(card.hasPermanent()){
@@ -88,47 +90,67 @@ public class FamtoProductionTrigger implements ActionChoice {
 					}
 				}
 			}
+			if(maxFM.getValue() == 0){
+				maxFM = null;
+			}
+			if(maxNeutralFM.getValue() == 0){
+				maxNeutralFM = null;
+			}
+			
 
-			//In quanto e' sequenziale
-			if(game.getBoard().getHarvestCells().isEmpty()){
-				ProdCell prodCell = new ProdCell(0);
-				if(prodCell.isLegalPC(maxFM.getValue()) || prodCell.isLegalPC(maxNeutralFM.getValue())){
+			if(game.getBoard().isLegalProd(maxFM)){
+				if(prodCellNoMalus.isEmptyPC()){
+					if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
+						Action action = new FamtoProduction(currentplayer.getpBoardView());
+						game.setOngoingAction(action);
+						((FamtoProduction) action).famchoice();
+						return;
+					}
+					else{
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
+				}
+				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
+				if(prodCellMalus.isLegalPC(maxFM.getValue())){ 
 					Action action = new FamtoProduction(currentplayer.getpBoardView());
 					game.setOngoingAction(action);
 					((FamtoProduction) action).famchoice();
+					return;
 				}
 				else{
 					Action action = game.getOngoingAction();
 					action.act(game); 
+					return;
 				}
 			}
-			else{
-				if(game.getBoard().isLegalProd(maxFM)){
-					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
-					ProdCell prodCell = new ProdCell(0);
-
-					if(prodCellMalus.isLegalPC(maxFM.getValue()) || prodCell.isLegalPC(maxFM.getValue())){
+			
+			if(game.getBoard().isLegalProd(maxNeutralFM)){
+				if(prodCellNoMalus.isEmptyPC()){
+					if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
 						return;
 					}
-					
-				}
-				if(game.getBoard().isLegalProd(maxNeutralFM)){
-					ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusProdCells);
-					ProdCell prodCell = new ProdCell(0);
-
-					if(prodCellMalus.isLegalPC(maxNeutralFM.getValue()) || prodCell.isLegalPC(maxNeutralFM.getValue())){
-						Action action = new FamtoProduction(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoProduction) action).famchoice();
+					else{
+						Action action = game.getOngoingAction();
+						action.act(game); 
 						return;
 					}
 				}
-				Action action = game.getOngoingAction();
-				action.act(game); 
+				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
+				if(prodCellMalus.isLegalPC(maxNeutralFM.getValue())){ 
+					Action action = new FamtoProduction(currentplayer.getpBoardView());
+					game.setOngoingAction(action);
+					((FamtoProduction) action).famchoice();
+					return;
+				}
+
 			}
+			Action action = game.getOngoingAction();
+			action.act(game); 	
 		}
 		else if(game.getNplayer() == 2){
 			int maxValue = 0;
@@ -155,26 +177,36 @@ public class FamtoProductionTrigger implements ActionChoice {
 						}
 					}
 				}
-				if(game.getBoard().isLegalProd(maxFM)){
-					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(maxFM.getValue())){
-						Action action = new FamtoProduction(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoProduction) action).famchoice();
-						return;
-					}
+				if(maxFM.getValue() == 0){
+					maxFM = null;
 				}
-				if(game.getBoard().isLegalProd(maxNeutralFM)){
-					ProdCell prodCell = new ProdCell(0);
-					if(prodCell.isLegalPC(maxNeutralFM.getValue())){
-						Action action = new FamtoProduction(currentplayer.getpBoardView());
-						game.setOngoingAction(action);
-						((FamtoProduction) action).famchoice();
-						return;
-					}
+				if(maxNeutralFM.getValue() == 0){
+					maxNeutralFM = null;
 				}
-				Action action = game.getOngoingAction();
-				action.act(game); 
+				
+				if(prodCellNoMalus.isEmptyPC()){
+					if(game.getBoard().isLegalProd(maxFM)){
+						ProdCell prodCell = new ProdCell(0);
+						if(prodCell.isLegalPC(maxFM.getValue())){
+							Action action = new FamtoProduction(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoProduction) action).famchoice();
+							return;
+						}
+					}
+					if(game.getBoard().isLegalProd(maxNeutralFM)){
+						ProdCell prodCell = new ProdCell(0);
+						if(prodCell.isLegalPC(maxNeutralFM.getValue())){
+							Action action = new FamtoProduction(currentplayer.getpBoardView());
+							game.setOngoingAction(action);
+							((FamtoProduction) action).famchoice();
+							return;
+						}
+					}
+					Action action = game.getOngoingAction();
+					action.act(game); 
+				}
+				
 			}
 			else{
 				Action action = game.getOngoingAction();

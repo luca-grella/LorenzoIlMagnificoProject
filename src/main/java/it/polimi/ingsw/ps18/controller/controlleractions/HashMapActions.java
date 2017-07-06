@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.FamtoCounc
 import it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil.ReceiveFamtoCouncil;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ActivateHarvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.FamtoHarvestTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ReceiveHarvestCell;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoharvest.ReceiveFamtoHarvest;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.FamtoMarketTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtomarket.ReceiveFamtoMarket;
@@ -19,6 +20,7 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.Activat
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.FamtoProductionTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveChoseneffect;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveFamtoProduction;
+import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveProductionCell;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtoproduction.ReceiveSelectionCard;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.FamtoTowerTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveChosenCost;
@@ -57,9 +59,11 @@ public class HashMapActions {
 		genActions.put("ReceiveFamtoCouncil", new ReceiveFamtoCouncil());
 		genActions.put("FamtoHarvest", new FamtoHarvestTrigger());
 		genActions.put("ReceiveFamtoHarvest", new ReceiveFamtoHarvest());
+		genActions.put("ReceiveHarvCell", new ReceiveHarvestCell());
 		genActions.put("actHarvest", new ActivateHarvest());
 		genActions.put("FamtoProduction", new FamtoProductionTrigger());
 		genActions.put("ReceiveFamtoProduction", new ReceiveFamtoProduction());
+		genActions.put("ReceiveProdCell", new ReceiveProductionCell());
 		genActions.put("actProduction", new ActivateProduction());
 		genActions.put("Show Player", new ChoosePlayer());
 		genActions.put("ReceivePlayertoShow", new ShowPlayer());

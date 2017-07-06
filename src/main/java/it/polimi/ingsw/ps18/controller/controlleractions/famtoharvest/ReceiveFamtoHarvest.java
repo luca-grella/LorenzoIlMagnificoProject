@@ -4,9 +4,13 @@ import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
+import it.polimi.ingsw.ps18.model.cards.BlueC;
+import it.polimi.ingsw.ps18.model.cards.BonusTile;
+import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -54,6 +58,28 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
 			PBoard currentplayer = game.getTurnplayer();
+			List<Cards> playerCards = currentplayer.getCards();
+			HarvCell harvCellNoMalus = game.getBoard().getHarvCellNoMalus();
+			
+			int modifierValue = 0;
+			for(Cards card: playerCards){
+				if(card.hasPermanent()){
+					if(card.getColor()==1){
+						for(Permanenteffect effect: ((BlueC) card).getPermeffect()){
+							if("Harvest".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+						}
+					} else if(card.getColor()==-1){
+						for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
+							if("Harvest".equals(effect.getName())){
+								modifierValue += effect.getQuantity();
+							}
+						}
+					}
+				}
+			}
+			
 			int malusServants = 1;
 			for(Excommunications card: currentplayer.getExcommCards()){
 				for(ExcommEffects effect: card.getEffects()){
@@ -68,43 +94,36 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 					}
 				}
 			}
-			List<FMember> fams = currentplayer.getFams();
-			FMember chosenfam = fams.get(index);
-			((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
-			List<HarvCell> harvCells = game.getBoard().getHarvestCells();
 			
-			if(chosenfam != null){
-				((FamtoHarvest) currentaction).servantsChoice(game);
-				if( ! (harvCells.isEmpty()) ){
-					if(game.getBoard().isLegalHarv(chosenfam)){
-						HarvCell harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-						if(harvCell.isLegalHC(chosenfam.getValue() + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
+			FMember chosenfam = currentplayer.getFams().get(index);
+			((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
+			
+			if(chosenfam != null){				
+				if(game.getBoard().isLegalHarv(chosenfam)){
+					((FamtoHarvest) currentaction).servantsChoice(game);
+					
+					if(harvCellNoMalus.isEmptyHC()){
+						if(harvCellNoMalus.isLegalHC(chosenfam.getValue() + modifierValue + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
-							currentaction.act(game);
+							((FamtoHarvest) currentaction).cellChoice();
+							return;
 						}
 						else{
-							Action action = new TurnHandler(currentplayer);
-							game.setOngoingAction(action);
-							((TurnHandler) action).act(game);
+							((FamtoHarvest) currentaction).famchoice();
 						}
 					}
+					HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
+					if(harvCellMalus.isLegalHC(chosenfam.getValue() + modifierValue + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
+						currentaction.setChosenFam(chosenfam);
+						((FamtoHarvest) currentaction).cellChoice();
+						return;
+					}
 					else{
-						Action action = new TurnHandler(currentplayer);
-						game.setOngoingAction(action);
-						((TurnHandler) action).act(game);
+						((FamtoHarvest) currentaction).famchoice();
 					}
 				}
 				else{
-					HarvCell harvCell = new HarvCell(0);
-					if(harvCell.isLegalHC(chosenfam.getValue() + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
-						currentaction.setChosenFam(chosenfam);
-						((FamtoHarvest) currentaction).act(game);
-					}
-					else{
-						Action action = new TurnHandler(currentplayer);
-						game.setOngoingAction(action);
-						((TurnHandler) action).act(game);
-					}
+					((FamtoHarvest) currentaction).famchoice();
 				}
 			}
 			else{

@@ -53,6 +53,9 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	private List<FMember> fams = new ArrayList<>(GeneralParameters.nfamperplayer);
 	
 	
+	private int priorityValue;
+	
+	
 	public PBoard(int playercol){
 		this.playercol = playercol;
 	}
@@ -474,6 +477,22 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	public void setpBoardView(PBoardView pb) {
 		this.pBoardView=pb;		
 	}
+
+	/**
+	 * @return the priorityValue
+	 */
+	public int getPriorityValue() {
+		return priorityValue;
+	}
+
+	/**
+	 * @param priorityValue the priorityValue to set
+	 */
+	public void setPriorityValue(int priorityValue) {
+		this.priorityValue = priorityValue;
+	}
+	
+	
 
 
 
