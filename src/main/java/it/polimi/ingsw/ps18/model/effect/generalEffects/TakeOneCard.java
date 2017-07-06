@@ -118,4 +118,12 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 		return builder.toString();
 	}
 
+	/**
+	 * @return
+	 */
+	public int getQuantity(int quantity) {
+		
+		return quantity;
+	}
+
 }

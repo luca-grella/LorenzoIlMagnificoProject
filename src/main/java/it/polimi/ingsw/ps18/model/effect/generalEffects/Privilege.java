@@ -68,5 +68,14 @@ public class Privilege extends Observable implements QuickEffect, HarvestEffect,
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * 
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+		
+	}
      
 }

@@ -26,4 +26,13 @@ public class IgnoreCards implements ExcommEffects {
 		return "Ignore the Victory Points Gain from " + name + "Cards";
 	}
 
+	/**
+	 * @param quantity
+	 * @return
+	 */
+	public int getQuantity(int quantity) {
+		// TODO Auto-generated method stub
+		return quantity;
+	}
+
 }

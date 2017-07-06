@@ -71,4 +71,20 @@ public class AddPVforYellowC implements FinalEffect, HarvestEffect, ProductionEf
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * @param name2
+	 */
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
 }

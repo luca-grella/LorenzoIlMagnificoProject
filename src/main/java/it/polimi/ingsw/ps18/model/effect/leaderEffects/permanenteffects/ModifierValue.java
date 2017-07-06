@@ -29,6 +29,12 @@ public class ModifierValue implements LCPermEffect {
 		return quantity;
 	}
 	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 	
 	
 	

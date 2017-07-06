@@ -76,4 +76,22 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 		return builder.toString();
 	}
 
+	/**
+	 * @return
+	 */
+	public int getQuantity(int quantity) {
+		
+		return quantity;
+	}
+
+	/**
+	 * @return 
+	 * 
+	 */
+	public JSONArray getQuantity(JSONArray count) {
+		
+		return count;
+		
+	}
+
 }

@@ -81,6 +81,15 @@ public class LoseVPforMP implements ExcommEffects {
 		return "Lose " + loseVP + " Victory Point for every " + hasMP + " MP that you have.";
 	}
 
+
+	/**
+	 * 
+	 */
+	public int getQuantity(int quantity) {
+		return quantity;
+		
+	}
+
 	
 
 	

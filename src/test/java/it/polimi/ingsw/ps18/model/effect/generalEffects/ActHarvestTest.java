@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.effect.generaleffects;
+package it.polimi.ingsw.ps18.model.effect.generalEffects;
 /**
  * 
  */

@@ -49,4 +49,11 @@ public class CheckMinimumSameTypeCards implements LCRequirement {
 		return "Da Scrivere";
 	}
 
+	/**
+	 * @return
+	 */
+	public int getParam() {
+		return minimum;
+	}
+
 }

@@ -44,4 +44,12 @@ public class MalusResources implements ExcommEffects {
 		return builder.toString();
 	}
 
+	/**
+	 * 
+	 */
+	public int getQuantity(int quantity) {
+		return quantity;
+		
+	}
+
 }

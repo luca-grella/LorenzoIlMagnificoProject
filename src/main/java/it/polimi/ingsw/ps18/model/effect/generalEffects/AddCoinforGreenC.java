@@ -81,4 +81,21 @@ public class AddCoinforGreenC implements FinalEffect, HarvestEffect, ProductionE
 		return name;
 	}
 
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
+
+	/**
+	 * per test
+	 * 
+	 */
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
 }

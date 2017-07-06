@@ -22,4 +22,12 @@ public class CheckResources implements LCRequirement {
 		return "Da Scrivere";
 	}
 
+	/**
+	 * @return
+	 */
+	public Stats getParam() {
+		
+		return minimum;
+	}
+
 }

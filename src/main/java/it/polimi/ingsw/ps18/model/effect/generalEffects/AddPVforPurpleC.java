@@ -72,5 +72,22 @@ public class AddPVforPurpleC implements FinalEffect, HarvestEffect, ProductionEf
 		return name;
 	}
 
+	/**
+	 * @param name2
+	 */
+	public void setName(String name) {
+		
+		this.name = name;
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
+
 
 }

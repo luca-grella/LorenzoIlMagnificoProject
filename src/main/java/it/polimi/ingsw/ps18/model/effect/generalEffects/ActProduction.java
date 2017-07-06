@@ -80,4 +80,12 @@ public class ActProduction extends Observable implements FinalEffect, HarvestEff
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
 }

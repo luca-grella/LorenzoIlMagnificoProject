@@ -103,6 +103,23 @@ public class VaticanReport extends Observable implements Action{
 		// TODO Auto-generated method stub
 		
 	}
+
+	/**
+	 * @return 
+	 * 
+	 */
+	public FMember getChosenFam(FMember chosenFam) {
+		return chosenFam;
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNumberOfServants(int numberOfServants) {
+		// TODO Auto-generated method stub
+		return numberOfServants;
+	}
 	
 	
 	

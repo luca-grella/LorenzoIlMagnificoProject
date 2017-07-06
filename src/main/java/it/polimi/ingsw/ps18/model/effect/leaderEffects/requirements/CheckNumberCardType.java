@@ -42,4 +42,23 @@ public class CheckNumberCardType implements LCRequirement {
 		return "Da Scrivere";
 	}
 
+	/**
+	 * @return 
+	 * 
+	 */
+	public int getDetails() {
+		return typecolor;
+		
+	}
+	
+
+	/**
+	 * @return 
+	 * 
+	 */
+	public int getMinimum() {
+		return minimum;
+		
+	}
+
 }

@@ -90,6 +90,13 @@ public class DifferentPrivilege extends Observable implements QuickEffect, Harve
 	public void setPreviousChoices(List<Integer> previousChoices) {
 		this.previousChoices = previousChoices;
 	}
+
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
 	
 	
 	

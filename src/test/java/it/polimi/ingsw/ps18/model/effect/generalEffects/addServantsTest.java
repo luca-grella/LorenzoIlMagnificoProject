@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.model.effect.generaleffects;
+package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
 import static org.junit.Assert.fail;
 
@@ -8,7 +8,7 @@ import java.util.Random;
 
 import org.junit.Test;
 
-import it.polimi.ingsw.ps18.model.effect.generalEffects.addRock;
+import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -16,9 +16,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class addRockTest.
+ * The Class addServantsTest.
  */
-public class addRockTest {
+public class addServantsTest {
 	
 	/**
 	 * The rand.
@@ -36,19 +36,19 @@ public class addRockTest {
 	int b = rand.nextInt(1000);
 	
 	/**
-	 * Generate a player and test the function of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addRock#activate(PBoard)}
+	 * Generate a player and test the function of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addServants#activate(PBoard)}
 	 */
 	@Test
 	public void testActivate() {
-		addRock tester = new addRock();
+		addServants tester = new addServants();
 		tester.setQuantity(b);
 		List<Dice> dices = new ArrayList<>(1);
 		dices.add(new Dice(0));
 		PBoard player = new PBoard(a, dices);
 		Stats stats = player.getResources();
-		int ris = stats.getRock();
+		int ris = stats.getServants();
 		tester.activate(player, new GameLogic());
-		int ris2 = stats.getRock();
+		int ris2 = stats.getServants();
 		if(ris2!=ris + tester.getQuantity()){
 			fail("Activate non funziona");
 		}
@@ -58,11 +58,11 @@ public class addRockTest {
 	 * Test get quantity.
 	 */
 	/*
-	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addRock#getQuantity()}
+	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addServants#getQuantity()}
 	 */
 	@Test
 	public void testGetQuantity() {
-		addRock tester = new addRock();
+		addServants tester = new addServants();
 		tester.setQuantity(a);
 		int ris = tester.getQuantity();
 		if(a!=ris){
@@ -74,16 +74,15 @@ public class addRockTest {
 	 * Test set quantity.
 	 */
 	/*
-	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addRock#setQuantity()}
+	 * test of {@link it.polimi.ingsw.ps18.model.effect.generalEffects.addServants#setQuantity()}
 	 */
 	@Test
 	public void testSetQuantity() {
-		addRock tester = new addRock();
+		addServants tester = new addServants();
 		tester.setQuantity(a);
 		int ris = tester.getQuantity();
 		if(a!=ris){
 			fail("errore nella setQuantity");
 		}
 	}
-
 }

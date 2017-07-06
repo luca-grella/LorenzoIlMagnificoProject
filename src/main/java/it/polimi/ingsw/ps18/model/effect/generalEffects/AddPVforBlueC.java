@@ -72,4 +72,20 @@ public class AddPVforBlueC implements FinalEffect, HarvestEffect, ProductionEffe
 		return name;
 	}
 
+	/**
+	 * @return
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
+
+	/**
+	 * @param name2
+	 */
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
 }

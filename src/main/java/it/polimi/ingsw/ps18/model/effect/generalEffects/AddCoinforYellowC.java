@@ -80,4 +80,22 @@ public class AddCoinforYellowC implements FinalEffect, HarvestEffect, Production
 		return name;
 	}
 
+	/**
+	 * per test
+	 * 
+	 */
+	public int getQuantity() {
+		
+		return quantity;
+	}
+
+	/**
+	 * per test
+	 * 
+	 */
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+
 }
