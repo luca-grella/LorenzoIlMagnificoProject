@@ -942,6 +942,14 @@ public class GameLogic extends Observable {
 	public void setOngoingLCEffect(ChoiceLeaderEffect ongoingLCEffect) {
 		this.ongoingLCEffect = ongoingLCEffect;
 	}
+
+	/**
+	 * 
+	 */
+	public void setBoard(Board board) {
+		this.board = board;
+		
+	}
 	
 	
 	

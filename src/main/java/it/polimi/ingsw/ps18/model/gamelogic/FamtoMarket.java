@@ -157,6 +157,14 @@ public class FamtoMarket extends Observable implements Action {
 			this.numberOfServants = numberOfServants;
 	}
 
+	/**
+	 * @return
+	 */
+	public int getIndexFamtoRemove() {
+		
+		return indexFamtoRemove;
+	}
+
 	
 
 	

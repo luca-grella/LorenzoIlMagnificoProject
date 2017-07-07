@@ -133,4 +133,21 @@ public class TurnHandler extends Observable implements Action {
 		
 	}
 
+	/**
+	 * Per test
+	 * 
+	 */
+	public FMember getChosenFam(FMember chosenFam) {
+		return chosenFam;
+		
+	}
+
+	/**
+	 * Per test
+	 */
+	public int getNumberOfServants(int numberOfServants) {
+		
+		return numberOfServants;
+	}
+
 }

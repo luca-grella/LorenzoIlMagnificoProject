@@ -325,6 +325,23 @@ public class FamtoTower extends Observable implements Action {
 		this.numberOfServants = numberOfServants;
 	}
 
+	/**
+	 * @return
+	 */
+	public int getIndexFamtoRemove() {
+		
+		return indexFamtoRemove;
+	}
+
+	/**
+	 * @param totalDiscountPreview
+	 */
+	public void setTotalDiscountPreview(Stats totalDiscountPreview) {
+		
+		this.totalDiscountPreview = totalDiscountPreview;
+		
+	}
+
 	
 	
 	

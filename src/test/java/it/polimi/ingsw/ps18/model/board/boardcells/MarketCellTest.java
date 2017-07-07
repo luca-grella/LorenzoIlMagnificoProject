@@ -49,9 +49,7 @@ public class MarketCellTest {
     	JSONObject jsonObject = (JSONObject) obj;
         JSONObject a = (JSONObject) jsonObject.get("1");
         long minplayers = (long) a.get("MinPlayers");
-        long marketcellvalue = (long) a.get("MarketCellValue");
-        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
+
         
         MarketCell tester = new MarketCell(a);
         

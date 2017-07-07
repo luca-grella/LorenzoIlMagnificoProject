@@ -381,6 +381,46 @@ public class FamtoProduction extends Observable implements Action {
 	public FMember getChosenFam() {
 		return chosenFam;
 	}
+
+	/**
+	 * @return
+	 */
+	public int getActionValue() {
+		
+		return actionValue;
+	}
+
+	/**
+	 * 
+	 */
+	public void setCurrentcard(Cards currentcard) {
+		this.currentcard = currentcard;
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void setCardsForActivation(List<Cards> cardsForActivation) {
+		this.cardsForActivation=cardsForActivation;
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void setTotalCostPreview(Stats totalCostPreview) {
+		this.totalCostPreview=totalCostPreview;
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getIndexFamtoRemove() {
+		
+		return indexFamtoRemove;
+	}
 	
 	
 

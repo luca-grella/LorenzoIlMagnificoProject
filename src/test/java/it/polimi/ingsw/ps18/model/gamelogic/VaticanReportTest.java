@@ -33,6 +33,11 @@ public class VaticanReportTest {
 	@Test
 	public void testReportChoice() {
 		
+		MainController mc = new MainController();
+		PBoardView pb = new PBoardView(mc );
+		VaticanReport tester = new VaticanReport(pb );
+//		tester.reportChoice();
+		
 	}
 
 	/**
