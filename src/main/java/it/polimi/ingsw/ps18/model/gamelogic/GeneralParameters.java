@@ -141,4 +141,7 @@ public abstract interface GeneralParameters {
 	 */
 	public final static int numberOfBonusTiles = 4;
 
+	public static final int numberOfLeaderCards = 20;
+	public static final int numberOfLCperPlayer = 4;
+
 }

@@ -8,7 +8,11 @@ import java.util.Observable;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusResources;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.quickeffects.LCQuickEffect;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.LCRequirement;
+import it.polimi.ingsw.ps18.model.gamelogic.ConfirmHandler;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
@@ -21,12 +25,12 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 /**
  * The Class PBoard.
  */
-public class PBoard extends Observable implements Comparable<PBoard>{
+public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHandler{
 	
 	/**
 	 * The p board view.
 	 */
-	PBoardView pBoardView;
+	private PBoardView pBoardView;
 	
 	/**
 	 * The playercol.
@@ -38,6 +42,8 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	 */
 	private Stats resources;
 	
+	private boolean confirm = false;
+	
 	/**
 	 * The cards.
 	 */
@@ -47,6 +53,14 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	 * the excomm Cards
 	 */
 	private List<Excommunications> excommCards = new ArrayList<>();
+	
+	private List<LeaderCards> leadercards = new ArrayList<>();
+	
+	private List<LeaderCards> tempLC = new ArrayList<>();
+	
+	private LeaderCards currentcard;
+	
+	private List<LeaderCards> supportforLC = new ArrayList<>();
 	/**
 	 * The fams.
 	 */
@@ -180,6 +194,112 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 			card.activateQEffects(this,game);
 		}
 		
+	}
+	
+	public void takeLeader(List<LeaderCards> leaders){
+		this.tempLC = leaders;
+		notifyLogPBoardView("\nGiocatore " + this.playercol + "\n");
+		for(int i=0; i<leaders.size(); i++){
+			LeaderCards card = leaders.get(i);
+			notifyLogPBoardView(card.toString(i));
+		}
+		notifyStatusPBoardView("ChoiceLC");
+	}
+	
+	public void continuetakeLeader(int choice){
+		this.leadercards.add(tempLC.get(choice));
+		tempLC.remove(choice);
+	}
+	
+	public void activateLeader(){
+		this.supportforLC.clear();
+		boolean noOne = true;
+		for(LeaderCards card: this.leadercards){
+			if(! card.isActive()){
+				this.currentcard = card;
+				boolean canActivate = false;
+				for(LCRequirement requirement: card.getRequirements()){
+					if(requirement.checkRequirement(this)){
+						canActivate = true;
+						noOne = false;
+					}
+				}
+				if(canActivate){
+					notifyLogPBoardView(card.toString());
+					notifyStatusPBoardView("ActivationChoiceLC");
+				}
+			}
+		}
+		if(noOne){
+			notifyLogPBoardView("There are no cards that can be activated.\n");
+			return;
+		}
+		for(LeaderCards card: this.supportforLC){
+			card.setActive(true);
+		}
+	}
+	
+	public void discardLC(){
+		this.supportforLC.clear();
+		boolean canDiscard = false;
+		for(LeaderCards card: this.leadercards){
+			if(! card.isActive()){
+				canDiscard = true;
+				this.supportforLC.add(card);
+			}
+		}
+		if(canDiscard){
+			for(int i=0; i<this.supportforLC.size(); i++){
+				notifyLogPBoardView(supportforLC.get(i).toString(i+1));
+			}
+			notifyStatusPBoardView("DiscardChoice");
+		} else {
+			notifyLogPBoardView("There are no cards that can be discarded.\n");
+			return;
+		}
+	}
+	
+	public void activateLCQE(GameLogic game){
+		this.supportforLC.clear();
+		boolean existoneCardtoActivate = false;
+		for(LeaderCards card: this.leadercards){
+			//se la carta è attiva, ha effetti rapidi e non è stata attivata questo turno.
+			if(card.isActive()){
+				if(card.hasLCQE()){
+					if(! card.isEffectactivated()){
+						existoneCardtoActivate = true;
+					}
+				}
+			}
+		}
+		if(! existoneCardtoActivate){
+			notifyLogPBoardView("There are no cards that can activate their effects.\n");
+			return;
+		} else {
+			for(LeaderCards card: this.leadercards){
+				if(card.isActive()){
+					if(card.hasLCQE()){
+						if(! card.isEffectactivated()){
+							this.currentcard = card;
+							notifyLogPBoardView(card.toString());
+							notifyStatusPBoardView("ActivateQEChoice");
+						}
+					}
+				}
+			}
+			game.setRequester(this);
+			notifyStatusPBoardView("Confirm");
+			if(this.confirm){
+				for(LeaderCards card: this.supportforLC){
+					card.setEffectactivated(true);
+					for(LCQuickEffect effect: card.getQuickEffects()){
+						effect.activate(this, game);
+					}
+				}
+			} else {
+				return;
+			}
+		}
 	}
 	
 	public Stats generateExcommMalus(){
@@ -491,9 +611,44 @@ public class PBoard extends Observable implements Comparable<PBoard>{
 	public void setPriorityValue(int priorityValue) {
 		this.priorityValue = priorityValue;
 	}
+
+	/*
+	 * @return the tempLC
+	 */
+	public List<LeaderCards> getTempLC() {
+		return tempLC;
+	}
+
+	/**
+	 * @return the leadercards
+	 */
+	public List<LeaderCards> getLeadercards() {
+		return leadercards;
+	}
+
+	/**
+	 * @return the currentcard
+	 */
+	public LeaderCards getCurrentcard() {
+		return currentcard;
+	}
+
+	/**
+	 * @return the tobeActivated
+	 */
+	public List<LeaderCards> getSupportforLC() {
+		return supportforLC;
+	}
+
+	/**
+	 * @param confirm the confirm to set
+	 */
+	public void setConfirm(boolean confirm) {
+		this.confirm = confirm;
+	}
 	
 	
 
-
+	
 
 }

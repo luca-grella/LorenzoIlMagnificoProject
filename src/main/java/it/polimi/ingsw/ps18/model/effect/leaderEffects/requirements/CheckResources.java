@@ -19,7 +19,7 @@ public class CheckResources implements LCRequirement {
 	
 	@Override
 	public String toString(){
-		return "Da Scrivere";
+		return "You need to have at least: \n" + this.minimum.toStringCost();
 	}
 
 	/**

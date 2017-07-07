@@ -43,7 +43,9 @@ public class ChangeFamValue extends Observable implements LCQuickEffect, ChoiceL
 	
 	@Override
 	public String toString(){
-		return "Da Scrivere";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Change one of you Family Member's value to " + this.newActionvalue + " once every turn");
+		return builder.toString();
 	}
 	
 	

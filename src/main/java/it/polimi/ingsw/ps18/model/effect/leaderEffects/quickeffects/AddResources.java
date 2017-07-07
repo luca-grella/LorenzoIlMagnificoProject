@@ -20,7 +20,11 @@ public class AddResources implements LCQuickEffect {
 	
 	@Override
 	public String toString(){
-		return "Da Scrivere";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Every time you activate this effect receive:\n");
+		builder.append(tobeAdded.toStringCost());
+		return builder.toString();
+		
 	}
 
 }

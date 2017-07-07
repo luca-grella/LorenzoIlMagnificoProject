@@ -5,6 +5,10 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ChoosePrivilege;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivateQEChoiceLC;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivationChoiceLC;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ChooseLC;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.DiscardChoiceLC;
 
 /**
  * Support for the Strategy Pattern that runs the various PBoard's View status .
@@ -31,6 +35,11 @@ public class HashMapPBVS {
 		genPBVStatus.put("Select YC", new SelectYellowC(mcontroller));
 		genPBVStatus.put("Choose Effect", new ChooseEffect(mcontroller));
 		genPBVStatus.put("FamChoiceLC", new ChooseFamforValueChangeLC(mcontroller));
+		genPBVStatus.put("ChoiceLC", new ChooseLC(mcontroller));
+		genPBVStatus.put("ActivationChoiceLC", new ActivationChoiceLC(mcontroller));
+		genPBVStatus.put("DiscardChoice", new DiscardChoiceLC(mcontroller));
+		genPBVStatus.put("ActivateQEChoice", new ActivateQEChoiceLC(mcontroller));
+		genPBVStatus.put("Confirm", new ConfirmScreen(mcontroller));
 	}
 	
 	/**

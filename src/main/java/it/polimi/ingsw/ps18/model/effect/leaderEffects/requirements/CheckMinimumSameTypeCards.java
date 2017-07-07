@@ -40,13 +40,13 @@ public class CheckMinimumSameTypeCards implements LCRequirement {
 		return false;
 	}
 	
-	public void setParam(int minimum){
-		this.minimum = minimum;
+	public void setParam(long i){
+		this.minimum = (int) i;
 	}
 	
 	@Override
 	public String toString(){
-		return "Da Scrivere";
+		return this.minimum + " of at least one type of card.";
 	}
 
 	/**

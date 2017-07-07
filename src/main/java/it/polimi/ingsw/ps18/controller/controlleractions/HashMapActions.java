@@ -27,6 +27,13 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveChose
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamtoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.ReceiveChoiceLCInitialDraft;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.activation.LeaderActivationTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.activation.ReceiveActivationChoice;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.discard.DiscardLCTrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.discard.ReceiveDiscardChoice;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffects.ActivationQETrigger;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffects.ReceiveActivationLCQEChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.ReceiveVaticanAnswer;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.VaticanReportTrigger;
 
@@ -76,6 +83,14 @@ public class HashMapActions {
 		genActions.put("Verify Church Support", new VaticanReportTrigger());
 		genActions.put("Receive Vatican Answer", new ReceiveVaticanAnswer());
 		genActions.put("ReceiveFamforValueChange", new ReceiveFamforValueChange());
+		genActions.put("ReceiveChoiceLC", new ReceiveChoiceLCInitialDraft());
+		genActions.put("ActivateLC", new LeaderActivationTrigger());
+		genActions.put("ReceiveActivationChoice", new ReceiveActivationChoice());
+		genActions.put("DiscardLC", new DiscardLCTrigger());
+		genActions.put("ReceiveDiscardChoice", new ReceiveDiscardChoice());
+		genActions.put("ActivateLCQE", new ActivationQETrigger());
+		genActions.put("ReceiveActivationLCQEChoice", new ReceiveActivationLCQEChoice());
+		genActions.put("ReceiveConfirm", new ReceiveConfirm());
 	}
 	
 	/**

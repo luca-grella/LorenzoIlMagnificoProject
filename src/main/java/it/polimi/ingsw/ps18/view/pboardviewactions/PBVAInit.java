@@ -35,12 +35,15 @@ public class PBVAInit extends Observable implements PBViewAction {
 			builder.append("4. Visualize Harvest.\n");
 			builder.append("5. Visualize Production.\n");
 			builder.append("6. Visualize Player Board.\n");
-			builder.append("7. Visualize Player Excommunications.\n");
+			builder.append("7. Visualize the Excommunications in Game.\n");
 			builder.append("8. Place one Familiar to a Tower\n");
 			builder.append("9. Place one Familiar to the Market\n");
 			builder.append("10. Place one Familiar to the Council\n");
 			builder.append("11. Place one Familiar to Harvest\n");
-			builder.append("12. Place one Familiar to Production");
+			builder.append("12. Place one Familiar to Production\n");
+			builder.append("13. Activate your Leader Cards\n");
+			builder.append("14. Activate your Leader Cards Quick Effect\n");
+			builder.append("15. Discard one of your Leader Cards");
 			System.out.println(builder.toString());
 			ans = input.nextInt();
 			switch (ans){
@@ -84,6 +87,15 @@ public class PBVAInit extends Observable implements PBViewAction {
 				break;
 			case 12:
 				notifyActionMainController("FamtoProduction");
+				break;
+			case 13:
+				notifyActionMainController("ActivateLC");
+				break;
+			case 14:
+				notifyActionMainController("ActivateLCQE");
+				break;
+			case 15:
+				notifyActionMainController("DiscardLC");
 				break;
 			}
 		}while((index==-1 && (ans<8 || ans>12)) || (index!=-1&&(ans<8 || ans>12 || ans==9)));

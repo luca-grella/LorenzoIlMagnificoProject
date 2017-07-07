@@ -28,6 +28,7 @@ import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.*;
@@ -129,6 +130,8 @@ public class GameLogic extends Observable {
 	 */
 	private List<Excommunications> excommcards = new ArrayList<>(GeneralParameters.numberExcommC);
 	
+	private List<LeaderCards> leadercards = new ArrayList<>(GeneralParameters.numberOfLeaderCards);
+	
 	/**
 	 * The dices.
 	 */
@@ -152,6 +155,8 @@ public class GameLogic extends Observable {
 	private WoodorRockEffects ongoingWREffect;
 	
 	private ChoiceLeaderEffect ongoingLCEffect;
+	
+	private ConfirmHandler requester;
 	
 	
 	/**
@@ -226,6 +231,7 @@ public class GameLogic extends Observable {
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
 		notifyLogMainView("Excommunications Inserted in Board.");
+		distributeLC();
 //		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
@@ -278,6 +284,13 @@ public class GameLogic extends Observable {
 				Integer index = new Integer(i);
 				this.bonusTiles.add(new BonusTile((JSONObject) jsonObject.get(index.toString())));
 			} notifyLogMainView("Bonus Tiles Deck Created.");
+			
+			obj = parser.parse(new FileReader("src/main/java/it/polimi/ingsw/ps18/model/cards/LeaderCards.json"));
+	    	jsonObject = (JSONObject) obj;
+			for(int i=1; i<=GeneralParameters.numberOfLeaderCards; i++){
+				Integer index = new Integer(i);
+				this.leadercards.add(new LeaderCards((JSONObject) jsonObject.get(index.toString())));
+			} notifyLogMainView("Leader Cards Deck Created.");
 	        
 	    }catch (FileNotFoundException e) {
 	        System.out.println("File non trovato.");
@@ -333,6 +346,87 @@ public class GameLogic extends Observable {
 		}
 	}
 	
+	public void distributeLC(){
+		Collections.shuffle(leadercards);
+		List<LeaderCards> group1 = new ArrayList<>();
+		List<LeaderCards> group2 = new ArrayList<>();
+		List<LeaderCards> group3 = new ArrayList<>();
+		List<LeaderCards> group4 = new ArrayList<>();
+		for(int i=0, count=0; i<nplayer*nplayer; i++){
+			if(i%nplayer==0){
+				count++;
+			}
+			switch(count){
+			case 1:
+				group1.add(leadercards.get(i));
+				break;
+			case 2:
+				group2.add(leadercards.get(i));
+				break;
+			case 3:
+				group3.add(leadercards.get(i));
+				break;
+			case 4:
+				group4.add(leadercards.get(i));
+				break;
+			}
+		}
+		for(int i=0; i<nplayer; i++){
+			int count = 0;
+			if(count<nplayer){
+				if(i+count>=nplayer){
+					int temp = i+count-nplayer;
+					System.out.println("gruppo 1");
+					this.turnplayer = players.get(temp);
+					players.get(temp).takeLeader(group1);
+				} else {
+					System.out.println("gruppo 1");
+					this.turnplayer = players.get(i+count);
+					players.get(i + count).takeLeader(group1);
+				}
+			}
+			count++;
+			if(count<nplayer){
+				if(i+count>=nplayer){
+					int temp = i+count-nplayer;
+					System.out.println("gruppo 2");
+					this.turnplayer = players.get(temp);
+					players.get(temp).takeLeader(group2);
+				} else {
+					System.out.println("gruppo 2");
+					this.turnplayer = players.get(i+count);
+					players.get(i + count).takeLeader(group2);
+				}
+			}
+			count++;
+			if(count<nplayer){
+				if(i+count>=nplayer){
+					int temp = i+count-nplayer;
+					System.out.println("gruppo 3");
+					this.turnplayer = players.get(temp);
+					players.get(temp).takeLeader(group3);
+				} else {
+					System.out.println("gruppo 3");
+					this.turnplayer = players.get(i+count);
+					players.get(i + count).takeLeader(group3);
+				}
+			}
+			count++;
+			if(count<nplayer){
+				if(i+count>=nplayer){
+					int temp = i+count-nplayer;
+					System.out.println("gruppo 4");
+					this.turnplayer = players.get(temp);
+					players.get(temp).takeLeader(group4);
+				} else {
+					System.out.println("gruppo 4");
+					this.turnplayer = players.get(i+count);
+					players.get(i + count).takeLeader(group4);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Handles the game flow, but without the interaction with the players.
 	 *
@@ -355,6 +449,11 @@ public class GameLogic extends Observable {
 			 * Delimitatore
 			 */
 			LinkedList<PBoard> templist = excommOrder();
+			for(PBoard player: this.players){
+				for(LeaderCards card: player.getLeadercards()){
+					card.setEffectactivated(false);
+				}
+			}
 			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
 				this.turnplayer = templist.get(playerIndex);
 				notifyActionMainView("Turn Handle Init");
@@ -949,6 +1048,18 @@ public class GameLogic extends Observable {
 	public void setBoard(Board board) {
 		this.board = board;
 		
+    /*
+	 * @return the requester
+	 */
+	public ConfirmHandler getRequester() {
+		return requester;
+	}
+
+	/**
+	 * @param requester the requester to set
+	 */
+	public void setRequester(ConfirmHandler requester) {
+		this.requester = requester;
 	}
 	
 	

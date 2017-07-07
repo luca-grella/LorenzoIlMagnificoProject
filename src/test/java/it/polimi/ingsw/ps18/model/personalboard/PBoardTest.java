@@ -199,12 +199,12 @@ public class PBoardTest {
 		
     PBoard tester = new PBoard();
     PBoardView pb = new PBoardView(new MainController());
-	tester.pBoardView = pb;
+	tester.setpBoardView(pb);
     PBoardView ris = tester.getpBoardView();
     Class<? extends PBoardView> a = ris.getClass();
     String f = a.getName();
     PBoardView pb1 = new PBoardView(new MainController());
-	tester.pBoardView = pb1;
+	tester.setpBoardView(pb1);
     PBoardView ris2 = tester.getpBoardView();
     Class<? extends PBoardView> b = ris2.getClass();
     String g = b.getName();
