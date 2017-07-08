@@ -28,6 +28,7 @@ import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFamto
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveFloortoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.famtotower.ReceiveTowertoTower;
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.ReceiveChoiceLCInitialDraft;
+import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.ReceiveLCtoCopy;
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.activation.LeaderActivationTrigger;
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.activation.ReceiveActivationChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.discard.DiscardLCTrigger;
@@ -91,6 +92,7 @@ public class HashMapActions {
 		genActions.put("ActivateLCQE", new ActivationQETrigger());
 		genActions.put("ReceiveActivationLCQEChoice", new ReceiveActivationLCQEChoice());
 		genActions.put("ReceiveConfirm", new ReceiveConfirm());
+		genActions.put("ReceiveLCtoCopy", new ReceiveLCtoCopy());
 	}
 	
 	/**

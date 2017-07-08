@@ -63,6 +63,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	private LeaderCards currentcard;
 	
 	private List<LeaderCards> supportforLC = new ArrayList<>();
+	
+	private List<LeaderCards> secondsupportforLC = new ArrayList<>();
 	/**
 	 * The fams.
 	 */
@@ -264,8 +266,39 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 				if("ModifierValue".equals(effect.getName())){
 					((ModifierValue) effect).refreshFMember(game);
 				}
+				if("VariousModifier".equals(effect.getName())){
+					if("CopyLC".equals(effect.getShortDescription())){
+						this.currentcard = card;
+						if(! copyLC(game)){
+							notifyLogPBoardView("There are no cards to copy.\n");
+							card.setActive(false);
+						}
+					}
+				}
 			}
 		}
+	}
+	
+	public boolean copyLC(GameLogic game){
+		this.secondsupportforLC.clear();
+		for(PBoard player: game.getPlayers()){
+			if(player.getPlayercol()!=this.playercol){
+				for(LeaderCards card: player.getLeadercards()){
+					if(card.isActive()){
+						secondsupportforLC.add(card);
+					}
+				}
+			}
+		}
+		if(! secondsupportforLC.isEmpty()){
+			int count = 0;
+			for(LeaderCards card: secondsupportforLC){
+				notifyLogPBoardView(card.toString(count));
+				count++;
+			}
+			notifyStatusPBoardView("ChooseLCtoCopy");
+			return true;
+		} return false;
 	}
 	
 	public void discardLC(){
@@ -686,6 +719,13 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	public void setConfirm(boolean confirm) {
 		this.confirm = confirm;
+	}
+
+	/**
+	 * @return the secondsupportforLC
+	 */
+	public List<LeaderCards> getSecondsupportforLC() {
+		return secondsupportforLC;
 	}
 	
 	

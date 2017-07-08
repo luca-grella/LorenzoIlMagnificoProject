@@ -22,7 +22,11 @@ public class VariousModifier implements LCPermEffect {
 		} else if("SkipMPCheckGreenCards".equals(shortDescription)){
 			builder.append("Ignore the MP limitation when you take a green card.");
 		} else if("DoubleBonus".equals(shortDescription)){
-			builder.append("Every time you receive a quick bonus from a card, receive it two times");
+			builder.append("Every time you receive a quick bonus from a card, receive it two times.");
+		} else if("SkipFullSpaceControl".equals(shortDescription)){
+			builder.append("You can place your Family Member even in space that are occupied.");
+		} else if("CopyLC".equals(shortDescription)){
+			builder.append("Copy the effect of one of the other active cards.");
 		}
 		return builder.toString();
 	}

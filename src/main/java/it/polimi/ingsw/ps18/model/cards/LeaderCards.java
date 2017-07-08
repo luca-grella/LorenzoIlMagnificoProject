@@ -252,6 +252,22 @@ public class LeaderCards {
 	public void setEffectactivated(boolean effectactivated) {
 		this.effectactivated = effectactivated;
 	}
+
+
+	/**
+	 * @param quickEffects the quickEffects to set
+	 */
+	public void setQuickEffects(List<LCQuickEffect> quickEffects) {
+		this.quickEffects = quickEffects;
+	}
+
+
+	/**
+	 * @param permEffects the permEffects to set
+	 */
+	public void setPermEffects(List<LCPermEffect> permEffects) {
+		this.permEffects = permEffects;
+	}
 	
 	
 	

@@ -123,8 +123,12 @@
     ],
     "QuickEffects": [],
     "QuickEffectValues": [],
-    "PermanentEffects": [],
-    "PermanentEffectValues": []
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "CopyLC"
+    ]
   },
   "7": {
     "name": "Sigismondo Malatesta",

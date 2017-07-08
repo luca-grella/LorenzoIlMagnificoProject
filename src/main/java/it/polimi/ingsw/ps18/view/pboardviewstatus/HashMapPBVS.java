@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ChoosePrivil
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivateQEChoiceLC;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivationChoiceLC;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ChooseLC;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ChooseLCtoCopy;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.DiscardChoiceLC;
 
 /**
@@ -40,6 +41,7 @@ public class HashMapPBVS {
 		genPBVStatus.put("DiscardChoice", new DiscardChoiceLC(mcontroller));
 		genPBVStatus.put("ActivateQEChoice", new ActivateQEChoiceLC(mcontroller));
 		genPBVStatus.put("Confirm", new ConfirmScreen(mcontroller));
+		genPBVStatus.put("ChooseLCtoCopy", new ChooseLCtoCopy(mcontroller));
 	}
 	
 	/**

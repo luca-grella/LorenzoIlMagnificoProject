@@ -362,8 +362,8 @@ public class GameLogic extends Observable {
 		List<LeaderCards> group2 = new ArrayList<>();
 		List<LeaderCards> group3 = new ArrayList<>();
 		List<LeaderCards> group4 = new ArrayList<>();
-		for(int i=0, count=0; i<nplayer*nplayer; i++){
-			if(i%nplayer==0){
+		for(int i=0, count=0; i<nplayer*GeneralParameters.numberOfLCperPlayer; i++){
+			if(i%GeneralParameters.numberOfLCperPlayer==0){
 				count++;
 			}
 			switch(count){
@@ -381,7 +381,7 @@ public class GameLogic extends Observable {
 				break;
 			}
 		}
-		for(int i=0; i<nplayer; i++){
+		for(int i=0; i<GeneralParameters.numberOfLCperPlayer; i++){
 			int count = 0;
 			if(count<nplayer){
 				if(i+count>=nplayer){
@@ -399,6 +399,9 @@ public class GameLogic extends Observable {
 			if(count<nplayer){
 				if(i+count>=nplayer){
 					int temp = i+count-nplayer;
+					if(temp>=nplayer){
+						temp -= 1;
+					}
 					System.out.println("gruppo 2");
 					this.turnplayer = players.get(temp);
 					players.get(temp).takeLeader(group2);
@@ -1057,6 +1060,7 @@ public class GameLogic extends Observable {
 	 */
 	public void setBoard(Board board) {
 		this.board = board;
+	}
 		
     /*
 	 * @return the requester

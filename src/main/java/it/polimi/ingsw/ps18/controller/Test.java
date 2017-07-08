@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class Test {
 	private static LinkedList<PBoard> players = new LinkedList<>();
-	private static int nplayer = 4;
+	private static int nplayer = 2;
 
 	/**
 	 * The main method.
