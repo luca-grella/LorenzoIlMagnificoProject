@@ -1,9 +1,11 @@
 package it.polimi.ingsw.ps18.model.board.boardcells;
 
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
-// TODO: Auto-generated Javadoc
 /**
  * Defines a harvest cell. <br>
  * When a family member is placed, this cell activates a set of permanent
@@ -54,13 +56,31 @@ public class HarvCell {
 	 *            the board FM
 	 * @return true, if successful
 	 */
-	public boolean insertFM(FMember pBoardFM) {
-		if(this.isEmptyHC()){	
+	public boolean insertFM(FMember pBoardFM, GameLogic game) {
+		boolean skipfullspacecontrol = false;
+		for(LeaderCards card: game.getTurnplayer().getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+							skipfullspacecontrol = true;
+						}
+					}
+				}
+			}
+		}
+		if(skipfullspacecontrol){
 			if(pBoardFM.getValue() >= harvCellValue){
-				this.harvCellFM = pBoardFM;
 				return true;
-				// Harvest Effects gestiti dal chiamante
-			}return false;
+			}
+		} else {
+			if(this.isEmptyHC()){	
+				if(pBoardFM.getValue() >= harvCellValue){
+					this.harvCellFM = pBoardFM;
+					return true;
+					// Harvest Effects gestiti dal chiamante
+				}return false;
+			}
 		}return false;
 	}
 	
@@ -86,10 +106,8 @@ public class HarvCell {
 	 * @return true, if is legal HC
 	 */
 	public boolean isLegalHC(int actionValue){
-		if(this.isEmptyHC()){
-			if(actionValue >= this.getHarvCellValue()){
-				return true;
-			}
+		if(actionValue >= this.getHarvCellValue()){
+			return true;
 		}
 		return false;
 	}

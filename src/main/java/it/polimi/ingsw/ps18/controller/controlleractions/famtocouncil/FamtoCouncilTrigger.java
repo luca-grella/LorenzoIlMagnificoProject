@@ -39,8 +39,8 @@ public class FamtoCouncilTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
-		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 		int maxValue = 0;
 		int maxNeutralValue = 0;
 		

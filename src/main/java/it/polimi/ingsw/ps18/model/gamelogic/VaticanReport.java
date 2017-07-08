@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps18.model.gamelogic;
 
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 
 import java.io.FileReader;
@@ -47,10 +49,22 @@ public class VaticanReport extends Observable implements Action{
 					JSONObject jsonObject =(JSONObject) obj;
 					JSONObject a = (JSONObject) jsonObject.get(i.toString());
 					long faithPoints = (long) a.get("FP");
-					if(currentplayer.getResources().getFP() == faithPoints){				
+					if(currentplayer.getResources().getFP() == faithPoints){	
+						int bonusVP = 0;
+						for(LeaderCards card: game.getTurnplayer().getLeadercards()){
+							if(card.isActive()){
+								for(LCPermEffect effect: card.getPermEffects()){
+									if("VariousModifier".equals(effect.getName())){
+										if("BonusVPVaticanReport".equals(effect.getShortDescription())){
+											bonusVP = 5;
+										}
+									}
+								}
+							}
+						}
 						long victoryPoints = (long) a.get("VP");
 						currentplayer.getResources().addFP( - currentplayer.getResources().getFP()); //Elegantissimo proprio
-						currentplayer.getResources().addVP((int) victoryPoints);
+						currentplayer.getResources().addVP((int) victoryPoints + bonusVP);
 						return;
 					}
 				}

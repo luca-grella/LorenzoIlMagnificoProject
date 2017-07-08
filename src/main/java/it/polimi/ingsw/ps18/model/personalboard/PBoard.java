@@ -10,8 +10,10 @@ import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusResources;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.*;
 import it.polimi.ingsw.ps18.model.effect.leaderEffects.quickeffects.LCQuickEffect;
 import it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.LCRequirement;
+import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.ConfirmHandler;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -79,11 +81,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		pBoardView = new PBoardView(mcontroller);
 		addObserver(pBoardView);
 //		this.resources = new Stats(2,2,5,2,0,0,0);
-		this.resources = new Stats(9,9,9,9,9,9,9);
+		this.resources = new Stats(40,40,40,40,40,40,40);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} 
-		this.fams.add(new FMember(666,playercol));
+		this.fams.add(new FMember(666,playercol, this));
 		if (BonusTiles.size() != 0){
 		
 		ChooseBonusTile();
@@ -96,7 +98,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		for(count=0; count<dices.size(); count++){
 			this.fams.add(new FMember(dices.get(count), playercol, this));
 		} 
-		this.fams.add(new FMember(666,playercol));
+		this.fams.add(new FMember(666,playercol, this));
 	}
 	
 
@@ -118,7 +120,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		this.resources = new Stats(2,2,5,2,0,0,0);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol, this));
-		} this.fams.add(new FMember(666, playercol));
+		} this.fams.add(new FMember(666, playercol, this));
 	}
 	
 	/**
@@ -190,8 +192,30 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 *            the game
 	 */
 	public void addCard(Cards card, GameLogic game) {
+		boolean doubleEffects = false;
+		for(LeaderCards leadercard: this.leadercards){
+			if(leadercard.isActive()){
+				for(LCPermEffect effect: leadercard.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("DoubleBonus".equals(effect.getShortDescription())){
+							doubleEffects = true;
+						}
+					}
+				}
+			}
+		}
 		if(cards.add(card)){
 			card.activateQEffects(this,game);
+			if(doubleEffects){
+				for(int i = 0 ; i < card.getEffects().size() ; i++){
+					QuickEffect qeffect = card.getEffects().get(i);
+					if(! "privilege".equals(qeffect.getName())){
+						if(! "different privilege".equals(qeffect.getName())){
+							qeffect.activate(this, game);
+						}
+					}
+				}
+			}
 		}
 		
 	}
@@ -211,7 +235,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		tempLC.remove(choice);
 	}
 	
-	public void activateLeader(){
+	public void activateLeader(GameLogic game){
 		this.supportforLC.clear();
 		boolean noOne = true;
 		for(LeaderCards card: this.leadercards){
@@ -236,6 +260,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		}
 		for(LeaderCards card: this.supportforLC){
 			card.setActive(true);
+			for(LCPermEffect effect: card.getPermEffects()){
+				if("ModifierValue".equals(effect.getName())){
+					((ModifierValue) effect).refreshFMember(game);
+				}
+			}
 		}
 	}
 	
@@ -323,6 +352,18 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 * @return true, if successful
 	 */
 	public boolean hasSpace(int cardColor){
+		boolean skipcontrol = false;
+		for(LeaderCards card: this.leadercards){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipMPCheckGreenCards".equals(effect.getShortDescription())){
+							skipcontrol = true;
+						}
+					}
+				}
+			}
+		}
 		if(cards.isEmpty())
 			return true;
 		else{
@@ -347,19 +388,19 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 				if(futureCount<=2){
 					return true;
 				} else if(futureCount == 3){
-					if((this.getResources()).getMP() >= 3){
+					if((this.getResources()).getMP() >= 3 || skipcontrol){
 						return true;
 					}
 				} else if(futureCount == 4){
-					if((this.getResources()).getMP() >= 7){
+					if((this.getResources()).getMP() >= 7 || skipcontrol){
 						return true;
 					}
 				} else if(futureCount == 5){
-				    if((this.getResources()).getMP() >= 12){
+				    if((this.getResources()).getMP() >= 12 || skipcontrol){
 						return true;
 					}
 				} else if(futureCount == 6){
-				    if((this.getResources()).getMP() >= 18){
+				    if((this.getResources()).getMP() >= 18 || skipcontrol){
 						return true;
 					}
 				} 

@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps18.model.board.boardcells.HarvCell;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
@@ -46,8 +48,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
-		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 		HarvCell harvCellNoMalus =  game.getBoard().getHarvCellNoMalus();
 		
 		int modifierValue = 0;
@@ -65,6 +67,18 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					for(Permanenteffect effect: ((BonusTile) card).getPermeffect()){
 						if("Harvest".equals(effect.getName())){
 							modifierValue += effect.getQuantity();
+						}
+					}
+				}
+			}
+		}
+		boolean skipfullspacecontrol = false;
+		for(LeaderCards card: currentplayer.getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+							skipfullspacecontrol = true;
 						}
 					}
 				}
@@ -102,7 +116,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			
 			
 			if(game.getBoard().isLegalHarv(maxFM)){
-				if(harvCellNoMalus.isEmptyHC()){
+				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
@@ -148,7 +162,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			}
 			
 			if(game.getBoard().isLegalHarv(maxNeutralFM)){
-				if(harvCellNoMalus.isEmptyHC()){
+				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxNeutralFM != null){
 						if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
@@ -193,7 +207,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 			int maxValue = 0;
 			int maxNeutralValue = 0;
 			
-			if(game.getBoard().getHarvCellNoMalus().isEmptyHC()){
+			
+			if(game.getBoard().getHarvCellNoMalus().isEmptyHC() || skipfullspacecontrol){
 				for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 					FMember curFM = currentplayer.getFams().get(famIndex);
 					if(curFM!=null){
@@ -220,7 +235,7 @@ public class FamtoHarvestTrigger implements ActionChoice {
 					maxNeutralFM = null;
 				}
 				
-				if(harvCellNoMalus.isEmptyHC()){
+				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){ 
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());

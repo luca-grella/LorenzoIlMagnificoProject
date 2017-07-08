@@ -10,6 +10,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -80,13 +82,28 @@ public class MarketCell {
 	 * @return true, if successful
 	 */
 	public boolean insertFM (FMember pBoardFM, GameLogic game) {
-		
-		if(this.isEmptyMC()){
-			this.marketCellFM = pBoardFM;
-			activateQEffects(game); 			//attivo effetti sul giocatore
+		boolean skipfullspacecontrol = false;
+		for(LeaderCards card: game.getTurnplayer().getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+							skipfullspacecontrol = true;
+						}
+					}
+				}
+			}
+		}
+		if(skipfullspacecontrol){
+			activateQEffects(game); 
 			return true;
-		} return false;
-		//QuickEff activation gestita dal chiamante
+		} else {
+			if(this.isEmptyMC()){
+				this.marketCellFM = pBoardFM;
+				activateQEffects(game); 			//attivo effetti sul giocatore
+				return true;
+			}
+		}  return false;
 	}
 	
 	/**
@@ -112,13 +129,9 @@ public class MarketCell {
 	 * @return true, if is legal MC
 	 */
 	public boolean isLegalMC(int actionValue){
-		if(this.isEmptyMC()){
-			if(actionValue >= this.value){
-				return true;
-			}
-		}
-		return false;
-		
+		if(actionValue >= this.value){
+			return true;
+		} return false;
 	}
 	
 	/**

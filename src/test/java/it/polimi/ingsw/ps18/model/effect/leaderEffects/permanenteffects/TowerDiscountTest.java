@@ -5,6 +5,7 @@ package it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects;
 
 import static org.junit.Assert.*;
 
+import org.json.simple.JSONArray;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
@@ -21,11 +22,25 @@ public class TowerDiscountTest {
 	@Test
 	public void testGetDiscount() {
 		TowerDiscount tester = new TowerDiscount();
-		Stats discount = new Stats(2,2,2,2,2,2,2);
-		tester.setParam(discount );
+		Stats baseDiscount = new Stats(2,2,2,2,2,2,2);
+		JSONArray discount = new JSONArray();
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		tester.setParam(discount);
 		Stats ris = tester.getDiscount();
 		
-		assertEquals(discount, ris);
+		assertEquals(baseDiscount.getWood(), ris.getWood());
+		assertEquals(baseDiscount.getRock(), ris.getRock());
+		assertEquals(baseDiscount.getCoin(), ris.getCoin());
+		assertEquals(baseDiscount.getServants(), ris.getServants());
+		assertEquals(baseDiscount.getFP(), ris.getFP());
+		assertEquals(baseDiscount.getMP(), ris.getMP());
+		assertEquals(baseDiscount.getVP(), ris.getVP());
 	}
 
 	/**
@@ -34,11 +49,25 @@ public class TowerDiscountTest {
 	@Test
 	public void testSetParam() {
 		TowerDiscount tester = new TowerDiscount();
-		Stats discount = new Stats(2,2,2,2,2,2,2);
+		Stats baseDiscount = new Stats(2,2,2,2,2,2,2);
+		JSONArray discount = new JSONArray();
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
+		discount.add((long) 2);
 		tester.setParam(discount );
 		Stats ris = tester.getDiscount();
 		
-		assertEquals(discount, ris);
+		assertEquals(baseDiscount.getWood(), ris.getWood());
+		assertEquals(baseDiscount.getRock(), ris.getRock());
+		assertEquals(baseDiscount.getCoin(), ris.getCoin());
+		assertEquals(baseDiscount.getServants(), ris.getServants());
+		assertEquals(baseDiscount.getFP(), ris.getFP());
+		assertEquals(baseDiscount.getMP(), ris.getMP());
+		assertEquals(baseDiscount.getVP(), ris.getVP());
 	}
 
 	/**

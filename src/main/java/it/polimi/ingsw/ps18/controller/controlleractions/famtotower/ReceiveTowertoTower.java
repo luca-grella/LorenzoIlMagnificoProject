@@ -7,6 +7,8 @@ import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -55,6 +57,18 @@ public class ReceiveTowertoTower implements ActionChoice {
 			FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 			ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
 			PBoard currentplayer = game.getTurnplayer();
+			boolean havetopayFee = true;
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipCoinPaymentinTower".equals(effect.getShortDescription())){
+								havetopayFee = false;
+							}
+						}
+					}
+				}
+			}
 			
 			if(boardTower.isFullTower()){
 				((FamtoTower) currentaction).towerChoice();
@@ -71,9 +85,24 @@ public class ReceiveTowertoTower implements ActionChoice {
 						}		
 					} 
 					else {
-						if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+						if(havetopayFee){
+							if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
+								if(currentplayer.hasSpace(index)){
+									totalCostPreview.addCoins(GeneralParameters.towerFee);
+									((FamtoTower) currentaction).setTotalCostPreview(totalCostPreview);
+									((FamtoTower) currentaction).setChosenTower(index);
+									((FamtoTower) currentaction).floorChoice(game);
+								}					
+								else{
+									((FamtoTower) currentaction).towerChoice();
+			
+								}
+							} 
+							else {
+								((FamtoTower) currentaction).towerChoice();	
+							}
+						} else {
 							if(currentplayer.hasSpace(index)){
-								totalCostPreview.addCoins(GeneralParameters.towerFee);
 								((FamtoTower) currentaction).setTotalCostPreview(totalCostPreview);
 								((FamtoTower) currentaction).setChosenTower(index);
 								((FamtoTower) currentaction).floorChoice(game);
@@ -82,9 +111,6 @@ public class ReceiveTowertoTower implements ActionChoice {
 								((FamtoTower) currentaction).towerChoice();
 		
 							}
-						} 
-						else {
-							((FamtoTower) currentaction).towerChoice();	
 						}
 					}
 				} 

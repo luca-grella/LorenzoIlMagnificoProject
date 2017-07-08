@@ -68,6 +68,7 @@ public class DifferentPrivilege extends Observable implements QuickEffect, Harve
 	 *
 	 * @return the name
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}

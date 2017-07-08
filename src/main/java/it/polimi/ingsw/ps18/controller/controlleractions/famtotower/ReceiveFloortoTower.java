@@ -13,9 +13,12 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.*;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.TowerDiscount;
 import it.polimi.ingsw.ps18.model.effect.permeffects.*;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
@@ -236,6 +239,15 @@ public class ReceiveFloortoTower implements ActionChoice {
 								}
 								break;
 							}
+						}
+					}
+				}
+			}
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("TowerDiscount".equals(effect.getName())){
+							tempDiscountPreview.addStats(((TowerDiscount)effect).getDiscount());
 						}
 					}
 				}

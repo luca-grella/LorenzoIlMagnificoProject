@@ -18,6 +18,7 @@ public class ReceiveFamforValueChange implements ActionChoice {
 		} else if(index<0 || index>currentplayer.getFams().size()){
 			((ChangeFamValue) effect).activate(currentplayer, game);
 		} else {
+			index -= 1;
 			((ChangeFamValue) effect).setChoice(index);
 			effect.continueEffect(currentplayer, game);
 		}

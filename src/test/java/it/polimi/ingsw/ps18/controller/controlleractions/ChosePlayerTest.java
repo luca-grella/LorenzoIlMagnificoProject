@@ -41,7 +41,7 @@ public class ChosePlayerTest {
 		List<Cards> cards = null;
 		turnplayer.setCards(cards);
 		List<FMember> fams = new ArrayList<>();
-		FMember e = new FMember(4, 1);
+		FMember e = new FMember(4, 1, turnplayer);
 		fams.add(e );
 		turnplayer.setFams(fams);
 		Stats resources = new Stats(0,0,0,0,0,0,0);

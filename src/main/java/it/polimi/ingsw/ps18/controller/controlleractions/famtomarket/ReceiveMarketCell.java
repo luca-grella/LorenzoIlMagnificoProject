@@ -6,8 +6,10 @@ import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -52,10 +54,22 @@ public class ReceiveMarketCell implements ActionChoice{
 					}
 				}
 			}
+			boolean skipfullspacecontrol = false;
+			for(LeaderCards card: game.getTurnplayer().getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+								skipfullspacecontrol = true;
+							}
+						}
+					}
+				}
+			}
 			List<MarketCell> boardMarketCells = gameBoard.getMarketCells();
 			MarketCell boardMarketCell = boardMarketCells.get(index);
 			FMember pBoardFM = ((FamtoMarket) currentaction).getChosenFam();
-			if(boardMarketCell.isEmptyMC()){
+			if(boardMarketCell.isEmptyMC() || skipfullspacecontrol){
 				if(boardMarketCell.isLegalMC(pBoardFM.getValue() + (((FamtoMarket) currentaction).getNumberOfServants() / malusServants))){
 					((FamtoMarket) currentaction).setChosenCell(index);
 					currentaction.act(game);

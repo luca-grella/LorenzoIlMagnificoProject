@@ -142,7 +142,7 @@ public class FamtoHarvest extends Observable implements Action {
 			actionValue = 0;
 		}
 		currentplayer.getFams().set(indexFamtoRemove, null);
-		board.insertFMHarv(chosenFam, chosenCell);
+		board.insertFMHarv(chosenFam, chosenCell, game);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actHarvest();
 	}

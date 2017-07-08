@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps18.controller.controlleractions.famtomarket;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket;
@@ -47,12 +49,24 @@ public class FamtoMarketTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(0, currentplayer.getPlayercol());
-		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 		int maxValue = 0;
 		int maxNeutralValue = 0;
+		boolean skipfullspacecontrol = false;
+		for(LeaderCards card: currentplayer.getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+							skipfullspacecontrol = true;
+						}
+					}
+				}
+			}
+		}
 
-		if( ! (game.getBoard().isFullMarket()) ) {
+		if( (! (game.getBoard().isFullMarket())) || skipfullspacecontrol ) {
 			for(int famIndex=0; famIndex<currentplayer.getFams().size(); famIndex++){
 				FMember curFM = currentplayer.getFams().get(famIndex);
 				if(curFM!=null){

@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
@@ -413,18 +414,18 @@ public class Board extends Observable {
 	 * FMember chosen for the current action
 	 * @return the FMember value considering a possible Harvest malus
 	 */
-	public void insertFMHarv(FMember fam, int chosenCell){
+	public void insertFMHarv(FMember fam, int chosenCell, GameLogic game){
 		HarvCell harvCell;
 		/*
 		 * Cambia: if la scelta e' stata di piazzare il fam nella prima cella,
 		 * lo inserisce li
 		 */
 		if(chosenCell == 0){
-			this.harvCellNoMalus.insertFM(fam);
+			this.harvCellNoMalus.insertFM(fam, game);
 		} 
 		else {
 			harvCell = new HarvCell(GeneralParameters.baseMalusHarvCells);
-			if(harvCell.insertFM(fam)){
+			if(harvCell.insertFM(fam, game)){
 				harvestCells.add(harvCell);
 			}
 		} 
@@ -455,13 +456,13 @@ public class Board extends Observable {
 	 * FMember chosen for the current action.
 	 * @return the FMember value considering a possible Harvest malus.
 	 */
-	public void insertFMProd(FMember fam, int chosenCell){
+	public void insertFMProd(FMember fam, int chosenCell, GameLogic game){
 		ProdCell prodCell;
 		if(chosenCell == 0){
-			this.prodCellNoMalus.insertFM(fam);
+			this.prodCellNoMalus.insertFM(fam, game);
 		} else {
 			prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-			if(prodCell.insertFM(fam)){
+			if(prodCell.insertFM(fam, game)){
 				productionCells.add(prodCell);
 			}
 		}

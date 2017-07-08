@@ -26,5 +26,10 @@ public class VariousModifier implements LCPermEffect {
 		}
 		return builder.toString();
 	}
+	
+	@Override
+	public String getName(){
+		return "VariousModifier";
+	}
 
 }

@@ -5,6 +5,7 @@ package it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects;
 
 import static org.junit.Assert.*;
 
+import org.json.simple.JSONArray;
 import org.junit.Test;
 
 /**
@@ -20,8 +21,11 @@ public class ModifierValueTest {
 	public void testSetParam() {
 		ModifierValue tester = new ModifierValue();
 		String shortDescription = "ok";
-		int quantity = 1;
-		tester.setParam(shortDescription, quantity );
+		long quantity = 1;
+		JSONArray parameters = new JSONArray();
+		parameters.add(shortDescription);
+		parameters.add(quantity);
+		tester.setParam(parameters);
 		int ris = tester.getQuantity();
 		String ris2 = tester.getShortDescription();
 		
@@ -36,8 +40,11 @@ public class ModifierValueTest {
 	public void testGetShortDescription() {
 		ModifierValue tester = new ModifierValue();
 		String shortDescription = "ok";
-		int quantity = 1;
-		tester.setParam(shortDescription, quantity );
+		long quantity = 1;
+		JSONArray parameters = new JSONArray();
+		parameters.add(shortDescription);
+		parameters.add(quantity);
+		tester.setParam(parameters);
 		String ris = tester.getShortDescription();
 		
 		assertEquals(shortDescription, ris);
@@ -58,8 +65,11 @@ public class ModifierValueTest {
 	public void testGetQuantity() {
 		ModifierValue tester = new ModifierValue();
 		String shortDescription = "ok";
-		int quantity = 1;
-		tester.setParam(shortDescription, quantity );
+		long quantity = 1;
+		JSONArray parameters = new JSONArray();
+		parameters.add(shortDescription);
+		parameters.add(quantity);
+		tester.setParam(parameters);
 		int ris = tester.getQuantity();
 		
 		assertEquals(quantity, ris);

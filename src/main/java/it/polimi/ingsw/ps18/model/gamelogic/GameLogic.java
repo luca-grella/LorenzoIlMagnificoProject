@@ -227,6 +227,16 @@ public class GameLogic extends Observable {
 			 * delimitatore testing
 			 */
 		}
+		players.get(0).getCards().add(this.greencards.get(1));
+		players.get(0).getCards().add(this.greencards.get(2));
+		for(PBoard player: players){
+			for(int i=0; i<6; i++){
+//				player.getCards().add(this.greencards.get(i));
+				player.getCards().add(this.bluecards.get(i));
+				player.getCards().add(this.yellowcards.get(i));
+//				player.getCards().add(this.purplecards.get(i));
+			}
+		}
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
@@ -1060,6 +1070,13 @@ public class GameLogic extends Observable {
 	 */
 	public void setRequester(ConfirmHandler requester) {
 		this.requester = requester;
+	}
+
+	/**
+	 * @return the dices
+	 */
+	public List<Dice> getDices() {
+		return dices;
 	}
 	
 	

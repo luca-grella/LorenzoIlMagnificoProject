@@ -13,7 +13,7 @@ public class LeaderActivationTrigger implements ActionChoice {
 		if(currentplayer.getLeadercards().isEmpty()){
 			return;
 		}
-		currentplayer.activateLeader();
+		currentplayer.activateLeader(game);
 	}
 
 	@Override

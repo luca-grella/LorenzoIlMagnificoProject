@@ -58,8 +58,8 @@ public class FamtoTowerTrigger implements ActionChoice {
 		for(int towerIndex=0; towerIndex<GeneralParameters.numberofBaseTowers; towerIndex++){
 			ConcreteTower boardTower = (ConcreteTower) towers.get(towerIndex); 
 			List<Cell> towerCells = boardTower.getTowerCells();
-			FMember maxFM = new FMember(0, currentplayer.getPlayercol());
-			FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+			FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
+			FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 			int maxValue = 0;
 			int maxNeutralValue = 0;
 			int modifierValue = 0;

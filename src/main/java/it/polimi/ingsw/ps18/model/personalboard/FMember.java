@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps18.model.personalboard;
 
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.*;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 
 /**
@@ -38,6 +40,12 @@ public class FMember {
 		this.playercol = playercol;
 	}
 	
+	public FMember(int value, int playercol){
+		this.value = value;
+		this.color = -1;
+		this.playercol = playercol;
+	}
+	
 	public FMember(Dice dice, int playercol, PBoard player){
 		int malusValue = 0;
 		for(int i=0; i<player.getExcommCards().size(); i++){
@@ -50,10 +58,34 @@ public class FMember {
 				}
 			}
 		}
-		if(dice.getValue() >= malusValue){
-			this.value = dice.getValue() - malusValue;
+		int bonusValue = 0;
+		boolean isThereBaseValue = false;
+		int baseValue = 0;
+		for(LeaderCards card: player.getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("BonusDiceValue".equals(effect.getShortDescription())){
+						bonusValue += ((ModifierValue) effect).getQuantity();
+					}
+					if("BaseFamValueModifier".equals(effect.getShortDescription())){
+						baseValue = ((ModifierValue) effect).getQuantity();
+						isThereBaseValue = true;
+					}
+				}
+			}
+		}
+		if(isThereBaseValue){
+			if(baseValue + bonusValue >= malusValue){
+				this.value = baseValue + bonusValue - malusValue;
+			} else {
+				this.value = 0;
+			}
 		} else {
-			this.value = 0;
+			if(dice.getValue() + bonusValue >= malusValue){
+				this.value = dice.getValue() + bonusValue - malusValue;
+			} else {
+				this.value = 0;
+			}
 		}
 		this.color = dice.getColor();
 		this.playercol = playercol;
@@ -67,8 +99,18 @@ public class FMember {
 	 * @param playercol
 	 *            the playercol
 	 */
-	public FMember(int value, int playercol){
-		this.value = value;
+	public FMember(int value, int playercol, PBoard player){
+		int bonusValue = 0;
+		for(LeaderCards card: player.getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("BonusNeutralFam".equals(effect.getShortDescription())){
+						bonusValue += ((ModifierValue) effect).getQuantity();
+					}
+				}
+			}
+		}
+		this.value = value + bonusValue;
 		this.color = -1;
 		this.playercol = playercol;
 	}

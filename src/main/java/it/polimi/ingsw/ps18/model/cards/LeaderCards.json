@@ -55,8 +55,12 @@
     ],
     "QuickEffects": [],
     "QuickEffectValues": [],
-    "PermanentEffects": [],
-    "PermanentEffectValues": []
+    "PermanentEffects": [
+      "VariousModifier"
+    ],
+    "PermanentEffectValues": [
+      "SkipFullSpaceControl"
+    ]
   },
   "4": {
     "name": "Federico da Montefeltro",

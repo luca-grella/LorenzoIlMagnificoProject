@@ -36,5 +36,7 @@ public interface QuickEffect extends GeneralEffect{
 	 */
 	@Override
 	public String toString();
+	
+	public String getName();
 
 }

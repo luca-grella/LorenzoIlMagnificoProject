@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
@@ -46,9 +48,21 @@ public class FamtoProductionTrigger implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-		FMember maxFM = new FMember(0, currentplayer.getPlayercol()); 
-		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol());
+		FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer); 
+		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 		ProdCell prodCellNoMalus = game.getBoard().getProdCellNoMalus();
+		boolean skipfullspacecontrol = false;
+		for(LeaderCards card: currentplayer.getLeadercards()){
+			if(card.isActive()){
+				for(LCPermEffect effect: card.getPermEffects()){
+					if("VariousModifier".equals(effect.getName())){
+						if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+							skipfullspacecontrol = true;
+						}
+					}
+				}
+			}
+		}
 		
 		int modifierValue = 0;
 		for(Cards card: currentplayer.getCards()){
@@ -101,7 +115,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 
 			
 			if(game.getBoard().isLegalProd(maxFM)){
-				if(prodCellNoMalus.isEmptyPC()){
+				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
@@ -147,7 +161,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 			}
 			
 			if(game.getBoard().isLegalProd(maxNeutralFM)){
-				if(prodCellNoMalus.isEmptyPC()){
+				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxNeutralFM != null){
 						if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
@@ -218,7 +232,7 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(maxNeutralFM.getValue() == 0){
 					maxNeutralFM = null;
 				}
-				if(prodCellNoMalus.isEmptyPC()){
+				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){ 
 							Action action = new FamtoProduction(currentplayer.getpBoardView());

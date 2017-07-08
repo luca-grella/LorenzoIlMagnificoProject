@@ -48,6 +48,7 @@ public class ActivateProduction implements ActionChoice {
 					}
 				}
 			}
+			((FamtoProduction) currentaction).setIndexFamtoRemove(-1);
 			((FamtoProduction) currentaction).setActionValue(index + modifierValue);
 			((FamtoProduction) currentaction).activateProduction(currentplayer, game);
 		} else {

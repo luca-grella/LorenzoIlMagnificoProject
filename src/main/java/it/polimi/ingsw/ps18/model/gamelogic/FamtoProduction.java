@@ -236,9 +236,11 @@ public class FamtoProduction extends Observable implements Action {
 	 *            the game
 	 */
 	public void activateEffects(PBoard player, GameLogic game){
-		game.getTurnplayer().getFams().set(indexFamtoRemove, null);
-		game.getBoard().insertFMProd(this.chosenFam, this.chosenCell);
-		(player.getResources()).subStats(totalCostPreview);
+		if(this.indexFamtoRemove!=-1){
+			game.getTurnplayer().getFams().set(indexFamtoRemove, null);
+			game.getBoard().insertFMProd(this.chosenFam, this.chosenCell, game);
+			(player.getResources()).subStats(totalCostPreview);
+		}
 		for(Cards card: this.cardsForActivation){
 			if(card.hasProduction()){
 				if(card.getColor()==2){

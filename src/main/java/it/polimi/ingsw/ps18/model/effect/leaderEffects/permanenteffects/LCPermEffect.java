@@ -5,5 +5,7 @@ public interface LCPermEffect {
 	public String getShortDescription();
 	
 	public String toString();
+	
+	public String getName();
 
 }

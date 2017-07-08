@@ -8,8 +8,10 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
@@ -60,6 +62,18 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 			PBoard currentplayer = game.getTurnplayer();
 			List<Cards> playerCards = currentplayer.getCards();
 			HarvCell harvCellNoMalus = game.getBoard().getHarvCellNoMalus();
+			boolean skipfullspacecontrol = false;
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+								skipfullspacecontrol = true;
+							}
+						}
+					}
+				}
+			}
 			
 			int modifierValue = 0;
 			for(Cards card: playerCards){
@@ -102,7 +116,7 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 				if(game.getBoard().isLegalHarv(chosenfam)){
 					((FamtoHarvest) currentaction).servantsChoice(game);
 					
-					if(harvCellNoMalus.isEmptyHC()){
+					if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 						if(harvCellNoMalus.isLegalHC(chosenfam.getValue() + modifierValue + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
 							((FamtoHarvest) currentaction).cellChoice();

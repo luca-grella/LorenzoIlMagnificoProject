@@ -9,8 +9,10 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
@@ -61,6 +63,18 @@ public class ReceiveFamtoProduction implements ActionChoice {
 			PBoard currentplayer = game.getTurnplayer();
 			List<Cards> playerCards = currentplayer.getCards();
 			ProdCell prodCellNoMalus = game.getBoard().getProdCellNoMalus();
+			boolean skipfullspacecontrol = false;
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+								skipfullspacecontrol = true;
+							}
+						}
+					}
+				}
+			}
 			
 			int modifierValue = 0;
 			for(Cards card: playerCards){
@@ -101,7 +115,7 @@ public class ReceiveFamtoProduction implements ActionChoice {
 			if(chosenfam != null){
 				if(game.getBoard().isLegalProd(chosenfam)){
 					((FamtoProduction) currentaction).servantsChoice(game);
-					if(prodCellNoMalus.isEmptyPC()){
+					if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 						if(prodCellNoMalus.isLegalPC(chosenfam.getValue() + modifierValue + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
 							((FamtoProduction) currentaction).cellChoice();
@@ -131,50 +145,6 @@ public class ReceiveFamtoProduction implements ActionChoice {
 				System.out.println("\n[ReceiveFamtoProduction] Familiare gia' utilizzato\n");
 				((FamtoProduction) currentaction).famchoice();
 			}
-			
-			
-			
-			
-			
-			
-			
-//			if(chosenfam != null){
-//				((FamtoProduction) currentaction).servantsChoice(game);
-//				if( ! (prodCells.isEmpty()) ){
-//					if(game.getBoard().isLegalProd(chosenfam)){
-//						ProdCell prodCell = new ProdCell(GeneralParameters.baseMalusProdCells);
-//						if(prodCell.isLegalPC(chosenfam.getValue() + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
-//							currentaction.setChosenFam(chosenfam);
-//							((FamtoProduction) currentaction).act(game);
-//						}
-//						else{
-//							Action action = new TurnHandler(currentplayer);
-//							game.setOngoingAction(action);
-//							action.act(game);
-//						}
-//					}
-//					else{
-//						Action action = new TurnHandler(currentplayer);
-//						game.setOngoingAction(action);
-//						action.act(game);
-//					}
-//				}
-//				else{
-//					ProdCell prodCell = new ProdCell(0);
-//					if(prodCell.isLegalPC(chosenfam.getValue() + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
-//						currentaction.setChosenFam(chosenfam);
-//						((FamtoProduction) currentaction).act(game);
-//					}
-//					else{
-//						Action action = new TurnHandler(currentplayer);
-//						game.setOngoingAction(action);
-//						action.act(game);
-//					}
-//				}
-//			}
-//			else{
-//				((FamtoProduction) currentaction).famchoice();
-//			}
 		}
 		
 	}

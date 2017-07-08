@@ -9,8 +9,10 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoHarvest;
@@ -41,6 +43,18 @@ public class ReceiveHarvestCell implements ActionChoice {
 			List<Cards> playerCards = currentplayer.getCards();
 			HarvCell harvCellNoMalus = gameBoard.getHarvCellNoMalus();
 			FMember chosenFam = ((FamtoHarvest) currentaction).getChosenFam();
+			boolean skipfullspacecontrol = false;
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+								skipfullspacecontrol = true;
+							}
+						}
+					}
+				}
+			}
 			
 			int modifierValue = 0;
 			for(Cards card: playerCards){
@@ -77,7 +91,7 @@ public class ReceiveHarvestCell implements ActionChoice {
 			}
 			
 			if(index == 0){
-				if(harvCellNoMalus.isEmptyHC()){
+				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(harvCellNoMalus.isLegalHC(chosenFam.getValue() + modifierValue + ((FamtoHarvest) currentaction).getNumberOfServants() / malusServants)){
 						((FamtoHarvest) currentaction).setChosenCell(index);
 						currentaction.act(game);
@@ -95,7 +109,7 @@ public class ReceiveHarvestCell implements ActionChoice {
 				if(game.getNplayer() > 2){
 					if(gameBoard.isLegalHarv(chosenFam)){
 						if(index == 0){
-							if(harvCellNoMalus.isEmptyHC()){
+							if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 								if(harvCellNoMalus.isLegalHC(chosenFam.getValue() + modifierValue + ((FamtoHarvest) currentaction).getNumberOfServants() / malusServants)){
 									((FamtoHarvest) currentaction).setChosenCell(index);
 									currentaction.act(game);
@@ -126,10 +140,7 @@ public class ReceiveHarvestCell implements ActionChoice {
 					System.out.println("[ReceiveHarvestCell] Coglione se siete in 2 l'harvest ha una cella sola!\n");
 					((FamtoHarvest) currentaction).cellChoice();
 				}
-			}	
-			//[...]
-//			((FamtoHarvest) currentaction).setChosenCell(index);
-//			currentaction.act(game);
+			}
 		}
 	}
 

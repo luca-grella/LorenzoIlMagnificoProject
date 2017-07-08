@@ -35,6 +35,11 @@ public class TowerDiscount implements LCPermEffect {
 		return this.shortDescription;
 	}
 	
+	@Override
+	public String getName(){
+		return "TowerDiscount";
+	}
+	
 	
 
 }

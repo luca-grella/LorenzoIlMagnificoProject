@@ -9,8 +9,10 @@ import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.MalusValue;
+import it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect;
 import it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
@@ -42,6 +44,18 @@ public class ReceiveProductionCell implements ActionChoice{
 			List<Cards> playerCards = currentplayer.getCards();
 			ProdCell prodCellNoMalus = gameBoard.getProdCellNoMalus();
 			FMember chosenFam = ((FamtoProduction) currentaction).getChosenFam();
+			boolean skipfullspacecontrol = false;
+			for(LeaderCards card: currentplayer.getLeadercards()){
+				if(card.isActive()){
+					for(LCPermEffect effect: card.getPermEffects()){
+						if("VariousModifier".equals(effect.getName())){
+							if("SkipFullSpaceControl".equals(effect.getShortDescription())){
+								skipfullspacecontrol = true;
+							}
+						}
+					}
+				}
+			}
 			
 			int modifierValue = 0;
 			for(Cards card: playerCards){
@@ -78,7 +92,7 @@ public class ReceiveProductionCell implements ActionChoice{
 			}
 			
 			if(index == 0){
-				if(prodCellNoMalus.isEmptyPC()){
+				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(prodCellNoMalus.isLegalPC(chosenFam.getValue() + modifierValue + ((FamtoProduction) currentaction).getNumberOfServants() / malusServants)){
 						((FamtoProduction) currentaction).setChosenCell(index);
 						currentaction.act(game);
@@ -92,11 +106,11 @@ public class ReceiveProductionCell implements ActionChoice{
 					((FamtoProduction) currentaction).cellChoice();
 				}
 			}
-			else{ //Se invece ho scelto "2" (che ora vale 1 per aver fatto index-=1 sopra all'inizio)
+			else{
 				if(game.getNplayer() > 2){
 					if(gameBoard.isLegalProd(chosenFam)){
 						if(index == 0){
-							if(prodCellNoMalus.isEmptyPC()){
+							if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 								if(prodCellNoMalus.isLegalPC(chosenFam.getValue() + modifierValue + ((FamtoProduction) currentaction).getNumberOfServants() / malusServants)){
 									((FamtoProduction) currentaction).setChosenCell(index);
 									currentaction.act(game);
