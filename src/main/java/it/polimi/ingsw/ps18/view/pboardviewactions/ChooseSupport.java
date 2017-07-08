@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ChooseSupport extends Observable implements PBViewAction{
 	
@@ -16,7 +17,7 @@ public class ChooseSupport extends Observable implements PBViewAction{
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		/*
 		 * Al sesto turno non ci sarebbe scelta, perche' il gioco finisce e quindi non ha senso che ti becchi la scomunica
 		 * Pero' non ho la GameLogic come parametro, quindi devo trovare un altro modo

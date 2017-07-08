@@ -1,11 +1,13 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
 	private int index;
@@ -17,10 +19,15 @@ public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
 	}
 
 	@Override
-	public void act() {
-		System.out.println("Choose one Bonus Tile:\n");
-		notifyStatusMainController("ShowBonusTiles");
-		int choice = input.nextInt();
+	public void act(ClientInterface playerClient) {
+		int choice = -100;
+		try {
+			playerClient.notify("Choose one Bonus Tile:\n");
+			notifyStatusMainController("ShowBonusTiles");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("porcalamadonna");
+		}
 		notifyParamMainController("ReceiveChosenBonusTile", choice);
 	}
 	

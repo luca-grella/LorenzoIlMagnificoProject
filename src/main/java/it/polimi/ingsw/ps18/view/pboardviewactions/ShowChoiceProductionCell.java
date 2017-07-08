@@ -6,6 +6,7 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ShowChoiceProductionCell extends Observable implements PBViewAction{
 	
@@ -17,7 +18,7 @@ public class ShowChoiceProductionCell extends Observable implements PBViewAction
 	
 	
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose the Production Cell in which you want to move in:\n"
 				+ "1. Production Cell without malus\n"
 				+ "2. Production Cell with malus\n"

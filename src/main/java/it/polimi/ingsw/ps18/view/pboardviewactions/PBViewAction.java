@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
-import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface PBViewAction.
  */
@@ -11,7 +10,7 @@ public interface PBViewAction {
 	/**
 	 * Act.
 	 */
-	public void act();
+	public void act(ClientInterface playerClient);
 
 	/**
 	 * Sets the index.

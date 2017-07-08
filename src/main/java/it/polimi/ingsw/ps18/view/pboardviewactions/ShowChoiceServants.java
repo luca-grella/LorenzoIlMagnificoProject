@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ShowChoiceServants extends Observable implements PBViewAction{
 	private int index;
@@ -18,7 +19,7 @@ public class ShowChoiceServants extends Observable implements PBViewAction{
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("\nChoose a number of servants to add:\n");
 		notifyStatusMainController("Show Servants");
 		int choice = input.nextInt();

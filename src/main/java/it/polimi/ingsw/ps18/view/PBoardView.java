@@ -13,7 +13,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
-import it.polimi.ingsw.ps18.server.ClientInterface;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewactions.HashMapPBVA;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
@@ -23,7 +23,7 @@ import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
  * The Class PBoardView.
  */
 public class PBoardView extends Observable implements Observer {
-	public ClientInterface playerClient;
+	private ClientInterface playerClient;
 	
 	/**
 	 * Instantiates a new p board view.
@@ -32,7 +32,7 @@ public class PBoardView extends Observable implements Observer {
 	 *            the mcontroller
 	 */
 	public PBoardView(MainController mcontroller, ClientInterface playerClient){
-		playerClient = playerClient;
+		this.playerClient = playerClient;
 		addObserver(mcontroller);
 		HashMapPBVA.init(mcontroller);
 		HashMapPBVS.init(mcontroller);
@@ -48,7 +48,7 @@ public class PBoardView extends Observable implements Observer {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override
-	public void update(Observable o, Object arg) {
+	public void update(Observable o, Object arg){
 		Message msg = (Message) arg;
 		switch(msg.getID()){
 		case 1:
@@ -56,25 +56,25 @@ public class PBoardView extends Observable implements Observer {
 			try{
 				playerClient.notify(lMessage.getMessage()); 
 			} catch( RemoteException e){
-				System.out.println("Errore");
+				System.out.println("W Satana");
 			}
 			break;
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;
 			PBViewAction action = HashMapPBVA.geteffect(aMessage.getMessage());
 			action.setIndex(-1);
-			action.act();
+			action.act(playerClient);
 			break;
 		case 3:
 			StatusMessage sMessage = (StatusMessage) msg;
 			PBViewStatus statusAction = HashMapPBVS.geteffect(sMessage.getMessage());
-			statusAction.act();
+			statusAction.act(playerClient);
 			break;
 		case 4:
 			ParamMessage pMessage = (ParamMessage) msg;
 			PBViewAction ParamAction = HashMapPBVA.geteffect(pMessage.getMessage());
 			ParamAction.setIndex(pMessage.getNumber());
-			ParamAction.act();
+			ParamAction.act(playerClient);
 			
 		}
 	}

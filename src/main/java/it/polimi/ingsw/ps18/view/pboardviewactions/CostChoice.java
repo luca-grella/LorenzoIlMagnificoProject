@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class CostChoice extends Observable implements PBViewAction {
 	private int index;
@@ -16,7 +17,7 @@ public class CostChoice extends Observable implements PBViewAction {
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("How do You want to pay for this Card?\n"
 				+ "0. Back."
 				+ "1. Resources.\n"

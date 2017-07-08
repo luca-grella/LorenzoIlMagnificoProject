@@ -21,7 +21,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
-import it.polimi.ingsw.ps18.server.ClientInterface;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**

@@ -17,19 +17,15 @@ import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
-import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.cards.LeaderCards;
-import it.polimi.ingsw.ps18.model.cards.PurpleC;
-import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
-import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
-import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
@@ -312,7 +308,7 @@ public class PBoardTest {
 
 	@Test
 	public void testPBoardInt() {
-		PBoard tester = new PBoard(1);
+		PBoard tester = new PBoard(1,(ClientInterface) null);
 		tester.setPlayercol(2);
 		
 		assertEquals(2, tester.getPlayercol());

@@ -16,7 +16,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-import it.polimi.ingsw.ps18.server.ClientInterface;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class MainController.

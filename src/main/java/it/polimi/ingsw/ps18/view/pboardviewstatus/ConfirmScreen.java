@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ConfirmScreen extends Observable implements PBViewStatus {
 	Scanner input = new Scanner(System.in);
@@ -14,7 +15,7 @@ public class ConfirmScreen extends Observable implements PBViewStatus {
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Confirm your Choice?"
 				+ "\n1. Yes."
 				+ "\n2. No.");

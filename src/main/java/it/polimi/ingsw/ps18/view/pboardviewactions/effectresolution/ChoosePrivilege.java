@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
@@ -32,7 +33,7 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose which Privilege you want to take:\n"
 				+ "1. 1 Wood or 1 Rock.\n"
 				+ "2. 2 Servants.\n"

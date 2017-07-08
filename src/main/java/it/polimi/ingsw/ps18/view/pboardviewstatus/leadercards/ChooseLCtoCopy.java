@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
 public class ChooseLCtoCopy extends Observable implements PBViewStatus {
@@ -16,7 +17,7 @@ public class ChooseLCtoCopy extends Observable implements PBViewStatus {
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose which card you want to copy.");
 		int choice = input.nextInt();
 		setChanged();

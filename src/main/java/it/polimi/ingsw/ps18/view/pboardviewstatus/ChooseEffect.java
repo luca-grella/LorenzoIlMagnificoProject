@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class ChooseEffect.
@@ -25,7 +26,7 @@ public class ChooseEffect extends Observable implements PBViewStatus {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		int choice = input.nextInt();
 		notifyParamMainController("Chosen Effect",choice);
 	}

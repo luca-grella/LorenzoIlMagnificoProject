@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class ShowChoiceFamtoTower.
@@ -28,7 +29,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose a family member to place:\n"
 				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");

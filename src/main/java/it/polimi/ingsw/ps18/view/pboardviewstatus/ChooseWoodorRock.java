@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class ChooseWoodorRock.
@@ -24,7 +25,7 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose which Resource you want to use:\n"
 				+ "1. Wood\n"
 				+ "2. Rock");

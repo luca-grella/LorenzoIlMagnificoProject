@@ -6,6 +6,7 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ChooseFamforValueChangeLC extends Observable implements PBViewStatus {
 	
@@ -19,7 +20,7 @@ public class ChooseFamforValueChangeLC extends Observable implements PBViewStatu
 	}
 
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose a Family Member of which you want to incrase the value:\n");
 		notifyStatusMainController("Show Fam");
 		int choice = input.nextInt();

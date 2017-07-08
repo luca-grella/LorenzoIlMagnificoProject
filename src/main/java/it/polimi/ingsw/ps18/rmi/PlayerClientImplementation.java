@@ -1,19 +1,20 @@
-package it.polimi.ingsw.ps18.server;
+package it.polimi.ingsw.ps18.rmi;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 
-import it.polimi.ingsw.ps18.model.personalboard.PBoard;
-
 public class PlayerClientImplementation implements ClientInterface{
+	Scanner scanner = new Scanner(System.in);
 	
 	@Override
 	public void notify(String object) throws RemoteException {
 		System.out.println(object);
+	}
+
+	@Override
+	public int read() throws RemoteException {
+		int input = scanner.nextInt();
+		return input;
 	}
 
 }

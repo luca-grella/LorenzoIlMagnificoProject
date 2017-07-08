@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class PBVAInit.
@@ -22,7 +23,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		Scanner input = new Scanner(System.in);
 		int ans;
 		do{

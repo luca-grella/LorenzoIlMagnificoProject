@@ -6,6 +6,7 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 public class ShowChoiceHarvestCell extends Observable implements PBViewAction{
 	
@@ -18,7 +19,7 @@ public class ShowChoiceHarvestCell extends Observable implements PBViewAction{
 	}
 	
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Choose the Harvest Cell in which you want to move in:\n"
 				+ "1. Harvest Cell without malus\n"
 				+ "2. Harvest Cell with malus\n"

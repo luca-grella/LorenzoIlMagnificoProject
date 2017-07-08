@@ -6,6 +6,7 @@ import java.util.Scanner;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
  * The Class ShowChoiceFamtoProduction.
@@ -26,7 +27,7 @@ public class ShowChoiceFamtoProduction extends Observable implements PBViewActio
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act() {
+	public void act(ClientInterface playerClient) {
 		System.out.println("Chose from yours family members which one to move:\n"
 				+ "-----------------\n0. Back.");
 		notifyStatusMainController("Show Fam");
