@@ -12,7 +12,6 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ShowBoard.
  */

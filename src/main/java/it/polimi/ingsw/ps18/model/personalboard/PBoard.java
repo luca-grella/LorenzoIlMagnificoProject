@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
-
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
@@ -22,6 +21,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+import it.polimi.ingsw.ps18.server.ClientInterface;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
@@ -73,25 +73,30 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	
 	private int priorityValue;
 	
+	private ClientInterface player;
 	
-	public PBoard(int playercol){
+	
+	
+	
+	public PBoard(int playercol, ClientInterface player){
 		this.playercol = playercol;
+		this.player = player;
 	}
 	
 	public void completePBoardSetup(List<Dice> dices, MainController mcontroller, List<Cards> BonusTiles){
-		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
-		pBoardView = new PBoardView(mcontroller);
+		pBoardView = new PBoardView(mcontroller, player);
 		addObserver(pBoardView);
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
 //		this.resources = new Stats(2,2,5,2,0,0,0);
 		this.resources = new Stats(40,40,40,40,40,40,40);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} 
 		this.fams.add(new FMember(666,playercol, this));
-		if (BonusTiles.size() != 0){
-		
-		ChooseBonusTile();
-		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");};
+		if (! BonusTiles.isEmpty()){
+			ChooseBonusTile();
+		}
+		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
 	}
 	public void refreshFMembers(List<Dice> dices){

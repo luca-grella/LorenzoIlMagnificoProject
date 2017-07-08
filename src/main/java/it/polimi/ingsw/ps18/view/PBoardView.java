@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.server.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewactions.HashMapPBVA;
 import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
@@ -21,6 +23,7 @@ import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
  * The Class PBoardView.
  */
 public class PBoardView extends Observable implements Observer {
+	public ClientInterface playerClient;
 	
 	/**
 	 * Instantiates a new p board view.
@@ -28,6 +31,13 @@ public class PBoardView extends Observable implements Observer {
 	 * @param mcontroller
 	 *            the mcontroller
 	 */
+	public PBoardView(MainController mcontroller, ClientInterface playerClient){
+		playerClient = playerClient;
+		addObserver(mcontroller);
+		HashMapPBVA.init(mcontroller);
+		HashMapPBVS.init(mcontroller);
+	}
+	
 	public PBoardView(MainController mcontroller){
 		addObserver(mcontroller);
 		HashMapPBVA.init(mcontroller);
@@ -43,7 +53,11 @@ public class PBoardView extends Observable implements Observer {
 		switch(msg.getID()){
 		case 1:
 			LogMessage lMessage = (LogMessage) msg;
-			System.out.println(lMessage.getMessage()); 
+			try{
+				playerClient.notify(lMessage.getMessage()); 
+			} catch( RemoteException e){
+				System.out.println("Errore");
+			}
 			break;
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;

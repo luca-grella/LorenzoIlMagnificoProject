@@ -399,6 +399,7 @@ public class GameLogic extends Observable {
 			if(count<nplayer){
 				if(i+count>=nplayer){
 					int temp = i+count-nplayer;
+					//in 2 giocatori la funzione genera un index out of bound poichè temp risulta uguale a 2.
 					if(temp>=nplayer){
 						temp -= 1;
 					}

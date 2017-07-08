@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
+import it.polimi.ingsw.ps18.server.ClientInterface;
 
 /**
  * The Class MainController.
@@ -40,7 +41,7 @@ public class MainController implements Observer {
 		HashMapStatus.init();
 	}
 	
-	public void startGame(int nplayer, LinkedList<PBoard> players){
+	public void startGame(int nplayer, LinkedList<PBoard> players){;
 		game = new GameLogic(nplayer,this, players);
 		game.setup(this);
 		game.gameFlow();
