@@ -32,7 +32,7 @@ public class ActHarvestTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.ActHarvest#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void testActivate() {
 		ActHarvest tester = new ActHarvest();
 		PBoard player = new PBoard();
@@ -47,8 +47,8 @@ public class ActHarvestTest {
 		player.completePBoardSetup(dices, mcontroller, bonustile );
 		
 		tester.setQuantity(1);
-//		player.actHarvest();
-//		tester.activate(player, new GameLogic());
+
+		tester.activate(player, new GameLogic());
 	}
 
 	/**

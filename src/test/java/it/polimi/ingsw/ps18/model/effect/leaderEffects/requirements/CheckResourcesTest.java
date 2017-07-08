@@ -93,6 +93,28 @@ public class CheckResourcesTest {
 	@Test
 	public void testToString() {
 		
+		CheckResources tester = new CheckResources();
+		JSONArray minimum = new JSONArray();
+		long a = 4;
+		long b = 4;
+		long c = 4;
+		long d = 4;
+		long e = 4;
+		long f = 4;
+		long g = 4;
+		minimum.add(a);
+		minimum.add(b);
+		minimum.add(c);
+		minimum.add(d);
+		minimum.add(e);
+		minimum.add(f);
+		minimum.add(g);
+		tester.setParam(minimum );
+		
+		String ris = tester.toString();
+		
+		assertEquals("You need to have at least: \n-----------------\nWood: 4\nRock: 4\nCoin: 4\nServant: 4\nFP: 4\nMP: 4\nVP: 4\n-----------------\n",ris);
+		
 	}
 
 }

@@ -64,6 +64,22 @@ public class ModifierValue implements LCPermEffect {
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * 
+	 */
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription=shortDescription;
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity=quantity;
+		
+	}
 	
 	
 	

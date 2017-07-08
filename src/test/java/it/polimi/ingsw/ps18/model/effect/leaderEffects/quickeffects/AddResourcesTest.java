@@ -118,6 +118,29 @@ public class AddResourcesTest {
 	 */
 	@Test
 	public void testToString() {
+AddResources tester = new AddResources();
+		
+		
+		JSONArray tobeadded = new JSONArray();
+		long a = 1;
+		long b = 1;
+		long c = 1;
+		long d = 1;
+		long e = 1;
+		long f = 1;
+		long g = 1;
+		tobeadded.add(a);
+		tobeadded.add(b);
+		tobeadded.add(c);
+		tobeadded.add(d);
+		tobeadded.add(e);
+		tobeadded.add(f);
+		tobeadded.add(g);
+		tester.setParam(tobeadded );
+		
+		String ris = tester.toString();
+		
+		assertEquals("Every time you activate this effect receive:\n-----------------\nWood: 1\nRock: 1\nCoin: 1\nServant: 1\nFP: 1\nMP: 1\nVP: 1\n-----------------\n", ris);
 		
 	}
 

@@ -435,7 +435,7 @@ public class Board extends Observable {
 	public int getActionValueHarv(FMember fam, int chosenCell) {
 		int malus = 0;
 		if(chosenCell != 0){
-			malus = -3;
+			malus = 3;
 		}
 		return (fam.getValue() - malus);
 
@@ -471,7 +471,7 @@ public class Board extends Observable {
 	public int getActionValueProd(FMember fam, int chosenCell){
 		int malus = 0;
 		if(chosenCell != 0){
-			malus = -3;
+			malus = 3;
 		}
 		return (fam.getValue() - malus);
 	}

@@ -114,6 +114,28 @@ public class MalusResourcesTest {
 	@Test
 	public void testToString() {
 		
+		MalusResources tester = new MalusResources();
+		JSONArray stats = new JSONArray();
+		long a = 1;
+		long b = 1;
+		long c = 1;
+		long d = 1;
+		long e = 1;
+		long f = 1;
+		long g = 1;
+		stats.add(a);
+		stats.add(b);
+		stats.add(c);
+		stats.add(d);
+		stats.add(e);
+		stats.add(f);
+		stats.add(g);
+		tester.setMalus(stats );
+		
+		String ris = tester.toString();
+		
+		assertEquals("When you receive resources from an Action Space or a Card, reduce yout income by:\n-----------------\nWood: 1\nRock: 1\nCoin: 1\nServant: 1\nFP: 1\nMP: 1\nVP: 1\n-----------------\n",ris);
+		
 	}
 
 }

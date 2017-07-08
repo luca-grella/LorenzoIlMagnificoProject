@@ -20,6 +20,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
+import it.polimi.ingsw.ps18.model.cards.LeaderCards;
 import it.polimi.ingsw.ps18.model.cards.PurpleC;
 import it.polimi.ingsw.ps18.model.cards.YellowC;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.GeneralEffect;
@@ -309,6 +310,157 @@ public class PBoardTest {
 		
 	}
 
+	@Test
+	public void testPBoardInt() {
+		PBoard tester = new PBoard(1);
+		tester.setPlayercol(2);
+		
+		assertEquals(2, tester.getPlayercol());
+			}
+	
+	@Test
+	public void testChooseBonusTile() {
+		PBoard tester = new PBoard();
+		tester.ChooseBonusTile();
+		
+		
+			}
+	@Test(expected = Exception.class)
+	public void testRefreshFMembers() {
+		PBoard tester = new PBoard();
+		List<Dice> dices = new ArrayList<>();
+		Dice e = new Dice(3);
+		FMember fm = new FMember(e, 1);
+		dices.add(e );
+		tester.refreshFMembers(dices );
+		
+		
+			}
+	
+	@Test
+	public void testCompare() {
+		PBoard tester = new PBoard();
+		Stats resources = new Stats(10,10,10,10,10,10,10);
+		tester.setResources(resources );
+		
+		PBoard player = new PBoard();
+		player.setResources(resources);
+		tester.compareTo(player );
+		
+		assertEquals(0, tester.compareTo(player));
+		
+			}
+	
+	@Test
+	public void testEquals() {
+		PBoard tester = new PBoard();
+		
+		Object obj = new PBoard();
+		Stats resources = new Stats(0,0,0,0,0,0,0);
+		((PBoard) obj).setResources(resources );
+		tester.setResources(resources);
+		tester.equals(obj );
+		
+		assertTrue(tester.equals(obj));
+		
+			}
+	
+	@Test
+	public void testActHarvest() {
+		PBoard tester = new PBoard();
+		tester.actHarvest();
+		
+		
+			}
+	
+	@Test
+	public void testActProduction() {
+		PBoard tester = new PBoard();
+		tester.actProduction();
+		
+		
+			}
+	
+	@Test(expected = Exception.class)
+	public void testAddCards() throws FileNotFoundException, IOException, ParseException {
+		PBoard tester = new PBoard();
+		
+		JSONParser parser = new JSONParser();	
+		
+	    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+	    	JSONObject jsonObject = (JSONObject) obj;
+	    	JSONObject a = (JSONObject) jsonObject.get("0");
+		
+		GreenC card = new GreenC(a);
+		GameLogic game = new GameLogic();
+		tester.addCard(card, game );
+		
+		
+			}
+	
+	@Test
+	public void testTakeLeader() {
+		PBoard tester = new PBoard();
+		List<LeaderCards> leaders = new ArrayList<>();
+		tester.takeLeader(leaders );
+		
+		
+			}
+	@Test
+	public void testActivateLeader() {
+		PBoard tester = new PBoard();
+		tester.activateLeader(new GameLogic());
+		
+		
+			}
+	
+	@Test
+	public void testCopyLC() {
+		PBoard tester = new PBoard();
+		tester.copyLC(new GameLogic());
+		
+		
+			}
+	
+	@Test
+	public void testDiscardLC() {
+		PBoard tester = new PBoard();
+		tester.discardLC();
+		
+		
+			}
+	
+	@Test
+	public void testActivateLCQE() {
+		PBoard tester = new PBoard();
+		tester.activateLCQE(new GameLogic());
+		
+		
+			}
+	
+	@Test
+	public void testGenerateExcommMalus() {
+		PBoard tester = new PBoard();
+		tester.generateExcommMalus();
+		
+		
+			}
+	
+	@Test
+	public void testToStringFams() {
+		PBoard tester = new PBoard();
+		List<FMember> fams = new ArrayList<>();
+		Dice dice = new Dice(2);
+		FMember e = new FMember(dice , 0);
+		fams.add(e );
+		tester.setFams(fams );
+		tester.toStringFams();
+		
+	}
+			
+
+	
+	
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getCards()}.
 	 * @throws ParseException 

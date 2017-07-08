@@ -77,14 +77,22 @@ public class CouncilCellTest {
 	@Test
 	public void testIsLegalCC() {
 		
-		CouncilCell tester = new CouncilCell();
-		Dice dice = new Dice(4);
-		FMember pBoardFM = new FMember(dice, 1);
-		pBoardFM.setValue(1);
-		tester.setCouncilCellValue(1);
 		
+		FMember fm = new FMember(2, 3);
+		CouncilCell tester = new CouncilCell(null);
+		tester.setCouncilCellValue(35);
 		
-		assertTrue(tester.isLegalCC(pBoardFM.getValue()));
+		int val = 40;
+		fm = new FMember(val, 1);
+		assertTrue(tester.isLegalCC(fm.getValue()));
+		
+		tester = new CouncilCell(fm);
+		tester.setCouncilCellValue(40);
+		
+		val = 35;
+		fm = new FMember(val, 1);
+		
+		assertTrue(!(tester.isLegalCC(fm.getValue())));
 		
 		
 	}
@@ -103,6 +111,28 @@ public class CouncilCellTest {
 		
 		assertEquals(ris, ris2);
 		
+	}
+	
+	@Test
+	public void testToString() {
+		
+		
+		FMember fm = new FMember(2,4);
+		CouncilCell tester = new CouncilCell(null );
+		tester.setCouncilCellValue(5);
+		
+		String ris = tester.toString(2);
+		
+		assertEquals("-----------------\nCouncil cell number 2:\n\nCouncil cell is empty!-----------------\n", ris);
+		
+		fm = new FMember(5, 2);
+		fm.setColor(2);
+		fm.setValue(1);
+		tester.setCouncilCellFM(fm );
+		
+		ris = tester.toString(2);
+		
+		assertEquals("-----------------\nCouncil cell number 2:\nFamily Member in council cell number 2:\n    Player color: 2\n    Family Member color: 2\n    Family Member value: 1\n-----------------\n",ris);
 	}
 
 	/**

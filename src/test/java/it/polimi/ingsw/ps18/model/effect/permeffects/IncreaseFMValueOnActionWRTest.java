@@ -18,6 +18,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
  * @author luca-grella
@@ -31,43 +32,23 @@ public class IncreaseFMValueOnActionWRTest {
 	@Test
 	public void testActivate() {
 		IncreaseFMValueOnActionWR tester = new IncreaseFMValueOnActionWR();
-		tester.setQuantity(1);
-		String name = "ciao";
-		long quantity = 4;
-		JSONArray discounts = new JSONArray();
-		long wood = 2;
-		discounts.add(wood );
-		long rock = 5;
-		discounts.add(rock);
-		long coin = 1;
-		discounts.add(coin);
-		long servant = 2;
-		discounts.add(servant);
-		long vp = 2;
-		discounts.add(vp);
-		long mp = 8;
-		discounts.add(mp);
-		long fp = 4;
-		discounts.add(fp);
-		tester.setParam(name, quantity, discounts);
+		tester.setQuantity(5);
 		PBoard player = new PBoard();
-		Stats resources = new Stats(1,1,1,1,1,1,1);
-		player.setResources(resources );
-		List<Dice> dices = new ArrayList<>();
-		List<Cards> BonusTiles = new ArrayList<>();
-		List<FMember> fams = new ArrayList<>();
-		player.setFams(fams );
-		player.completePBoardSetup(dices , new MainController(), BonusTiles );
-//		tester.activate(player, new GameLogic());
-		int index = 2;
-		tester.continueEffect(index , player , new GameLogic());
+		Stats resources = new Stats(1,6,6,6,6,6,6);
+		player.setResources(resources);
+		MainController mc = new MainController();
+		PBoardView pb = new PBoardView(mc );
+		player.setpBoardView(pb );
+		GameLogic game = new GameLogic();
+		tester.activate(player, game);
 		
-		if (index ==1){
-			assertEquals(wood, tester.getChosenDiscount().getWood());
-		}
-		else {
-			assertEquals(rock, tester.getChosenDiscount().getRock());
-		};
+		assertEquals(new Stats(0,5,0,0,0,0,0).getRock(), tester.getChosenDiscount().getRock());
+		
+		resources = new Stats(6,1,6,6,6,6,6);
+		player.setResources(resources);
+		tester.activate(player, game);
+	
+		assertEquals(new Stats(5,0,0,0,0,0,0).getWood(), tester.getChosenDiscount().getWood());
 	}
 
 	/**
@@ -96,16 +77,18 @@ public class IncreaseFMValueOnActionWRTest {
 		discounts.add(fp);
 		tester.setParam(name, quantity, discounts);
 		PBoard player = new PBoard();
-		int index = 2;
+		int index = 1;
 		tester.continueEffect(index , player , new GameLogic());
 		Stats ris = tester.getChosenDiscount();
 		
-		if (index ==1){
-			assertEquals(wood, tester.getChosenDiscount().getWood());
-		}
-		else {
-			assertEquals(rock, tester.getChosenDiscount().getRock());
-		};
+		assertEquals(wood, tester.getChosenDiscount().getWood());
+		
+		index = 2;
+		tester.continueEffect(index , player , new GameLogic());
+		ris = tester.getChosenDiscount();
+		
+		assertEquals(rock, tester.getChosenDiscount().getRock());
+		
 	}
 
 	/**
@@ -114,6 +97,24 @@ public class IncreaseFMValueOnActionWRTest {
 	@Test
 	public void testToString() {
 		
+		IncreaseFMValueOnActionWR tester = new IncreaseFMValueOnActionWR();
+		JSONArray discounts = new JSONArray();
+		long a = 1;
+		long b = 1;
+		long c = 1;
+		long d = 1;
+		long e = 1;
+		long f = 1;
+		long g = 1;
+		discounts.add(a);
+		discounts.add(b);
+		discounts.add(c);
+		discounts.add(d);
+		discounts.add(e);
+		discounts.add(f);
+		discounts.add(g);
+		tester.setParam("ciao", 1, discounts);
+		tester.toString();
 		
 	}
 
@@ -291,5 +292,6 @@ public class IncreaseFMValueOnActionWRTest {
 		};
 		
 	}
+	
 
 }

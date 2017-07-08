@@ -46,7 +46,7 @@ public class CheckMinimumSameTypeCardsTest {
 		GreenC gc = new GreenC(a);
 		cards.add(gc );
 		player.setCards(cards );
-		int minimum = 1;
+		int minimum = 0;
 		tester.setParam(minimum );
 		
 		
@@ -54,6 +54,40 @@ public class CheckMinimumSameTypeCardsTest {
 		boolean ris = tester.checkRequirement(player );
 		
 		assertTrue(ris);
+		
+		gc.setColor(1);	
+		List<Cards> cards1 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards1 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(ris);
+		
+		gc.setColor(2);	
+		List<Cards> cards2 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards2 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(ris);
+		
+		gc.setColor(3);	
+		List<Cards> cards3 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards3 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(ris);
+		
+		minimum = 1;
+		tester.setParam(minimum );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
 	}
 
 	/**
@@ -74,6 +108,14 @@ public class CheckMinimumSameTypeCardsTest {
 	 */
 	@Test
 	public void testToString() {
+		
+        CheckMinimumSameTypeCards tester = new CheckMinimumSameTypeCards();
+		int minimum = 5;
+		tester.setParam(minimum );
+		
+		String ris = tester.toString();
+		
+		assertEquals("5 of at least one type of card.", ris);
 		
 	}
 

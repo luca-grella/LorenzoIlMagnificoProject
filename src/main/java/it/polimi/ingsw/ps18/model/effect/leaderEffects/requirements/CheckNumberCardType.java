@@ -63,4 +63,13 @@ public class CheckNumberCardType implements LCRequirement {
 		
 	}
 
+	/**
+	 * @return 
+	 * 
+	 */
+	public int getTypeColor() {
+		return typecolor;
+		
+	}
+
 }

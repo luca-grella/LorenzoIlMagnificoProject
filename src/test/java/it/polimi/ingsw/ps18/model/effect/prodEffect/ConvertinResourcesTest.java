@@ -157,6 +157,16 @@ public class ConvertinResourcesTest {
 	@Test
 	public void testToString() {
 		
+		ConvertinResources tester = new ConvertinResources();
+		Stats stats = new Stats(4,6,2,5,8,6,4);
+		tester.setCost(stats);
+		tester.setReward(stats);
+		
+		
+		String ris = tester.toString();
+		
+		assertEquals("Pay:\n-----------------\nWood: 4\nRock: 6\nCoin: 2\nServant: 5\nFP: 8\nMP: 6\nVP: 4\n-----------------\nto gain:\n -----------------\nWood: 4\nRock: 6\nCoin: 2\nServant: 5\nFP: 8\nMP: 6\nVP: 4\n-----------------\n", ris);
+		
 	}
 
 	/**

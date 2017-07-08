@@ -104,6 +104,15 @@ public class ConvertinPCTest {
 	@Test
 	public void testToString() {
 		
+		ConvertinPC tester = new ConvertinPC();
+		
+		tester.setCost(new Stats(2,6,5,8,7,5,2));
+		tester.setQuantity(5);
+		
+		String ris = tester.toString();
+		
+		assertEquals("Pay:\n-----------------\nWood: 2\nRock: 6\nCoin: 5\nServant: 8\nFP: 7\nMP: 5\nVP: 2\n-----------------\nto gain 5Privileges", ris);
+		
 	}
 
 	/**

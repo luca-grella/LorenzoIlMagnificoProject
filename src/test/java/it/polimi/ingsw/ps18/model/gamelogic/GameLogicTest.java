@@ -31,7 +31,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  */
 public class GameLogicTest {
 
-	@Test
+	@Test(expected = Exception.class)
 	public void test() {
 		LinkedList<PBoard> player = new LinkedList<>();
 		PBoard turnplayer = new PBoard();
@@ -58,7 +58,6 @@ public class GameLogicTest {
 		tester.getTurnplayer();
 		MainView mv= new MainView(mc);
 		Board board = new Board(mc , 0, mv);
-		tester.setBoard(board );
 		
 		tester.setCurrentPlayer(turnplayer );
 		tester.setNplayer(1);
@@ -73,7 +72,13 @@ public class GameLogicTest {
 		tester.toStringPlayers(players );
 		tester.setNplayer(1);
 		tester.setCurrentPlayer(turnplayer);
-//		tester.setup(mc);
+		tester.setup(mc);
+		tester.gameFlow();
+		tester.refreshGame();
+		tester.notify();
+		tester.setBoard(board);
+		
+		
 		
 		
 	}

@@ -164,6 +164,34 @@ public class StatsTest {
 		Stats tester = new Stats(wood, rock, coin, servant, fp, mp, vp);
 		boolean empty = tester.isEmpty();
 		assertTrue(empty);
+		
+		tester = new Stats(1, 0, 0, 0, 0, 0, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+		
+		tester = new Stats(0, 1, 0, 0, 0, 0, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+
+		tester = new Stats(0, 0, 1, 0, 0, 0, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+		
+		tester = new Stats(0, 0, 0, 1, 0, 0, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+		
+		tester = new Stats(0, 0, 0, 0, 1, 0, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+		
+		tester = new Stats(0, 0, 0, 0, 0, 1, 0);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
+		
+		tester = new Stats(0, 0, 0, 0, 0, 0, 1);
+		empty = tester.isEmpty();
+		assertTrue(!(empty));
 	}
 	
 	
@@ -304,6 +332,35 @@ public class StatsTest {
 		Stats neededStats = new Stats(woodneeded, rockneeded, coinneeded, servantneeded, fpneeded, mpneeded, vpneeded);
 		boolean isenough = tester.enoughStats(neededStats);
 		assertTrue(isenough);
+		
+		int zero = 0;
+		tester = new Stats(zero, rock, coin, servant, fp, mp, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, zero, coin, servant, fp, mp, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, rock, zero, servant, fp, mp, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, rock, coin, zero, fp, mp, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, rock, coin, servant, zero, mp, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, rock, coin, servant, fp, zero, vp);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
+		
+		tester = new Stats(wood, rock, coin, servant, fp, mp, zero);
+		isenough = tester.enoughStats(neededStats);
+		assertTrue(!(isenough));
 	}
 	
 
@@ -615,5 +672,95 @@ public class StatsTest {
 		if(vp!=ris){
 			fail("errore nel getVP");
 		}}
+	
+	@Test
+	public void testToString() {
+		
+		int wood1 = rand.nextInt(1000);
+		int rock1 = rand.nextInt(1000);
+		int coin1 = rand.nextInt(1000);
+		int fp1 = rand.nextInt(1000);
+		int mp1 = rand.nextInt(1000);
+		int vp1 = rand.nextInt(1000);
+		
+		Stats tester = new Stats(wood1, rock1, coin1, 0, fp1, mp1, vp1);
+		tester.toStringServants();
+		
+		
+		
+			int wood=0;
+			int rock=0;
+			int coin=0;
+			int servant=0;
+			int fp=0;
+			int mp=0;
+			int vp=0;
+			
+			
+			
+			tester = new Stats(1, 0, 0, 0, 0, 0, 0);
+			tester.toStringCost();
+			
+			tester = new Stats(0, 1, 0, 0, 0, 0, 0);
+			tester.toStringCost();
+
+			tester = new Stats(0, 0, 1, 0, 0, 0, 0);
+			tester.toStringCost();
+			
+			tester = new Stats(0, 0, 0, 1, 0, 0, 0);
+			tester.toStringCost();
+			
+			tester = new Stats(0, 0, 0, 0, 1, 0, 0);
+			tester.toStringCost();
+			
+			tester = new Stats(0, 0, 0, 0, 0, 1, 0);
+			tester.toStringCost();
+			
+			tester = new Stats(0, 0, 0, 0, 0, 0, 1);
+			tester.toStringCost();
+	
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void testFixStats() {
+		
+		Stats tester = new Stats(-1, -1, -1, -1, -1, -1, -1);
+		Stats prova = new Stats(0,0,0,0,0,0,0);
+		tester.fixStats();
+		
+		assertEquals(prova, tester);
+		
+		}
+	
+	@Test(expected = AssertionError.class)
+	public void testSets() {
+		
+		
+		Stats tester = new Stats(0,0,0,0,0,0,0);
+		Resources wood = new Wood(1);
+		tester.setWood(wood);
+		
+		Resources rock = new Rock(1);
+		tester.setRock(rock);
+		
+		Resources coin = new Coins(1);
+		tester.setCoin(coin);
+		
+		Resources servant = new Servants(1);
+		tester.setServant(servant);
+		
+		Points fp = new FaithPoints(1);
+		tester.setFp(fp);
+		
+		Points mp = new MilitaryPoints(1);
+		tester.setMp(mp);
+		
+		Points vp = new VictoryPoints(1);
+		tester.setVp(vp);
+		
+		assertEquals(new Stats(1,1,1,1,1,1,1), tester);
+		
+		}
+	
 
 }

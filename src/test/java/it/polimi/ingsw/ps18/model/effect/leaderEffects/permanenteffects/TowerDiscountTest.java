@@ -75,6 +75,24 @@ public class TowerDiscountTest {
 	 */
 	@Test
 	public void testToString() {
+		TowerDiscount tester = new TowerDiscount();
+		JSONArray discount = new JSONArray();
+		long a = 1;
+		long b = 1;
+		long c = 1;
+		long d = 1;
+		long e = 1;
+		long f = 1;
+		long g = 1;
+		discount.add(a );
+		discount.add(b );
+		discount.add(c );
+		discount.add(d );
+		discount.add(e );
+		discount.add(f );
+		discount.add(g );
+		tester.setParam(discount );
+		tester.toString();
 		
 	}
 
@@ -88,5 +106,15 @@ public class TowerDiscountTest {
 		
 		assertEquals("TowerDiscount", ris);
 	}
+	
+	@Test
+	public void testGetName() {
+		TowerDiscount tester = new TowerDiscount();
+		
+		
+		assertEquals("TowerDiscount", tester.getName());
+	}
+	
+
 
 }

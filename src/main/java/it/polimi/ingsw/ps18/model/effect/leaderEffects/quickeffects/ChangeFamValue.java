@@ -47,6 +47,14 @@ public class ChangeFamValue extends Observable implements LCQuickEffect, ChoiceL
 		builder.append("Change one of you Family Member's value to " + this.newActionvalue + " once every turn");
 		return builder.toString();
 	}
+
+	/**
+	 * @return
+	 */
+	public int getNewActionValue() {
+		
+		return newActionvalue;
+	}
 	
 	
 

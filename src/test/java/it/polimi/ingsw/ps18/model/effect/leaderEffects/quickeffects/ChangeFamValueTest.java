@@ -71,7 +71,13 @@ public class ChangeFamValueTest {
 		player.setFams(fams );
 		tester.continueEffect(player, new GameLogic());
 		int ris= player.getFams().get(0).getValue();
+		
 		assertEquals(newvalue, ris);
+		
+		newvalue = -3;
+		tester.setParam(newvalue );
+		
+		assertEquals(0,tester.getNewActionValue());
 	}
 
 	/**
@@ -100,7 +106,12 @@ public class ChangeFamValueTest {
 	 */
 	@Test
 	public void testToString() {
+		ChangeFamValue tester = new ChangeFamValue();
+		int newvalue = 5;
+		tester.setParam(newvalue );
+		String ris = tester.toString();
 		
+		assertEquals("Change one of you Family Member's value to 5 once every turn", ris);
 	}
 
 	/**

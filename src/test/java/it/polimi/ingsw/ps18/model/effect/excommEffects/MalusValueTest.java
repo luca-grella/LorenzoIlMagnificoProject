@@ -89,6 +89,61 @@ public class MalusValueTest {
 	@Test
 	public void testToString() {
 		
+		MalusValue tester = new MalusValue();
+		int malusvalue = 3;
+		tester.setQuantity(malusvalue );
+		
+		String nameplace = "Green";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Blue";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Yellow";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Purple";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Harvest";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Production";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Dice";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Market";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "Servants";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		nameplace = "TurnOrder";
+		tester.setName(nameplace);
+		
+		assertNotNull(tester.toString());
+		
+		
 	}
 
 }

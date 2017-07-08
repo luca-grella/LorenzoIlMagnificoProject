@@ -3,49 +3,82 @@
     "number": 1,
     "period": 1,
     "Effects": [
-      "MalusMP"
+      "MalusResources"
     ],
     "EffectsValues": [
-      1
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
     ]
   },
   "2": {
     "number": 2,
     "period": 1,
     "Effects": [
-      "MalusCoins"
+      "MalusResources"
     ],
     "EffectsValues": [
-      1
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
     ]
   },
   "3": {
     "number": 3,
     "period": 1,
     "Effects": [
-      "MalusServants"
+      "MalusResources"
     ],
     "EffectsValues": [
-      1
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
     ]
   },
   "4": {
     "number": 4,
     "period": 1,
     "Effects": [
-      "MalusWR"
+      "MalusResources"
     ],
     "EffectsValues": [
-      1
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     ]
   },
   "5": {
     "number": 5,
     "period": 1,
     "Effects": [
-      "MalusHarv"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Harvest",
       3
     ]
   },
@@ -53,9 +86,10 @@
     "number": 6,
     "period": 1,
     "Effects": [
-      "MalusProd"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Production",
       3
     ]
   },
@@ -63,9 +97,10 @@
     "number": 7,
     "period": 1,
     "Effects": [
-      "MalusDice"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Dice",
       1
     ]
   },
@@ -73,9 +108,10 @@
     "number": 8,
     "period": 2,
     "Effects": [
-      "MalusGreenC"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Green",
       4
     ]
   },
@@ -83,9 +119,10 @@
     "number": 9,
     "period": 2,
     "Effects": [
-      "MalusYellowC"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Yellow",
       4
     ]
   },
@@ -93,9 +130,10 @@
     "number": 10,
     "period": 2,
     "Effects": [
-      "MalusBlueC"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Blue",
       4
     ]
   },
@@ -103,9 +141,10 @@
     "number": 11,
     "period": 2,
     "Effects": [
-      "MalusPurpleC"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Purple",
       4
     ]
   },
@@ -113,19 +152,21 @@
     "number": 12,
     "period": 2,
     "Effects": [
-      "MalusMarket"
+      "MalusValue"
     ],
     "EffectsValues": [
-      null
+      "Market",
+      0
     ]
   },
   "13": {
     "number": 13,
     "period": 2,
     "Effects": [
-      "MalusIncreaseActionValue"
+      "MalusValue"
     ],
     "EffectsValues": [
+      "Servants",
       2
     ]
   },
@@ -133,40 +174,41 @@
     "number": 14,
     "period": 2,
     "Effects": [
-      "MalusTurnOrder"
+      "MalusValue"
     ],
     "EffectsValues": [
-      null
+      "TurnOrder",
+      0
     ]
   },
   "15": {
     "number": 15,
     "period": 3,
     "Effects": [
-      "IgnoreBlueC"
+      "IgnoreCards"
     ],
     "EffectsValues": [
-      null
+      "Blue"
     ]
   },
   "16": {
     "number": 16,
     "period": 3,
     "Effects": [
-      "IgnorePurpleC"
+      "IgnoreCards"
     ],
     "EffectsValues": [
-      null
+      "Purple"
     ]
   },
   "17": {
     "number": 17,
     "period": 3,
     "Effects": [
-      "IgnoreGreenC"
+      "IgnoreCards"
     ],
     "EffectsValues": [
-      null
+      "Green"
     ]
   },
   "18": {

@@ -218,35 +218,51 @@ public class ExcommunicationsTest {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testHasEffect() throws FileNotFoundException, IOException, ParseException {
-//		JSONParser parser = new JSONParser();
-//		
-//		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
-//		JSONObject jsonObject = (JSONObject) obj;
-//	    JSONObject a = (JSONObject) jsonObject.get("1");
-//	    long number = (long) a.get("number");
-//	    long period = (long) a.get("period");
-//		JSONArray effects = (JSONArray) a.get("Effects");
-//		JSONArray effectvalues = (JSONArray) a.get("EffectsValues");
-//		
-//		Excommunications tester = new Excommunications(a);
-//		
+	@Test
+	public void testHasEffect() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("1");
+	    long number = (long) a.get("number");
+	    long period = (long) a.get("period");
+		JSONArray effects = (JSONArray) a.get("Effects");
+		JSONArray effectvalues = (JSONArray) a.get("EffectsValues");
+		
+		Excommunications tester = new Excommunications(a);
+		
 //		assertTrue(tester.hasEffect());
-//		
-//		JSONParser parser2 = new JSONParser();
-//		
-//		Object obj2 = parser2.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
-//		JSONObject jsonObject2 = (JSONObject) obj2;
-//	    JSONObject a2 = (JSONObject) jsonObject2.get("22");
-//	    long number2 = (long) a2.get("number");
-//	    long period2 = (long) a2.get("period");
-//		JSONArray effects2 = (JSONArray) a2.get("Effects");
-//		JSONArray effectvalues2 = (JSONArray) a2.get("EffectsValues");
-//		
-//		Excommunications tester2 = new Excommunications(a2);
-//		
-//		assertTrue(!(tester2.hasEffect()));
-//	}
+		
+		JSONParser parser2 = new JSONParser();
+		
+		Object obj2 = parser2.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
+		JSONObject jsonObject2 = (JSONObject) obj2;
+	    JSONObject a2 = (JSONObject) jsonObject2.get("22");
+	    long number2 = (long) a2.get("number");
+	    long period2 = (long) a2.get("period");
+		JSONArray effects2 = (JSONArray) a2.get("Effects");
+		JSONArray effectvalues2 = (JSONArray) a2.get("EffectsValues");
+		
+		Excommunications tester2 = new Excommunications(a2);
+		
+		assertTrue(!(tester2.hasEffect()));
+	}
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("1");
+
+		
+		Excommunications tester = new Excommunications(a);
+		
+		tester.toString(1);
+		tester.toString();
+		
+	}
 
 }

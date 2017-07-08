@@ -52,6 +52,12 @@ public class CheckNumberCardTypeTest {
 		boolean ris = tester.checkRequirement(player );
 		
 		assertTrue(ris);
+		
+		tester.setParam("Green", 5);
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
 	}
 
 	/**
@@ -85,14 +91,43 @@ public class CheckNumberCardTypeTest {
 		
 		assertEquals(det, ris);
 		assertEquals(minimum, ris2);
+		
+		tester.setParam("ciao", minimum );
+		int ris3 = tester.getTypeColor();
+		
+		assertEquals(-3, ris3);
+		
 	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.CheckNumberCardType#toString()}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
 	@Test
-	public void testToString() {
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
 		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+		
+		CheckNumberCardType tester = new CheckNumberCardType();
+		PBoard player = new PBoard();
+		List<Cards> cards = new ArrayList<>();
+		GreenC gc = new GreenC(a);
+		cards.add(gc );
+		player.setCards(cards );
+		String details = "Green";
+		int det=45;
+		if (details=="Green"){ det = 0; };
+		int minimum = 0;
+		tester.setParam(details, minimum );
+		
+		String ris = tester.toString();
+		
+		assertEquals("0 Green cards.",ris);
 	}
 
 }

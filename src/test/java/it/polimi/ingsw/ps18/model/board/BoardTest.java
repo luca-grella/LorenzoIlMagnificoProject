@@ -25,8 +25,10 @@ import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ProdCell;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
+import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.MainView;
 
 /**
@@ -156,6 +158,12 @@ public class BoardTest {
 	 */
 	@Test
 	public void testIsFullMarket() throws FileNotFoundException, IOException, ParseException {
+		
+		MainController mcontroller2 = new MainController();
+		Board tester2 = new Board(mcontroller2 , 2, new MainView(mcontroller2));
+		
+		assertTrue(!(tester2.isFullMarket()));
+		
 		
 		JSONParser parser = new JSONParser();
 
@@ -679,6 +687,100 @@ public class BoardTest {
 		int ris = tester.getNplayer();
 		
 		assertEquals(nplayer, ris);
+
+	}
+	
+	@Test
+	public void testRefreshBoard() {
+
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		tester.refreshBoard();
+
+	}
+	
+	@Test
+	public void testGetActionValueProd() {
+
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		Dice dice = new Dice(4);
+		FMember fam = new FMember(dice , 0);
+		fam.setValue(5);
+		int chosenCell = 0;
+		tester.getActionValueProd(fam , chosenCell );
+		
+		assertEquals(fam.getValue(), tester.getActionValueProd(fam , chosenCell ));
+		
+		chosenCell=1;
+		tester.getActionValueProd(fam , chosenCell );
+		int ris = tester.getActionValueProd(fam , chosenCell );
+		assertEquals(fam.getValue()-3, ris);
+
+	}
+	
+	
+	@Test
+	public void testGetActionValueHarv() {
+
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		Dice dice = new Dice(4);
+		FMember fam = new FMember(dice , 0);
+		fam.setValue(5);
+		int chosenCell = 0;
+		tester.getActionValueHarv(fam , chosenCell );
+		
+		assertEquals(fam.getValue(), tester.getActionValueHarv(fam , chosenCell ));
+		
+		chosenCell=1;
+		tester.getActionValueHarv(fam , chosenCell );
+		int ris = tester.getActionValueHarv(fam , chosenCell );
+		assertEquals(fam.getValue()-3, ris);
+
+	}
+	
+	@Test
+	public void testInsertFMHarv() {
+
+		GameLogic game = new GameLogic();
+		PBoard turnplayer = new PBoard();
+		game.setCurrentPlayer(turnplayer );
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		List<HarvCell> harvCells = new ArrayList<>();
+		HarvCell harvCellNoMalus = new HarvCell(2);
+		harvCells.add(harvCellNoMalus);
+		tester.setHarvestCells(harvCells );
+		Dice dice = new Dice(3);
+		FMember fam = new FMember(dice , 0);
+		
+		int chosenCell = 0;
+		
+		tester.setHarvCellNoMalus(harvCellNoMalus );
+		tester.insertFMHarv(fam, chosenCell, game);
+
+	}
+	
+	@Test
+	public void testInsertFMProd() {
+
+		GameLogic game = new GameLogic();
+		PBoard turnplayer = new PBoard();
+		game.setCurrentPlayer(turnplayer );
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		List<ProdCell> productionCells = new ArrayList<>();
+		ProdCell prodCellNoMalus = new ProdCell(2);
+		productionCells.add(prodCellNoMalus);
+		tester.setProductionCells(productionCells );
+		Dice dice = new Dice(3);
+		FMember fam = new FMember(dice , 0);
+		
+		int chosenCell = 0;
+		
+		tester.setProdCellNoMalus(prodCellNoMalus );
+		tester.insertFMProd(fam, chosenCell, game);
 
 	}
 

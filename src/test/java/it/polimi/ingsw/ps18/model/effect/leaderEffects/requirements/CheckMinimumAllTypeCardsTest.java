@@ -46,12 +46,46 @@ public class CheckMinimumAllTypeCardsTest {
 		GreenC gc = new GreenC(a);
 		cards.add(gc );
 		player.setCards(cards );
-		int minimum = 0;
+		int minimum = 2;
 		tester.setParam(minimum );
 		
 		
 		
 		boolean ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
+		
+		gc.setColor(1);	
+		List<Cards> cards1 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards1 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
+		
+		gc.setColor(2);	
+		List<Cards> cards2 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards2 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
+		
+		gc.setColor(3);	
+		List<Cards> cards3 = new ArrayList<>();
+		cards.add(gc );
+		player.setCards(cards3 );
+		
+		ris = tester.checkRequirement(player );
+		
+		assertTrue(!(ris));
+		
+		minimum = -2;
+		tester.setParam(minimum );
+		
+		ris = tester.checkRequirement(player );
 		
 		assertTrue(ris);
 	}
@@ -74,6 +108,14 @@ public class CheckMinimumAllTypeCardsTest {
 	 */
 	@Test
 	public void testToString() {
+		
+		CheckMinimumAllTypeCards tester = new CheckMinimumAllTypeCards();
+		int minimum = 3;
+		tester.setParam(minimum );
+		
+		String ris = tester.toString();
+		
+		assertEquals("3 of each type of card", ris);
 		
 	}
 

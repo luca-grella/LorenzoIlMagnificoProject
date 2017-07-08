@@ -13,6 +13,7 @@ import org.junit.Test;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
@@ -25,7 +26,7 @@ public class ActProductionTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.ActProduction#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void testActivate() {
 		ActProduction tester = new ActProduction();
 		PBoard player = new PBoard();
@@ -40,8 +41,8 @@ public class ActProductionTest {
 		player.completePBoardSetup(dices, mcontroller, bonustile );
 		
 		tester.setQuantity(1);
-//		player.actHarvest();
-//		tester.activate(player, new GameLogic());
+
+		tester.activate(player, new GameLogic());
 	}
 
 	/**

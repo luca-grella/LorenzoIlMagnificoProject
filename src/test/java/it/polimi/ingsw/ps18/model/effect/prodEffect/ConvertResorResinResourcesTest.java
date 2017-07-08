@@ -62,6 +62,43 @@ public class ConvertResorResinResourcesTest {
 		assertEquals(vp+2, ris.getVP());
 		
 	}
+	
+	@Test
+	public void testWoodorRockChoice() {
+		
+		ConvertResorResinResources tester = new ConvertResorResinResources();
+		PBoard player = new PBoard();
+		MainController mcontroller = new MainController();
+		PBoardView pb = new PBoardView(mcontroller );
+		player.setpBoardView(pb );
+		int wood = 1;
+		int rock = 7;
+		int coin = 7;
+		int servant = 7;
+		int fp = 7;
+		int mp = 7;
+		int vp = 7;
+		Stats resources = new Stats(wood, rock, coin, servant, fp, mp, vp);
+		player.setResources(resources );
+		
+		tester.setQuantity(6);
+		tester.WoodorRockChoice(player, new GameLogic());
+		Stats ris = tester.getCost();
+		
+		assertEquals(6, ris.getRock());
+		
+		wood = 7;
+		rock = 1;
+		resources = new Stats(wood, rock, coin, servant, fp, mp, vp);
+		player.setResources(resources );
+		
+		tester.WoodorRockChoice(player, new GameLogic());
+		ris = tester.getCost();
+		
+		assertEquals(6, ris.getWood());
+		
+		
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources#continueEffect(int, it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
@@ -80,13 +117,15 @@ public class ConvertResorResinResourcesTest {
 		
 		tester.continueEffect(index , player, new GameLogic());
 		
-		if (index == 1){
-			assertEquals(quantity, tester.getCost().getWood());
-		}
-		else {
-			assertEquals(quantity, tester.getCost().getRock());
-		};
+		assertEquals(quantity, tester.getCost().getWood());
+		
+
+		index=2;
+		tester.continueEffect(index , player, new GameLogic());
+		assertEquals(quantity, tester.getCost().getRock());
+		
 	}
+
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.prodEffect.ConvertResorResinResources#setQuantity(int)}.
@@ -158,6 +197,14 @@ public class ConvertResorResinResourcesTest {
 	 */
 	@Test
 	public void testToString() {
+		
+		ConvertResorResinResources tester = new ConvertResorResinResources();
+		tester.setQuantity(5);
+		tester.setReward(new Stats(2,5,4,7,5,7,4));
+		
+		String ris = tester.toString();
+		
+		assertEquals("Pay 5Wood or Rock\nto gain:\n -----------------\nWood: 2\nRock: 5\nCoin: 4\nServant: 7\nFP: 5\nMP: 7\nVP: 4\n-----------------\n", ris);
 		
 	}
 

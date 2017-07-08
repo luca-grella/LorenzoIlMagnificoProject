@@ -49,6 +49,39 @@ public class VariousModifierTest {
 	@Test
 	public void testToString() {
 		
+		VariousModifier tester = new VariousModifier();
+		String shortDescription = "SkipCoinPaymentinTower";
+		tester.setParam(shortDescription);
+		tester.toString();
+		shortDescription = "BonusVPVaticanReport";
+		tester.setParam(shortDescription);
+		tester.toString();
+		shortDescription = "SkipMPCheckGreenCards";
+		tester.setParam(shortDescription);
+		tester.toString();
+		shortDescription = "DoubleBonus";
+		tester.setParam(shortDescription);
+		tester.toString();
+		shortDescription = "SkipFullSpaceControl";
+		tester.setParam(shortDescription);
+		tester.toString();
+		shortDescription = "CopyLC";
+		tester.setParam(shortDescription);
+		tester.toString();
+		
+		
+	}
+	
+	@Test
+	public void testGetName() {
+		
+		VariousModifier tester = new VariousModifier();
+		
+		
+		
+		assertEquals("VariousModifier", tester.getName());
+		
+		
 	}
 
 }

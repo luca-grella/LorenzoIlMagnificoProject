@@ -727,6 +727,14 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	public List<LeaderCards> getSecondsupportforLC() {
 		return secondsupportforLC;
 	}
+
+	/**
+	 * @param cards2
+	 */
+	public void setLeaderCards(List<LeaderCards> leadercards) {
+		this.leadercards=leadercards;
+		
+	}
 	
 	
 
