@@ -55,6 +55,7 @@ import it.polimi.ingsw.ps18.view.MainView;
  * The Class GameLogic.
  *
  * @author Francesco-Musio
+ * @author yazan-matar
  */
 public class GameLogic extends Observable {
 	
@@ -214,29 +215,9 @@ public class GameLogic extends Observable {
 		for(int i=0; i<nplayer; i++){
 			this.turnplayer = players.get(i);
 			this.players.get(i).completePBoardSetup(dices, mainController, bonusTiles);
-			/*
-			 * Per testing
-			 */
-//			Cards greenC = greencards.get(i);
-//			Cards blueC = bluecards.get(i);
-//			greenC = greencards.get(i+1);
-//			blueC = bluecards.get(i+1);
-//			this.players.get(i).addCard(greenC, this);
-//			this.players.get(i).addCard(blueC, this);
-			/*
-			 * delimitatore testing
-			 */
 		}
-		players.get(0).getCards().add(this.greencards.get(1));
-		players.get(0).getCards().add(this.greencards.get(2));
-		for(PBoard player: players){
-			for(int i=0; i<6; i++){
-//				player.getCards().add(this.greencards.get(i));
-				player.getCards().add(this.bluecards.get(i));
-				player.getCards().add(this.yellowcards.get(i));
-//				player.getCards().add(this.purplecards.get(i));
-			}
-		}
+		
+		
 		insertCardsinTowers();
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
@@ -454,14 +435,7 @@ public class GameLogic extends Observable {
 		do{
 			this.TURN++;
 			this.recoverTurn.clear();
-			/*
-			 * Per testing
-			 */
-//			List<PBoard> placement = finalScore(players);
-//			notifyLogMainView(this.toStringPlayers(placement));
-			/*
-			 * Delimitatore
-			 */
+
 			LinkedList<PBoard> templist = excommOrder();
 			for(PBoard player: this.players){
 				for(LeaderCards card: player.getLeadercards()){
@@ -492,10 +466,6 @@ public class GameLogic extends Observable {
 			}
 
 			if(TURN%2==0){		
-				/*
-				 * Se faccio qui il parser al posto di fare due volte il parser (in Trigger e in VaticanReport)
-				 * devo capire come passare i valori letti tramite notify, perche' 
-				 */
 				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
 					this.setCurrentPlayer(this.players.get(playerIndex));
 					notifyActionMainController("Verify Church Support");
@@ -527,7 +497,7 @@ public class GameLogic extends Observable {
 		String placement[] = {"Winner", "Second", "Third", "Fourth"};
 		
 		builder.append("\n-----------------\n");
-
+		builder.append("\nFinal Placement:\n\n");
 		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
 			PBoard player = players.get(playerIndex);
 			builder.append(placement[playerIndex] + ": player " + player.getPlayercol() 
@@ -558,18 +528,6 @@ public class GameLogic extends Observable {
 	 * @return the player who has won
 	 */
 	private List<PBoard> finalScore(List<PBoard> players) {
-		/*
-		 * Per testing
-		 */
-//		for(int index=0; index<players.size(); index++){
-//			PBoard currentplayer = players.get(index);
-//			currentplayer.getResources().addMP(index);
-//		}
-//		players.get(0).getResources().addMP(6);
-//		players.get(1).getResources().addMP(4);
-		/*
-		 * Delimitatore testing
-		 */
 		for(int playerIndex=0; playerIndex<players.size(); playerIndex++){
 			PBoard currentplayer = players.get(playerIndex);
 			boolean considerBlueCards = true;
@@ -638,71 +596,22 @@ public class GameLogic extends Observable {
 			currentplayer.getResources().addVP(totalRes/5);
 		}
 		
-		
-		
-		
-		
-		/*
-		 * Per testing
-		 */
-//		System.out.println("\nCaso Comparable\n\n");
-//		System.out.println("MP original placement\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getMP());
-//		}
-//		Collections.shuffle(players);
-//		System.out.println("\n");
-//		System.out.println("MP shuffle\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getMP());
-//		}
-//		Collections.sort(players);
-//		System.out.println("\n");
-//		System.out.println("MP tempMP sort\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getMP());
-//		}
-		/*
-		 * Delimitatore testing
-		 */
 		List<PBoard> turnOrder = new LinkedList<>();
 		/*
 		 * Si salva l'ordine dei giocatori prima di ordinarli in base al punteggio
 		 * perche' in caso di pareggio in VP, vince chi e' piu' avanti nell'ordine del turno
 		 */
-		
-		/*
-		 * Scommentare dopo test
-		 */
+
 		turnOrder.addAll(players);
-		/*
-		 * PER TESTING
-		 */
-		 
-//		Collections.shuffle(turnOrder);
-		/*
-		 * DELIMITATORE
-		 */
+		
 		for(int playerIndex = 0; playerIndex<turnOrder.size(); playerIndex++){
 			PBoard player = turnOrder.get(playerIndex);
 			player.setPriorityValue(playerIndex);
 		}
 		
 		
-//		Collections.sort(players);
-		/*
-		 * Delimitatore
-		 */
-		/*
-		 * PER TESTING
-		 */
-//		Collections.shuffle(turnOrder);
-		/*
-		 * DELIMITATORE
-		 */
+		Collections.sort(players);
+
 		
 		//TODO:  dare un'occhiata ai controlli sugli MP che potrebbero non essere corretti per tutte le casistiche
 		PBoard winner = players.get(0);
@@ -752,66 +661,8 @@ public class GameLogic extends Observable {
 			}
 		}
 		
-		/*
-		 * Per testing
-		 */
-//		Stats stat = new Stats(0,0,0,0,0,0,34);
-//		players.get(3).setResources(stat);
-//		players.get(1).setResources(stat);
-//		players.get(2).setResources(stat);
-//		players.get(0).setResources(stat);
-//
-//		System.out.println("\n");
-//		System.out.println("VP original placement\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getVP());
-//		}
-//		Collections.shuffle(players);
-//		System.out.println("\nCaso Comparator\n\n");
-//		System.out.println("VP shuffle\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getVP());
-//		}
-//		Collections.sort(players, PBoard.victoryComparator);
-//		System.out.println("\n");
-//		System.out.println("VP sort\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getVP());
-//		}
-		/*
-		 * Delimitatore testing
-		 */
-		
-		/*
-		 * Scommentare dopo testing
-		 */
 		Collections.sort(players, PBoard.victoryComparator);
-		/*
-		 * Delimitatore
-		 */
-		
-		/*
-		 * Per testing
-		 */
-		System.out.println("\n");
-		System.out.println("VP BEFORE swap\n");
-		for(PBoard player : players){
-			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-			System.out.println(player.getResources().getVP());
-		}
-		
-		System.out.println("\n");
-		System.out.println("Turn Order (shuffled)\n");
-		for(PBoard player : turnOrder){
-			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-			System.out.println(player.getResources().getVP());
-		}
-		/*
-		 * Delimitatore
-		 */		
+			
 		for(int i=1; i<players.size(); i++){
 			for(int j=i; j>0; j--){
 				PBoard currentplayer = players.get(j);
@@ -823,21 +674,6 @@ public class GameLogic extends Observable {
 				}
 			}
 		}
-		
-		
-		
-		/*
-		 * Per testing
-		 */
-//		System.out.println("\n");
-//		System.out.println("VP AFTER swap\n");
-//		for(PBoard player : players){
-//			System.out.println("\nPlayer number " + player.getPlayercol() + ":\n");
-//			System.out.println(player.getResources().getVP());
-//		}
-		/*
-		 * Delimitatore
-		 */
 		return players;
 	}
 	
