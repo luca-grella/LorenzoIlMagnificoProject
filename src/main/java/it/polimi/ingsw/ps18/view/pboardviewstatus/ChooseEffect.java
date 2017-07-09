@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -22,12 +23,17 @@ public class ChooseEffect extends Observable implements PBViewStatus {
 
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseEffect] Error\n");
+		}
 		notifyParamMainController("Chosen Effect",choice);
 	}
 	

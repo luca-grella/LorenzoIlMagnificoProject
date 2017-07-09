@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -21,20 +22,24 @@ public class SelectYellowC extends Observable implements PBViewStatus {
 		addObserver(controller);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Do You Want to Activate this Card's Production Effect?\n"
-				+ "0. Select Cards Again. [NOT YET IMPLEMENTED]\n"
-				+ "1. Yes.\n"
-				+ "2. No.\n"
-				+ "3. Select and Continue.");
-		int choice;
-		do{
-			choice = input.nextInt();
-		} while(choice<0 || choice>3);
+		int choice = -100;
+		try {
+			playerClient.notify("Do You Want to Activate this Card's Production Effect?\n"
+					+ "0. Select Cards Again. [NOT YET IMPLEMENTED]\n"
+					+ "1. Yes.\n"
+					+ "2. No.\n"
+					+ "3. Select and Continue.");
+			do{
+				choice = playerClient.read();
+			} while(choice<0 || choice>3);
+		} catch (RemoteException e) {
+			System.out.println("\n[SelectYellowC] Error\n");
+		}
 		notifyParamMainController("Selected YCard", choice);
 	}
 	

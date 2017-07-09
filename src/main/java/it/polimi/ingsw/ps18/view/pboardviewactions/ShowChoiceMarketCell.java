@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -29,10 +30,15 @@ public class ShowChoiceMarketCell extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Chose the Cell in which you want to move in:\n"
-				+ "-----------------\n0. Back.");
-		notifyStatusMainController("Show Market");
-		int choiceFloor = input.nextInt();
+		int choiceFloor = -100;
+		try {
+			playerClient.notify("Choose the Floor in which you want to move in:\n"
+					+ "-----------------\n0. Back.");
+			notifyStatusMainController("Show Market");
+			choiceFloor = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceMarketCell] Error\n");
+		}
 		notifyParamMainController("ReceiveMarketCell",choiceFloor);
 
 	}

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -26,13 +27,17 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose which Resource you want to use:\n"
-				+ "1. Wood\n"
-				+ "2. Rock");
-		int choice;
-		do{
-			choice = input.nextInt();
-		} while(choice<=0 || choice>2);
+		int choice = -100;
+		try {
+			playerClient.notify("Choose which Resource you want to use:\n"
+					+ "1. Wood\n"
+					+ "2. Rock");
+			do{
+				choice = playerClient.read();
+			} while(choice<=0 || choice>2);
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseWoodorRock] Error\n");
+		}
 		notifyParamMainController("Chosen Resource", choice);
 	}
 	

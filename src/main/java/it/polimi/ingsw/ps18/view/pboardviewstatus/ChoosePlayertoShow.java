@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -27,11 +28,13 @@ public class ChoosePlayertoShow extends Observable implements PBViewStatus {
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose the player of which you want to see the resources");
-		int choice;
-		do{
-			choice = input.nextInt();
-		} while(choice<0);
+		int choice = -100;
+		try {
+			playerClient.notify("Choose the player of which you want to see the resources:\n");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ChoosePlayertoShow] Error\n");
+		}
 		notifyParamMainController("ReceivePlayertoShow",choice);
 	}
 	

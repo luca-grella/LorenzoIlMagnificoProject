@@ -13,6 +13,8 @@ public class PlayerClientImplementation implements ClientInterface{
 
 	@Override
 	public int read() throws RemoteException {
+	    while (!scanner.hasNextInt()) 
+	    	scanner.next();
 		int input = scanner.nextInt();
 		return input;
 	}

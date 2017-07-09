@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -28,17 +29,21 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose a tower to zoom in. Type 0 to continue.");
-		int choice;
-		do{
-			choice = input.nextInt();
-		} while(choice<0);
-		while(choice!=0){
-			notifyParamMainController("ReceiveTowertoShow",choice-1);
-			System.out.println("Choose a tower to zoom in. Type 0 to continue.");
+		int choice = -100;
+		try {
+			playerClient.notify("\nChoose a tower to zoom in. Type 0 to continue.");
 			do{
-				choice = input.nextInt();
+				choice = playerClient.read();
 			} while(choice<0);
+			while(choice!=0){
+				notifyParamMainController("ReceiveTowertoShow",choice-1);
+				playerClient.notify("\nChoose a tower to zoom in. Type 0 to continue.");
+				do{
+					choice = playerClient.read();
+				} while(choice<0);
+			}
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseTowertoShow] Error\n");
 		}
 		
 

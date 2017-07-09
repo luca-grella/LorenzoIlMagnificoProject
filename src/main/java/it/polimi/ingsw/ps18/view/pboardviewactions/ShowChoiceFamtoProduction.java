@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -23,15 +24,20 @@ public class ShowChoiceFamtoProduction extends Observable implements PBViewActio
 		addObserver(controller);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Chose from yours family members which one to move:\n"
-				+ "-----------------\n0. Back.");
-		notifyStatusMainController("Show Fam");
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			playerClient.notify("Choose a Family Member to place:\n"
+					+ "-----------------\n0. Back.");
+			notifyStatusMainController("Show Fam");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceFamtoProduction] Error\n");
+		}
 		notifyParamMainController("ReceiveFamtoProduction",choice);
 
 	}

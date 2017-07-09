@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -20,12 +21,17 @@ public class ShowChoiceHarvestCell extends Observable implements PBViewAction{
 	
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose the Harvest Cell in which you want to move in:\n"
-				+ "1. Harvest Cell without malus\n"
-				+ "2. Harvest Cell with malus\n"
-				+ "-----------------\n0. Back.");
-		notifyStatusMainController("Show Harvest");
-		int cellChoice = input.nextInt();
+		int cellChoice = -100;
+		try {
+			playerClient.notify("Choose the Harvest Cell in which you want to move in:\n"
+					+ "1. Harvest Cell without malus\n"
+					+ "2. Harvest Cell with malus\n"
+					+ "-----------------\n0. Back.");
+			notifyStatusMainController("Show Harvest");
+			cellChoice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceHarvestCell] Error\n");
+		}
 		notifyParamMainController("ReceiveHarvCell", cellChoice);
 	}
 	

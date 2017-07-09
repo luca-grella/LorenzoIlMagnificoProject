@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -17,7 +18,12 @@ public class ChooseLC extends Observable implements PBViewStatus {
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseLC] Error\n");
+		}
 		notifyParamMainController("ReceiveChoiceLC", choice);
 	}
 	

@@ -26,7 +26,7 @@ public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
 			notifyStatusMainController("ShowBonusTiles");
 			choice = playerClient.read();
 		} catch (RemoteException e) {
-			System.out.println("porcalamadonna");
+			System.out.println("\n[ShowChoiceBonusTile] Error\n");
 		}
 		notifyParamMainController("ReceiveChosenBonusTile", choice);
 	}

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -16,13 +17,17 @@ public class ConfirmScreen extends Observable implements PBViewStatus {
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Confirm your Choice?"
-				+ "\n1. Yes."
-				+ "\n2. No.");
-		int choice;
-		do{
-			choice= input.nextInt();
-		} while(choice<=0 || choice>2);
+		int choice = -100;
+		try {
+			playerClient.notify("Confirm your Choice?"
+					+ "\n1. Yes."
+					+ "\n2. No.");
+			do{
+				choice= playerClient.read();
+			} while(choice<=0 || choice>2);
+		} catch (RemoteException e) {
+			System.out.println("\n[ConfirmScreen] Error\n");
+		}
 		setChanged();
 		notifyObservers(new ParamMessage("ReceiveConfirm", choice));
 	}

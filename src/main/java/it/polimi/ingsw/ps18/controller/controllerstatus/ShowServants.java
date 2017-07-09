@@ -9,7 +9,6 @@ public class ShowServants implements Status{
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
-//		currentplayer.getResources().toStringServants();
 		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
 		showBoard.showServants(currentplayer);
 	}

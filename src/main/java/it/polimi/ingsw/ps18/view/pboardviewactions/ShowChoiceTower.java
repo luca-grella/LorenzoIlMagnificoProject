@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -24,15 +25,20 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose the Tower in which you want to move in:\n"
-				+ "-----------------\n0. Back.");
-		notifyStatusMainController("Show Towers");
-		int choiceTower = input.nextInt();
+		int choiceTower = -100;
+		try {
+			playerClient.notify("Choose the Floor in which you want to move in:\n"
+					+ "-----------------\n0. Back.");
+			notifyStatusMainController("Show Towers");
+			choiceTower = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceTower] Error\n");
+		}
 		notifyParamMainController("ReceiveTower",choiceTower);
 
 	}

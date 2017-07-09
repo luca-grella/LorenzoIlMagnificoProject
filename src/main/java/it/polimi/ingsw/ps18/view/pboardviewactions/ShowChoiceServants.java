@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -20,11 +21,15 @@ public class ShowChoiceServants extends Observable implements PBViewAction{
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("\nChoose a number of servants to add:\n");
-		notifyStatusMainController("Show Servants");
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			playerClient.notify("Choose a number of Servants to add:\n");
+			notifyStatusMainController("Show Servants");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceServants] Error\n");
+		}
 		notifyParamMainController("Add Servants", choice);
-		//Sta notify dove la mando? devo solo sommare choice agli actionvalue del familiare scelto.
 	}
 	
 	

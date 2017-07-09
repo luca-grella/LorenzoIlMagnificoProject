@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -19,12 +20,17 @@ public class ShowChoiceProductionCell extends Observable implements PBViewAction
 	
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose the Production Cell in which you want to move in:\n"
-				+ "1. Production Cell without malus\n"
-				+ "2. Production Cell with malus\n"
-				+ "-----------------\n0. Back.");
-		notifyStatusMainController("Show Production");
-		int cellChoice = input.nextInt();
+		int cellChoice = -100;
+		try {
+			playerClient.notify("Choose the Production Cell in which you want to move in:\n"
+					+ "1. Production Cell without malus\n"
+					+ "2. Production Cell with malus\n"
+					+ "-----------------\n0. Back.");
+			notifyStatusMainController("Show Production");
+			cellChoice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ShowChoiceProductionCell] Error\n");
+		}
 		notifyParamMainController("ReceiveProdCell", cellChoice);
 	}
 	

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -21,9 +22,14 @@ public class ChooseFamforValueChangeLC extends Observable implements PBViewStatu
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose a Family Member of which you want to incrase the value:\n");
-		notifyStatusMainController("Show Fam");
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			playerClient.notify("Choose a Family Member of which you want to increase the value:\n");
+			notifyStatusMainController("Show Fam");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseFamforValueChangeLC] Error\n");
+		}
 		notifyParamMainController("ReceiveFamforValueChange",choice);
 	}
 	

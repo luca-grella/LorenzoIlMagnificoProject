@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -18,8 +19,13 @@ public class ChooseLCtoCopy extends Observable implements PBViewStatus {
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose which card you want to copy.");
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			playerClient.notify("Choose which card you want to copy.");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseLCtoCopy] Error\n");
+		}
 		setChanged();
 		notifyObservers(new ParamMessage("ReceiveLCtoCopy", choice));
 	}

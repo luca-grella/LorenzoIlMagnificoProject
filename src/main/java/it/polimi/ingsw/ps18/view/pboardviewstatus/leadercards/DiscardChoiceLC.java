@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -17,9 +18,14 @@ public class DiscardChoiceLC extends Observable implements PBViewStatus {
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Select which card you want to discard."
-				+ "\n0. Back.");
-		int choice = input.nextInt();
+		int choice = -100;
+		try {
+			playerClient.notify("Select which card you want to discard."
+					+ "\n0. Back.");
+			choice = playerClient.read();
+		} catch (RemoteException e) {
+			System.out.println("\n[DiscardChoiceLC] Error\n");
+		}
 		setChanged();
 		notifyObservers(new ParamMessage("ReceiveDiscardChoice",choice));
 	}

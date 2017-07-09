@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -18,20 +19,21 @@ public class ChooseSupport extends Observable implements PBViewAction{
 
 	@Override
 	public void act(ClientInterface playerClient) {
-		/*
-		 * Al sesto turno non ci sarebbe scelta, perche' il gioco finisce e quindi non ha senso che ti becchi la scomunica
-		 * Pero' non ho la GameLogic come parametro, quindi devo trovare un altro modo
-		 */
-		System.out.println("\nDo you want to support the Church?\n"
-				+ "Digit 1 if you want to support the Church\n"
-				+ "Digit 2 if you want to be excommunicated\n");
-		int supportChoice = input.nextInt();
-		while(supportChoice != 1 && supportChoice != 2){
-			System.out.println("\nError: not a valid input\n");
-			System.out.println("\nDo you want to support the Church?\n"
+		int supportChoice = -100;
+		try {
+			playerClient.notify("\nDo you want to support the Church?\n"
 					+ "Digit 1 if you want to support the Church\n"
 					+ "Digit 2 if you want to be excommunicated\n");
-			supportChoice = input.nextInt();
+			supportChoice = playerClient.read();
+			while(supportChoice != 1 && supportChoice != 2){
+				playerClient.notify("\nError: not a valid input\n");
+				playerClient.notify("\nDo you want to support the Church?\n"
+						+ "Digit 1 if you want to support the Church\n"
+						+ "Digit 2 if you want to be excommunicated\n");
+				supportChoice = playerClient.read();
+			}
+		} catch (RemoteException e) {
+			System.out.println("\n[ChooseSupport] Error\n");
 		}
 		
 		notifyParamMainController("Receive Vatican Answer", supportChoice);
