@@ -232,7 +232,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		notifyLogPBoardView("\nGiocatore " + this.playercol + "\n");
 		for(int i=0; i<leaders.size(); i++){
 			LeaderCards card = leaders.get(i);
-			notifyLogPBoardView(card.toString(i));
+			notifyLogPBoardView(card.toString(i + 1));
 		}
 		notifyStatusPBoardView("ChoiceLC");
 	}

@@ -14,9 +14,10 @@ public class ReceiveChoiceLCInitialDraft implements ActionChoice {
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		List<LeaderCards> leaders = currentplayer.getTempLC();
-		if(index<0 || index>leaders.size()){
+		if(index<=0 || index>leaders.size()){
 			currentplayer.takeLeader(leaders);
 		} else {
+			index -= 1;
 			currentplayer.continuetakeLeader(index);
 		}
 	}
