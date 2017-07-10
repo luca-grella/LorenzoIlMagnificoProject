@@ -1,5 +1,6 @@
-# Lorenzo il Magnifico Project - Prova Finale (Ingegneria del Software)
-## Anno Accademico 2016/2017
+# Lorenzo il Magnifico Project
+## Prova Finale (Ingegneria del Software)
+### Anno Accademico 2016/2017
 
 ![Progetto Finale ISW](https://github.com/luca-grella/LorenzoIlMagnificoProject/blob/master/altro/readme.jpg "Progetto Finale ISW")
 
