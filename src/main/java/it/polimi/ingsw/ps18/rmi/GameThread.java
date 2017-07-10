@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class GameThread extends Thread implements Serializable{
+	private boolean timer = true;
 
 	/**
 	 * 
@@ -33,10 +34,18 @@ public class GameThread extends Thread implements Serializable{
 	
 	@Override
 	public void run(){
-		try {
-			sleep(120000);
-		} catch (InterruptedException e) {
-			System.out.println("Raggiunti i 4 giocatori, inizio della partita.");
+		int counter = 0;
+		timer=true;
+		while(timer){
+			try {
+				if(counter<120){
+					sleep(1000);
+				}
+				counter++;
+			} catch (InterruptedException e) {
+				System.out.println("\n[GameThread] Error\n");
+				Thread.currentThread().interrupt();
+			}
 		}
 		canReceivePlayer = false;
 		MainController game = new MainController();
@@ -55,12 +64,20 @@ public class GameThread extends Thread implements Serializable{
 	
 	public void runagain(){
 		canReceivePlayer = true;
-		try {
-			if(players.size()!=4){
-				sleep(120000);
+		int counter = 0;
+		timer=true;
+		while(timer){
+			try {
+				if(counter<120){
+					if(players.size()!=4){
+						sleep(1000);
+					}
+				}
+				counter++;
+			} catch (InterruptedException e) {
+				System.out.println("\n[GameThread] Error\n");
+				Thread.currentThread().interrupt();
 			}
-		} catch (InterruptedException e) {
-			System.out.println("\n[GameThread] Error\n");
 		}
 		canReceivePlayer = false;
 		MainController game = new MainController();
@@ -82,6 +99,13 @@ public class GameThread extends Thread implements Serializable{
 	 */
 	public LinkedList<PBoard> getPlayers() {
 		return players;
+	}
+
+	/**
+	 * @param timer the timer to set
+	 */
+	public void setTimer(boolean timer) {
+		this.timer = timer;
 	}
 	
 	

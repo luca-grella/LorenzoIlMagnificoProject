@@ -443,127 +443,127 @@ public class GameLogic extends Observable {
 	 *         </ul>
 	 */
 	public LinkedList<ClientInterface> gameFlow(){
-//		do{
-//			this.TURN++;
-//			this.recoverTurn.clear();
-//
-////			for(PBoard player: this.players){
-////				if(player.getPlayercol()!=players.get(0).getPlayercol()){
-////					player.getIdleviewthread().start();
-////				}
-////			}
-////			for(int i=0; i<players.size(); i++){
-////				if(i!=0){
-////					players.get(i).getIdlethread().submit(new IdleViewThread(players.get(i), controller));
-////				}
-////			}
-//			
-//			
-//			LinkedList<PBoard> templist = excommOrder();
+		do{
+			this.TURN++;
+			this.recoverTurn.clear();
+
 //			for(PBoard player: this.players){
-//				for(LeaderCards card: player.getLeadercards()){
-//					card.setEffectactivated(false);
+//				if(player.getPlayercol()!=players.get(0).getPlayercol()){
+//					player.getIdleviewthread().start();
 //				}
 //			}
-//			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
-//				this.turnplayer = templist.get(playerIndex);
-//				
-//				//stampa gioco, alternativa ai thread
-////				for(PBoard player: this.players){
-////					if(player.getPlayercol()!=turnplayer.getPlayercol()){
-////						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-////					}
-////				}
-//				
-////				if(playerIndex!=0){
-////					players.get(playerIndex).getIdlethread().shutdownNow();
-////				}
-//				
-//				final ExecutorService service = Executors.newSingleThreadExecutor();
-//				 try {
-//					service.submit(new ActionDevelopThread(mView));
-//					service.shutdown();
-//					service.awaitTermination(100, TimeUnit.SECONDS);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace(System.out);
+//			for(int i=0; i<players.size(); i++){
+//				if(i!=0){
+//					players.get(i).getIdlethread().submit(new IdleViewThread(players.get(i), controller));
 //				}
-//				
-////				players.get(playerIndex).getIdlethread().submit(new IdleViewThread(players.get(playerIndex), controller));
 //			}
-//			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
-//				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
-//					this.turnplayer = players.get(playerIndex);
-////					for(PBoard player: this.players){
-////						if(player.getPlayercol()!=turnplayer.getPlayercol()){
-////							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-////						}
-////					}
-//					final ExecutorService service = Executors.newSingleThreadExecutor();
-//					 try {
-//						service.submit(new ActionDevelopThread(mView));
-//						service.shutdown();
-//						service.awaitTermination(100, TimeUnit.SECONDS);
-//					} catch (InterruptedException e) {
-//						System.out.println("Azione interrotta");
+			
+			
+			LinkedList<PBoard> templist = excommOrder();
+			for(PBoard player: this.players){
+				for(LeaderCards card: player.getLeadercards()){
+					card.setEffectactivated(false);
+				}
+			}
+			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
+				this.turnplayer = templist.get(playerIndex);
+				
+				//stampa gioco, alternativa ai thread
+//				for(PBoard player: this.players){
+//					if(player.getPlayercol()!=turnplayer.getPlayercol()){
+//						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
 //					}
 //				}
-//			}
-//			if(! this.recoverTurn.isEmpty()){
-//				for(int recover=0; recover<this.recoverTurn.size(); recover++){
-//					this.turnplayer = this.recoverTurn.get(recover);
+				
+//				if(playerIndex!=0){
+//					players.get(playerIndex).getIdlethread().shutdownNow();
+//				}
+				
+				final ExecutorService service = Executors.newSingleThreadExecutor();
+				 try {
+					service.submit(new ActionDevelopThread(mView));
+					service.shutdown();
+					service.awaitTermination(100, TimeUnit.SECONDS);
+				} catch (InterruptedException e) {
+					e.printStackTrace(System.out);
+				}
+				
+//				players.get(playerIndex).getIdlethread().submit(new IdleViewThread(players.get(playerIndex), controller));
+			}
+			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
+				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+					this.turnplayer = players.get(playerIndex);
 //					for(PBoard player: this.players){
 //						if(player.getPlayercol()!=turnplayer.getPlayercol()){
 //							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
 //						}
 //					}
-//					final ExecutorService service = Executors.newSingleThreadExecutor();
-//					 try {
-//						service.submit(new ActionDevelopThread(mView));
-//						service.shutdown();
-//						service.awaitTermination(100, TimeUnit.SECONDS);
-//					} catch (InterruptedException e) {
-//						System.out.println("Azione interrotta");
-//					}
-//				}
-//			}
-//
-//			if(TURN%2==0){		
-//				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
-//					this.setCurrentPlayer(this.players.get(playerIndex));
-//					notifyActionMainController("Verify Church Support");
-//					
-//				}
-//				this.AGE++;
-//			}
-//			newOrder();
-//			this.refreshGame();
-//
-//		} while (TURN!=GeneralParameters.totalTurns);
-//		
-//		List<PBoard> placement = finalScore(players);
-//		notifyLogMainView(this.toStringPlayers(placement));
-//		
+					final ExecutorService service = Executors.newSingleThreadExecutor();
+					 try {
+						service.submit(new ActionDevelopThread(mView));
+						service.shutdown();
+						service.awaitTermination(100, TimeUnit.SECONDS);
+					} catch (InterruptedException e) {
+						System.out.println("Azione interrotta");
+					}
+				}
+			}
+			if(! this.recoverTurn.isEmpty()){
+				for(int recover=0; recover<this.recoverTurn.size(); recover++){
+					this.turnplayer = this.recoverTurn.get(recover);
+					for(PBoard player: this.players){
+						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+						}
+					}
+					final ExecutorService service = Executors.newSingleThreadExecutor();
+					 try {
+						service.submit(new ActionDevelopThread(mView));
+						service.shutdown();
+						service.awaitTermination(100, TimeUnit.SECONDS);
+					} catch (InterruptedException e) {
+						System.out.println("Azione interrotta");
+					}
+				}
+			}
+
+			if(TURN%2==0){		
+				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
+					this.setCurrentPlayer(this.players.get(playerIndex));
+					notifyActionMainController("Verify Church Support");
+					
+				}
+				this.AGE++;
+			}
+			newOrder();
+			this.refreshGame();
+
+		} while (TURN!=GeneralParameters.totalTurns);
+		
+		List<PBoard> placement = finalScore(players);
+		notifyLogMainView(this.toStringPlayers(placement));
+		
         //Chiedere insieme è un casino per hashmap statici, chiedere uno alla volta
-//		try {
-//			players.get(0).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-//			players.get(0).getIdlethread().shutdown();
-//			players.get(0).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-//			players.get(1).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-//			players.get(1).getIdlethread().shutdown();
-//			players.get(1).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-//			if(players.size()>2){
-//				players.get(2).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-//				players.get(2).getIdlethread().shutdown();
-//				players.get(2).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-//			}
-//			if(players.size()>3){
-//				players.get(3).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-//				players.get(3).getIdlethread().shutdown();
-//				players.get(3).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-//			}
-//		} catch (InterruptedException e) {
-//			System.out.println("Richiesta di rimanere fallita per il giocatore ");
-//		}
+		try {
+			players.get(0).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+			players.get(0).getIdlethread().shutdown();
+			players.get(0).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+			players.get(1).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+			players.get(1).getIdlethread().shutdown();
+			players.get(1).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+			if(players.size()>2){
+				players.get(2).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+				players.get(2).getIdlethread().shutdown();
+				players.get(2).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+			}
+			if(players.size()>3){
+				players.get(3).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+				players.get(3).getIdlethread().shutdown();
+				players.get(3).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+			}
+		} catch (InterruptedException e) {
+			System.out.println("Richiesta di rimanere fallita per il giocatore ");
+		}
 		for(PBoard player: this.players){
 			this.turnplayer = player;
 			player.notifyParamPBoardView("NewGameChoice", player.getPlayercol());

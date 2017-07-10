@@ -31,7 +31,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 				lobby.addPlayers(client);
 				players.remove(client);
 				if(lobby.getPlayers().size()==4){
-					lobby.interrupt();
+					lobby.setTimer(false);;
 				}
 				return;
 			}

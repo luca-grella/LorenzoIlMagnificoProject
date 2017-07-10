@@ -44,10 +44,9 @@ public class IdleView extends Observable{
 			playerClient.notify(builder.toString());
 			ans = playerClient.read();
 		} catch (RemoteException e) {
-			System.out.println("\n[PBVAInit] Error\n");
+			System.out.println("\n[IdleView] Error\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("\n[IdleView] Error\n");
 		}
 		switch (ans){
 		case 1:

@@ -23,8 +23,7 @@ public class IdleViewThread implements Runnable {
 					+ "\tThread rimane attiva e non siamo riusciti a chiuderla. Per prosegiore e iniziare il \n"
 					+ "\tturno basta inserire un input maggiore di 7.");
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("\n[IdleViewThread] Error\n");
 		}
 		this.active = true;
 		while(active){
