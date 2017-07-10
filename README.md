@@ -1,48 +1,39 @@
-# Project Template - Prova Finale (Ingegneria del Software)
+# Lorenzo il Magnifico Project - Prova Finale (Ingegneria del Software)
+## Anno Accademico 2016/2017
 
-## Project Setup
-In order to set up your project, follow these steps
-### Clone and push the template to your repo
-Using the git command line client for your OS, type the following commands:
-```bash
- # clone the repo on your current folder, naming the remote as 'template'
- git clone https://github.com/deib-polimi/prova-finale-template --origin template
- # move to the cloned repo
- cd prova-finale-template/
- # add your repository as 'origin' (default) remote
- git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
- # push the template project to your github repository, setting 
- git push --set-upstream origin master
- # alternatively, if you already have some content in your repo (e.g., a README)
- # and YOU WANT TO OVERWRITE IT, force the push
- git push --force --set-upstream origin master
- 
+![Progetto Finale ISW](https://github.com/luca-grella/LorenzoIlMagnificoProject/blob/master/altro/readme.jpg "Progetto Finale ISW")
+
+Benvenuto nella repository del nostro progetto.
+Proseguendo nella lettura troverai:
+
+* La lista dei requisiti sviluppati 
+* Le istruzioni per lanciare l’applicazione 
+* I links ai diagrammi UML
+
+Buona navigazione!
+
 ```
-then, you can safely remove the 'template' remote by typing `git remote rm template`.
+Luca Grella 806717
+Yazan Matar 827861
+Francesco Musio 826374
+```
 
-### Customize your project files and Import them in Eclipse
-- Open the `pom.xml` file in a text editor and substitute the two occurrences of **pcXX** with your assigned **team_code**.
-- Import it in Eclipse as Maven Project:
-  * from Eclipse, select `File > Import... > Existing Maven Project`
-  * click `Browse...` and select the directory where you cloned the project
-  * make sure the project is listed and selected under `Projects`
-  * select `Finish`
-  * you should now see the project **team_code** listed in the Package Explorer view of Eclipse
-- from the Package Explorer view, rename packages under `src/main/java` and `src/test/java` substituting **pcXX** with your assigned **team_code**
-- customize the `README.md`
-- in order to check that everything worked fine, try to build with Maven:
-  + from Eclipse (Package Explorer view):
-    * right-click on the project
-    * select `Run as > Maven build...`
-    * type `clean package` into the `Goal` field
-    * click `Run`
-  + from command line:
-    * move to your project directory (you should be in the same folder as `pom.xml` file)
-    * type `mvn clean package`
-  + wait for the build to complete and make sure you have a build success
 
-### Commit and push your changes:
-  ```
-  git commit -am "customize project"
-  git push origin master
-  ```
+### Developed Requirements
+
+* **Regole Semplificate**
+* **Regole Complete** 
+* **Command Line Interface**
+* **Remote Method Invocation**
+
+
+### How to start
+- Apri il package **RMI** situato in `/ps18/src/main/java/it/polimi/ingsw/ps18/rmi`
+- Lancia `Server.java`
+- Lancia `PlayerClient.java` (ripeti l'azione più volte in base al numero di players)
+- La partita inizierà dopo 120 secondi se `PlayerClient.java` è stato lanciato due o tre volte (e quindi ci sono due o tre players in attesa)
+- La partita inizierà istantaneamente alla connessione del quarto giocatore (e quindi al quarto lancio di `PlayerClient.java`)
+
+### UML Diagrams
+
+Clicca [qui](https://github.com/luca-grella/LorenzoIlMagnificoProject/wiki) per visualizzare il **diagramma UML iniziale ad alto livello** e il **diagramma UML finale** che mostra come è stato progettato il software.
