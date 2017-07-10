@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.view.pboardviewactions.ChoosePlayertoShow;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ChoosePrivilege;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivateQEChoiceLC;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivationChoiceLC;
@@ -28,8 +29,6 @@ public class HashMapPBVS {
 	 * @param mcontroller 
 	 */
 	public static void init(MainController mcontroller){
-		genPBVStatus.put("Tower Choice", new ChooseTowertoShow(mcontroller));
-		genPBVStatus.put("Player Choice", new ChoosePlayertoShow(mcontroller));
 		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock(mcontroller));
 		genPBVStatus.put("actHarvest", new ActHarvest(mcontroller));
 		genPBVStatus.put("actProduction", new ActProduction(mcontroller));

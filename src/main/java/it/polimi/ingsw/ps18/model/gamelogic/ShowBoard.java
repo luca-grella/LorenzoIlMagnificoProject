@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.board.boardcells.*;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
@@ -62,9 +63,10 @@ public class ShowBoard extends Observable {
 	 * @param board
 	 *            the board
 	 */
-	public void showAllTowerswithZoom(Board board){
+	public void showAllTowerswithZoom(Board board, int playercol){
 		notifyLogView(board.toStringTowers());
-		notifyStatusView("Tower Choice");
+		setChanged();
+		notifyObservers(new ParamMessage("Tower Choice", playercol));
 	}
 	
 	/**
@@ -118,8 +120,13 @@ public class ShowBoard extends Observable {
 	/**
 	 * Choose player.
 	 */
-	public void choosePlayer(){
-		notifyStatusView("Player Choice");
+	public void choosePlayer(int color){
+		setChanged();
+		notifyObservers(new ParamMessage("Player Choice", color));
+	}
+	
+	public void showFam(PBoard player){
+		notifyLogView(player.toStringFams());
 	}
 	
 	/**

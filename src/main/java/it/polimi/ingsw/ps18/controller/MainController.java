@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
@@ -62,6 +63,8 @@ public class MainController implements Observer {
 		case 3:
 			StatusMessage sMessage = (StatusMessage) msg;
 			Status show = HashMapStatus.geteffect(sMessage.getMessage());
+			show.setColor(-1);
+			show.setIndex(-1);
 			show.act(game);
 		    break;
 		case 4:
@@ -69,6 +72,14 @@ public class MainController implements Observer {
 			ActionChoice ParamAction = HashMapActions.geteffect(pMessage.getMessage());
 			ParamAction.setIndex(pMessage.getNumber());
 			ParamAction.act(game);
+			break;
+		case 5:
+			StatusParamMessage spMessage = (StatusParamMessage) msg;
+			Status statusShow = HashMapStatus.geteffect(spMessage.getMessage());
+			statusShow.setColor(spMessage.getColor());
+			statusShow.setIndex(spMessage.getNumber());
+			statusShow.act(game);
+			
 		}
 		
 	}

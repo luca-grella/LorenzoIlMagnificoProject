@@ -30,6 +30,9 @@ public class HashMapStatus {
 		genStatus.put("Show Production", new ShowProduction());
 		genStatus.put("ShowBonusTiles", new ShowBonusTiles());
 		genStatus.put("Show Excomm", new ShowExcomm());
+		genStatus.put("ReceiveTowertoShow", new ShowZoomedCell());
+		genStatus.put("Show Player", new ChoosePlayer());
+		genStatus.put("ReceivePlayertoShow", new ShowPlayer());
 	}
 	
 	/**

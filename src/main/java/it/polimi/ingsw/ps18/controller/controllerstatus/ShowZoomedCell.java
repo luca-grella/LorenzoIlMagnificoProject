@@ -1,31 +1,16 @@
 package it.polimi.ingsw.ps18.controller.controllerstatus;
 
+import it.polimi.ingsw.ps18.model.board.Board;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-/**
- * The Class ShowMarket.
- */
-public class ShowMarket implements Status {
-	private int index;
+public class ShowZoomedCell implements Status {
 	private int color;
-	
+	private int index;
+
 	@Override
-	public void setIndex(int i) {
-		this.index = i;
-	}
-	
-	@Override
-	public void setColor(int i) {
-		this.color = i;
-	}
-	
-	/**
-	 * @see it.polimi.ingsw.ps18.controller.controllerstatus.Status#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
-	 */
-	@Override
-	public void act(GameLogic game){
+	public void act(GameLogic game) {
 		PBoard caller = new PBoard();
 		if(color!=-1){
 			for(PBoard player: game.getPlayers()){
@@ -37,8 +22,18 @@ public class ShowMarket implements Status {
 			caller = game.getTurnplayer();
 		}
 		ShowBoard showBoard = new ShowBoard(caller.getpBoardView());
-		showBoard.showMarket(game.getBoard());
+		Board board = game.getBoard();
+		showBoard.showTowerCell(board, index);
 	}
-	
+
+	@Override
+	public void setColor(int i) {
+		this.color = i;
+	}
+
+	@Override
+	public void setIndex(int i) {
+		this.index = i;
+	}
 
 }
