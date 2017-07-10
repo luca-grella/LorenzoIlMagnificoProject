@@ -18,7 +18,7 @@ public class ChooseSupport extends Observable implements PBViewAction{
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException {
 		int supportChoice = -100;
 		try {
 			playerClient.notify("\nDo you want to support the Church?\n"

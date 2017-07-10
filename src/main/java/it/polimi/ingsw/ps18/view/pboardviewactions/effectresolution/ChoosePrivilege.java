@@ -25,7 +25,7 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 */
 	private int index = -1;
 
-	public ChoosePrivilege(MainController controller) {
+	public ChoosePrivilege(MainController controller){
 		addObserver(controller);
 
 	}
@@ -34,7 +34,7 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
 		try {
 			playerClient.notify("Choose which Privilege you want to take:\n"

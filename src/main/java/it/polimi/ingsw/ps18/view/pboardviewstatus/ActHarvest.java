@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.controller.MainController;
@@ -20,7 +21,7 @@ public class ActHarvest extends Observable implements PBViewStatus {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		setChanged();
 		notifyObservers(new ActionMessage("actHarvest"));
 	}

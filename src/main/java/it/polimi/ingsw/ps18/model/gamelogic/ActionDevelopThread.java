@@ -15,6 +15,8 @@ public class ActionDevelopThread extends Observable implements Runnable{
 	public void run() {
 		setChanged();
 		notifyObservers(new ActionMessage("Turn Handle Init"));
+		
+		return;
 	}
 
 }

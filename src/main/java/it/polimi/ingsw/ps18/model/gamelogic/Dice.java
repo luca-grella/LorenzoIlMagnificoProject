@@ -25,8 +25,8 @@ public class Dice {
 	public Dice(int color){
 		Random rand = new Random();
 		this.color = color;
-		this.value = 999;
-//		this.value = rand.nextInt(5) + 1;
+//		this.value = 999;
+		this.value = rand.nextInt(5) + 1;
 	}
 	
 	

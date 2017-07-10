@@ -18,7 +18,7 @@ public class CostChoice extends Observable implements PBViewAction {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
 		try {
 			playerClient.notify("How do You want to pay for this Card?\n"

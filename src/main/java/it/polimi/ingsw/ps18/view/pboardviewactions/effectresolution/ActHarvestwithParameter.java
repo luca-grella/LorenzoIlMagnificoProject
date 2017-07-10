@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 
 import it.polimi.ingsw.ps18.controller.MainController;
@@ -26,7 +27,7 @@ public class ActHarvestwithParameter extends Observable implements PBViewAction 
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		setChanged();
 		notifyObservers(new ParamMessage("actHarvest", index));
 	}

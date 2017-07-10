@@ -20,7 +20,7 @@ public class ShowChoiceServants extends Observable implements PBViewAction{
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
 		try {
 			playerClient.notify("Choose a number of Servants to add:\n");

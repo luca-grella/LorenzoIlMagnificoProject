@@ -13,6 +13,7 @@ public class PlayerClient {
 			
 			server = (ServerInterface)Naming.lookup("//localhost/Server");	
 			PlayerClientImplementation client = new PlayerClientImplementation();
+			client.setName(client.chooseName());
 			ClientInterface remoteRef = (ClientInterface) UnicastRemoteObject.exportObject(client, 0);
 			server.addClient(remoteRef);
 			

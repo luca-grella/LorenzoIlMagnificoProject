@@ -20,7 +20,7 @@ public class ShowChoiceHarvestCell extends Observable implements PBViewAction{
 	}
 	
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException {
 		int cellChoice = -100;
 		try {
 			playerClient.notify("Choose the Harvest Cell in which you want to move in:\n"

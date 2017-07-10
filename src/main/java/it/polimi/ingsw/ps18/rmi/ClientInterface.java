@@ -8,7 +8,9 @@ public interface ClientInterface extends Remote {
 	public void notify(String object) throws RemoteException;
 	
 	public int read() throws RemoteException;
+	
+	public String getName() throws RemoteException;
 
-	public void closeScanner() throws RemoteException;
+	String chooseName() throws RemoteException;
 	
 }

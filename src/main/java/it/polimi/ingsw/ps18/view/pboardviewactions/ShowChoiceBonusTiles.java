@@ -19,7 +19,7 @@ public class ShowChoiceBonusTiles extends Observable implements PBViewAction {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
 		try {
 			playerClient.notify("Choose one Bonus Tile:\n");

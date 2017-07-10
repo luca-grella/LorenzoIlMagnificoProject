@@ -16,7 +16,7 @@ public class NewGameChoice extends Observable implements PBViewAction {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int ans = -1;
 		try {
 			playerClient.notify("\n\n\nDo you want to play again?\n"

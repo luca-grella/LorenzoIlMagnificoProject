@@ -26,7 +26,7 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient) throws RemoteException {
 		int choice = -100;
 		try {
 			playerClient.notify("Choose which Resource you want to use:\n"

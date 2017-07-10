@@ -13,15 +13,26 @@ public class GameThread extends Thread implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	LinkedList<ClientInterface> clients = new LinkedList<>();
 
 	LinkedList<PBoard> players = new LinkedList<>();
 	
 	boolean canReceivePlayer = true;
 	
 	public GameThread(LinkedList<ClientInterface> clients){
+		this.clients = clients;
 		for(int i=0; i<clients.size(); i++){
 			PBoard player = new PBoard(i, clients.get(i));
 			players.add(player);
+		}
+	}
+	
+	public void updateClients(ClientInterface oldclient, ClientInterface newclient){
+		for(int i=0; i<players.size(); i++){
+			if(players.get(i).getPlayer().equals(oldclient)){
+				players.get(i).setPlayer(newclient);
+			}
 		}
 	}
 	
@@ -40,6 +51,9 @@ public class GameThread extends Thread implements Serializable{
 			try {
 				if(counter<120){
 					sleep(1000);
+				}
+				if(counter>=120){
+					timer = false;
 				}
 				counter++;
 			} catch (InterruptedException e) {
@@ -71,6 +85,9 @@ public class GameThread extends Thread implements Serializable{
 				if(counter<120){
 					if(players.size()!=4){
 						sleep(1000);
+					}
+					if(counter>=120){
+						timer = false;
 					}
 				}
 				counter++;
@@ -106,6 +123,13 @@ public class GameThread extends Thread implements Serializable{
 	 */
 	public void setTimer(boolean timer) {
 		this.timer = timer;
+	}
+
+	/**
+	 * @return the clients
+	 */
+	public LinkedList<ClientInterface> getClients() {
+		return clients;
 	}
 	
 	

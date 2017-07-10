@@ -19,7 +19,7 @@ public class ShowChoiceProductionCell extends Observable implements PBViewAction
 	
 	
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int cellChoice = -100;
 		try {
 			playerClient.notify("Choose the Production Cell in which you want to move in:\n"

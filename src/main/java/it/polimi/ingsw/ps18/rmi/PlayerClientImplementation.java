@@ -4,7 +4,11 @@ import java.rmi.RemoteException;
 import java.util.Scanner;
 
 public class PlayerClientImplementation implements ClientInterface{
+	
+	
+	
 	Scanner scanner = new Scanner(System.in);
+	private String name;
 	
 	@Override
 	public void notify(String object) throws RemoteException {
@@ -18,12 +22,28 @@ public class PlayerClientImplementation implements ClientInterface{
 		int input = scanner.nextInt();
 		return input;
 	}
-	
-	
-	
+
 	@Override
-	public void closeScanner(){
-//		
+	public String chooseName(){
+		System.out.println("Inserisci il nome utente.");
+		return scanner.nextLine();
 	}
+	
+	/**
+	 * @return the name
+	 */
+	@Override
+	public String getName() throws RemoteException{
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 
 }

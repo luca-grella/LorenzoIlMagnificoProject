@@ -21,7 +21,7 @@ public class ChooseFamforValueChangeLC extends Observable implements PBViewStatu
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient) throws RemoteException {
 		int choice = -100;
 		try {
 			playerClient.notify("Choose a Family Member of which you want to increase the value:\n");

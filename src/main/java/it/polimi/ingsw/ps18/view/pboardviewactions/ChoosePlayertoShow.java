@@ -30,7 +30,7 @@ public class ChoosePlayertoShow extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException {
 		int choice = -100;
 		try {
 			playerClient.notify("Choose the player of which you want to see the resources:\n");

@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps18.rmi;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 	private LinkedList<ClientInterface> players = new LinkedList<>();
 	
 	private List<GameThread> lobbies = new ArrayList<>();
-
+	
+	private HashMap<String,ClientInterface> users = new HashMap<>();
+	
 	protected ServerImplementation() throws RemoteException {
 		super(0);
 	}
@@ -21,9 +24,39 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 	@Override
 	public void addClient(ClientInterface client) throws RemoteException {
 		players.add(client);
-		insertPlayer(client);
-		generateLobby();
+		if(insertInHashMap(client)){
+			insertPlayer(client);
+			generateLobby();
+		} else {
+			return;
+		}
+		
 	}
+	
+	private boolean insertInHashMap(ClientInterface client){
+		String name;
+		try {
+			name = (String) client.getName();
+		} catch (RemoteException e1) {
+			System.out.println("\n[ServerImplementation] Error\n");
+			return false;
+		}
+		if(! users.containsKey(name)){
+			users.put(name, client);
+			//il giocatore non ha mai fatto un accesso quindi viene inserito
+			return true;
+		} else {
+			ClientInterface oldClient = users.get(name);
+			for(GameThread game: lobbies){
+				if(game.getClients().contains(oldClient)){
+					game.updateClients(oldClient, client);
+				}
+			}
+			//giocatore presente, setta il nuovo client
+			return false;
+		}
+	}
+	
 	
 	private void insertPlayer(ClientInterface client){
 		for(GameThread lobby: lobbies){

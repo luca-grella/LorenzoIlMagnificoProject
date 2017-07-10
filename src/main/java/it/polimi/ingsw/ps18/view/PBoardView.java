@@ -74,7 +74,12 @@ public class PBoardView extends Observable implements Observer {
 		case 3:
 			StatusMessage sMessage = (StatusMessage) msg;
 			PBViewStatus statusAction = HashMapPBVS.geteffect(sMessage.getMessage());
-			statusAction.act(playerClient);
+			try {
+				statusAction.act(playerClient);
+			} catch (RemoteException e1) {
+				System.out.println("Giocatore Disconnesso.");
+				return;
+			}
 			break;
 		case 4:
 			ParamMessage pMessage = (ParamMessage) msg;

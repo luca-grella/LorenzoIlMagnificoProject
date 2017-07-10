@@ -32,7 +32,7 @@ public class ShowChoiceFloor extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choiceFloor = -100;
 		try {
 			playerClient.notify("Choose the Floor in which you want to move in:\n"

@@ -16,7 +16,7 @@ public class ConfirmScreen extends Observable implements PBViewStatus {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
 		try {
 			playerClient.notify("Confirm your Choice?"

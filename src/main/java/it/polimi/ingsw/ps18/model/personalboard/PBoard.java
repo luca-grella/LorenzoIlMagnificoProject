@@ -99,14 +99,14 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		pBoardView = new PBoardView(mcontroller, player);
 		addObserver(pBoardView);
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Initiated.");
-//		this.resources = new Stats(2,2,5,2,0,0,0);
-		this.resources = new Stats(40,40,40,40,40,40,40);
+		this.resources = new Stats(2,2,5,2,0,0,0);
+//		this.resources = new Stats(40,40,40,40,40,40,40);
 		for(int i=0; i<dices.size(); i++){
 			this.fams.add(new FMember(dices.get(i), playercol, this));
 		} 
-		this.fams.add(new FMember(666,playercol, this));
+		this.fams.add(new FMember(0,playercol, this));
 		if (! BonusTiles.isEmpty()){
-//			ChooseBonusTile();
+			ChooseBonusTile();
 		}
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
@@ -807,6 +807,15 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		this.tester=tester;
 		
 	}
+
+	/**
+	 * @param player the player to set
+	 */
+	public void setPlayer(ClientInterface player) {
+		this.player = player;
+	}
+	
+	
 	
 
 	

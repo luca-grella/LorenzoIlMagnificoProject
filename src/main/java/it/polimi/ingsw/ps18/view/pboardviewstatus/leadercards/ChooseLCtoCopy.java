@@ -18,7 +18,7 @@ public class ChooseLCtoCopy extends Observable implements PBViewStatus {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient) throws RemoteException {
 		int choice = -100;
 		try {
 			playerClient.notify("Choose which card you want to copy.");

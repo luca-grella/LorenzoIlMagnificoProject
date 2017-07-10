@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class ActivateQEChoiceLC extends Observable implements PBViewStatus {
 	}
 
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient) throws RemoteException {
 		System.out.println("Do you want to activate this card's quick effect?"
 				+ "\n1. Yes."
 				+ "\n2. No.");

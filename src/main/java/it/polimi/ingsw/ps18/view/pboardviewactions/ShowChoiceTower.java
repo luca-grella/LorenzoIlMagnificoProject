@@ -20,7 +20,7 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	 */
 	Scanner input = new Scanner(System.in);
 
-	public ShowChoiceTower(MainController controller) {
+	public ShowChoiceTower(MainController controller){
 		addObserver(controller);
 		
 	}
@@ -29,7 +29,7 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choiceTower = -100;
 		try {
 			playerClient.notify("Choose the Floor in which you want to move in:\n"

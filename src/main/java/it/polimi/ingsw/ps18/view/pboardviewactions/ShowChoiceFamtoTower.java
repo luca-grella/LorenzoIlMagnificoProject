@@ -30,7 +30,7 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient)  throws RemoteException {
 		int choice = -100;
 		try {
 			playerClient.notify("Choose a Family Member to place:\n"
