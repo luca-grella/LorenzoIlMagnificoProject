@@ -345,5 +345,55 @@ public class GreenCTest {
 		assertEquals(85, ris);
 		
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+
+		
+		GreenC tester = new GreenC(a);
+		String ris = tester.toString(1);
+		
+		assertEquals("Card number 1:\n\tName: GreenProva\n\tID: 1\n\tColor: 0\n\tPeriod: 1\n\tHarvest Value 1\nQuick Effects:\n\t0: add 1 Wood\n\nHarvest Effects\n\t0: add 1 Coin\n", ris);
+		
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("0");
+
+		
+		GreenC tester = new GreenC(a);
+		String ris = tester.toString();
+		
+		assertEquals("Current Card:\n\tName: GreenProva\n\tID: 1\n\tColor: 0\n\tPeriod: 1\n\tHarvest Value 1\nQuick Effects:\n\t0: add 1 Wood\n\nHarvest Effects\n\t0: add 1 Coin\n", ris);
+		
+	}
 
 }

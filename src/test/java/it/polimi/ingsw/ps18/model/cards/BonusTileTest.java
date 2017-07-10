@@ -515,5 +515,43 @@ JSONParser parser = new JSONParser();
 		
 		assertEquals(56, ris);
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/BonusTileProva.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("7");
+		
+		BonusTile tester = new BonusTile(a);
+		
+		String ris = tester.toString();
+		
+		assertEquals("\nName: BonusTile07\nID: 7\n\tHarvest Value 1\nQuick Effects:\n\tProduction Value 1\n\nProduction Effects\n\t0: add 1 Victory Point\n\nFinal Effects:\n\t0: You can't receive anymore the Bonus from the\n\t1 floor of any Tower.\n\nFinal Effects\n\t0: add 1 Victory Point\n", ris);
+	}
+	
+	@Test
+	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/BonusTileProva.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("7");
+		
+		BonusTile tester = new BonusTile(a);
+		
+		String ris = tester.toString(1);
+		
+		assertEquals("Card Number 2\n\tName: BonusTile07\n\tID: 7\n\tHarvest Value: 1\n\tHarvest Effects:\n\t\t0: add 1 Victory Point\n\tProduction Value 1\n\tProduction Effects\n\t\t0: add 1 Victory Point\n\nPermanent Effects:\n\t0: You can't receive anymore the Bonus from the\n\t1 floor of any Tower.\n\nFinal Effects\n\t0: add 1 Victory Point\n", ris);
+	}
 
 }

@@ -8,7 +8,11 @@ import static org.junit.Assert.*;
 import org.json.simple.JSONArray;
 import org.junit.Test;
 
+import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
+import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
  * @author luca-grella
@@ -21,6 +25,36 @@ public class TakeOneCardTest {
 	 */
 	@Test
 	public void testActivate() {
+		
+		TakeOneCard tester = new TakeOneCard();
+		GameLogic game = new GameLogic();
+		PBoard player = new PBoard();
+		MainController mc = new MainController();
+		PBoardView pbv = new PBoardView(mc );
+		player.setpBoardView(pbv );
+		tester.setChosenTower(0);
+		tester.setDiscount(new Stats(3,3,3,3,3,3,3));
+		tester.setTester(999);
+		tester.activate(player , game );
+		
+	}
+	
+	/**
+	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.TakeOneCard#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+	 */
+	@Test
+	public void testActivate2() {
+		
+		TakeOneCard tester = new TakeOneCard();
+		GameLogic game = new GameLogic();
+		PBoard player = new PBoard();
+		MainController mc = new MainController();
+		PBoardView pbv = new PBoardView(mc );
+		player.setpBoardView(pbv );
+		tester.setChosenTower(-1);
+		tester.setDiscount(new Stats(3,3,3,3,3,3,3));
+		tester.setTester(999);
+		tester.activate(player , game );
 		
 	}
 

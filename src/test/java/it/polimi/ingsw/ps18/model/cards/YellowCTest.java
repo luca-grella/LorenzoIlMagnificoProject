@@ -278,5 +278,53 @@ public class YellowCTest {
 		assertEquals(35+8, ris);
 		
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("5");
+        
+        YellowC tester = new YellowC(a);
+        String ris = tester.toString();
+        
+        assertEquals("Current Card:\n\tName: YellowProva\n\tID: 25\n\tColor: 2\n\tPeriod: 1\n\tProduction Value 5\n\tCost:\n-----------------\nWood: 1\nRock: 3\n-----------------\n\nQuick Effects:\n\t0: add 5 Victory Points\n\nProduction Effects\n\t0: Gain 1 Coins for every Yellow Card you have.\n", ris);
+		
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("5");
+        
+        YellowC tester = new YellowC(a);
+        String ris = tester.toString(1);
+        
+        assertEquals("Card number 1:\n\tName: YellowProva\n\tID: 25\n\tColor: 2\n\tPeriod: 1\n\tProduction Value: 5\n\tCost:\n-----------------\nWood: 1\nRock: 3\n-----------------\n\nQuick Effects:\n\t0: add 5 Victory Points\n\nProduction Effects\n\t0: Gain 1 Coins for every Yellow Card you have.\n", ris);
+		
+	}
 
 }

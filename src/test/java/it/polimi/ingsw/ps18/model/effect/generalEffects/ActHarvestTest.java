@@ -5,15 +5,22 @@ package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import java.util.Vector;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
+import it.polimi.ingsw.ps18.model.cards.Excommunications;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.ActHarvest;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -31,24 +38,35 @@ public class ActHarvestTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.ActHarvest#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	@Test(expected = Exception.class)
-	public void testActivate() {
+	@Test
+	public void testActivate() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/Excommunicationsprova.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("5");
+		
 		ActHarvest tester = new ActHarvest();
 		PBoard player = new PBoard();
-		List<FMember> fams = new ArrayList<>();
-		FMember e = new FMember(3, 1);
-		fams.add(e );
-		player.setFams(fams );
-		player.setPlayercol(2);
-		List<Dice> dices = new ArrayList<>();
-		MainController mcontroller = new MainController();
-		List<Cards> bonustile = new ArrayList<>();
-		player.completePBoardSetup(dices, mcontroller, bonustile );
+		List<Excommunications> excommCards = new ArrayList<>();
+		Excommunications e = new Excommunications(a);
+		excommCards.add(e );
+		player.setExcommCards(excommCards );
+		MainController mc = new MainController();
+		PBoardView pbv = new PBoardView(mc );
+		player.setpBoardView(pbv );
+		GameLogic game = new GameLogic();
 		
-		tester.setQuantity(1);
-
-		tester.activate(player, new GameLogic());
+		tester.setQuantity(4);
+		game.setCurrentPlayer(player);
+		tester.setTester(999);
+		tester.activate(player, game);
+		
 	}
 
 	/**
@@ -82,6 +100,20 @@ public class ActHarvestTest {
 	@Test
 	public void testObservable() {
 		
+	}
+	
+	/**
+	 * 
+	 * 
+	 */
+	
+	@Test
+	public void testToString() {
+		ActHarvest tester = new ActHarvest();
+		tester.setQuantity(1);
+		String ris = tester.toString();
+		
+		assertEquals("Trigger an Harvest Action with a Value of 1", ris);
 	}
 
 	/**

@@ -552,5 +552,43 @@
         0
       ]
     ]
+  },
+    "21": {
+    "name": "ProvaTest",
+    "active": false,
+    "Requirements": [
+      "CheckNumberCardType",
+      "CheckNumberCardType"
+    ],
+    "RequirementValues": [
+      [
+        "Purple",
+        4
+      ],
+      [
+        "Yellow",
+        2
+      ]
+    ],
+    "QuickEffects": [
+      "ActivateHarvest"
+    ],
+    "QuickEffectValues": [
+      1
+    ],
+    "PermanentEffects": [
+      "TowerDiscount"
+    ],
+    "PermanentEffectValues": [
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
   }
 }

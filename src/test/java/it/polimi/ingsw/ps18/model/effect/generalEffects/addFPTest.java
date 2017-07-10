@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +84,49 @@ public class addFPTest {
 		if(a!=ris){
 			fail("errore nella setQuantity");
 		}
+	}
+	
+	/**
+	 * tostring
+	 */
+	@Test
+	public void testToString() {
+		addFP tester = new addFP();
+		int quantity=1;
+		tester.setQuantity(quantity);
+		String ris = tester.toString();
+		assertEquals("add 1 Faith Point", ris);
+		
+		int quantity2=0;
+		tester.setQuantity(quantity2);
+		String ris2 = tester.toString();
+		assertEquals("add 0 Faith Points", ris2);
+		
+		int quantity3=-1;
+		tester.setQuantity(quantity3);
+		String ris3 = tester.toString();
+		assertEquals("detract -1 Faith Point", ris3);
+		
+		int quantity4=-2;
+		tester.setQuantity(quantity4);
+		String ris4 = tester.toString();
+		assertEquals("detract -2 Faith Points", ris4);
+		
+		
+	}
+	
+	/**
+	 * 
+	 * get name
+	 */
+	
+	@Test
+	public void testGetName() {
+		addFP tester = new addFP();
+		String ris = tester.getName();
+		
+		assertEquals("Faith Point", ris);
+		
 	}
 	
 }

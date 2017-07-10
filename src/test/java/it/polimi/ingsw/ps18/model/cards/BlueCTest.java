@@ -236,5 +236,58 @@ public class BlueCTest {
 		assertEquals(2, permeffectvalue);
 		
 	}
+	
+	
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("4");
+
+		
+		BlueC tester = new BlueC(a);
+		
+		String ris = tester.toString(1);
+		
+		assertEquals("Card number 1:\n\tName: BlueProva\n\tID: 49\n\tColor: 1\n\tPeriod: 1\n\tCost:\n-----------------\nCoin: 2\n-----------------\n\nQuick Effects:\n\t0: add 3 Military Points\n\nPermanent Effects:\n\t0: Incrase Permanently the Action Value by 2\n\t   when you take a card from the Green Tower\n", ris);
+
+		
+	}
+	
+	/**
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("4");
+
+		
+		BlueC tester = new BlueC(a);
+		
+		String ris = tester.toString();
+		
+		assertEquals("Current Card:\n\tName: BlueProva\n\tID: 49\n\tColor: 1\n\tPeriod: 1\n\tCost:\n-----------------\nCoin: 2\n-----------------\n\nQuick Effects:\n\t0: add 3 Military Points\n\nPermanent Effects:\n\t0: Incrase Permanently the Action Value by 2\n\t   when you take a card from the Green Tower\n", ris);
+
+		
+	}
 
 }

@@ -33,6 +33,8 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	
 	private int chosenTower;
 	
+	private int tester=1;
+	
 	private Stats discount;
 	
 	/* (non-Javadoc)
@@ -49,9 +51,12 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 		if(chosenTower!=-1){
 			((FamtoTower) action).setCanGoBacktoTowerChoice(false);
 			((FamtoTower) action).setChosenTower(chosenTower);
-			((FamtoTower) action).floorChoice(game);
+			
+			if(tester!=999){
+			((FamtoTower) action).floorChoice(game);}
 		} else {
-			((FamtoTower) action).towerChoice();	
+			if(tester!=999){
+			((FamtoTower) action).towerChoice();}	
 		}
 	}
 
@@ -124,6 +129,30 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	public int getQuantity(int quantity) {
 		
 		return quantity;
+	}
+
+	/**
+	 * 
+	 */
+	public void setChosenTower(int chosenTower) {
+		this.chosenTower=chosenTower;
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void setDiscount(Stats discount) {
+		this.discount=discount;
+		
+	}
+
+	/**
+	 * @param i
+	 */
+	public void setTester(int tester) {
+		this.tester=tester;
+		
 	}
 
 }

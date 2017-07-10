@@ -740,6 +740,14 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		this.leadercards=leadercards;
 		
 	}
+
+	/**
+	 * 
+	 */
+	public void setExcommCards(List<Excommunications> excommCards) {
+		this.excommCards=excommCards;
+		
+	}
 	
 	
 

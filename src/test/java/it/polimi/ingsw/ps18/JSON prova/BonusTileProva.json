@@ -238,5 +238,35 @@
     "PermanentEffectValue": [
       1
     ]
+  },
+      "7": {
+    "ID": 7,
+    "Name": "BonusTile07",
+    "HarvValue": 1,
+    "HarvestEffect": [
+      "AddPV"
+    ],
+    "HarvestEffectValue": [
+      1
+    ],
+    "ProductionValue": 1,
+    "ProductionEffect": [
+      "AddPV"
+    ],
+    "ProductionEffectValue": [
+      1
+    ],
+    "FinalEffect": [
+      "AddPV"
+    ],
+    "FinalEffectValue": [
+      1
+    ],
+    "PermanentEffect": [
+      "BlockFloorBonus"
+    ],
+    "PermanentEffectValue": [
+      1
+    ]
   }
 }

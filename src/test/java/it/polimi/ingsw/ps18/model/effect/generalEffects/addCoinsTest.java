@@ -87,5 +87,13 @@ public class addCoinsTest {
 			fail("errore nella setQuantity");
 		}
 	}
+	
+	@Test
+	public void testGetName() {
+		addCoins tester = new addCoins();
+		String ris = tester.getName();
+		
+		assertEquals("Coin", ris);
+	}
 
 }

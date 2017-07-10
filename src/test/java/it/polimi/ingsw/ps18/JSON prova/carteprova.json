@@ -310,5 +310,33 @@
     "ProductionEffectsValues": [
       null
     ]
+  },
+    "12": {
+    "name": "PurpleProva2",
+    "number": 74,
+    "color": 3,
+    "period": 1,
+    "minPM": 4,
+    "PurpleCardCost": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      2,
+      0
+    ],
+    "QuickEffects": [
+      "AddPM"
+    ],
+    "QuickEffectsValues": [
+      5
+    ],
+    "FinalEffects": [
+      "AddPV"
+    ],
+    "FinalEffectsValues": [
+      4
+    ]
   }
 }

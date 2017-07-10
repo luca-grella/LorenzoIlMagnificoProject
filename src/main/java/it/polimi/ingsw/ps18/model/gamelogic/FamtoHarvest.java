@@ -46,6 +46,12 @@ public class FamtoHarvest extends Observable implements Action {
 	private int numberOfServants;
 	
 	/**
+	 * 
+	 * tester
+	 */
+	private int tester=1;
+	
+	/**
 	 * The action value.
 	 */
 	private int actionValue;
@@ -74,11 +80,14 @@ public class FamtoHarvest extends Observable implements Action {
 	public void servantsChoice(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
+		
+		if(tester!=999){
 		showBoard.showHarvest(game.getBoard());
 		
 		numberOfServants = -1;
+		
 		while(this.numberOfServants < 0 || this.numberOfServants > currentplayer.getResources().getServants()){
-			notifyActionPBoardView("Servants Choice");
+			notifyActionPBoardView("Servants Choice");}
 		}
 	}
 
@@ -252,6 +261,38 @@ public class FamtoHarvest extends Observable implements Action {
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;
+	}
+
+	/**
+	 * @param i
+	 */
+	public void setTester(int tester) {
+		this.tester=tester;
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public int getChosenCell() {
+		
+		return chosenCell;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getActionValue() {
+		
+		return actionValue;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getIndexFamtoRemove() {
+		
+		return indexFamtoRemove;
 	}
 	
 	

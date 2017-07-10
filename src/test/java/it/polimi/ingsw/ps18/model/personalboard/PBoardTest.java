@@ -35,6 +35,8 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  */
 public class PBoardTest {
 
+	private static final List<Cards> bonustiles = null;
+
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#PBoard(int, java.util.List, it.polimi.ingsw.ps18.controller.MainController)}.
 	 */
@@ -499,6 +501,27 @@ public class PBoardTest {
 
 		
 	}
+	
+	@Test
+	public void testCompletePBoardSetup() {
+		
+		PBoard tester = new PBoard();
+		List<FMember> fams = new ArrayList<>();
+		tester.setFams(fams );
+		tester.setPlayercol(0);
+		Stats resources = new Stats(0,0,0,0,0,0,0);
+		tester.setResources(resources );
+		List<Dice> dices = new ArrayList<>();
+		Dice a = new Dice(3);
+		dices.add(a);
+		Dice b = new Dice(5);
+		dices.add(b);
+		Dice c = new Dice(2);
+		dices.add(c);
+		MainController mcontroller = new MainController();
+//		tester.completePBoardSetup(dices, mcontroller, bonustiles);
+
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#setCards(java.util.List)}.
@@ -577,6 +600,30 @@ public class PBoardTest {
 		int ris2 = tester.getFams().get(0).getPlayercol();
 		
 		assertEquals(ris, ris2);
+		
+	}
+	
+	@Test
+	public void testToStringCards() {
+
+		PBoard tester = new PBoard();
+		List<Cards> cards = new ArrayList<>();
+		tester.setCards(cards );
+		String ris = tester.toStringCards();
+		assertEquals("Cards of player 0:\n-----------------\nBonus Tiles:\n\n-----------------\nGreen Cards:\n\n-----------------\nBlue Cards:\n\n-----------------\nYellow Cards:\n\n-----------------\nPurple Cards:\n\n-----------------\nExcommunication Cards:\n\n-----------------\n", ris);
+	}
+	
+	@Test
+	public void testToStringResources() {
+
+		PBoard tester = new PBoard();
+		List<FMember> fams = new ArrayList<>();
+		tester.setFams(fams );
+		tester.setPlayercol(2);
+		tester.setResources(new Stats(1,2,3,4,5,6,7));
+		String ris1 = tester.toStringResources();
+		
+		assertEquals("Resources of player 2\n-----------------\nWood: 1\nRock: 2\nCoin: 3\nServant: 4\nFP: 5\nMP: 6\nVP: 7\n-----------------\n", ris1);
 		
 	}
 

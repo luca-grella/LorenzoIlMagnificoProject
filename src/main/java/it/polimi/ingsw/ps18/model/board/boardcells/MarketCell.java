@@ -233,6 +233,14 @@ public class MarketCell {
 	public void setMinPlayers(long minPlayers) {
 		this.minPlayers = minPlayers;
 	}
+
+	/**
+	 * 
+	 */
+	public void setValue(int value) {
+		this.value=value;
+		
+	}
 	
 	
 	

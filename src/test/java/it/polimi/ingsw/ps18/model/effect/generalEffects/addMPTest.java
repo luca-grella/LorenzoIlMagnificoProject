@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +84,16 @@ public class addMPTest {
 		if(a!=ris){
 			fail("errore nella setQuantity");
 		}
+	}
+	/**
+	 * 
+	 * 
+	 */
+	@Test
+	public void testGetName() {
+		addMP tester = new addMP();
+		String ris = tester.getName();
+		assertEquals("Military Point", ris);
 	}
 
 }

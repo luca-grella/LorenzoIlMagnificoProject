@@ -71,12 +71,11 @@ public class addWoodorRockTest {
 		int ris = player.getResources().getWood();
 		int ris2 = player.getResources().getRock();
 		
-		if (index==1) { 
-			assertEquals(wood, player.getResources().getWood());
-			}
-		else {
-			assertEquals(rock, player.getResources().getRock());
-		}
+		assertEquals(wood, ris);
+			
+		index = 2;
+		assertEquals(rock, ris2);
+		
 		
 	}
 

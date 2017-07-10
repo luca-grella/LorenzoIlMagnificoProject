@@ -96,6 +96,14 @@ public class Board extends Observable {
 	 */
 	private List<Excommunications> excommCells = new ArrayList<>(); 
 	
+	
+	/**
+	 * 
+	 * test
+	 */
+	public Board (){
+	}
+	
 	/**
 	 * Instantiates a new board.
 	 *

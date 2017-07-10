@@ -124,6 +124,22 @@ public class FamtoCouncil extends Observable implements Action {
 	public void setIndexFamtoRemove(int indexFamtoRemove) {
 		this.indexFamtoRemove = indexFamtoRemove;
 	}
+
+	/**
+	 * @return
+	 */
+	public FMember getChosenFam() {
+		
+		return chosenFam;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getIndexFamtoRemove() {
+		
+		return indexFamtoRemove;
+	}
 	
 	
 

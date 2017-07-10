@@ -323,5 +323,49 @@ public class PurpleCTest {
 		Stats ris = tester.getSecondaryCost();
 		assertEquals(5, ris.getMP());
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("12");
+		
+		PurpleC tester = new PurpleC(a);
+		String ris = tester.toString();
+		
+		assertEquals("Current Card:\n\tName: PurpleProva2\n\tID: 74\n\tColor: 3\n\tPeriod: 1\n\tCost:\n-----------------\nCoin: 4\n-----------------\n\n\tRequired MP: 4\n\tSecondary Cost:\n-----------------\nMP: 2\n-----------------\n\nQuick Effects:\n\t0: add 5 Military Points\n\nFinal Effects\n\t0: add 4 Victory Points\n", ris);
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	
+	@Test
+	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("12");
+		
+		PurpleC tester = new PurpleC(a);
+		String ris = tester.toString(1);
+		
+		assertEquals("Card number 1:\n\tName: PurpleProva2\n\tID: 74\n\tColor: 3\n\tPeriod: 1\n\tCost:\n-----------------\nCoin: 4\n-----------------\n\n\tRequired MP: 4\n\tSecondary Cost:\n-----------------\nMP: 2\n-----------------\n\nQuick Effects:\n\t0: add 5 Military Points\n\nFinal Effects\n\t0: add 4 Victory Points\n", ris);
+	}
 
 }

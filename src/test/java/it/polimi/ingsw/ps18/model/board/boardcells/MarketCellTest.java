@@ -160,46 +160,58 @@ public class MarketCellTest {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testIsLegalMC() throws FileNotFoundException, IOException, ParseException {
-//		
-//		JSONParser parser = new JSONParser();
-//
-//    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/marketcellprova.json"));
-//    	JSONObject jsonObject = (JSONObject) obj;
-//        JSONObject a = (JSONObject) jsonObject.get("1");
-//        long minplayers = (long) a.get("MinPlayers");
-//        long marketcellvalue = (long) a.get("MarketCellValue");
-//        JSONArray qeffects = (JSONArray) a.get("QuickEffects");
-//        JSONArray qeffectvalues = (JSONArray) a.get("QuickEffectsValues");
-//        
-//        MarketCell tester = new MarketCell(a);
-//        FMember pBoardFM = new FMember(3, 1);
-//        
-//        assertTrue(tester.isLegalMC(pBoardFM.getValue()));
-//        
-//        int nplayer=1;
-//		MainController mcontroller = new MainController();
-//		List<PBoard> players = new ArrayList<>();
-//		PBoard element = new PBoard();
-//		Stats resources = new Stats(0,0,0,0,0,0,0);
-//		element.setResources(resources);
-//		element.setPlayercol(1);
-//		players.add(0, element);
-//		GameLogic game = new GameLogic();
-//        MainView o = new MainView(mcontroller);
-//		game.addObserver(o);
-//		game.setCurrentPlayer(element);
-//		Dice dice = new Dice(5);
-//		FMember fm = new FMember(dice , 1);
-//
-//		tester.insertFM(fm, game);
-//		
-//		
-//		assertTrue(!(tester.isLegalMC(pBoardFM.getValue())));
-//        
-//		
-//	}
+	@Test
+	public void testIsLegalMC() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/marketcellprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("1");
+        // market cell value è 1
+        
+        MarketCell tester = new MarketCell(a);
+        tester.setValue(5);
+        FMember pBoardFM = new FMember(3, 1);
+        pBoardFM.setValue(5);
+        
+        assertTrue(tester.isLegalMC(5));
+        
+        pBoardFM.setValue(0);
+		
+		
+		assertTrue(!(tester.isLegalMC(0)));
+        
+		
+	}
+	
+	@Test
+	public void testToString() throws FileNotFoundException, IOException, ParseException{
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/marketcellprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("1");
+
+        
+        MarketCell tester = new MarketCell(a);
+        
+        String ris = tester.toString(1);
+        
+        assertEquals("-----------------\nMarket cell number 2:\nMarket cell is empty!\nQuick Effects:\n\t0: add 5 Coins\n-----------------\n", ris);
+        
+        FMember marketCellFM = new FMember(4, 2);
+        marketCellFM.setColor(0);
+        marketCellFM.setValue(2);
+		tester.setMarketCellFM(marketCellFM );
+		
+		String ris2 = tester.toString(1);
+		
+		assertEquals("-----------------\nMarket cell number 2:\nFamily Member in market cell number 1:\n\tPlayer color: 2\n\tFamily Member color: 0\n\tFamily Member value: 2\nQuick Effects:\n\t0: add 5 Coins\n-----------------\n", ris2);
+		
+		
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMarketCellFM()}.

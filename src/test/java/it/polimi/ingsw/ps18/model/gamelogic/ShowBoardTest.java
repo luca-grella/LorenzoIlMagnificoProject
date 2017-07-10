@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.board.Board;
+import it.polimi.ingsw.ps18.model.board.boardcells.MarketCell;
 import it.polimi.ingsw.ps18.model.cards.BonusTile;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.GreenC;
@@ -46,16 +47,31 @@ public class ShowBoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.ShowBoard#showMarket(it.polimi.ingsw.ps18.model.board.Board)}.
+	 * @throws ParseException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-//	@Test
-//	public void testShowMarket() {
-//		MainController mc = new MainController();
-//		PBoardView pb = new PBoardView(mc );
-//		ShowBoard tester = new ShowBoard(pb );
-//		MainView mv = new MainView(mc);
-//		Board board = new Board(mc, 2, mv );
-//		tester.showMarket(board );
-//	}
+	@Test
+	public void testShowMarket() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();
+
+    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/marketcellprova.json"));
+    	JSONObject jsonObject = (JSONObject) obj;
+        JSONObject a = (JSONObject) jsonObject.get("1");
+		
+		MainController mc = new MainController();
+		PBoardView pb = new PBoardView(mc );
+		ShowBoard tester = new ShowBoard(pb );
+		MainView mv = new MainView(mc);
+		Board board = new Board(mc, 2, mv );
+		List<MarketCell> marketCells = new ArrayList<>();
+		MarketCell e = new MarketCell(a);
+		marketCells.add(e );
+		board.setMarketCells(marketCells );
+		tester.setTester(999);
+		tester.showMarket(board );
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.ShowBoard#showAllTowers(it.polimi.ingsw.ps18.model.board.Board)}.
@@ -86,15 +102,16 @@ public class ShowBoardTest {
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.ShowBoard#showTowerCell(it.polimi.ingsw.ps18.model.board.Board, int)}.
 	 */
-//	@Test
-//	public void testShowTowerCell() {
-//		MainController mc = new MainController();
-//		PBoardView pb = new PBoardView(mc );
-//		ShowBoard tester = new ShowBoard(pb );
-//		MainView mv = new MainView(mc);
-//		Board board = new Board(mc, 2, mv );
-//		tester.showTowerCell(board, 0);
-//	}
+	@Test
+	public void testShowTowerCell() {
+		MainController mc = new MainController();
+		PBoardView pb = new PBoardView(mc );
+		ShowBoard tester = new ShowBoard(pb );
+		MainView mv = new MainView(mc);
+		Board board = new Board(mc, 2, mv );
+		tester.setTester(999);
+		tester.showTowerCell(board, 0);
+	}
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.ShowBoard#showCouncil(it.polimi.ingsw.ps18.model.board.Board)}.

@@ -28,6 +28,8 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 	 */
 	private int quantity;
 	
+	private int tester=1;
+	
 	/* (non-Javadoc)
 	 * @see it.polimi.ingsw.ps18.model.effect.finalEffect.FinalEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
@@ -44,13 +46,17 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 					}
 				}
 			}
-		}
+		} 
+		
+		if(tester!=999){
+		
 		if(quantity >= malusValue){
 			setChanged();
 			notifyObservers(new ParamMessage("actHarvest",quantity - malusValue));
 		} else {
 			setChanged();
 			notifyObservers(new ParamMessage("actHarvest",0));
+		}
 		}
 	}
 
@@ -86,6 +92,14 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 	 */
 	public int getQuantity() {
 		return quantity;
+	}
+
+	/**
+	 * @param i
+	 */
+	public void setTester(int tester) {
+		this.tester=tester;
+		
 	}
 
 }

@@ -919,6 +919,22 @@ public class GameLogic extends Observable {
 	public List<Dice> getDices() {
 		return dices;
 	}
+
+	/**
+	 * 
+	 */
+	public void setExcommcards(List<Excommunications> excommcards) {
+		this.excommcards = excommcards;
+		
+	}
+
+	/**
+	 * 
+	 */
+	public void setAGE(int AGE) {
+		this.AGE=AGE;
+		
+	}
 	
 	
 	

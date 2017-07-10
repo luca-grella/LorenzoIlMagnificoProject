@@ -148,11 +148,32 @@ public class FMemberTest {
 	public void testSetValue() {
 		int a=0;
 		FMember tester = new FMember(a);
-		tester.setValue(fmvalue);
+		tester.setValue(5);
 		int ris = tester.getValue();
-		if(fmvalue!=ris){
+		if(5!=ris){
 			fail("errore nella setValue");
-		}}
+		}
+		
+
+	
+	}
+	
+	@Test
+	public void testSetValue2() {
+		int a=0;
+		FMember tester = new FMember(a);
+		tester.setValue(-5);
+		int ris2=tester.getValue();
+		assertEquals(0, ris2);
+		
+
+	
+	}
+	
+	
+	
+	
+	
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.FMember#getColor()}.

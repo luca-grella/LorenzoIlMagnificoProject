@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.effect.generalEffects;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,5 +84,13 @@ public class addVPTest {
 		if(a!=ris){
 			fail("errore nella setQuantity");
 		}
+	}
+	
+	@Test
+	public void testGetName() {
+		addVP tester = new addVP();
+		String ris = tester.getName();
+		
+		assertEquals("Victory Point",ris);
 	}
 }

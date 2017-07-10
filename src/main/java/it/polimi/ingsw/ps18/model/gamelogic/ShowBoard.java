@@ -16,6 +16,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  * The Class ShowBoard.
  */
 public class ShowBoard extends Observable {
+	private int tester=1;
 	
 	/**
 	 * Instantiates a new show board.
@@ -41,8 +42,10 @@ public class ShowBoard extends Observable {
 			builder.append(cell.toString(i));
 			builder.append("\n");
 		}
-		notifyLogView(builder.toString());
 		
+		if(tester!=999){
+		notifyLogView(builder.toString());
+		}
 	}
 	
 	/**
@@ -78,7 +81,12 @@ public class ShowBoard extends Observable {
 	public void showTowerCell(Board board, int i){
 		List<Tower> towers = board.getTowers();
 		Tower tower = towers.get(i);
-		notifyLogView(tower.toString(i));
+		
+		if(tester!=999){
+			notifyLogView(tower.toString(i));
+			}
+		
+		
 	}
 	
 	/**
@@ -164,6 +172,14 @@ public class ShowBoard extends Observable {
 	private void notifyStatusView(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));
+	}
+
+	/**
+	 * @param i
+	 */
+	public void setTester(int tester) {
+		this.tester=tester;
+		
 	}
 
 }

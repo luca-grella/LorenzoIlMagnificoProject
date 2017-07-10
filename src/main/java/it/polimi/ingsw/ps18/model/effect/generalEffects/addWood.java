@@ -22,6 +22,7 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 	 * The quantity.
 	 */
 	private int quantity;
+	
 
 	/**
 	 * Add a quantity of wood to the player's resources.
@@ -38,6 +39,8 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 		Stats totalmalus;
 		totalmalus = player.generateExcommMalus();
 		int malusWood = totalmalus.getWood();
+		
+		
 		if(quantity >= malusWood){
 			stat.addWood(quantity - malusWood);
 		} else {

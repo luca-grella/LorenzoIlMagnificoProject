@@ -17,7 +17,7 @@ public class addFP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 	/**
 	 * The name.
 	 */
-	private String name = "Faith Points";
+	private String name = "Faith Point";
 	
 	/**
 	 * The quantity.
