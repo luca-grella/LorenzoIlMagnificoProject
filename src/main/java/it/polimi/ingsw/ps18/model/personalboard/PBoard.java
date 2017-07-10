@@ -17,11 +17,14 @@ import it.polimi.ingsw.ps18.model.gamelogic.ConfirmHandler;
 import it.polimi.ingsw.ps18.model.gamelogic.Dice;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
+import it.polimi.ingsw.ps18.view.IdleView;
+import it.polimi.ingsw.ps18.view.IdleViewThread;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
@@ -33,6 +36,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 * The p board view.
 	 */
 	private PBoardView pBoardView;
+	
+	private IdleViewThread idleviewthread;
 	
 	/**
 	 * The playercol.
@@ -94,8 +99,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		} 
 		this.fams.add(new FMember(666,playercol, this));
 		if (! BonusTiles.isEmpty()){
-			ChooseBonusTile();
+//			ChooseBonusTile();
 		}
+		this.idleviewthread = new IdleViewThread(this,mcontroller);
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
 	}
@@ -460,7 +466,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	/**
 	 * To string fams.
 	 */
-	public void toStringFams(){
+	public String toStringFams(){
 		StringBuilder builder = new StringBuilder();
 		List<FMember> fams = this.getFams();
 		builder.append("-----------------\n");
@@ -474,7 +480,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 				builder.append("Family Member Already Used\n\n.");
 			}
 		} builder.append("-----------------\n");
-		notifyLogPBoardView(builder.toString());
+		return builder.toString();
 	}
 	
 	/**
@@ -550,13 +556,15 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		return builder.toString();
 	}
 	
+	
+	
 	/**
 	 * Notify log P board view.
 	 *
 	 * @param msg
 	 *            the msg
 	 */
-	private void notifyLogPBoardView(String msg){
+	public void notifyLogPBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}
@@ -746,7 +754,16 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	public void setExcommCards(List<Excommunications> excommCards) {
 		this.excommCards=excommCards;
-		
+
+	/**
+	 * @return the player
+	 */
+	public ClientInterface getPlayer() {
+		return player;
+	}
+
+	public IdleViewThread getIdleviewthread() {
+		return this.idleviewthread;
 	}
 	
 	

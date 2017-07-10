@@ -48,6 +48,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.model.personalboard.resources.VictoryPoints;
+import it.polimi.ingsw.ps18.view.IdleViewThread;
 import it.polimi.ingsw.ps18.view.MainView;
 
 
@@ -93,6 +94,7 @@ public class GameLogic extends Observable {
 	 * The players.
 	 */
 	private LinkedList<PBoard> players = new LinkedList<>();
+	
 	
 	private LinkedList<PBoard> recoverTurn = new LinkedList<>();
  	
@@ -222,7 +224,7 @@ public class GameLogic extends Observable {
 		notifyLogMainView("Cards Inserted in Towers.");
 		insertExcommInBoard();
 		notifyLogMainView("Excommunications Inserted in Board.");
-		distributeLC();
+//		distributeLC();
 //		Collections.shuffle(players); //initial order
 		notifyLogMainView("Player Order Shuffled.");
 		notifyLogMainView("Setup Terminated.");
@@ -436,6 +438,11 @@ public class GameLogic extends Observable {
 			this.TURN++;
 			this.recoverTurn.clear();
 
+//			for(PBoard player: this.players){
+//				if(player.getPlayercol()!=players.get(0).getPlayercol()){
+//					player.getIdleviewthread().start();
+//				}
+//			}
 			LinkedList<PBoard> templist = excommOrder();
 			for(PBoard player: this.players){
 				for(LeaderCards card: player.getLeadercards()){
@@ -444,24 +451,37 @@ public class GameLogic extends Observable {
 			}
 			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
 				this.turnplayer = templist.get(playerIndex);
+//				if(playerIndex!=0){
+//					turnplayer.getIdleviewthread().close();
+//				}
+				for(PBoard player: this.players){
+					if(player.getPlayercol()!=turnplayer.getPlayercol()){
+						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+					}
+				}
 				notifyActionMainView("Turn Handle Init");
-				
-				System.out.println(" ");
+//				turnplayer.getIdleviewthread().start();
 			}
 			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
 				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
 					this.turnplayer = players.get(playerIndex);
+					for(PBoard player: this.players){
+						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+						}
+					}
 					notifyActionMainView("Turn Handle Init");
-
-					System.out.println(" ");
 				}
 			}
 			if(! this.recoverTurn.isEmpty()){
 				for(int recover=0; recover<this.recoverTurn.size(); recover++){
 					this.turnplayer = this.recoverTurn.get(recover);
+					for(PBoard player: this.players){
+						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+						}
+					}
 					notifyActionMainView("Turn Handle Init");
-
-					System.out.println(" ");
 				}
 			}
 
@@ -487,6 +507,35 @@ public class GameLogic extends Observable {
 			return true;
 		}
 		return false;
+	}
+	
+	public String toStringGame(int playercol){
+		StringBuilder builder = new StringBuilder();
+		builder.append("TOWERS:\n");
+		for(int i=0; i<board.getTowers().size(); i++){
+			builder.append(board.getTowers().get(i).toString(i));
+		}
+		builder.append("\nMARKET:\n");
+		for(int i=0; i<board.getMarketCells().size(); i++){
+			builder.append(board.getMarketCells().get(i).toString(i));
+		}
+		builder.append("\nHARVEST:\n");
+		builder.append(board.toStringHarvest());
+		builder.append("\nPRODUCTION:\n");
+		builder.append(board.toStringProduction());
+		builder.append("\nCOUNCIL:\n");
+		builder.append(board.toStringCouncil());
+		builder.append("\nEXCOMMUNICATIONS:\n");
+		builder.append(board.toStringExcomm());
+		for(PBoard player: players){
+			if(player.getPlayercol()!=playercol){
+				builder.append("\n\nPLAYER " + player.getPlayercol() + ":\n");
+				builder.append("FAMILY MEMBERS:\n" + player.toStringFams()
+				               + "RESOURCES:\n" + player.toStringResources()
+				               + "CARDS:\n" + player.toStringCards());
+			}
+		}
+		return builder.toString();
 	}
 	
 	/*

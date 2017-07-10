@@ -27,7 +27,7 @@ public class CostChoice extends Observable implements PBViewAction {
 					+ "2. Military Points");
 			do{
 				choice = playerClient.read();
-			} while(choice<0 || choice>0);
+			} while(choice<0 || choice>2);
 		} catch (RemoteException e) {
 			System.out.println("\n[CostChoice] Error\n");
 		}

@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Test;
 
 import it.polimi.ingsw.ps18.controller.MainController;
+import it.polimi.ingsw.ps18.controller.controllerstatus.ChoosePlayer;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
@@ -26,7 +27,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
 public class ChosePlayerTest {
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChoosePlayer#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
+	 * Test method for {@link it.polimi.ingsw.ps18.controller.controllerstatus.ChoosePlayer#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
 	 */
 	@Test
 	public void testAct() {
@@ -60,7 +61,7 @@ public class ChosePlayerTest {
 	}
 
 	/**
-	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ChoosePlayer#setIndex(int)}.
+	 * Test method for {@link it.polimi.ingsw.ps18.controller.controllerstatus.ChoosePlayer#setIndex(int)}.
 	 */
 	@Test
 	public void testSetIndex() {

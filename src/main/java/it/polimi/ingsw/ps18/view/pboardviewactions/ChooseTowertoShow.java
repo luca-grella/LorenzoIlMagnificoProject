@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps18.view.pboardviewstatus;
+package it.polimi.ingsw.ps18.view.pboardviewactions;
 
 import java.rmi.RemoteException;
 import java.util.Observable;
@@ -6,13 +6,16 @@ import java.util.Scanner;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusParamMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
-import it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction;
+import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
 /**
  * The Class ChooseTowertoShow.
  */
-public class ChooseTowertoShow extends Observable implements PBViewStatus {
+public class ChooseTowertoShow extends Observable implements PBViewAction {
+	
+	private int color;
 	
 	/**
 	 * The input.
@@ -36,7 +39,7 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 				choice = playerClient.read();
 			} while(choice<0);
 			while(choice!=0){
-				notifyParamMainController("ReceiveTowertoShow",choice-1);
+				notifyStatusParamMainController("ReceiveTowertoShow", color, choice-1);
 				playerClient.notify("\nChoose a tower to zoom in. Type 0 to continue.");
 				do{
 					choice = playerClient.read();
@@ -57,9 +60,14 @@ public class ChooseTowertoShow extends Observable implements PBViewStatus {
 	 * @param i
 	 *            the i
 	 */
-	private void notifyParamMainController(String msg,int i){
+	private void notifyStatusParamMainController(String msg,int color, int number){
 		setChanged();
-		notifyObservers(new ParamMessage(msg,i));
+		notifyObservers(new StatusParamMessage(msg,color,number));
+	}
+
+	@Override
+	public void setIndex(int number) {
+		this.color = number;
 	}
 
 }

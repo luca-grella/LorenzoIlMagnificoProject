@@ -1,7 +1,8 @@
-package it.polimi.ingsw.ps18.controller.controlleractions;
+package it.polimi.ingsw.ps18.controller.controllerstatus;
 
 import java.util.List;
 
+import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
@@ -10,7 +11,8 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 /**
  * The Class ShowPlayer.
  */
-public class ShowPlayer implements ActionChoice {
+public class ShowPlayer implements Status {
+	private int color;
 	
 	/**
 	 * The index.
@@ -30,8 +32,18 @@ public class ShowPlayer implements ActionChoice {
 		}
 		if(i>=0 && i<players.size()){
 			PBoard chosenPlayer = players.get(i);
-			ShowBoard showboard = new ShowBoard(chosenPlayer.getpBoardView());
-			showboard.showPlayer(chosenPlayer);
+			PBoard caller = new PBoard();
+			if(color!=-1){
+				for(PBoard player: game.getPlayers()){
+					if(player.getPlayercol()==color){
+						caller = player;
+					}
+				}
+			} else {
+				caller = game.getTurnplayer();
+			}
+			ShowBoard showBoard = new ShowBoard(caller.getpBoardView());
+			showBoard.showPlayer(chosenPlayer);
 		}
 	}
 
@@ -41,6 +53,11 @@ public class ShowPlayer implements ActionChoice {
 	@Override
 	public void setIndex(int i) {
 		this.index = i;
+	}
+
+	@Override
+	public void setColor(int i) {
+		this.color = i;
 	}
 
 }

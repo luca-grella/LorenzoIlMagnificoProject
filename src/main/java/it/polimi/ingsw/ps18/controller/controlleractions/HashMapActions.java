@@ -37,6 +37,8 @@ import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffect
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffects.ReceiveActivationLCQEChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.ReceiveVaticanAnswer;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.VaticanReportTrigger;
+import it.polimi.ingsw.ps18.controller.controllerstatus.ChoosePlayer;
+import it.polimi.ingsw.ps18.controller.controllerstatus.ShowPlayer;
 
 /**
  * The Class HashMapActions.
@@ -73,8 +75,6 @@ public class HashMapActions {
 		genActions.put("ReceiveFamtoProduction", new ReceiveFamtoProduction());
 		genActions.put("ReceiveProdCell", new ReceiveProductionCell());
 		genActions.put("actProduction", new ActivateProduction());
-		genActions.put("Show Player", new ChoosePlayer());
-		genActions.put("ReceivePlayertoShow", new ShowPlayer());
 		genActions.put("Chosen Privilege", new PrivilegeHandler());
 		genActions.put("Selected YCard", new ReceiveSelectionCard());
 		genActions.put("Chosen Effect", new ReceiveChoseneffect());

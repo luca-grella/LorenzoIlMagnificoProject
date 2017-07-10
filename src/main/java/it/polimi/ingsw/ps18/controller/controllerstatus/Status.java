@@ -14,5 +14,9 @@ public interface Status {
 	 *            the game
 	 */
 	public void act(GameLogic game);
+	
+	public void setColor(int i);
+	
+	public void setIndex(int i);
 
 }

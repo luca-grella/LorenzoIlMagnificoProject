@@ -177,6 +177,8 @@ public class FamtoTowerTrigger implements ActionChoice {
 					Cell towerCell = towerCells.get(cellIndex);
 					if(towerCell.isEmptyTC()){
 						if(maxFM.getValue() > towerCell.getCellValue()){
+							currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+															+ "\tYou can proceed\n");
 							Action action = new FamtoTower(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoTower) action).famchoice();
@@ -185,18 +187,13 @@ public class FamtoTowerTrigger implements ActionChoice {
 					}
 				}
 			}
-			/*
-			 * Quando qui c'era l'else if(boardTower.isLegalTower(maxNeutralFM) succedeva questo:
-			 * nel caso particolare in cui si fossero finiti i FMember colorati e fosse rimasto solo
-			 * il neutro, il controllo entrava in isLegalTower(maxFM) con maxFM = 0 MA non superava
-			 * il controllo del valore (ovviamente). Quindi, non potendo entrare nell'else,
-			 * RESETTAVA L'AZIONE, facendo ripetere tutto al currentplayer
-			 */
 			if(boardTower.isLegalTower(maxNeutralFM)){
 				for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){
 					Cell towerCell = towerCells.get(cellIndex);
 					if(towerCell.isEmptyTC()){
 						if(maxNeutralFM.getValue() > towerCell.getCellValue()){
+							currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+															+ "\tYou can proceed\n");
 							Action action = new FamtoTower(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoTower) action).famchoice();
@@ -206,10 +203,13 @@ public class FamtoTowerTrigger implements ActionChoice {
 				}
 			}
 		}
+		currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
+										+ "Choose another action\n");
 		Action action = game.getOngoingAction();
 		action.act(game);
 	}
-
+	
+	
 	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution;
 
+import java.rmi.RemoteException;
 import java.util.Observable;
 import java.util.Scanner;
 
@@ -34,16 +35,20 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 */
 	@Override
 	public void act(ClientInterface playerClient) {
-		System.out.println("Choose which Privilege you want to take:\n"
-				+ "1. 1 Wood or 1 Rock.\n"
-				+ "2. 2 Servants.\n"
-				+ "3. 2 Coins.\n"
-				+ "4. 2 Military Points.\n"
-				+ "5. 1 Faith Point");
-		int choice;
-		do{
-			choice = input.nextInt();
-		} while(choice<1 || choice>5);
+		int choice = -100;
+		try {
+			playerClient.notify("Choose which Privilege you want to take:\n"
+					+ "1. 1 Wood or 1 Rock.\n"
+					+ "2. 2 Servants.\n"
+					+ "3. 2 Coins.\n"
+					+ "4. 2 Military Points.\n"
+					+ "5. 1 Faith Point");
+			do{
+				choice = playerClient.read();
+			} while(choice<1 || choice>5);
+		} catch (RemoteException e) {
+			System.out.println("\n[ChoosePrivilege] Error\n");
+		}
 		if(index == -1){
 			notifyParamMainController("Chosen Privilege", choice);
 		} else {
