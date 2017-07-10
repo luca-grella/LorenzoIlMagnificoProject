@@ -754,6 +754,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	public void setExcommCards(List<Excommunications> excommCards) {
 		this.excommCards=excommCards;
+	}
 
 	/**
 	 * @return the player
