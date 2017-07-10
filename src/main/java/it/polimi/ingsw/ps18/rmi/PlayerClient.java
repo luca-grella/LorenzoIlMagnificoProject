@@ -11,10 +11,9 @@ public class PlayerClient {
 		ServerInterface server;
 		try {
 			
-			server = (ServerInterface)Naming.lookup("//localhost/Server");	//Ottengo il riferimento remoto associato alla stringa passata (contiene l'host target e l'identificativo dell'oggetto sull'host).	
-			PlayerClientImplementation client = new PlayerClientImplementation();	//Creo l'oggetto client normalmente.
-			ClientInterface remoteRef = (ClientInterface) UnicastRemoteObject.exportObject(client, 0);	 //Tuttavia, dato che ClientImplementation non estende la classe UnicastRemoteObject, devo creare un riferimento remoto
-																 //In questo caso non devo associare un identificativo all'oggetto (in quanto il riferimento remoto verrà passato al server).
+			server = (ServerInterface)Naming.lookup("//localhost/Server");	
+			PlayerClientImplementation client = new PlayerClientImplementation();
+			ClientInterface remoteRef = (ClientInterface) UnicastRemoteObject.exportObject(client, 0);
 			server.addClient(remoteRef);
 			
 		} catch (MalformedURLException e) {

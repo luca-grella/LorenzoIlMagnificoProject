@@ -1,12 +1,13 @@
 package it.polimi.ingsw.ps18.rmi;
 
 import java.awt.List;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class GameThread extends Thread {
+public class GameThread extends Thread implements Serializable{
 
 	LinkedList<PBoard> players = new LinkedList<>();
 	
@@ -32,6 +33,7 @@ public class GameThread extends Thread {
 			sleep(120000);
 		} catch (InterruptedException e) {
 			System.out.println("Raggiunti i 4 giocatori, inizio della partita.");
+		    Thread.currentThread().interrupt();
 		}
 		canReceivePlayer = false;
 		MainController game = new MainController();

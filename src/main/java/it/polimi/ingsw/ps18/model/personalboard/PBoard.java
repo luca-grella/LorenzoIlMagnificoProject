@@ -550,13 +550,15 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		return builder.toString();
 	}
 	
+	
+	
 	/**
 	 * Notify log P board view.
 	 *
 	 * @param msg
 	 *            the msg
 	 */
-	private void notifyLogPBoardView(String msg){
+	public void notifyLogPBoardView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}

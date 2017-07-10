@@ -94,6 +94,7 @@ public class GameLogic extends Observable {
 	 */
 	private LinkedList<PBoard> players = new LinkedList<>();
 	
+	
 	private LinkedList<PBoard> recoverTurn = new LinkedList<>();
  	
 	/**

@@ -71,6 +71,8 @@ public class ReceiveTowertoTower implements ActionChoice {
 			}
 			
 			if(boardTower.isFullTower()){
+				currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+						+ index + ":\n\tTower is full\n");
 				((FamtoTower) currentaction).towerChoice();
 			}
 			else{
@@ -81,6 +83,8 @@ public class ReceiveTowertoTower implements ActionChoice {
 							((FamtoTower) currentaction).floorChoice(game);
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+									+ index + ":\n\tYou reached the card limit in your Personal Board\n");
 							((FamtoTower) currentaction).towerChoice();
 						}		
 					} 
@@ -89,25 +93,33 @@ public class ReceiveTowertoTower implements ActionChoice {
 							if((currentplayer.getResources()).getCoin() >= GeneralParameters.towerFee){
 								if(currentplayer.hasSpace(index)){
 									totalCostPreview.addCoins(GeneralParameters.towerFee);
+									currentplayer.notifyLogPBoardView("\nYou can access Tower number " + index + "\n");
 									((FamtoTower) currentaction).setTotalCostPreview(totalCostPreview);
 									((FamtoTower) currentaction).setChosenTower(index);
 									((FamtoTower) currentaction).floorChoice(game);
 								}					
 								else{
+									currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+											+ index + ":\n\tYou reached the card limit in your Personal Board\n");
 									((FamtoTower) currentaction).towerChoice();
 			
 								}
 							} 
 							else {
+								currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+										+ index + "\n\tYou don't have enough coins\n");
 								((FamtoTower) currentaction).towerChoice();	
 							}
 						} else {
 							if(currentplayer.hasSpace(index)){
+								currentplayer.notifyLogPBoardView("\nYou chose to access Tower number " + index + "\n");
 								((FamtoTower) currentaction).setTotalCostPreview(totalCostPreview);
 								((FamtoTower) currentaction).setChosenTower(index);
 								((FamtoTower) currentaction).floorChoice(game);
 							}					
 							else{
+								currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+										+ index + ":\n\tYou reached the card limit in your Personal Board\n");
 								((FamtoTower) currentaction).towerChoice();
 		
 							}
@@ -115,6 +127,8 @@ public class ReceiveTowertoTower implements ActionChoice {
 					}
 				} 
 				else {
+					currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
+							+ index + "\n\tThe action is not legal\n");
 					((FamtoTower) currentaction).towerChoice();
 				}
 			}

@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
+import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.gamelogic.TurnHandler;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
@@ -41,9 +42,7 @@ public class ReceiveFamtoTower implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		/*
-		 * Lo ZERO serve per tornare indietro, per quello gli setta il tHandler
-		 */
+
 		if(index==0){
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
@@ -65,6 +64,9 @@ public class ReceiveFamtoTower implements ActionChoice {
 				((FamtoTower) currentaction).famchoice();
 			}
 			else{
+//				ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
+				currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
+							+ chosenfam.toString());
 				currentaction.setChosenFam(chosenfam);
 				((FamtoTower) currentaction).towerChoice();
 			}

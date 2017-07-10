@@ -15,7 +15,7 @@ public class ReceiveChosenCost implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
 			((FamtoTower) currentaction).floorChoice(game);
-		} else if(index<0 || index>2){
+		} else if(index==1 || index==2){
 			((FamtoTower) currentaction).setCostchoice(index);
 		}
 	}

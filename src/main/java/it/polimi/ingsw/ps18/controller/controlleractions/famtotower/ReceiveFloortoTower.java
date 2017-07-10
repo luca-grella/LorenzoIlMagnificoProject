@@ -362,6 +362,9 @@ public class ReceiveFloortoTower implements ActionChoice {
 					}
 					tempCostPreview.addServants(((FamtoTower) currentaction).getNumberOfServants());
 					if((temp.getResources().enoughStats(tempCostPreview))){
+						String string[] = {"st", "nd", "rd", "rth"};
+						currentplayer.notifyLogPBoardView("\nYour Family Member was correctly placed in the " 
+														+ index+1 + string[index] + " cell of the tower\n");
 						((FamtoTower) currentaction).setTotalCostPreview(tempCostPreview);
 						((FamtoTower) currentaction).setChosenFloor(index);
 						currentaction.act(game);
