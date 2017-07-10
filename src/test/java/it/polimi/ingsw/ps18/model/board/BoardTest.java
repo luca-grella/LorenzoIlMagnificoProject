@@ -208,12 +208,18 @@ public class BoardTest {
 
 		MainController mcontroller = new MainController();
 		Board tester = new Board(new MainController(), 2, new MainView(mcontroller));
+		HarvCell harvCellNoMalus = new HarvCell(0);
+		FMember harvCellFM = new FMember(2, 2);
+		harvCellFM.setPlayercol(2);
+		harvCellNoMalus.setHarvCellFM(harvCellFM );
+		tester.setHarvCellNoMalus(harvCellNoMalus );
 		List<HarvCell> hcell = new ArrayList<>();
 		HarvCell element = new HarvCell(1);
 		hcell.add(0, element);
 		tester.setHarvestCells(hcell);
 		
 		FMember fm = new FMember(4, 9);
+		fm.setPlayercol(1);
 		assertTrue(tester.isLegalHarv(fm));
 		
 	}
@@ -781,6 +787,18 @@ public class BoardTest {
 		
 		tester.setProdCellNoMalus(prodCellNoMalus );
 		tester.insertFMProd(fam, chosenCell, game);
+
+	}
+	
+	@Test
+	public void testToString() {
+
+		MainController mcontroller = new MainController();
+		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
+		String ris = tester.toStringTowers();
+		
+		assertEquals("-----------------\nTower number: 1\n\tTower color: 0\n\tNumber of cells in tower: 4\n-----------------\nTower number: 2\n\tTower color: 1\n\tNumber of cells in tower: 4\n-----------------\nTower number: 3\n\tTower color: 2\n\tNumber of cells in tower: 4\n-----------------\nTower number: 4\n\tTower color: 3\n\tNumber of cells in tower: 4\n-----------------\n",ris);
+
 
 	}
 

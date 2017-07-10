@@ -85,6 +85,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	
 	private ClientInterface player;
 	
+	private int tester=1;
+	
 	
 	
 	
@@ -260,21 +262,32 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 				this.currentcard = card;
 				boolean canActivate = false;
 				for(LCRequirement requirement: card.getRequirements()){
+					if(tester!=999){
 					if(requirement.checkRequirement(this)){
 						canActivate = true;
 						noOne = false;
+						}
 					}
 				}
+				
+				if(tester!=999){
+				
 				if(canActivate){
 					notifyLogPBoardView(card.toString());
 					notifyStatusPBoardView("ActivationChoiceLC");
 				}
 			}
 		}
+			if(tester!=999){
 		if(noOne){
 			notifyLogPBoardView("There are no cards that can be activated.\n");
 			return;
 		}
+			}
+		}
+		
+		if(tester!=999){
+		
 		for(LeaderCards card: this.supportforLC){
 			card.setActive(true);
 			for(LCPermEffect effect: card.getPermEffects()){
@@ -291,7 +304,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 					}
 				}
 			}
-		}
+		}}
 	}
 	
 	public boolean copyLC(GameLogic game){
@@ -777,6 +790,22 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	public ExecutorService getIdlethread() {
 		return idlethread;
+	}
+
+	/**
+	 * 
+	 */
+	public void setTempLC(List<LeaderCards> tempLC) {
+		this.tempLC=tempLC;
+		
+	}
+
+	/**
+	 * @param i
+	 */
+	public void setTester(int tester) {
+		this.tester=tester;
+		
 	}
 	
 

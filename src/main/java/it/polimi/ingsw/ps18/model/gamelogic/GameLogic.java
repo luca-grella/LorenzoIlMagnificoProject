@@ -1037,10 +1037,12 @@ public class GameLogic extends Observable {
 	public LinkedList<ClientInterface> getPlayerforNewGame() {
 		return playerforNewGame;
 	}
+
 	
-	
-	
-	
+	public void setPlayers(LinkedList<PBoard> players) {
+		this.players=players;
+		
+	}
 	
 	
 	

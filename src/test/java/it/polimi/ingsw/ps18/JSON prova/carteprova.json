@@ -338,5 +338,24 @@
     "FinalEffectsValues": [
       4
     ]
+  },
+  "13": {
+    "name": "GreenProva",
+    "number": 1,
+    "color": 0,
+    "period": 1,
+    "HarvestValue": 1,
+    "QuickEffects": [
+      null
+    ],
+    "QuickEffectsValues": [
+      null
+    ],
+    "HarvestEffects": [
+      "AddCoin"
+    ],
+    "HarvestEffectsValues": [
+      1
+    ]
   }
 }

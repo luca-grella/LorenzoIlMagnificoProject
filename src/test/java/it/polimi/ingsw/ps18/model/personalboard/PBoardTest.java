@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -323,12 +325,18 @@ public class PBoardTest {
 		
 		
 			}
-	@Test(expected = Exception.class)
+	
+	@Test
 	public void testRefreshFMembers() {
 		PBoard tester = new PBoard();
-		List<Dice> dices = new ArrayList<>();
+		tester.setPlayercol(3);
+		List<FMember> fams = new ArrayList<>();
 		Dice e = new Dice(3);
 		FMember fm = new FMember(e, 1);
+		fams.add(fm);
+		tester.setFams(fams );
+		List<Dice> dices = new ArrayList<>();
+		
 		dices.add(e );
 		tester.refreshFMembers(dices );
 		
@@ -350,6 +358,21 @@ public class PBoardTest {
 			}
 	
 	@Test
+	public void testCompare2() {
+		PBoard tester = new PBoard();
+		PBoard tester2 = new PBoard();
+		Stats res = new Stats(1,1,1,1,1,1,1);
+		Stats res2 = new Stats(2,2,2,2,2,2,2);
+		tester.setResources(res );
+		tester2.setResources(res2 );
+		List<PBoard> players = new ArrayList<>();
+		players.add(tester);
+		players.add(tester2);
+		Collections.sort(players , PBoard.victoryComparator);
+		
+			}
+	
+	@Test
 	public void testEquals() {
 		PBoard tester = new PBoard();
 		
@@ -361,7 +384,36 @@ public class PBoardTest {
 		
 		assertTrue(tester.equals(obj));
 		
+		PBoard tester2 = new PBoard();
+		
+		Object obj2 = new Dice(0);
+		
+		tester2.equals(obj2 );
+		
+		assertTrue(!(tester2.equals(obj2)));
+		
 			}
+	
+	@Test
+	public void testContinueTakeLeader() throws FileNotFoundException, IOException, ParseException{
+		
+		JSONParser parser = new JSONParser();
+		
+		Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/leadercardstest.json"));
+		JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("21");
+		
+		PBoard tester = new PBoard();
+		List<LeaderCards> leadercards = new ArrayList<>();
+		LeaderCards e = new LeaderCards(a);
+		leadercards.add(e );
+		tester.setTempLC(leadercards);
+		tester.setLeaderCards(leadercards );
+		tester.continuetakeLeader(0);
+		
+		
+	}
+	
 	
 	@Test
 	public void testActHarvest() {
@@ -379,15 +431,17 @@ public class PBoardTest {
 		
 			}
 	
-	@Test(expected = Exception.class)
+	@Test
 	public void testAddCards() throws FileNotFoundException, IOException, ParseException {
 		PBoard tester = new PBoard();
+		List<Cards> cards = new ArrayList<>();
+		tester.setCards(cards );
 		
 		JSONParser parser = new JSONParser();	
 		
-	    	Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
-	    	JSONObject jsonObject = (JSONObject) obj;
-	    	JSONObject a = (JSONObject) jsonObject.get("0");
+	    Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/carteprova.json"));
+	    JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("13");
 		
 		GreenC card = new GreenC(a);
 		GameLogic game = new GameLogic();
@@ -405,8 +459,21 @@ public class PBoardTest {
 		
 			}
 	@Test
-	public void testActivateLeader() {
+	public void testActivateLeader() throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parser = new JSONParser();	
+		
+	    Object obj = parser.parse(new FileReader("src/test/java/it/polimi/ingsw/ps18/JSON prova/leadercardstest.json"));
+	    JSONObject jsonObject = (JSONObject) obj;
+	    JSONObject a = (JSONObject) jsonObject.get("1");
+		
+		
 		PBoard tester = new PBoard();
+		List<LeaderCards> cards = new ArrayList<>();
+		LeaderCards e = new LeaderCards(a);
+		cards.add(e );
+		tester.setLeaderCards(cards );
+		tester.setTester(999);
 		tester.activateLeader(new GameLogic());
 		
 		
@@ -415,7 +482,14 @@ public class PBoardTest {
 	@Test
 	public void testCopyLC() {
 		PBoard tester = new PBoard();
-		tester.copyLC(new GameLogic());
+		tester.setPlayercol(0);
+		GameLogic game = new GameLogic();
+		LinkedList<PBoard> players = new LinkedList<>();
+		PBoard e = new PBoard();
+		e.setPlayercol(1);
+		players.add(e );
+		game.setPlayers(players );
+//		tester.copyLC(game);
 		
 		
 			}
