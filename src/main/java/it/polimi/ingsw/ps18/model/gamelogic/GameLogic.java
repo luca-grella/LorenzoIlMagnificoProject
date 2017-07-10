@@ -485,7 +485,8 @@ public class GameLogic extends Observable {
 					service.shutdown();
 					service.awaitTermination(100, TimeUnit.SECONDS);
 				} catch (InterruptedException e) {
-					e.printStackTrace(System.out);
+					System.out.println("Azione interrotta");
+					Thread.currentThread().interrupt();
 				}
 				
 //				players.get(playerIndex).getIdlethread().submit(new IdleViewThread(players.get(playerIndex), controller));
@@ -505,6 +506,7 @@ public class GameLogic extends Observable {
 						service.awaitTermination(100, TimeUnit.SECONDS);
 					} catch (InterruptedException e) {
 						System.out.println("Azione interrotta");
+						Thread.currentThread().interrupt();
 					}
 				}
 			}
@@ -523,6 +525,7 @@ public class GameLogic extends Observable {
 						service.awaitTermination(100, TimeUnit.SECONDS);
 					} catch (InterruptedException e) {
 						System.out.println("Azione interrotta");
+						Thread.currentThread().interrupt();
 					}
 				}
 			}
@@ -544,26 +547,26 @@ public class GameLogic extends Observable {
 		notifyLogMainView(this.toStringPlayers(placement));
 		
         //Chiedere insieme è un casino per hashmap statici, chiedere uno alla volta
-		try {
-			players.get(0).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-			players.get(0).getIdlethread().shutdown();
-			players.get(0).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-			players.get(1).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-			players.get(1).getIdlethread().shutdown();
-			players.get(1).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-			if(players.size()>2){
-				players.get(2).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-				players.get(2).getIdlethread().shutdown();
-				players.get(2).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-			}
-			if(players.size()>3){
-				players.get(3).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
-				players.get(3).getIdlethread().shutdown();
-				players.get(3).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
-			}
-		} catch (InterruptedException e) {
-			System.out.println("Richiesta di rimanere fallita per il giocatore ");
-		}
+//		try {
+//			players.get(0).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//			players.get(0).getIdlethread().shutdown();
+//			players.get(0).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			players.get(1).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//			players.get(1).getIdlethread().shutdown();
+//			players.get(1).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			if(players.size()>2){
+//				players.get(2).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//				players.get(2).getIdlethread().shutdown();
+//				players.get(2).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			}
+//			if(players.size()>3){
+//				players.get(3).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//				players.get(3).getIdlethread().shutdown();
+//				players.get(3).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			}
+//		} catch (InterruptedException e) {
+//			System.out.println("Richiesta di rimanere fallita per il giocatore ");
+//		}
 		for(PBoard player: this.players){
 			this.turnplayer = player;
 			player.notifyParamPBoardView("NewGameChoice", player.getPlayercol());
