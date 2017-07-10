@@ -42,10 +42,12 @@ public class MainController implements Observer {
 		HashMapStatus.init();
 	}
 	
-	public void startGame(int nplayer, LinkedList<PBoard> players){;
+	public LinkedList<ClientInterface> startGame(int nplayer, LinkedList<PBoard> players){;
 		game = new GameLogic(nplayer,this, players);
 		game.setup(this);
-		game.gameFlow();
+		LinkedList<ClientInterface> playersforNewGame = game.gameFlow();
+		return playersforNewGame;
+		
 	}
 
 	/**

@@ -33,6 +33,7 @@ public class HashMapStatus {
 		genStatus.put("ReceiveTowertoShow", new ShowZoomedCell());
 		genStatus.put("Show Player", new ChoosePlayer());
 		genStatus.put("ReceivePlayertoShow", new ShowPlayer());
+		genStatus.put("ReceiveNewGameChoice", new ReceiveNewGameChoice());
 	}
 	
 	/**

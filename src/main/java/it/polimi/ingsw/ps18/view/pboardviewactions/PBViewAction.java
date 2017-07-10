@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps18.view.pboardviewactions;
 
+import java.rmi.RemoteException;
+
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
 /**
@@ -10,7 +12,7 @@ public interface PBViewAction {
 	/**
 	 * Act.
 	 */
-	public void act(ClientInterface playerClient);
+	public void act(ClientInterface playerClient) throws RemoteException;
 
 	/**
 	 * Sets the index.

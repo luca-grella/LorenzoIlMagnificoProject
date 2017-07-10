@@ -24,7 +24,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
-	public void act(ClientInterface playerClient) {
+	public void act(ClientInterface playerClient) throws RemoteException{
 		int ans = -1;
 		try{
 			do{

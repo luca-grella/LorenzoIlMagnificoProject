@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -48,6 +51,7 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.model.personalboard.resources.VictoryPoints;
+import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.IdleViewThread;
 import it.polimi.ingsw.ps18.view.MainView;
 
@@ -64,6 +68,8 @@ public class GameLogic extends Observable {
 	 * The m view.
 	 */
 	MainView mView;
+	
+	MainController controller;
 	
 	/**
 	 * The input.
@@ -97,6 +103,8 @@ public class GameLogic extends Observable {
 	
 	
 	private LinkedList<PBoard> recoverTurn = new LinkedList<>();
+	
+	private LinkedList<ClientInterface> playerforNewGame = new LinkedList<>();
  	
 	/**
 	 * The turnplayer.
@@ -175,6 +183,7 @@ public class GameLogic extends Observable {
 		this.players = players;
 		mView = new MainView(mController);
 		addObserver(mView);
+		this.controller = mController;
 	}
 	
 	/**
@@ -433,80 +442,133 @@ public class GameLogic extends Observable {
 	 *         <li>False: At least one player doesn't want to play again
 	 *         </ul>
 	 */
-	public boolean gameFlow(){
-		do{
-			this.TURN++;
-			this.recoverTurn.clear();
-
+	public LinkedList<ClientInterface> gameFlow(){
+//		do{
+//			this.TURN++;
+//			this.recoverTurn.clear();
+//
+////			for(PBoard player: this.players){
+////				if(player.getPlayercol()!=players.get(0).getPlayercol()){
+////					player.getIdleviewthread().start();
+////				}
+////			}
+////			for(int i=0; i<players.size(); i++){
+////				if(i!=0){
+////					players.get(i).getIdlethread().submit(new IdleViewThread(players.get(i), controller));
+////				}
+////			}
+//			
+//			
+//			LinkedList<PBoard> templist = excommOrder();
 //			for(PBoard player: this.players){
-//				if(player.getPlayercol()!=players.get(0).getPlayercol()){
-//					player.getIdleviewthread().start();
+//				for(LeaderCards card: player.getLeadercards()){
+//					card.setEffectactivated(false);
 //				}
 //			}
-			LinkedList<PBoard> templist = excommOrder();
-			for(PBoard player: this.players){
-				for(LeaderCards card: player.getLeadercards()){
-					card.setEffectactivated(false);
-				}
-			}
-			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
-				this.turnplayer = templist.get(playerIndex);
-//				if(playerIndex!=0){
-//					turnplayer.getIdleviewthread().close();
+//			for(int playerIndex=0; playerIndex<templist.size(); playerIndex++){
+//				this.turnplayer = templist.get(playerIndex);
+//				
+//				//stampa gioco, alternativa ai thread
+////				for(PBoard player: this.players){
+////					if(player.getPlayercol()!=turnplayer.getPlayercol()){
+////						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+////					}
+////				}
+//				
+////				if(playerIndex!=0){
+////					players.get(playerIndex).getIdlethread().shutdownNow();
+////				}
+//				
+//				final ExecutorService service = Executors.newSingleThreadExecutor();
+//				 try {
+//					service.submit(new ActionDevelopThread(mView));
+//					service.shutdown();
+//					service.awaitTermination(100, TimeUnit.SECONDS);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace(System.out);
 //				}
-				for(PBoard player: this.players){
-					if(player.getPlayercol()!=turnplayer.getPlayercol()){
-						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-					}
-				}
-				notifyActionMainView("Turn Handle Init");
-//				turnplayer.getIdleviewthread().start();
-			}
-			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
-				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
-					this.turnplayer = players.get(playerIndex);
-					for(PBoard player: this.players){
-						if(player.getPlayercol()!=turnplayer.getPlayercol()){
-							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-						}
-					}
-					notifyActionMainView("Turn Handle Init");
-				}
-			}
-			if(! this.recoverTurn.isEmpty()){
-				for(int recover=0; recover<this.recoverTurn.size(); recover++){
-					this.turnplayer = this.recoverTurn.get(recover);
-					for(PBoard player: this.players){
-						if(player.getPlayercol()!=turnplayer.getPlayercol()){
-							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-						}
-					}
-					notifyActionMainView("Turn Handle Init");
-				}
-			}
-
-			if(TURN%2==0){		
-				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
-					this.setCurrentPlayer(this.players.get(playerIndex));
-					notifyActionMainController("Verify Church Support");
-					
-				}
-				this.AGE++;
-			}
-			newOrder();
-			this.refreshGame();
-
-		} while (TURN!=GeneralParameters.totalTurns);
-		
-		List<PBoard> placement = finalScore(players);
-		notifyLogMainView(this.toStringPlayers(placement));
-
-		//System.out.println("Do you want to play again? Y|N");
-		String answer = input.nextLine();
-		if("Y".equalsIgnoreCase(answer)){
-			return true;
+//				
+////				players.get(playerIndex).getIdlethread().submit(new IdleViewThread(players.get(playerIndex), controller));
+//			}
+//			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
+//				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
+//					this.turnplayer = players.get(playerIndex);
+////					for(PBoard player: this.players){
+////						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+////							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+////						}
+////					}
+//					final ExecutorService service = Executors.newSingleThreadExecutor();
+//					 try {
+//						service.submit(new ActionDevelopThread(mView));
+//						service.shutdown();
+//						service.awaitTermination(100, TimeUnit.SECONDS);
+//					} catch (InterruptedException e) {
+//						System.out.println("Azione interrotta");
+//					}
+//				}
+//			}
+//			if(! this.recoverTurn.isEmpty()){
+//				for(int recover=0; recover<this.recoverTurn.size(); recover++){
+//					this.turnplayer = this.recoverTurn.get(recover);
+//					for(PBoard player: this.players){
+//						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+//							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+//						}
+//					}
+//					final ExecutorService service = Executors.newSingleThreadExecutor();
+//					 try {
+//						service.submit(new ActionDevelopThread(mView));
+//						service.shutdown();
+//						service.awaitTermination(100, TimeUnit.SECONDS);
+//					} catch (InterruptedException e) {
+//						System.out.println("Azione interrotta");
+//					}
+//				}
+//			}
+//
+//			if(TURN%2==0){		
+//				for(int playerIndex=0; playerIndex<this.players.size(); playerIndex++){
+//					this.setCurrentPlayer(this.players.get(playerIndex));
+//					notifyActionMainController("Verify Church Support");
+//					
+//				}
+//				this.AGE++;
+//			}
+//			newOrder();
+//			this.refreshGame();
+//
+//		} while (TURN!=GeneralParameters.totalTurns);
+//		
+//		List<PBoard> placement = finalScore(players);
+//		notifyLogMainView(this.toStringPlayers(placement));
+//		
+        //Chiedere insieme è un casino per hashmap statici, chiedere uno alla volta
+//		try {
+//			players.get(0).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//			players.get(0).getIdlethread().shutdown();
+//			players.get(0).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			players.get(1).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//			players.get(1).getIdlethread().shutdown();
+//			players.get(1).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			if(players.size()>2){
+//				players.get(2).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//				players.get(2).getIdlethread().shutdown();
+//				players.get(2).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			}
+//			if(players.size()>3){
+//				players.get(3).getIdlethread().submit(new NewGameRequestThread(players.get(0)));
+//				players.get(3).getIdlethread().shutdown();
+//				players.get(3).getIdlethread().awaitTermination(60, TimeUnit.SECONDS);
+//			}
+//		} catch (InterruptedException e) {
+//			System.out.println("Richiesta di rimanere fallita per il giocatore ");
+//		}
+		for(PBoard player: this.players){
+			this.turnplayer = player;
+			player.notifyParamPBoardView("NewGameChoice", player.getPlayercol());
 		}
-		return false;
+		return this.playerforNewGame;
 	}
 	
 	public String toStringGame(int playercol){
@@ -786,22 +848,6 @@ public class GameLogic extends Observable {
 		setChanged();
 		notifyObservers(new LogMessage(msg));
 	}
-	
-	/**
-	 * Notify action main view.
-	 *
-	 * @param msg
-	 *            the msg
-	 */
-	private void notifyActionMainView(String msg){
-		setChanged();
-		notifyObservers(new ActionMessage(msg));
-	}
-	
-	private void notifyStatusMainView(String msg){
-		setChanged();
-		notifyObservers(new StatusMessage(msg));
-	}
 
 	/**
 	 * Gets the turnplayer.
@@ -984,6 +1030,14 @@ public class GameLogic extends Observable {
 		this.AGE=AGE;
 		
 	}
+
+	/**
+	 * @return the playerforNewGame
+	 */
+	public LinkedList<ClientInterface> getPlayerforNewGame() {
+		return playerforNewGame;
+	}
+	
 	
 	
 	

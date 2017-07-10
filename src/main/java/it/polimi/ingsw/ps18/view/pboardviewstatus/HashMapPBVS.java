@@ -5,6 +5,7 @@ import java.util.Map;
 
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.view.pboardviewactions.ChoosePlayertoShow;
+import it.polimi.ingsw.ps18.view.pboardviewactions.NewGameChoice;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ChoosePrivilege;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivateQEChoiceLC;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.leadercards.ActivationChoiceLC;

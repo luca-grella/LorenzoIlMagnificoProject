@@ -55,15 +55,21 @@ public class PBoardView extends Observable implements Observer {
 			LogMessage lMessage = (LogMessage) msg;
 			try{
 				playerClient.notify(lMessage.getMessage()); 
-			} catch( RemoteException e){
-				System.out.println("W Satana");
+			} catch (RemoteException e) {
+				System.out.println("Giocatore Disconnesso.");
+				return;
 			}
 			break;
 		case 2:
 			ActionMessage aMessage = (ActionMessage) msg;
 			PBViewAction action = HashMapPBVA.geteffect(aMessage.getMessage());
 			action.setIndex(-1);
-			action.act(playerClient);
+			try {
+				action.act(playerClient);
+			} catch (RemoteException e) {
+				System.out.println("Giocatore Disconnesso.");
+				return;
+			}
 			break;
 		case 3:
 			StatusMessage sMessage = (StatusMessage) msg;
@@ -74,7 +80,12 @@ public class PBoardView extends Observable implements Observer {
 			ParamMessage pMessage = (ParamMessage) msg;
 			PBViewAction ParamAction = HashMapPBVA.geteffect(pMessage.getMessage());
 			ParamAction.setIndex(pMessage.getNumber());
-			ParamAction.act(playerClient);
+			try {
+				ParamAction.act(playerClient);
+			} catch (RemoteException e) {
+				System.out.println("Giocatore Disconnesso.");
+				return;
+			}
 			
 		}
 	}

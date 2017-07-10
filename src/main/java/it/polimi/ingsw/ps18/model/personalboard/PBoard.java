@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.cards.Excommunications;
@@ -20,7 +23,9 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.gamelogic.ShowBoard;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ActionMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
+import it.polimi.ingsw.ps18.model.messagesandlogs.StatusParamMessage;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.IdleView;
@@ -37,7 +42,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	private PBoardView pBoardView;
 	
-	private IdleViewThread idleviewthread;
+	private final ExecutorService idlethread = Executors.newSingleThreadExecutor();
 	
 	/**
 	 * The playercol.
@@ -101,7 +106,6 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		if (! BonusTiles.isEmpty()){
 //			ChooseBonusTile();
 		}
-		this.idleviewthread = new IdleViewThread(this,mcontroller);
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
 	}
@@ -584,6 +588,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
+	
+	public void notifyParamPBoardView(String msg, int color){
+		setChanged();
+		notifyObservers(new ParamMessage(msg,color));
+	}
 
 	/**
 	 * Gets the p board view.
@@ -763,10 +772,12 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		return player;
 	}
 
-	public IdleViewThread getIdleviewthread() {
-		return this.idleviewthread;
+	/**
+	 * @return the idlethread
+	 */
+	public ExecutorService getIdlethread() {
+		return idlethread;
 	}
-	
 	
 
 	

@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-public class IdleViewThread extends Thread {
+public class IdleViewThread implements Runnable {
 	IdleView idleview;
 	boolean active;
 	
