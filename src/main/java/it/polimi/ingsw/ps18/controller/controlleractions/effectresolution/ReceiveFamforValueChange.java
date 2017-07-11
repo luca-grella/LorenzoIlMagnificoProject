@@ -16,6 +16,7 @@ public class ReceiveFamforValueChange implements ActionChoice {
 		if(index==0){
 			//TODO: tornare indietro
 		} else if(index<0 || index>currentplayer.getFams().size()){
+			//TODO: FARE OUTPUT FINALE
 			((ChangeFamValue) effect).activate(currentplayer, game);
 		} else {
 			index -= 1;

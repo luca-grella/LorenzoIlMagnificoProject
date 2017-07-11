@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps18.controller.controlleractions.famtocouncil;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
+import it.polimi.ingsw.ps18.model.board.boardcells.CouncilCell;
 import it.polimi.ingsw.ps18.model.gamelogic.Action;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoCouncil;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
@@ -41,6 +42,7 @@ public class FamtoCouncilTrigger implements ActionChoice {
 		PBoard currentplayer = game.getTurnplayer();
 		FMember maxFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
 		FMember maxNeutralFM = new FMember(0, currentplayer.getPlayercol(), currentplayer);
+		CouncilCell councilCell = new CouncilCell();
 		int maxValue = 0;
 		int maxNeutralValue = 0;
 		
@@ -63,18 +65,26 @@ public class FamtoCouncilTrigger implements ActionChoice {
 				}
 			}
 		}
-		if(maxFM.getValue() > GeneralParameters.baseValueCouncilCells){
+		if(councilCell.isLegalCC(maxFM.getValue())) {
+			currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+					+ "\tYou can proceed\n");
 			Action action = new FamtoCouncil(currentplayer.getpBoardView());
 			game.setOngoingAction(action);
 			((FamtoCouncil) action).famchoice();
 			return;
 		}
-		if(maxNeutralFM.getValue() > GeneralParameters.baseValueCouncilCells){
+		if(councilCell.isLegalCC(maxNeutralFM.getValue())) {
+			currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+					+ "\tYou can proceed\n");
 			Action action = new FamtoCouncil(currentplayer.getpBoardView());
 			game.setOngoingAction(action);
 			((FamtoCouncil) action).famchoice();
 			return;
 		}
+		//TODO: SE IL COUNCILTRIGGER FALLISCE, OGNI ALTRA AZIONE E' DESTINATA A FALLIRE E QUINDI BISOGNA FARGLI SKIPPARE IL TURNO
+		currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
+				+ "\tYou only have a Uncolored Family Member and no Servants\n"
+				+ "\tTurn skipped\n");
 		Action action = game.getOngoingAction();
 		action.act(game); 
 	}

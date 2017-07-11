@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ActivateProduction.
  */
@@ -21,7 +20,7 @@ public class ActivateProduction implements ActionChoice {
 	 */
 	private int index = -1;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -48,6 +47,7 @@ public class ActivateProduction implements ActionChoice {
 					}
 				}
 			}
+			//TODO: FARE OUTPUT FINALE
 			((FamtoProduction) currentaction).setIndexFamtoRemove(-1);
 			((FamtoProduction) currentaction).setActionValue(index + modifierValue);
 			((FamtoProduction) currentaction).activateProduction(currentplayer, game);

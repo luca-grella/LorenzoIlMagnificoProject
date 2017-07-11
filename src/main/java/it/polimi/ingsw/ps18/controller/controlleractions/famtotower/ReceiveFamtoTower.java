@@ -42,29 +42,33 @@ public class ReceiveFamtoTower implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Action choice\n");
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
 		}
 		else if(index<0 || index>GeneralParameters.nfamperplayer){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			Action currentaction = game.getOngoingAction();
 			((FamtoTower) currentaction).famchoice();
 		} 
 		else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
 			List<FMember> fams = currentplayer.getFams();
 			((FamtoTower) currentaction).setIndexFamtoRemove(index);
 			FMember chosenfam = fams.get(index);
 			
 			if(chosenfam == null){
+				currentplayer.notifyLogPBoardView("\nError: the chosen Family Member was already used\n");
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoTower) currentaction).famchoice();
 			}
 			else{
-//				ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
 				currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
 							+ chosenfam.toString());
 				currentaction.setChosenFam(chosenfam);

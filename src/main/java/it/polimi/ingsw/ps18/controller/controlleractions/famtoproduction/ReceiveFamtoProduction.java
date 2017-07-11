@@ -50,17 +50,22 @@ public class ReceiveFamtoProduction implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
+
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Action choice\n");
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
 		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			Action currentaction = game.getOngoingAction();
 			((FamtoProduction) currentaction).famchoice();
 		} else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
 			List<Cards> playerCards = currentplayer.getCards();
 			ProdCell prodCellNoMalus = game.getBoard().getProdCellNoMalus();
 			boolean skipfullspacecontrol = false;
@@ -114,6 +119,8 @@ public class ReceiveFamtoProduction implements ActionChoice {
 			
 			if(chosenfam != null){
 				if(game.getBoard().isLegalProd(chosenfam)){
+					currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
+							+ chosenfam.toString());
 					((FamtoProduction) currentaction).servantsChoice(game);
 					if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 						if(prodCellNoMalus.isLegalPC(chosenfam.getValue() + modifierValue + (((FamtoProduction) currentaction).getNumberOfServants() / malusServants))){
@@ -122,6 +129,8 @@ public class ReceiveFamtoProduction implements ActionChoice {
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\tThe chosen Family Member doesn't have enough Action Value:\n"
+									+ "Please choose another one\n");
 							((FamtoProduction) currentaction).famchoice();
 						}
 					}
@@ -132,17 +141,21 @@ public class ReceiveFamtoProduction implements ActionChoice {
 						return;
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\tThe chosen Family Member doesn't have enough Action Value:\n"
+								+ "Please choose another one\n");
 						((FamtoProduction) currentaction).famchoice();
 					}
 				}
 				else{
-					System.out.println("\n[ReceiveFamtoProduction] Azione illegale!\n");
+					currentplayer.notifyLogPBoardView("\nThe action is not legal:\n"
+							+ "\tYou must choose the Uncolored Family Member or choose another Action\n");
+					currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");	
 					((FamtoProduction) currentaction).famchoice();
-
 				}
 			}
 			else{
-				System.out.println("\n[ReceiveFamtoProduction] Familiare gia' utilizzato\n");
+				currentplayer.notifyLogPBoardView("\nError: the chosen Family Member was already used\n");
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoProduction) currentaction).famchoice();
 			}
 		}

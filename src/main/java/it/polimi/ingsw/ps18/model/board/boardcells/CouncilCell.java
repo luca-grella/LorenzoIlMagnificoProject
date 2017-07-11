@@ -27,10 +27,6 @@ public class CouncilCell {
 	 * @param pBoardFM
 	 *            the board FM
 	 */
-	/*
-	 * TODO: QUESTO COSTRUTTORE ROVINA I CONTROLLI DEL COUNCIL
-	 * Ho creato un secondo costruttore per risolvere, ma andrebbe rivista questa classe
-	 */
 	public CouncilCell(FMember pBoardFM) {
 			this.councilCellFM = pBoardFM;
 			this.councilCellValue = GeneralParameters.baseValueCouncilCells;

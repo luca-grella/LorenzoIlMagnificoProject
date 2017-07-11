@@ -49,17 +49,21 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Action choice\n");
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
 		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			Action currentaction = game.getOngoingAction();
 			((FamtoHarvest) currentaction).famchoice();
 		} else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
 			List<Cards> playerCards = currentplayer.getCards();
 			HarvCell harvCellNoMalus = game.getBoard().getHarvCellNoMalus();
 			boolean skipfullspacecontrol = false;
@@ -112,10 +116,11 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 			FMember chosenfam = currentplayer.getFams().get(index);
 			((FamtoHarvest) currentaction).setIndexFamtoRemove(index);
 			
-			if(chosenfam != null){				
+			if(chosenfam != null){		
 				if(game.getBoard().isLegalHarv(chosenfam)){
+					currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
+							+ chosenfam.toString());
 					((FamtoHarvest) currentaction).servantsChoice(game);
-					
 					if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 						if(harvCellNoMalus.isLegalHC(chosenfam.getValue() + modifierValue + (((FamtoHarvest) currentaction).getNumberOfServants() / malusServants))){
 							currentaction.setChosenFam(chosenfam);
@@ -123,6 +128,8 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\tThe chosen Family Member doesn't have enough Action Value:\n"
+									+ "Please choose another one\n");
 							((FamtoHarvest) currentaction).famchoice();
 						}
 					}
@@ -133,14 +140,21 @@ public class ReceiveFamtoHarvest implements ActionChoice {
 						return;
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\tThe chosen Family Member doesn't have enough Action Value:\n"
+								+ "Please choose another one\n");
 						((FamtoHarvest) currentaction).famchoice();
 					}
 				}
 				else{
+					currentplayer.notifyLogPBoardView("\nThe action is not legal:\n"
+							+ "\tYou must choose the Uncolored Family Member or choose another Action\n");
+					currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 					((FamtoHarvest) currentaction).famchoice();
 				}
 			}
 			else{
+				currentplayer.notifyLogPBoardView("\nError: the chosen Family Member was already used\n");
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoHarvest) currentaction).famchoice();
 			}
 		}

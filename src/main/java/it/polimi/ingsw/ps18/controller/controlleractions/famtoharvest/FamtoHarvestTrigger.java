@@ -119,19 +119,24 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoHarvest) action).famchoice();
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+									+ "Choose another action\n");
 							Action action = game.getOngoingAction();
 							action.act(game); 
 							return;
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
@@ -141,19 +146,24 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 				if(maxFM != null){
 					if(harvCellMalus.isLegalHC(maxFM.getValue())){ 
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+								+ "\tYou can proceed\n");
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 						return;
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
 					}
 				}
 				else{
-					System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+					currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
@@ -165,19 +175,24 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxNeutralFM != null){
 						if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoHarvest) action).famchoice();
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+									+ "Choose another action\n");
 							Action action = game.getOngoingAction();
 							action.act(game); 
 							return;
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
@@ -187,19 +202,31 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				HarvCell harvCellMalus = new HarvCell(GeneralParameters.baseMalusHarvCells);
 				if(maxNeutralFM != null){
 					if(harvCellMalus.isLegalHC(maxNeutralFM.getValue())){ 
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+								+ "\tYou can proceed\n");
 						Action action = new FamtoHarvest(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoHarvest) action).famchoice();
 						return;
 					}
+					else{
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
+						Action action = game.getOngoingAction();
+						action.act(game); 
+						return;
+					}
 				}
 				else{
-					System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+					currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
 				}
 			}
+			currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+					+ "Choose another action\n");
 			Action action = game.getOngoingAction();
 			action.act(game); 
 		}
@@ -238,6 +265,8 @@ public class FamtoHarvestTrigger implements ActionChoice {
 				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(harvCellNoMalus.isLegalHC(maxFM.getValue())){ 
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoHarvest) action).famchoice();
@@ -245,13 +274,16 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
 					}
 					if(maxNeutralFM != null){
 						if(harvCellNoMalus.isLegalHC(maxNeutralFM.getValue())){ 
+							currentplayer.notifyLogPBoardView("\n[Harvest]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoHarvest(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoHarvest) action).famchoice();
@@ -259,18 +291,22 @@ public class FamtoHarvestTrigger implements ActionChoice {
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
 					}
-					
+					currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game);
 				}
 				
 			}
 			else{
+				currentplayer.notifyLogPBoardView("\n[Harvest]The action is not legal\n"
+						+ "Choose another action\n");
 				Action action = game.getOngoingAction();
 				action.act(game); 
 			}

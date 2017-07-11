@@ -41,13 +41,19 @@ public class ReceiveTowertoTower implements ActionChoice {
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
 			if(((FamtoTower) currentaction).isCanGoBacktoFamChoice()){
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoTower) currentaction).famchoice();
 			} else {
+				currentplayer.notifyLogPBoardView("\tTurned back to the Tower choice\n");
 				((FamtoTower) currentaction).towerChoice();
 			}
 		} else if(index<0 || index>GeneralParameters.numberofBaseTowers){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Tower choice\n");
 			((FamtoTower) currentaction).towerChoice();
 		} else {
 			index -= 1;
@@ -56,7 +62,6 @@ public class ReceiveTowertoTower implements ActionChoice {
 			List<Tower> boardTowers = gameBoard.getTowers();
 			FMember pBoardFM = ((FamtoTower) currentaction).getChosenFam();
 			ConcreteTower boardTower = (ConcreteTower) boardTowers.get(index);
-			PBoard currentplayer = game.getTurnplayer();
 			boolean havetopayFee = true;
 			for(LeaderCards card: currentplayer.getLeadercards()){
 				if(card.isActive()){
@@ -83,8 +88,9 @@ public class ReceiveTowertoTower implements ActionChoice {
 							((FamtoTower) currentaction).floorChoice(game);
 						}
 						else{
+							String string[] = {"Green", "Blue", "Yellow", "Purple"};
 							currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
-									+ index + ":\n\tYou reached the card limit in your Personal Board\n");
+									+ index + ":\n\tYou reached the " + string[index] + "card limit in your Personal Board\n");
 							((FamtoTower) currentaction).towerChoice();
 						}		
 					} 
@@ -99,15 +105,16 @@ public class ReceiveTowertoTower implements ActionChoice {
 									((FamtoTower) currentaction).floorChoice(game);
 								}					
 								else{
+									String string[] = {"Green", "Blue", "Yellow", "Purple"};
 									currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
-											+ index + ":\n\tYou reached the card limit in your Personal Board\n");
+											+ index + ":\n\tYou reached the " + string[index] + "card limit in your Personal Board\n");
 									((FamtoTower) currentaction).towerChoice();
 			
 								}
 							} 
 							else {
 								currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
-										+ index + "\n\tYou don't have enough coins\n");
+										+ index + ":\n\tYou don't have enough coins\n");
 								((FamtoTower) currentaction).towerChoice();	
 							}
 						} else {
@@ -128,7 +135,7 @@ public class ReceiveTowertoTower implements ActionChoice {
 				} 
 				else {
 					currentplayer.notifyLogPBoardView("\nYou can't access Tower number " 
-							+ index + "\n\tThe action is not legal\n");
+							+ index + ":\n\tThe action is not legal\n");
 					((FamtoTower) currentaction).towerChoice();
 				}
 			}

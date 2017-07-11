@@ -87,21 +87,29 @@ public class FamtoMarketTrigger implements ActionChoice {
 				}
 			}
 			if(maxFM.getValue() > GeneralParameters.baseValueMarketCells){
+				currentplayer.notifyLogPBoardView("\n[Market]The action is legal\n"
+						+ "\tYou can proceed\n");
 				Action action = new FamtoMarket(currentplayer.getpBoardView());
 				game.setOngoingAction(action);
 				((FamtoMarket) action).famchoice();
 				return;
 			}
 			if(maxNeutralFM.getValue() > GeneralParameters.baseValueMarketCells){
+				currentplayer.notifyLogPBoardView("\n[Market]The action is legal\n"
+						+ "\tYou can proceed\n");
 				Action action = new FamtoMarket(currentplayer.getpBoardView());
 				game.setOngoingAction(action);
 				((FamtoMarket) action).famchoice();
 				return;
 			}
+			currentplayer.notifyLogPBoardView("\n[Market]The action is not legal\n"
+					+ "Choose another action\n");
 			Action action = game.getOngoingAction();
 			action.act(game); 
 		}
 		else{
+			currentplayer.notifyLogPBoardView("\n[Market]Market is full!\n"
+					+ "Choose another action\n");
 			Action action = game.getOngoingAction();
 			action.act(game);
 		}

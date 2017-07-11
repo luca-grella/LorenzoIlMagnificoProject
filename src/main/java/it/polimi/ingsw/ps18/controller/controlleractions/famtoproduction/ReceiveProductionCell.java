@@ -29,17 +29,20 @@ public class ReceiveProductionCell implements ActionChoice{
 	
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		Action currentaction = game.getOngoingAction();
 		if(index == 0){
+			currentplayer.notifyLogPBoardView("\tUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			((FamtoProduction) currentaction).famchoice();
 		}
 		else if(index < 0){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Cell choice\n");
 			((FamtoProduction) currentaction).cellChoice();
 		}
 		else{
 			index-=1;
-			
-			PBoard currentplayer = game.getTurnplayer();
 			Board gameBoard = game.getBoard();
 			List<Cards> playerCards = currentplayer.getCards();
 			ProdCell prodCellNoMalus = gameBoard.getProdCellNoMalus();
@@ -93,16 +96,20 @@ public class ReceiveProductionCell implements ActionChoice{
 			
 			if(index == 0){
 				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
+					currentplayer.notifyLogPBoardView("\nYou chose to access the Production Cell without malus\n");
 					if(prodCellNoMalus.isLegalPC(chosenFam.getValue() + modifierValue + ((FamtoProduction) currentaction).getNumberOfServants() / malusServants)){
 						((FamtoProduction) currentaction).setChosenCell(index);
 						currentaction.act(game);
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+								+ "Please choose another one\n");
 						((FamtoProduction) currentaction).famchoice();
 					}
 				}
 				else{
-					System.out.println("\n[ReceiveProductionCell]Pirla e' gia' occupata!\n");
+					currentplayer.notifyLogPBoardView("\nYou can't access this Cell:\n");
+					currentplayer.notifyLogPBoardView("The chosen Cell was already occupied!\n");
 					((FamtoProduction) currentaction).cellChoice();
 				}
 			}
@@ -111,34 +118,47 @@ public class ReceiveProductionCell implements ActionChoice{
 					if(gameBoard.isLegalProd(chosenFam)){
 						if(index == 0){
 							if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
+								currentplayer.notifyLogPBoardView("\nYou chose to access the Production Cell without malus\n");
 								if(prodCellNoMalus.isLegalPC(chosenFam.getValue() + modifierValue + ((FamtoProduction) currentaction).getNumberOfServants() / malusServants)){
 									((FamtoProduction) currentaction).setChosenCell(index);
 									currentaction.act(game);
 								}
-								else
+								else{
+									currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+											+ "Please choose another one\n");
 									((FamtoProduction) currentaction).famchoice();
+								}
 							}
-							else
+							else{
+								currentplayer.notifyLogPBoardView("\nYou can't access this Cell:\n");
+								currentplayer.notifyLogPBoardView("The chosen Cell was already occupied!\n");
 								((FamtoProduction) currentaction).cellChoice();
+							}
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\nYou chose to access the Production Zone with malus\n");
 							ProdCell temp = new ProdCell(GeneralParameters.baseMalusProdCells);
 							if(temp.isLegalPC(chosenFam.getValue() + modifierValue + ((FamtoProduction) currentaction).getNumberOfServants() / malusServants)){
 								((FamtoProduction) currentaction).setChosenCell(index);
 								currentaction.act(game);
 							}
-							else
+							else{
+								currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+										+ "Please choose another one\n");
 								((FamtoProduction) currentaction).famchoice();
+							}
 						}
 					}	
 					else{
+						currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
+								+ "Please choose another action\n");
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
 						((TurnHandler) action).act(game);
 					}
 				}
 				else{
-					System.out.println("[ReceiveProductionCell] Coglione se siete in 2 la production ha una cella sola!\n");
+					currentplayer.notifyLogPBoardView("\nYou can't access the Production Zone unless there are four players in a Game\n");
 					((FamtoProduction) currentaction).cellChoice();
 				}
 			}	

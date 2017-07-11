@@ -617,9 +617,7 @@ public class GameLogic extends Observable {
 		return builder.toString();
 	}
 	
-	/*
-	 * TODO: magari evitare che mi stampi tutta la lista di roba inutile, per il resto funziona
-	 */
+
 	public String toStringPlayers(List<PBoard> players){
 		StringBuilder builder = new StringBuilder();
 		String placement[] = {"Winner", "Second", "Third", "Fourth"};

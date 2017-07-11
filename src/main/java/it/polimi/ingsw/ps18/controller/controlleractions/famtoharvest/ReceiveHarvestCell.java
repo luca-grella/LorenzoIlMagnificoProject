@@ -27,19 +27,21 @@ public class ReceiveHarvestCell implements ActionChoice {
 
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		Action currentaction = game.getOngoingAction();
 		if(index == 0){
+			currentplayer.notifyLogPBoardView("\tUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			((FamtoHarvest) currentaction).famchoice();
 		}
 		else if(index < 0){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Cell choice\n");
 			((FamtoHarvest) currentaction).cellChoice();
 		}
 		else{
 			index-=1;
-			
-			PBoard currentplayer = game.getTurnplayer();
 			Board gameBoard = game.getBoard();
-			List<HarvCell> harvCells = gameBoard.getHarvestCells();
 			List<Cards> playerCards = currentplayer.getCards();
 			HarvCell harvCellNoMalus = gameBoard.getHarvCellNoMalus();
 			FMember chosenFam = ((FamtoHarvest) currentaction).getChosenFam();
@@ -92,52 +94,69 @@ public class ReceiveHarvestCell implements ActionChoice {
 			
 			if(index == 0){
 				if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
+					currentplayer.notifyLogPBoardView("\nYou chose to access the Harvest Cell without malus\n");
 					if(harvCellNoMalus.isLegalHC(chosenFam.getValue() + modifierValue + ((FamtoHarvest) currentaction).getNumberOfServants() / malusServants)){
 						((FamtoHarvest) currentaction).setChosenCell(index);
 						currentaction.act(game);
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+								+ "Please choose another one\n");
 						((FamtoHarvest) currentaction).famchoice();
 					}
 				}
 				else{
-					System.out.println("\n[ReceiveHarvestCell]Pirla e' gia' occupata!\n");
+					currentplayer.notifyLogPBoardView("\nYou can't access this Cell:\n");
+					currentplayer.notifyLogPBoardView("The chosen Cell was already occupied!\n");
 					((FamtoHarvest) currentaction).cellChoice();
 				}
 			}
-			else{ //Se invece ho scelto "2" (che ora vale 1 per aver fatto index-=1 sopra all'inizio)
+			else{
 				if(game.getNplayer() > 2){
 					if(gameBoard.isLegalHarv(chosenFam)){
 						if(index == 0){
 							if(harvCellNoMalus.isEmptyHC() || skipfullspacecontrol){
+								currentplayer.notifyLogPBoardView("\nYou chose to access the Harvest Cell without malus\n");
 								if(harvCellNoMalus.isLegalHC(chosenFam.getValue() + modifierValue + ((FamtoHarvest) currentaction).getNumberOfServants() / malusServants)){
 									((FamtoHarvest) currentaction).setChosenCell(index);
 									currentaction.act(game);
 								}
-								else
+								else{
+									currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+											+ "Please choose another one\n");
 									((FamtoHarvest) currentaction).famchoice();
+								}
 							}
-							else
+							else{
+								currentplayer.notifyLogPBoardView("\nYou can't access this Cell:\n");
+								currentplayer.notifyLogPBoardView("The chosen Cell was already occupied!\n");
 								((FamtoHarvest) currentaction).cellChoice();
+							}
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\nYou chose to access the Harvest Zone with malus\n");
 							HarvCell temp = new HarvCell(GeneralParameters.baseMalusHarvCells);
 							if(temp.isLegalHC(chosenFam.getValue() + modifierValue + ((FamtoHarvest) currentaction).getNumberOfServants() / malusServants)){
 								((FamtoHarvest) currentaction).setChosenCell(index);
 								currentaction.act(game);
 							}
-							else
+							else{
+								currentplayer.notifyLogPBoardView("\nThe chosen Family Member doesn't have enough Action Value:\n"
+										+ "Please choose another one\n");
 								((FamtoHarvest) currentaction).famchoice();
+							}
 						}
 					}	
 					else{
+						currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
+								+ "Please choose another action\n");
 						Action action = new TurnHandler(currentplayer);
 						game.setOngoingAction(action);
 						((TurnHandler) action).act(game);
 					}
 				}
 				else{
-					System.out.println("[ReceiveHarvestCell] Coglione se siete in 2 l'harvest ha una cella sola!\n");
+					currentplayer.notifyLogPBoardView("\nYou can't access the Harvest Zone unless there are four players in a Game\n");
 					((FamtoHarvest) currentaction).cellChoice();
 				}
 			}

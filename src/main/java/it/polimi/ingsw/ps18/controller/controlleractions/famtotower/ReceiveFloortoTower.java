@@ -1,12 +1,9 @@
 package it.polimi.ingsw.ps18.controller.controlleractions.famtotower;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice;
-import it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.WoodorRockHandler;
 import it.polimi.ingsw.ps18.model.board.Board;
-import it.polimi.ingsw.ps18.model.board.boardcells.Cell;
 import it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower;
 import it.polimi.ingsw.ps18.model.board.boardcells.Tower;
 import it.polimi.ingsw.ps18.model.cards.BlueC;
@@ -46,12 +43,17 @@ public class ReceiveFloortoTower implements ActionChoice {
 		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
 			if(((FamtoTower) currentaction).isCanGoBacktoTowerChoice()){
+				currentplayer.notifyLogPBoardView("\tTurned back to the Tower choice\n");
 				((FamtoTower) currentaction).towerChoice();
 			} else {
+				currentplayer.notifyLogPBoardView("\tTurned back to the Floor choice\n");
 				((FamtoTower) currentaction).floorChoice(game);
 			}
 		} else if(index<0 || index>GeneralParameters.numberofCells){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Floor choice\n");
 			((FamtoTower) currentaction).floorChoice(game);
 		} else {
 	        index -= 1;
@@ -66,7 +68,7 @@ public class ReceiveFloortoTower implements ActionChoice {
 			Stats tempDiscountPreview = new Stats(((FamtoTower) currentaction).getTotalDiscountPreview());
 			List<Cards> playerCards = currentplayer.getCards();
 			
-			//mdoificatore valore familiare per l'azione
+			//modificatore valore familiare per l'azione
 			int modifierValue = 0;
 			for(Cards card: playerCards){
 				if(card.hasPermanent()){
@@ -334,6 +336,8 @@ public class ReceiveFloortoTower implements ActionChoice {
 									secondaryCost.fixStats();
 									tempCostPreview.addStats(secondaryCost);
 								} else {
+									currentplayer.notifyLogPBoardView("\nYou don't have enough MP to pay this card\n");
+									currentplayer.notifyLogPBoardView("Turned back to the Floor choice\n");
 									((FamtoTower) currentaction).floorChoice(game);
 								}
 							} else {
@@ -370,14 +374,27 @@ public class ReceiveFloortoTower implements ActionChoice {
 						currentaction.act(game);
 					}
 					else{
+						String string[] = {"st", "nd", "rd", "rth"};
+						currentplayer.notifyLogPBoardView("\nYou can't access the " 
+								+ index+1 + string[index] + " cell of the tower:\n");	
+						currentplayer.notifyLogPBoardView("\tYou don't have enough resources to buy this card\n");
 						((FamtoTower) currentaction).floorChoice(game);
 					}
 				}
 				else{
-					((FamtoTower) currentaction).floorChoice(game);
+					String string[] = {"st", "nd", "rd", "rth"};
+					currentplayer.notifyLogPBoardView("\nYou can't access the " 
+							+ index+1 + string[index] + " cell of the tower:\n");	
+					currentplayer.notifyLogPBoardView("\tThe chosen Family Member doesn't have enough Action Value:\n"
+							+ "Please choose another one\n");
+					((FamtoTower) currentaction).famchoice();
 				}
 			}
 		    else {
+		    	String string[] = {"st", "nd", "rd", "rth"};
+				currentplayer.notifyLogPBoardView("\nYou can't access the " 
+						+ index+1 + string[index] + " cell of the tower:\n");	
+				currentplayer.notifyLogPBoardView("\nThe chosen Cell was already occupied!\n");
 		    	((FamtoTower) currentaction).floorChoice(game);
 		    }
 		}

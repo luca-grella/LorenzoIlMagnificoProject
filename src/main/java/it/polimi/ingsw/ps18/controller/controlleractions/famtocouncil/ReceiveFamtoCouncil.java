@@ -32,17 +32,21 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Action choice\n");
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
 		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Floor choice\n");
 			Action currentaction = game.getOngoingAction();
 			((FamtoCouncil) currentaction).famchoice();
 		} else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
 			int malusServants = 1;
 			for(Excommunications card: currentplayer.getExcommCards()){
 				for(ExcommEffects effect: card.getEffects()){
@@ -63,16 +67,23 @@ public class ReceiveFamtoCouncil implements ActionChoice {
 			CouncilCell councilCell = new CouncilCell();
 			
 			if(chosenfam != null){
+				currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
+						+ chosenfam.toString());
 				((FamtoCouncil) currentaction).servantsChoice(game);
 				if(councilCell.isLegalCC(chosenfam.getValue() + (((FamtoCouncil) currentaction).getNumberOfServants() / malusServants))){
+					currentplayer.notifyLogPBoardView("\nYou Family Member was correctly placed in the Council:\n");
 					currentaction.setChosenFam(chosenfam);
 					((FamtoCouncil) currentaction).act(game);
 				}
 				else{
+					currentplayer.notifyLogPBoardView("\nError: you tried to place an Uncolored Family Member without adding Servants\n");
+					currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 					((FamtoCouncil) currentaction).famchoice();
 				}		
 			}
 			else{
+				currentplayer.notifyLogPBoardView("\nError: the chosen Family Member was already used\n");
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoCouncil) currentaction).famchoice();
 			}
 		}

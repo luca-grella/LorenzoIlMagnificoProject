@@ -156,9 +156,6 @@ public class FamtoTowerTrigger implements ActionChoice {
 						if(maxNeutralValue > maxNeutralFM.getValue() ){
 							maxNeutralFM.setValue(maxNeutralValue);
 							maxNeutralFM.setColor(curFM.getColor());
-							/*
-							 * Penso sia ridondante, perche' prima ho chiamato il costruttore del FM neutro
-							 */
 						}
 					}
 					else{
@@ -173,11 +170,11 @@ public class FamtoTowerTrigger implements ActionChoice {
 			
 
 			if(boardTower.isLegalTower(maxFM)){
-				for(int cellIndex=0; cellIndex<GeneralParameters.numberofCells; cellIndex++){ //Valutare se mettere towerCells.size
+				for(int cellIndex=0; cellIndex<towerCells.size(); cellIndex++){
 					Cell towerCell = towerCells.get(cellIndex);
 					if(towerCell.isEmptyTC()){
 						if(maxFM.getValue() > towerCell.getCellValue()){
-							currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+							currentplayer.notifyLogPBoardView("\n[Tower]The action is legal\n"
 															+ "\tYou can proceed\n");
 							Action action = new FamtoTower(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
@@ -192,7 +189,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 					Cell towerCell = towerCells.get(cellIndex);
 					if(towerCell.isEmptyTC()){
 						if(maxNeutralFM.getValue() > towerCell.getCellValue()){
-							currentplayer.notifyLogPBoardView("\nThe action is legal\n"
+							currentplayer.notifyLogPBoardView("\n[Tower]The action is legal\n"
 															+ "\tYou can proceed\n");
 							Action action = new FamtoTower(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
@@ -203,7 +200,7 @@ public class FamtoTowerTrigger implements ActionChoice {
 				}
 			}
 		}
-		currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
+		currentplayer.notifyLogPBoardView("\n[Tower]The action is not legal\n"
 										+ "Choose another action\n");
 		Action action = game.getOngoingAction();
 		action.act(game);

@@ -14,8 +14,11 @@ public class ReceiveChosenCost implements ActionChoice {
 		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("Turned back to the Floor choice\n");
 			((FamtoTower) currentaction).floorChoice(game);
 		} else if(index==1 || index==2){
+			//TODO: FARE OUTPUT FINALE
 			((FamtoTower) currentaction).setCostchoice(index);
 		}
 	}

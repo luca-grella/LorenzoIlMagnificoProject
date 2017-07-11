@@ -32,10 +32,15 @@ public class ReceiveMarketCell implements ActionChoice{
 	 */
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		Action currentaction = game.getOngoingAction();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\tUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			((FamtoMarket) currentaction).famchoice();
 		} else if(index<0 || index>GeneralParameters.numberofMarketCells){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Cell choice\n");
 			((FamtoMarket) currentaction).cellChoice(game);
 		} else {
 			index -= 1;
@@ -75,7 +80,9 @@ public class ReceiveMarketCell implements ActionChoice{
 					currentaction.act(game);
 				}
 				else
-					((FamtoMarket) currentaction).cellChoice(game);
+					currentplayer.notifyLogPBoardView("\nError: you tried to place an Uncolored Family Member without adding Servants\n");
+					currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
+					((FamtoMarket) currentaction).famchoice();
 			}
 		}
 	}

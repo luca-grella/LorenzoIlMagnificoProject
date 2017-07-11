@@ -18,7 +18,7 @@ public class ActivateHarvest implements ActionChoice {
 	 */
 	private int index = -1;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -45,6 +45,7 @@ public class ActivateHarvest implements ActionChoice {
 					}
 				}
 			}
+			//TODO: FARE OUTPUT FINALE
 			((FamtoHarvest) currentaction).setActionValue(index + modifierValue);
 			((FamtoHarvest) currentaction).activateHarvest(currentplayer, game);
 		} 

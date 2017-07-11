@@ -118,19 +118,24 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxFM != null){
 						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
+							currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+									+ "Choose another action\n");
 							Action action = game.getOngoingAction();
 							action.act(game); 
 							return;
 						}
 					}
 					else{
-						System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
@@ -140,19 +145,24 @@ public class FamtoProductionTrigger implements ActionChoice {
 				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
 				if(maxFM != null){
 					if(prodCellMalus.isLegalPC(maxFM.getValue())){ 
+						currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+								+ "\tYou can proceed\n");
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
 						return;
 					}
 					else{
+						currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
 					}
 				}
 				else{
-					System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+					currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
@@ -164,19 +174,24 @@ public class FamtoProductionTrigger implements ActionChoice {
 				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxNeutralFM != null){
 						if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){
+							currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
 							return;
 						}
 						else{
+							currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+									+ "Choose another action\n");
 							Action action = game.getOngoingAction();
 							action.act(game); 
 							return;
 						}
 					}
 					else{
-						System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
@@ -186,6 +201,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 				ProdCell prodCellMalus = new ProdCell(GeneralParameters.baseMalusHarvCells);
 				if(maxNeutralFM != null){
 					if(prodCellMalus.isLegalPC(maxNeutralFM.getValue())){ 
+						currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+								+ "\tYou can proceed\n");
 						Action action = new FamtoProduction(currentplayer.getpBoardView());
 						game.setOngoingAction(action);
 						((FamtoProduction) action).famchoice();
@@ -193,7 +210,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 					}
 				}
 				else{
-					System.out.println("\n[FamtoProductionTrigger] familiare nullo\n");
+					currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game); 
 					return;
@@ -234,7 +252,9 @@ public class FamtoProductionTrigger implements ActionChoice {
 				}
 				if(prodCellNoMalus.isEmptyPC() || skipfullspacecontrol){
 					if(maxFM != null){
-						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){ 
+						if(prodCellNoMalus.isLegalPC(maxFM.getValue())){
+							currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
@@ -242,7 +262,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
@@ -250,6 +271,8 @@ public class FamtoProductionTrigger implements ActionChoice {
 					
 					if(maxNeutralFM != null){
 						if(prodCellNoMalus.isLegalPC(maxNeutralFM.getValue())){ 
+							currentplayer.notifyLogPBoardView("\n[Production]The action is legal\n"
+									+ "\tYou can proceed\n");
 							Action action = new FamtoProduction(currentplayer.getpBoardView());
 							game.setOngoingAction(action);
 							((FamtoProduction) action).famchoice();
@@ -257,16 +280,21 @@ public class FamtoProductionTrigger implements ActionChoice {
 						}
 					}
 					else{
-						System.out.println("\n[FamtoHarvestTrigger] familiare nullo\n");
+						currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+								+ "Choose another action\n");
 						Action action = game.getOngoingAction();
 						action.act(game); 
 						return;
 					}
+					currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+							+ "Choose another action\n");
 					Action action = game.getOngoingAction();
 					action.act(game);
 				}
 			}
 			else{
+				currentplayer.notifyLogPBoardView("\n[Production]The action is not legal\n"
+						+ "Choose another action\n");
 				Action action = game.getOngoingAction();
 				action.act(game); 
 			}

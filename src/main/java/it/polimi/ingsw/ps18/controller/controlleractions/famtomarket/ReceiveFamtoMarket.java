@@ -26,25 +26,33 @@ public class ReceiveFamtoMarket implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
+		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
+			currentplayer.notifyLogPBoardView("\nUndoing...\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Action choice\n");
 			Action tHandler = new TurnHandler(game.getTurnplayer());
 			game.setOngoingAction(tHandler);
 			tHandler.act(game);
 		} else if(index<0 || index>GeneralParameters.nfamperplayer){
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n");
+			currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 			Action currentaction = game.getOngoingAction();
 			((FamtoMarket) currentaction).famchoice();
 		} else {
 			index -= 1;
 			Action currentaction = game.getOngoingAction();
-			PBoard currentplayer = game.getTurnplayer();
 			List<FMember> fams = currentplayer.getFams();
 			FMember chosenfam = fams.get(index);
 			((FamtoMarket) currentaction).setIndexFamtoRemove(index);
 			if(chosenfam != null){
+				currentplayer.notifyLogPBoardView("\nYou chose to place:\n"
+						+ chosenfam.toString());
 				currentaction.setChosenFam(chosenfam);
 				((FamtoMarket) currentaction).cellChoice(game);
 			}
 			else{
+				currentplayer.notifyLogPBoardView("\nError: the chosen Family Member was already used\n");
+				currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 				((FamtoMarket) currentaction).famchoice();
 			}
 		}

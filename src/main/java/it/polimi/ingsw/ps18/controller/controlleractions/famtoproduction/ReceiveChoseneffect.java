@@ -26,11 +26,12 @@ public class ReceiveChoseneffect implements ActionChoice {
 	 */
 	private int index;
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
 	public void act(GameLogic game) {
+		//TODO: FARE OUTPUT FINALE
 		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
