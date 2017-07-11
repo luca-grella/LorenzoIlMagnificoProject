@@ -93,7 +93,9 @@ public class DifferentPrivilege extends Observable implements QuickEffect, Harve
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;

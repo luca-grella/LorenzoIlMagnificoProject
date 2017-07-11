@@ -42,6 +42,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	private PBoardView pBoardView;
 	
+	/** The idlethread. */
 	private final ExecutorService idlethread = Executors.newSingleThreadExecutor();
 	
 	/**
@@ -54,6 +55,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	private Stats resources;
 	
+	/** The confirm. */
 	private boolean confirm = false;
 	
 	/**
@@ -61,19 +63,22 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	 */
 	private List<Cards> cards = new ArrayList<>();
 	
-	/**
-	 * the excomm Cards
-	 */
+	/** the excomm Cards. */
 	private List<Excommunications> excommCards = new ArrayList<>();
 	
+	/** The leadercards. */
 	private List<LeaderCards> leadercards = new ArrayList<>();
 	
+	/** The temp LC. */
 	private List<LeaderCards> tempLC = new ArrayList<>();
 	
+	/** The currentcard. */
 	private LeaderCards currentcard;
 	
+	/** The supportfor LC. */
 	private List<LeaderCards> supportforLC = new ArrayList<>();
 	
+	/** The secondsupportfor LC. */
 	private List<LeaderCards> secondsupportforLC = new ArrayList<>();
 	/**
 	 * The fams.
@@ -81,20 +86,36 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	private List<FMember> fams = new ArrayList<>(GeneralParameters.nfamperplayer);
 	
 	
+	/** The priority value. */
 	private int priorityValue;
 	
+	/** The player. */
 	private ClientInterface player;
 	
+	/** The tester. */
 	private int tester=1;
 	
 	
 	
 	
+	/**
+	 * Instantiates a new p board.
+	 *
+	 * @param playercol the playercol
+	 * @param player the player
+	 */
 	public PBoard(int playercol, ClientInterface player){
 		this.playercol = playercol;
 		this.player = player;
 	}
 	
+	/**
+	 * Complete P board setup.
+	 *
+	 * @param dices the dices
+	 * @param mcontroller the mcontroller
+	 * @param BonusTiles the bonus tiles
+	 */
 	public void completePBoardSetup(List<Dice> dices, MainController mcontroller, List<Cards> BonusTiles){
 		pBoardView = new PBoardView(mcontroller, player);
 		addObserver(pBoardView);
@@ -111,6 +132,12 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		notifyLogPBoardView("Setup PBoard Player Number " + playercol + " Terminated.");
 		
 	}
+	
+	/**
+	 * Refresh F members.
+	 *
+	 * @param dices the dices
+	 */
 	public void refreshFMembers(List<Dice> dices){
 		this.fams.clear();
 		int count;
@@ -122,6 +149,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	
 
 	
+	/**
+	 * Choose bonus tile.
+	 */
 	public void ChooseBonusTile(){
 		notifyActionPBoardView("ChooseBonusTile");
 	}
@@ -153,6 +183,7 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		fams = null;
 	}
 	
+	/** The Constant victoryComparator. */
 	public static final Comparator<PBoard> victoryComparator = new Comparator<PBoard>(){
 		public int compare(PBoard player1, PBoard player2) {
 			int compareVP1 = player1.getResources().getVP();
@@ -163,11 +194,18 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		}
 	};
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(PBoard player) {
 		int compareMP = player.getResources().getMP();
 		return compareMP - this.getResources().getMP();
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 	    if (!(obj instanceof PBoard)) {
@@ -183,6 +221,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	    return this.equals(other);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override 
 	public int hashCode() {
 		return this.hashCode();
@@ -239,6 +280,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		
 	}
 	
+	/**
+	 * Take leader.
+	 *
+	 * @param leaders the leaders
+	 */
 	public void takeLeader(List<LeaderCards> leaders){
 		this.tempLC = leaders;
 		notifyLogPBoardView("\nGiocatore " + this.playercol + "\n");
@@ -249,11 +295,21 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		notifyStatusPBoardView("ChoiceLC");
 	}
 	
+	/**
+	 * Continuetake leader.
+	 *
+	 * @param choice the choice
+	 */
 	public void continuetakeLeader(int choice){
 		this.leadercards.add(tempLC.get(choice));
 		tempLC.remove(choice);
 	}
 	
+	/**
+	 * Activate leader.
+	 *
+	 * @param game the game
+	 */
 	public void activateLeader(GameLogic game){
 		this.supportforLC.clear();
 		boolean noOne = true;
@@ -307,6 +363,12 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		}}
 	}
 	
+	/**
+	 * Copy LC.
+	 *
+	 * @param game the game
+	 * @return true, if successful
+	 */
 	public boolean copyLC(GameLogic game){
 		this.secondsupportforLC.clear();
 		for(PBoard player: game.getPlayers()){
@@ -329,6 +391,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		} return false;
 	}
 	
+	/**
+	 * Discard LC.
+	 */
 	public void discardLC(){
 		this.supportforLC.clear();
 		boolean canDiscard = false;
@@ -349,6 +414,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		}
 	}
 	
+	/**
+	 * Activate LCQE.
+	 *
+	 * @param game the game
+	 */
 	public void activateLCQE(GameLogic game){
 		this.supportforLC.clear();
 		boolean existoneCardtoActivate = false;
@@ -392,6 +462,11 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		}
 	}
 	
+	/**
+	 * Generate excomm malus.
+	 *
+	 * @return the stats
+	 */
 	public Stats generateExcommMalus(){
 		Stats totalmalus = new Stats(0,0,0,0,0,0,0);
 		for(int i=0; i<this.excommCards.size(); i++){
@@ -479,6 +554,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	
 	/**
 	 * To string fams.
+	 *
+	 * @return the string
 	 */
 	public String toStringFams(){
 		StringBuilder builder = new StringBuilder();
@@ -602,11 +679,22 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 		notifyObservers(new StatusMessage(msg));
 	}
 	
+	/**
+	 * Notify action P board view.
+	 *
+	 * @param msg the msg
+	 */
 	private void notifyActionPBoardView(String msg){
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
 	}
 	
+	/**
+	 * Notify param P board view.
+	 *
+	 * @param msg the msg
+	 * @param color the color
+	 */
 	public void notifyParamPBoardView(String msg, int color){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,color));
@@ -698,6 +786,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the excomm cards.
+	 *
 	 * @return the excommCards
 	 */
 	public List<Excommunications> getExcommCards() {
@@ -705,14 +795,17 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
-	 * Per Test
-	 * 
+	 * Per Test.
+	 *
+	 * @param pb the new p board view
 	 */
 	public void setpBoardView(PBoardView pb) {
 		this.pBoardView=pb;		
 	}
 
 	/**
+	 * Gets the priority value.
+	 *
 	 * @return the priorityValue
 	 */
 	public int getPriorityValue() {
@@ -720,12 +813,19 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Sets the priority value.
+	 *
 	 * @param priorityValue the priorityValue to set
 	 */
 	public void setPriorityValue(int priorityValue) {
 		this.priorityValue = priorityValue;
 	}
 
+	/**
+	 * Gets the temp LC.
+	 *
+	 * @return the temp LC
+	 */
 	/*
 	 * @return the tempLC
 	 */
@@ -734,6 +834,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the leadercards.
+	 *
 	 * @return the leadercards
 	 */
 	public List<LeaderCards> getLeadercards() {
@@ -741,6 +843,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the currentcard.
+	 *
 	 * @return the currentcard
 	 */
 	public LeaderCards getCurrentcard() {
@@ -748,6 +852,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the supportfor LC.
+	 *
 	 * @return the tobeActivated
 	 */
 	public List<LeaderCards> getSupportforLC() {
@@ -755,6 +861,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Sets the confirm.
+	 *
 	 * @param confirm the confirm to set
 	 */
 	public void setConfirm(boolean confirm) {
@@ -762,6 +870,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the secondsupportfor LC.
+	 *
 	 * @return the secondsupportforLC
 	 */
 	public List<LeaderCards> getSecondsupportforLC() {
@@ -769,7 +879,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
-	 * @param cards2
+	 * Sets the leader cards.
+	 *
+	 * @param leadercards the new leader cards
 	 */
 	public void setLeaderCards(List<LeaderCards> leadercards) {
 		this.leadercards=leadercards;
@@ -777,13 +889,17 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
-	 * 
+	 * Sets the excomm cards.
+	 *
+	 * @param excommCards the new excomm cards
 	 */
 	public void setExcommCards(List<Excommunications> excommCards) {
 		this.excommCards=excommCards;
 	}
 
 	/**
+	 * Gets the player.
+	 *
 	 * @return the player
 	 */
 	public ClientInterface getPlayer() {
@@ -791,6 +907,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Gets the idlethread.
+	 *
 	 * @return the idlethread
 	 */
 	public ExecutorService getIdlethread() {
@@ -798,7 +916,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
-	 * 
+	 * Sets the temp LC.
+	 *
+	 * @param tempLC the new temp LC
 	 */
 	public void setTempLC(List<LeaderCards> tempLC) {
 		this.tempLC=tempLC;
@@ -806,7 +926,9 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;
@@ -814,6 +936,8 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 	}
 
 	/**
+	 * Sets the player.
+	 *
 	 * @param player the player to set
 	 */
 	public void setPlayer(ClientInterface player) {

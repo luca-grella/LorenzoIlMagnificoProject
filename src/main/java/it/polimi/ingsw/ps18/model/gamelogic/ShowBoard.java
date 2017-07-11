@@ -17,6 +17,8 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  * The Class ShowBoard.
  */
 public class ShowBoard extends Observable {
+	
+	/** The tester. */
 	private int tester=1;
 	
 	/**
@@ -32,8 +34,7 @@ public class ShowBoard extends Observable {
 	/**
 	 * Show market.
 	 *
-	 * @param market
-	 *            the market
+	 * @param board the board
 	 */
 	public void showMarket(Board board){
 		StringBuilder builder = new StringBuilder();
@@ -63,8 +64,8 @@ public class ShowBoard extends Observable {
 	/**
 	 * Show all towerswith zoom.
 	 *
-	 * @param board
-	 *            the board
+	 * @param board            the board
+	 * @param playercol the playercol
 	 */
 	public void showAllTowerswithZoom(Board board, int playercol){
 		notifyLogView(board.toString());
@@ -121,18 +122,30 @@ public class ShowBoard extends Observable {
 		notifyLogView(board.toStringProduction());
 	}
 	
+	/**
+	 * Show excomm.
+	 *
+	 * @param board the board
+	 */
 	public void ShowExcomm(Board board){
 		notifyLogView(board.toStringExcomm());
 	}
 	
 	/**
 	 * Choose player.
+	 *
+	 * @param color the color
 	 */
 	public void choosePlayer(int color){
 		setChanged();
 		notifyObservers(new ParamMessage("Player Choice", color));
 	}
 	
+	/**
+	 * Show fam.
+	 *
+	 * @param player the player
+	 */
 	public void showFam(PBoard player){
 		notifyLogView(player.toStringFams());
 	}
@@ -147,10 +160,21 @@ public class ShowBoard extends Observable {
 		notifyLogView(player.toStringResources());
 		notifyLogView(player.toStringCards());
 	}
+	
+	/**
+	 * Show servants.
+	 *
+	 * @param player the player
+	 */
 	public void showServants(PBoard player){
 		notifyLogView(player.getResources().toStringServants());
 	}
 	
+	/**
+	 * Show bonus tiles.
+	 *
+	 * @param bonusTiles the bonus tiles
+	 */
 	public void showBonusTiles(List<Cards> bonusTiles){
 		for(int i=0; i<bonusTiles.size(); i++){
 			notifyLogView(bonusTiles.get(i).toString(i));
@@ -182,7 +206,9 @@ public class ShowBoard extends Observable {
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;

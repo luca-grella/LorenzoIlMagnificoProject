@@ -4,16 +4,31 @@ import org.json.simple.JSONArray;
 
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+/**
+ * The Class MalusResources.
+ */
 public class MalusResources implements ExcommEffects {
+	
+	/** The name. */
 	private String name = "MalusResources";
+	
+	/** The malus. */
 	private Stats malus;
 	
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		return;
 	}
 	
+	/**
+	 * Sets the malus.
+	 *
+	 * @param stats the new malus
+	 */
 	public void setMalus(JSONArray stats){
 		malus = new Stats(stats);
 	}
@@ -21,6 +36,8 @@ public class MalusResources implements ExcommEffects {
 	
 	
 	/**
+	 * Gets the malus.
+	 *
 	 * @return the malus
 	 */
 	public Stats getMalus() {
@@ -36,6 +53,9 @@ public class MalusResources implements ExcommEffects {
 		return name;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -45,7 +65,10 @@ public class MalusResources implements ExcommEffects {
 	}
 
 	/**
-	 * 
+	 * Gets the quantity.
+	 *
+	 * @param quantity the quantity
+	 * @return the quantity
 	 */
 	public int getQuantity(int quantity) {
 		return quantity;

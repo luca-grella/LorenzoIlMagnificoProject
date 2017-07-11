@@ -158,6 +158,9 @@ public class FMemberTest {
 	
 	}
 	
+	/**
+	 * Test set value 2.
+	 */
 	@Test
 	public void testSetValue2() {
 		int a=0;

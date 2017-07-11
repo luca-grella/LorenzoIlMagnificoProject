@@ -21,16 +21,18 @@ import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class CheckNumberCardTypeTest.
  *
+ * @author luca-grella
  */
 public class CheckNumberCardTypeTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.CheckNumberCardType#checkRequirement(it.polimi.ingsw.ps18.model.personalboard.PBoard)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testCheckRequirement() throws FileNotFoundException, IOException, ParseException {
@@ -62,9 +64,10 @@ public class CheckNumberCardTypeTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.CheckNumberCardType#setParam(java.lang.String, int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetParam() throws FileNotFoundException, IOException, ParseException {
@@ -101,9 +104,10 @@ public class CheckNumberCardTypeTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.CheckNumberCardType#toString()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testToString() throws FileNotFoundException, IOException, ParseException {

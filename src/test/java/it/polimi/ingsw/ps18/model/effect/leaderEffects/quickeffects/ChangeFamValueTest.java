@@ -16,8 +16,9 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class ChangeFamValueTest.
  *
+ * @author luca-grella
  */
 public class ChangeFamValueTest {
 

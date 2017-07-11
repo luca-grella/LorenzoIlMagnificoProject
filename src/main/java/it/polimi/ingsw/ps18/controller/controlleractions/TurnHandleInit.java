@@ -20,6 +20,9 @@ public class TurnHandleInit implements ActionChoice{
 	TurnHandler tHandler;
 	
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -50,6 +53,9 @@ public class TurnHandleInit implements ActionChoice{
 	}
 	
 	/**
+	 * Sets the index.
+	 *
+	 * @param i the new index
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

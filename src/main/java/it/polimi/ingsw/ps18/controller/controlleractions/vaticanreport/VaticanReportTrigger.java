@@ -14,8 +14,14 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.VaticanReport;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class VaticanReportTrigger.
+ */
 public class VaticanReportTrigger implements ActionChoice{
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();       
@@ -86,6 +92,12 @@ public class VaticanReportTrigger implements ActionChoice{
 	
 	
 	
+	/**
+	 * Check FP.
+	 *
+	 * @param index the index
+	 * @param age the age
+	 */
 	private void checkFP (int index, int age){
 //		Integer i = new Integer(index);
 //		JSONParser parser = new JSONParser();
@@ -105,6 +117,9 @@ public class VaticanReportTrigger implements ActionChoice{
 	
 	
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		

@@ -15,8 +15,9 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.view.pboardviewactions.effectresolution.ActHarvestwithParameter;
 
 /**
- * @author luca-grella
+ * The Class ActHarvestwithParameterTest.
  *
+ * @author luca-grella
  */
 public class ActHarvestwithParameterTest {
 

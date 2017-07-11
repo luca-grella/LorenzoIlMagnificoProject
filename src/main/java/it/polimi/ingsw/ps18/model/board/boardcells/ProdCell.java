@@ -49,8 +49,8 @@ public class ProdCell {
 	/**
 	 * Insert FM.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param pBoardFM            the board FM
+	 * @param game the game
 	 * @return true, if successful
 	 */
 	public boolean insertFM(FMember pBoardFM, GameLogic game) {
@@ -98,8 +98,7 @@ public class ProdCell {
 	/**
 	 * Checks if is legal PC.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param actionValue the action value
 	 * @return true, if is legal PC
 	 */
 	public boolean isLegalPC(int actionValue){

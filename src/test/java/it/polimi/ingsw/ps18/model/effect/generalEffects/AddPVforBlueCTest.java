@@ -26,16 +26,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class AddPVforBlueCTest.
  *
+ * @author luca-grella
  */
 public class AddPVforBlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.AddPVforBlueC#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testActivate() throws FileNotFoundException, IOException, ParseException {

@@ -28,6 +28,9 @@ public class ReceiveMarketCell implements ActionChoice{
 	private int index;
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -79,10 +82,11 @@ public class ReceiveMarketCell implements ActionChoice{
 					((FamtoMarket) currentaction).setChosenCell(index);
 					currentaction.act(game);
 				}
-				else
+				else{
 					currentplayer.notifyLogPBoardView("\nError: you tried to place an Uncolored Family Member without adding Servants\n");
 					currentplayer.notifyLogPBoardView("\tTurned back to the Family Member choice\n");
 					((FamtoMarket) currentaction).famchoice();
+				}
 			}
 		}
 	}

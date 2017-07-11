@@ -9,14 +9,24 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  * The Class ShowProduction.
  */
 public class ShowProduction implements Status {
+	
+	/** The index. */
 	private int index;
+	
+	/** The color. */
 	private int color;
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controllerstatus.Status#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = i;
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controllerstatus.Status#setColor(int)
+	 */
 	@Override
 	public void setColor(int i) {
 		this.color = i;

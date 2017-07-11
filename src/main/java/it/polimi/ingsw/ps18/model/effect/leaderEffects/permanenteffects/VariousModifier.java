@@ -1,17 +1,33 @@
 package it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects;
 
+/**
+ * The Class VariousModifier.
+ */
 public class VariousModifier implements LCPermEffect {
+	
+	/** The short description. */
 	private String shortDescription;
 	
+	/**
+	 * Sets the param.
+	 *
+	 * @param shortDescription the new param
+	 */
 	public void setParam(String shortDescription){
 		this.shortDescription = shortDescription;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect#getShortDescription()
+	 */
 	@Override
 	public String getShortDescription() {
 		return this.shortDescription;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -31,6 +47,9 @@ public class VariousModifier implements LCPermEffect {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect#getName()
+	 */
 	@Override
 	public String getName(){
 		return "VariousModifier";

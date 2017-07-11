@@ -27,7 +27,8 @@ public class HashMapPBVS {
 	
 	/**
 	 * Inits the.
-	 * @param mcontroller 
+	 *
+	 * @param mcontroller the mcontroller
 	 */
 	public static void init(MainController mcontroller){
 		genPBVStatus.put("WoodorRockChoice", new ChooseWoodorRock(mcontroller));

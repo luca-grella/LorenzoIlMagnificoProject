@@ -91,7 +91,9 @@ public class ActProduction extends Observable implements FinalEffect, HarvestEff
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		
@@ -99,7 +101,9 @@ public class ActProduction extends Observable implements FinalEffect, HarvestEff
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;

@@ -37,6 +37,7 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  */
 public class PBoardTest {
 
+	/** The Constant bonustiles. */
 	private static final List<Cards> bonustiles = null;
 
 	/**
@@ -310,6 +311,9 @@ public class PBoardTest {
 		
 	}
 
+	/**
+	 * Test P board int.
+	 */
 	@Test
 	public void testPBoardInt() {
 		PBoard tester = new PBoard(1,(ClientInterface) null);
@@ -318,6 +322,9 @@ public class PBoardTest {
 		assertEquals(2, tester.getPlayercol());
 			}
 	
+	/**
+	 * Test choose bonus tile.
+	 */
 	@Test
 	public void testChooseBonusTile() {
 		PBoard tester = new PBoard();
@@ -326,6 +333,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test refresh F members.
+	 */
 	@Test
 	public void testRefreshFMembers() {
 		PBoard tester = new PBoard();
@@ -343,6 +353,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test compare.
+	 */
 	@Test
 	public void testCompare() {
 		PBoard tester = new PBoard();
@@ -357,6 +370,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test compare 2.
+	 */
 	@Test
 	public void testCompare2() {
 		PBoard tester = new PBoard();
@@ -372,6 +388,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test equals.
+	 */
 	@Test
 	public void testEquals() {
 		PBoard tester = new PBoard();
@@ -394,6 +413,13 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test continue take leader.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testContinueTakeLeader() throws FileNotFoundException, IOException, ParseException{
 		
@@ -415,6 +441,9 @@ public class PBoardTest {
 	}
 	
 	
+	/**
+	 * Test act harvest.
+	 */
 	@Test
 	public void testActHarvest() {
 		PBoard tester = new PBoard();
@@ -423,6 +452,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test act production.
+	 */
 	@Test
 	public void testActProduction() {
 		PBoard tester = new PBoard();
@@ -431,6 +463,13 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test add cards.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testAddCards() throws FileNotFoundException, IOException, ParseException {
 		PBoard tester = new PBoard();
@@ -450,6 +489,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test take leader.
+	 */
 	@Test
 	public void testTakeLeader() {
 		PBoard tester = new PBoard();
@@ -458,6 +500,14 @@ public class PBoardTest {
 		
 		
 			}
+	
+	/**
+	 * Test activate leader.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testActivateLeader() throws FileNotFoundException, IOException, ParseException {
 		
@@ -479,6 +529,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test copy LC.
+	 */
 	@Test
 	public void testCopyLC() {
 		PBoard tester = new PBoard();
@@ -494,6 +547,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test discard LC.
+	 */
 	@Test
 	public void testDiscardLC() {
 		PBoard tester = new PBoard();
@@ -502,6 +558,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test activate LCQE.
+	 */
 	@Test
 	public void testActivateLCQE() {
 		PBoard tester = new PBoard();
@@ -510,6 +569,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test generate excomm malus.
+	 */
 	@Test
 	public void testGenerateExcommMalus() {
 		PBoard tester = new PBoard();
@@ -518,6 +580,9 @@ public class PBoardTest {
 		
 			}
 	
+	/**
+	 * Test to string fams.
+	 */
 	@Test
 	public void testToStringFams() {
 		PBoard tester = new PBoard();
@@ -535,9 +600,10 @@ public class PBoardTest {
 	
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#getCards()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCards() throws FileNotFoundException, IOException, ParseException {
@@ -576,6 +642,9 @@ public class PBoardTest {
 		
 	}
 	
+	/**
+	 * Test complete P board setup.
+	 */
 	@Test
 	public void testCompletePBoardSetup() {
 		
@@ -599,9 +668,10 @@ public class PBoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.personalboard.PBoard#setCards(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetCards() throws FileNotFoundException, IOException, ParseException {
@@ -677,6 +747,9 @@ public class PBoardTest {
 		
 	}
 	
+	/**
+	 * Test to string cards.
+	 */
 	@Test
 	public void testToStringCards() {
 
@@ -684,9 +757,12 @@ public class PBoardTest {
 		List<Cards> cards = new ArrayList<>();
 		tester.setCards(cards );
 		String ris = tester.toStringCards();
-		assertEquals("Cards of player 0:\n-----------------\nBonus Tiles:\n\n-----------------\nGreen Cards:\n\n-----------------\nBlue Cards:\n\n-----------------\nYellow Cards:\n\n-----------------\nPurple Cards:\n\n-----------------\nExcommunication Cards:\n\n-----------------\n", ris);
+		assertEquals("Cards of player 0:\n-----------------\nBonus Tiles:\n\n-----------------\nGreen Cards:\n\n-----------------\nBlue Cards:\n\n-----------------\nYellow Cards:\n\n-----------------\nPurple Cards:\n\n-----------------\nExcommunication Cards:\n\n-----------------\nActive Leader Cards:\n\n-----------------\n", ris);
 	}
 	
+	/**
+	 * Test to string resources.
+	 */
 	@Test
 	public void testToStringResources() {
 

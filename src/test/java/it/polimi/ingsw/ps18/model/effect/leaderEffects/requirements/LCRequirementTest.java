@@ -8,8 +8,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class LCRequirementTest.
  *
+ * @author luca-grella
  */
 public class LCRequirementTest {
 

@@ -38,3 +38,8 @@ Francesco Musio 826374
 ### UML Diagrams
 
 Clicca [qui](https://github.com/luca-grella/LorenzoIlMagnificoProject/wiki) per visualizzare il **diagramma UML iniziale ad alto livello** e il **diagramma UML finale** che mostra come è stato progettato il software.
+
+
+### Javadoc
+
+Puoi visualizzare il Javadoc lanciando `index.html` situato nella cartella `doc` del nostro progetto, oppure clicca [qui](https://github.com/luca-grella/LorenzoIlMagnificoProject/blob/master/doc/index.html) per visualizzare direttamente l'`index.html`.

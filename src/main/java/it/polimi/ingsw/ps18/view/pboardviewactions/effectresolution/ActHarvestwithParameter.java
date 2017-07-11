@@ -18,6 +18,11 @@ public class ActHarvestwithParameter extends Observable implements PBViewAction 
 	 */
     private int index;
 
+	/**
+	 * Instantiates a new act harvestwith parameter.
+	 *
+	 * @param controller the controller
+	 */
 	public ActHarvestwithParameter(MainController controller) {
 		addObserver(controller);
 
@@ -42,7 +47,9 @@ public class ActHarvestwithParameter extends Observable implements PBViewAction 
 	}
 	
 	/**
-	 * Per test
+	 * Per test.
+	 *
+	 * @return the index
 	 */
 	public int getIndex() {
 		return index;

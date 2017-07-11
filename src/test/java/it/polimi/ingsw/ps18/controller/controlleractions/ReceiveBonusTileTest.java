@@ -12,10 +12,13 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class ReceiveBonusTileTest.
  *
+ * @author luca-grella
  */
 public class ReceiveBonusTileTest {
+	
+	/** The ris. */
 	boolean ris=true;
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.ReceiveBonusTile#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.

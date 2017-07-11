@@ -13,6 +13,8 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class ShowChoiceMarketCell.
  */
 public class ShowChoiceMarketCell extends Observable implements PBViewAction {
+	
+	/** The index. */
 	private int index;
 	
 	/**
@@ -20,6 +22,11 @@ public class ShowChoiceMarketCell extends Observable implements PBViewAction {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new show choice market cell.
+	 *
+	 * @param controller the controller
+	 */
 	public ShowChoiceMarketCell(MainController controller) {
 		addObserver(controller);
 
@@ -68,6 +75,9 @@ public class ShowChoiceMarketCell extends Observable implements PBViewAction {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param number the new index
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

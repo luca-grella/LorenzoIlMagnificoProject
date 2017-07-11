@@ -12,6 +12,9 @@ public interface PBViewStatus {
 	
 	/**
 	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 */
 	public void act(ClientInterface playerClient)  throws RemoteException;
 

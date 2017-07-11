@@ -86,6 +86,9 @@ public class addServantsTest {
 		}
 	}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 		addServants tester = new addServants();
@@ -113,6 +116,9 @@ public class addServantsTest {
 		assertEquals("detract -2 Servants", ris4);
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		addServants tester = new addServants();

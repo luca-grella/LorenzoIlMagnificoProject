@@ -25,14 +25,34 @@ import it.polimi.ingsw.ps18.model.effect.prodEffect.HashMapPE;
 import it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+/**
+ * The Class BonusTile.
+ */
 public class BonusTile extends Cards {
+	
+	/** The harv value. */
 	private long harvValue;
+	
+	/** The harveffect. */
 	private List<HarvestEffect> harveffect = new ArrayList<>();
+	
+	/** The production value. */
 	private long productionValue;
+	
+	/** The prod effect. */
 	private List<ProductionEffect> prodEffect = new ArrayList<>(); 
+	
+	/** The permeffect. */
 	private List<Permanenteffect> permeffect = new ArrayList<>();
+	
+	/** The fineffect. */
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new bonus tile.
+	 *
+	 * @param a the a
+	 */
 	public BonusTile(JSONObject a){
 		HashMapHE mapHE = new HashMapHE();
 		HashMapFE mapFE = new HashMapFE();
@@ -56,6 +76,13 @@ public class BonusTile extends Cards {
 		addFEffects(feffects,feffectvalues,mapFE);
 	}
 	
+	/**
+	 * Adds the H effects.
+	 *
+	 * @param heffects the heffects
+	 * @param heffectvalues the heffectvalues
+	 * @param map the map
+	 */
 	private void addHEffects(JSONArray heffects, JSONArray heffectvalues, HashMapHE map) {
 		for(int count=0; count<heffects.size(); count++){
         	if(heffects.get(count)!=null){
@@ -69,12 +96,25 @@ public class BonusTile extends Cards {
 		
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e the e
+	 * @param quantity the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(HarvestEffect e, long quantity){
 		HarvestEffect a = e;
 		a.setQuantity((int) quantity);	
 	    return (this.getHarveffect()).add(a);
     }
 	
+	/**
+	 * Adds the P effects.
+	 *
+	 * @param peffects the peffects
+	 * @param peffectvalues the peffectvalues
+	 */
 	private void addPEffects(JSONArray peffects, JSONArray peffectvalues){
 		ProductionEffect effect;
 		JSONArray statseffect;
@@ -111,12 +151,25 @@ public class BonusTile extends Cards {
 		}
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e the e
+	 * @param quantity the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(ProductionEffect e, long quantity){
 		ProductionEffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getProdEffect()).add(a);	
     }
 	
+	/**
+	 * Adds the perm effects.
+	 *
+	 * @param peffects the peffects
+	 * @param peffectvalues the peffectvalues
+	 */
 	private void addPermEffects(JSONArray peffects, JSONArray peffectvalues){
 		for(int count=0; count<peffects.size(); count++){
 			HashMapPermE map = new HashMapPermE();
@@ -142,12 +195,26 @@ public class BonusTile extends Cards {
 		}
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e the e
+	 * @param quantity the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(Permanenteffect e, long quantity){
 		Permanenteffect a = e;
 		a.setQuantity((int) quantity);
 	    return (this.getPermeffect()).add(a);	
     }
 	
+	/**
+	 * Adds the F effects.
+	 *
+	 * @param feffects the feffects
+	 * @param feffectvalues the feffectvalues
+	 * @param map the map
+	 */
 	private void addFEffects(JSONArray feffects, JSONArray feffectvalues, HashMapFE map) {
 		for(int count=0; count<feffects.size(); count++){
         	if(feffects.get(count)!=null){
@@ -161,6 +228,13 @@ public class BonusTile extends Cards {
 		
 	}
 	
+	/**
+	 * Adds the.
+	 *
+	 * @param e the e
+	 * @param quantity the quantity
+	 * @return true, if successful
+	 */
 	private boolean add(FinalEffect e, long quantity){
 		FinalEffect a = e;
 		a.setQuantity((int) quantity);
@@ -169,6 +243,9 @@ public class BonusTile extends Cards {
 	
 	
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasHarvest()
+	 */
 	@Override
 	public boolean hasHarvest() {
 		if(harveffect.isEmpty()){
@@ -177,6 +254,9 @@ public class BonusTile extends Cards {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasProduction()
+	 */
 	@Override
 	public boolean hasProduction() {
 		if(prodEffect.isEmpty()){
@@ -185,6 +265,9 @@ public class BonusTile extends Cards {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasFinal()
+	 */
 	@Override
 	public boolean hasFinal() {
 		if(fineffect.isEmpty()){
@@ -193,6 +276,9 @@ public class BonusTile extends Cards {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasPermanent()
+	 */
 	@Override
 	public boolean hasPermanent() {
 		if(this.permeffect.isEmpty()){
@@ -201,6 +287,9 @@ public class BonusTile extends Cards {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString()
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -237,6 +326,9 @@ public class BonusTile extends Cards {
 		return builder.toString();
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#toString(int)
+	 */
 	@Override
 	public String toString(int count) {
 		StringBuilder builder = new StringBuilder();
@@ -274,6 +366,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the harv value.
+	 *
 	 * @return the harvValue
 	 */
 	public long getHarvValue() {
@@ -281,6 +375,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the harv value.
+	 *
 	 * @param harvValue the harvValue to set
 	 */
 	public void setHarvValue(long harvValue) {
@@ -288,6 +384,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the harveffect.
+	 *
 	 * @return the harveffect
 	 */
 	public List<HarvestEffect> getHarveffect() {
@@ -295,6 +393,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the harveffect.
+	 *
 	 * @param harveffect the harveffect to set
 	 */
 	public void setHarveffect(List<HarvestEffect> harveffect) {
@@ -302,6 +402,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the production value.
+	 *
 	 * @return the productionValue
 	 */
 	public long getProductionValue() {
@@ -309,6 +411,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the production value.
+	 *
 	 * @param productionValue the productionValue to set
 	 */
 	public void setProductionValue(long productionValue) {
@@ -316,6 +420,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the prod effect.
+	 *
 	 * @return the prodEffect
 	 */
 	public List<ProductionEffect> getProdEffect() {
@@ -323,6 +429,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the prod effect.
+	 *
 	 * @param prodEffect the prodEffect to set
 	 */
 	public void setProdEffect(List<ProductionEffect> prodEffect) {
@@ -330,6 +438,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the permeffect.
+	 *
 	 * @return the permeffect
 	 */
 	public List<Permanenteffect> getPermeffect() {
@@ -337,6 +447,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the permeffect.
+	 *
 	 * @param permeffect the permeffect to set
 	 */
 	public void setPermeffect(List<Permanenteffect> permeffect) {
@@ -344,6 +456,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Gets the fineffect.
+	 *
 	 * @return the fineffect
 	 */
 	public List<FinalEffect> getFineffect() {
@@ -351,6 +465,8 @@ public class BonusTile extends Cards {
 	}
 
 	/**
+	 * Sets the fineffect.
+	 *
 	 * @param fineffect the fineffect to set
 	 */
 	public void setFineffect(List<FinalEffect> fineffect) {

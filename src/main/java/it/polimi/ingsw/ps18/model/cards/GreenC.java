@@ -31,6 +31,11 @@ public class GreenC extends Cards {
 	 */
 	private List<HarvestEffect> harveffect = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new green C.
+	 *
+	 * @param a the a
+	 */
 	public GreenC(JSONObject a){
 		HashMapQE mapQE = new HashMapQE();
 		HashMapHE mapHE = new HashMapHE();

@@ -29,16 +29,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class BonusTileTest.
  *
+ * @author luca-grella
  */
 public class BonusTileTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#hasHarvest()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasHarvest() throws FileNotFoundException, IOException, ParseException {
@@ -69,9 +71,10 @@ public class BonusTileTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#hasProduction()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasProduction() throws FileNotFoundException, IOException, ParseException {
@@ -100,9 +103,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#hasFinal()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasFinal() throws FileNotFoundException, IOException, ParseException {
@@ -122,9 +126,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#hasPermanent()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasPermanent() throws FileNotFoundException, IOException, ParseException {
@@ -142,9 +147,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#BonusTile(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testBonusTile() throws FileNotFoundException, IOException, ParseException {
@@ -161,9 +167,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getHarvValue()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetHarvValue() throws FileNotFoundException, IOException, ParseException {
@@ -185,9 +192,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setHarvValue(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetHarvValue() throws FileNotFoundException, IOException, ParseException {
@@ -208,9 +216,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getHarveffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetHarveffect() throws FileNotFoundException, IOException, ParseException {
@@ -243,9 +252,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setHarveffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetHarveffect() throws FileNotFoundException, IOException, ParseException {
@@ -277,9 +287,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getProductionValue()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetProductionValue() throws FileNotFoundException, IOException, ParseException {
@@ -300,9 +311,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setProductionValue(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetProductionValue() throws FileNotFoundException, IOException, ParseException {
@@ -323,9 +335,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getProdEffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetProdEffect() throws FileNotFoundException, IOException, ParseException {
@@ -353,9 +366,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setProdEffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetProdEffect() throws FileNotFoundException, IOException, ParseException {
@@ -387,9 +401,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getPermeffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetPermeffect() throws FileNotFoundException, IOException, ParseException {
@@ -418,9 +433,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setPermeffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetPermeffect() throws FileNotFoundException, IOException, ParseException {
@@ -458,9 +474,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#getFineffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetFineffect() throws FileNotFoundException, IOException, ParseException {
@@ -485,9 +502,10 @@ JSONParser parser = new JSONParser();
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BonusTile#setFineffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetFineffect() throws FileNotFoundException, IOException, ParseException {
@@ -517,11 +535,11 @@ JSONParser parser = new JSONParser();
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test
@@ -539,6 +557,13 @@ JSONParser parser = new JSONParser();
 		assertEquals("\nName: BonusTile07\nID: 7\n\tHarvest Value 1\nQuick Effects:\n\tProduction Value 1\n\nProduction Effects\n\t0: add 1 Victory Point\n\nFinal Effects:\n\t0: You can't receive anymore the Bonus from the\n\t1 floor of any Tower.\n\nFinal Effects\n\t0: add 1 Victory Point\n", ris);
 	}
 	
+	/**
+	 * Test to string int.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();

@@ -26,11 +26,15 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class GameLogicTest.
  *
+ * @author luca-grella
  */
 public class GameLogicTest {
 
+	/**
+	 * Test.
+	 */
 	@Test(expected = Exception.class)
 	public void test() {
 		LinkedList<PBoard> player = new LinkedList<>();

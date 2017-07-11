@@ -11,8 +11,9 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class DifferentPrivilegeTest.
  *
+ * @author luca-grella
  */
 public class DifferentPrivilegeTest {
 

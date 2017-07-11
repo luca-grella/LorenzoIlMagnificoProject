@@ -6,9 +6,17 @@ import it.polimi.ingsw.ps18.model.effect.leaderEffects.quickeffects.ChangeFamVal
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class ReceiveFamforValueChange.
+ */
 public class ReceiveFamforValueChange implements ActionChoice {
+	
+	/** The index. */
 	private int index;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		ChoiceLeaderEffect effect = game.getOngoingLCEffect();
@@ -29,6 +37,9 @@ public class ReceiveFamforValueChange implements ActionChoice {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int i) {
 		this.index = i;

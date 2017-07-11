@@ -18,10 +18,24 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.HashMapPBVS;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
+/**
+ * The Class IdleView.
+ */
 public class IdleView extends Observable{
+	
+	/** The player client. */
 	private ClientInterface playerClient;
+	
+	/** The playercol. */
 	private int playercol;
 
+	/**
+	 * Instantiates a new idle view.
+	 *
+	 * @param controller the controller
+	 * @param playerClient the player client
+	 * @param playercol the playercol
+	 */
 	public IdleView(MainController controller, ClientInterface playerClient, int playercol) {
 		addObserver(controller);
 		HashMapPBVS.init(controller);
@@ -29,6 +43,9 @@ public class IdleView extends Observable{
 		this.playerClient = playerClient;
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	public void init(){
 		int ans = -1;
 		StringBuilder builder = new StringBuilder();
@@ -76,8 +93,9 @@ public class IdleView extends Observable{
 	/**
 	 * Notify status main controller.
 	 *
-	 * @param msg
-	 *            the msg
+	 * @param msg            the msg
+	 * @param color the color
+	 * @param index the index
 	 */
 	private void notifyStatusParamMainController(String msg, int color, int index){
 		setChanged();
@@ -85,6 +103,8 @@ public class IdleView extends Observable{
 	}
 
 	/**
+	 * Gets the player client.
+	 *
 	 * @return the playerClient
 	 */
 	public ClientInterface getPlayerClient() {

@@ -673,6 +673,9 @@ public class StatsTest {
 			fail("errore nel getVP");
 		}}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 		
@@ -721,6 +724,9 @@ public class StatsTest {
 	
 	}
 	
+	/**
+	 * Test fix stats.
+	 */
 	@Test(expected = AssertionError.class)
 	public void testFixStats() {
 		
@@ -732,6 +738,9 @@ public class StatsTest {
 		
 		}
 	
+	/**
+	 * Test sets.
+	 */
 	@Test(expected = AssertionError.class)
 	public void testSets() {
 		

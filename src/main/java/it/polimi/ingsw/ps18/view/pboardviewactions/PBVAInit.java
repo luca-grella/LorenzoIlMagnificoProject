@@ -14,13 +14,24 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class PBVAInit.
  */
 public class PBVAInit extends Observable implements PBViewAction {
+	
+	/** The index. */
 	private int index;
 	
+	/**
+	 * Instantiates a new PBVA init.
+	 *
+	 * @param controller the controller
+	 */
 	public PBVAInit(MainController controller){
 		addObserver(controller);
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -133,6 +144,9 @@ public class PBVAInit extends Observable implements PBViewAction {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param number the new index
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

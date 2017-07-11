@@ -57,8 +57,7 @@ public class CouncilCell {
 	/**
 	 * Checks if is legal CC.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param actionValue the action value
 	 * @return true, if is legal CC
 	 */
 	public boolean isLegalCC(int actionValue) {

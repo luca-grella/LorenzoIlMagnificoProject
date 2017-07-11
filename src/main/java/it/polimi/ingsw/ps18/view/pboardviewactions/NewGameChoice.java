@@ -7,14 +7,27 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusParamMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
+/**
+ * The Class NewGameChoice.
+ */
 public class NewGameChoice extends Observable implements PBViewAction {
+	
+	/** The color. */
 	private int color;
 	
 	
+	/**
+	 * Instantiates a new new game choice.
+	 *
+	 * @param controller the controller
+	 */
 	public NewGameChoice(MainController controller){
 		addObserver(controller);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void act(ClientInterface playerClient)  throws RemoteException{
 		int ans = -1;
@@ -32,6 +45,9 @@ public class NewGameChoice extends Observable implements PBViewAction {
 		notifyObservers(new StatusParamMessage("ReceiveNewGameChoice", color, ans)); // da fare
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		this.color = number;

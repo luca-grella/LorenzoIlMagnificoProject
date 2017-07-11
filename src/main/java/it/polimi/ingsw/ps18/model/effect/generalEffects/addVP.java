@@ -59,6 +59,9 @@ public class addVP implements QuickEffect, HarvestEffect, ProductionEffect, Fina
 	}
 	
 	/**
+	 * To string.
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

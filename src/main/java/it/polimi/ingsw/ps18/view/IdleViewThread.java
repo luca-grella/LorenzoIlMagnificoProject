@@ -5,14 +5,30 @@ import java.rmi.RemoteException;
 import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class IdleViewThread.
+ */
 public class IdleViewThread implements Runnable {
+	
+	/** The idleview. */
 	IdleView idleview;
+	
+	/** The active. */
 	boolean active;
 	
+	/**
+	 * Instantiates a new idle view thread.
+	 *
+	 * @param player the player
+	 * @param controller the controller
+	 */
 	public IdleViewThread(PBoard player, MainController controller){
 		this.idleview = new IdleView(controller, player.getPlayer(), player.getPlayercol());
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run(){
 		try {
@@ -31,6 +47,9 @@ public class IdleViewThread implements Runnable {
 		}
 	}
 	
+	/**
+	 * Close.
+	 */
 	public void close(){
 //		try {
 //			idleview.getPlayerClient().closeScanner();

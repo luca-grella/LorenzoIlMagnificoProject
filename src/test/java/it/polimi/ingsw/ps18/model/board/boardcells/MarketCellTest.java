@@ -29,16 +29,18 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.MainView;
 
 /**
- * @author luca-grella
+ * The Class MarketCellTest.
  *
+ * @author luca-grella
  */
 public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#MarketCell(java.lang.Integer)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testMarketCell() throws FileNotFoundException, IOException, ParseException {
@@ -61,9 +63,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
@@ -108,9 +111,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isEmptyMC()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsEmptyMC() throws FileNotFoundException, IOException, ParseException {
@@ -156,9 +160,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#isLegalMC(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsLegalMC() throws FileNotFoundException, IOException, ParseException {
@@ -185,6 +190,13 @@ public class MarketCellTest {
 		
 	}
 	
+	/**
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testToString() throws FileNotFoundException, IOException, ParseException{
 		
@@ -215,9 +227,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMarketCellFM()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetMarketCellFM() throws FileNotFoundException, IOException, ParseException {
@@ -257,9 +270,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMarketCellFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetMarketCellFM() throws FileNotFoundException, IOException, ParseException {
@@ -299,9 +313,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#getMinPlayers()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetMinPlayers() throws FileNotFoundException, IOException, ParseException {
@@ -329,9 +344,10 @@ public class MarketCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.MarketCell#setMinPlayers(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetMinPlayers() throws FileNotFoundException, IOException, ParseException {

@@ -29,16 +29,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class CardsTest.
  *
+ * @author luca-grella
  */
 public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#activateQEffects(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testActivateQEffects() throws FileNotFoundException, IOException, ParseException {
@@ -131,9 +133,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getID()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetID() throws FileNotFoundException, IOException, ParseException {
@@ -159,9 +162,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setID(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetID() throws FileNotFoundException, IOException, ParseException {
@@ -187,9 +191,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getName()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetName() throws FileNotFoundException, IOException, ParseException {
@@ -214,9 +219,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setName(java.lang.String)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetName() throws FileNotFoundException, IOException, ParseException {
@@ -244,9 +250,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getPeriod()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetPeriod() throws FileNotFoundException, IOException, ParseException {
@@ -271,9 +278,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setPeriod(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetPeriod() throws FileNotFoundException, IOException, ParseException {
@@ -296,9 +304,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getColor()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetColor() throws FileNotFoundException, IOException, ParseException {
@@ -323,9 +332,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setColor(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetColor() throws FileNotFoundException, IOException, ParseException {
@@ -351,9 +361,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getEffects()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetEffects() throws FileNotFoundException, IOException, ParseException {
@@ -389,9 +400,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setEffects(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetEffects() throws FileNotFoundException, IOException, ParseException {
@@ -432,9 +444,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#getCardCost()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCardCost() throws FileNotFoundException, IOException, ParseException {
@@ -463,9 +476,10 @@ public class CardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Cards#setCardCost(it.polimi.ingsw.ps18.model.personalboard.resources.Stats)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetCardCost() throws FileNotFoundException, IOException, ParseException {

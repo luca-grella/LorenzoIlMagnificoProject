@@ -8,8 +8,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class BlockFloorBonusTest.
  *
+ * @author luca-grella
  */
 public class BlockFloorBonusTest {
 

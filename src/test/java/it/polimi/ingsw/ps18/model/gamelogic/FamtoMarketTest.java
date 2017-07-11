@@ -26,8 +26,9 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class FamtoMarketTest.
  *
+ * @author luca-grella
  */
 public class FamtoMarketTest {
 
@@ -45,9 +46,10 @@ public class FamtoMarketTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoMarket#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testAct() throws FileNotFoundException, IOException, ParseException {

@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps18.model.messagesandlogs;
 
+/**
+ * The Class StatusParamMessage.
+ */
 public class StatusParamMessage extends Message {
 
     /**
@@ -12,16 +15,16 @@ public class StatusParamMessage extends Message {
 	 */
     private int number = -1;
     
+    /** The color. */
     private int color;
     
 	
 	/**
 	 * Instantiates a new param message.
 	 *
-	 * @param msg
-	 *            the msg
-	 * @param number
-	 *            the number
+	 * @param msg            the msg
+	 * @param color the color
+	 * @param number            the number
 	 */
 	public StatusParamMessage(String msg, int color, int number) {
 		this.message = msg;
@@ -49,6 +52,11 @@ public class StatusParamMessage extends Message {
 		return number;
 	}
 	
+	/**
+	 * Gets the color.
+	 *
+	 * @return the color
+	 */
 	public int getColor(){
 		return color;
 	}

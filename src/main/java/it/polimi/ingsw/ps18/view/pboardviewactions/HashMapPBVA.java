@@ -23,7 +23,8 @@ public class HashMapPBVA {
 	
 	/**
 	 * Inits the.
-	 * @param mcontroller 
+	 *
+	 * @param mcontroller the mcontroller
 	 */
 	public static void init(MainController mcontroller){
 		genPBVAction.put("Init Player Turn", new PBVAInit(mcontroller));

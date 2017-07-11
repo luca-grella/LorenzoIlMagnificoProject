@@ -24,6 +24,10 @@ public class MainView extends Observable  implements Observer {
 	}
 
 	/**
+	 * Update.
+	 *
+	 * @param o the o
+	 * @param arg the arg
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override

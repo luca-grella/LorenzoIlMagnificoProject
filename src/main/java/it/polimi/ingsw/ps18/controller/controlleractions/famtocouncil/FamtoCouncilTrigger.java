@@ -89,6 +89,9 @@ public class FamtoCouncilTrigger implements ActionChoice {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param i the new index
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

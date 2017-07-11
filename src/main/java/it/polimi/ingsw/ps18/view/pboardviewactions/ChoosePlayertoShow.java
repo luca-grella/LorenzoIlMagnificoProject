@@ -14,6 +14,8 @@ import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
  * The Class ChoosePlayertoShow.
  */
 public class ChoosePlayertoShow extends Observable implements PBViewAction {
+	
+	/** The color. */
 	private int color;
 	
 	/**
@@ -21,12 +23,21 @@ public class ChoosePlayertoShow extends Observable implements PBViewAction {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new choose playerto show.
+	 *
+	 * @param controller the controller
+	 */
 	public ChoosePlayertoShow(MainController controller) {
 		addObserver(controller);
 
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
@@ -44,16 +55,18 @@ public class ChoosePlayertoShow extends Observable implements PBViewAction {
 	/**
 	 * Notify param main controller.
 	 *
-	 * @param msg
-	 *            the msg
-	 * @param i
-	 *            the i
+	 * @param msg            the msg
+	 * @param color the color
+	 * @param index the index
 	 */
 	private void notifyStatusParamMainController(String msg,int color, int index){
 		setChanged();
 		notifyObservers(new StatusParamMessage(msg,color, index));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		this.color = number;

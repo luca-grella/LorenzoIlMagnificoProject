@@ -18,12 +18,21 @@ public class ChooseEffect extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new choose effect.
+	 *
+	 * @param controller the controller
+	 */
 	public ChooseEffect(MainController controller) {
 		addObserver(controller);
 
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

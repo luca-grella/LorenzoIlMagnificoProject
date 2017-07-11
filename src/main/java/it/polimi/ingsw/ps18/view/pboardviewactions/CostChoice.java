@@ -8,15 +8,30 @@ import it.polimi.ingsw.ps18.controller.MainController;
 import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
+/**
+ * The Class CostChoice.
+ */
 public class CostChoice extends Observable implements PBViewAction {
+	
+	/** The index. */
 	private int index;
+	
+	/** The input. */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new cost choice.
+	 *
+	 * @param controller the controller
+	 */
 	public CostChoice(MainController controller) {
 		addObserver(controller);
 
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choice = -100;
@@ -36,6 +51,9 @@ public class CostChoice extends Observable implements PBViewAction {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		this.index = number;

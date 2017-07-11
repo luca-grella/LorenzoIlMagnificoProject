@@ -13,6 +13,8 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class ShowChoiceFamtoProduction.
  */
 public class ShowChoiceFamtoProduction extends Observable implements PBViewAction {
+	
+	/** The index. */
 	private int index;
 	
 	/**
@@ -20,11 +22,20 @@ public class ShowChoiceFamtoProduction extends Observable implements PBViewActio
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new show choice famto production.
+	 *
+	 * @param controller the controller
+	 */
 	public ShowChoiceFamtoProduction(MainController controller) {
 		addObserver(controller);
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override

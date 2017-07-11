@@ -19,17 +19,20 @@ import org.junit.Test;
 
 import it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects;
 import it.polimi.ingsw.ps18.model.effect.excommEffects.LoseVPforResources;
+
 /**
- * @author luca-grella
+ * The Class ExcommunicationsTest.
  *
+ * @author luca-grella
  */
 public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#Excommunications(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testExcommunications() throws FileNotFoundException, IOException, ParseException {
@@ -52,9 +55,10 @@ public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#getID()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetID() throws FileNotFoundException, IOException, ParseException {
@@ -78,9 +82,10 @@ public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#setID(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetID() throws FileNotFoundException, IOException, ParseException {
@@ -106,9 +111,10 @@ public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#getPeriod()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetPeriod() throws FileNotFoundException, IOException, ParseException {
@@ -130,9 +136,10 @@ public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#setPeriod(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetPeriod() throws FileNotFoundException, IOException, ParseException {
@@ -156,9 +163,10 @@ public class ExcommunicationsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.Excommunications#getEffects()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 //	@Test
 //	public void testGetEffects() throws FileNotFoundException, IOException, ParseException {
@@ -249,6 +257,13 @@ public class ExcommunicationsTest {
 		assertTrue(!(tester2.hasEffect()));
 	}
 	
+	/**
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testToString() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();

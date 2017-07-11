@@ -9,6 +9,9 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
+/**
+ * The Class ChooseFamforValueChangeLC.
+ */
 public class ChooseFamforValueChangeLC extends Observable implements PBViewStatus {
 	
 	/**
@@ -16,10 +19,18 @@ public class ChooseFamforValueChangeLC extends Observable implements PBViewStatu
 	 */
 	Scanner input = new Scanner(System.in);
 	
+	/**
+	 * Instantiates a new choose famfor value change LC.
+	 *
+	 * @param controller the controller
+	 */
 	public ChooseFamforValueChangeLC(MainController controller){
 		addObserver(controller);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void act(ClientInterface playerClient) throws RemoteException {
 		int choice = -100;

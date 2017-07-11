@@ -43,6 +43,9 @@ public class addWoodorRock extends Observable implements QuickEffect, HarvestEff
 		notifyObservers(new StatusMessage("WoodorRockChoice"));
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects#continueEffect(int, it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void continueEffect(int index, PBoard player, GameLogic game){
 		QuickEffect effect = null;

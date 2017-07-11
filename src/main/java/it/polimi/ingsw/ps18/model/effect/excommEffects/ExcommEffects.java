@@ -21,6 +21,11 @@ public interface ExcommEffects {
 	 */
 	public String toString();
 	
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName();
 
 }

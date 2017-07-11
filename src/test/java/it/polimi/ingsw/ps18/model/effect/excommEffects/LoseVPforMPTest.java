@@ -12,8 +12,9 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class LoseVPforMPTest.
  *
+ * @author luca-grella
  */
 public class LoseVPforMPTest {
 

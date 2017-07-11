@@ -40,12 +40,25 @@ public class FMember {
 		this.playercol = playercol;
 	}
 	
+	/**
+	 * Instantiates a new f member.
+	 *
+	 * @param value the value
+	 * @param playercol the playercol
+	 */
 	public FMember(int value, int playercol){
 		this.value = value;
 		this.color = -1;
 		this.playercol = playercol;
 	}
 	
+	/**
+	 * Instantiates a new f member.
+	 *
+	 * @param dice the dice
+	 * @param playercol the playercol
+	 * @param player the player
+	 */
 	public FMember(Dice dice, int playercol, PBoard player){
 		int malusValue = 0;
 		for(int i=0; i<player.getExcommCards().size(); i++){
@@ -94,10 +107,9 @@ public class FMember {
 	/**
 	 * Instantiates a new f member.
 	 *
-	 * @param value
-	 *            the value
-	 * @param playercol
-	 *            the playercol
+	 * @param value            the value
+	 * @param playercol            the playercol
+	 * @param player the player
 	 */
 	public FMember(int value, int playercol, PBoard player){
 		int bonusValue = 0;

@@ -24,8 +24,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class VaticanReportTest.
  *
+ * @author luca-grella
  */
 public class VaticanReportTest {
 
@@ -71,6 +72,13 @@ public class VaticanReportTest {
 		
 	}
 	
+	/**
+	 * Test act 2.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testAct2() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();

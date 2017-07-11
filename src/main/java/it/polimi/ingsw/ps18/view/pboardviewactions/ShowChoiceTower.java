@@ -13,6 +13,8 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class ShowChoiceTower.
  */
 public class ShowChoiceTower extends Observable implements PBViewAction {
+	
+	/** The index. */
 	private int index;
 	
 	/**
@@ -20,12 +22,21 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new show choice tower.
+	 *
+	 * @param controller the controller
+	 */
 	public ShowChoiceTower(MainController controller){
 		addObserver(controller);
 		
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override

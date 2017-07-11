@@ -27,6 +27,7 @@ public class FamtoTower extends Observable implements Action {
 	private FMember chosenFam;
 	
 	
+	/** The number of servants. */
 	private int numberOfServants;
 	
 	/**
@@ -48,12 +49,17 @@ public class FamtoTower extends Observable implements Action {
 	 * The total cost preview.
 	 */
 	Stats totalCostPreview = new Stats(0,0,0,0,0,0,0);
+	
+	/** The costchoice. */
 	int costchoice; //1 = risorse , 2 = mp
 	
+	/** The total discount preview. */
 	Stats totalDiscountPreview = new Stats(0,0,0,0,0,0,0);
 	
+	/** The can go backto fam choice. */
 	private boolean canGoBacktoFamChoice;
 	
+	/** The can go backto tower choice. */
 	private boolean canGoBacktoTowerChoice;
 	
 	/**
@@ -88,6 +94,8 @@ public class FamtoTower extends Observable implements Action {
 	
 	/**
 	 * Floor choice.
+	 *
+	 * @param game the game
 	 */
 	public void floorChoice(GameLogic game){
 		PBoard currentplayer = game.getTurnplayer();
@@ -101,11 +109,17 @@ public class FamtoTower extends Observable implements Action {
 		notifyParamPBoardView("Floor Choice",this.chosenTower);
 	}
 	
+	/**
+	 * Cost choice.
+	 */
 	public void costChoice(){
 		notifyActionPBoardView("CardCostChoice");
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -248,6 +262,8 @@ public class FamtoTower extends Observable implements Action {
 	
 
 	/**
+	 * Sets the total cost preview.
+	 *
 	 * @param totalCostPreview the totalCostPreview to set
 	 */
 	public void setTotalCostPreview(Stats totalCostPreview) {
@@ -265,6 +281,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Gets the costchoice.
+	 *
 	 * @return the costchoice
 	 */
 	public int getCostchoice() {
@@ -272,6 +290,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the costchoice.
+	 *
 	 * @param costchoice the costchoice to set
 	 */
 	public void setCostchoice(int costchoice) {
@@ -279,6 +299,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Checks if is can go backto fam choice.
+	 *
 	 * @return the canGoBacktoFamChoice
 	 */
 	public boolean isCanGoBacktoFamChoice() {
@@ -286,6 +308,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the can go backto fam choice.
+	 *
 	 * @param canGoBacktoFamChoice the canGoBacktoFamChoice to set
 	 */
 	public void setCanGoBacktoFamChoice(boolean canGoBacktoFamChoice) {
@@ -293,6 +317,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Checks if is can go backto tower choice.
+	 *
 	 * @return the canGoBacktoTowerChoice
 	 */
 	public boolean isCanGoBacktoTowerChoice() {
@@ -300,6 +326,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the can go backto tower choice.
+	 *
 	 * @param canGoBacktoTowerChoice the canGoBacktoTowerChoice to set
 	 */
 	public void setCanGoBacktoTowerChoice(boolean canGoBacktoTowerChoice) {
@@ -307,6 +335,8 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
+	 * Gets the total discount preview.
+	 *
 	 * @return the totalDiscountPreview
 	 */
 	public Stats getTotalDiscountPreview() {
@@ -316,19 +346,26 @@ public class FamtoTower extends Observable implements Action {
 	
 	
 	/**
+	 * Gets the number of servants.
+	 *
 	 * @return the numberOfServants
 	 */
 	public int getNumberOfServants() {
 		return numberOfServants;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;
 	}
 
 	/**
-	 * @return
+	 * Gets the index famto remove.
+	 *
+	 * @return the index famto remove
 	 */
 	public int getIndexFamtoRemove() {
 		
@@ -336,7 +373,9 @@ public class FamtoTower extends Observable implements Action {
 	}
 
 	/**
-	 * @param totalDiscountPreview
+	 * Sets the total discount preview.
+	 *
+	 * @param totalDiscountPreview the new total discount preview
 	 */
 	public void setTotalDiscountPreview(Stats totalDiscountPreview) {
 		

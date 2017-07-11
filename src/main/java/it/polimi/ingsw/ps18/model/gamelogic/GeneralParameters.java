@@ -135,13 +135,16 @@ public abstract interface GeneralParameters {
 	 */
 	public final static int coinsFromCouncil = 1;
 	
+	/** The Constant numofPrivilegesFromCouncil. */
 	public static final int numofPrivilegesFromCouncil = 1; 
-	/**
-	 * The Constant numberOfBonusTiles
-	 */
+	
+	/** The Constant numberOfBonusTiles. */
 	public final static int numberOfBonusTiles = 4;
 
+	/** The Constant numberOfLeaderCards. */
 	public static final int numberOfLeaderCards = 20;
+	
+	/** The Constant numberOfLCperPlayer. */
 	public static final int numberOfLCperPlayer = 4;
 
 }

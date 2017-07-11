@@ -24,6 +24,8 @@ public interface Action {
 	public abstract void setChosenFam(FMember chosenFam);
 
 	/**
+	 * Sets the number of servants.
+	 *
 	 * @param numberOfServants the numberOfServants to set
 	 */
 	public void setNumberOfServants(int numberOfServants);

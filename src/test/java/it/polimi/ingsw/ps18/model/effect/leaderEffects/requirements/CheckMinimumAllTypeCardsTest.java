@@ -21,16 +21,18 @@ import it.polimi.ingsw.ps18.model.cards.GreenC;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class CheckMinimumAllTypeCardsTest.
  *
+ * @author luca-grella
  */
 public class CheckMinimumAllTypeCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.CheckMinimumAllTypeCards#checkRequirement(it.polimi.ingsw.ps18.model.personalboard.PBoard)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testCheckRequirement() throws FileNotFoundException, IOException, ParseException {

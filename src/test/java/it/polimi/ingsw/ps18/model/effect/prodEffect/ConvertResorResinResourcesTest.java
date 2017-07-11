@@ -16,8 +16,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class ConvertResorResinResourcesTest.
  *
+ * @author luca-grella
  */
 public class ConvertResorResinResourcesTest {
 
@@ -63,6 +64,9 @@ public class ConvertResorResinResourcesTest {
 		
 	}
 	
+	/**
+	 * Test woodor rock choice.
+	 */
 	@Test
 	public void testWoodorRockChoice() {
 		

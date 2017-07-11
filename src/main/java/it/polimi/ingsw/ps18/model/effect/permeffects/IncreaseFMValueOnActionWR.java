@@ -10,6 +10,9 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
+/**
+ * The Class IncreaseFMValueOnActionWR.
+ */
 public class IncreaseFMValueOnActionWR extends Observable implements Permanenteffect, WoodorRockEffects {
 	
 	/**
@@ -22,10 +25,15 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 	 */
 	private int quantity;
 	
+	/** The discounts. */
 	private Stats discounts;
 	
+	/** The chosen discount. */
 	private Stats chosenDiscount;
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void activate(PBoard player, GameLogic game) {
 		addObserver(player.getpBoardView());
@@ -41,6 +49,9 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects#continueEffect(int, it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void continueEffect(int index, PBoard player, GameLogic game) {
 		if(index==1){
@@ -52,6 +63,9 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 	}
 	
 	/**
+	 * To string.
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	//TODO: da modificare
@@ -66,28 +80,46 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 		return builder.toString();
 	}
 	
+	/**
+	 * Sets the param.
+	 *
+	 * @param name the name
+	 * @param quantity the quantity
+	 * @param discounts the discounts
+	 */
 	public void setParam(String name, long quantity, JSONArray discounts){
 		this.name = name;
 		this.quantity = (int) quantity;
 		this.discounts = new Stats(discounts);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getQuantity()
+	 */
 	@Override
 	public int getQuantity() {
 		return quantity;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getName()
+	 */
 	@Override
 	public String getName() {
 		return this.name + "WR";
 	}
 
 	/**
+	 * Gets the discounts.
+	 *
 	 * @return the discounts
 	 */
 	public Stats getDiscounts() {
@@ -95,6 +127,8 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 	}
 
 	/**
+	 * Gets the chosen discount.
+	 *
 	 * @return the chosenDiscount
 	 */
 	public Stats getChosenDiscount() {

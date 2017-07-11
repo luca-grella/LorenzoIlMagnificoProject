@@ -21,16 +21,18 @@ import it.polimi.ingsw.ps18.model.effect.leaderEffects.quickeffects.LCQuickEffec
 import it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.LCRequirement;
 
 /**
- * @author luca-grella
+ * The Class LeaderCardsTest.
  *
+ * @author luca-grella
  */
 public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#toString(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testToStringInt() throws FileNotFoundException, IOException, ParseException {
@@ -51,9 +53,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#toString()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testToString() throws FileNotFoundException, IOException, ParseException {
@@ -72,9 +75,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#hasLCQE()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasLCQE() throws FileNotFoundException, IOException, ParseException {
@@ -104,9 +108,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#hasLCPE()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasLCPE() throws FileNotFoundException, IOException, ParseException {
@@ -133,9 +138,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#isActive()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsActive() throws FileNotFoundException, IOException, ParseException {
@@ -152,9 +158,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#getRequirements()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetRequirements() throws FileNotFoundException, IOException, ParseException {
@@ -173,9 +180,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#getQuickEffects()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetQuickEffects() throws FileNotFoundException, IOException, ParseException {
@@ -196,9 +204,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#getPermEffects()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetPermEffects() throws FileNotFoundException, IOException, ParseException {
@@ -215,9 +224,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#isEffectactivated()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsEffectactivated() throws FileNotFoundException, IOException, ParseException {
@@ -237,9 +247,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#setEffectactivated(boolean)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetEffectactivated() throws FileNotFoundException, IOException, ParseException {
@@ -259,9 +270,10 @@ public class LeaderCardsTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.LeaderCards#setQuickEffects(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetQuickEffects() throws FileNotFoundException, IOException, ParseException {

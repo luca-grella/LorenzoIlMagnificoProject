@@ -69,6 +69,7 @@ public class GameLogic extends Observable {
 	 */
 	MainView mView;
 	
+	/** The controller. */
 	MainController controller;
 	
 	/**
@@ -102,8 +103,10 @@ public class GameLogic extends Observable {
 	private LinkedList<PBoard> players = new LinkedList<>();
 	
 	
+	/** The recover turn. */
 	private LinkedList<PBoard> recoverTurn = new LinkedList<>();
 	
+	/** The playerfor new game. */
 	private LinkedList<ClientInterface> playerforNewGame = new LinkedList<>();
  	
 	/**
@@ -111,14 +114,10 @@ public class GameLogic extends Observable {
 	 */
 	private PBoard turnplayer;
 	
-	/**
-	 * The bonusTiles
-	 */
+	/** The bonusTiles. */
 	private List<Cards> bonusTiles = new ArrayList<>(GeneralParameters.numberOfBonusTiles);
 	
-	/**
-	 * The Green Cards
-	 */
+	/** The Green Cards. */
 	private List<Cards> greencards = new ArrayList<>(GeneralParameters.numberGreenC);
 	
 	/**
@@ -141,6 +140,7 @@ public class GameLogic extends Observable {
 	 */
 	private List<Excommunications> excommcards = new ArrayList<>(GeneralParameters.numberExcommC);
 	
+	/** The leadercards. */
 	private List<LeaderCards> leadercards = new ArrayList<>(GeneralParameters.numberOfLeaderCards);
 	
 	/**
@@ -148,9 +148,7 @@ public class GameLogic extends Observable {
 	 */
 	private List<Dice> dices = new ArrayList<>(GeneralParameters.numberofDices);
 	
-	/**
-	 * per test
-	 */
+	/** per test. */
 	int tester;
 	
 	/**
@@ -163,20 +161,22 @@ public class GameLogic extends Observable {
 	 */
 	private GeneralEffect ongoingEffect;
 	
+	/** The ongoing WR effect. */
 	private WoodorRockEffects ongoingWREffect;
 	
+	/** The ongoing LC effect. */
 	private ChoiceLeaderEffect ongoingLCEffect;
 	
+	/** The requester. */
 	private ConfirmHandler requester;
 	
 	
 	/**
 	 * Initialize the game.
 	 *
-	 * @param nplayer
-	 *            set the number of players this game has
-	 * @param mController
-	 *            the m controller
+	 * @param nplayer            set the number of players this game has
+	 * @param mController            the m controller
+	 * @param players the players
 	 */
 	public GameLogic(int nplayer,MainController mController, LinkedList<PBoard> players){
 		this.nplayer = nplayer;
@@ -188,7 +188,6 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Per i test.
-	 * @return 
 	 */
 	public GameLogic(){
 	
@@ -196,7 +195,8 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Per i test.
-	 * @return 
+	 *
+	 * @param test the test
 	 */
 	public GameLogic(int test){
 	this.tester=test;
@@ -336,7 +336,6 @@ public class GameLogic extends Observable {
 	
 	/**
 	 * Insert excomm in board.
-	 * @return 
 	 */
 	private void insertExcommInBoard() {
 
@@ -351,6 +350,9 @@ public class GameLogic extends Observable {
 		}
 	}
 	
+	/**
+	 * Distribute LC.
+	 */
 	public void distributeLC(){
 		Collections.shuffle(leadercards);
 		List<LeaderCards> group1 = new ArrayList<>();
@@ -590,6 +592,12 @@ public class GameLogic extends Observable {
 		return this.playerforNewGame;
 	}
 	
+	/**
+	 * To string game.
+	 *
+	 * @param playercol the playercol
+	 * @return the string
+	 */
 	public String toStringGame(int playercol){
 		StringBuilder builder = new StringBuilder();
 		builder.append("TOWERS:\n");
@@ -620,6 +628,12 @@ public class GameLogic extends Observable {
 	}
 	
 
+	/**
+	 * To string players.
+	 *
+	 * @param players the players
+	 * @return the string
+	 */
 	public String toStringPlayers(List<PBoard> players){
 		StringBuilder builder = new StringBuilder();
 		String placement[] = {"Winner", "Second", "Third", "Fourth"};
@@ -637,6 +651,9 @@ public class GameLogic extends Observable {
 	
 	
 	
+	/**
+	 * Refresh game.
+	 */
 	public void refreshGame(){
 		for(int diceIndex=0; diceIndex<GeneralParameters.numberofDices; diceIndex++){
 			this.dices.set(diceIndex, new Dice(diceIndex));
@@ -803,6 +820,9 @@ public class GameLogic extends Observable {
 		return players;
 	}
 	
+	/**
+	 * New order.
+	 */
 	public void newOrder(){
 		List<Integer> order = new ArrayList<>(nplayer);
 		for(CouncilCell cell: this.board.getCouncilCells()){
@@ -823,6 +843,11 @@ public class GameLogic extends Observable {
 		}
 	}
 	
+	/**
+	 * Excomm order.
+	 *
+	 * @return the linked list
+	 */
 	private LinkedList<PBoard> excommOrder(){
 		LinkedList<PBoard> tempOrder = new LinkedList<>();
 		tempOrder.addAll(players);
@@ -848,6 +873,11 @@ public class GameLogic extends Observable {
 	}
 	
 	
+	/**
+	 * Notify action main controller.
+	 *
+	 * @param msg the msg
+	 */
 	private void notifyActionMainController(String msg) {
 		setChanged();
 		notifyObservers(new ActionMessage(msg));
@@ -864,6 +894,11 @@ public class GameLogic extends Observable {
 		notifyObservers(new LogMessage(msg));
 	}
 	
+	/**
+	 * Notify all.
+	 *
+	 * @param msg the msg
+	 */
 	public void notifyAll(String msg){
 		for(PBoard player: players){
 			player.notifyLogPBoardView(msg);
@@ -955,6 +990,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the bonus tiles.
+	 *
 	 * @return the bonusTiles
 	 */
 	public List<Cards> getBonusTiles() {
@@ -962,6 +999,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the excommcards.
+	 *
 	 * @return the excommcards
 	 */
 	public List<Excommunications> getExcommcards() {
@@ -969,6 +1008,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the age.
+	 *
 	 * @return the aGE
 	 */
 	public int getAGE() {
@@ -976,18 +1017,27 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * 
+	 * Sets the current player.
+	 *
+	 * @param turnplayer the new current player
 	 */
 	public void setCurrentPlayer(PBoard turnplayer) {
 		this.turnplayer = turnplayer;
 		
 	}
 
+	/**
+	 * Sets the ongoing WR effect.
+	 *
+	 * @param woodorRockEffects the new ongoing WR effect
+	 */
 	public void setOngoingWREffect(WoodorRockEffects woodorRockEffects) {
 		this.ongoingWREffect = woodorRockEffects;
 	}
 
 	/**
+	 * Gets the ongoing WR effect.
+	 *
 	 * @return the ongoingWREffect
 	 */
 	public WoodorRockEffects getOngoingWREffect() {
@@ -995,6 +1045,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the ongoing LC effect.
+	 *
 	 * @return the ongoingLCEffect
 	 */
 	public ChoiceLeaderEffect getOngoingLCEffect() {
@@ -1002,6 +1054,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Sets the ongoing LC effect.
+	 *
 	 * @param ongoingLCEffect the ongoingLCEffect to set
 	 */
 	public void setOngoingLCEffect(ChoiceLeaderEffect ongoingLCEffect) {
@@ -1009,12 +1063,19 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * 
+	 * Sets the board.
+	 *
+	 * @param board the new board
 	 */
 	public void setBoard(Board board) {
 		this.board = board;
 	}
 		
+    /**
+     * Gets the requester.
+     *
+     * @return the requester
+     */
     /*
 	 * @return the requester
 	 */
@@ -1023,6 +1084,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Sets the requester.
+	 *
 	 * @param requester the requester to set
 	 */
 	public void setRequester(ConfirmHandler requester) {
@@ -1030,6 +1093,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the dices.
+	 *
 	 * @return the dices
 	 */
 	public List<Dice> getDices() {
@@ -1037,7 +1102,9 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * 
+	 * Sets the excommcards.
+	 *
+	 * @param excommcards the new excommcards
 	 */
 	public void setExcommcards(List<Excommunications> excommcards) {
 		this.excommcards = excommcards;
@@ -1045,7 +1112,9 @@ public class GameLogic extends Observable {
 	}
 
 	/**
-	 * 
+	 * Sets the age.
+	 *
+	 * @param AGE the new age
 	 */
 	public void setAGE(int AGE) {
 		this.AGE=AGE;
@@ -1053,6 +1122,8 @@ public class GameLogic extends Observable {
 	}
 
 	/**
+	 * Gets the playerfor new game.
+	 *
 	 * @return the playerforNewGame
 	 */
 	public LinkedList<ClientInterface> getPlayerforNewGame() {
@@ -1060,6 +1131,11 @@ public class GameLogic extends Observable {
 	}
 
 	
+	/**
+	 * Sets the players.
+	 *
+	 * @param players the new players
+	 */
 	public void setPlayers(LinkedList<PBoard> players) {
 		this.players=players;
 		

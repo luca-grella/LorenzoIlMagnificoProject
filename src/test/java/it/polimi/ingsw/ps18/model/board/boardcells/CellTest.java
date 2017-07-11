@@ -178,9 +178,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
@@ -295,9 +296,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#getCellCard()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCellCard() throws FileNotFoundException, IOException, ParseException {
@@ -372,9 +374,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#setCellCard(it.polimi.ingsw.ps18.model.cards.Cards)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetCellCard() throws FileNotFoundException, IOException, ParseException {
@@ -450,9 +453,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#getCellFM()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCellFM() throws FileNotFoundException, IOException, ParseException {
@@ -480,9 +484,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#setCellFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetCellFM() throws FileNotFoundException, IOException, ParseException {
@@ -511,9 +516,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#getCellValue()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCellValue() throws FileNotFoundException, IOException, ParseException {
@@ -537,9 +543,10 @@ public class CellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.Cell#setCellValue(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetCellValue() throws FileNotFoundException, IOException, ParseException {

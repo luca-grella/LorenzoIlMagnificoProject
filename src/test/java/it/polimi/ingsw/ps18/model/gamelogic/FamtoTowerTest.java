@@ -16,8 +16,9 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class FamtoTowerTest.
  *
+ * @author luca-grella
  */
 public class FamtoTowerTest {
 

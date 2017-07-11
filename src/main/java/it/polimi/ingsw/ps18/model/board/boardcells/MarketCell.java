@@ -124,8 +124,7 @@ public class MarketCell {
 	/**
 	 * Checks if is legal MC.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param actionValue the action value
 	 * @return true, if is legal MC
 	 */
 	public boolean isLegalMC(int actionValue){
@@ -235,7 +234,9 @@ public class MarketCell {
 	}
 
 	/**
-	 * 
+	 * Sets the value.
+	 *
+	 * @param value the new value
 	 */
 	public void setValue(int value) {
 		this.value=value;

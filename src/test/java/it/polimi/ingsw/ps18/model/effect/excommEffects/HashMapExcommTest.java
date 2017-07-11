@@ -11,8 +11,9 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 
 /**
- * @author luca-grella
+ * The Class HashMapExcommTest.
  *
+ * @author luca-grella
  */
 public class HashMapExcommTest {
 

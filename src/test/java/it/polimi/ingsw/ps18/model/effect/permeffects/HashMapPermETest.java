@@ -11,8 +11,9 @@ import java.util.Map;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class HashMapPermETest.
  *
+ * @author luca-grella
  */
 public class HashMapPermETest {
 

@@ -29,8 +29,9 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class FamtoHarvestTest.
  *
+ * @author luca-grella
  */
 public class FamtoHarvestTest {
 
@@ -45,6 +46,9 @@ public class FamtoHarvestTest {
 		
 	}
 	
+	/**
+	 * Test servant choice.
+	 */
 	@Test
 	public void testServantChoice() {
 		
@@ -81,6 +85,13 @@ public class FamtoHarvestTest {
 		
 	}
 	
+	/**
+	 * Test activate harvest.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
+	 */
 	@Test
 	public void testActivateHarvest() throws FileNotFoundException, IOException, ParseException {
 		

@@ -14,6 +14,8 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class ShowChoiceFamtoTower.
  */
 public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
+	
+	/** The index. */
 	private int index;
 	
 	/**
@@ -21,12 +23,21 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new show choice famto tower.
+	 *
+	 * @param controller the controller
+	 */
 	public ShowChoiceFamtoTower(MainController controller) {
 		addObserver(controller);
 		
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -70,6 +81,9 @@ public class ShowChoiceFamtoTower extends Observable implements PBViewAction{
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param number the new index
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

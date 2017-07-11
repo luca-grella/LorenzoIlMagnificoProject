@@ -32,6 +32,9 @@ public class VictoryPoints implements Points{
 	}
 
 	/**
+	 * Gets the quantity.
+	 *
+	 * @return the quantity
 	 * @see it.polimi.ingsw.ps18.model.personalboard.resources.Points#getQuantity()
 	 */
 	public int getQuantity(){
@@ -39,6 +42,9 @@ public class VictoryPoints implements Points{
 	}
 	
 	/**
+	 * Adds the quantity.
+	 *
+	 * @param value the value
 	 * @see it.polimi.ingsw.ps18.model.personalboard.resources.Points#addQuantity(int)
 	 */
 	public void addQuantity(int value){

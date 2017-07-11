@@ -7,20 +7,35 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The Class ServerImplementation.
+ */
 public class ServerImplementation extends UnicastRemoteObject implements ServerInterface {
 	
+	/** The players. */
 	private LinkedList<ClientInterface> players = new LinkedList<>();
 	
+	/** The lobbies. */
 	private List<GameThread> lobbies = new ArrayList<>();
 	
+	/** The users. */
 	private HashMap<String,ClientInterface> users = new HashMap<>();
 	
+	/**
+	 * Instantiates a new server implementation.
+	 *
+	 * @throws RemoteException the remote exception
+	 */
 	protected ServerImplementation() throws RemoteException {
 		super(0);
 	}
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7098548671967083832L;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.rmi.ServerInterface#addClient(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void addClient(ClientInterface client) throws RemoteException {
 		players.add(client);
@@ -33,6 +48,12 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 		
 	}
 	
+	/**
+	 * Insert in hash map.
+	 *
+	 * @param client the client
+	 * @return true, if successful
+	 */
 	private boolean insertInHashMap(ClientInterface client){
 		String name;
 		try {
@@ -58,6 +79,11 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 	}
 	
 	
+	/**
+	 * Insert player.
+	 *
+	 * @param client the client
+	 */
 	private void insertPlayer(ClientInterface client){
 		for(GameThread lobby: lobbies){
 			if(lobby.getPlayers().size() < 4){
@@ -71,6 +97,9 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 		}
 	}
 	
+	/**
+	 * Generate lobby.
+	 */
 	private synchronized void generateLobby(){
 		LinkedList<ClientInterface> tobePassed = new LinkedList<>();
 		if(players.size()>=2){

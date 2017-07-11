@@ -42,6 +42,9 @@ public class TurnHandler extends Observable implements Action {
 	}
 	
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	public void act(GameLogic game){
@@ -113,12 +116,21 @@ public class TurnHandler extends Observable implements Action {
 		notifyObservers(new ActionMessage(msg));
 	}
 	
+	/**
+	 * Notify param pboard view.
+	 *
+	 * @param msg the msg
+	 * @param i the i
+	 */
 	private void notifyParamPboardView(String msg, int i){
 		setChanged();
 		notifyObservers(new ParamMessage(msg,i));
 	}
 
 	/**
+	 * Sets the chosen fam.
+	 *
+	 * @param chosenFam the new chosen fam
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override
@@ -127,14 +139,19 @@ public class TurnHandler extends Observable implements Action {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		
 	}
 
 	/**
-	 * Per test
-	 * 
+	 * Per test.
+	 *
+	 * @param chosenFam the chosen fam
+	 * @return the chosen fam
 	 */
 	public FMember getChosenFam(FMember chosenFam) {
 		return chosenFam;
@@ -142,7 +159,10 @@ public class TurnHandler extends Observable implements Action {
 	}
 
 	/**
-	 * Per test
+	 * Per test.
+	 *
+	 * @param numberOfServants the number of servants
+	 * @return the number of servants
 	 */
 	public int getNumberOfServants(int numberOfServants) {
 		

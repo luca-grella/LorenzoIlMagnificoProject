@@ -85,9 +85,9 @@ public class addMPTest {
 			fail("errore nella setQuantity");
 		}
 	}
+	
 	/**
-	 * 
-	 * 
+	 * Test get name.
 	 */
 	@Test
 	public void testGetName() {

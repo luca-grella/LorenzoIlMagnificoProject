@@ -15,8 +15,18 @@ public interface Status {
 	 */
 	public void act(GameLogic game);
 	
+	/**
+	 * Sets the color.
+	 *
+	 * @param i the new color
+	 */
 	public void setColor(int i);
 	
+	/**
+	 * Sets the index.
+	 *
+	 * @param i the new index
+	 */
 	public void setIndex(int i);
 
 }

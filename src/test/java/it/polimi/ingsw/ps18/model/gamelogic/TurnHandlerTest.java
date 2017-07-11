@@ -24,8 +24,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class TurnHandlerTest.
  *
+ * @author luca-grella
  */
 public class TurnHandlerTest {
 
@@ -39,9 +40,10 @@ public class TurnHandlerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.TurnHandler#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testAct() throws FileNotFoundException, IOException, ParseException {

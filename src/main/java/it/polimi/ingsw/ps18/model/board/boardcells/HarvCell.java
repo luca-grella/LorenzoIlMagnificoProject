@@ -50,8 +50,8 @@ public class HarvCell {
 	/**
 	 * Insert FM.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param pBoardFM            the board FM
+	 * @param game the game
 	 * @return true, if successful
 	 */
 	public boolean insertFM(FMember pBoardFM, GameLogic game) {
@@ -99,8 +99,7 @@ public class HarvCell {
 	/**
 	 * Checks if is legal HC.
 	 *
-	 * @param pBoardFM
-	 *            the board FM
+	 * @param actionValue the action value
 	 * @return true, if is legal HC
 	 */
 	public boolean isLegalHC(int actionValue){

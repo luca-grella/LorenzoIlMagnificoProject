@@ -41,6 +41,9 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 	}
 
 	/**
+	 * Sets the quantity.
+	 *
+	 * @param quantity the new quantity
 	 * @see it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect#setQuantity(int)
 	 */
 	@Override
@@ -76,7 +79,10 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @param quantity the quantity
+	 * @return the quantity
 	 */
 	public int getQuantity(int quantity) {
 		
@@ -84,8 +90,10 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 	}
 
 	/**
-	 * @return 
-	 * 
+	 * Gets the quantity.
+	 *
+	 * @param count the count
+	 * @return the quantity
 	 */
 	public JSONArray getQuantity(JSONArray count) {
 		

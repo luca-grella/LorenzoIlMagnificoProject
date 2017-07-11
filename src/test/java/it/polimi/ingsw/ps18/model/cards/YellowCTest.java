@@ -27,16 +27,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class YellowCTest.
  *
+ * @author luca-grella
  */
 public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#hasHarvest()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasHarvest() throws FileNotFoundException, IOException, ParseException {
@@ -54,9 +56,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#hasProduction()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasProduction() throws FileNotFoundException, IOException, ParseException {
@@ -87,9 +90,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#hasFinal()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasFinal() throws FileNotFoundException, IOException, ParseException {
@@ -109,9 +113,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#hasPermanent()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasPermanent() throws FileNotFoundException, IOException, ParseException {
@@ -130,9 +135,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#YellowC(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testYellowCJSONObject() throws FileNotFoundException, IOException, ParseException {
@@ -159,9 +165,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#getProductionValue()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetProductionValue() throws FileNotFoundException, IOException, ParseException {
@@ -180,9 +187,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#setProductionValue(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetProductionValue() throws FileNotFoundException, IOException, ParseException {
@@ -203,9 +211,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#getProdEffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetProdEffect() throws FileNotFoundException, IOException, ParseException {
@@ -249,9 +258,10 @@ public class YellowCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.YellowC#setProdEffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetProdEffect() throws FileNotFoundException, IOException, ParseException {
@@ -280,11 +290,11 @@ public class YellowCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test
@@ -304,11 +314,11 @@ public class YellowCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string int.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test

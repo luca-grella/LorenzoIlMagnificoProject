@@ -19,6 +19,7 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	 */
 	private int quantity;
 	
+	/** The discounts. */
 	private Stats discounts;
 
 	/* (non-Javadoc)
@@ -37,6 +38,13 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 		this.quantity = quantity;
 	}
 	
+	/**
+	 * Sets the param.
+	 *
+	 * @param name the name
+	 * @param quantity the quantity
+	 * @param discounts the discounts
+	 */
 	public void setParam(String name, long quantity, JSONArray discounts){
 		this.name = name;
 		this.quantity = (int) quantity;
@@ -44,6 +52,9 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	}
 
 	/**
+	 * Gets the name.
+	 *
+	 * @return the name
 	 * @see it.polimi.ingsw.ps18.model.effect.permeffects.Permanenteffect#getName()
 	 */
 	@Override
@@ -52,6 +63,9 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	}
 	
 	/**
+	 * To string.
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -66,6 +80,8 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 	}
 
 	/**
+	 * Gets the discounts.
+	 *
 	 * @return the discounts
 	 */
 	public Stats getDiscounts() {

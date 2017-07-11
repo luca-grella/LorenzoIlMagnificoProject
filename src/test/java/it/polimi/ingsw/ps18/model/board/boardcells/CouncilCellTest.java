@@ -12,8 +12,9 @@ import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 
 /**
- * @author luca-grella
+ * The Class CouncilCellTest.
  *
+ * @author luca-grella
  */
 public class CouncilCellTest {
 
@@ -113,6 +114,9 @@ public class CouncilCellTest {
 		
 	}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 		

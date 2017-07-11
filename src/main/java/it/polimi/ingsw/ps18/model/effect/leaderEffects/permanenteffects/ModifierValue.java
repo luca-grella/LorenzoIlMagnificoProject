@@ -9,11 +9,25 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class ModifierValue.
+ */
 public class ModifierValue implements LCPermEffect {
+	
+	/** The name. */
 	private String name = "ModifierValue";
+	
+	/** The short description. */
 	private String shortDescription;
+	
+	/** The quantity. */
 	private int quantity;
 	
+	/**
+	 * Refresh F member.
+	 *
+	 * @param game the game
+	 */
 	public void refreshFMember(GameLogic game){
 		PBoard player = game.getTurnplayer();
 		List<Dice> dice = game.getDices();
@@ -27,6 +41,11 @@ public class ModifierValue implements LCPermEffect {
 		fams.set(i, new FMember(0, player.getPlayercol(), player));
 	}
 	
+	/**
+	 * Sets the param.
+	 *
+	 * @param parameters the new param
+	 */
 	public void setParam(JSONArray parameters){
 		this.shortDescription = (String) parameters.get(0);
 		long temp = (long) parameters.get(1);
@@ -34,18 +53,26 @@ public class ModifierValue implements LCPermEffect {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect#getShortDescription()
+	 */
 	@Override
 	public String getShortDescription() {
 		return this.shortDescription;
 	}
 
 	/**
+	 * Gets the quantity.
+	 *
 	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
@@ -60,13 +87,18 @@ public class ModifierValue implements LCPermEffect {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.leaderEffects.permanenteffects.LCPermEffect#getName()
+	 */
 	@Override
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * 
+	 * Sets the short description.
+	 *
+	 * @param shortDescription the new short description
 	 */
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription=shortDescription;
@@ -74,7 +106,9 @@ public class ModifierValue implements LCPermEffect {
 	}
 
 	/**
-	 * 
+	 * Sets the quantity.
+	 *
+	 * @param quantity the new quantity
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity=quantity;

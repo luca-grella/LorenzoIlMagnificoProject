@@ -39,16 +39,10 @@ public class FamtoHarvest extends Observable implements Action {
 	 */
 	private int indexFamtoRemove;
 	
-	/**
-	 * The number of servants to add to the action value 
-	 * of the current FMember, chosen by the current player
-	 */
+	/** The number of servants to add to the action value  of the current FMember, chosen by the current player. */
 	private int numberOfServants;
 	
-	/**
-	 * 
-	 * tester
-	 */
+	/** tester. */
 	private int tester=1;
 	
 	/**
@@ -73,10 +67,18 @@ public class FamtoHarvest extends Observable implements Action {
 		notifyActionPBoardView("Fam Choice Harvest");
 	}
 	
+	/**
+	 * Cell choice.
+	 */
 	public void cellChoice(){
 		notifyActionPBoardView("Cell Choice Harvest");
 	}
 	
+	/**
+	 * Servants choice.
+	 *
+	 * @param game the game
+	 */
 	public void servantsChoice(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
@@ -92,6 +94,9 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -205,6 +210,8 @@ public class FamtoHarvest extends Observable implements Action {
 	
 	
 	/**
+	 * Gets the chosen fam.
+	 *
 	 * @return the chosenFam
 	 */
 	public FMember getChosenFam() {
@@ -212,6 +219,9 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the chosen fam.
+	 *
+	 * @param chosenFam the new chosen fam
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override
@@ -221,6 +231,8 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 	
 	/**
+	 * Sets the chosen cell.
+	 *
 	 * @param chosenCell the chosenCell to set
 	 */
 	public void setChosenCell(int chosenCell) {
@@ -260,19 +272,26 @@ public class FamtoHarvest extends Observable implements Action {
 
 	
 	/**
+	 * Gets the number of servants.
+	 *
 	 * @return the numberOfServants
 	 */
 	public int getNumberOfServants() {
 		return numberOfServants;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;
@@ -280,7 +299,9 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 
 	/**
-	 * @return
+	 * Gets the chosen cell.
+	 *
+	 * @return the chosen cell
 	 */
 	public int getChosenCell() {
 		
@@ -288,7 +309,9 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 
 	/**
-	 * @return
+	 * Gets the action value.
+	 *
+	 * @return the action value
 	 */
 	public int getActionValue() {
 		
@@ -296,7 +319,9 @@ public class FamtoHarvest extends Observable implements Action {
 	}
 
 	/**
-	 * @return
+	 * Gets the index famto remove.
+	 *
+	 * @return the index famto remove
 	 */
 	public int getIndexFamtoRemove() {
 		

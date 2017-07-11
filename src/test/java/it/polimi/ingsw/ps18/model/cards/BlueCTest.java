@@ -24,16 +24,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class BlueCTest.
  *
+ * @author luca-grella
  */
 public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#hasHarvest()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasHarvest() throws FileNotFoundException, IOException, ParseException {
@@ -56,9 +58,10 @@ public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#hasProduction()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasProduction() throws FileNotFoundException, IOException, ParseException {
@@ -81,9 +84,10 @@ public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#hasFinal()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasFinal() throws FileNotFoundException, IOException, ParseException {
@@ -104,9 +108,10 @@ public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#hasPermanent()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasPermanent() throws FileNotFoundException, IOException, ParseException {
@@ -143,9 +148,10 @@ public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#BlueC(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testBlueC() throws FileNotFoundException, IOException, ParseException {
@@ -208,9 +214,10 @@ public class BlueCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.BlueC#getPermeffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetPermeffect() throws FileNotFoundException, IOException, ParseException {
@@ -239,10 +246,11 @@ public class BlueCTest {
 	
 	
 	/**
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string int.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test
@@ -265,10 +273,11 @@ public class BlueCTest {
 	}
 	
 	/**
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test

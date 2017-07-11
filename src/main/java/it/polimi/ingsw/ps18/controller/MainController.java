@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.controller;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,7 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  * The Class MainController.
  */
 public class MainController implements Observer {
-	
+
 	/**
 	 * The game.
 	 */
@@ -43,6 +44,13 @@ public class MainController implements Observer {
 		HashMapStatus.init();
 	}
 	
+	/**
+	 * Start game.
+	 *
+	 * @param nplayer the nplayer
+	 * @param players the players
+	 * @return the linked list
+	 */
 	public LinkedList<ClientInterface> startGame(int nplayer, LinkedList<PBoard> players){;
 		game = new GameLogic(nplayer,this, players);
 		game.setup(this);
@@ -51,6 +59,12 @@ public class MainController implements Observer {
 		
 	}
 	
+	/**
+	 * Update client.
+	 *
+	 * @param newclient the newclient
+	 * @return true, if successful
+	 */
 	public boolean updateClient(ClientInterface newclient){
 		try {
 			for(PBoard player: game.getPlayers()){
@@ -65,6 +79,10 @@ public class MainController implements Observer {
 	}
 
 	/**
+	 * Update.
+	 *
+	 * @param o the o
+	 * @param arg the arg
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override

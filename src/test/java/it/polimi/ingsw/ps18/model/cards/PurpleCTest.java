@@ -26,16 +26,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class PurpleCTest.
  *
+ * @author luca-grella
  */
 public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#hasHarvest()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasHarvest() throws FileNotFoundException, IOException, ParseException {
@@ -55,9 +57,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#hasProduction()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasProduction() throws FileNotFoundException, IOException, ParseException {
@@ -77,9 +80,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#hasFinal()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasFinal() throws FileNotFoundException, IOException, ParseException {
@@ -112,9 +116,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#hasPermanent()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasPermanent() throws FileNotFoundException, IOException, ParseException {
@@ -134,9 +139,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#PurpleC(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testPurpleC() throws FileNotFoundException, IOException, ParseException {
@@ -192,9 +198,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#getFineffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetFineffect() throws FileNotFoundException, IOException, ParseException {
@@ -228,9 +235,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#setFineffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetFineffect() throws FileNotFoundException, IOException, ParseException {
@@ -268,9 +276,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#getMinMP()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetMinMP() throws FileNotFoundException, IOException, ParseException {
@@ -297,9 +306,10 @@ public class PurpleCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.PurpleC#getSecondaryCost()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetSecondaryCost() throws FileNotFoundException, IOException, ParseException {
@@ -325,11 +335,11 @@ public class PurpleCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test
@@ -347,11 +357,11 @@ public class PurpleCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string int.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test

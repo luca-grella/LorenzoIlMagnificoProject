@@ -73,7 +73,9 @@ public class AddPVforGreenC implements FinalEffect, HarvestEffect, ProductionEff
 	}
 
 	/**
-	 * Per test
+	 * Per test.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		
@@ -81,7 +83,9 @@ public class AddPVforGreenC implements FinalEffect, HarvestEffect, ProductionEff
 	}
 
 	/**
-	 * Per Test
+	 * Per Test.
+	 *
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		

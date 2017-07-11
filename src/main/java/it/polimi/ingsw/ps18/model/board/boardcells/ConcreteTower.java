@@ -43,10 +43,9 @@ public class ConcreteTower implements Tower {
 	
 	/**
 	 * Instantiates a new concrete tower.
-	 * @param towerIndex 
 	 *
-	 * @param a
-	 *            the tower index
+	 * @param towerIndex the tower index
+	 * @param a            the tower index
 	 */
 	public ConcreteTower (Integer towerIndex, JSONObject a) {
 		this.color = towerIndex;
@@ -209,6 +208,10 @@ public class ConcreteTower implements Tower {
 	
 	
 	/**
+	 * To string.
+	 *
+	 * @param index the index
+	 * @return the string
 	 * @see it.polimi.ingsw.ps18.model.board.boardcells.Tower#toString(int)
 	 */
 	@Override
@@ -228,6 +231,9 @@ public class ConcreteTower implements Tower {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		List<FMember> placedFams = new ArrayList<>();

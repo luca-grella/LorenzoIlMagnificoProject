@@ -31,9 +31,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#ConcreteTower(java.lang.Integer)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testConcreteTower() throws FileNotFoundException, IOException, ParseException {
@@ -53,9 +54,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#insertCards(java.util.List, int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertCards() throws FileNotFoundException, IOException, ParseException {
@@ -109,9 +111,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember, int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
@@ -138,9 +141,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isLegalT(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsLegalT() throws FileNotFoundException, IOException, ParseException {
@@ -178,9 +182,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isEmptyT()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsEmptyTower() throws FileNotFoundException, IOException, ParseException {
@@ -201,9 +206,10 @@ public class ConcreteTowerTest {
 	
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#isFullTower()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsFullTower () throws FileNotFoundException, IOException, ParseException{
@@ -231,9 +237,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#getTowerCells()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetTowerCells() throws FileNotFoundException, IOException, ParseException {
@@ -268,9 +275,10 @@ public class ConcreteTowerTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ConcreteTower#setTowerCells(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetTowerCells() throws FileNotFoundException, IOException, ParseException {

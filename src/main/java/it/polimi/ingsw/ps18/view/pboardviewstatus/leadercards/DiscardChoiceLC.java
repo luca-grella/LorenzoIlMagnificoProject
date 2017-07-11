@@ -9,13 +9,26 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
 
+/**
+ * The Class DiscardChoiceLC.
+ */
 public class DiscardChoiceLC extends Observable implements PBViewStatus {
+	
+	/** The input. */
 	Scanner input = new Scanner(System.in);
 	
+	/**
+	 * Instantiates a new discard choice LC.
+	 *
+	 * @param controller the controller
+	 */
 	public DiscardChoiceLC(MainController controller){
 		addObserver(controller);
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void act(ClientInterface playerClient) throws RemoteException {
 		int choice = -100;

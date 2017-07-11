@@ -25,12 +25,21 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	 */
 	private int index = -1;
 
+	/**
+	 * Instantiates a new choose privilege.
+	 *
+	 * @param controller the controller
+	 */
 	public ChoosePrivilege(MainController controller){
 		addObserver(controller);
 
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act()
 	 */
 	@Override
@@ -71,6 +80,9 @@ public class ChoosePrivilege extends Observable implements PBViewAction {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param number the new index
 	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
 	 */
 	@Override

@@ -18,11 +18,20 @@ public class ChooseWoodorRock extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new choose woodor rock.
+	 *
+	 * @param controller the controller
+	 */
 	public ChooseWoodorRock(MainController controller) {
 		addObserver(controller);
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

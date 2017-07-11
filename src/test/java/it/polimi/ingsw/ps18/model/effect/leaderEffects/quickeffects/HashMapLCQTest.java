@@ -23,8 +23,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class HashMapLCQTest.
  *
+ * @author luca-grella
  */
 public class HashMapLCQTest {
 

@@ -22,6 +22,11 @@ public class BlueC extends Cards {
 	 */
 	private List<Permanenteffect> permeffect = new ArrayList<>();
 
+	/**
+	 * Instantiates a new blue C.
+	 *
+	 * @param a the a
+	 */
 	public BlueC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE(); 
 

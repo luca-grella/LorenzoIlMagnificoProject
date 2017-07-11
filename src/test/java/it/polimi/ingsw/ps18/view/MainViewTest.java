@@ -12,8 +12,9 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.LogMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.Message;
 
 /**
- * @author luca-grella
+ * The Class MainViewTest.
  *
+ * @author luca-grella
  */
 public class MainViewTest {
 

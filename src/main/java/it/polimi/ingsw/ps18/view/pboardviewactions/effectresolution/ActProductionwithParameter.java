@@ -18,6 +18,11 @@ public class ActProductionwithParameter extends Observable implements PBViewActi
 	 */
 	private int index;
 
+	/**
+	 * Instantiates a new act productionwith parameter.
+	 *
+	 * @param controller the controller
+	 */
 	public ActProductionwithParameter(MainController controller) {
 		addObserver(controller);
 

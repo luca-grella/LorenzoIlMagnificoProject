@@ -28,8 +28,9 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class ShowBoardTest.
  *
+ * @author luca-grella
  */
 public class ShowBoardTest {
 
@@ -47,9 +48,10 @@ public class ShowBoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.ShowBoard#showMarket(it.polimi.ingsw.ps18.model.board.Board)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testShowMarket() throws FileNotFoundException, IOException, ParseException {

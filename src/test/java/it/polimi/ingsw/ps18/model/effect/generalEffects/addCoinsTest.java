@@ -88,6 +88,9 @@ public class addCoinsTest {
 		}
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		addCoins tester = new addCoins();

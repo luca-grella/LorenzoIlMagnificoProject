@@ -27,8 +27,9 @@ import it.polimi.ingsw.ps18.view.MainView;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class FamtoProductionTest.
  *
+ * @author luca-grella
  */
 public class FamtoProductionTest {
 
@@ -108,9 +109,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#activateProduction(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testActivateProduction() throws FileNotFoundException, IOException, ParseException {
@@ -140,9 +142,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#chooseCards(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testChooseCards() throws FileNotFoundException, IOException, ParseException {
@@ -173,9 +176,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#ChooseEffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testChooseEffect() throws FileNotFoundException, IOException, ParseException {
@@ -205,9 +209,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#activateEffects(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testActivateEffects() throws FileNotFoundException, IOException, ParseException {
@@ -243,9 +248,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetChosenFam() throws FileNotFoundException, IOException, ParseException {
@@ -282,9 +288,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#setActionValue(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetActionValue() throws FileNotFoundException, IOException, ParseException {
@@ -320,9 +327,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getCurrentcard()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCurrentcard() throws FileNotFoundException, IOException, ParseException {
@@ -355,9 +363,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getCardsForActivation()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetCardsForActivation() throws FileNotFoundException, IOException, ParseException {
@@ -391,9 +400,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getTotalCostPreview()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetTotalCostPreview() throws FileNotFoundException, IOException, ParseException {
@@ -427,9 +437,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#setIndexFamtoRemove(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetIndexFamtoRemove() throws FileNotFoundException, IOException, ParseException {
@@ -464,9 +475,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getNumberOfServants()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetNumberOfServants() throws FileNotFoundException, IOException, ParseException {
@@ -500,9 +512,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#setNumberOfServants(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetNumberOfServants() throws FileNotFoundException, IOException, ParseException {
@@ -535,9 +548,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getChosenCell()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetChosenCell() throws FileNotFoundException, IOException, ParseException {
@@ -570,9 +584,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#setChosenCell(int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetChosenCell() throws FileNotFoundException, IOException, ParseException {
@@ -605,9 +620,10 @@ public class FamtoProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.gamelogic.FamtoProduction#getChosenFam()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetChosenFam() throws FileNotFoundException, IOException, ParseException {

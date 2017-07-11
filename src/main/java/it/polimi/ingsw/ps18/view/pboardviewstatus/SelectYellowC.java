@@ -18,11 +18,20 @@ public class SelectYellowC extends Observable implements PBViewStatus {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new select yellow C.
+	 *
+	 * @param controller the controller
+	 */
 	public SelectYellowC(MainController controller) {
 		addObserver(controller);
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override

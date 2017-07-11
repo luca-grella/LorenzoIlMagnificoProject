@@ -21,6 +21,11 @@ public class LoseVPforCosts implements ExcommEffects {
 	private String name = "LoseVpforCosts";
 	
 	
+	/**
+	 * Activate.
+	 *
+	 * @param player the player
+	 */
 	public void activate(PBoard player){
 		int count = 0;
 		for(Cards card: player.getCards()){
@@ -61,6 +66,9 @@ public class LoseVPforCosts implements ExcommEffects {
 		return name;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		return "Lose " + loseVP + " Victory Point for each wood or rock represented on each yellow card in your PBoard";

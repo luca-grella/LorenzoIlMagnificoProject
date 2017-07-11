@@ -27,6 +27,11 @@ public class Excommunications {
 	 */
 	private long period;
 
+	/**
+	 * Instantiates a new excommunications.
+	 *
+	 * @param a the a
+	 */
 	public Excommunications(JSONObject a){
 		HashMapExcomm mapExcomm = new HashMapExcomm();
 		
@@ -42,12 +47,9 @@ public class Excommunications {
 	/**
 	 * Adds the effects.
 	 *
-	 * @param eeffects
-	 *            the eeffects
-	 * @param eeffectvalues
-	 *            the eeffectvalues
-	 * @param mapExcomm
-	 *            the map excomm
+	 * @param eeffects            the eeffects
+	 * @param eeffectvalues            the eeffectvalues
+	 * @param map the map
 	 */
 	private void addEffects(JSONArray eeffects, JSONArray eeffectvalues, HashMapExcomm map){
 		ExcommEffects effect;

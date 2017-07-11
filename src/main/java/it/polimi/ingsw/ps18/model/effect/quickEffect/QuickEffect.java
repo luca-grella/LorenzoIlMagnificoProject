@@ -37,6 +37,11 @@ public interface QuickEffect extends GeneralEffect{
 	@Override
 	public String toString();
 	
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName();
 
 }

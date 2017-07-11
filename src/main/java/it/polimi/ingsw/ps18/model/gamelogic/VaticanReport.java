@@ -18,23 +18,38 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
+/**
+ * The Class VaticanReport.
+ */
 public class VaticanReport extends Observable implements Action{
 	
 	
+	/** The chosen answer. */
 	int chosenAnswer;
 	/*
 	 * Effettivamente il valore arriva, quindi mo faccio if else a manetta
 	 */
 	
+	/**
+	 * Instantiates a new vatican report.
+	 *
+	 * @param view the view
+	 */
 	public VaticanReport(PBoardView view){
 		addObserver(view);
 	}
 	
+	/**
+	 * Report choice.
+	 */
 	public void reportChoice(){
 		notifyActionPBoardView("Choose Church Support");
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		if(chosenAnswer == 1){
@@ -81,6 +96,9 @@ public class VaticanReport extends Observable implements Action{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
+	 */
 	@Override
 	public void setChosenFam(FMember chosenFam) {
 		return;
@@ -99,6 +117,8 @@ public class VaticanReport extends Observable implements Action{
 	}
 
 	/**
+	 * Gets the chosen answer.
+	 *
 	 * @return the chosenAnswer
 	 */
 	public int getChosenAnswer() {
@@ -106,20 +126,27 @@ public class VaticanReport extends Observable implements Action{
 	}
 
 	/**
+	 * Sets the chosen answer.
+	 *
 	 * @param chosenAnswer the chosenAnswer to set
 	 */
 	public void setChosenAnswer(int chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		
 	}
 
 	/**
-	 * @return 
-	 * 
+	 * Gets the chosen fam.
+	 *
+	 * @param chosenFam the chosen fam
+	 * @return the chosen fam
 	 */
 	public FMember getChosenFam(FMember chosenFam) {
 		return chosenFam;
@@ -127,7 +154,10 @@ public class VaticanReport extends Observable implements Action{
 	}
 
 	/**
-	 * @return
+	 * Gets the number of servants.
+	 *
+	 * @param numberOfServants the number of servants
+	 * @return the number of servants
 	 */
 	public int getNumberOfServants(int numberOfServants) {
 		return numberOfServants;

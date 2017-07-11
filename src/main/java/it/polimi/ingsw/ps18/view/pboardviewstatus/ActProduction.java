@@ -12,6 +12,11 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  */
 public class ActProduction extends Observable implements PBViewStatus {
 
+	/**
+	 * Instantiates a new act production.
+	 *
+	 * @param controller the controller
+	 */
 	public ActProduction(MainController controller) {
 		addObserver(controller);
 

@@ -73,7 +73,9 @@ public class AddPVforPurpleC implements FinalEffect, HarvestEffect, ProductionEf
 	}
 
 	/**
-	 * @param name2
+	 * Sets the name.
+	 *
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		
@@ -82,7 +84,9 @@ public class AddPVforPurpleC implements FinalEffect, HarvestEffect, ProductionEf
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		

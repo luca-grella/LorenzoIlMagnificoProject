@@ -1,15 +1,32 @@
 package it.polimi.ingsw.ps18.model.effect.excommEffects;
 
+/**
+ * The Class MalusValue.
+ */
 public class MalusValue implements ExcommEffects {
+	
+	/** The name. */
 	private String name = "MalusValue";
+	
+	/** The place. */
 	private String place;
+	
+	/** The malus value. */
 	private int malusValue;
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.excommEffects.ExcommEffects#setQuantity(int)
+	 */
 	@Override
 	public void setQuantity(int quantity) {
 		this.malusValue = quantity;
 	}
 	
+	/**
+	 * Sets the name.
+	 *
+	 * @param nameplace the new name
+	 */
 	public void setName(String nameplace){
 		this.place = nameplace;
 	}
@@ -26,6 +43,8 @@ public class MalusValue implements ExcommEffects {
 	
 
 	/**
+	 * Gets the place.
+	 *
 	 * @return the place
 	 */
 	public String getPlace() {
@@ -33,12 +52,17 @@ public class MalusValue implements ExcommEffects {
 	}
 
 	/**
+	 * Gets the malus value.
+	 *
 	 * @return the malusValue
 	 */
 	public int getMalusValue() {
 		return malusValue;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();

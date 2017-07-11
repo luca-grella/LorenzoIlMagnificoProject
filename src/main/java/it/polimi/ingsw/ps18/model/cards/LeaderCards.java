@@ -16,14 +16,31 @@ import it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.*;
  * The Class LeaderCards.
  */
 public class LeaderCards {
+	
+	/** The name. */
 	private String name;
+	
+	/** The active. */
 	private boolean active;
+	
+	/** The effectactivated. */
 	private boolean effectactivated = false;
+	
+	/** The requirements. */
 	private List<LCRequirement> requirements = new ArrayList<>();
+	
+	/** The quick effects. */
 	private List<LCQuickEffect> quickEffects = new ArrayList<>();
+	
+	/** The perm effects. */
 	private List<LCPermEffect> permEffects = new ArrayList<>();
 
 	
+	/**
+	 * Instantiates a new leader cards.
+	 *
+	 * @param a the a
+	 */
 	public LeaderCards(JSONObject a){
 		this.name = (String) a.get("name");
 		this.active = (boolean) a.get("active");
@@ -40,6 +57,12 @@ public class LeaderCards {
 	}
 
 
+	/**
+	 * Adds the P effects.
+	 *
+	 * @param peffects the peffects
+	 * @param peffectvalues the peffectvalues
+	 */
 	private void addPEffects(JSONArray peffects, JSONArray peffectvalues) {
 		for(int i=0; i<peffects.size(); i++){
 			HashMapLCP map = new HashMapLCP();
@@ -68,6 +91,12 @@ public class LeaderCards {
 	}
 
 
+	/**
+	 * Adds the Q effects.
+	 *
+	 * @param qeffects the qeffects
+	 * @param qeffectvalues the qeffectvalues
+	 */
 	private void addQEffects(JSONArray qeffects, JSONArray qeffectvalues) {
 		for(int i=0; i<qeffects.size(); i++){
 			HashMapLCQ map = new HashMapLCQ();
@@ -107,6 +136,12 @@ public class LeaderCards {
 	}
 
 
+	/**
+	 * Adds the requirements.
+	 *
+	 * @param requirements the requirements
+	 * @param requirementvalues the requirementvalues
+	 */
 	private void addRequirements(JSONArray requirements, JSONArray requirementvalues) {
 		for(int i=0; i<requirements.size(); i++){
 			HashMapLCR map = new HashMapLCR();
@@ -138,6 +173,12 @@ public class LeaderCards {
 		}
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @param index the index
+	 * @return the string
+	 */
 	public String toString(int index){
 		StringBuilder builder = new StringBuilder();
 		builder.append("Card number " + index + ":\n"
@@ -161,6 +202,9 @@ public class LeaderCards {
 		return builder.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		builder.append("name: " + this.name + "\n");
@@ -183,6 +227,11 @@ public class LeaderCards {
 		return builder.toString();
 	}
 	
+	/**
+	 * Checks for LCQE.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasLCQE(){
 		if(this.quickEffects.isEmpty()){
 			return false;
@@ -190,6 +239,11 @@ public class LeaderCards {
 		return true;
 	}
 	
+	/**
+	 * Checks for LCPE.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasLCPE(){
 		if(this.permEffects.isEmpty()){
 			return false;
@@ -199,6 +253,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Checks if is active.
+	 *
 	 * @return the active
 	 */
 	public boolean isActive() {
@@ -207,6 +263,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Sets the active.
+	 *
 	 * @param active the active to set
 	 */
 	public void setActive(boolean active) {
@@ -215,6 +273,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Gets the requirements.
+	 *
 	 * @return the requirements
 	 */
 	public List<LCRequirement> getRequirements() {
@@ -223,6 +283,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Gets the quick effects.
+	 *
 	 * @return the quickEffects
 	 */
 	public List<LCQuickEffect> getQuickEffects() {
@@ -231,6 +293,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Gets the perm effects.
+	 *
 	 * @return the permEffects
 	 */
 	public List<LCPermEffect> getPermEffects() {
@@ -239,6 +303,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Checks if is effectactivated.
+	 *
 	 * @return the effectactivated
 	 */
 	public boolean isEffectactivated() {
@@ -247,6 +313,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Sets the effectactivated.
+	 *
 	 * @param effectactivated the effectactivated to set
 	 */
 	public void setEffectactivated(boolean effectactivated) {
@@ -255,6 +323,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Sets the quick effects.
+	 *
 	 * @param quickEffects the quickEffects to set
 	 */
 	public void setQuickEffects(List<LCQuickEffect> quickEffects) {
@@ -263,6 +333,8 @@ public class LeaderCards {
 
 
 	/**
+	 * Sets the perm effects.
+	 *
 	 * @param permEffects the permEffects to set
 	 */
 	public void setPermEffects(List<LCPermEffect> permEffects) {

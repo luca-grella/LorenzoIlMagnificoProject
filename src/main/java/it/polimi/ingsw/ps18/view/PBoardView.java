@@ -23,13 +23,15 @@ import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
  * The Class PBoardView.
  */
 public class PBoardView extends Observable implements Observer {
+	
+	/** The player client. */
 	private ClientInterface playerClient;
 	
 	/**
 	 * Instantiates a new p board view.
 	 *
-	 * @param mcontroller
-	 *            the mcontroller
+	 * @param mcontroller            the mcontroller
+	 * @param playerClient the player client
 	 */
 	public PBoardView(MainController mcontroller, ClientInterface playerClient){
 		this.playerClient = playerClient;
@@ -38,6 +40,11 @@ public class PBoardView extends Observable implements Observer {
 		HashMapPBVS.init(mcontroller);
 	}
 	
+	/**
+	 * Instantiates a new p board view.
+	 *
+	 * @param mcontroller the mcontroller
+	 */
 	public PBoardView(MainController mcontroller){
 		addObserver(mcontroller);
 		HashMapPBVA.init(mcontroller);
@@ -45,6 +52,10 @@ public class PBoardView extends Observable implements Observer {
 	}
 
 	/**
+	 * Update.
+	 *
+	 * @param o the o
+	 * @param arg the arg
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override

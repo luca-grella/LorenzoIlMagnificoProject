@@ -86,9 +86,7 @@ public class Board extends Observable {
 	 */
 	private List<ProdCell> productionCells = new ArrayList<>();
 	
-	/**
-	 * The production cell without malus
-	 */
+	/** The production cell without malus. */
 	private ProdCell prodCellNoMalus = new ProdCell(0);
 	
 	/**
@@ -98,8 +96,7 @@ public class Board extends Observable {
 	
 	
 	/**
-	 * 
-	 * test
+	 * test.
 	 */
 	public Board (){
 	}
@@ -107,10 +104,9 @@ public class Board extends Observable {
 	/**
 	 * Instantiates a new board.
 	 *
-	 * @param mcontroller
-	 *            the mcontroller
-	 * @param nplayer
-	 *            the nplayer
+	 * @param mcontroller            the mcontroller
+	 * @param nplayer            the nplayer
+	 * @param mView the m view
 	 */
 	public Board (MainController mcontroller, int nplayer, MainView mView){
 		addObserver(mView);
@@ -417,9 +413,10 @@ public class Board extends Observable {
 	 * 		</ol>
 	 * 
 	 * In both cases, the method uses the Harvest Cell method insertFM, that places a FMember in a Cell.
-	 * 
-	 * @param fam
-	 * FMember chosen for the current action
+	 *
+	 * @param fam FMember chosen for the current action
+	 * @param chosenCell the chosen cell
+	 * @param game the game
 	 * @return the FMember value considering a possible Harvest malus
 	 */
 	public void insertFMHarv(FMember fam, int chosenCell, GameLogic game){
@@ -440,6 +437,13 @@ public class Board extends Observable {
 //		return (fam.getValue() - harvCell.getMalus());
 	}
 	
+	/**
+	 * Gets the action value harv.
+	 *
+	 * @param fam the fam
+	 * @param chosenCell the chosen cell
+	 * @return the action value harv
+	 */
 	public int getActionValueHarv(FMember fam, int chosenCell) {
 		int malus = 0;
 		if(chosenCell != 0){
@@ -459,9 +463,10 @@ public class Board extends Observable {
 	 * 		</ol>
 	 * 
 	 * In both cases, the method uses the Production Cell method insertFM, that places a FMember in a Cell.
-	 * 
-	 * @param fam
-	 * FMember chosen for the current action.
+	 *
+	 * @param fam FMember chosen for the current action.
+	 * @param chosenCell the chosen cell
+	 * @param game the game
 	 * @return the FMember value considering a possible Harvest malus.
 	 */
 	public void insertFMProd(FMember fam, int chosenCell, GameLogic game){
@@ -476,6 +481,13 @@ public class Board extends Observable {
 		}
 	}
 	
+	/**
+	 * Gets the action value prod.
+	 *
+	 * @param fam the fam
+	 * @param chosenCell the chosen cell
+	 * @return the action value prod
+	 */
 	public int getActionValueProd(FMember fam, int chosenCell){
 		int malus = 0;
 		if(chosenCell != 0){
@@ -571,6 +583,11 @@ public class Board extends Observable {
 	}
 	
 	
+	/**
+	 * To string excomm.
+	 *
+	 * @return the string
+	 */
 	public String toStringExcomm(){
 		StringBuilder builder = new StringBuilder();
 		for(int i=0; i<this.excommCells.size(); i++){
@@ -661,6 +678,8 @@ public class Board extends Observable {
 	
 
 	/**
+	 * Gets the harv cell no malus.
+	 *
 	 * @return the harvCellNoMalus
 	 */
 	public HarvCell getHarvCellNoMalus() {
@@ -668,6 +687,8 @@ public class Board extends Observable {
 	}
 
 	/**
+	 * Sets the harv cell no malus.
+	 *
 	 * @param harvCellNoMalus the harvCellNoMalus to set
 	 */
 	public void setHarvCellNoMalus(HarvCell harvCellNoMalus) {
@@ -694,6 +715,8 @@ public class Board extends Observable {
 	}
 
 	/**
+	 * Gets the prod cell no malus.
+	 *
 	 * @return the prodCellNoMalus
 	 */
 	public ProdCell getProdCellNoMalus() {
@@ -701,6 +724,8 @@ public class Board extends Observable {
 	}
 
 	/**
+	 * Sets the prod cell no malus.
+	 *
 	 * @param prodCellNoMalus the prodCellNoMalus to set
 	 */
 	

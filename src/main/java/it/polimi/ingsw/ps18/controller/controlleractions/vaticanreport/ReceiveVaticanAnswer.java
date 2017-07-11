@@ -15,10 +15,17 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.VaticanReport;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class ReceiveVaticanAnswer.
+ */
 public class ReceiveVaticanAnswer implements ActionChoice{
 
+	/** The support choice. */
 	int supportChoice;
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void act(GameLogic game) {
 		Action currentaction = game.getOngoingAction();
@@ -26,6 +33,9 @@ public class ReceiveVaticanAnswer implements ActionChoice{
 		((VaticanReport) currentaction).act(game);
 	}
 		
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int supportChoice) {
 		this.supportChoice = supportChoice;

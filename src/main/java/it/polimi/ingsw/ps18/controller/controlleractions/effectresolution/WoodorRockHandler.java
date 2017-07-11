@@ -17,6 +17,9 @@ public class WoodorRockHandler implements ActionChoice {
 	private int index;
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -26,6 +29,9 @@ public class WoodorRockHandler implements ActionChoice {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param i the new index
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override
@@ -34,7 +40,9 @@ public class WoodorRockHandler implements ActionChoice {
 	}
 
 	/**
-	 * Per test
+	 * Per test.
+	 *
+	 * @return the index
 	 */
 	public int getIndex() {
 

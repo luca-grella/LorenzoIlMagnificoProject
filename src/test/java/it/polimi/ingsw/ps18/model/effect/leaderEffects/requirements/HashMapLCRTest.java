@@ -25,16 +25,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class HashMapLCRTest.
  *
+ * @author luca-grella
  */
 public class HashMapLCRTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.HashMapLCR#HashMapLCR()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHashMapLCR() throws FileNotFoundException, IOException, ParseException {
@@ -58,9 +60,10 @@ public class HashMapLCRTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.HashMapLCR#getRequirement(java.lang.String)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetRequirement() throws FileNotFoundException, IOException, ParseException {

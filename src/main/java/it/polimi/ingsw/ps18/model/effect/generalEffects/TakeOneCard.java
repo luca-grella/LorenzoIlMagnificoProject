@@ -31,10 +31,13 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	 */
 	private int actionValue;
 	
+	/** The chosen tower. */
 	private int chosenTower;
 	
+	/** The tester. */
 	private int tester=1;
 	
+	/** The discount. */
 	private Stats discount;
 	
 	/* (non-Javadoc)
@@ -68,6 +71,13 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 		return;
 	}
 	
+	/**
+	 * Sets the parameters.
+	 *
+	 * @param actionValue the action value
+	 * @param chosenTower the chosen tower
+	 * @param discount the discount
+	 */
 	public void setParameters(long actionValue, String chosenTower, JSONArray discount){
 		this.actionValue = (int) actionValue;
 		if("Green".equals(chosenTower)){
@@ -124,7 +134,10 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @param quantity the quantity
+	 * @return the quantity
 	 */
 	public int getQuantity(int quantity) {
 		
@@ -132,7 +145,9 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	}
 
 	/**
-	 * 
+	 * Sets the chosen tower.
+	 *
+	 * @param chosenTower the new chosen tower
 	 */
 	public void setChosenTower(int chosenTower) {
 		this.chosenTower=chosenTower;
@@ -140,7 +155,9 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	}
 
 	/**
-	 * 
+	 * Sets the discount.
+	 *
+	 * @param discount the new discount
 	 */
 	public void setDiscount(Stats discount) {
 		this.discount=discount;
@@ -148,7 +165,9 @@ public class TakeOneCard extends Observable implements FinalEffect, HarvestEffec
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;

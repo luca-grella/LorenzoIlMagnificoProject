@@ -40,9 +40,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#Board(it.polimi.ingsw.ps18.controller.MainController, int)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testBoard() throws FileNotFoundException, IOException, ParseException {
@@ -152,9 +153,10 @@ public class BoardTest {
 	
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#isFullMarket(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsFullMarket() throws FileNotFoundException, IOException, ParseException {
@@ -244,6 +246,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#insertFMHarv(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 //	@Test
 //	public void testInsertFMHarv() {
@@ -326,9 +332,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#setTowers(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetTowers() throws FileNotFoundException, IOException, ParseException {
@@ -356,9 +363,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#getMarketCells()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetMarketCells() throws FileNotFoundException, IOException, ParseException {
@@ -383,9 +391,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#setMarketCells(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetMarketCells() throws FileNotFoundException, IOException, ParseException {
@@ -532,9 +541,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#getExcommCells()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetExcommCells() throws FileNotFoundException, IOException, ParseException {
@@ -600,9 +610,10 @@ public class BoardTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.Board#setExcommCells(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetExcommCells() throws FileNotFoundException, IOException, ParseException {
@@ -696,6 +707,9 @@ public class BoardTest {
 
 	}
 	
+	/**
+	 * Test refresh board.
+	 */
 	@Test
 	public void testRefreshBoard() {
 
@@ -705,6 +719,9 @@ public class BoardTest {
 
 	}
 	
+	/**
+	 * Test get action value prod.
+	 */
 	@Test
 	public void testGetActionValueProd() {
 
@@ -726,6 +743,9 @@ public class BoardTest {
 	}
 	
 	
+	/**
+	 * Test get action value harv.
+	 */
 	@Test
 	public void testGetActionValueHarv() {
 
@@ -746,6 +766,9 @@ public class BoardTest {
 
 	}
 	
+	/**
+	 * Test insert FM harv.
+	 */
 	@Test
 	public void testInsertFMHarv() {
 
@@ -768,6 +791,9 @@ public class BoardTest {
 
 	}
 	
+	/**
+	 * Test insert FM prod.
+	 */
 	@Test
 	public void testInsertFMProd() {
 
@@ -790,6 +816,9 @@ public class BoardTest {
 
 	}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 
@@ -797,7 +826,7 @@ public class BoardTest {
 		Board tester = new Board(mcontroller, 4, new MainView(mcontroller));
 		String ris = tester.toStringTowers();
 		
-		assertEquals("-----------------\nTower number: 1\n\tTower color: 0\n\tNumber of cells in tower: 4\n-----------------\nTower number: 2\n\tTower color: 1\n\tNumber of cells in tower: 4\n-----------------\nTower number: 3\n\tTower color: 2\n\tNumber of cells in tower: 4\n-----------------\nTower number: 4\n\tTower color: 3\n\tNumber of cells in tower: 4\n-----------------\n",ris);
+		assertEquals("-----------------\nTower number: 1\n\tTower color: 0\n\tNumber of cells in tower: 4\n\tAvailable cells: 4\n-----------------\nTower number: 2\n\tTower color: 1\n\tNumber of cells in tower: 4\n\tAvailable cells: 4\n-----------------\nTower number: 3\n\tTower color: 2\n\tNumber of cells in tower: 4\n\tAvailable cells: 4\n-----------------\nTower number: 4\n\tTower color: 3\n\tNumber of cells in tower: 4\n\tAvailable cells: 4\n-----------------\n",ris);
 
 
 	}

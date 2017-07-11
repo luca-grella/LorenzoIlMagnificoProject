@@ -12,6 +12,11 @@ import it.polimi.ingsw.ps18.rmi.ClientInterface;
  */
 public class ActHarvest extends Observable implements PBViewStatus {
 
+	/**
+	 * Instantiates a new act harvest.
+	 *
+	 * @param controller the controller
+	 */
 	public ActHarvest(MainController controller) {
 		addObserver(controller);
 

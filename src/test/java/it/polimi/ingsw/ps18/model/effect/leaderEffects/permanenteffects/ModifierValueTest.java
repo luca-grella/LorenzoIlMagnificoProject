@@ -17,8 +17,9 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class ModifierValueTest.
  *
+ * @author luca-grella
  */
 public class ModifierValueTest {
 
@@ -94,6 +95,9 @@ public class ModifierValueTest {
 		assertEquals(quantity, ris);
 	}
 	
+	/**
+	 * Test set short description.
+	 */
 	@Test
 	public void testSetShortDescription() {
 		ModifierValue tester = new ModifierValue();
@@ -105,6 +109,9 @@ public class ModifierValueTest {
 		assertEquals(shortDescription, ris);
 	}
 	
+	/**
+	 * Test set quantity.
+	 */
 	@Test
 	public void testSetQuantity() {
 		ModifierValue tester = new ModifierValue();
@@ -117,6 +124,9 @@ public class ModifierValueTest {
 		assertEquals(quantity, ris);
 	}
 	
+	/**
+	 * Test refresh.
+	 */
 	@Test
 	public void testRefresh() {
 		ModifierValue tester = new ModifierValue();

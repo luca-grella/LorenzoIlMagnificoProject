@@ -26,16 +26,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class ActProductionTest.
  *
+ * @author luca-grella
  */
 public class ActProductionTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.effect.generalEffects.ActProduction#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testActivate() throws FileNotFoundException, IOException, ParseException {

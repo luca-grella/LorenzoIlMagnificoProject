@@ -8,11 +8,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class GeneralParametersTest.
  *
+ * @author luca-grella
  */
 public class GeneralParametersTest {
 
+	/**
+	 * Test.
+	 */
 	@Test
 	public void test() {
 		

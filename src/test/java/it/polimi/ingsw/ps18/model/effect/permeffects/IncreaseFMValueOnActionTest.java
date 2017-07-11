@@ -11,8 +11,9 @@ import org.junit.Test;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class IncreaseFMValueOnActionTest.
  *
+ * @author luca-grella
  */
 public class IncreaseFMValueOnActionTest {
 

@@ -25,10 +25,7 @@ public class FamtoMarket extends Observable implements Action {
 	 */
 	private int indexFamtoRemove; 
 	
-	/**
-	 * The number of servants to add to the action value 
-	 * of the current FMember, chosen by the current player
-	 */
+	/** The number of servants to add to the action value  of the current FMember, chosen by the current player. */
 	private int numberOfServants;
 	
 	/**
@@ -55,6 +52,8 @@ public class FamtoMarket extends Observable implements Action {
 	
 	/**
 	 * Cell choice.
+	 *
+	 * @param game the game
 	 */
 	public void cellChoice(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
@@ -72,6 +71,9 @@ public class FamtoMarket extends Observable implements Action {
 	
 	
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -147,19 +149,26 @@ public class FamtoMarket extends Observable implements Action {
 
 	
 	/**
+	 * Gets the number of servants.
+	 *
 	 * @return the numberOfServants
 	 */
 	public int getNumberOfServants() {
 		return numberOfServants;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 			this.numberOfServants = numberOfServants;
 	}
 
 	/**
-	 * @return
+	 * Gets the index famto remove.
+	 *
+	 * @return the index famto remove
 	 */
 	public int getIndexFamtoRemove() {
 		

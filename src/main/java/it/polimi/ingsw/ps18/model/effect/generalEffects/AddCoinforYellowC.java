@@ -81,8 +81,9 @@ public class AddCoinforYellowC implements FinalEffect, HarvestEffect, Production
 	}
 
 	/**
-	 * per test
-	 * 
+	 * per test.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		
@@ -90,8 +91,9 @@ public class AddCoinforYellowC implements FinalEffect, HarvestEffect, Production
 	}
 
 	/**
-	 * per test
-	 * 
+	 * per test.
+	 *
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;

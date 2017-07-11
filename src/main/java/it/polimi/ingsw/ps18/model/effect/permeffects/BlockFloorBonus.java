@@ -4,7 +4,11 @@ package it.polimi.ingsw.ps18.model.effect.permeffects;
  * The Class BlockFloorBonus.
  */
 public class BlockFloorBonus implements Permanenteffect {
+	
+	/** The name. */
 	private String name = "BlockFloorBonus";
+	
+	/** The floor. */
 	private int floor;
 
 	/* (non-Javadoc)
@@ -31,6 +35,9 @@ public class BlockFloorBonus implements Permanenteffect {
 		return name;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		return "You can't receive anymore the Bonus from the\n"

@@ -26,6 +26,11 @@ public class LoseVPforMP implements ExcommEffects {
 	private long loseVP;
 	
 	
+	/**
+	 * Activate.
+	 *
+	 * @param player the player
+	 */
 	public void activate(PBoard player){
 		Stats resources = player.getResources();
 		resources.addVP((int) - ((resources.getMP() / hasMP) * loseVP));
@@ -43,10 +48,7 @@ public class LoseVPforMP implements ExcommEffects {
 	/**
 	 * Sets the Parameters.
 	 *
-	 * @param hasMP
-	 *            the has MP
-	 * @param loseVP
-	 *            the lose VP
+	 * @param param the new excomm param
 	 */
 	public void setExcommParam(JSONArray param) {
 		this.hasMP= (long) param.get(0);
@@ -63,6 +65,8 @@ public class LoseVPforMP implements ExcommEffects {
 	}
 
 	/**
+	 * Gets the checks for MP.
+	 *
 	 * @return the hasMP
 	 */
 	public long getHasMP() {
@@ -70,12 +74,17 @@ public class LoseVPforMP implements ExcommEffects {
 	}
 
 	/**
+	 * Gets the lose VP.
+	 *
 	 * @return the loseVP
 	 */
 	public long getLoseVP() {
 		return loseVP;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		return "Lose " + loseVP + " Victory Point for every " + hasMP + " MP that you have.";
@@ -83,7 +92,10 @@ public class LoseVPforMP implements ExcommEffects {
 
 
 	/**
-	 * 
+	 * Gets the quantity.
+	 *
+	 * @param quantity the quantity
+	 * @return the quantity
 	 */
 	public int getQuantity(int quantity) {
 		return quantity;

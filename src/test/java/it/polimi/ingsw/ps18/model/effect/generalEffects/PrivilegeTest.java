@@ -19,8 +19,9 @@ import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 import it.polimi.ingsw.ps18.view.PBoardView;
 
 /**
- * @author luca-grella
+ * The Class PrivilegeTest.
  *
+ * @author luca-grella
  */
 public class PrivilegeTest {
 

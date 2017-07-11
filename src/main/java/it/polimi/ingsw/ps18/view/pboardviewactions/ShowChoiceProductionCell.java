@@ -9,15 +9,27 @@ import it.polimi.ingsw.ps18.model.messagesandlogs.ParamMessage;
 import it.polimi.ingsw.ps18.model.messagesandlogs.StatusMessage;
 import it.polimi.ingsw.ps18.rmi.ClientInterface;
 
+/**
+ * The Class ShowChoiceProductionCell.
+ */
 public class ShowChoiceProductionCell extends Observable implements PBViewAction{
 	
+	/** The input. */
 	Scanner input = new Scanner(System.in);
 	
+	/**
+	 * Instantiates a new show choice production cell.
+	 *
+	 * @param controller the controller
+	 */
 	public ShowChoiceProductionCell(MainController controller) {
 		addObserver(controller);
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#act(it.polimi.ingsw.ps18.rmi.ClientInterface)
+	 */
 	@Override
 	public void act(ClientInterface playerClient)  throws RemoteException{
 		int cellChoice = -100;
@@ -34,16 +46,30 @@ public class ShowChoiceProductionCell extends Observable implements PBViewAction
 		notifyParamMainController("ReceiveProdCell", cellChoice);
 	}
 	
+	/**
+	 * Notify status main controller.
+	 *
+	 * @param msg the msg
+	 */
 	private void notifyStatusMainController(String msg){
 		setChanged();
 		notifyObservers(new StatusMessage(msg));
 	}
 	
+	/**
+	 * Notify param main controller.
+	 *
+	 * @param msg the msg
+	 * @param cellChoice the cell choice
+	 */
 	private void notifyParamMainController(String msg, int cellChoice){
 		setChanged();
 		notifyObservers(new ParamMessage(msg, cellChoice));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		

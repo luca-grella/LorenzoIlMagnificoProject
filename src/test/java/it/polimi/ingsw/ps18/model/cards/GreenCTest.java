@@ -25,16 +25,18 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class GreenCTest.
  *
+ * @author luca-grella
  */
 public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#hasHarvest()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasHarvest() throws FileNotFoundException, IOException, ParseException {
@@ -73,9 +75,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#hasProduction()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasProduction() throws FileNotFoundException, IOException, ParseException {
@@ -99,9 +102,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#hasFinal()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasFinal() throws FileNotFoundException, IOException, ParseException {
@@ -126,9 +130,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#hasPermanent()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testHasPermanent() throws FileNotFoundException, IOException, ParseException {
@@ -152,9 +157,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#GreenC(org.json.simple.JSONObject)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGreenC() throws FileNotFoundException, IOException, ParseException {
@@ -210,9 +216,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#getHarvValue()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetHarvValue() throws FileNotFoundException, IOException, ParseException {
@@ -241,9 +248,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#setHarvValue(long)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetHarvValue() throws FileNotFoundException, IOException, ParseException {
@@ -273,9 +281,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#getHarveffect()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testGetHarveffect() throws FileNotFoundException, IOException, ParseException {
@@ -308,9 +317,10 @@ public class GreenCTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.cards.GreenC#setHarveffect(java.util.List)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testSetHarveffect() throws FileNotFoundException, IOException, ParseException {
@@ -347,11 +357,11 @@ public class GreenCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string int.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test
@@ -372,11 +382,11 @@ public class GreenCTest {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * Test to string.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	
 	@Test

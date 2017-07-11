@@ -26,8 +26,9 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class HarvCellTest.
  *
+ * @author luca-grella
  */
 public class HarvCellTest {
 
@@ -48,9 +49,10 @@ public class HarvCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.HarvCell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
@@ -87,9 +89,10 @@ public class HarvCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.HarvCell#isEmptyHC()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsEmptyHC() throws FileNotFoundException, IOException, ParseException {
@@ -240,6 +243,9 @@ public class HarvCellTest {
 		
 	}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 		

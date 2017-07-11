@@ -70,6 +70,11 @@ public class Stats {
 		this.vp = new VictoryPoints(vp);
 	}
 	
+	/**
+	 * Instantiates a new stats.
+	 *
+	 * @param stat the stat
+	 */
 	public Stats(Stats stat){
 		this.wood = new Wood(stat.getWood());
 		this.rock = new Rock(stat.getRock());
@@ -242,6 +247,11 @@ public class Stats {
     }
     
     
+    /**
+     * To string servants.
+     *
+     * @return the string
+     */
     public String toStringServants() {
     	StringBuilder builder = new StringBuilder();
     	builder.append("-----------------\n");
@@ -389,6 +399,8 @@ public class Stats {
     }
 
 	/**
+	 * Sets the wood.
+	 *
 	 * @param wood the wood to set
 	 */
 	public void setWood(Resources wood) {
@@ -396,6 +408,8 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the rock.
+	 *
 	 * @param rock the rock to set
 	 */
 	public void setRock(Resources rock) {
@@ -403,6 +417,8 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the coin.
+	 *
 	 * @param coin the coin to set
 	 */
 	public void setCoin(Resources coin) {
@@ -410,6 +426,8 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the servant.
+	 *
 	 * @param servant the servant to set
 	 */
 	public void setServant(Resources servant) {
@@ -417,6 +435,8 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the fp.
+	 *
 	 * @param fp the fp to set
 	 */
 	public void setFp(Points fp) {
@@ -424,6 +444,8 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the mp.
+	 *
 	 * @param mp the mp to set
 	 */
 	public void setMp(Points mp) {
@@ -431,12 +453,17 @@ public class Stats {
 	}
 
 	/**
+	 * Sets the vp.
+	 *
 	 * @param vp the vp to set
 	 */
 	public void setVp(Points vp) {
 		this.vp = vp;
 	}
 
+	/**
+	 * Fix stats.
+	 */
 	public void fixStats() {
 		if(this.getWood() < 0){
 			this.setWood(new Wood(0));

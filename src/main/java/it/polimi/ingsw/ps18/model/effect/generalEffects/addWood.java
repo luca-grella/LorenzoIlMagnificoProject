@@ -69,6 +69,9 @@ public class addWood implements QuickEffect, HarvestEffect, ProductionEffect, Fi
 	}
 	
 	/**
+	 * To string.
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

@@ -26,9 +26,17 @@ import it.polimi.ingsw.ps18.view.PBoardView;
  * The Class FamtoProduction.
  */
 public class FamtoProduction extends Observable implements Action {
+	
+	/** The cards with production. */
 	List<Cards> cardsWithProduction = new ArrayList<>();
+	
+	/** The currentcard. */
 	Cards currentcard;
+	
+	/** The cards for activation. */
 	List<Cards> cardsForActivation = new ArrayList<>();
+	
+	/** The total cost preview. */
 	Stats totalCostPreview;
 	
 	/**
@@ -46,10 +54,7 @@ public class FamtoProduction extends Observable implements Action {
 	 */
 	private int indexFamtoRemove;
 	
-	/**
-	 * The number of servants to add to the action value 
-	 * of the current FMember, chosen by the current player
-	 */
+	/** The number of servants to add to the action value  of the current FMember, chosen by the current player. */
 	private int numberOfServants;
 	
 	/**
@@ -74,10 +79,18 @@ public class FamtoProduction extends Observable implements Action {
 		notifyActionPBoardView("Fam Choice Production");
 	}
 	
+	/**
+	 * Cell choice.
+	 */
 	public void cellChoice(){
 		notifyActionPBoardView("Cell Choice Production");
 	}
 	
+	/**
+	 * Servants choice.
+	 *
+	 * @param game the game
+	 */
 	public void servantsChoice(GameLogic game) {
 		PBoard currentplayer = game.getTurnplayer();
 		ShowBoard showBoard = new ShowBoard(currentplayer.getpBoardView());
@@ -90,6 +103,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -271,6 +287,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the chosen fam.
+	 *
+	 * @param chosenFam the new chosen fam
 	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setChosenFam(it.polimi.ingsw.ps18.model.personalboard.FMember)
 	 */
 	@Override
@@ -360,18 +379,25 @@ public class FamtoProduction extends Observable implements Action {
 	
 	
 	/**
+	 * Gets the number of servants.
+	 *
 	 * @return the numberOfServants
 	 */
 	public int getNumberOfServants() {
 		return numberOfServants;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.gamelogic.Action#setNumberOfServants(int)
+	 */
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
 		this.numberOfServants = numberOfServants;		
 	}
 
 	/**
+	 * Gets the chosen cell.
+	 *
 	 * @return the chosenCell
 	 */
 	public int getChosenCell() {
@@ -379,6 +405,8 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
+	 * Sets the chosen cell.
+	 *
 	 * @param chosenCell the chosenCell to set
 	 */
 	public void setChosenCell(int chosenCell) {
@@ -386,6 +414,8 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
+	 * Gets the chosen fam.
+	 *
 	 * @return the chosenFam
 	 */
 	public FMember getChosenFam() {
@@ -393,7 +423,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
-	 * @return
+	 * Gets the action value.
+	 *
+	 * @return the action value
 	 */
 	public int getActionValue() {
 		
@@ -401,7 +433,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
-	 * 
+	 * Sets the currentcard.
+	 *
+	 * @param currentcard the new currentcard
 	 */
 	public void setCurrentcard(Cards currentcard) {
 		this.currentcard = currentcard;
@@ -409,7 +443,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
-	 * 
+	 * Sets the cards for activation.
+	 *
+	 * @param cardsForActivation the new cards for activation
 	 */
 	public void setCardsForActivation(List<Cards> cardsForActivation) {
 		this.cardsForActivation=cardsForActivation;
@@ -417,7 +453,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
-	 * 
+	 * Sets the total cost preview.
+	 *
+	 * @param totalCostPreview the new total cost preview
 	 */
 	public void setTotalCostPreview(Stats totalCostPreview) {
 		this.totalCostPreview=totalCostPreview;
@@ -425,7 +463,9 @@ public class FamtoProduction extends Observable implements Action {
 	}
 
 	/**
-	 * @return
+	 * Gets the index famto remove.
+	 *
+	 * @return the index famto remove
 	 */
 	public int getIndexFamtoRemove() {
 		

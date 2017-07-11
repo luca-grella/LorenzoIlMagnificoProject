@@ -19,6 +19,11 @@ public class LoseVPforResources implements ExcommEffects {
 	 */
 	private String name = "LoseVPforResources";
 	
+	/**
+	 * Activate.
+	 *
+	 * @param player the player
+	 */
 	public void activate(PBoard player){
 		Stats resources = player.getResources();
 		int count = 0;
@@ -56,6 +61,9 @@ public class LoseVPforResources implements ExcommEffects {
 		return name;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		return "Lose " + loseVP + " Victory Point for each resource in your PBoard";

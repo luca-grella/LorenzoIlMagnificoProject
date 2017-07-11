@@ -27,6 +27,11 @@ public class YellowC extends Cards {
 	private List<ProductionEffect> prodEffect = new ArrayList<>();
 	
 	
+	/**
+	 * Instantiates a new yellow C.
+	 *
+	 * @param a the a
+	 */
 	public YellowC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE();
 

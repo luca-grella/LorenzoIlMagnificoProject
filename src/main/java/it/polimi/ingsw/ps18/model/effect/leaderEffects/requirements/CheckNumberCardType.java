@@ -3,12 +3,24 @@ package it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+/**
+ * The Class CheckNumberCardType.
+ */
 public class CheckNumberCardType implements LCRequirement {
+	
+	/** The typecolor. */
 	private int typecolor;
+	
+	/** The minimum. */
 	private int minimum;
+	
+	/** The typecolorstring. */
 	private String typecolorstring;
 	
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.leaderEffects.requirements.LCRequirement#checkRequirement(it.polimi.ingsw.ps18.model.personalboard.PBoard)
+	 */
 	@Override
 	public boolean checkRequirement(PBoard player){
 		int count = 0;
@@ -23,6 +35,12 @@ public class CheckNumberCardType implements LCRequirement {
 		return false;
 	}
 	
+	/**
+	 * Sets the param.
+	 *
+	 * @param details the details
+	 * @param minimum the minimum
+	 */
 	public void setParam(String details, long minimum){
 		this.minimum = (int) minimum;
 		this.typecolorstring = details;
@@ -39,14 +57,18 @@ public class CheckNumberCardType implements LCRequirement {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString(){
 		return this.minimum + " " + this.typecolorstring + " cards.";
 	}
 
 	/**
-	 * @return 
-	 * 
+	 * Gets the details.
+	 *
+	 * @return the details
 	 */
 	public int getDetails() {
 		return typecolor;
@@ -55,8 +77,9 @@ public class CheckNumberCardType implements LCRequirement {
 	
 
 	/**
-	 * @return 
-	 * 
+	 * Gets the minimum.
+	 *
+	 * @return the minimum
 	 */
 	public int getMinimum() {
 		return minimum;
@@ -64,8 +87,9 @@ public class CheckNumberCardType implements LCRequirement {
 	}
 
 	/**
-	 * @return 
-	 * 
+	 * Gets the type color.
+	 *
+	 * @return the type color
 	 */
 	public int getTypeColor() {
 		return typecolor;

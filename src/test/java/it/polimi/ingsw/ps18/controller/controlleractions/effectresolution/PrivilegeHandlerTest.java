@@ -18,17 +18,21 @@ import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class PrivilegeHandlerTest.
  *
+ * @author luca-grella
  */
 public class PrivilegeHandlerTest {
+	
+	/** The index. */
 	Integer index;
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.controller.controlleractions.effectresolution.PrivilegeHandler#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testAct() throws FileNotFoundException, IOException, ParseException {

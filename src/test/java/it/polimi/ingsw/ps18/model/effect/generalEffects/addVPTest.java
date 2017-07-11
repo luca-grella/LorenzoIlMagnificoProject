@@ -86,6 +86,9 @@ public class addVPTest {
 		}
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		addVP tester = new addVP();

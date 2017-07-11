@@ -8,8 +8,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author luca-grella
+ * The Class VariousModifierTest.
  *
+ * @author luca-grella
  */
 public class VariousModifierTest {
 
@@ -72,6 +73,9 @@ public class VariousModifierTest {
 		
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		

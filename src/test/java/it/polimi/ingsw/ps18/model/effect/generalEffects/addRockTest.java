@@ -86,6 +86,9 @@ public class addRockTest {
 		}
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		addRock tester = new addRock();

@@ -42,6 +42,11 @@ public class PurpleC extends Cards {
 	 */
 	private List<FinalEffect> fineffect = new ArrayList<>();
 	
+	/**
+	 * Instantiates a new purple C.
+	 *
+	 * @param a the a
+	 */
 	public PurpleC(JSONObject a) {
 		HashMapQE mapQE = new HashMapQE();
 		HashMapFE mapFE = new HashMapFE();
@@ -269,12 +274,17 @@ private void setCosts(JSONArray costs){
 	}
 
 	/**
+	 * Gets the secondary cost.
+	 *
 	 * @return the secondaryCost
 	 */
 	public Stats getSecondaryCost() {
 		return secondaryCost;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.cards.Cards#hasHarvest()
+	 */
 	@Override
 	public boolean hasHarvest() {
 		return false;

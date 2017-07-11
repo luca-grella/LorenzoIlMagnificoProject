@@ -12,6 +12,8 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
  * The Class ShowPlayer.
  */
 public class ShowPlayer implements Status {
+	
+	/** The color. */
 	private int color;
 	
 	/**
@@ -20,6 +22,9 @@ public class ShowPlayer implements Status {
 	private int index;
 
 	/**
+	 * Act.
+	 *
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#act(it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -48,6 +53,9 @@ public class ShowPlayer implements Status {
 	}
 
 	/**
+	 * Sets the index.
+	 *
+	 * @param i the new index
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override
@@ -55,6 +63,9 @@ public class ShowPlayer implements Status {
 		this.index = i;
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.controller.controllerstatus.Status#setColor(int)
+	 */
 	@Override
 	public void setColor(int i) {
 		this.color = i;

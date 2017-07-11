@@ -87,7 +87,7 @@ public class addFPTest {
 	}
 	
 	/**
-	 * tostring
+	 * tostring.
 	 */
 	@Test
 	public void testToString() {
@@ -116,8 +116,7 @@ public class addFPTest {
 	}
 	
 	/**
-	 * 
-	 * get name
+	 * get name.
 	 */
 	
 	@Test

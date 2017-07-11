@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus;
  */
 public class ChooseTowertoShow extends Observable implements PBViewAction {
 	
+	/** The color. */
 	private int color;
 	
 	/**
@@ -22,12 +23,21 @@ public class ChooseTowertoShow extends Observable implements PBViewAction {
 	 */
 	Scanner input = new Scanner(System.in);
 
+	/**
+	 * Instantiates a new choose towerto show.
+	 *
+	 * @param controller the controller
+	 */
 	public ChooseTowertoShow(MainController controller) {
 		addObserver(controller);
 
 	}
 
 	/**
+	 * Act.
+	 *
+	 * @param playerClient the player client
+	 * @throws RemoteException the remote exception
 	 * @see it.polimi.ingsw.ps18.view.pboardviewstatus.PBViewStatus#act()
 	 */
 	@Override
@@ -55,16 +65,18 @@ public class ChooseTowertoShow extends Observable implements PBViewAction {
 	/**
 	 * Notify param main controller.
 	 *
-	 * @param msg
-	 *            the msg
-	 * @param i
-	 *            the i
+	 * @param msg            the msg
+	 * @param color the color
+	 * @param number the number
 	 */
 	private void notifyStatusParamMainController(String msg,int color, int number){
 		setChanged();
 		notifyObservers(new StatusParamMessage(msg,color,number));
 	}
 
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.view.pboardviewactions.PBViewAction#setIndex(int)
+	 */
 	@Override
 	public void setIndex(int number) {
 		this.color = number;

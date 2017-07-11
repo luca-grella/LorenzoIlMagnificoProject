@@ -11,8 +11,9 @@ import org.junit.Test;
 import it.polimi.ingsw.ps18.model.personalboard.resources.Stats;
 
 /**
- * @author luca-grella
+ * The Class TowerDiscountTest.
  *
+ * @author luca-grella
  */
 public class TowerDiscountTest {
 
@@ -107,6 +108,9 @@ public class TowerDiscountTest {
 		assertEquals("TowerDiscount", ris);
 	}
 	
+	/**
+	 * Test get name.
+	 */
 	@Test
 	public void testGetName() {
 		TowerDiscount tester = new TowerDiscount();

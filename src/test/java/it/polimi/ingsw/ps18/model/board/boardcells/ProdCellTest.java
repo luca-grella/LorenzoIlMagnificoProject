@@ -27,8 +27,9 @@ import it.polimi.ingsw.ps18.model.personalboard.FMember;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
- * @author luca-grella
+ * The Class ProdCellTest.
  *
+ * @author luca-grella
  */
 public class ProdCellTest {
 
@@ -50,9 +51,10 @@ public class ProdCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ProdCell#insertFM(it.polimi.ingsw.ps18.model.personalboard.FMember)}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testInsertFM() throws FileNotFoundException, IOException, ParseException {
@@ -92,9 +94,10 @@ public class ProdCellTest {
 
 	/**
 	 * Test method for {@link it.polimi.ingsw.ps18.model.board.boardcells.ProdCell#isEmptyPC()}.
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ParseException the parse exception
 	 */
 	@Test
 	public void testIsEmptyPC() throws FileNotFoundException, IOException, ParseException {
@@ -227,6 +230,9 @@ public class ProdCellTest {
 		
 	}
 	
+	/**
+	 * Test to string.
+	 */
 	@Test
 	public void testToString() {
 		

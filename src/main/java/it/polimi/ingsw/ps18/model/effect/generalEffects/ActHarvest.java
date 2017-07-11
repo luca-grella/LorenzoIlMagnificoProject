@@ -28,6 +28,7 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 	 */
 	private int quantity;
 	
+	/** The tester. */
 	private int tester=1;
 	
 	/* (non-Javadoc)
@@ -88,14 +89,18 @@ public class ActHarvest extends Observable implements FinalEffect, HarvestEffect
 	}
 
 	/**
-	 * @return
+	 * Gets the quantity.
+	 *
+	 * @return the quantity
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
 	/**
-	 * @param i
+	 * Sets the tester.
+	 *
+	 * @param tester the new tester
 	 */
 	public void setTester(int tester) {
 		this.tester=tester;

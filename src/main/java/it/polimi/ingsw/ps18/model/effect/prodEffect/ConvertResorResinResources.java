@@ -36,6 +36,10 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	private Stats reward;
 
 	/**
+	 * Activate.
+	 *
+	 * @param player the player
+	 * @param game the game
 	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#activate(it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
 	 */
 	@Override
@@ -71,6 +75,9 @@ public class ConvertResorResinResources extends Observable implements Converter,
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.polimi.ingsw.ps18.model.effect.generalEffects.WoodorRockEffects#continueEffect(int, it.polimi.ingsw.ps18.model.personalboard.PBoard, it.polimi.ingsw.ps18.model.gamelogic.GameLogic)
+	 */
 	@Override
 	public void continueEffect(int index, PBoard player, GameLogic game){
 		if(index==1){
@@ -81,6 +88,9 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	}
 
 	/**
+	 * Sets the quantity.
+	 *
+	 * @param quantity the new quantity
 	 * @see it.polimi.ingsw.ps18.model.effect.prodEffect.ProductionEffect#setQuantity(int)
 	 */
 	@Override
@@ -103,6 +113,9 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	}
 	
 	/**
+	 * To string.
+	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -161,7 +174,8 @@ public class ConvertResorResinResources extends Observable implements Converter,
 	}
 
 	/**
-	 * per test, evita l'input utente
+	 * per test, evita l'input utente.
+	 *
 	 * @param cost the cost to set
 	 */
 	public void setCost(Stats cost) {
