@@ -499,7 +499,7 @@ public class Board extends Observable {
 		
 		for(int towerIndex=0; towerIndex<GeneralParameters.numberofBaseTowers; towerIndex++){
 			Tower boardTower = towers.get(towerIndex);
-			builder.append("Tower number: " + (towerIndex+1) + "\n" + boardTower.toString());
+			builder.append("Tower number: " + (towerIndex+1) + "\n" + ((ConcreteTower) boardTower).toString());
 			builder.append("\n-----------------\n");
 		}
 		

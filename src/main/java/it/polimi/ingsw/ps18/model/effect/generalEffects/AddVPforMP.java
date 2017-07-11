@@ -9,6 +9,7 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
+
 /**
  * The Class AddVPforMP.
  */
@@ -39,7 +40,7 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 		player.getResources().addVP(multiplier * countVP);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect#setQuantity(int)
 	 */
 	@Override

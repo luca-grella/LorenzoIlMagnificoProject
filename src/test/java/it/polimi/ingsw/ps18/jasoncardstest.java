@@ -8,7 +8,6 @@ import java.text.ParseException;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class jasoncardstest.

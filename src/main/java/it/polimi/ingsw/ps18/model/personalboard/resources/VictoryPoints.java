@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.personalboard.resources;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class VictoryPoints.
  */

@@ -31,7 +31,6 @@ public class IgnoreCards implements ExcommEffects {
 	 * @return
 	 */
 	public int getQuantity(int quantity) {
-		// TODO Auto-generated method stub
 		return quantity;
 	}
 

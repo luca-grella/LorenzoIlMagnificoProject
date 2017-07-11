@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.Privilege;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class HashMapHE.
  */

@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps18.model.effect.generalEffects;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Interface GeneralEffect.
  */
@@ -16,7 +16,6 @@ public interface GeneralEffect {
 	 * @param game some effects need to save themselves as ongoing effect
 	 */
 	public void activate(PBoard player, GameLogic game);
-	//TODO: teoricamente non bisognerebbe passare il player perchè si può ricavare da game, ma così è possibile attivare effetti su altri giocatori
 	
     /**
 	 * Set the Parameter that the method "activate" may use in his functioning.

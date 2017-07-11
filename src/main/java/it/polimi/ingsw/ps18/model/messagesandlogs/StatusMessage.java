@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.messagesandlogs;
 
-// TODO: Auto-generated Javadoc
 /**
  * This kind of messages handles the request of showing any 
  * info about the game's current status.

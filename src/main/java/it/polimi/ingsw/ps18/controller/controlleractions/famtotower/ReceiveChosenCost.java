@@ -18,7 +18,12 @@ public class ReceiveChosenCost implements ActionChoice {
 			currentplayer.notifyLogPBoardView("Turned back to the Floor choice\n");
 			((FamtoTower) currentaction).floorChoice(game);
 		} else if(index==1 || index==2){
-			//TODO: FARE OUTPUT FINALE
+			if(index == 1) {
+				currentplayer.notifyLogPBoardView("\nYou chose to pay with Resources\n");
+			}
+			else {
+				currentplayer.notifyLogPBoardView("\nYou chose to pay with Military Points\n");
+			}
 			((FamtoTower) currentaction).setCostchoice(index);
 		}
 	}

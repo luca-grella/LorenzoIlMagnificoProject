@@ -114,7 +114,6 @@ public class VaticanReport extends Observable implements Action{
 
 	@Override
 	public void setNumberOfServants(int numberOfServants) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -131,7 +130,6 @@ public class VaticanReport extends Observable implements Action{
 	 * @return
 	 */
 	public int getNumberOfServants(int numberOfServants) {
-		// TODO Auto-generated method stub
 		return numberOfServants;
 	}
 	

@@ -35,14 +35,12 @@ public class IdleViewThread implements Runnable {
 //		try {
 //			idleview.getPlayerClient().closeScanner();
 //		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		synchronized(this){
 //			try {
 //				this.wait();
 //			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
 //		}

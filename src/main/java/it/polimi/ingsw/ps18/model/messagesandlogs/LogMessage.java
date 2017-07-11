@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps18.model.messagesandlogs;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * This type of message are supposed to be recived only by the Veiw and 
  * are going to be printed in the log, i.e. message that notify the successful

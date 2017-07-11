@@ -16,9 +16,13 @@ public class ReceiveFamforValueChange implements ActionChoice {
 		if(index==0){
 			((ChangeFamValue) effect).activate(currentplayer, game);
 		} else if(index<0 || index>currentplayer.getFams().size()){
-			//TODO: FARE OUTPUT FINALE
+			currentplayer.notifyLogPBoardView("\nError: not a valid input\n"
+					+ "\tPlease choose again");
 			((ChangeFamValue) effect).activate(currentplayer, game);
 		} else {
+			String string[] = {"st", "nd", "rd", "rth"};
+			currentplayer.notifyLogPBoardView("\nYou successfully avtivated the Leader Effect on the "
+					+ index + string[index] + " Family Member\n");
 			index -= 1;
 			((ChangeFamValue) effect).setChoice(index);
 			effect.continueEffect(currentplayer, game);

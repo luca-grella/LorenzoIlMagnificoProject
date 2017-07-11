@@ -44,8 +44,6 @@ public class HarvCell {
 		harvCellFM = null;
 		this.malus = malus;
 		harvCellValue = GeneralParameters.baseValueHarvCells - malus;  
-		//TODO: verificare se si intede un malus positivo da sottrarre o uno negativo da aggiungere
-		
 	}
 
 

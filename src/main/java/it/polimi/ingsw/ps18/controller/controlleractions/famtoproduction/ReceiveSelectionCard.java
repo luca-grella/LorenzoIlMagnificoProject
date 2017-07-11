@@ -29,7 +29,6 @@ public class ReceiveSelectionCard implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		//TODO: FARE OUTPUT FINALE
 		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 //		if(index==0){

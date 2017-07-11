@@ -51,7 +51,7 @@ public class IncreaseFMValueOnActionWR extends Observable implements Permanentef
 		
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	//TODO: da modificare

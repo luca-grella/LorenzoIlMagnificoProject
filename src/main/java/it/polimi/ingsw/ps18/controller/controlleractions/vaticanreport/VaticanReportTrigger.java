@@ -21,7 +21,7 @@ public class VaticanReportTrigger implements ActionChoice{
 		PBoard currentplayer = game.getTurnplayer();       
 		int age = game.getAGE();
 		
-		for(int index=0; index<16; index++){ //TODO: GeneralParameters
+		for(int index=0; index<16; index++){ 
 			Integer i = new Integer(index);
 			JSONParser parser = new JSONParser();
 			Object obj;
@@ -98,7 +98,6 @@ public class VaticanReportTrigger implements ActionChoice{
 //			long victoryPoints = (long) a.get("VP");
 //		}
 //		 catch (IOException | ParseException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 

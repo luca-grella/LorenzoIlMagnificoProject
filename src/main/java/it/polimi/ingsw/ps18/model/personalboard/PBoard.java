@@ -441,9 +441,6 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 				else
 					return false;
 			}
-			/*
-			 * TODO: Else molto meccanico, se possibile sistemare
-			 */
 			else{
 				int futureCount = colorCount+1;
 				if(futureCount<=2){

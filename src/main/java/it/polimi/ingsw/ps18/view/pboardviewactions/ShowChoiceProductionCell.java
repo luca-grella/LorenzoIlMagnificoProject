@@ -46,7 +46,6 @@ public class ShowChoiceProductionCell extends Observable implements PBViewAction
 
 	@Override
 	public void setIndex(int number) {
-		// TODO Auto-generated method stub
 		
 	}
 

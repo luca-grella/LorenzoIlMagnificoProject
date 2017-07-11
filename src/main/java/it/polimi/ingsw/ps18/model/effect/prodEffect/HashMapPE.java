@@ -18,7 +18,7 @@ import it.polimi.ingsw.ps18.model.effect.generalEffects.addServants;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addVP;
 import it.polimi.ingsw.ps18.model.effect.generalEffects.addWood;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class HashMapPE.
  */

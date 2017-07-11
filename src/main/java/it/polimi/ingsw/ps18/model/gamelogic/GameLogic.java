@@ -740,8 +740,6 @@ public class GameLogic extends Observable {
 		
 		Collections.sort(players);
 
-		
-		//TODO:  dare un'occhiata ai controlli sugli MP che potrebbero non essere corretti per tutte le casistiche
 		PBoard winner = players.get(0);
 		winner.getResources().addVP(5);
 		

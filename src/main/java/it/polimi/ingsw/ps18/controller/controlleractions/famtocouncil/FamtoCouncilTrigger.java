@@ -81,7 +81,6 @@ public class FamtoCouncilTrigger implements ActionChoice {
 			((FamtoCouncil) action).famchoice();
 			return;
 		}
-		//TODO: SE IL COUNCILTRIGGER FALLISCE, OGNI ALTRA AZIONE E' DESTINATA A FALLIRE E QUINDI BISOGNA FARGLI SKIPPARE IL TURNO
 		currentplayer.notifyLogPBoardView("\nThe action is not legal\n"
 				+ "\tYou only have a Uncolored Family Member and no Servants\n"
 				+ "\tTurn skipped\n");

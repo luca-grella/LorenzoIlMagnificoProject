@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps18.model.effect.permeffects;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class HashMapPermE.
  */

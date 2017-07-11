@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps18.model.messagesandlogs;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Message.
  */

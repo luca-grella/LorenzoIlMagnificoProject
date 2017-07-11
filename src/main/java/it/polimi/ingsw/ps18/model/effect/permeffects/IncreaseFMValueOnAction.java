@@ -51,10 +51,9 @@ public class IncreaseFMValueOnAction implements Permanenteffect {
 		return name;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see java.lang.Object#toString()
 	 */
-	//TODO: da modificare
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();

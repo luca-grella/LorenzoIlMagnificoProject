@@ -31,7 +31,6 @@ public class ReceiveChoseneffect implements ActionChoice {
 	 */
 	@Override
 	public void act(GameLogic game) {
-		//TODO: FARE OUTPUT FINALE
 		Action currentaction = game.getOngoingAction();
 		PBoard currentplayer = game.getTurnplayer();
 		Stats costPreview = ((FamtoProduction) currentaction).getTotalCostPreview();
@@ -75,7 +74,7 @@ public class ReceiveChoseneffect implements ActionChoice {
 		(((FamtoProduction) currentaction).getCardsForActivation()).add(newcard);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see it.polimi.ingsw.ps18.controller.controlleractions.ActionChoice#setIndex(int)
 	 */
 	@Override

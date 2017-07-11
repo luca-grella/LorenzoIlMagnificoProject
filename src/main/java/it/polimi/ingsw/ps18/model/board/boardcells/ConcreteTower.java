@@ -15,8 +15,10 @@ import org.json.simple.parser.JSONParser;
 import it.polimi.ingsw.ps18.model.cards.Cards;
 import it.polimi.ingsw.ps18.model.effect.quickEffect.HashMapQE;
 import it.polimi.ingsw.ps18.model.gamelogic.FamtoTower;
+import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.gamelogic.GeneralParameters;
 import it.polimi.ingsw.ps18.model.personalboard.FMember;
+import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 /**
  * Defines a Tower composed by Cell objects. <br>
@@ -129,9 +131,6 @@ public class ConcreteTower implements Tower {
 	 * </ul>
 	 */
 	public boolean isLegalTower(FMember pBoardFM) {
-		/**
-		 * TODO: RIVEDERE QUESTO E TUTTI GLI ISLEGAL
-		 */
 		if(this.isEmptyTower()){
 			return true;
 		}
@@ -229,12 +228,20 @@ public class ConcreteTower implements Tower {
 	}
 	
 	
- 	//TODO: Definire Info generali di una torre
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-
+		List<FMember> placedFams = new ArrayList<>();
 		builder.append("\tTower color: " + this.color + "\n");
 		builder.append("\tNumber of cells in tower: " + this.towerCells.size());
+		int count = 0;
+		for(int i=0; i<towerCells.size(); i++) {
+			Cell towerCell = towerCells.get(i);
+			if(towerCell.isEmptyTC()) {
+				count++;
+			}
+		}
+		
+		builder.append("\n\tAvailable cells: " + count);
 		return builder.toString();
 	}
 	
