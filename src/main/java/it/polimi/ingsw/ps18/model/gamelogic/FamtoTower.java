@@ -145,6 +145,8 @@ public class FamtoTower extends Observable implements Action {
 		if(currentplayer.getResources().enoughStats(totalCostPreview)){
 			currentplayer.getResources().subStats(totalCostPreview);
 			currentplayer.addCard(newcard,game);
+			game.notifyAll("\n\n-----------------\nPlayer number " + currentplayer.getPlayercol() + " has moved a Family Member\nto the "
+					+ (this.chosenFloor+1) + " floor of the " + (this.chosenTower+1) + " Tower.\n-----------------\n\n");
 		} else {
 			this.famchoice(); //Teoricamente non si entra mai qui, ma sarebbe piu' sensato rimandarlo alla scelta dell'azione
 		}

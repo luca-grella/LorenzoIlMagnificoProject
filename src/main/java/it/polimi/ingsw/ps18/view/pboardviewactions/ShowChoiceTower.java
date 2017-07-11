@@ -32,7 +32,7 @@ public class ShowChoiceTower extends Observable implements PBViewAction {
 	public void act(ClientInterface playerClient)  throws RemoteException{
 		int choiceTower = -100;
 		try {
-			playerClient.notify("Choose the Floor in which you want to move in:\n"
+			playerClient.notify("Choose the Tower in which you want to move in:\n"
 					+ "-----------------\n0. Back.");
 			notifyStatusMainController("Show Towers");
 			choiceTower = playerClient.read();

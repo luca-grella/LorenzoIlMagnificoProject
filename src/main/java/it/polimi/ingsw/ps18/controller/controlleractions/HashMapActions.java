@@ -37,9 +37,6 @@ import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffect
 import it.polimi.ingsw.ps18.controller.controlleractions.leadercards.quickeffects.ReceiveActivationLCQEChoice;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.ReceiveVaticanAnswer;
 import it.polimi.ingsw.ps18.controller.controlleractions.vaticanreport.VaticanReportTrigger;
-import it.polimi.ingsw.ps18.controller.controllerstatus.ChoosePlayer;
-import it.polimi.ingsw.ps18.controller.controllerstatus.ReceiveNewGameChoice;
-import it.polimi.ingsw.ps18.controller.controllerstatus.ShowPlayer;
 
 /**
  * The Class HashMapActions.

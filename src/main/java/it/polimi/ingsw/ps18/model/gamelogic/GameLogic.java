@@ -446,7 +446,7 @@ public class GameLogic extends Observable {
 	 *         </ul>
 	 */
 	public LinkedList<ClientInterface> gameFlow(){
-		int t = 5;
+		int timer = 100;
 		do{
 			this.TURN++;
 			this.recoverTurn.clear();
@@ -473,52 +473,54 @@ public class GameLogic extends Observable {
 				this.turnplayer = templist.get(playerIndex);
 				
 				//stampa gioco, alternativa ai thread
-//				for(PBoard player: this.players){
-//					if(player.getPlayercol()!=turnplayer.getPlayercol()){
-//						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-//					}
-//				}
+				for(PBoard player: this.players){
+					if(player.getPlayercol()!=turnplayer.getPlayercol()){
+						player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+					}
+				}
 				
 //				if(playerIndex!=0){
 //					players.get(playerIndex).getIdlethread().shutdownNow();
 //				}
 
-				final ExecutorService service = Executors.newFixedThreadPool(4);
-				
-				 try {
-					service.submit(new ActionDevelopThread(mView));
-					service.shutdown();
-					service.awaitTermination(t, TimeUnit.SECONDS);
-				} catch (InterruptedException e) {
-					System.out.println("Azione interrotta");
-					Thread.currentThread().interrupt();
-				}
+				//Thread
+//				final ExecutorService service = Executors.newFixedThreadPool(4);
+//				
+//				 try {
+//					service.submit(new ActionDevelopThread(mView));
+//					service.shutdown();
+//					service.awaitTermination(timer, TimeUnit.SECONDS);
+//				} catch (InterruptedException e) {
+//					System.out.println("Azione interrotta");
+//					Thread.currentThread().interrupt();
+//				}
 				 
-//				 setChanged();
-//					notifyObservers(new ActionMessage("Turn Handle Init"));
+				setChanged();
+				notifyObservers(new ActionMessage("Turn Handle Init"));
 				
 //				players.get(playerIndex).getIdlethread().submit(new IdleViewThread(players.get(playerIndex), controller));
 			}
 			for(int famIndex=1; famIndex<GeneralParameters.nfamperplayer; famIndex++){
 				for(int playerIndex=0; playerIndex<nplayer; playerIndex++){
 					this.turnplayer = players.get(playerIndex);
-//					for(PBoard player: this.players){
-//						if(player.getPlayercol()!=turnplayer.getPlayercol()){
-//							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
-//						}
-//					}
-					final ExecutorService service2 = Executors.newFixedThreadPool(4);
-					 try {
-						service2.submit(new ActionDevelopThread(mView));
-						service2.shutdown();
-						service2.awaitTermination(t, TimeUnit.SECONDS);
-					} catch (InterruptedException e) {
-						System.out.println("Azione interrotta");
-						Thread.currentThread().interrupt();
+					for(PBoard player: this.players){
+						if(player.getPlayercol()!=turnplayer.getPlayercol()){
+							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
+						}
 					}
+					//Thread
+//					final ExecutorService service2 = Executors.newFixedThreadPool(4);
+//					 try {
+//						service2.submit(new ActionDevelopThread(mView));
+//						service2.shutdown();
+//						service2.awaitTermination(timer, TimeUnit.SECONDS);
+//					} catch (InterruptedException e) {
+//						System.out.println("Azione interrotta");
+//						Thread.currentThread().interrupt();
+//					}
 					 
-//					 setChanged();
-//						notifyObservers(new ActionMessage("Turn Handle Init"));
+					setChanged();
+					notifyObservers(new ActionMessage("Turn Handle Init"));
 				}
 			}
 			if(! this.recoverTurn.isEmpty()){
@@ -529,18 +531,18 @@ public class GameLogic extends Observable {
 							player.notifyLogPBoardView(toStringGame(player.getPlayercol()));
 						}
 					}
-					final ExecutorService service3 = Executors.newFixedThreadPool(4);
-					 try {
-						service3.submit(new ActionDevelopThread(mView));
-						service3.shutdown();
-						service3.awaitTermination(t, TimeUnit.SECONDS);
-					} catch (InterruptedException e) {
-						System.out.println("Azione interrotta");
-						Thread.currentThread().interrupt();
-					}
+//					final ExecutorService service3 = Executors.newFixedThreadPool(4);
+//					 try {
+//						service3.submit(new ActionDevelopThread(mView));
+//						service3.shutdown();
+//						service3.awaitTermination(timer, TimeUnit.SECONDS);
+//					} catch (InterruptedException e) {
+//						System.out.println("Azione interrotta");
+//						Thread.currentThread().interrupt();
+//					}
 					 
-//					 setChanged();
-//						notifyObservers(new ActionMessage("Turn Handle Init"));
+					 setChanged();
+					 notifyObservers(new ActionMessage("Turn Handle Init"));
 				}
 			}
 
@@ -862,6 +864,12 @@ public class GameLogic extends Observable {
 	private void notifyLogMainView(String msg){
 		setChanged();
 		notifyObservers(new LogMessage(msg));
+	}
+	
+	public void notifyAll(String msg){
+		for(PBoard player: players){
+			player.notifyLogPBoardView(msg);
+		}
 	}
 
 	/**

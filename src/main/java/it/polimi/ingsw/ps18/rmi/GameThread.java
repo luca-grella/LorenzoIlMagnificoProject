@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
 public class GameThread extends Thread implements Serializable{
 	private boolean timer = true;
+	private MainController game;
 
 	/**
 	 * 
@@ -28,12 +29,8 @@ public class GameThread extends Thread implements Serializable{
 		}
 	}
 	
-	public void updateClients(ClientInterface oldclient, ClientInterface newclient){
-		for(int i=0; i<players.size(); i++){
-			if(players.get(i).getPlayer().equals(oldclient)){
-				players.get(i).setPlayer(newclient);
-			}
-		}
+	public void updateClients(ClientInterface newclient){
+		game.updateClient(newclient);
 	}
 	
 	public void addPlayers(ClientInterface client){
@@ -62,7 +59,7 @@ public class GameThread extends Thread implements Serializable{
 			}
 		}
 		canReceivePlayer = false;
-		MainController game = new MainController();
+		game = new MainController();
 		LinkedList<ClientInterface> newplayers = game.startGame(players.size(), players);
 		if(! newplayers.isEmpty()){
 			this.players.clear();
@@ -97,7 +94,7 @@ public class GameThread extends Thread implements Serializable{
 			}
 		}
 		canReceivePlayer = false;
-		MainController game = new MainController();
+		game = new MainController();
 		LinkedList<ClientInterface> newplayers = game.startGame(players.size(), players);
 		if(! newplayers.isEmpty()){
 			this.players.clear();

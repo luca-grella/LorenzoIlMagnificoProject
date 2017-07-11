@@ -48,8 +48,8 @@ public class PBVAInit extends Observable implements PBViewAction {
 				playerClient.notify(builder.toString());
 				ans = playerClient.read();
 				switch (ans){
-				case 1:
-					notifyStatusMainController("Show Towers Zoom");
+					case 1:
+						notifyStatusMainController("Show Towers Zoom");
 						break;
 					case 2:
 						notifyStatusMainController("Show Market");
@@ -64,7 +64,7 @@ public class PBVAInit extends Observable implements PBViewAction {
 						notifyStatusMainController("Show Production");
 						break;
 					case 6:
-						notifyActionMainController("Show Player");
+						notifyStatusMainController("Show Player");
 						break;
 					case 7:
 						notifyStatusMainController("Show Excomm");

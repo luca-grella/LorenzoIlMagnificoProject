@@ -82,6 +82,8 @@ public class FamtoMarket extends Observable implements Action {
 		cell.insertFM(chosenFam, game);
 		game.getTurnplayer().getFams().set(indexFamtoRemove, null);
 		game.getTurnplayer().getResources().addServants(- this.numberOfServants);
+		game.notifyAll("\n\n-----------------\nPlayer number " + game.getTurnplayer().getPlayercol() + " has moved a Family Member\nto the "
+				+ (chosenCell+1) + " cell in the Market.\n-----------------\n\n");
 	}
 	
 	/**

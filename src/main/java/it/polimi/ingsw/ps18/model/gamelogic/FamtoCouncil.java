@@ -81,6 +81,8 @@ public class FamtoCouncil extends Observable implements Action {
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		privilege.setQuantity(GeneralParameters.numofPrivilegesFromCouncil);
 		privilege.activate(currentplayer, game);
+		game.notifyAll("\n\n-----------------\nPlayer number " + currentplayer.getPlayercol() + " has moved a Family Member\nto the "
+				+ "Council.\n-----------------\n\n");
 
 	}
 

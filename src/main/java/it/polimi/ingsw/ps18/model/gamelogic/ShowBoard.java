@@ -69,7 +69,7 @@ public class ShowBoard extends Observable {
 	public void showAllTowerswithZoom(Board board, int playercol){
 		notifyLogView(board.toStringTowers());
 		setChanged();
-		notifyObservers(new ParamMessage("Tower Choice", playercol));
+		notifyObservers(new ParamMessage("Show Tower Choice", playercol));
 	}
 	
 	/**

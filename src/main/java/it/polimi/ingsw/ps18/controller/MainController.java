@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps18.controller;
 
+import java.rmi.RemoteException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -48,6 +49,19 @@ public class MainController implements Observer {
 		LinkedList<ClientInterface> playersforNewGame = game.gameFlow();
 		return playersforNewGame;
 		
+	}
+	
+	public boolean updateClient(ClientInterface newclient){
+		try {
+			for(PBoard player: game.getPlayers()){
+				if(player.getPlayer().getName().equals(newclient.getName())){
+					player.setPlayer(newclient);
+				}
+			}
+			return true;
+		} catch (RemoteException e) {
+			return false;
+		}
 	}
 
 	/**

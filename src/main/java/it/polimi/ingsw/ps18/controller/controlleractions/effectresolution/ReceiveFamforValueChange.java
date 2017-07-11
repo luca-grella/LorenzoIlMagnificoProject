@@ -14,7 +14,7 @@ public class ReceiveFamforValueChange implements ActionChoice {
 		ChoiceLeaderEffect effect = game.getOngoingLCEffect();
 		PBoard currentplayer = game.getTurnplayer();
 		if(index==0){
-			//TODO: tornare indietro
+			((ChangeFamValue) effect).activate(currentplayer, game);
 		} else if(index<0 || index>currentplayer.getFams().size()){
 			//TODO: FARE OUTPUT FINALE
 			((ChangeFamValue) effect).activate(currentplayer, game);

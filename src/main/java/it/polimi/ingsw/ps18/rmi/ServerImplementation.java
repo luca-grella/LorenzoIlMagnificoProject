@@ -37,7 +37,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 		String name;
 		try {
 			name = (String) client.getName();
-		} catch (RemoteException e1) {
+		} catch (RemoteException e) {
 			System.out.println("\n[ServerImplementation] Error\n");
 			return false;
 		}
@@ -49,7 +49,7 @@ public class ServerImplementation extends UnicastRemoteObject implements ServerI
 			ClientInterface oldClient = users.get(name);
 			for(GameThread game: lobbies){
 				if(game.getClients().contains(oldClient)){
-					game.updateClients(oldClient, client);
+					game.updateClients(client);
 				}
 			}
 			//giocatore presente, setta il nuovo client

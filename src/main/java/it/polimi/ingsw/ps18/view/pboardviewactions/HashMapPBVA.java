@@ -44,7 +44,7 @@ public class HashMapPBVA {
 		genPBVAction.put("CardCostChoice", new CostChoice(mcontroller));
 		genPBVAction.put("ChooseBonusTile", new ShowChoiceBonusTiles(mcontroller));
 		genPBVAction.put("Choose Church Support", new ChooseSupport(mcontroller));
-		genPBVAction.put("Tower Choice", new ChooseTowertoShow(mcontroller));
+		genPBVAction.put("Show Tower Choice", new ChooseTowertoShow(mcontroller));
 		genPBVAction.put("Player Choice", new ChoosePlayertoShow(mcontroller));
 		genPBVAction.put("NewGameChoice", new NewGameChoice(mcontroller));
 	}

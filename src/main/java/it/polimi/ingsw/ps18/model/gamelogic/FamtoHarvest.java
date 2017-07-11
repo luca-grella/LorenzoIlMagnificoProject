@@ -154,6 +154,14 @@ public class FamtoHarvest extends Observable implements Action {
 		board.insertFMHarv(chosenFam, chosenCell, game);
 		currentplayer.getResources().addServants(- (this.numberOfServants));
 		currentplayer.actHarvest();
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n\n-----------------\n");
+		builder.append("Player number " + currentplayer.getPlayercol() + " has moved a Family Member\nto the Harvest Cell ");
+		if(chosenCell==1){
+			builder.append("without malus");
+		}
+		builder.append("\n\n-----------------\n");
+		game.notifyAll(builder.toString());
 	}
 	
 	/**

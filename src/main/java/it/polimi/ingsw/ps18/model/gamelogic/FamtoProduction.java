@@ -147,6 +147,14 @@ public class FamtoProduction extends Observable implements Action {
 			actionValue = 0;
 		}
 		currentplayer.getResources().addServants(- (this.numberOfServants));
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n\n-----------------\n");
+		builder.append("Player number " + currentplayer.getPlayercol() + " has moved a Family Member\nto the Production Cell ");
+		if(chosenCell==1){
+			builder.append("without malus");
+		}
+		builder.append("\n\n-----------------\n");
+		game.notifyAll(builder.toString());
 		currentplayer.actProduction();
 	}
 	
