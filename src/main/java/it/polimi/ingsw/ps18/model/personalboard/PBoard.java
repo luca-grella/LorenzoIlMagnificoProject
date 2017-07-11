@@ -569,6 +569,14 @@ public class PBoard extends Observable implements Comparable<PBoard>, ConfirmHan
 			builder.append(card.toString(count));
 			count++;
 		}
+		builder.append("\n-----------------\nActive Leader Cards:\n");
+		count = 1;
+		for(LeaderCards card: this.leadercards){
+			if(card.isActive()){
+				builder.append(card.toString(count));
+				count++;
+			}
+		}
 		builder.append("\n-----------------\n");
 		return builder.toString();
 	}

@@ -9,7 +9,6 @@ import it.polimi.ingsw.ps18.model.effect.quickEffect.QuickEffect;
 import it.polimi.ingsw.ps18.model.gamelogic.GameLogic;
 import it.polimi.ingsw.ps18.model.personalboard.PBoard;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AddVPforMP.
  */
@@ -38,7 +37,6 @@ public class AddVPforMP implements QuickEffect, HarvestEffect, ProductionEffect,
 		int totMP = player.getResources().getMP();
 		int multiplier = totMP/countMP;
 		player.getResources().addVP(multiplier * countVP);
-		//TODO: prevedere la lettura strana nelle carte blu
 	}
 
 	/* (non-Javadoc)
